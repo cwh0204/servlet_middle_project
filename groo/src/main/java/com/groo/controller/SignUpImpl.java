@@ -59,9 +59,9 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 		try {
 			// 1. Oracle DB 연결 설정
 			OracleDataSource dataSource = new OracleDataSource();
-			dataSource.setURL("jdbc:oracle:thin:@localhost:1521:XE");
-			dataSource.setUser("c##groo");
-			dataSource.setPassword("0204");
+			dataSource.setURL("jdbc:oracle:thin:@localhost:1521:XE"); //로컬호스트 고정
+			dataSource.setUser("c##groo"); //데이터베이스 유저이름
+			dataSource.setPassword("0204"); //데이터베이스 비밀번호
 
 			// 2. MyBatis 환경 구성
 			TransactionFactory transactionFactory = new JdbcTransactionFactory();
@@ -79,12 +79,12 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 				UserMapper mapper = session.getMapper(UserMapper.class);
 				mapper.insertUser(user);
 				session.commit();
-				response.getWriter().println("✅ 사용자 등록 완료: " + user.getUserId());
+				response.getWriter().println("사용자 등록 완료: " + user.getUserId());
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.getWriter().println("❌ 사용자 등록 실패: " + e.getMessage());
+			response.getWriter().println("사용자 등록 실패: " + e.getMessage());
 		}
 
 	}

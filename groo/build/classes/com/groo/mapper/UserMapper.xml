@@ -3,6 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.groo.mapper.UserMapper">
+  
   <insert id="insertUser" parameterType="com.groo.model.UserDTO">
     INSERT INTO users (NAME, USER_ID, PASSWORD)
     VALUES (#{name}, #{userId}, #{password})
