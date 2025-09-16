@@ -1,31 +1,31 @@
 package com.groo.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.transaction.TransactionFactory;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+
+import com.groo.mapper.UserMapper;
+import com.groo.model.UserDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import com.groo.mapper.UserMapper;
-import com.groo.model.UserDTO;
+import jakarta.servlet.http.HttpSession;
 import oracle.jdbc.pool.OracleDataSource;
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 /**
  * Servlet implementation class SignUpImpl
  */
 @WebServlet("/signup")
 public class SignUpImpl extends HttpServlet implements SignUp {
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -41,8 +41,6 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
@@ -61,16 +59,16 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 			OracleDataSource dataSource = new OracleDataSource();
 			dataSource.setURL("jdbc:oracle:thin:@localhost:1521:XE"); //로컬호스트 고정
 			dataSource.setUser("c##groo"); //데이터베이스 유저이름
-			dataSource.setPassword("0204"); //데이터베이스 비밀번호
+			dataSource.setPassword("java"); //데이터베이스 비밀번호
 
 			// 2. MyBatis 환경 구성
 			TransactionFactory transactionFactory = new JdbcTransactionFactory();
 			Environment environment = new Environment("dev", transactionFactory, dataSource);
 			Configuration configuration = new Configuration(environment);
-
+			
 			// 3. Mapper 등록
 			configuration.addMapper(UserMapper.class);
-
+			
 			// 4. SqlSessionFactory 생성
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 
@@ -79,6 +77,10 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 				UserMapper mapper = session.getMapper(UserMapper.class);
 				mapper.insertUser(user);
 				session.commit();
+				
+				HttpSession httpSession = request.getSession();
+				
+				response.sendRedirect("Login.jsp");
 				response.getWriter().println("사용자 등록 완료: " + user.getUserId());
 			}
 

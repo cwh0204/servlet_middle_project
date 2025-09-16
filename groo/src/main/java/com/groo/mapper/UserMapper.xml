@@ -8,4 +8,10 @@
     INSERT INTO users (NAME, USER_ID, PASSWORD)
     VALUES (#{name}, #{userId}, #{password})
   </insert>
+  
+  <select id="loginUser" parameterType="com.groo.model.LoginDTO"> 
+  	SELECT USER_ID
+  	FROM USERS
+  	WHERE USER_ID = #{userId} and PASSWORD = #{password}
+  </select>
 </mapper>
