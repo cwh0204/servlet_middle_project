@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.form-control {
+	width: 300px;
+	padding: 10px;
+	margin: 5px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	margin: 0;
+}
+
+.loginButtonBox {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 15px;
+}
+
+.loginContiner {
+	width: 600px;
+	height: 800px;
+	box-shadow: 3px 3px 3px 3px #5555;
+}
+
+.flexContiner {
+	display: flex;
+	justify-content: center;
+}
+
+img {
+	width: 400px
+}
+
+#loginAttribute {
+	padding: 0 85px;
+}
+
+#loginMethod {
+	width: 100%;
+	margin-top: 50px;
+	padding: 0 85px;
+	width: 100%;
+}
+
+button {
+	width: 100%;
+}
+
+placeholder {
+	width: 100%;
+}
