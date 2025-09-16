@@ -78,8 +78,6 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 				mapper.insertUser(user);
 				session.commit();
 				
-				HttpSession httpSession = request.getSession();
-				
 				response.sendRedirect("Login.jsp");
 				response.getWriter().println("사용자 등록 완료: " + user.getUserId());
 			}

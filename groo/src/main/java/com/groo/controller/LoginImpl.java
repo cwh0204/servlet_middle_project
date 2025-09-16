@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
-import org.apache.naming.factory.TransactionFactory;
 
 import com.groo.mapper.UserMapper;
 import com.groo.model.LoginDTO;
@@ -69,13 +68,13 @@ public class LoginImpl extends HttpServlet implements Login{
 				if(loginCk != null) {
 					HttpSession httpSession = request.getSession();
 					httpSession.setAttribute("userId", loginCk);
-					
+					System.out.println(httpSession.getAttribute("userId"));
+
 //					response.sendRedirect("Login.jsp");
-					response.getWriter().println("로그인 완료: " + login.getUserId());
+					response.getWriter().println("로그인 완료 UserId: " + login.getUserId());
 				}else {
-					response.getWriter().println("로그인 실패: ");
+					response.getWriter().println("로그인 실패");
 				}
-				
 			}
 
 		} catch (Exception e) {
