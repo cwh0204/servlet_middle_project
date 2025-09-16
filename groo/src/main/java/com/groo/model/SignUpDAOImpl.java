@@ -40,7 +40,6 @@ public class SignUpDAOImpl implements SignUpDAO {
 	public void signUP(UserDTO userDTO) {
 		// TODO Auto-generated method stub
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-
 		// 5. 사용자 등록 처리
 		SqlSession session = sqlSessionFactory.openSession();
 		UserMapper mapper = session.getMapper(UserMapper.class);

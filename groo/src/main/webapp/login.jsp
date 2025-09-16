@@ -3,7 +3,6 @@
 <html>
 <head>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="bootstrap/js/jquery-3.7.1.min.js"></script>
 <link href="login.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title></title>
