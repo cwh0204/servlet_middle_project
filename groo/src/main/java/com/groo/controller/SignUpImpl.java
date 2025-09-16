@@ -11,6 +11,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import com.groo.mapper.UserMapper;
+import com.groo.model.SignUpDAOImpl;
 import com.groo.model.UserDTO;
 
 import jakarta.servlet.ServletException;
@@ -55,32 +56,10 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 		user.setPassword(password);
 
 		try {
-			// 1. Oracle DB 연결 설정
-			OracleDataSource dataSource = new OracleDataSource();
-			dataSource.setURL("jdbc:oracle:thin:@localhost:1521:XE"); //로컬호스트 고정
-			dataSource.setUser("c##groo"); //데이터베이스 유저이름
-			dataSource.setPassword("java"); //데이터베이스 비밀번호
-
-			// 2. MyBatis 환경 구성
-			TransactionFactory transactionFactory = new JdbcTransactionFactory();
-			Environment environment = new Environment("dev", transactionFactory, dataSource);
-			Configuration configuration = new Configuration(environment);
-			
-			// 3. Mapper 등록
-			configuration.addMapper(UserMapper.class);
-			
-			// 4. SqlSessionFactory 생성
-			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-
-			// 5. 사용자 등록 처리
-			try (SqlSession session = sqlSessionFactory.openSession()) {
-				UserMapper mapper = session.getMapper(UserMapper.class);
-				mapper.insertUser(user);
-				session.commit();
-				
-				response.sendRedirect("Login.jsp");
-				response.getWriter().println("사용자 등록 완료: " + user.getUserId());
-			}
+			SignUpDAOImpl signUp = new SignUpDAOImpl();
+			signUp.signUP(user);
+			response.sendRedirect("Login.jsp");
+			response.getWriter().println("사용자 등록 완료: " + user.getUserId());
 
 		} catch (Exception e) {
 			e.printStackTrace();
