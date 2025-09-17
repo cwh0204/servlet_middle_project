@@ -46,5 +46,13 @@ public class SignUpDAOImpl implements SignUpDAO {
 		mapper.insertUser(userDTO);
 		session.commit();
 	}
-	
+
+	@Override
+	public String loginUser(LoginDTO loginDTO) {
+		// TODO Auto-generated method stub
+		SqlSession session = sqlSessionFactory.openSession();
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		String loginCk = mapper.loginUser(loginDTO);
+		return loginCk;
+	}
 }
