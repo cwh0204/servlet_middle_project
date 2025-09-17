@@ -1,6 +1,6 @@
 package com.groo.model;
 
-public class UserDTO {
+public class MemberDTO {
 	private String name;
 	private String userId;
 	private String password;

@@ -1,14 +1,11 @@
 package com.groo.mapper;
 
-import java.util.List;
-
-import com.groo.model.LoginDTO;
-import com.groo.model.UserDTO;
+import com.groo.model.MemberDTO;
 
 public interface UserMapper {
-	void insertUser(UserDTO user);
+	void insertUser(MemberDTO user);
 	
-	String loginUser(LoginDTO login);
+	String loginUser(MemberDTO login);
 	
 //	List<Object> userAll(UserDataDTO userData);
 }

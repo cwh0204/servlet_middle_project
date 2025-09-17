@@ -2,8 +2,8 @@ package com.groo.controller;
 
 import java.io.IOException;
 
-import com.groo.model.LoginDAOImpl;
-import com.groo.model.LoginDTO;
+import com.groo.model.MemberDAOImpl;
+import com.groo.model.MemberDTO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,19 +26,19 @@ public class LoginImpl extends HttpServlet implements Login {
 		response.setContentType("text/plain; charset=UTF-8");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		LoginDTO login = new LoginDTO();
-		login.setUserId(userId);
-		login.setPassword(password);
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setUserId(userId);
+		memberDTO.setPassword(password);
 
 		try {
-			LoginDAOImpl loginDao = new LoginDAOImpl();
-			String loginCk = loginDao.loginUser(login);
+			MemberDAOImpl memberDAO = new MemberDAOImpl();
+			String loginCk = memberDAO.login(memberDTO);
 			if (loginCk != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", loginCk);
 				System.out.println(httpSession.getAttribute("userId"));
 
-				response.getWriter().println("로그인 완료 UserId: " + login.getUserId());
+				response.getWriter().println("로그인 완료 UserId: " + memberDTO.getUserId());
 			} else {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.jsp");

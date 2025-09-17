@@ -12,7 +12,7 @@ import com.groo.mapper.UserMapper;
 
 import oracle.jdbc.pool.OracleDataSource;
 
-public class SignUpDAOImpl implements SignUpDAO {
+public class MemberDAOImpl implements MemberDAO{
 	public static Configuration configuration;
 	public static SqlSessionFactory sqlSessionFactory;
 	static {
@@ -31,28 +31,31 @@ public class SignUpDAOImpl implements SignUpDAO {
 			configuration.addMapper(UserMapper.class);
 
 			// 4. SqlSessionFactory 생성
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+			
 		} catch (Exception e) {
 
 		}
 	}
 
 	@Override
-	public void signUP(UserDTO userDTO) {
+	public void signUP(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 		// 5. 사용자 등록 처리
 		SqlSession session = sqlSessionFactory.openSession();
 		UserMapper mapper = session.getMapper(UserMapper.class);
-		mapper.insertUser(userDTO);
+		mapper.insertUser(memberDTO);
 		session.commit();
 	}
 
 	@Override
-	public String loginUser(LoginDTO loginDTO) {
+	public String login(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
 		SqlSession session = sqlSessionFactory.openSession();
 		UserMapper mapper = session.getMapper(UserMapper.class);
-		String loginCk = mapper.loginUser(loginDTO);
+		String loginCk = mapper.loginUser(memberDTO);
 		return loginCk;
 	}
+	
+	
 }
