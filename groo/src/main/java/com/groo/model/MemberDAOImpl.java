@@ -13,8 +13,10 @@ import com.groo.mapper.UserMapper;
 import oracle.jdbc.pool.OracleDataSource;
 
 public class MemberDAOImpl implements MemberDAO{
+	
 	public static Configuration configuration;
 	public static SqlSessionFactory sqlSessionFactory;
+	
 	static {
 		try {
 			OracleDataSource dataSource = new OracleDataSource();

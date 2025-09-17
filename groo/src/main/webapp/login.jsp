@@ -30,9 +30,13 @@
 				<button type="submit" class="btn btn-success">로그인</button>
 			</div>
 			<div id=loginMethod>
-				<button type="button" class="btn custom-btn-success">회원가입</button>
+				<button type="button" class="btn custom-btn-success"
+					onclick="location.href='//localhost:8090/groo/SignUpPage.jsp'">
+					회원가입</button>
 			</div>
 		</div>
 	</form>
 </body>
 </html>
+
+

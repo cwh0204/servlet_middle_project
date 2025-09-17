@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.form-control {
+	width: 300px;
+	padding: 10px;
+	margin: 5px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	width: 100%;
+}
