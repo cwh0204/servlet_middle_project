@@ -58,3 +58,7 @@ button {
 placeholder {
 	width: 100%;
 }
+
+.custom-btn-success {
+	background-color: #91D653;
+}
