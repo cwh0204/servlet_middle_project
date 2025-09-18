@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.container {
+	display: flex;
+	float: left;
+}
+h5 {
+	text-align: center;
+}
+
+.item_button {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 5px;
+    width: 200px;
+    gap: 10px;
+}
+
+.btn-groo {
+	background-color: #91D653;
+}
+
+.card {
+	width: 500px;
+}
+
+.box createTeam {
+	display: flex;
+	justify-content: end;
+}
