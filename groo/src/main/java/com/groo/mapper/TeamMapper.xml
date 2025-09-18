@@ -9,7 +9,7 @@
 		VALUES (#{teamName}, #{userId}, #{teamInfo})
 	</insert>
 
-	<select id="selectTeam" parameterType="com.groo.model.TeamDTO">
+	<select id="selectTeam" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
 		SELECT *
 		FROM TEAM
 		WHERE
