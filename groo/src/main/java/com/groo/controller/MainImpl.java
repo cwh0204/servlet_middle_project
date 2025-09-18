@@ -1,6 +1,7 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
@@ -23,20 +24,21 @@ public class MainImpl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
 		
-		String teamName = request.getParameter("userId");
-		String userId = request.getParameter("userId");
-		String teamInfo = request.getParameter("password");
-		
 		TeamDTO teamDTO = new TeamDTO();
 		
-		teamDTO.setTeamName(teamName);
+		HttpSession httpSession = request.getSession();
+//		String userId = (String)httpSession.getAttribute("userId");
+		String userId = "csc";
 		teamDTO.setUserId(userId);
-		teamDTO.setTeamInfo(teamInfo);
+		
+		
+//		System.out.println("세션확인"+userId);
+		
 		
 		try {
 			TeamDAOImpl teamDAO = new TeamDAOImpl();
-			teamDAO.createTeam(teamDTO);
-			response.getWriter().println("팀등록 성공");
+			List<Object> teamList = teamDAO.selectTeam(teamDTO);
+			response.getWriter().println(teamList);
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("팀등록 실패: " + e.getMessage());

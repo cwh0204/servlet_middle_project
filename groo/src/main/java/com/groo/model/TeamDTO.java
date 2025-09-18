@@ -1,5 +1,7 @@
 package com.groo.model;
 
+import java.util.List;
+
 public class TeamDTO {
 	private String teamName;
 	private String userId;

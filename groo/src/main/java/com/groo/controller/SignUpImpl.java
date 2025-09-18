@@ -17,18 +17,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/signup")
 public class SignUpImpl extends HttpServlet implements SignUp {
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SignUpImpl() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

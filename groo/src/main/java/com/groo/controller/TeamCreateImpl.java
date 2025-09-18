@@ -31,7 +31,6 @@ public class TeamCreateImpl extends HttpServlet {
 		teamDTO.setUserId(userId);
 		teamDTO.setTeamInfo(teamInfo);
 		
-		System.out.println(teamDTO.getUserId()+teamDTO.getTeamName()+teamDTO.getTeamInfo());
 		try {
 			TeamDAOImpl teamDAO = new TeamDAOImpl();
 			teamDAO.createTeam(teamDTO);

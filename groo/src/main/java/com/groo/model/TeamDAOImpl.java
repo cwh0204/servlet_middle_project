@@ -1,5 +1,7 @@
 package com.groo.model;
 
+import java.util.List;
+
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -9,7 +11,6 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import com.groo.mapper.TeamMapper;
-import com.groo.mapper.UserMapper;
 
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -48,4 +49,17 @@ public class TeamDAOImpl implements TeamDAO{
 		mapper.insertTeam(teamDTO);
 		session.commit();
 	}
+
+	@Override
+	public List<Object> selectTeam(TeamDTO teamDTO) {
+		
+		System.out.println("selectTeam = "+teamDTO.getUserId());
+		SqlSession session = sqlSessionFactory.openSession();
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		List<Object> teamList = mapper.selectTeam(teamDTO);
+		System.out.println("selectTeam = "+teamList.get(0));
+		System.out.println("selectTeam = "+teamList.get(1));
+		return teamList;
+	}
+	
 }
