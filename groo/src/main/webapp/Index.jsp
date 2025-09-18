@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button type="button" class="btn custom-btn-success"
-					onclick="location.href='//localhost:8090/groo/teamcreate.jsp'">
-					팀 만들기</button>
+	<button type="button" class="btn custom-btn-success" onclick="location.href='//localhost:8091/groo/teamcreate.jsp'">팀 만들기</button>
+	<span>${userId} 님 환영합니다</span>
 </body>
 </html>

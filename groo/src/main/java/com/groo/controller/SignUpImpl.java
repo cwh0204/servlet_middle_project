@@ -34,27 +34,26 @@ public class SignUpImpl extends HttpServlet implements SignUp {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-
+		
 		String name = request.getParameter("name");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-
+		
 		MemberDTO memberDTO = new MemberDTO();
+		
 		memberDTO.setName(name);
 		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);
-
+		
 		try {
 			MemberDAOImpl memberDAO = new MemberDAOImpl();
 			memberDAO.signUP(memberDTO);
 			response.sendRedirect("login.jsp");
 			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("사용자 등록 실패: " + e.getMessage());
 		}
-
 	}
 
 }
