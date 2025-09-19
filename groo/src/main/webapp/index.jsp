@@ -6,33 +6,9 @@
 <meta charset="UTF-8">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
+<script src="jQuery/jquery-3.7.1.min.js"></script>
+<script src="js/index.js"></script>
 <title>Groo</title>
-<<<<<<< HEAD
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-	crossorigin="anonymous"></script>
-<script>
-$(document).ready(function() {
-    // 이 안에 AJAX 코드를 작성
-     $.ajax({
-        url: "/groo/index",
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-            console.log(data);
-             for (let i = 0; i < data.length; i++) {
-                const team = data[i];
-                console.log("팀 이름:", team.teamName);
-                console.log("팀장 이름:", team.userId);
-                console.log("팀 설명:", team.teamInfo);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("오류 발생:", status, error);
-        }
-    });
-});   
-          
-</script>
 </head>
 <body>
 	<div class="container">
@@ -82,6 +58,6 @@ $(document).ready(function() {
 </body>
 </html>
 
+
 <%-- <span>${userId} 님 환영합니다</span> --%>
 <!-- <button type="button" class="btn custom-btn-success" onclick="location.href='//localhost:8090/groo/teamcreate.jsp'">팀 만들기</button> -->
-
