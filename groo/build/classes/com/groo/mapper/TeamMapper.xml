@@ -5,14 +5,19 @@
 <mapper namespace="com.groo.mapper.TeamMapper">
 
 	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
-		INSERT INTO team (TEAM_NAME, USER_ID, TEAM_INFO)
-		VALUES (#{teamName}, #{userId}, #{teamInfo})
+		INSERT INTO team
+		(TEAM_NAME, USER_ID, TEAM_INFO)
+		VALUES (#{teamName}, #{userId},
+		#{teamInfo})
 	</insert>
 
-	<select id="selectTeam" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
-		SELECT *
+	<select id="selectTeam" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT
+			TEAM_NAME AS teamName,
+			USER_ID AS userId,
+			TEAM_INFO AS teamInfo
 		FROM TEAM
-		WHERE
-		USER_ID = #{userId}
+		WHERE USER_ID = #{userId}
 	</select>
 </mapper>

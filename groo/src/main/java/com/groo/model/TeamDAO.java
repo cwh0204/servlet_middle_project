@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface TeamDAO {
 	public void createTeam(TeamDTO teamDTO);
-	public List<Object> selectTeam(TeamDTO teamDTO);
+	public List<TeamDTO> selectTeam(TeamDTO teamDTO);
 }

@@ -51,14 +51,12 @@ public class TeamDAOImpl implements TeamDAO{
 	}
 
 	@Override
-	public List<Object> selectTeam(TeamDTO teamDTO) {
+	public List selectTeam(TeamDTO teamDTO) {
 		
 		System.out.println("selectTeam = "+teamDTO.getUserId());
 		SqlSession session = sqlSessionFactory.openSession();
 		TeamMapper mapper = session.getMapper(TeamMapper.class);
-		List<Object> teamList = mapper.selectTeam(teamDTO);
-		System.out.println("selectTeam = "+teamList.get(0));
-		System.out.println("selectTeam = "+teamList.get(1));
+		List<TeamDTO> teamList = mapper.selectTeam(teamDTO);
 		return teamList;
 	}
 	
