@@ -9,6 +9,8 @@ import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,10 +21,10 @@ import jakarta.servlet.http.HttpSession;
  * Servlet implementation class MainImpl
  */
 @WebServlet("/index")
-public class MainImpl extends HttpServlet {
+public class MainImpl extends HttpServlet implements Controller{
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
 		

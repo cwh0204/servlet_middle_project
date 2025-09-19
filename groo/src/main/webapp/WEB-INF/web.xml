@@ -4,6 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>groo</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -14,5 +15,4 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
-
 </web-app>

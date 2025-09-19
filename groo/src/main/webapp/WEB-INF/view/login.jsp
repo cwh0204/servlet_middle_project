@@ -9,7 +9,7 @@
 </head>
 <body>
 	<script src="login.js"></script>
-	<form action="login" method="post">
+	<form action="logins.do" method="post">
 		<div class="loginContiner">
 			<div>
 				<div class="flexContiner">
