@@ -39,7 +39,7 @@ public class LoginImpl extends HttpServlet implements Login {
 				
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				
-				response.sendRedirect("Index.jsp");
+				response.sendRedirect("index.jsp");
 				response.getWriter().println("로그인 완료 UserId: " + memberDTO.getUserId());
 			} else {
 				response.getWriter().println("로그인 실패");

@@ -1,8 +1,10 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
@@ -27,8 +29,7 @@ public class MainImpl extends HttpServlet {
 		TeamDTO teamDTO = new TeamDTO();
 		
 		HttpSession httpSession = request.getSession();
-//		String userId = (String)httpSession.getAttribute("userId");
-		String userId = "csc";
+		String userId = (String)httpSession.getAttribute("userId");
 		teamDTO.setUserId(userId);
 		
 		
@@ -37,8 +38,19 @@ public class MainImpl extends HttpServlet {
 		
 		try {
 			TeamDAOImpl teamDAO = new TeamDAOImpl();
-			List<Object> teamList = teamDAO.selectTeam(teamDTO);
-			response.getWriter().println(teamList);
+			List<TeamDTO> teamList = teamDAO.selectTeam(teamDTO);
+			Gson gson = new Gson();
+			String json = gson.toJson(teamList);
+			
+			System.out.println(json);
+			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("팀등록 실패: " + e.getMessage());
