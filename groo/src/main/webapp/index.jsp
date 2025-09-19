@@ -7,6 +7,7 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 <title>Groo</title>
+<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	crossorigin="anonymous"></script>
 <script>
@@ -83,3 +84,4 @@ $(document).ready(function() {
 
 <%-- <span>${userId} 님 환영합니다</span> --%>
 <!-- <button type="button" class="btn custom-btn-success" onclick="location.href='//localhost:8090/groo/teamcreate.jsp'">팀 만들기</button> -->
+
