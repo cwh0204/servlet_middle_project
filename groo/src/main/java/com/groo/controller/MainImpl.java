@@ -42,8 +42,6 @@ public class MainImpl extends HttpServlet {
 			Gson gson = new Gson();
 			String json = gson.toJson(teamList);
 			
-			System.out.println(json);
-			
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			

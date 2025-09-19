@@ -29,7 +29,7 @@ $(document).ready(function() {
             console.error("오류 발생:", status, error);
         }
     });
-});
+});   
           
 </script>
 </head>
