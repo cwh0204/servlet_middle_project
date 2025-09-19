@@ -2,8 +2,22 @@
 
 .container {
 	display: flex;
-	float: left;
+	justify-content: space-between;
+	gap: 20px;
 }
+
+.box.itemMember {
+	display: flex;
+    flex-direction: column;
+	gap: 20px;
+}
+
+.box {
+	flex: 1;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
 h5 {
 	text-align: center;
 }
@@ -13,19 +27,23 @@ h5 {
 	justify-content: center;
 	flex-direction: column;
 	padding: 5px;
-    width: 200px;
-    gap: 10px;
+	gap: 10px;
 }
 
 .btn-groo {
 	background-color: #91D653;
 }
 
-.card {
-	width: 500px;
+.list-group {
+    max-height: 200px; 
+    overflow-y: auto; 
+    scrollbar-width: none;
+}
+
+.list-group::-webkit-scrollbar {
+    display: none;
 }
 
 .box createTeam {
 	display: flex;
-	justify-content: end;
 }
