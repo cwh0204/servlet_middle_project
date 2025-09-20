@@ -4,11 +4,13 @@
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
+	height: 100vh;
+	width: 100vw;
 }
 
-.box.itemMember {
+.box.Member {
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 	gap: 20px;
 }
 
@@ -22,7 +24,7 @@ h5 {
 	text-align: center;
 }
 
-.item_button {
+.item.memberBtn {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -35,15 +37,23 @@ h5 {
 }
 
 .list-group {
-    max-height: 200px; 
-    overflow-y: auto; 
-    scrollbar-width: none;
+	max-height: 200px;
+	overflow-y: auto;
+	scrollbar-width: none;
 }
 
 .list-group::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .box createTeam {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.item.studyBtn {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
