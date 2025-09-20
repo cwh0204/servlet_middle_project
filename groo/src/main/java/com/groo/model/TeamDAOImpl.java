@@ -51,7 +51,7 @@ public class TeamDAOImpl implements TeamDAO{
 	}
 
 	@Override
-	public List selectTeam(TeamDTO teamDTO) {
+	public List<TeamDTO> selectTeam(TeamDTO teamDTO) {
 		
 		System.out.println("selectTeam = "+teamDTO.getUserId());
 		SqlSession session = sqlSessionFactory.openSession();
@@ -59,5 +59,12 @@ public class TeamDAOImpl implements TeamDAO{
 		List<TeamDTO> teamList = mapper.selectTeam(teamDTO);
 		return teamList;
 	}
-	
+
+	@Override
+	public List<TeamDTO> selectTeamAll() {
+		SqlSession session = sqlSessionFactory.openSession();
+		TeamMapper mapper = session.getMapper(TeamMapper.class);
+		List<TeamDTO> teamList = mapper.selectTeamAll();
+		return teamList;
+	}
 }

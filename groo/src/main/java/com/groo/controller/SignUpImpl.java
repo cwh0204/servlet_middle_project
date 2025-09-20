@@ -14,8 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class SignUpImpl
  */
-@WebServlet("/signup")
-public class SignUpImpl extends HttpServlet implements SignUp {
+
+public class SignUpImpl extends HttpServlet implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginImpl
  */
-@WebServlet("/login")
+
 public class LoginImpl extends HttpServlet implements Controller {
 
 	@Override

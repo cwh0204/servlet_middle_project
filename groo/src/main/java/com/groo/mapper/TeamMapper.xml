@@ -20,4 +20,13 @@
 		FROM TEAM
 		WHERE USER_ID = #{userId}
 	</select>
+	
+	<select id="selectTeamAll" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT
+			TEAM_NAME AS teamName,
+			USER_ID AS userId,
+			TEAM_INFO AS teamInfo
+		FROM TEAM	
+	</select>
 </mapper>
