@@ -9,4 +9,6 @@ public interface TeamMapper {
 	
 	List<TeamDTO> selectTeam(TeamDTO teamDTO);
 	
+	List<TeamDTO> selectTeamAll();
+	
 }

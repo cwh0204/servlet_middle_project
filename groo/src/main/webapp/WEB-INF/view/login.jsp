@@ -9,7 +9,7 @@
 </head>
 <body>
 	<script src="login.js"></script>
-	<form action="login" method="post">
+	<form action="logins.do" method="post">
 		<div class="loginContiner">
 			<div>
 				<div class="flexContiner">
@@ -31,7 +31,7 @@
 			</div>
 			<div id=loginMethod>
 				<button type="button" class="btn custom-btn-success"
-					onclick="location.href='//localhost:8090/groo/SignUpPage.jsp'">
+					onclick="location.href='//localhost:8080/groo/SignUpPage.jsp'">
 					회원가입</button>
 			</div>
 		</div>

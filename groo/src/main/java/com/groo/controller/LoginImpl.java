@@ -15,8 +15,8 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginImpl
  */
-@WebServlet("/login")
-public class LoginImpl extends HttpServlet implements Login {
+
+public class LoginImpl extends HttpServlet implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,13 +36,13 @@ public class LoginImpl extends HttpServlet implements Login {
 			if (loginCk != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", loginCk);
-				
+
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("index.do");
 				response.getWriter().println("로그인 완료 UserId: " + memberDTO.getUserId());
 			} else {
 				response.getWriter().println("로그인 실패");
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("login.do");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
