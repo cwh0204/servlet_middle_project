@@ -5,7 +5,6 @@ $(document).ready(function() {
             type: "GET",
             dataType: "json",
             success: function(data) {
-				//이곳에 ~님 환영합니다.
                 console.log(data);
                 for (let i = 0; i < data.length; i++) {
                     const team = data[i];
@@ -19,3 +18,9 @@ $(document).ready(function() {
             }
         });
     });
+
+	$(function() {
+		$('.memberBtn .btn-groo:contains("로그아웃")').on('click', () => {
+			window.location.href = "login.jsp";
+		});
+	});
