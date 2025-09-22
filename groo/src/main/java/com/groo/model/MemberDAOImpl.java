@@ -13,10 +13,10 @@ import com.groo.mapper.UserMapper;
 import oracle.jdbc.pool.OracleDataSource;
 
 public class MemberDAOImpl implements MemberDAO{
-	
+
 	public static Configuration configuration;
 	public static SqlSessionFactory sqlSessionFactory;
-	
+
 	static {
 		try {
 			OracleDataSource dataSource = new OracleDataSource();
@@ -34,7 +34,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 			// 4. SqlSessionFactory 생성
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-			
+
 		} catch (Exception e) {
 
 		}
@@ -58,6 +58,6 @@ public class MemberDAOImpl implements MemberDAO{
 		String loginCk = mapper.loginUser(memberDTO);
 		return loginCk;
 	}
-	
-	
+
+
 }

@@ -17,7 +17,7 @@ import oracle.jdbc.pool.OracleDataSource;
 public class TeamDAOImpl implements TeamDAO{
 	public static Configuration configuration;
 	public static SqlSessionFactory sqlSessionFactory;
-	
+
 	static {
 		try {
 			OracleDataSource dataSource = new OracleDataSource();
@@ -35,12 +35,12 @@ public class TeamDAOImpl implements TeamDAO{
 
 			// 4. SqlSessionFactory 생성
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-			
+
 		} catch (Exception e) {
 
 		}
 	}
-	
+
 	@Override
 	public void createTeam(TeamDTO teamDTO) {
 		// TODO Auto-generated method stub
@@ -52,7 +52,7 @@ public class TeamDAOImpl implements TeamDAO{
 
 	@Override
 	public List<TeamDTO> selectTeam(TeamDTO teamDTO) {
-		
+
 		System.out.println("selectTeam = "+teamDTO.getUserId());
 		SqlSession session = sqlSessionFactory.openSession();
 		TeamMapper mapper = session.getMapper(TeamMapper.class);

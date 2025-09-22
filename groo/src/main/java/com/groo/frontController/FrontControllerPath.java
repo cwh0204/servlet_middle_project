@@ -21,7 +21,7 @@ public class FrontControllerPath {
         controllerMap.put("/teamcreates.do", new TeamCreateImpl());
         controllerMap.put("/teamselects.do", new TeamSelectImpl());
     }
-    
+
     public Controller getControllers(String command) {
         return controllerMap.get(command);
     }
