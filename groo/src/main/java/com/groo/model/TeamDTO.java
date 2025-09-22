@@ -1,13 +1,11 @@
 package com.groo.model;
 
-import java.util.List;
-
 public class TeamDTO {
 	private String teamName;
 	private String userId;
 	private String teamInfo;
 	private String teamRole;
-	
+
 	public String getTeamName() {
 		return teamName;
 	}
@@ -32,6 +30,6 @@ public class TeamDTO {
 	public void setTeamRole(String teamRole) {
 		this.teamRole = teamRole;
 	}
-	
-	
+
+
 }
