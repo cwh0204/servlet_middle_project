@@ -6,7 +6,6 @@ import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,17 +21,17 @@ public class SignUpImpl extends HttpServlet implements Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String name = request.getParameter("name");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		
+
 		MemberDTO memberDTO = new MemberDTO();
-		
+
 		memberDTO.setName(name);
 		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);
-		
+
 		try {
 			MemberDAOImpl memberDAO = new MemberDAOImpl();
 			memberDAO.signUP(memberDTO);

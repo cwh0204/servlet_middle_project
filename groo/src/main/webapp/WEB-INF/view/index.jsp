@@ -3,6 +3,7 @@
 <%
 String userId = (String) session.getAttribute("userId");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,33 +18,19 @@ String userId = (String) session.getAttribute("userId");
 	<div class="container">
 		<div class="box Member">
 			<div class="item card">
-				<h5 class="Title">${sessionScope.userId}님<br> 환영합니다!</h5>
+				<h5 class="Title">${sessionScope.userId}님<br> 환영합니다!
+				</h5>
 				<div class="item memberBtn">
 					<button class="btn btn-groo" type="button">상세정보</button>
 					<button class="btn btn-groo" type="button">로그아웃</button>
 				</div>
 			</div>
 			<div class="box itemMystudy">
-				<div>님의 스터디</div>
+				<div>${sessionScope.userId}님의 스터디</div>
 				<div class="list-group">
-					<a href="#" class="list-group-item list-group-item-action">A
-						simple default list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-primary">A
-						simple primary list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-secondary">A
-						simple secondary list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-success">A
-						simple success list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-danger">A
-						simple danger list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-warning">A
-						simple warning list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-info">A
-						simple info list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-light">A
-						simple light list group item</a> <a href="#"
-						class="list-group-item list-group-item-action list-group-item-dark">A
-						simple dark list group item</a>
+					<div class="box itemMystudy">
+						<div id="studyListContainer" class="list-group"></div>
+					</div>
 				</div>
 			</div>
 		</div>
