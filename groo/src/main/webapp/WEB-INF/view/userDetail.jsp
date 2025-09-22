@@ -1,11 +1,34 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>시멘틱 태그를 이용한 레이아웃</title>
+<style>
+* { margin:0; padding:0; }
+
+body { min-width: 100px; }
+
+header, section {
+    box-sizing: border-box;
+    border: 1px solid gray;
+    margin: 1px; padding: 2px;
+   
+}
+
+header {
+    height: 70px;
+    background-color: lightgreen;
+}
+
+section {
+    height: 500px;
+    width: 100%;
+    background-color: white;
+}
+</style>
 </head>
 <body>
-	<h1>유저상세 페이지</h1>
+<header></header>
+<section></section>
 </body>
 </html>
