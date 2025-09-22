@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+String userId = (String) session.getAttribute("userId");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 	<div class="container">
 		<div class="box Member">
 			<div class="item card">
-				<h5 class="Title">님 환영합니다!</h5>
+				<h5 class="Title">${sessionScope.userId}님<br> 환영합니다!</h5>
 				<div class="item memberBtn">
 					<button class="btn btn-groo" type="button">상세정보</button>
 					<button class="btn btn-groo" type="button">로그아웃</button>
