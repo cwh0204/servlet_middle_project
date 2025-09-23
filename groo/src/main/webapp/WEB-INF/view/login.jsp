@@ -8,33 +8,26 @@
 <title></title>
 </head>
 <body>
-	<form action="logins.do" method="post">
-		<div class="loginContiner">
-			<div>
-				<div class="flexContiner">
+	<div class="Continer">
+		<form action="logins.do" method="post">
+			<div class="loginContiner">
+				<div class="imgBox">
 					<img src="./images/login.png">
 				</div>
-				<div id=loginAttribute>
+				<div class="loginBox">
 					<input type="text" name="userId" class="form-control"
-						placeholder="아이디를 입력하세요.">
+						placeholder="아이디를 입력하세요."> <input type="password"
+						name="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+				</div>
+				<div class="loginMethod">
+					<button type="submit" class="btn btn-success">로그인</button>
+					<button type="button" class="btn custom-btn-success"
+						onclick="location.href='//localhost:8080/groo/SignUpPage.jsp'">
+						회원가입</button>
 				</div>
 			</div>
-			<div>
-				<div id=loginAttribute>
-					<input type="password" name="password" class="form-control"
-						placeholder="비밀번호를 입력하세요.">
-				</div>
-			</div>
-			<div id=loginMethod>
-				<button type="submit" class="btn btn-success">로그인</button>
-			</div>
-			<div id=loginMethod>
-				<button type="button" class="btn custom-btn-success"
-					onclick="location.href='//localhost:8080/groo/SignUpPage.jsp'">
-					회원가입</button>
-			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </body>
 </html>
 
