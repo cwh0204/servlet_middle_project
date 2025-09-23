@@ -14,6 +14,7 @@ public class FrontPath {
         jspMap.put("/teamcreate.do", "/WEB-INF/view/teamcreate.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/teamfind.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/userDetail.jsp");
+        jspMap.put("/admin.do", "/WEB-INF/view/admin.jsp");
     }
 
     public String getJspPath(String command) {
