@@ -9,11 +9,21 @@
 <meta charset="UTF-8">
 <title></title>
 <style>
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 
+* {
+	margin: 0;
+	padding: 0;
+}
 
 header {
 	height: 70px;
- 	background-color: yellow;
+	background-color: yellow;
 }
 
 section {
@@ -21,13 +31,12 @@ section {
 	height: 700px;
 	background-color: cyan;
 }
-
 </style>
 </head>
 <body>
 	<h1>회원가입페이지</h1>
-<header>Header</header>
-<section>Section</section>
+	<header>Header</header>
+	<section>Section</section>
 </body>
 <script type="text/javascript">
 	
