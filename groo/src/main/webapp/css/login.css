@@ -57,9 +57,7 @@ placeholder {
 
 .btn.custom-btn-success {
 	background-color: #91D653;
-<<<<<<< HEAD
     margin-top: 30px;
-=======
 }
 
 
@@ -67,6 +65,5 @@ placeholder {
 .carousel-inner img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  
->>>>>>> 946951b0da2a4b19323fa307a450a466e4d92402
+  object-fit: contain;
 }
