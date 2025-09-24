@@ -12,15 +12,18 @@
 <body>
 	<header class="logolineConainer">
 		<img src="./images/로고.png">
-		<div class = "searchingbar">
-		<input type = "text" placeholder = "스터디 그룹을 검색해보세요.">
-	</div> 
 
 		<ol>
-			<li>나의페이지</li>
-			<li>게시판</li>
-			<li>로그아웃</li>
+			<li>MyPage</li>
+			<li>Archive</li>
+			<li>Logout</li>
 		</ol>
 	</header>
+
+	<div class="searchingbar">
+		<input type="text" class="form-control"
+			placeholder="Recipient's username" aria-label="Recipient's username"
+			aria-describedby="basic-addon2"> <button type="button" class="btn btn-success">Success</button>
+	</div>
 </body>
 </html>
