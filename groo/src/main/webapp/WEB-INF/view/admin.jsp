@@ -14,51 +14,58 @@
 }
 
 .a_r_container {
-	background-color: red;
 	width: calc(100% - 300px);
 	height: 100%;
 }
 
 .a_l_logo_box {
 	height: 100px;
-	background-color: bisque;
 }
 
 .a_l_btn_box {
 	height: calc(100% - 100px);
-	background-color: blue;
 }
 
 .a_r_t_box {
 	height: 100px;
-	background-color: cadetblue;
 }
 
 .a_r_m_box {
 	height: calc(60% - 50px);
-	background-color: aquamarine;
 }
+
 .a_r_b_box {
 	height: calc(40% - 50px);
-	background-color: aquamarine;
 }
-.a_r_l_item{
+
+.a_r_l_item {
 	width: 70%;
-    height: 100%;
-    background-color: black;
+	height: 100%;
 }
-.a_r_r_item{
+
+.a_r_r_item {
 	width: 30%;
-    height: 100%;
-    background-color: pink;
+	height: 100%;
+}
+
+.logo{
+	width:250px;
 }
 </style>
 
 <body>
 	<div class="flex-container full-w-h">
 		<div class="a_l_container">
-			<div class="a_l_logo_box"></div>
-			<div class="a_l_btn_box"></div>
+			<div class="a_l_logo_box flex-container">
+				<img class="logo" src="./images/로고.png">
+			</div>
+			<div class="a_l_btn_box">
+				<ul>
+					<li><a href="#" data-page="home.html">홈</a></li>
+					<li><a href="#" data-page="about.html">소개</a></li>
+					<li><a href="#" data-page="contact.html">연락처</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="a_r_container">
 			<div class="a_r_t_box"></div>
