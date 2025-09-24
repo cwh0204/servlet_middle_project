@@ -27,13 +27,18 @@ html, body {
 	height: 100%;
 }
 
-.m_b_c {
+.m_b_bgc {
 	background-color: darkseagreen;
+}
+.m_b_bgc1 {
+	background-color: darkseagreen;
+}
+.m_b_c {
+	color: darkseagreen;
 }
 .m_b_c1 {
-	background-color: darkseagreen;
+	color: darkseagreen;
 }
-
 a {
 	text-decoration-line: none;
 }
