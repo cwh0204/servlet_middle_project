@@ -18,6 +18,7 @@
 
 		<ol>
 			<li>나의페이지</li>
+			<li>게시판</li>
 			<li>로그아웃</li>
 		</ol>
 	</header>
