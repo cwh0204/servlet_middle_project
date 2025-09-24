@@ -8,7 +8,7 @@
 <title></title>
 </head>
 <body>
-	<div class="Continer">
+	<div class="l_c_container flex-container">
 		<form action="logins.do" method="post">
 			<div class="loginContiner">
 				<div class="imgBox">
@@ -19,7 +19,7 @@
 						placeholder="아이디를 입력하세요."> <input type="password"
 						name="password" class="form-control" placeholder="비밀번호를 입력하세요.">
 				</div>
-				<div class="loginMethod">
+				<div class="methodBox">
 					<button type="submit" class="btn btn-success">로그인</button>
 					<button type="button" class="btn custom-btn-success"
 						onclick="location.href='//localhost:8080/groo/SignUpPage.jsp'">

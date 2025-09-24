@@ -1,59 +1,47 @@
 @charset "UTF-8";
 
-.container {
+.nevi {
 	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-	height: 100vh;
-	width: 100vw;
+	justify-content:center;
+	background-color: red;
+	height: 30%;
 }
 
-.box.Member {
+.contanier {
 	display: flex;
-	flex-direction: column;
-	gap: 20px;
+	background-color: orange;
+	height: 60%;
 }
 
-.box {
-	flex: 1;
-	padding: 10px;
-	border: 1px solid #ccc;
-}
-
-h5 {
-	text-align: center;
-}
-
-.item.memberBtn {
+.leftbox {
+	background-color: yellow;
 	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	padding: 5px;
-	gap: 10px;
+    flex-direction: column;
+    width: 10%
 }
 
-.btn-groo {
-	background-color: #91D653;
+.upbox {
+	background-color: green;
+	height: 50%;
 }
 
-.list-group {
-	max-height: 200px;
-	overflow-y: auto;
-	scrollbar-width: none;
+.downbox {
+	background-color: blue;
+	height: 50%;
 }
 
-.list-group::-webkit-scrollbar {
-	display: none;
+.centerbox1 {
+	background-color: lime;
+	width: 80%;
+	
 }
 
-.box createTeam {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.centerbox2 {
+	background-color: maroon;
+	width: 20%
 }
 
-.item.studyBtn {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+img {
+	width : 250px;
+	padding: 15px;
 }
