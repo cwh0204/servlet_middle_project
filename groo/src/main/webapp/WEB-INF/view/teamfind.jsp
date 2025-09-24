@@ -20,10 +20,10 @@
 		</ol>
 	</header>
 
-	<div class="searchingbar">
+	<div class="barbutton">
 		<input type="text" class="form-control"
-			placeholder="Recipient's username" aria-label="Recipient's username"
-			aria-describedby="basic-addon2"> <button type="button" class="btn btn-success">Success</button>
+			placeholder="find the group yor're looking for" aria-label="Recipient's username"
+			aria-describedby="basic-addon2"> <button type="button" class="btn btn-success">searching</button>
 	</div>
 </body>
 </html>
