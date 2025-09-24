@@ -1,22 +1,25 @@
 @charset "UTF-8";
 
-@import url("../bootstrap/bootstrap-icons/font/bootstrap-icons.min.css");
+@import url("../bootstrap/bootstrap-icons/font/bootstrap-icons.min.css")
+	;
+
 @import url("../bootstrap/css/bootstrap.min.css");
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure, blockquote {
-    margin: 0;
-    padding: 0;
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure,
+	blockquote {
+	margin: 0;
+	padding: 0;
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
-.flex-container{
+.flex-container {
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .full-w-h {
@@ -24,6 +27,10 @@ html, body {
 	height: 100%;
 }
 
-a{
+.m_b_c {
+	background-color: darkseagreen;
+}
+
+a {
 	text-decoration-line: none;
 }
