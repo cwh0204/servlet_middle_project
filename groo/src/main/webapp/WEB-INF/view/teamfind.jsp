@@ -41,13 +41,13 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="./images/개발자.jpg" class="d-block w-100" alt="...">
+				<img src="./images/개발자4.png" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="./images/파티.jpg" class="d-block w-100" alt="...">
+				<img src="./images/Ai5.png" class="d-block w-100" alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="./images/주식.jpg" class="d-block w-100" alt="...">
+				<img src="./images/메타버스2.jpg" class="d-block w-100" alt="...">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
