@@ -15,25 +15,39 @@ String userId = (String) session.getAttribute("userId");
 <script src="js/index.js"></script>
 </head>
 <body>
+	<header>
+		<img src="./images/로고.png">
+	</header>
 	<div class=nevi>
-		<header>
-			<img src="./images/로고.png">
-		</header>
 		<ul class="nav nav-pills nav-fill">
 			<li class="nav-item"><a class="nav-link active"
-				aria-current="page" href="#">Active</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Much
-					longer nav link</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-			<li class="nav-item"><a class="nav-link disabled" href="#"
-				tabindex="-1" aria-disabled="true">Disabled</a></li>
+				aria-current="page" href="#">공지사항</a></li>
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="#">자유게시판</a></li>
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="#">QNA</a></li>
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="#">미정</a></li>
 		</ul>
 	</div>
 	<div class=contanier>
 		<div class=leftbox>
 			leftbox
 			<div class=upbox>upbox</div>
-			<div class=downbox>downbox</div>
+			<div class=downbox>
+				downbox
+				<ul class="list-group">
+					<li class="list-group-item">팀 목록</li>
+					<li class="list-group-item list-group-item-primary">팀 목록</li>
+					<li class="list-group-item list-group-item-secondary">팀 목록</li>
+					<li class="list-group-item list-group-item-success">팀 목록</li>
+					<li class="list-group-item list-group-item-danger">팀 목록</li>
+					<li class="list-group-item list-group-item-warning">팀 목록</li>
+					<li class="list-group-item list-group-item-info">팀 목록</li>
+					<li class="list-group-item list-group-item-light">팀 목록</li>
+					<li class="list-group-item list-group-item-dark">팀 목록</li>
+				</ul>
+			</div>
 		</div>
 		<div class=centerbox1>centerbox1</div>
 		<div class=centerbox2>
