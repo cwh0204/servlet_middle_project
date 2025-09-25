@@ -1,23 +1,25 @@
 @charset "UTF-8";
 
 .nevi {
-	display: flex;
-	justify-content:center;
 	background-color: red;
-	height: 30%;
+}
+
+li.nav-item {
+	padding: 20px;
 }
 
 .contanier {
 	display: flex;
 	background-color: orange;
 	height: 60%;
+	height: 100%;
 }
 
 .leftbox {
 	background-color: yellow;
 	display: flex;
-    flex-direction: column;
-    width: 10%
+	flex-direction: column;
+	width: 10%
 }
 
 .upbox {
@@ -30,10 +32,14 @@
 	height: 50%;
 }
 
+.list-group {
+	max-height: 250px;
+	overflow: hidden;
+}
+
 .centerbox1 {
 	background-color: lime;
 	width: 80%;
-	
 }
 
 .centerbox2 {
@@ -42,6 +48,6 @@
 }
 
 img {
-	width : 250px;
+	width: 250px;
 	padding: 15px;
 }
