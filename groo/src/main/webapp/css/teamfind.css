@@ -1,88 +1,141 @@
 @charset "UTF-8";
 
-* {
-	margin: 0;
-	padding: 0;
-}
-
-.logolineConainer img {
-	width: 250px;
-	height: 78px;
-	justify-content: center;
-}
-
-.logolineConainer {
+.L_container {
 	display: flex;
 	justify-content: space-between;
-	padding: 20px 40px 16px;
+	align-items: center;
 }
 
-.searchingbar {
-	min-width: 300px;
-	height: 52px;
+.L_container img {
+	width: 250px;
 }
 
-header ol {
+.header-nav ol {
 	display: flex;
-	list-style-type: none;
-	gap: 36px
+	background-color: deepgreen;
+	list-style: none;
 }
 
-.barbutton {
+.header-nav ol li {
+	margin: 18px;
+	font-size: 13pt;
+}
+
+.searchbar {
 	display: flex;
 	align-items: center;
-	width: 423px;
+	width: 550px;
 	justify-content: center;
 	margin: 20px auto;
+	position: relative;
+	top: 3px;
 }
 
-.barbutton input {
+.searchbar input {
 	flex: 1;
 	height: 40px;
 	border: 1px solid #ccc;
-	border-radius: 22px 0 0 22px; /* 왼쪽 모서리 둥글게 */
+	border-radius: 22px 0 0 22px;
 	padding: 0 12px;
 	box-sizing: border-box;
 	outline: none;
 }
 
-.barbutton button {
+.searchbar button {
 	height: 40px;
 	border: 1px solid #28a745;
 	background-color: #28a745;
 	color: #fff;
-	border-radius: 0 22px 22px 0; /* 오른쪽 모서리 둥글게 */
+	border-radius: 0 22px 22px 0;
 	cursor: pointer;
 }
 
+.m_container {
+	background-color: orange;
+	width: 100%;
+	min-height: 100vh;
+}
+
+.text-row{
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+	justify-content : space-between;
+	width : 100%;
+
+}
+
+.text-row div{
+	display:flex;
+	align-items : center;
+	justify-content : center;
+	width: 24%;
+	height: 8%;
+	font-size: 18pt;
+}
+
+.text-row2{
+	background-color : green;
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+	justify-content : space-between;
+	width : 100%;
+	border-bottom : 3px solid black;
+	padding-bottom : 3px;
+}
+
+.text-row2 div{
+	display:flex;
+	align-items : center;
+	justify-content : center;
+	width: 24%;
+	height: 80%;
+	font-size: 18pt;
+}
+
+.slidebox {
+	background-color : red;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 100%;
+	height: 80%;
+	margin-bottom: 50px;
+	
+
+}
 
 .carousel-inner {
-
 	width: 100%;
 	height: 100%;
 }
 
-
 .carousel-item {
-	width : 1289px;
-	height: 470px;
-	display: flex;
+	width: 980px;
+	height: 600px;
+	display: flex;취미
+
+
 	align-items: center;
 	justify-content: center;
 }
 
-.carousel-item img{
-  width: 100%;   
-  height: 100%;   
-  object-fit: cover;
-  display:block; }
-  
+
+
+.carousel-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
 .custom_c_s {
+	width: 980px;
+	height: 600px;
+	margin: 5px auto;
 	
-	width: 1289px; 
-	height: 470px; 
-	margin: 60px auto;
-	overflow:hidden; 
+	overflow: hidden;
 }
 
 .img_size {
@@ -91,4 +144,10 @@ header ol {
 	max-width: 1289px;
 	max-height: 470px;
 	height: auto;
+}
+
+.f_container {
+	background-color: #0f5f92;
+	width: 100%;
+	height: 5%;
 }
