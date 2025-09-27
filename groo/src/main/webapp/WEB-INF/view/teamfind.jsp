@@ -89,7 +89,11 @@
 			<div class="text5">Design</div>
 		</div>
 		<div class="teamimage">
-		
+			<img src = "./images/arc2.jpg">
+			<img src = "./images/dig.jpg">
+			<img src = "./images/video.jpg">
+			<img src = "./images/fin.jpg">
+			<img src = "./images/met.jpg">
 		</div>
 	</main>
 	<footer class="f_container"> </footer>
