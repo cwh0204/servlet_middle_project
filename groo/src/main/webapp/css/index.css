@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-.nevi {
-	background-color: red;
-}
-
 li.nav-item {
 	padding: 20px;
 }
@@ -19,7 +15,7 @@ li.nav-item {
 	background-color: yellow;
 	display: flex;
 	flex-direction: column;
-	width: 10%
+	width: 15%
 }
 
 .upbox {
@@ -39,7 +35,7 @@ li.nav-item {
 
 .centerbox1 {
 	background-color: lime;
-	width: 80%;
+	width: 75%;
 }
 
 .centerbox2 {
