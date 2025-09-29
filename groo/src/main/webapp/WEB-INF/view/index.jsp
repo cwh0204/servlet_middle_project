@@ -32,8 +32,10 @@ String userId = (String) session.getAttribute("userId");
 	</div>
 	<div class=contanier>
 		<div class=leftbox>
-			leftbox
-			<div class=upbox>upbox</div>
+			<div class=upbox>
+			<button type="button" class="btn btn-outline-success">Success</button>
+			<button type="button" class="btn btn-outline-warning">Warning</button>
+			</div>
 			<div class=downbox>
 				downbox
 				<ul class="list-group">
