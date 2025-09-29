@@ -88,8 +88,8 @@
 }
 
 .carousel-item {
-	width: 1450px;
-	height: 600px;
+	width: 1280px;
+	height: 500px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -103,8 +103,8 @@
 }
 
 .custom_c_s {
-	width: 1450px;
-	height: 600px;
+	width: 1280px;
+	height: 500px;
 	margin: 5px auto;
 	overflow: hidden;
 }
