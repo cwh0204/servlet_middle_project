@@ -32,8 +32,10 @@ String userId = (String) session.getAttribute("userId");
 	</div>
 	<div class=contanier>
 		<div class=leftbox>
-			leftbox
-			<div class=upbox>upbox</div>
+			<div class=upbox>
+			<button type="button" class="btn btn-outline-success">Success</button>
+			<button type="button" class="btn btn-outline-warning">Warning</button>
+			</div>
 			<div class=downbox>
 				downbox
 				<ul class="list-group">
@@ -42,7 +44,7 @@ String userId = (String) session.getAttribute("userId");
 					<li class="list-group-item list-group-item-secondary">팀 목록</li>
 					<li class="list-group-item list-group-item-success">팀 목록</li>
 					<li class="list-group-item list-group-item-danger">팀 목록</li>
-					<li class="list-group-item list-group-item-warning">팀 목록</li>
+					<li class="list-group-item list-group-item-warning">팀 목asdas록</li>
 					<li class="list-group-item list-group-item-info">팀 목록</li>
 					<li class="list-group-item list-group-item-light">팀 목록</li>
 					<li class="list-group-item list-group-item-dark">팀 목록</li>
