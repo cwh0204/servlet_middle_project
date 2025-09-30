@@ -159,8 +159,8 @@ a {
 					</div>
 				</div>
 				<div class="a_r_r_item">
-					<span>오늘의 방분자수 : </span><br> <span>오늘의 가입자수 : </span><br>
-					<span>오늘의 팀생성수 : </span><br>
+					<span>오늘의 방분자수 : 4</span><br> <span>오늘의 가입자수 : </span><br>
+					<span>오늘의 팀생성수 : 2</span><br>
 				</div>
 			</div>
 		</div>
