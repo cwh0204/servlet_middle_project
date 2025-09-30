@@ -1,8 +1,58 @@
-@charset "UTF-8";
+.title-row {
+  text-align: center;
+  font-size: 40px;
+  margin: 30px 0;
+}
 
-.title{
-	
-	text-align: center;
-	font-size : 80px;
-	
+.form-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* min-height 삭제 → 필요 없음 */
+  position: relative;
+  z-index: 1000;        /* 항상 이미지 위 */
+}
+
+/* 각 카테고리 + 버튼 공통 스타일 */
+.form-wrapper > div,
+.submit-btn {
+  position: sticky;
+  background: white;
+  border: 1px solid #ccc;
+  height: 70px;
+  box-sizing: border-box;
+  padding: 10px;
+  z-index: 1001;        /* 이미지보다 위 */
+}
+
+/* 입력창 */
+.form-wrapper input {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* 위로 쌓이는 sticky top 값 */
+.cartegory1 { top: 0px; }
+.cartegory2 { top: 80px; }
+.cartegory3 { top: 160px; }
+.cartegory4 { top: 240px; }
+.cartegory5 { top: 320px; }
+.cartegory6 { top: 400px; }
+.submit-btn { top: 480px; }
+
+/* 버튼 스타일 */
+.submit-btn {
+  font-size: 18px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #218838;
 }
