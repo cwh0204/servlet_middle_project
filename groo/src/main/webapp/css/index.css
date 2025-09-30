@@ -1,34 +1,32 @@
 @charset "UTF-8";
 
-.nevi {
-	background-color: red;
-}
-
 li.nav-item {
 	padding: 20px;
 }
 
+.nevi .nav-link.active {
+    background-color: #198754 !important; 
+    color: #fff !important;              
+}
+
+
 .contanier {
 	display: flex;
-	background-color: orange;
 	height: 60%;
 	height: 100%;
 }
 
 .leftbox {
-	background-color: yellow;
 	display: flex;
 	flex-direction: column;
-	width: 10%
+	width: 15%
 }
 
 .upbox {
-	background-color: green;
 	height: 50%;
 }
 
 .downbox {
-	background-color: blue;
 	height: 50%;
 }
 
@@ -39,7 +37,7 @@ li.nav-item {
 
 .centerbox1 {
 	background-color: lime;
-	width: 80%;
+	width: 75%;
 }
 
 .centerbox2 {
