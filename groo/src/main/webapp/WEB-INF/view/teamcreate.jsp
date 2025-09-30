@@ -16,7 +16,7 @@
 	<div class="title-row">Create own your team(가제)</div>
 	
 	<form action="teamcreate" method="post">
-		<!-- sticky 효과 적용되는 wrapper -->
+		
 		<div class="form-wrapper">
 			<div class="cartegory1">
 				<input type="text" name="teamName" class="form-control" placeholder="스터디명을 입력해주세요.">
@@ -37,12 +37,12 @@
 				<input type="text" name="teamCategory" class="form-control" placeholder="팀 카테고리 (category) → 개발, 디자인, 마케팅, 어학 등">
 			</div>
 
-			<!-- 버튼도 sticky -->
+		
 			<button type="submit" class="btn btn-primary submit-btn">Submit</button>
 		</div>
 	</form>
 	
-	<!-- 이미지 영역 -->
+
 	<div class="marquee-content">
 		<img src="./images/group.jpg" alt="">
 		<img src="./images/Ai.jpg" alt="">
