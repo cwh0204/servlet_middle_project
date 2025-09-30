@@ -15,7 +15,9 @@ String userId = (String) session.getAttribute("userId");
 </head>
 <body>
 	<header>
-		<img src="./images/로고.png" class="logo_img">
+		<img src="./images/로고.png" class="logo_img"> <a href="/logout">
+			<i class="bi bi-box-arrow-right"></i>
+		</a>
 	</header>
 	<div class="nevi">
 		<ul class="nav nav-fill">
@@ -38,7 +40,7 @@ String userId = (String) session.getAttribute("userId");
 					찾기</button>
 			</div>
 			<div class="downbox flex_container">
-			<strong>{}님의 스터디 목록</strong>
+				<strong>님의 스터디 목록</strong>
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-primary"><a
 						href="#">팀 목록</a></li>
@@ -59,46 +61,20 @@ String userId = (String) session.getAttribute("userId");
 				</ul>
 			</div>
 		</div>
-		<div class=centerbox1>centerbox1</div>
-		<div class="centerbox2">
-			<div class="card">
-				<div class="card mb-3" style="max-width: 540px;">
-					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="...">
-						</div>
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">
-									<small class="text-body-secondary">Last updated 3 mins
-										ago</small>
-								</p>
-							</div>
-						</div>
+		<div class="centerbox">
+			<div class="study">
+				<div class=hotstudy>
+					<div class="hotstudy">
+						<h3>🔥 인기 스터디</h3>
 					</div>
 				</div>
+				<div class=newstudy>newstudy</div>
 			</div>
-			<div class="todo flex_container">
-			<strong>{}님의 {}스터디 todo</strong>
-				<ul class="list-group">
-					<li class="list-group-item active" aria-current="true">An
-						active item</li>
-					<li class="list-group-item">A second item</li>
-					<li class="list-group-item">A third item</li>
-					<li class="list-group-item">A fourth item</li>
-					<li class="list-group-item">And a fifth one</li>
-				</ul>
+			<div class="board">
+				<div class=hotboard>hotboard</div>
+				<div class=find>find</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
-
-
-
-
-<!-- <button class="btn btn-groo" type="button">상세정보</button>
-					<button class="btn btn-groo" type="button">로그아웃</button> -->

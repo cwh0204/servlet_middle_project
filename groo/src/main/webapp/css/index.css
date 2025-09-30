@@ -1,11 +1,28 @@
 @charset "UTF-8";
 
-.nav-item {
-	border-right: 2px solid #a0522d;
+header {
+	display: flex;
+	align-items: center;
+}
+
+.logo_img {
+	width: 250px;
+	padding: 15px;
+}
+
+header a {
+	margin-left: auto;
+	text-decoration: none;
+	color: inherit;
+}
+
+.bi-box-arrow-right {
+	font-size: 30px;
+	padding: 20px 20px 10px 20px;
 }
 
 .nav-link:hover {
-	background-color: #28a745;
+	background-color: #D0E5B1;
 	color: #212529;
 }
 
@@ -14,9 +31,9 @@
 	height: auto;
 }
 
-.bi {
+i.bi.bi-person-fill-check, i.bi.bi-people-fill {
 	font-size: 24px;
-	padding: 10px;
+	padding: 0px 0px 5px 0px;
 }
 
 strong {
@@ -24,7 +41,8 @@ strong {
 }
 
 .nav-link {
-	color: #000 !important
+	color: #000 !important;
+	font-size: 18px;
 }
 
 .nav-item:last-child {
@@ -33,13 +51,12 @@ strong {
 
 ul.nav {
 	justify-content: center;
-	border-bottom: 2px solid #a0522d;
+	border-bottom: 3px solid #000000;
 }
 
 .contanier {
 	display: flex;
-	height: 60%;
-	height: 100%;
+	height: auto;
 }
 
 .leftbox {
@@ -50,38 +67,15 @@ ul.nav {
 
 .upbox {
 	flex-direction: column;
-	height: 50%;
-	padding: 10px 10px 0px 10px;
 	margin: 5px;
+	height: auto;
+	padding: 10px;
 }
 
 .downbox {
-	height: 50%;
+	height: auto;
 	flex-direction: column;
-}
-
-.list-group {
-	max-height: 250px;
-	overflow: hidden;
-}
-
-.centerbox1 {
-	background-color: green;
-	width: 75%;
-	margin: 10px;
-}
-
-.centerbox2 {
-	width: 20%;
-	display: flex;
-	flex-direction: column;
-	margin: 10px;
-	text-align: center;
-}
-
-.logo_img {
-	width: 250px;
-	padding: 15px;
+	padding: 10px
 }
 
 .list-group {
@@ -95,11 +89,51 @@ ul.nav {
 .list-group::-webkit-scrollbar {
 	display: none;
 }
-.rightbox {
+
+.centerbox {
 	display: flex;
-	flex-direction: column;
-	width: 15%
+	margin: 10px;
+	width : 100%;
 }
-.todo {
+
+.study {
+	display: flex;
+	height: auto;
+	width: 100%;
 	flex-direction: column;
+	margin: 10px;
+}
+
+.hotstudy {
+	background-color: red;
+	height: 100%;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.newstudy {
+	background-color: blue;
+	height: 100%;
+	width: 100%;
+}
+
+.board {
+	display: flex;
+	height: auto;
+	width: 50%;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.hotboard {
+	background-color: yellow;
+	height: 70%;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.find {
+	background-color: green;
+	height: 30%;
+	width: 100%;
 }
