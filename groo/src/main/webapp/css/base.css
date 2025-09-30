@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-@import url("../bootstrap/bootstrap-icons/font/bootstrap-icons.min.css")
-	;
+@import url("../bootstrap/bootstrap-icons/font/bootstrap-icons.min.css");
 
 @import url("../bootstrap/css/bootstrap.min.css");
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure,
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure, img
 	blockquote {
 	margin: 0;
 	padding: 0;
@@ -31,13 +30,13 @@ html, body {
 	background-color: darkseagreen;
 }
 .m_b_bgc1 {
-	background-color: #28a745;;
+	background-color: #28a745;
 }
 .m_b_c {
 	color: darkseagreen;
 }
 .m_b_c1 {
-	color: #28a745;;
+	color: #28a745;
 }
 a {
 	text-decoration-line: none;
