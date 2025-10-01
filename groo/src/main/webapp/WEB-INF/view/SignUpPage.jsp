@@ -47,9 +47,11 @@ section {
 <div class="section">
    <section>
       <form>
-         이 름      
-         <input type="text">
-         
+      	아이디 <input type="text" id="id"> <input type="submit" value="중복확인"><br>
+      	<br>비밀번호 <input type="password" id="pass"><br>
+      	비밀번호 재확인 <input type="password" id="pass"><br>
+        이 름 <input type="text"><br>
+        이메일 <input type="email" id="email"> @ <input type="email" id="email">
       </form>
    </section>
 </div>
