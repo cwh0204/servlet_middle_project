@@ -55,8 +55,28 @@ String userId = (String) session.getAttribute("userId");
 				<div class=newstudy>newstudy</div>
 			</div>
 			<div class="board">
-				<div class=hotboard>hotboard</div>
-				<div class=find>find</div>
+				<div class=hotboard>
+					<div class="marquee-guide-text">📢 GROO의 가장 핫한 글을 확인하세요!</div>
+					<div class="hotboard-marquee-wrap">
+						<ul id="popular-posts">
+							<li>인기글 제목 1</li>
+							<li>인기글 제목 2</li>
+							<li>인기글 제목 3</li>
+							<li>인기글 제목 4</li>
+							<li>인기글 제목 5</li>
+						</ul>
+					</div>
+				</div>
+				<div class=find>
+					<div class="find-guide-text">💡 새로운 스터디원을 찾습니다!</div>
+					<div class="find-marquee-wrap">
+						<ul id="find-posts">
+							<li>찾는 멤버 목록 1</li>
+							<li>찾는 멤버 목록 2</li>
+							<li>찾는 멤버 목록 3</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
