@@ -11,6 +11,16 @@
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 
 <style>
+.a_r_t_box {
+	height: 100px;
+	padding: 20px;
+}
+
+.a_r_m_box {
+    height: calc(100% - 100px);
+    padding: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -37,8 +47,17 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="a_r_container">
-			<div id="grid"></div>
+			<div class="a_r_t_box flex_container">
+				<h1>관리자 페이지</h1>
+			</div>
+<!-- 			<div class="a_r_m_box flex_container">
+				<div id="grid"></div>
+			</div> -->
+			<div class="a_r_m_box">
+				<div id="grid"></div>
+			</div>
 		</div>
 	</div>
 </body>
@@ -53,23 +72,27 @@
 				}
 			},
 		},
-		scrollX : false,
-		scrollY : false,
+		scrollX : true,
+		scrollY : true,
 		columns : [ {
 			header : 'ID',
 			name : 'id'
 		}, {
 			header : '이름',
-			name : 'name'
+			name : 'name',
+			editor : 'text'
 		}, {
 			header : '유저',
-			name : 'username'
+			name : 'username',
+			editor : 'text'
 		}, {
 			header : '이메일',
-			name : 'email'
+			name : 'email',
+			editor : 'text'
 		}, {
 			header : '전화번호',
-			name : 'phone'
+			name : 'phone',
+			editor : 'text'
 		} ]
 	});
 
@@ -78,5 +101,12 @@
 		let data = JSON.parse(response);
 		grid.resetData(data);
 	});
+	
+    grid.on('afterChange', ev => {
+    	console.log('after change:', ev.changes[0].columnName);
+        console.log('after change:', ev.changes[0].value);
+        console.log(grid.getModifiedRows());
+    });
+    grid.setBodyHeight(600); 
 </script>
 </html>
