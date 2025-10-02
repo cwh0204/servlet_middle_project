@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <title></title>
 <link href="css/base.css" rel="stylesheet">
-<link href="css/adminnav.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
@@ -25,37 +24,14 @@
 </head>
 <body>
 	<div class="flex_container full_w_h">
-		<div class="a_l_container">
-			<div class="a_l_logo_box flex_container">
-				<img class="logo" src="./images/로고.png">
-			</div>
-			<div class="a_l_btn_box">
-				<div class="border_box n_b_c">
-					<ul class="u_nav_ul">
-						<li><a href="#" data-page="home.html">사이트 관리</a></li>
-						<li><i class="bi bi-bar-chart color"></i><a href="#"
-							data-page="home.html">통계</a></li>
-						<li><i class="bi bi-person"></i><a href="#"
-							data-page="about.html">사용자 관리</a></li>
-						<li><i class="bi bi-people"></i><a href="#"
-							data-page="contact.html">팀 관리</a></li>
-						<li><i class="bi bi-clipboard2-check"></i><a href="#"
-							data-page="contact.html">게시판 관리</a></li>
-						<li><i class="bi bi-bell"></i><a href="#"
-							data-page="contact.html">공지사항 관리</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		
+		<%@ include file="adminNav.jsp" %>
 		<div class="a_r_container">
 			<div class="a_r_t_box flex_container">
 				<h1>관리자 페이지</h1>
 			</div>
-<!-- 			<div class="a_r_m_box flex_container">
-				<div id="grid"></div>
-			</div> -->
+
 			<div class="a_r_m_box">
+				<div><button>저장</button></div>
 				<div id="grid"></div>
 			</div>
 		</div>

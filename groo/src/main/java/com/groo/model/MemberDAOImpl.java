@@ -18,12 +18,7 @@ public class MemberDAOImpl{
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
 		try {
-			memberRe = session.selectOne("loginUser",memberDTO);
-			System.out.println("아이디"+memberRe.getUserId());
-			System.out.println("비밀번호"+memberRe.getPassword());
-			System.out.println("이름"+memberRe.getName());
-			
-			
+			memberRe = session.selectOne("loginUser",memberDTO);			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
