@@ -37,7 +37,8 @@ public class FrontControllerImpl extends HttpServlet {
 			response.sendRedirect("login.do");
 			return;
 		}
-		System.out.println(command);
+		
+		/*
 		if(!command.equals("/login.do") && !command.equals("/*.do") && !command.equals("/logins.do")) {
 			HttpSession session = request.getSession(false);
 		    String userId = (session != null) ? (String) session.getAttribute("userId") : null;
@@ -46,7 +47,7 @@ public class FrontControllerImpl extends HttpServlet {
 		    	return;
 		    }
 		}
-		
+		*/
 		if (jspPath != null) {
 			request.getRequestDispatcher(jspPath).forward(request, response);
 			return;
