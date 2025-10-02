@@ -10,6 +10,10 @@ header {
 	padding: 15px;
 }
 
+li.nav-item {
+    min-width: 400px;
+}
+
 header a {
 	margin-left: auto;
 	text-decoration: none;
@@ -62,7 +66,8 @@ ul.nav {
 .leftbox {
 	display: flex;
 	flex-direction: column;
-	width: 15%
+	width: 15%;
+	min-width: 310px;
 }
 
 .upbox {
@@ -93,7 +98,7 @@ ul.nav {
 .centerbox {
 	display: flex;
 	margin: 10px;
-	width : 100%;
+	min-width: 1600px;
 }
 
 .study {
@@ -127,13 +132,104 @@ ul.nav {
 
 .hotboard {
 	background-color: yellow;
-	height: 70%;
+	height: 500px;
 	width: 100%;
 	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative; 
+}
+
+.hotboard-marquee-wrap {
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	width: 90%;
+}
+
+.marquee-guide-text {
+    font-size: 16px; 
+    font-weight: bold;
+    color: #4a4a4a; 
+    text-align: center; 
+    padding: 10px 0; 
+    background-color: #f0f0f0;
+    justify-content: flex-start;
+    width: 90%;
+    margin: 10px;
+}
+
+#popular-posts {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#popular-posts li {
+	padding: 5px 10px;
+	line-height: 1.5;
+	white-space: nowrap;
+	border-bottom: 1px dashed #ddd;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .find {
 	background-color: green;
 	height: 30%;
 	width: 100%;
+    
+	display: flex;
+	flex-direction: column;
+	align-items: center;    
+	justify-content: flex-start; 
+	position: relative;
+    
+    min-height: 200px; 
+}
+
+.find-guide-text {
+    font-size: 16px; 
+    font-weight: bold;
+    color: #fff; 
+    text-align: center; 
+    
+    
+    padding: 0 0 5px 0; 
+    margin: 10px 0 0 0;
+    width: 90%;
+}
+
+
+.find-marquee-wrap {
+	height: 100px; 
+	overflow: hidden;
+	position: relative;
+	width: 90%;
+    
+    
+    margin-top: 5px; 
+}
+
+
+#find-posts {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#find-posts li {
+	padding: 3px 8px; 
+	line-height: 1.4;
+	white-space: nowrap;
+	border-bottom: 1px dashed #fff; 
+	font-size: 16px; 
+	font-weight: bold;
 }
