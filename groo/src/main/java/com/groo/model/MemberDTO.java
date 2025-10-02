@@ -2,7 +2,7 @@ package com.groo.model;
 
 public class MemberDTO {
 	private String name;
-	private String userId;
+	private String user_id;
 	private String password;
 
 	// Getters and Setters
@@ -15,11 +15,11 @@ public class MemberDTO {
 	}
 
 	public String getUserId() {
-		return userId;
+		return user_id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getPassword() {

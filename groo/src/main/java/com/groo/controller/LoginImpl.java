@@ -34,13 +34,13 @@ public class LoginImpl extends HttpServlet implements Controller {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
 			
 			MemberDTO reMemberDTO = serviceImpl.loginUserService(memberDTO);
+			
 			if (reMemberDTO.getUserId() != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", reMemberDTO.getUserId());
 
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				response.sendRedirect("index.do");
-				response.getWriter().println("로그인 완료 UserId: " + memberDTO.getUserId());
 			} else {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.do");

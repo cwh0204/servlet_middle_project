@@ -17,9 +17,13 @@ public class MemberDAOImpl{
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
-		
 		try {
 			memberRe = session.selectOne("loginUser",memberDTO);
+			System.out.println("아이디"+memberRe.getUserId());
+			System.out.println("비밀번호"+memberRe.getPassword());
+			System.out.println("이름"+memberRe.getName());
+			
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
