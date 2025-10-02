@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
+import com.groo.service.MemberServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -33,8 +34,8 @@ public class SignUpImpl extends HttpServlet implements Controller {
 		memberDTO.setPassword(password);
 
 		try {
-			MemberDAOImpl memberDAO = new MemberDAOImpl();
-			memberDAO.signUP(memberDTO);
+			MemberServiceImpl serviceImpl = new MemberServiceImpl();
+			serviceImpl.insertUserService(memberDTO);
 			response.sendRedirect("login.jsp");
 			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
 		} catch (Exception e) {

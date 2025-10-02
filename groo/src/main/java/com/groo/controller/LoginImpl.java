@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
+import com.groo.service.MemberServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -28,13 +29,14 @@ public class LoginImpl extends HttpServlet implements Controller {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);
-
+		
 		try {
-			MemberDAOImpl memberDAO = new MemberDAOImpl();
-			String loginCk = memberDAO.login(memberDTO);
-			if (loginCk != null) {
+			MemberServiceImpl serviceImpl = new MemberServiceImpl();
+			
+			MemberDTO reMemberDTO = serviceImpl.loginUserService(memberDTO);
+			if (reMemberDTO.getUserId() != null) {
 				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("userId", loginCk);
+				httpSession.setAttribute("userId", reMemberDTO.getUserId());
 
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				response.sendRedirect("index.do");

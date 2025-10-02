@@ -2,32 +2,27 @@ package com.groo.model;
 
 
 import org.apache.ibatis.session.SqlSession;
-import com.groo.config.SessionFactory;
-import com.groo.mapper.UserMapper;
 
-
-public class MemberDAOImpl implements MemberDAO{
-
-	SessionFactory sessionFactory = new SessionFactory();
-
-	@Override
-	public void signUP(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		// 5. 사용자 등록 처리
-		SqlSession session = sessionFactory.getSqlSession();
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		mapper.insertUser(memberDTO);
-		session.commit();
+public class MemberDAOImpl{
+	
+	public void signUP(MemberDTO memberDTO, SqlSession session) {
+		
+		try {
+			session.insert("insertUser", memberDTO);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Override
-	public String login(MemberDTO memberDTO) {
+	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
-		SqlSession session = sessionFactory.getSqlSession();
-		UserMapper mapper = session.getMapper(UserMapper.class);
-		String loginCk = mapper.loginUser(memberDTO);
-		return loginCk;
+		MemberDTO memberRe = new MemberDTO();
+		
+		try {
+			memberRe = session.selectOne("loginUser",memberDTO);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberRe;
 	}
-
-
 }

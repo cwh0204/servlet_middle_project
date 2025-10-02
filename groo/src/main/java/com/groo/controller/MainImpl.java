@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
+import com.groo.service.TeamServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -37,8 +38,9 @@ public class MainImpl extends HttpServlet implements Controller{
 
 
 		try {
-			TeamDAOImpl teamDAO = new TeamDAOImpl();
-			List<TeamDTO> teamList = teamDAO.selectTeam(teamDTO);
+			TeamServiceImpl serviceImpl = new TeamServiceImpl();
+			List<TeamDTO> teamList = serviceImpl.selectTeam(teamDTO);
+			
 			Gson gson = new Gson();
 			String json = gson.toJson(teamList);
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
+import com.groo.service.TeamServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -32,8 +33,8 @@ public class TeamCreateImpl extends HttpServlet implements Controller{
 		teamDTO.setTeamInfo(teamInfo);
 
 		try {
-			TeamDAOImpl teamDAO = new TeamDAOImpl();
-			teamDAO.createTeam(teamDTO);
+			TeamServiceImpl serviceImpl = new TeamServiceImpl();
+			serviceImpl.createTeam(teamDTO);
 			response.getWriter().println("팀등록 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
