@@ -128,11 +128,11 @@ ul.nav {
 	width: 50%;
 	flex-direction: column;
 	margin: 10px;
+	justify-content: center
 }
 
 .hotboard {
 	background-color: yellow;
-	height: 500px;
 	width: 100%;
 	margin-bottom: 20px;
 	display: flex;
@@ -155,9 +155,8 @@ ul.nav {
     text-align: center; 
     padding: 10px 0; 
     background-color: #f0f0f0;
-    justify-content: flex-start;
     width: 90%;
-    margin: 10px;
+    margin-top: 20px;
 }
 
 #popular-posts {
@@ -182,13 +181,11 @@ ul.nav {
 	background-color: green;
 	height: 30%;
 	width: 100%;
-    
 	display: flex;
 	flex-direction: column;
 	align-items: center;    
-	justify-content: flex-start; 
+	justify-content: center; 
 	position: relative;
-    
     min-height: 200px; 
 }
 
@@ -196,11 +193,8 @@ ul.nav {
     font-size: 16px; 
     font-weight: bold;
     color: #fff; 
-    text-align: center; 
-    
-    
+    text-align: center;
     padding: 0 0 5px 0; 
-    margin: 10px 0 0 0;
     width: 90%;
 }
 
@@ -210,8 +204,6 @@ ul.nav {
 	overflow: hidden;
 	position: relative;
 	width: 90%;
-    
-    
     margin-top: 5px; 
 }
 
