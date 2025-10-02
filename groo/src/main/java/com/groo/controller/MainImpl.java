@@ -31,11 +31,6 @@ public class MainImpl extends HttpServlet implements Controller{
 		HttpSession httpSession = request.getSession();
 		String userId = (String)httpSession.getAttribute("userId");
 		teamDTO.setUserId(userId);
-		
-
-
-//		System.out.println("세션확인"+userId);
-
 
 		try {
 			TeamServiceImpl serviceImpl = new TeamServiceImpl();
