@@ -25,7 +25,7 @@ public class FrontControllerImpl extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 
 		FrontPath pathMapper = new FrontPath();
-		FrontControllerPath controllerMapper = new FrontControllerPath();
+		FrontControllerPath controllerMapper = new FrontControllerPath(); 
 
 		String jspPath = pathMapper.getJspPath(command);
 

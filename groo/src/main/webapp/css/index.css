@@ -134,7 +134,7 @@ ul.nav {
 .hotboard {
 	background-color: yellow;
 	width: 100%;
-	margin-bottom: 20px;
+	margin: 30px 0px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -155,7 +155,6 @@ ul.nav {
     text-align: center; 
     padding: 10px 0; 
     background-color: #f0f0f0;
-    width: 90%;
     margin-top: 20px;
 }
 
@@ -187,17 +186,9 @@ ul.nav {
 	justify-content: center; 
 	position: relative;
     min-height: 200px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-
-.find-guide-text {
-    font-size: 16px; 
-    font-weight: bold;
-    color: #fff; 
-    text-align: center;
-    padding: 0 0 5px 0; 
-    width: 90%;
-}
-
 
 .find-marquee-wrap {
 	height: 100px; 
