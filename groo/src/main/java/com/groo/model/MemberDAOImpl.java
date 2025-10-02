@@ -3,8 +3,9 @@ package com.groo.model;
 
 import org.apache.ibatis.session.SqlSession;
 
-public class MemberDAOImpl{
+public class MemberDAOImpl implements MemberDAO{
 	
+	@Override
 	public void signUP(MemberDTO memberDTO, SqlSession session) {
 		
 		try {
@@ -13,7 +14,8 @@ public class MemberDAOImpl{
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Override
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
