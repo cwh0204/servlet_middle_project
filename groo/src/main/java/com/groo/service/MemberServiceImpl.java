@@ -3,12 +3,13 @@ package com.groo.service;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.config.SessionFactory;
+import com.groo.model.MemberDAO;
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
 public class MemberServiceImpl implements MemberService {
 
-	MemberDAOImpl dao = new MemberDAOImpl();
+	MemberDAO dao = new MemberDAOImpl(); //업캐스팅
 	
 	@Override
 	public MemberDTO loginUserService(MemberDTO memberDTO) {

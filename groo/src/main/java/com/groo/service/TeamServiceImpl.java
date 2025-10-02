@@ -6,12 +6,13 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.config.SessionFactory;
+import com.groo.model.TeamDAO;
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
 public class TeamServiceImpl implements TeamService{
 	
-	TeamDAOImpl dao = new TeamDAOImpl();
+	TeamDAO dao = new TeamDAOImpl(); //업캐스팅
 	
 	@Override
 	public void createTeam(TeamDTO teamDTO) {
