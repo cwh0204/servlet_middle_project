@@ -58,7 +58,7 @@ ul.nav {
 	border-bottom: 3px solid #000000;
 }
 
-.contanier {
+.container {
 	display: flex;
 	height: auto;
 	min-width: 1950px;
