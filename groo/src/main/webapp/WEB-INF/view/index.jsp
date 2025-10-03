@@ -112,6 +112,12 @@ String userId = (String) session.getAttribute("userId");
 							<p class="date">🗓️ 2025.09.28 개설</p>
 							<a href="#">바로가기</a>
 						</div>
+						<div class="study-card">
+							<h4>[알고리즘] 코딩 테스트 대비</h4>
+							<p class="tag">[마감임박] #PS #Python</p>
+							<p class="date">🗓️ 2025.10.03 개설</p>
+							<a href="#">바로가기</a>
+						</div>
 					</div>
 				</div>
 			</div>
