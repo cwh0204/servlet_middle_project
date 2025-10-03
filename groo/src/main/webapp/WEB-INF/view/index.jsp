@@ -63,8 +63,8 @@ String userId = (String) session.getAttribute("userId");
 		</div>
 		<div class="centerbox">
 			<div class="study">
-				<h2>🔥 인기 스터디</h2>
 				<div class=hotstudy>
+					<h3 class="hotstudy-title">🔥 인기 스터디</h3>
 					<div class="slider-wrapper">
 						<ul id="hot-study-list">
 							<li class="slide-item"><img
@@ -97,7 +97,23 @@ String userId = (String) session.getAttribute("userId");
 						</ul>
 					</div>
 				</div>
-				<div class=newstudy>newstudy</div>
+				<div class=newstudy>
+					<h3>✨ 최신 개설 스터디</h3>
+					<div class="newstudy-card-list">
+						<div class="study-card">
+							<h4>[Java] 백엔드 심화반</h4>
+							<p class="tag">[모집중] #Spring #JPA</p>
+							<p class="date">🗓️ 2025.10.01 개설</p>
+							<a href="#">바로가기</a>
+						</div>
+						<div class="study-card">
+							<h4>[디자인] UI/UX 포폴반</h4>
+							<p class="tag">[모집중] #Figma #UX</p>
+							<p class="date">🗓️ 2025.09.28 개설</p>
+							<a href="#">바로가기</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="board">
 				<div class="marquee-guide-text">📢 GROO의 가장 핫한 글을 확인하세요!</div>
