@@ -5,10 +5,6 @@
 <meta charset="UTF-8">
 <title></title>
 <link href="css/base.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
-<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
-
 <style>
 .a_r_t_box {
 	height: 100px;
@@ -16,28 +12,24 @@
 }
 
 .a_r_m_box {
-    height: calc(100% - 100px);
-    padding: 20px;
+	height: calc(100% - 100px);
+	padding: 20px;
 }
-
 </style>
 </head>
 <body>
-	<div class="flex_container full_w_h">
-		<%@ include file="adminNav.jsp" %>
-		<div class="a_r_container">
-			<div class="a_r_t_box flex_container">
-				<h1>관리자 페이지</h1>
+	<div class="a_r_container">
+		<div class="a_r_m_box">
+			<div>
+				<button>저장</button>
 			</div>
-
-			<div class="a_r_m_box">
-				<div><button>저장</button></div>
-				<div id="grid"></div>
-			</div>
+			<div id="grid"></div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
+
+$(document).ready(function() {
 	const grid = new tui.Grid({
 		el : document.getElementById('grid'),
 		data : {
@@ -84,5 +76,6 @@
         console.log(grid.getModifiedRows());
     });
     grid.setBodyHeight(600); 
+});
 </script>
 </html>
