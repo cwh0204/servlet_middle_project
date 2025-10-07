@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="overflow: hidden;">
 <head>
 <meta charset="UTF-8">
 <title></title>
@@ -10,6 +10,7 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+
 <style>
 
 body {
