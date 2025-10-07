@@ -10,20 +10,20 @@
 <body>
 	<aside class="sidebar">
 		<div class="sidebar-header">관리 메뉴</div>
-		<div class="menu-item" data-page="admindashboard.do">
-			<span class="menu-icon">📊</span><span>통계</span>
+		<div class="menu-item active" data-page="admindashboard.do">
+			<span class="menu-icon"></span><span>통계</span>
 		</div>
 		<div class="menu-item" data-page="adminuser.do">
-			<span class="menu-icon">👥</span><span>사용자 관리</span>
+			<span class="menu-icon"></span><span>사용자 관리</span>
 		</div>
 		<div class="menu-item">
-			<span class="menu-icon">👨‍👩‍👧‍👦</span><span>팀 관리</span>
+			<span class="menu-icon"></span><span>팀 관리</span>
 		</div>
 		<div class="menu-item">
-			<span class="menu-icon">📋</span><span>게시판 관리</span>
+			<span class="menu-icon"></span><span>게시판 관리</span>
 		</div>
 		<div class="menu-item">
-			<span class="menu-icon">📢</span><span>공지사항 관리</span>
+			<span class="menu-icon"></span><span>공지사항 관리</span>
 		</div>
 	</aside>
 </body>

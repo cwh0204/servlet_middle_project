@@ -147,7 +147,7 @@
 		<div class="card card-full">
 			<div class="card-header">
 				<div class="card-title">
-					<span class="card-title-icon">📈</span> 오늘의 주요 지표
+					<span class="card-title-icon"></span> 오늘의 주요 지표
 				</div>
 				<div class="card-badge">실시간</div>
 			</div>
