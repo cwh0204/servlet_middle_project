@@ -465,7 +465,23 @@ header {
 <script>
 const addUser = () => {
     // 사용자 추가 로직
-    alert('사용자 추가 버튼 클릭!');
+    if (!grid) {
+        alert('그리드가 초기화되지 않았습니다.');
+        return;
+    }
+
+    const newRowData = {
+        name: '새 사용자',
+        username: 'new_user',
+        email: 'new@example.com',
+        phone: '000-0000-0000'
+    };
+    
+    // 가장 위에 새 행을 추가하고 포커스를 줍니다.
+    grid.appendRow(newRowData, {
+        at: 0,
+        focus: true 
+    });
 };
 
 const rollbackRowData = () => {
