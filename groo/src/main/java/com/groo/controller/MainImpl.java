@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 import com.groo.service.TeamServiceImpl;
 
@@ -31,7 +30,6 @@ public class MainImpl extends HttpServlet implements Controller{
 		HttpSession httpSession = request.getSession();
 		String userId = (String)httpSession.getAttribute("userId");
 		teamDTO.setUserId(userId);
-
 		try {
 			TeamServiceImpl serviceImpl = new TeamServiceImpl();
 			List<TeamDTO> teamList = serviceImpl.selectTeam(teamDTO);
