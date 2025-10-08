@@ -9,125 +9,7 @@
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
 
-body {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-		'Helvetica', 'Arial', sans-serif;
-	background: #f8faf9;
-	min-height: 100vh;
-}
-
-/* 헤더 */
-header {
-	background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
-	padding: 0;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	position: sticky;
-	top: 0;
-	z-index: 1000;
-}
-
-.header-content {
-	max-width: 1600px;
-	margin: 0 auto;
-	padding: 16px 40px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.logo {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.logo-icon {
-	width: 40px;
-	height: 40px;
-	background: white;
-	border-radius: 8px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 24px;
-	font-weight: bold;
-	color: #2d6a4f;
-}
-
-.logo-text {
-	font-size: 24px;
-	font-weight: 700;
-	color: white;
-	letter-spacing: -0.5px;
-}
-
-.page-title {
-	font-size: 18px;
-	color: white;
-	font-weight: 500;
-}
-
-/* 메인 레이아웃 */
-.main-layout {
-	max-width: 1600px;
-	margin: 0 auto;
-	display: flex;
-	min-height: calc(100vh - 72px);
-}
-
-/* 사이드바 */
-.sidebar {
-	width: 260px;
-	background: white;
-	border-right: 1px solid #e5e7eb;
-	padding: 24px 0;
-}
-
-.sidebar-header {
-	padding: 0 24px 16px;
-	color: #6b7280;
-	font-size: 12px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-
-.menu-item {
-	padding: 12px 24px;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	color: #4b5563;
-	font-weight: 500;
-	font-size: 15px;
-	border-left: 3px solid transparent;
-}
-
-.menu-item:hover {
-	background: #f0fdf4;
-	color: #2d6a4f;
-}
-
-.menu-item.active {
-	background: #f0fdf4;
-	color: #2d6a4f;
-	border-left-color: #2d6a4f;
-	font-weight: 600;
-}
-
-.menu-icon {
-	font-size: 20px;
-	width: 24px;
-	text-align: center;
-}
 
 /* 메인 콘텐츠 */
 .main-content {
@@ -440,7 +322,7 @@ header {
 	<div class="card">
 		<div class="filter-section">
 			<div class="search-box">
-				<span class="search-icon">🔍</span> <input type="text"
+				<span class="search-icon"></span> <input type="text"
 					id="searchInput" placeholder="이름, 이메일로 검색...">
 			</div>
 			<div class="filter-group">
@@ -463,7 +345,7 @@ header {
 	</div>
 </body>
 <script>
-const addUser = () => {
+var addUser = () => {
     // 사용자 추가 로직
     if (!grid) {
         alert('그리드가 초기화되지 않았습니다.');
@@ -484,7 +366,7 @@ const addUser = () => {
     });
 };
 
-const rollbackRowData = () => {
+var rollbackRowData = () => {
 	const targetRowKey = 0;
 	const originalRowData = originalFullData.find(row => row.id === targetRowKey+1);
 	console.log(originalRowData);
@@ -502,6 +384,21 @@ const rollbackRowData = () => {
         grid.removeCellClassName(targetRowKey, columnName, 'modified-cell');
     });
 }
+
+var exportData = () => {
+    if (!grid) {
+        alert('그리드가 초기화되지 않았습니다.');
+        return;
+    }
+
+    // TOAST UI Grid의 export('csv') 기능을 사용하여 CSV 파일로 내보냅니다.
+    grid.export('csv', { 
+        fileName: '사용자_관리_목록', // 다운로드될 파일명 설정
+        includeHiddenColumns: true,      // 숨겨진 컬럼도 포함할지 여부
+        onlySelected: false              // 선택된 행만 내보낼지 여부 (false면 전체)
+    });
+};
+
 $(document).ready(function() {
 	
     grid = new tui.Grid({
