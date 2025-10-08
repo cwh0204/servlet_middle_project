@@ -16,7 +16,7 @@
 		<div class="menu-item" data-page="adminuser.do">
 			<span class="menu-icon"></span><span>사용자 관리</span>
 		</div>
-		<div class="menu-item">
+		<div class="menu-item" data-page="adminteam.do">
 			<span class="menu-icon"></span><span>팀 관리</span>
 		</div>
 		<div class="menu-item">
