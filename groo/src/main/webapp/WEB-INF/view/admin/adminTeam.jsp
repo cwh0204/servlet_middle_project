@@ -1,16 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
-<link href="css/base.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
-<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+<title>Insert title here</title>
 <style>
-
-/* 메인 콘텐츠 */
 .main-content {
 	flex: 1;
 	padding: 32px 40px;
@@ -269,28 +264,25 @@
 <body>
 	<div class="content-header">
 		<div class="content-header-left">
-			<h1>사용자 관리</h1>
-			<p>전체 사용자 목록을 조회하고 관리합니다</p>
+			<h1>팀 관리</h1>
+			<p>전체 팀 목록을 조회하고 관리합니다</p>
 		</div>
 		<div class="content-header-right">
 			<button class="btn btn-secondary" onclick="exportData()">
-				<span></span> 내보내기
+				<span>📥</span> 내보내기
 			</button>
 			<button class="btn btn-primary" onclick="addUser()">
-				<span></span> 사용자 추가
+				<span>➕</span> 사용자 추가
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span></span> 임시 수정 롤백버튼
-			</button>
-			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span></span> 임시 저장 버튼
+				<span>➕</span> 수정 롤백
 			</button>
 		</div>
 	</div>
 	<div class="stats-row">
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">전체 사용자</span>
+				<span class="stat-label">전체 팀</span>
 				<div class="stat-icon green"></div>
 			</div>
 			<div class="stat-value">1,284</div>
@@ -298,7 +290,7 @@
 		</div>
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">활성 사용자</span>
+				<span class="stat-label">활성 팀</span>
 				<div class="stat-icon blue"></div>
 			</div>
 			<div class="stat-value">1,156</div>
@@ -306,7 +298,7 @@
 		</div>
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">신규 가입</span>
+				<span class="stat-label">신규 팀</span>
 				<div class="stat-icon yellow"></div>
 			</div>
 			<div class="stat-value">48</div>
@@ -343,68 +335,15 @@
 		</div>
 	</div>
 	<div>
-		<div id="grid"></div>
+		<div id="gridTeam"></div>
 	</div>
 </body>
 <script>
-var addUser = () => {
-    // 사용자 추가 로직
-    if (!grid) {
-        alert('그리드가 초기화되지 않았습니다.');
-        return;
-    }
-
-    const newRowData = {
-        name: '새 사용자',
-        username: 'new_user',
-        email: 'new@example.com',
-        phone: '000-0000-0000'
-    };
-    
-    // 가장 위에 새 행을 추가하고 포커스를 줍니다.
-    grid.appendRow(newRowData, {
-        at: 0,
-        focus: true 
-    });
-};
-
-var rollbackRowData = () => {
-	const targetRowKey = 0;
-	const originalRowData = originalFullData.find(row => row.id === targetRowKey+1);
-	console.log(originalRowData);
-    grid.setRow(targetRowKey, originalRowData, {
-        extended: true 
-    });
-    grid.removeRowClassName(targetRowKey, 'modified-row');
-    const columns = grid.getColumns(); // 그리드의 모든 컬럼 정보를 가져옵니다.
-
-    columns.forEach(column => {
-        const columnName = column.name;
-        
-        // removeCellClassName을 사용하여 해당 행(targetRowKey)과 컬럼(columnName)의 셀에서
-        // 'modified-cell' 클래스를 제거합니다.
-        grid.removeCellClassName(targetRowKey, columnName, 'modified-cell');
-    });
-}
-
-var exportData = () => {
-    if (!grid) {
-        alert('그리드가 초기화되지 않았습니다.');
-        return;
-    }
-
-    // TOAST UI Grid의 export('csv') 기능을 사용하여 CSV 파일로 내보냅니다.
-    grid.export('csv', { 
-        fileName: '사용자_관리_목록', // 다운로드될 파일명 설정
-        includeHiddenColumns: true,      // 숨겨진 컬럼도 포함할지 여부
-        onlySelected: false              // 선택된 행만 내보낼지 여부 (false면 전체)
-    });
-};
 
 $(document).ready(function() {
 	
-    grid = new tui.Grid({
-		el : document.getElementById('grid'),
+    gridTeam = new tui.Grid({
+		el : document.getElementById('gridTeam'),
 		data : {
 			api : {
 				readData : {
@@ -437,31 +376,31 @@ $(document).ready(function() {
 			editor : 'text'
 		}]
 	});
-    grid.on('response', function(ev) {
+    gridTeam.on('response', function(ev) {
         let response = ev.xhr.responseText;
         let data = JSON.parse(response);
         
         originalFullData = data;
         
-        grid.resetData(data);
+        gridTeam.resetData(data);
     });
     
-    grid.on('afterChange', ev => {
+    gridTeam.on('afterChange', ev => {
     	console.log('after change:', ev.changes[0].columnName);
         console.log('after change:', ev.changes[0].value);
-        console.log(grid.getModifiedRows());
+        console.log(gridTeam.getModifiedRows());
     });
     
-    grid.setBodyHeight(450);
+    gridTeam.setBodyHeight(450);
     
-    grid.on('beforeChange', ev => {
+    gridTeam.on('beforeChange', ev => {
   	  // `ev.changes`는 배열 형태로 여러 변경 사항을 포함할 수 있습니다.
   	  // 여기서는 첫 번째 변경 사항에 접근합니다.
   	  const { rowKey } = ev.changes[0];
   	  const columnName = ev.changes[0].columnName;
   	  // 수정이 발생한 행에 'modified-row' 클래스 추가
-  	  grid.addRowClassName(rowKey, 'modified-row');
-  	  grid.addCellClassName(rowKey, columnName, 'modified-cell'); 
+  	  gridTeam.addRowClassName(rowKey, 'modified-row');
+  	  gridTeam.addCellClassName(rowKey, columnName, 'modified-cell'); 
   });
 });
 

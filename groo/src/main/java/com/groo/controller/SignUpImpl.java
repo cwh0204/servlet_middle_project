@@ -30,14 +30,14 @@ public class SignUpImpl extends HttpServlet implements Controller {
 		MemberDTO memberDTO = new MemberDTO();
 
 		memberDTO.setName(name);
-		memberDTO.setUserId(userId);
+		memberDTO.setUser_id(userId);
 		memberDTO.setPassword(password);
 
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
 			serviceImpl.insertUserService(memberDTO);
 			response.sendRedirect("login.jsp");
-			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
+			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUser_id());
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("사용자 등록 실패: " + e.getMessage());

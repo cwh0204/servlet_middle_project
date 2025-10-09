@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
 /* @WebServlet("/teamselect") */
 public class TeamSelectImpl extends HttpServlet implements Controller{
 

@@ -4,30 +4,47 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/adminCss/adminnav.css" rel="stylesheet">
-<title></title>
+<title>관리자 페이지</title>
+<script src="jquery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-	<div class="a_l_container">
-		<div class="a_l_logo_box flex_container">
-			<img class="logo" src="./images/로고.png">
+	<aside class="sidebar">
+		<div class="sidebar-header">관리 메뉴</div>
+		<div class="menu-item active" data-page="admindashboard.do">
+			<span class="menu-icon"></span><span>통계</span>
 		</div>
-		<div class="a_l_btn_box">
-			<div class="border_box n_b_c">
-				<ul class="u_nav_ul">
-					<li><a href="#" data-page="home.html">사이트 관리</a></li>
-					<li><i class="bi bi-bar-chart color"></i><a href="./admin.do"
-						data-page="home.html">통계</a></li>
-					<li><i class="bi bi-person"></i><a href="./adminuser.do"
-						data-page="about.html">사용자 관리</a></li>
-					<li><i class="bi bi-people"></i><a href="#"
-						data-page="contact.html">팀 관리</a></li>
-					<li><i class="bi bi-clipboard2-check"></i><a href="#"
-						data-page="contact.html">게시판 관리</a></li>
-					<li><i class="bi bi-bell"></i><a href="#"
-						data-page="contact.html">공지사항 관리</a></li>
-				</ul>
-			</div>
+		<div class="menu-item" data-page="adminuser.do">
+			<span class="menu-icon"></span><span>사용자 관리</span>
 		</div>
-	</div>
+		<div class="menu-item" data-page="adminteam.do">
+			<span class="menu-icon"></span><span>팀 관리</span>
+		</div>
+		<div class="menu-item">
+			<span class="menu-icon"></span><span>게시판 관리</span>
+		</div>
+		<div class="menu-item">
+			<span class="menu-icon"></span><span>공지사항 관리</span>
+		</div>
+	</aside>
 </body>
+<script type="text/javascript">
+$(document).ready(function() {
+    // 1. 모든 .menu-item 클릭 이벤트 리스너를 설정합니다.
+    $('.menu-item').on('click', function() {
+        
+        $('.menu-item').removeClass('active');
+        // 현재 클릭된 요소에 active 클래스 추가
+        $(this).addClass('active');
+
+        const pageToLoad = $(this).data('page'); 
+        
+        // 브라우저는 이제 이 URL을 서버에 요청합니다.
+        $('.a_r_container').load(pageToLoad, function(response, status, xhr) {
+        	window.chartColl();
+            if (status == "error") {
+            }
+        });
+    });
+});
+</script>
 </html>
