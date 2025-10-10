@@ -10,7 +10,6 @@
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 <style>
 
-
 /* 메인 콘텐츠 */
 .main-content {
 	flex: 1;
@@ -245,11 +244,6 @@
 	.main-layout {
 		flex-direction: column;
 	}
-	.sidebar {
-		width: 100%;
-		border-right: none;
-		border-bottom: 1px solid #e5e7eb;
-	}
 	.stats-row {
 		grid-template-columns: 1fr;
 	}
@@ -275,13 +269,16 @@
 		</div>
 		<div class="content-header-right">
 			<button class="btn btn-secondary" onclick="exportData()">
-				<span>📥</span> 내보내기
+				<span></span> 내보내기
 			</button>
 			<button class="btn btn-primary" onclick="addUser()">
-				<span>➕</span> 사용자 추가
+				<span></span> 사용자 추가
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span>➕</span> 임시 수정 롤백
+				<span></span> 임시 수정 롤백버튼
+			</button>
+			<button class="btn btn-primary" onclick="rollbackRowData()">
+				<span></span> 임시 저장 버튼
 			</button>
 		</div>
 	</div>

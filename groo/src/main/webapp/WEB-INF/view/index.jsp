@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 String userId = (String) session.getAttribute("userId");
 %>
@@ -15,8 +14,7 @@ String userId = (String) session.getAttribute("userId");
 </head>
 <body>
 	<header>
-		<img src="./images/로고.png" class="logo_img"> <a href="/logout">
-			<i class="bi bi-box-arrow-right"></i>
+		<img src="./images/로고.png" class="logo_img"> <a href="/logout"> <i class="bi bi-box-arrow-right"></i>
 		</a>
 	</header>
 	<div class="nevi">
@@ -30,34 +28,22 @@ String userId = (String) session.getAttribute("userId");
 	<div class=container>
 		<div class=leftbox>
 			<div class="upbox flex_container">
-				<img src="./images/열공남.png"> <i
-					class="bi bi-person-fill-check"><strong> 스터디를 만들어요!</strong></i>
-				<button type="button" class="btn btn-outline-success">스터디
-					생성</button>
-				<img src="./images/열공녀.png"> <i class="bi bi-people-fill"><strong>
-						스터디에 가입해봐요!</strong></i>
-				<button type="button" class="btn btn-outline-warning">스터디
-					찾기</button>
+				<img src="./images/열공남.png"> <i class="bi bi-person-fill-check"><strong> 스터디를 만들어요!</strong></i>
+				<button type="button" class="btn btn-outline-success">스터디 생성</button>
+				<img src="./images/열공녀.png"> <i class="bi bi-people-fill"><strong> 스터디에 가입해봐요!</strong></i>
+				<button type="button" class="btn btn-outline-warning">스터디 찾기</button>
 			</div>
 			<div class="downbox flex_container">
 				<strong>님의 스터디 목록</strong>
 				<ul class="list-group">
-					<li class="list-group-item list-group-item-primary"><a
-						href="#">팀 목록</a></li>
-					<li class="list-group-item list-group-item-secondary"><a
-						href="#">팀 목록</a></li>
-					<li class="list-group-item list-group-item-success"><a
-						href="#">팀 목록</a></li>
-					<li class="list-group-item list-group-item-danger"><a href="#">팀
-							목록</a></li>
-					<li class="list-group-item list-group-item-warning"><a
-						href="#">팀 목록</a></li>
-					<li class="list-group-item list-group-item-info"><a href="#">팀
-							목록</a></li>
-					<li class="list-group-item list-group-item-light"><a href="#">팀
-							목록</a></li>
-					<li class="list-group-item list-group-item-dark"><a href="#">팀
-							목록</a></li>
+					<li class="list-group-item list-group-item-primary"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-secondary"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-success"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-danger"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-warning"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-info"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-light"><a href="#">팀 목록</a></li>
+					<li class="list-group-item list-group-item-dark"><a href="#">팀 목록</a></li>
 				</ul>
 			</div>
 		</div>
@@ -67,25 +53,17 @@ String userId = (String) session.getAttribute("userId");
 					<h3 class="hotstudy-title">🔥 인기 스터디</h3>
 					<div class="slider-wrapper">
 						<ul id="hot-study-list">
-							<li class="slide-item"><img
-								src="https://via.placeholder.com/600x400?text=자바스크립트+스터디"
-								alt="스터디 이미지: 자바스크립트 기본">
+							<li class="slide-item"><img src="https://via.placeholder.com/600x400?text=자바스크립트+스터디" alt="스터디 이미지: 자바스크립트 기본">
 								<div class="slide-content">
 									<h3>프론트엔드 기초 다지기 (팀장: user123)</h3>
-									<p>내용 요약: 기초부터 탄탄하게 JavaScript, HTML, CSS를 학습합니다. 주 2회
-										온라인으로 진행되며, 포트폴리오 프로젝트 완성이 목표입니다.</p>
-									<a href="/groo/teamDetail.do?teamId=100" class="btn-detail">자세히
-										보기</a>
+									<p>내용 요약: 기초부터 탄탄하게 JavaScript, HTML, CSS를 학습합니다. 주 2회 온라인으로 진행되며, 포트폴리오 프로젝트 완성이 목표입니다.</p>
+									<a href="/groo/teamDetail.do?teamId=100" class="btn-detail">자세히 보기</a>
 								</div></li>
-							<li class="slide-item"><img
-								src="https://via.placeholder.com/600x400?text=백엔드+API+개발"
-								alt="스터디 이미지: 스프링부트">
+							<li class="slide-item"><img src="https://via.placeholder.com/600x400?text=백엔드+API+개발" alt="스터디 이미지: 스프링부트">
 								<div class="slide-content">
 									<h3>Spring Boot를 활용한 RESTful API 개발 (팀장: king_dev)</h3>
-									<p>내용 요약: Spring Boot와 JPA를 활용하여 백엔드 서버를 구축합니다. 실무에서 필요한
-										인증/인가 및 배포 과정을 함께 경험합니다.</p>
-									<a href="/groo/teamDetail.do?teamId=101" class="btn-detail">자세히
-										보기</a>
+									<p>내용 요약: Spring Boot와 JPA를 활용하여 백엔드 서버를 구축합니다. 실무에서 필요한 인증/인가 및 배포 과정을 함께 경험합니다.</p>
+									<a href="/groo/teamDetail.do?teamId=101" class="btn-detail">자세히 보기</a>
 								</div></li>
 						</ul>
 					</div>
@@ -128,8 +106,7 @@ String userId = (String) session.getAttribute("userId");
 					</ul>
 				</div>
 			</div>
-			<div class="find-guide-text marquee-guide-text">💡 새로운 스터디원을
-				찾습니다!</div>
+			<div class="find-guide-text marquee-guide-text">💡 새로운 스터디원을 찾습니다!</div>
 			<div class=find>
 				<div class="find-marquee-wrap">
 					<ul id="find-posts">
