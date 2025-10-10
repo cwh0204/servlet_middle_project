@@ -239,11 +239,6 @@
 	.main-layout {
 		flex-direction: column;
 	}
-	.sidebar {
-		width: 100%;
-		border-right: none;
-		border-bottom: 1px solid #e5e7eb;
-	}
 	.stats-row {
 		grid-template-columns: 1fr;
 	}
