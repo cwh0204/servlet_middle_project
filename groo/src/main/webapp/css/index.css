@@ -254,7 +254,6 @@ ul.nav {
 }
 
 .marquee-guide-text {
-<<<<<<< HEAD
     font-size: 16px; 
     font-weight: bold;
     color: #4a4a4a; 
@@ -262,15 +261,11 @@ ul.nav {
     padding: 10px 0; 
     background-color: #f0f0f0;
     margin :  20px;
-=======
 	font-size: 16px;
 	font-weight: bold;
 	color: #4a4a4a;
 	text-align: center;
 	padding: 10px 0;
-	background-color: #f0f0f0;
-	margin-bottom: 20px;
->>>>>>> 7e75299bb0d7eea5bb704d2fd0afd29281789190
 }
 
 #popular-posts {
@@ -296,12 +291,7 @@ ul.nav {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-<<<<<<< HEAD
-	align-items: center;   
-	justify-content: center; 
-=======
 	align-items: center;
->>>>>>> 7e75299bb0d7eea5bb704d2fd0afd29281789190
 	position: relative;
 	min-height: 200px;
 	padding-bottom: 20px;
