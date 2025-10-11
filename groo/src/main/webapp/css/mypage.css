@@ -17,15 +17,13 @@ html, body {
 
 .profile_category_line {
 	display : flex;
-	flex : 2;
+	flex : 1.5;
 	align-items:flex-start;
-	background-color : #cc2741;
-	width : 387px;
 	height : 870px;
 	flex-direction : column;
-	gap:3px
-	
-	
+	border : 1px solid #e6e6e6;
+	box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+
 }
 
 .logo img {
@@ -51,7 +49,7 @@ html, body {
 
 .content {
 	flex : 4;
-	background-color : #074f8a;
+	
 	width : 387px;
 	height : 870px;
 
