@@ -1,2 +1,62 @@
 @charset "UTF-8";
 
+html, body {
+	margin: 0;
+}
+
+
+header, footer {
+
+	background : #28a745;
+	height : 50px;
+}
+
+main {
+	display : flex;
+	justify-content : center;
+	gap:50px; /*이 틈사이로 쉐도우와 border 라인 둥그런 느낌을 줘서 입체감을 주면 서로 간격이 필요하다.*/
+}
+
+.n_right {
+	
+	display : flex;
+	flex-direction : column;
+	
+	
+}
+
+
+.navi1, .navi2, .navi3, .navi4, .navi5, .navi6{
+	width : 397px;
+	text-align : center;
+	line-height: 108px;
+	margin-bottom : 10px;
+	border-radius : 8px;
+	
+} 
+
+
+.navi1 {
+  background-color : gray;
+  height: 280px;
+  line-height: 280px;
+}
+
+
+.navi2 { background-color: #cb5827; }
+.navi3 { background-color: #074f8a; }
+.navi4 { background-color: #b627cc; }
+.navi5 { background-color: #cc2741; }
+.navi6 { background-color: #fbe43c; }
+.navi7 { background-color: blue; }
+
+
+.navi10{
+	border-radius : 8px;
+	background-color : red;
+	width : 1100px;
+	height : 870px;
+}
+
+
+
