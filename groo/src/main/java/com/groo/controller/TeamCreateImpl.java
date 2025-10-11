@@ -31,10 +31,10 @@ public class TeamCreateImpl extends HttpServlet implements Controller{
 		teamDTO.setTeamName(teamName);
 		teamDTO.setUserId(userId);
 		teamDTO.setTeamInfo(teamInfo);
-
+		
 		try {
 			TeamServiceImpl serviceImpl = new TeamServiceImpl();
-			serviceImpl.createTeam(teamDTO);
+			serviceImpl.insertTeam(teamDTO);
 			response.getWriter().println("팀등록 성공");
 		} catch (Exception e) {
 			e.printStackTrace();

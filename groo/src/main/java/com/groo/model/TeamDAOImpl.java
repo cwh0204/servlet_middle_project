@@ -12,7 +12,7 @@ public class TeamDAOImpl implements TeamDAO{
 	SessionFactory sessionFactory = new SessionFactory();
 	
 	@Override
-	public void createTeam(TeamDTO teamDTO, SqlSession session) {
+	public void insertTeam(TeamDTO teamDTO, SqlSession session) {
 		// TODO Auto-generated method stub
 		try {
 			session.insert("insertTeam", teamDTO);

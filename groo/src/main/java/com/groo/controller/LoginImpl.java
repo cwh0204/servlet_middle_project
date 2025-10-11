@@ -2,7 +2,6 @@ package com.groo.controller;
 
 import java.io.IOException;
 
-import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
 

@@ -10,16 +10,16 @@ import com.groo.model.TeamDAO;
 import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
-public class TeamServiceImpl implements TeamService{
+public class TeamServiceImpl implements TeamInsertTeam, TeamSelectTeamOne, TeamSelectTeamAll{
 	
 	TeamDAO dao = new TeamDAOImpl(); //업캐스팅
 	
 	@Override
 	public void insertTeam(TeamDTO teamDTO) {
 		SqlSession session = SessionFactory.getSqlSession();
-		
+		dao.insertTeam(teamDTO, session);
 		try {
-			dao.createTeam(teamDTO, session);
+			session.commit();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -38,7 +38,6 @@ public class TeamServiceImpl implements TeamService{
 		}finally {
 			session.close();
 		}
-		
 		return list;
 	}
 

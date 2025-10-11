@@ -7,34 +7,31 @@ import com.groo.model.MemberDAO;
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser {
 
-	MemberDAO dao = new MemberDAOImpl(); //업캐스팅
-	
+	MemberDAO dao = new MemberDAOImpl();
+
 	@Override
 	public MemberDTO loginUserService(MemberDTO memberDTO) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO member = new MemberDTO();
-		try {
-			member = dao.login(memberDTO, session);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
+		member = dao.login(memberDTO, session);
+		session.close();
+
 		return member;
 	}
+
 	@Override
 	public void insertUserService(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
 		SqlSession session = SessionFactory.getSqlSession();
+		dao.signUP(memberDTO, session);
 		try {
-			dao.signUP(memberDTO, session);
 			session.commit();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 	}
