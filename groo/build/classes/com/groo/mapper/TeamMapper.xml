@@ -27,6 +27,6 @@
 			TEAM_NAME AS teamName,
 			USER_ID AS userId,
 			TEAM_INFO AS teamInfo
-		FROM TEAM	
+		FROM TEAM
 	</select>
 </mapper>

@@ -47,5 +47,4 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //
 			session.close();
 		}
 	}
-
 }
