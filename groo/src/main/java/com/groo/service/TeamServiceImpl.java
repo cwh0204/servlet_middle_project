@@ -15,7 +15,7 @@ public class TeamServiceImpl implements TeamService{
 	TeamDAO dao = new TeamDAOImpl(); //업캐스팅
 	
 	@Override
-	public void createTeam(TeamDTO teamDTO) {
+	public void insertTeam(TeamDTO teamDTO) {
 		SqlSession session = SessionFactory.getSqlSession();
 		
 		try {

@@ -2,7 +2,14 @@ package com.groo.service;
 
 import com.groo.model.MemberDTO;
 
-public interface MemberService {
-	public MemberDTO loginUserService(MemberDTO memberDTO);
-	public void insertUserService(MemberDTO memberDTO);
+public interface MemberService extends MemberInsertUser, MemberLoginUser{
+
+	@Override
+	default MemberDTO loginUserService(MemberDTO memberDTO) {
+		return null;
+	}
+
+	@Override
+	default void insertUserService(MemberDTO memberDTO) {
+	}
 }
