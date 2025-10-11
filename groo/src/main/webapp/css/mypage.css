@@ -4,59 +4,60 @@ html, body {
 	margin: 0;
 }
 
-
-header, footer {
-
-	background : #28a745;
-	height : 50px;
-}
-
-main {
+.t_container {
 	display : flex;
-	justify-content : center;
-	gap:50px; /*이 틈사이로 쉐도우와 border 라인 둥그런 느낌을 줘서 입체감을 주면 서로 간격이 필요하다.*/
+	flex-direction : row;
+	
+	
 }
 
-.n_right {
-	
+.left_empty{
+	flex : 1;
+}
+
+.profile_category_line {
 	display : flex;
-	flex-direction : column;
-	
-	
-}
-
-
-.navi1, .navi2, .navi3, .navi4, .navi5, .navi6{
-	width : 397px;
-	text-align : center;
-	line-height: 108px;
-	margin-bottom : 10px;
-	border-radius : 8px;
-	
-} 
-
-
-.navi1 {
-  background-color : gray;
-  height: 280px;
-  line-height: 280px;
-}
-
-
-.navi2 { background-color: #cb5827; }
-.navi3 { background-color: #074f8a; }
-.navi4 { background-color: #b627cc; }
-.navi5 { background-color: #cc2741; }
-.navi6 { background-color: #fbe43c; }
-.navi7 { background-color: blue; }
-
-
-.navi10{
-	border-radius : 8px;
-	background-color : red;
-	width : 1100px;
+	flex : 2;
+	align-items:flex-start;
+	background-color : #cc2741;
+	width : 387px;
 	height : 870px;
+	flex-direction : column;
+	gap:3px
+	
+	
 }
 
+.logo img {
+	width : 150px;
+	margin-bottom : 5px;
+}
 
+.profile_photo{
+	width : 150px;
+	height : 150px;
+	border-radius : 50%;
+	overflow: hidden;
+	display:flex;
+	justify-content : center;
+	background-color : white;
+	margin : 30px auto 1px;
+}
 
+.profile_nic{
+	margin : 10px auto;
+	text-align: center;
+}
+
+.content {
+	flex : 4;
+	background-color : #074f8a;
+	width : 387px;
+	height : 870px;
+
+}
+
+.right_empty{
+	flex : 1;
+	
+}
