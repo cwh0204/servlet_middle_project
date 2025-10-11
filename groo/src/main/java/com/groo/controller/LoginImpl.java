@@ -53,6 +53,7 @@ public class LoginImpl extends HttpServlet implements Controller {
 				response.sendRedirect("login.do");
 			}
 		}catch(ResourceNotFoundException rne) {
+			rne.printStackTrace();
 			ErrorDTO error = new ErrorDTO(500,"회원가입 중 오류 발생","MemberDAO");
 			response.getWriter().println(error.getStatus()+error.getError());
 		}

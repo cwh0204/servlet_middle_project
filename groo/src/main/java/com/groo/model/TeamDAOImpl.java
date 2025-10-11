@@ -31,7 +31,6 @@ public class TeamDAOImpl implements TeamDAO{
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new ResourceNotFoundException("팀 검색 중 데이터베이스 오류 발생",e);
-			
 		}
 		return list;
 	}

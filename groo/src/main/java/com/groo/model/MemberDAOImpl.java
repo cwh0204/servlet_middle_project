@@ -23,8 +23,8 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
-		
-		if(memberDTO.getUserId() == null || memberDTO.getPassword() == null) {
+		if(memberDTO.getUserId().equals("")) {
+			System.out.println("진입");
 			throw new InternalServerErrorException("사용자 입력데이터 불일치예외 발생");
 		}
 		try {
