@@ -7,7 +7,7 @@ import com.groo.model.MemberDAO;
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
-public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser {
+public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //ISP 적용
 
 	MemberDAO dao = new MemberDAOImpl();
 
@@ -16,8 +16,13 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser {
 
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO member = new MemberDTO();
-		member = dao.login(memberDTO, session);
-		session.close();
+		try {
+			member = dao.login(memberDTO, session);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 
 		return member;
 	}
