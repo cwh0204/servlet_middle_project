@@ -7,13 +7,13 @@ import com.groo.model.MemberDAO;
 import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //ISP 적용
 
-	MemberDAO dao = new MemberDAOImpl(); //업캐스팅
-	
+	MemberDAO dao = new MemberDAOImpl();
+
 	@Override
 	public MemberDTO loginUserService(MemberDTO memberDTO) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO member = new MemberDTO();
 		try {
@@ -23,18 +23,20 @@ public class MemberServiceImpl implements MemberService {
 		}finally {
 			session.close();
 		}
+
 		return member;
 	}
+
 	@Override
 	public void insertUserService(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
 		SqlSession session = SessionFactory.getSqlSession();
+		dao.signUP(memberDTO, session);
 		try {
-			dao.signUP(memberDTO, session);
 			session.commit();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
 	}

@@ -1,6 +1,5 @@
 package com.groo.model;
 
-
 import org.apache.ibatis.session.SqlSession;
 
 public class MemberDAOImpl implements MemberDAO{
