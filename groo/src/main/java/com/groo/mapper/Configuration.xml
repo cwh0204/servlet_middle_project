@@ -5,6 +5,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
   <environments default="development"> <!-- <environments default="development">에서 어떤 환경을 사용할지를 지정 -->
     <environment id="development"> <!-- <environment id="development">	개발 환경 설정 블록 -->
       <transactionManager type="JDBC"/>

@@ -2,6 +2,12 @@ package com.groo.controller;
 
 import java.io.IOException;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import com.groo.error.ErrorDTO;
+import com.groo.error.InternalServerErrorException;
+import com.groo.error.ResourceNotFoundException;
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
 
@@ -16,17 +22,19 @@ import jakarta.servlet.http.HttpSession;
  */
 
 public class LoginImpl extends HttpServlet implements Controller {
-
+	 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
+		
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
+		
 		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setUser_id(userId);
+		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);
 		
 		try {
@@ -34,9 +42,9 @@ public class LoginImpl extends HttpServlet implements Controller {
 			
 			MemberDTO reMemberDTO = serviceImpl.loginUserService(memberDTO);
 			
-			if (reMemberDTO.getUser_id() != null) {
+			if (reMemberDTO != null) {
 				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("userId", reMemberDTO.getUser_id());
+				httpSession.setAttribute("userId", reMemberDTO.getUserId());
 
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				response.sendRedirect("index.do");
@@ -44,7 +52,17 @@ public class LoginImpl extends HttpServlet implements Controller {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.do");
 			}
-		} catch (Exception e) {
+		}catch(ResourceNotFoundException rne) {
+			rne.printStackTrace();
+			ErrorDTO error = new ErrorDTO(500,"회원가입 중 오류 발생","MemberDAO");
+			response.getWriter().println(error.getStatus()+error.getError());
+		}
+		catch(InternalServerErrorException ie) {
+			ErrorDTO error = new ErrorDTO(404,"회원가입 입력데이터 오류 발생","MemberDAO");
+			response.getWriter().println(error.getStatus()+error.getError());
+		}catch(RuntimeException re) {
+			re.printStackTrace();
+		}catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("로그인 실패: " + e.getMessage());
 		}
