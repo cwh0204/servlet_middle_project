@@ -24,10 +24,4 @@ public class UserInfoImpl implements Controller {
 		teamDTO.setUserId(userId);
 		System.out.println(userId);
 	}
-	
-	
-	
-	
-	
-
 }

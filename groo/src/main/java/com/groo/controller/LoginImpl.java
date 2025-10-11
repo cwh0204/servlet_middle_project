@@ -1,7 +1,11 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.lang.module.ResolutionException;
 
+import com.groo.error.ErrorDTO;
+import com.groo.error.InternalServerErrorException;
+import com.groo.error.ResourceNotFoundException;
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
 
@@ -44,7 +48,16 @@ public class LoginImpl extends HttpServlet implements Controller {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.do");
 			}
-		} catch (Exception e) {
+		}catch(ResourceNotFoundException rne) {
+			ErrorDTO error = new ErrorDTO(500,"회원가입 중 오류 발생","MemberDAO");
+			response.getWriter().println(error.getPath()+error.getError());
+		}
+		catch(InternalServerErrorException ie) {
+			ErrorDTO error = new ErrorDTO(404,"회원가입 입력데이터 오류 발생","MemberDAO");
+			response.getWriter().println(error.getPath()+error.getError());
+		}catch(RuntimeException re) {
+			re.printStackTrace();
+		}catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("로그인 실패: " + e.getMessage());
 		}
