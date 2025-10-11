@@ -8,5 +8,4 @@ public class TeamDTO {
 	private String userId;
 	private String teamInfo;
 	private String teamRole;
-
 }
