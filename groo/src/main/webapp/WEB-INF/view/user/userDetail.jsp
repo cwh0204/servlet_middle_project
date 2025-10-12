@@ -36,7 +36,7 @@
         padding: 50px;
         border-radius: 12px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        width: 700px; /* ✅ 폭 확대 */
+        width: 700px;
     }
 
     .input-group {
@@ -84,7 +84,7 @@
 
     textarea {
         resize: none;
-        height: 100px; /* ✅ 텍스트창 크기 확대 */
+        height: 100px;
     }
 
     .button-group {
@@ -104,7 +104,7 @@
     }
 
     .save-btn {
-        background-color: #007BFF;
+        background-color: #7FDBB6;
         color: white;
     }
 
@@ -117,20 +117,48 @@
 <body>
     <h1>회원정보 상세페이지</h1>
 
-    <form action="updateMember.do" method="post" enctype="multipart/form-data">
-        <div class="input-group">
-            <label>프로필 변경</label>
-            <input type="file" name="profile">
-        </div>
+    <form action="updateMember.do" method="post" enctype="multipart/form-data" onsubmit="return showAlert()">
+   
+
+<div class="input-group" style="text-align:center;">
+  <!-- 기본 프로필 -->
+  <img id="profilePreview" 
+       src="https://i.postimg.cc/sX337p8B/user-2.png" 
+       alt="기본 프로필" 
+       style="width:100px; height:100px; border-radius:50%; object-fit:cover; border:1px solid #ccc; display:block; margin:10px auto;">
+  <input type="file" name="profile" id="profile" accept="image/*" onchange="previewProfile(event)" style="margin-left:200px;">
+</div>
+
+
+
+
+<script>
+function previewProfile(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('profilePreview');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  } else {
+    // 파일 선택 취소 시 기본 이미지로 복원
+    preview.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+  }
+}
+</script>
+
 
         <div class="input-group"> 
         <label>아이디</label> 
-        <input type="text" name="ID" value="userID" disabled>
+        <input type="text" name="userID" value="userID" disabled>
         </div>
         
         <div class="input-group">
             <label>비밀번호</label>
-            <input type="password" name="pass">
+            <input type="password" name="password">
         </div>
 
         <div class="input-group">
@@ -153,7 +181,7 @@
             <div style="display: flex; align-items: center; gap:5px;">
             <input type="text" name="jumin_front" maxlength="6" placeholder="123456" disabled style="width:120px; text-align:center;"> 
             <span>-</span>
-            <input type="password" name="rrn_back" maxlength="1" placeholder="●" disabled style="width: 50px; text-align: center;">
+            <input type="password" name="jumin_back" maxlength="1" placeholder="●" disabled style="width: 50px; text-align: center;">
         </div>
         </div>
         
@@ -179,10 +207,10 @@ const domainSelect = document.querySelector('select[name="email_select"]');
 
 domainSelect.addEventListener('change', () => {
     if(domainSelect.value === "direct" || domainSelect.value === "") {
-        domainInput.value = ""; // 직접입력 선택 시 초기화
+        domainInput.value = ""; 
         domainInput.removeAttribute("readonly");
     } else {
-        domainInput.value = domainSelect.value; // 선택된 도메인 적용
+        domainInput.value = domainSelect.value; 
         domainInput.setAttribute("readonly", true);
     }
 });
@@ -238,6 +266,54 @@ function openPostcode() {
         <textarea name="ff" placeholder="관심분야를 입력하세요" rows="10" cols="90"></textarea>
     </div>
 </div>
+    <div style="text-align:center; margin-top:10px;">     
+         <button type="submit" class="save-btn" value="회원정보수정">회원정보수정</button>
+         <button type="reset" value="취소" onclick="showCancelAlert()">취소</button>
+    </div> 
+    
 </form>
+<script>
+//프로필 사진 기본으로 복원
+const defaultProfile = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+
+function previewProfile(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('profilePreview');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = defaultProfile; 
+  }
+}
+
+function showAlert() {
+    alert("회원정보가 수정되었습니다."); 
+    return true; 
+}
+
+function showCancelAlert() {
+    alert("취소되었습니다."); 
+}
+
+function showAlert() {
+    alert("회원정보가 수정되었습니다."); 
+    return true; 
+}
+
+// 취소버튼 누르면 기본 이미지로 복원
+function showCancelAlert() {
+    alert("취소되었습니다."); 
+
+    const preview = document.getElementById('profilePreview');
+    preview.src = defaultProfile;
+
+    document.getElementById('profile').value = ""; // 중복 선택할 경우 안전성을 위함
+}
+</script>
 </body>
 </html>
