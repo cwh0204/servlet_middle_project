@@ -22,7 +22,8 @@ html, body {
 	height : 870px;
 	flex-direction : column;
 	border : 1px solid #e6e6e6;
-	box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+	box-shadow: 3px 0 11px rgba(0, 0, 0, 0.2);
+	margin-right: 10px;
 
 }
 
@@ -38,7 +39,6 @@ html, body {
 	overflow: hidden;
 	display:flex;
 	justify-content : center;
-	background-color : white;
 	margin : 30px auto 1px;
 }
 
@@ -47,15 +47,100 @@ html, body {
 	text-align: center;
 }
 
+.category ul{
+	list-style : none;
+	padding-left:0px;
+	margin-left:0px;
+}
+
+.big_cate{
+	font-size : 18px;
+	margin: 8px 10px;
+	padding:12px;
+	background-color:f9f9f9;
+	cursor: pointer;
+	position:relative;
+	transition: background-color 0.3s ease;
+}
+
+
+
+.big_cate > ul{
+	max-height: 0;
+	overflow: hidden;
+	padding-left :0;
+	margin: 0;
+	transition: max-height 0.3s ease-out;
+}
+
+.big_cate:hover > ul {
+	max-height: 500px;
+	transition:max-height 0.6s ease-in;
+}
+
+.big_cate ul li {
+	font-size : 16px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	padding : 8px 12px;
+	background-color:white;
+}
+
+.big_cate ul li:hover {
+	background-color : #28a745;
+	color : white;
+	
+}
+
+
 .content {
 	flex : 4;
-	
 	width : 387px;
 	height : 870px;
+	
+}
 
+.icon_line ul{
+	list-style : none;
+	display : flex;
+	justify-content : flex-end;
+	gap : 30px;
+}
+
+.icon_line li {
+	position: relative;
+	color : black;
+	padding-bottom: 4px;
+}
+
+.icon_line li::after {
+	content: "";
+	position : absolute;
+	left: 50%;
+	bottom: 0;
+	width: 0%;
+	height: 2px;
+	background-color :  #28a745;
+	transform : translateX(-50%);
+	transition : width 0.3s ease;
+}
+
+.icon_line li:hover::after {
+	width : 100%;
 }
 
 .right_empty{
 	flex : 1;
-	
 }
+
+.study_alram{
+	background-color : red;
+}
+
+.short_board{
+	background-color : pink;
+}
+
+
+
+
+

@@ -23,29 +23,34 @@
 				</div>
 				<div class="category">
 					<ul>
-						<li>schedule
+						<li class ="big_cate">내프로필</li>
+						<li class ="big_cate">schedule
 							<ul>
-								<li>스터디 일정보기</li>
-								<li>출석기록보기</li>
-								<li>스터디탈퇴</li>
+								<li>스터디 일정</li>
+								<li>모임취소 요청하기</li>
 							</ul>
 						</li>
-						<li>내가속한스터디목록보기
+						<li class ="big_cate">나의 스터디
 							<ul>
 								<li>스터디상세보기</li>
-								<li></li>
+								<li>스터디진행상황</li>
+								<li>스터디 탈퇴</li>
 							</ul>
 						</li>
-						<li>팀찾기</li>
-						<li>팀생성</li>
-						<li>나의 활동
+						<li class ="big_cate">나의 활동
 							<ul>
-								<li>작성한게시글목록</li>
-								<li>작성한리뷰목록</li>
-								<li>스터디참석율현황</li>
+								<li>나의 참석률현황판</li>
+								<li>작성한리뷰목록(수정/조회/삭제)</li>
+								<li>작성한게시글목록(수정/조회/삭제)</li>
 							</ul>
 						</li>
-
+						<li class ="big_cate">팀찾기
+						<ul>
+						<li>신규 생성 스터디목록</li>
+						<li>나의 관심 스터디 목록</li>
+						</ul>
+						</li>
+						<li class ="big_cate">팀생성</li>
 					</ul>
 				</div>
 			</div>
@@ -58,6 +63,9 @@
 						<li>logout</li>
 					</ul>
 				</div>
+				<div class = "study_alram">참여중인 스터디의 신규 활동알림</div>
+				<div class ="short_board">나의 활동현황판</div>
+				<div>그루캘린더</div>
 			</div>
 			<div class="right_empty"></div>
 		</div>
