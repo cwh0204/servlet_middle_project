@@ -24,17 +24,6 @@ body {
   padding: 0;
 }
 
-header {
-   background-color: #0d6efd;
-   color: white;
-   padding: 40px 20px;
-   text-align: center;
-   font-size: 32px;
-   font-weight: bold;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   border-radius: 0 0 20px 20px;
-}
-
 .section {
    display: flex;
    justify-content: center;
@@ -86,7 +75,7 @@ input[type="submit"] {
       color: white;
       border: none;
       border-radius: 4px;
-      font-size: 16px;
+      font-size: 20px;
       cursor: pointer;
 }
 
@@ -173,6 +162,37 @@ input[type="submit"]:hover {
    margin-top: 20px;
 }
 
+.addressGroup input[type="text"] {
+  margin-bottom: 8px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.addressRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* 주소 검색 버튼 
+.addressGroup input[type="button"] {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.addressGroup input[type="button"]:hover {
+  background-color: #084ccc;
+}
+*/
 </style>
 </head>
 <body>
@@ -223,13 +243,16 @@ input[type="submit"]:hover {
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
       	</div>
-      	<div>
-          <label for="address">주소</label><br>
-          <input type="text" id="address" name="address" required>
+      	<div class="addressGroup">
+          <label for="postcode">주소</label><br>
+          
+        <div class="addressRow">
+          <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly required>
+          <input type="button" onclick="execDaumPostcode()" value="우편번호 검색">
         </div>
-        <div>
-          <label for="addressDetail">상세주소</label><br>
-          <input type="text" id="addressDetail" name="addressDetail" required>
+          
+        <input type="text" id="address" name="address" placeholder="기본 주소" readonly required>
+        <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소" required>
         </div>
         <div class="signup">
       	  <input type="submit" value="가입하기">
@@ -237,7 +260,8 @@ input[type="submit"]:hover {
       </form>
    </section>
 </div>
-</body>
+
+<!-- 이메일 도메인 선택 -->
 <script type="text/javascript">
 const emailDomain = document.getElementById('emailDomain');
 const emailDomainSelect = document.getElementById('emailDomainSelect');
@@ -255,4 +279,21 @@ emailDomainSelect.addEventListener('change', function () {
   }
 });
 </script>
+
+<!-- 카카오 주소 API -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+  function execDaumPostcode() {
+    new daum.Postcode({
+      oncomplete: function(data) {
+        var addr = data.roadAddress ? data.roadAddress : data.jibunAddress;
+        
+        document.getElementById('postcode').value = data.zonecode;
+        document.getElementById("address").value = addr;
+        document.getElementById("addressDetail").focus();
+      }
+    }).open();
+  }
+</script>
+</body>
 </html>
