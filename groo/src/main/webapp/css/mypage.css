@@ -5,8 +5,10 @@ html, body {
 }
 
 .t_container {
+	margin-top :24px;
 	display : flex;
 	flex-direction : row;
+	
 	
 	
 }
@@ -22,9 +24,14 @@ html, body {
 	height : 870px;
 	flex-direction : column;
 	border : 1px solid #e6e6e6;
+	border-radius : 20px;
 	box-shadow: 3px 0 11px rgba(0, 0, 0, 0.2);
-	margin-right: 10px;
+	margin-right: 27px;
 
+}
+
+img {
+	border-radius : 5px;
 }
 
 .logo img {
@@ -51,13 +58,13 @@ html, body {
 	list-style : none;
 	padding-left:0px;
 	margin-left:0px;
+	
 }
 
 .big_cate{
 	font-size : 18px;
 	margin: 8px 10px;
 	padding:12px;
-	background-color:f9f9f9;
 	cursor: pointer;
 	position:relative;
 	transition: background-color 0.3s ease;
@@ -86,9 +93,24 @@ html, body {
 }
 
 .big_cate ul li:hover {
-	background-color : #28a745;
-	color : white;
 	
+	color :#28a745;
+	
+}
+
+.big_cate::after {
+	content: "";
+	position: absolute;
+	left: 0%;
+	bottom: 0;
+	width: 0%;
+	height: 2px;
+	background-color: #28a745; 
+	transition: width 0.3s ease;
+}
+
+.big_cate:hover::after {
+	width: 100%;
 }
 
 
@@ -104,6 +126,7 @@ html, body {
 	display : flex;
 	justify-content : flex-end;
 	gap : 30px;
+	margin-bottom : 30px;
 }
 
 .icon_line li {
@@ -132,13 +155,40 @@ html, body {
 	flex : 1;
 }
 
+
+.calander{
+	border : 1px solid #e6e6e6;
+	border-radius : 20px;
+	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
+	
+	width : 1019px;
+	height : 400px;
+	border-radius : 14px;
+	margin-bottom : 20px;
+}
+
 .study_alram{
-	background-color : red;
+	border : 1px solid #e6e6e6;
+	border-radius : 20px;
+	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
+	
+	width : 1019px;
+	height : 176px;
+	border-radius : 14px;
+	margin-bottom : 20px;
 }
 
 .short_board{
-	background-color : pink;
+	border : 1px solid #e6e6e6;
+	border-radius : 20px;
+	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
+	margin-bottom : 20px;
+	width : 1019px;
+	height : 176px;
+	border-radius : 14px;
 }
+
+
 
 
 

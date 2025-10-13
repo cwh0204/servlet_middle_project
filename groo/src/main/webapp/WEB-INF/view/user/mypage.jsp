@@ -63,9 +63,9 @@
 						<li>logout</li>
 					</ul>
 				</div>
-				<div class = "study_alram">참여중인 스터디의 신규 활동알림</div>
+				<div class = "calander">그루캘린더</div>
 				<div class ="short_board">나의 활동현황판</div>
-				<div>그루캘린더</div>
+				<div class = "study_alram">참여중인 스터디의 신규활동알림</div>
 			</div>
 			<div class="right_empty"></div>
 		</div>
