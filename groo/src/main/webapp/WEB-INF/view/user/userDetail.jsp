@@ -22,6 +22,7 @@
         background-color: #f8f9fa;
         padding-top: 50px;
         padding-bottom: 50px;
+        background-color = pink;
     }
 
     h1 {
