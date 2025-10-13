@@ -182,6 +182,7 @@ function previewProfile(event) {
             <input type="text" name="jumin_front" maxlength="6" placeholder="123456" disabled style="width:120px; text-align:center;"> 
             <span>-</span>
             <input type="password" name="jumin_back" maxlength="1" placeholder="●" disabled style="width: 50px; text-align: center;">
+            <span>******</span>
         </div>
         </div>
         
