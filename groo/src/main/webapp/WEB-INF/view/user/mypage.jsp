@@ -91,6 +91,7 @@
 				initialView : 'dayGridMonth',
 				height : 400,
 				locale : 'ko',
+				
 				events : [ {
 					title : '스터디 모임',
 					start : '2025-10-15'
