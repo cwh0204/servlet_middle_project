@@ -29,8 +29,12 @@
 				</div>
 				<div class="category">
 					<ul>
-						<li class="big_cate">내프로필</li>
-						<li class="big_cate">schedule
+						<li class="big_cate">내 프로필
+						<ul>
+						<li>회원상세이지</li>
+						</ul>
+						</li>
+						<li class="big_cate">스터디캘린더
 							<ul>
 								<li>스터디 일정</li>
 								<li>모임취소 요청하기</li>
@@ -45,9 +49,9 @@
 						</li>
 						<li class="big_cate">나의 활동
 							<ul>
-								<li>나의 참석률현황판</li>
-								<li>작성한리뷰목록(수정/조회/삭제)</li>
-								<li>작성한게시글목록(수정/조회/삭제)</li>
+								<li>나의 관심스터디</li>
+								<li>나의 리뷰(수정/조회/삭제)</li>
+								<li>나의 게시글(수정/조회/삭제)</li>
 							</ul>
 						</li>
 						<li class="big_cate">팀찾기
@@ -56,7 +60,12 @@
 								<li>나의 관심 스터디 목록</li>
 							</ul>
 						</li>
-						<li class="big_cate">팀생성</li>
+						<li class="big_cate">게시글
+							<ul>
+								<li>나의 리뷰</li>
+								<li>나의 게시글</li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -73,40 +82,40 @@
 					<div class="top">groo calander</div>
 					<div id="calendar"></div>
 				</div>
-				<div class="short_board">
-					<div class="top">나의 활동현황판</div>
+				<div class="short_board basicInfoBtn">
+					<div class="top basicInfoBtn">기본정보</div>
 				</div>
 				<div class="study_alram">
-					<div class="top">신규활동알림</div>
+					<div class="top">새로운알림</div>
 				</div>
 			</div>
 			<div class="right_empty"></div>
 		</div>
 	</main>
-
+	
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const calendarEl = document.getElementById('calendar');
-			const calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : 'dayGridMonth',
-				height : 400,
-				locale : 'ko',
-				
-				events : [ {
-					title : '스터디 모임',
-					start : '2025-10-15'
-				}, {
-					title : '프로젝트 회의',
-					start : '2025-10-18'
-				}, {
-					title : '팀 이벤트',
-					start : '2025-10-21'
-				} ]
-			});
-			calendar.render();
+	document.addEventListener("DOMContentLoaded", () => {
+		  // 모든 .basicInfoBtn 요소 가져오기
+		  document.querySelectorAll(".basicInfoBtn").forEach(btn => {
+		    btn.addEventListener("click", () => {
+		      window.location.href = "${pageContext.request.contextPath}/userdetail.do";
+		    });
+		  });
+
+		  // 캘린더 초기화
+		  const calendarEl = document.getElementById('calendar');
+		  const calendar = new FullCalendar.Calendar(calendarEl, {
+		    initialView: 'dayGridMonth',
+		    height: 400,
+		    locale: 'ko',
+		    events: [
+		      { title: '스터디 모임', start: '2025-10-15' },
+		      { title: '프로젝트 회의', start: '2025-10-18' },
+		      { title: '팀 이벤트', start: '2025-10-21' }
+		    ]
+		  });
+		  calendar.render();
 		});
-	</script>
-
-
+</script>
 </body>
 </html>
