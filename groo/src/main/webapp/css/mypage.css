@@ -4,6 +4,9 @@ html, body {
 	margin: 0;
 }
 
+
+
+
 .t_container {
 	margin-top :24px;
 	display : flex;
@@ -27,6 +30,8 @@ html, body {
 	border-radius : 20px;
 	box-shadow: 3px 0 11px rgba(0, 0, 0, 0.2);
 	margin-right: 27px;
+	background-color : #fffefb;
+	
 
 }
 
@@ -55,6 +60,7 @@ img {
 }
 
 .category ul{
+	
 	list-style : none;
 	padding-left:0px;
 	margin-left:0px;
@@ -89,7 +95,7 @@ img {
 	font-size : 16px;
 	transition: background-color 0.3s ease, color 0.3s ease;
 	padding : 8px 12px;
-	background-color:white;
+	background-color : #fffefb;
 }
 
 .big_cate ul li:hover {
@@ -165,6 +171,8 @@ img {
 	height : 400px;
 	border-radius : 14px;
 	margin-bottom : 20px;
+	background-color : #fffefb;
+	
 }
 
 .study_alram{
@@ -176,6 +184,8 @@ img {
 	height : 176px;
 	border-radius : 14px;
 	margin-bottom : 20px;
+	background-color : #fffefb;
+	
 }
 
 .short_board{
@@ -186,9 +196,37 @@ img {
 	width : 1019px;
 	height : 176px;
 	border-radius : 14px;
+	background-color : #fffefb;
+	
 }
 
+.top{
+	background-color: #28a745;
+	border-radius : 20px;
+	color : white;
+	font-weight: 600;               
+	font-size: 17px;                
+	padding: 10px 20px;            
+	border-radius: 14px 14px 0 0;  
+	display: flex;                 
+	align-items: center;            
+}
 
+.calander,
+.short_board,
+.study_alram{
+	background-color: #fffef5;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.calander:hover,
+.short_board:hover,
+.study_alram:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
 
 
 

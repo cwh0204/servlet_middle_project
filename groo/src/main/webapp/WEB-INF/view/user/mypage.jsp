@@ -63,9 +63,15 @@
 						<li>logout</li>
 					</ul>
 				</div>
-				<div class = "calander">그루캘린더</div>
-				<div class ="short_board">나의 활동현황판</div>
-				<div class = "study_alram">참여중인 스터디의 신규활동알림</div>
+				<div class = "calander">
+					<div class ="top">groo calander</div>
+				</div>
+				<div class ="short_board">
+				<div class ="top">나의 활동현황판</div>
+				</div>
+				<div class = "study_alram">
+				<div class ="top">신규활동알림</div>
+				</div>
 			</div>
 			<div class="right_empty"></div>
 		</div>
