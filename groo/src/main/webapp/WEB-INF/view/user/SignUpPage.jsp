@@ -28,7 +28,6 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-top: 50px;
 }
 
 section {
@@ -36,6 +35,7 @@ section {
    max-width: 600px;
    background-color: white;
    padding:40px;
+   margin: 30px 0;
    border-radius: 12px;
    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
    border: none;
@@ -89,18 +89,15 @@ input[type="submit"]:hover {
      align-items: center;
 }
 
-.idRow input {
-     flex: 1;
-}
-
 .idRow input[type="text"] {
      flex: 1;
 }
 
 .idRow input[type="button"] {
+	 flex: none;
      padding: 10px;
-     width: 100px;
-     background-color: #0d6efd;
+     width: 80px;
+     background-color: #84d330;
      color: white;
      border: none;
      border-radius: 4px;
@@ -109,9 +106,9 @@ input[type="submit"]:hover {
 }
 
 .idRow input[type="button"]:hover {
-  background-color: #084ccc;
+  background-color: #1fb205;
 }
-/*
+
 .juminRow {
   display: flex;
   align-items: center;
@@ -126,9 +123,19 @@ input[type="submit"]:hover {
 }
 
 .juminRow span {
-  font-size: 16px;
+  font-size: 18px;
 }
-*/
+
+.oneChar {
+   width: 30px;
+   flex: 0 0 50px;
+   box-sizing: border-box;
+   text-align: center;
+}
+
+#jumin1 {
+	width: 250px;
+}
 .emailRow {
      display: grid;
      grid-template-columns: 2fr auto 2fr auto;
@@ -140,10 +147,6 @@ input[type="submit"]:hover {
       flex: 1;
 }
 
-.oneChar {
-   width: 30px;
-   text-align: center;
-}
 .sr-only {
    position: absolute;
    width: 1px;
@@ -162,8 +165,15 @@ input[type="submit"]:hover {
    margin-top: 20px;
 }
 
+#postcode {
+  width: 160px;         
+  height: 42px;
+  padding: 10px;         
+  font-size: 14px;
+}
+
 .addressGroup input[type="text"] {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   width: 100%;
   padding: 10px;
   border: 1px solid #ced4da;
@@ -178,21 +188,24 @@ input[type="submit"]:hover {
   margin-bottom: 8px;
 }
 
-/* 주소 검색 버튼 
 .addressGroup input[type="button"] {
-  background-color: #0d6efd;
+  background-color: #84d330;
   color: white;
   border: none;
   border-radius: 4px;
+  width: 120px;
+  height: 42px;
   padding: 10px;
+  box-sizing: border-box;
   cursor: pointer;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .addressGroup input[type="button"]:hover {
-  background-color: #084ccc;
+  background-color: #1fb205;
 }
-*/
+
 </style>
 </head>
 <body>
@@ -242,6 +255,9 @@ input[type="submit"]:hover {
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
+      	  
+      	  <input type="button" value="이메일 인증 요청" onclick="openEmailAuthPopup()">
+      	  
       	</div>
       	<div class="addressGroup">
           <label for="postcode">주소</label><br>
@@ -254,6 +270,9 @@ input[type="submit"]:hover {
         <input type="text" id="address" name="address" placeholder="기본 주소" readonly required>
         <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소" required>
         </div>
+        
+        <div class="g-recaptcha" data-sitekey="6LdJB-orAAAAAJkFTCtPCgXVGhgSTPN-NQGWtgAj"></div>
+        
         <div class="signup">
       	  <input type="submit" value="가입하기">
         </div>
@@ -295,5 +314,9 @@ emailDomainSelect.addEventListener('change', function () {
     }).open();
   }
 </script>
+
+<!-- reCAPTCHA 로봇인지 확인 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </body>
 </html>
