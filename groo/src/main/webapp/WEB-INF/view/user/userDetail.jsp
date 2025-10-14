@@ -116,9 +116,8 @@
 </head>
 <body>
     <h1>회원정보 상세페이지</h1>
-
     <form action="updateMember.do" method="post" enctype="multipart/form-data" onsubmit="return showAlert()">
-   
+  
 
 <div class="input-group" style="text-align:center;">
   <!-- 기본 프로필 -->
@@ -129,33 +128,13 @@
   <input type="file" name="profile" id="profile" accept="image/*" onchange="previewProfile(event)" style="margin-left:200px;">
 </div>
 
-
-
-
-<script>
-function previewProfile(event) {
-  const file = event.target.files[0];
-  const preview = document.getElementById('profilePreview');
-
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-    }
-    reader.readAsDataURL(file);
-  } else {
-    // 파일 선택 취소 시 기본 이미지로 복원
-    preview.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
-  }
-}
-</script>
-
-
         <div class="input-group"> 
         <label>아이디</label> 
         <input type="text" name="userID" value="userID" disabled>
         </div>
         
+        <input type="hidden" name="password2" value="0">
+        <input type="hidden" name="passtry2" value="0">
         <div class="input-group">
             <label>비밀번호</label>
             <input type="password" name="password">
@@ -202,21 +181,6 @@ function previewProfile(event) {
     </select>
 </div>
 
-<script>
-const domainInput = document.querySelector('input[name="emailadd"]');
-const domainSelect = document.querySelector('select[name="email_select"]');
-
-domainSelect.addEventListener('change', () => {
-    if(domainSelect.value === "direct" || domainSelect.value === "") {
-        domainInput.value = ""; 
-        domainInput.removeAttribute("readonly");
-    } else {
-        domainInput.value = domainSelect.value; 
-        domainInput.setAttribute("readonly", true);
-    }
-});
-</script>
-
         <div class="input-group">
             <label>전화번호</label>
             <div style="display:flex; gap:10px; align-items:center;">
@@ -242,20 +206,6 @@ domainSelect.addEventListener('change', () => {
     <input type="text" id="address2" name="address2" placeholder="상세주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;">
 </div>
 
-<!-- 카카오 우편번호 API -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-function openPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            document.getElementById('zipcode').value = data.zonecode; // 우편번호
-            document.getElementById('address1').value = data.roadAddress; // 도로명 주소
-            document.getElementById('address2').focus(); // 상세주소 입력창
-        }
-    }).open();
-}
-</script>
-
         <div class="input-group">
     <label>관심분야</label>
     <div class="checkbox-group">
@@ -273,10 +223,12 @@ function openPostcode() {
     </div> 
     
 </form>
-<script>
-//프로필 사진 기본으로 복원
-const defaultProfile = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
 
+<!-- 카카오 우편번호api -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script>
+<!-- 프로필 미리보기 -->
 function previewProfile(event) {
   const file = event.target.files[0];
   const preview = document.getElementById('profilePreview');
@@ -288,15 +240,38 @@ function previewProfile(event) {
     }
     reader.readAsDataURL(file);
   } else {
-    preview.src = defaultProfile; 
+    preview.src = "https://i.postimg.cc/sX337p8B/user-2.png";
   }
 }
 
-function showAlert() {
-    alert("회원정보가 수정되었습니다."); 
-    return true; 
+
+<!-- 이메일 뒷부분 자동입력 및 직접입력 -->
+const domainInput = document.querySelector('input[name="emailadd"]');
+const domainSelect = document.querySelector('select[name="email_select"]');
+
+domainSelect.addEventListener('change', () => {
+    if(domainSelect.value === "direct" || domainSelect.value === "") {
+        domainInput.value = ""; 
+        domainInput.removeAttribute("readonly");
+    } else {
+        domainInput.value = domainSelect.value; 
+        domainInput.setAttribute("readonly", true);
+    }
+});
+
+<!-- 우편번호 팝업창 열기 -->
+function openPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            document.getElementById('zipcode').value = data.zonecode; // 우편번호
+            document.getElementById('address1').value = data.roadAddress; // 도로명 주소
+            document.getElementById('address2').focus(); // 상세주소
+        }
+    }).open();
 }
 
+
+<!-- 팝업창 -->
 function showCancelAlert() {
     alert("취소되었습니다."); 
 }
@@ -306,15 +281,8 @@ function showAlert() {
     return true; 
 }
 
-// 취소버튼 누르면 기본 이미지로 복원
-function showCancelAlert() {
-    alert("취소되었습니다."); 
 
-    const preview = document.getElementById('profilePreview');
-    preview.src = defaultProfile;
 
-    document.getElementById('profile').value = ""; // 중복 선택할 경우 안전성을 위함
-}
 </script>
 </body>
 </html>
