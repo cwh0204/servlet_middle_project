@@ -237,3 +237,56 @@ img {
 }
 
 /*[우측 달력, 기본정보, 새로운알림 영역 종료]*/
+
+/*[달력 토/일 적청색상부여]*/
+.fc-day-sun a {
+  color: red !important;
+}
+
+.fc-day-sat a {
+  color: blue !important;
+}
+/*[달력 토/일 적청색상부여]*/
+/*[달력 버튼 년월 버튼 간격조절]*/
+
+
+.fc-header-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important; 
+}
+
+.fc-toolbar-chunk {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.fc-toolbar-title {
+  margin: 0 3px !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+}
+
+.fc-prev-button, .fc-next-button {
+  background: none !important;
+  border: none !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  color: #28a745 !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.fc-prev-button:hover, .fc-next-button:hover {
+  color: #1e7e34 !important;
+
+}
+
+.fc-prev-button:focus,
+.fc-next-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+

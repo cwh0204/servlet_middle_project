@@ -108,7 +108,15 @@
 		    initialView: 'dayGridMonth',
 		    height: 400,
 		    locale: 'ko',
-		    events: [
+		    headerToolbar: {        
+		        left: 'prev',    
+		        center: 'title',      
+		        right: 'next'             
+		      },
+		    dayHeaderContent: (args) =>
+		  {const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+		  return days[args.date.getDay()];},
+		  events: [
 		      { title: '스터디 모임', start: '2025-10-15' },
 		      { title: '프로젝트 회의', start: '2025-10-18' },
 		      { title: '팀 이벤트', start: '2025-10-21' }
