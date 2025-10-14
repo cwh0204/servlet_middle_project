@@ -30,9 +30,9 @@
 				<div class="category">
 					<ul>
 						<li class="big_cate">내 프로필
-						<ul>
-						<li>회원상세이지</li>
-						</ul>
+							<ul>
+								<li class="basicInfoBtn">회원상세이지</li>
+							</ul>
 						</li>
 						<li class="big_cate">스터디캘린더
 							<ul>
@@ -92,7 +92,7 @@
 			<div class="right_empty"></div>
 		</div>
 	</main>
-	
+
 	<script>
 	document.addEventListener("DOMContentLoaded", () => {
 		  // 모든 .basicInfoBtn 요소 가져오기

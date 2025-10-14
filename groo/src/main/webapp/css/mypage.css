@@ -254,7 +254,7 @@ img {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 7px !important; 
+  gap: 6px !important; 
 }
 
 .fc-toolbar-chunk {
@@ -286,6 +286,29 @@ img {
 .fc-next-button:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+/*[캘린더의 스크롤바 감추기]*/
+.calander,
+.fc-scroller, 
+#calendar {
+  overflow: auto !important;
+  scrollbar-width: none !important; /* Firefox */
+}
+
+.calander::-webkit-scrollbar,
+.fc-scroller::-webkit-scrollbar,
+#calendar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+/*[날짜 그리드 제거]*/
+.fc-scrollgrid,
+.fc-scrollgrid table,
+.fc-scrollgrid td,
+.fc-scrollgrid th,
+.fc-daygrid-day,
+.fc-col-header-cell {
+  border: none !important;
+  outline: none !important;
 }
 
 
