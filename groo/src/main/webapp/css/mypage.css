@@ -1,91 +1,119 @@
 @charset "UTF-8";
 
-/*[전체 구조]*/
+/*----------------------------------
+[전체 구조]
+----------------------------------*/
 html, body {
 	margin: 0;
+	padding: 0;
 	overflow: auto;
+	font-size: 16px;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+	display: none;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
 .t_container {
-	margin-top: 24px;
+	margin: 2vh auto 0 auto;
 	display: flex;
 	flex-direction: row;
-	height : 93vh;
+	height: 93vh;
+	width: 90%;
+	max-width: 1600px;
+	box-sizing: border-box;
 }
 
-.left_empty {
-	flex: 1;
-}
-
-.right_empty {
-	flex: 1;
-}
-/*[전체 구조 끝]*/
-
-/*[왼쪽 프로필 영역 시작]*/
+/*----------------------------------
+[왼쪽 프로필 영역]
+----------------------------------*/
 .profile_category_line {
 	display: flex;
 	flex: 1.5;
 	align-items: flex-start;
 	flex-direction: column;
 	border: 1px solid #e6e6e6;
-	border-radius: 20px;
-	box-shadow: 3px 0 11px rgba(0, 0, 0, 0.2);
-	margin-right: 27px;
+	border-radius: 0.75rem;
+	box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2);
+	margin-right: 2vw;
+	padding: 1rem 0 2.5rem 0;
+	box-sizing: border-box;
+	min-height: 650px; /* ✅ 기본 높이만 유지 */
+	height: auto;      /* ✅ 높이 자동 확장 가능 */
+	transition: height 0.4s ease; /* ✅ 부드럽게 늘어나도록 */
 }
 
+
 img {
-	border-radius: 5px;
+	border-radius: 0.3rem;
 }
 
 .logo img {
-	width: 150px;
-	margin-bottom: 5px;
+	width: 9vw;
+	max-width: 150px;
+	margin: 0 auto 0.5rem auto;
+	display: block;
 }
 
 .profile_photo {
-	width: 150px;
-	height: 150px;
+	width: 130px;              /* ✅ 고정 크기 */
+	height: 130px;             /* ✅ 정사각형으로 맞춤 */
 	border-radius: 50%;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
-	margin: 30px auto 1px;
+	align-items: center;
+	margin: 2rem auto 0.5rem;
+	flex-shrink: 0;
+	background-color: #f8f9fa; /* (선택) 빈공간 대비 배경 */
+}
+
+.profile_photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;         /* ✅ 원본 비율 유지하며 꽉 채우기 */
+	border-radius: 50%;
 }
 
 .profile_nic {
-	margin: 10px auto;
+	margin: 0.8rem auto;
 	text-align: center;
+	font-size: 1rem;
 }
-/*[왼쪽 프로필 영역 종료]*/
 
-/*[왼쪽 카테고리 메뉴 시작]*/
+
+
+/*----------------------------------
+[왼쪽 카테고리 메뉴]
+----------------------------------*/
 .category ul {
 	list-style: none;
-	padding-left: 0px;
-	margin-left: 0px;
+	padding-left: 0;
+	margin-left: 0;
 }
 
 .big_cate {
-	font-size: 18px;
-	margin: 5px 8px;
-	padding: 12px;
+	font-size: 1.125rem;
+	margin: 0.5rem 0.8rem;
+	padding: 0.75rem;
 	cursor: pointer;
 	position: relative;
 	transition: background-color 0.3s ease;
 }
 
-.big_cate>ul {
+.big_cate > ul {
 	max-height: 0;
 	overflow: hidden;
 	padding-left: 0;
 	margin: 0;
-	transition: max-height 0.3s ease-out;
+	transition: max-height 0.4s ease;
 }
 
 .big_cate:hover>ul {
@@ -94,9 +122,9 @@ img {
 }
 
 .big_cate ul li {
-	font-size: 16px;
-	transition: background-color 0.3s ease, color 0.3s ease;
-	padding: 8px 12px;
+	font-size: 1rem;
+	transition: color 0.3s ease;
+	padding: 0.5rem 1rem;
 }
 
 .big_cate ul li:hover {
@@ -106,7 +134,7 @@ img {
 .big_cate::after {
 	content: "";
 	position: absolute;
-	left: 0%;
+	left: 0;
 	bottom: 0;
 	width: 0%;
 	height: 2px;
@@ -117,29 +145,48 @@ img {
 .big_cate:hover::after {
 	width: 100%;
 }
-/*[왼쪽 카테고리 메뉴 종료]*/
 
-/*[오른쪽 콘텐츠 영역 기본골자]*/
+/*----------------------------------
+[오른쪽 콘텐츠 영역]
+----------------------------------*/
 .content {
 	flex: 4;
-	width: 387px;
-	height: 870px;
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	min-height: 93vh; /* ✅ 프로필라인과 하단 정렬 */
+	position: relative;
+	z-index: 0;
 }
-/*[오른쪽 콘텐츠 영역 기본골자 종료]*/
 
-/*[우상단 메뉴 home/notice/logout 부분시작]*/
+/*----------------------------------
+[우상단 메뉴 - home / notice / logout]
+----------------------------------*/
+.icon_line {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
 .icon_line ul {
 	list-style: none;
 	display: flex;
 	justify-content: flex-end;
-	gap: 30px;
-	margin-bottom: 30px;
+	gap: 2.2vw;
+	margin-right: 3.5vw;
+	margin-bottom: 1.2rem;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .icon_line li {
 	position: relative;
 	color: black;
-	padding-bottom: 4px;
+	padding-bottom: 0.3rem;
+	font-size: 1rem;
 }
 
 .icon_line li::after {
@@ -157,173 +204,187 @@ img {
 .icon_line li:hover::after {
 	width: 100%;
 }
-/*[우상단 메뉴 home/notice/logout 부분 종료]*/
 
-/*[우측 달력, 기본정보, 새로운알림 영역]*/
-
+/*----------------------------------
+[달력, 기본정보, 알림]
+----------------------------------*/
 .top {
 	background-color: #28a745;
-	border-radius: 20px;
 	color: white;
 	font-weight: 600;
-	font-size: 17px;
-	padding: 10px 20px;
-	border-radius: 14px 14px 0 0;
+	font-size: 1.05rem;
+	padding: 0.8rem 1.2rem;
+	border-radius: 0.75rem 0.75rem 0 0;
 	display: flex;
 	align-items: center;
 }
 
-.profile_category_line, .calander, .short_board, .study_alram {
-	border-radius: 14px;
-	box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
+/* ✅ 팝업 hover + 그림자 */
+.profile_category_line,
+.calander,
+.short_board,
+.study_alram {
+	border-radius: 0.75rem;
+	box-shadow: 0 0 1.1rem rgba(0, 0, 0, 0.15);
 	transition: all 0.3s ease;
+	position: relative;
+	z-index: 0;
+	transform: translateY(0);
 }
 
-.profile_category_line:hover, .calander:hover, .short_board:hover,
-	.study_alram:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 10px 25px rgba(40, 167, 69, 0.7);
+.profile_category_line:hover,
+.calander:hover,
+.short_board:hover,
+.study_alram:hover {
+	box-shadow: 0 0.8rem 1.6rem rgba(40, 167, 69, 0.6);
+	transform: translateY(-6px);
+	z-index: 10;
 }
 
-#calendar {
-	width: 100%;
-	height: 100%;
-}
-
-.calander {
+/* ✅ 공통 박스 구조 */
+.calander, .short_board, .study_alram {
+	width: 90vw;
+	max-width: 870px;
 	border: 1px solid #e6e6e6;
-	border-radius: 20px;
-	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
-	border-radius: 14px;
-	margin-bottom: 20px;
-	height: 500px;
+	border-radius: 0.75rem;
+	box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	transition: all 0.3s ease;
+	background: #fff;
+}
+
+/* ✅ 달력 */
+.calander {
+	margin-bottom: 1.5rem;
+	height: 49vh;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	transition : height 0.6s ease;/*스터디 일정 클릭시 달력이 길어지기 위해서 트랜지션 추가*/
+	will-change: height;
+	
 }
 
-.calander .top {
-	border-bottom: none;
-	margin-bottom: 0;
+/* ✅ 달력 전용: 가벼운 레이어만 올리는 방식 */
+.calander {
+  position: relative;
+  border: 1px solid #e6e6e6;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.22s ease; /* transform만 */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: paint; /* 내부 페인트 분리로 끊김 완화 */
 }
 
-.calander, .short_board, .study_alram {
-	width: 90vw; /* 브라우저 폭의 90% */
-	max-width: 1000px; /* 최대 폭 제한 (원하면 삭제 가능) */
-	border: 1px solid #e6e6e6;
-	border-radius: 14px;
-	box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
-	margin-bottom: 20px;
-	box-sizing: border-box;
-	transition: all 0.3s ease;
+/* 그림자 전용 가짜 레이어 */
+.calander::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  /* 가짜 팝업 그림자 (부담이 적음) */
+  box-shadow: 0 12px 24px rgba(40, 167, 69, 0.28);
 }
 
-.short_board, .study_alram {
-	height : 13.1vh;
+/* 호버 시: 본문은 거의 안 움직이고, 가짜 그림자만 진해짐 */
+.calander:hover {
+  transform: translateY(-10px);   /* 움직임 최소화 → 끊김 감소 */
 }
 
-.calander .top, .short_board .top, .study_alram .top {
-	background-color: #28a745;
-	color: white;
-	font-weight: 600;
-	font-size: 17px;
-	padding: 10px 20px;
-	border-radius: 14px 14px 0 0;
+.calander:hover::before {
+  opacity: 1;                    /* 그림자만 진하게 */
+}
+
+
+
+/* ✅ 기본정보 */
+.short_board {
+	height: 14vh;
+	margin-bottom: 1.2rem; /* ✅ 간격 축소 */
+	position: relative;
+	z-index: 5;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
-/*[우측 달력, 기본정보, 새로운알림 영역 종료]*/
-
-/*[달력 토/일 적청색상부여]*/
-.fc-day-sun a {
-  color: red !important;
+/* ✅ 새로운 알림 */
+.study_alram {
+	height: 14vh;
+	margin-bottom: 0;
+	position: relative;
+	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
-.fc-day-sat a {
-  color: blue !important;
-}
-/*[달력 토/일 적청색상부여]*/
-/*[달력 버튼 년월 버튼 간격조절]*/
-
+/*----------------------------------
+[달력 색상 및 UI]
+----------------------------------*/
+.fc-day-sun a { color: red !important; }
+.fc-day-sat a { color: blue !important; }
 
 .fc-header-toolbar {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 6px !important; 
-}
-
-.fc-toolbar-chunk {
-  margin: 0 !important;
-  padding: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 0.4rem !important;
 }
 
 .fc-toolbar-title {
-  margin: 0 3px !important;
-  font-weight: 400 !important;
-  font-size: 20px !important;
+	margin: 0 0.3rem !important;
+	font-weight: 400 !important;
+	font-size: 1.2rem !important;
 }
 
+/* ✅ 캘린더 버튼 회색 박스 제거 */
 .fc-prev-button, .fc-next-button {
-  background: none !important;
-  border: none !important;
-  font-size: 20px !important;
-  cursor: pointer !important;
-  color: #28a745 !important;
-  transition: transform 0.2s ease, color 0.2s ease !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	font-size: 1.25rem !important;
+	cursor: pointer !important;
+	color: #28a745 !important;
+	transition: transform 0.2s ease, color 0.2s ease !important;
 }
 
 .fc-prev-button:hover, .fc-next-button:hover {
-  color: #1e7e34 !important;
-
+	color: #1e7e34 !important;
 }
 
-.fc-prev-button:focus,
-.fc-next-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-/*[캘린더의 스크롤바 감추기]*/
-.calander,
-.fc-scroller, 
-#calendar {
-  overflow: auto !important;
-  scrollbar-width: none !important; /* Firefox */
+/*----------------------------------
+[스크롤바 제거]
+----------------------------------*/
+.calander, .fc-scroller, #calendar {
+	overflow: auto !important;
+	scrollbar-width: none !important;
 }
 
 .calander::-webkit-scrollbar,
 .fc-scroller::-webkit-scrollbar,
 #calendar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
-}
-/*[날짜 그리드 제거]*/
-.fc-scrollgrid,
-.fc-scrollgrid table,
-.fc-scrollgrid td,
-.fc-scrollgrid th,
-.fc-daygrid-day,
-.fc-col-header-cell {
-  border: none !important;
-  outline: none !important;
+	display: none;
 }
 
-/*[하위 카테고리 클릭시 콘텐츠 영역 숨김과 보이는 기능]*/
-
-.hidden-section {/*숨김 효과 (서서히 사라짐 + 높이 축소) */
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.5s ease;
+/*----------------------------------
+[하위 섹션 숨김 효과]
+----------------------------------*/
+.hidden-section {
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.5s ease;
 }
 
-/*보이는 상태 */
-.visible-section {/*보이는 상태 */
-  opacity: 1;
-  max-height: 300px;
-  transition: all 0.5s ease;
+.visible-section {
+	opacity: 1;
+	max-height: 300px;
+	transition: all 0.5s ease;
 }
-/*[]*/
 
 
