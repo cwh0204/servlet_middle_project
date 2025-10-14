@@ -12,12 +12,13 @@
 		<div class="sidebar-header">관리 메뉴</div>
 		<div class="menu-item active" data-page="admindashboard.do">
 			<div class="menu-item-content">
-				<span class="menu-icon"></span><span>통계</span>
+				 <span>통계</span>
 			</div>
 		</div>
 		<div class="menu-item has-submenu" data-page="adminuser.do">
 			<div class="menu-item-content">
-				<span class="menu-icon arrow"></span><span>사용자 관리</span><span class="menu-icon arrow">▶</span>
+				<span>사용자 관리</span>
+				<span class="menu-icon arrow">▶</span>
 			</div>
 			<div>
 				<div class="submenu">
@@ -32,17 +33,17 @@
 		</div>
 		<div class="menu-item" data-page="adminteam.do">
 			<div class="menu-item-content">
-				<span class="menu-icon"></span><span>팀 관리</span>
+				 <span>팀 관리</span>
 			</div>
 		</div>
 		<div class="menu-item">
 			<div class="menu-item-content">
-				<span class="menu-icon"></span><span>게시판 관리</span>
+				 <span>게시판 관리</span>
 			</div>
 		</div>
 		<div class="menu-item">
 			<div class="menu-item-content">
-				<span class="menu-icon"></span><span>공지사항 관리</span>
+				 <span>공지사항 관리</span>
 			</div>
 		</div>
 	</aside>
