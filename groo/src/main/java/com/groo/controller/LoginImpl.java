@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
  */
 
 public class LoginImpl extends HttpServlet implements Controller {
-	 
+
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
