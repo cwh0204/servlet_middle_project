@@ -18,19 +18,25 @@
 	letter-spacing: 0.5px;
 }
 
-.menu-item {
+/* .menu-item {
 	padding: 12px 24px;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	display: flex;
-	align-items: center;
-	gap: 12px;
 	color: #4b5563;
 	font-weight: bold;
 	font-size: 15px;
 	border-left: 3px solid transparent;
+} */
+.menu-item {
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4b5563;
+	font-weight: bold;
+	font-size: 15px;
+    border-left: 3px solid transparent;
+    position: relative;
 }
-
 .menu-item:hover {
 	background: #f0fdf4;
 	color: #2d6a4f;
@@ -47,4 +53,42 @@
 	font-size: 20px;
 	width: 24px;
 	text-align: center;
+}
+/* 서브메뉴 */
+.menu-item.has-submenu {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.submenu-item {
+    padding: 20px 20px 5px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4b5563;
+    font-size: 13px;
+    position: relative;
+}
+
+.submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.submenu-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.menu-icon.arrow {
+    transition: transform 0.3s;
+}
+
+.menu-item.has-submenu.open .menu-icon.arrow {
+    transform: rotate(90deg);
 }
