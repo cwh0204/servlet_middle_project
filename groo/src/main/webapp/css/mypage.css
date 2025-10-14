@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*[전체 구조]*/
 html, body {
 	margin: 0;
 }
@@ -14,6 +15,12 @@ html, body {
 	flex: 1;
 }
 
+.right_empty {
+	flex: 1;
+}
+/*[전체 구조 끝]*/
+
+/*[왼쪽 프로필 영역 시작]*/
 .profile_category_line {
 	display: flex;
 	flex: 1.5;
@@ -49,7 +56,9 @@ img {
 	margin: 10px auto;
 	text-align: center;
 }
+/*[왼쪽 프로필 영역 종료]*/
 
+/*[왼쪽 카테고리 메뉴 시작]*/
 .category ul {
 	list-style: none;
 	padding-left: 0px;
@@ -102,12 +111,19 @@ img {
 .big_cate:hover::after {
 	width: 100%;
 }
+/*[왼쪽 카테고리 메뉴 종료]*/
 
+/*[오른쪽 콘텐츠 영역 기본골자]*/
 .content {
 	flex: 4;
 	width: 387px;
 	height: 870px;
 }
+/*[오른쪽 콘텐츠 영역 기본골자 종료]*/
+
+/*[우상단 메뉴 home/notice/logout 부분시작]*/
+
+
 
 .icon_line ul {
 	list-style: none;
@@ -138,21 +154,9 @@ img {
 .icon_line li:hover::after {
 	width: 100%;
 }
+/*[우상단 메뉴 home/notice/logout 부분 종료]*/
 
-.right_empty {
-	flex: 1;
-}
-
-.calander {
-	border: 1px solid #e6e6e6;
-	border-radius: 20px;
-	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
-	width: 1019px;
-	height: 400px;
-	border-radius: 14px;
-	margin-bottom: 20px;
-}
-
+/*[우측 달력, 기본정보, 새로운알림 영역]*/
 .study_alram, .short_board {
 	border: 1px solid #e6e6e6;
 	border-radius: 20px;
@@ -161,6 +165,7 @@ img {
 	height: 176px;
 	border-radius: 14px;
 	margin-bottom: 20px;
+	height: 176px;
 }
 
 .top {
@@ -187,34 +192,48 @@ img {
 	box-shadow: 0 10px 25px rgba(40, 167, 69, 0.7);
 }
 
-.calander {
-	width: 100%;
-	height: 500px;
-	padding: 10px;
-	box-sizing: border-box;
-	 border: none;
-}
-
 #calendar {
 	width: 100%;
 	height: 100%;
 }
 
+.calander {
+	border: 1px solid #e6e6e6;
+	border-radius: 20px;
+	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
+	width: 1019px;
+	border-radius: 14px;
+	margin-bottom: 20px;
+	height: 500px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
 
 .calander .top {
-  border-bottom: none;
-  margin-bottom: 0;
+	border-bottom: none;
+	margin-bottom: 0;
 }
 
-.calander {
-  width: 100%;
-  height: 500px;
-  padding: 0; 
-  border: none; 
-  border-radius: 14px;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
-  overflow: hidden; 
-  
+.calander, .short_board, .study_alram {
+	width: 1000px; /* 또는 width:100%; max-width:1000px; */
+	border: 1px solid #e6e6e6;
+	border-radius: 20px;
+	box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	transition: all 0.3s ease;
 }
 
+.calander .top, .short_board .top, .study_alram .top {
+	background-color: #28a745;
+	color: white;
+	font-weight: 600;
+	font-size: 17px;
+	padding: 10px 20px;
+	border-radius: 14px 14px 0 0;
+	display: flex;
+	align-items: center;
+}
+
+/*[우측 달력, 기본정보, 새로운알림 영역 종료]*/
