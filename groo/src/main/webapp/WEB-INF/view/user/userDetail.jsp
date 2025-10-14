@@ -22,6 +22,7 @@
         background-color: #f8f9fa;
         padding-top: 50px;
         padding-bottom: 50px;
+        background-color = pink;
     }
 
     h1 {
@@ -112,6 +113,7 @@
         background-color: #6c757d;
         color: white;
     }
+    
 </style>
 </head>
 <body>
@@ -122,11 +124,30 @@
 <div class="input-group" style="text-align:center;">
   <!-- 기본 프로필 -->
   <img id="profilePreview" 
-       src="https://i.postimg.cc/sX337p8B/user-2.png" 
+       src="https://i.postimg.cc/QtzLc2wK/reader.png" 
        alt="기본 프로필" 
        style="width:100px; height:100px; border-radius:50%; object-fit:cover; border:1px solid #ccc; display:block; margin:10px auto;">
   <input type="file" name="profile" id="profile" accept="image/*" onchange="previewProfile(event)" style="margin-left:200px;">
 </div>
+
+
+<script>
+function previewProfile(event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('profilePreview');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  } else {
+    // 파일 선택 취소 시 기본 이미지로 복원
+    preview.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+  }
+}
+</script>
 
         <div class="input-group"> 
         <label>아이디</label> 
@@ -206,6 +227,20 @@
     <input type="text" id="address2" name="address2" placeholder="상세주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;">
 </div>
 
+<!-- 카카오 우편번호 API -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function openPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            document.getElementById('zipcode').value = data.zonecode; // 우편번호
+            document.getElementById('address1').value = data.roadAddress; // 도로명 주소
+            document.getElementById('address2').focus(); // 상세주소 입력창
+        }
+    }).open();
+}
+
+</script>
         <div class="input-group">
     <label>관심분야</label>
     <div class="checkbox-group">

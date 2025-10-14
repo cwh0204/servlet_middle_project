@@ -29,10 +29,14 @@
 				</div>
 				<div class="category">
 					<ul>
-						<li class="big_cate">내프로필</li>
-						<li class="big_cate">schedule
+						<li class="big_cate">내 프로필
 							<ul>
-								<li>스터디 일정</li>
+								<li class="basicInfoBtn">회원상세이지</li>
+							</ul>
+						</li>
+						<li class="big_cate">스터디캘린더
+							<ul>
+								<li class="studyScheduleBtn">스터디 일정</li>
 								<li>모임취소 요청하기</li>
 							</ul>
 						</li>
@@ -45,9 +49,9 @@
 						</li>
 						<li class="big_cate">나의 활동
 							<ul>
-								<li>나의 참석률현황판</li>
-								<li>작성한리뷰목록(수정/조회/삭제)</li>
-								<li>작성한게시글목록(수정/조회/삭제)</li>
+								<li>나의 관심스터디</li>
+								<li>나의 리뷰(수정/조회/삭제)</li>
+								<li>나의 게시글(수정/조회/삭제)</li>
 							</ul>
 						</li>
 						<li class="big_cate">팀찾기
@@ -56,7 +60,12 @@
 								<li>나의 관심 스터디 목록</li>
 							</ul>
 						</li>
-						<li class="big_cate">팀생성</li>
+						<li class="big_cate">게시글
+							<ul>
+								<li>나의 리뷰</li>
+								<li>나의 게시글</li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -74,39 +83,184 @@
 					<div id="calendar"></div>
 				</div>
 				<div class="short_board">
-					<div class="top">나의 활동현황판</div>
+					<div class="top">기본정보</div>
+					<div class="info_content">
+						<div class="info_row">
+							<span>닉네임 :</span> <span id="user_nickname">${user_nickname}</span>
+							<button id="editNicknameBtn" type="button" class="editBtn">변경</button>
+						</div>
+
+						<div id="nicknameEditBox" style="display: none;">
+							<input type="text" id="nicknameInput"
+								placeholder="새로운 닉네임을 입력해주세요">
+							<button id="saveNicknameBtn" type="button">저장</button>
+							<button id="cancelNicknameBtn" type="button">취소</button>
+						</div>
+
+						<div class="info_row">
+							<span>이메일 :</span> <span id="user_email">${user_email}</span>
+							<button id="editEmailBtn" type="button" class="editBtn">변경</button>
+						</div>
+
+						<div id="emailEditBox" style="display: none;">
+							<input type="email" id="emailInput" placeholder="새 이메일을 입력해주세요">
+							<button id="saveEmailBtn" type="button">저장</button>
+							<button id="cancelEmailBtn" type="button">취소</button>
+						</div>
+					</div>
+
+					<div class="study_alram">
+						<div class="top">새로운알림</div>
+					</div>
 				</div>
-				<div class="study_alram">
-					<div class="top">신규활동알림</div>
-				</div>
+				<div class="right_empty"></div>
 			</div>
-			<div class="right_empty"></div>
-		</div>
 	</main>
 
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const calendarEl = document.getElementById('calendar');
-			const calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView : 'dayGridMonth',
-				height : 400,
-				locale : 'ko',
-				
-				events : [ {
-					title : '스터디 모임',
-					start : '2025-10-15'
-				}, {
-					title : '프로젝트 회의',
-					start : '2025-10-18'
-				}, {
-					title : '팀 이벤트',
-					start : '2025-10-21'
-				} ]
+	document.addEventListener("DOMContentLoaded", () => {
+		  
+		  document.querySelectorAll(".basicInfoBtn").forEach(btn => {
+		    btn.addEventListener("click", () => {
+		      window.location.href = "${pageContext.request.contextPath}/userdetail.do";
+		    });
+		  });
+
+		  // 캘린더 초기화
+		  const calendarEl = document.getElementById('calendar');
+		  const calendar = new FullCalendar.Calendar(calendarEl, {
+		    initialView: 'dayGridMonth',
+		    height: 390,
+		    locale: 'ko',
+		    headerToolbar: {        
+		        left: 'prev',    
+		        center: 'title',      
+		        right: 'next'             
+		      },
+		    dayHeaderContent: (args) =>
+		  {const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+		  return days[args.date.getDay()];},
+		  events: [
+		      { title: '스터디 모임', start: '2025-10-15' },
+		      { title: '프로젝트 회의', start: '2025-10-18' },
+		      { title: '팀 이벤트', start: '2025-10-21' }
+		    ]
+		  });
+		  calendar.render();
+		  
+		  const studyScheduleBtn = document.querySelector('.studyScheduleBtn');
+		  const calendarBox = document.querySelector('.calander');
+		  const shortBoard = document.querySelector('.short_board');
+		  const studyAlarm = document.querySelector('.study_alram');
+
+		  let isExpanded = false;
+		  
+		  
+
+		  const calendarSize = (event) => {
+			    
+			    if (event.target.closest('.fc-prev-button') || event.target.closest('.fc-next-button')) {
+			      return; // 함수 종료
+			    }
+
+			    if (!isExpanded) {
+			      calendarBox.style.height = '85vh';
+			      shortBoard.classList.add('hidden-section');
+			      studyAlarm.classList.add('hidden-section');
+			      isExpanded = true;
+			    } else {
+			      calendarBox.style.height = '500px';
+			      shortBoard.classList.remove('hidden-section');
+			      studyAlarm.classList.remove('hidden-section');
+			      isExpanded = false;
+			    }
+			  };
+		  studyScheduleBtn.addEventListener('click', calendarSize);
+		  calendarBox.addEventListener('click', calendarSize);
+		  
+		  const userNickname = document.getElementById('user_nickname');
+			const editNicknameBtn = document.getElementById('editNicknameBtn');
+			const nicknameEditBox = document.getElementById('nicknameEditBox');
+			const nicknameInput = document.getElementById('nicknameInput');
+			const saveNicknameBtn = document.getElementById('saveNicknameBtn');
+			const cancelNicknameBtn = document.getElementById('cancelNicknameBtn');
+
+			editNicknameBtn.addEventListener('click', () => {
+				nicknameEditBox.style.display = 'block';
+				nicknameInput.value = userNickname.textContent.trim();
+				editNicknameBtn.style.display = 'none';
 			});
-			calendar.render();
+
+			saveNicknameBtn.addEventListener('click', () => {
+				const newNickname = nicknameInput.value.trim();
+				if (newNickname === "") {
+					alert("닉네임을 입력해주세요.");
+					return;
+				}
+				userNickname.textContent = newNickname;
+
+				fetch("${pageContext.request.contextPath}/updateNickname.do", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ nickname: newNickname })
+				})
+				.then(res => res.ok ? alert("닉네임이 수정되었습니다!") : alert("수정 실패"))
+				.catch(() => alert("서버 오류가 발생했습니다."));
+
+				nicknameEditBox.style.display = 'none';
+				editNicknameBtn.style.display = 'inline-block';
+			});
+
+			cancelNicknameBtn.addEventListener('click', () => {
+				nicknameEditBox.style.display = 'none';
+				editNicknameBtn.style.display = 'inline-block';
+			});
+
+			/* ✅ 이메일 수정 */
+			const userEmail = document.getElementById('user_email');
+			const editEmailBtn = document.getElementById('editEmailBtn');
+			const emailEditBox = document.getElementById('emailEditBox');
+			const emailInput = document.getElementById('emailInput');
+			const saveEmailBtn = document.getElementById('saveEmailBtn');
+			const cancelEmailBtn = document.getElementById('cancelEmailBtn');
+
+			editEmailBtn.addEventListener('click', () => {
+				emailEditBox.style.display = 'block';
+				emailInput.value = userEmail.textContent.trim();
+				editEmailBtn.style.display = 'none';
+			});
+
+			saveEmailBtn.addEventListener('click', () => {
+				const newEmail = emailInput.value.trim();
+				if (newEmail === "") {
+					alert("이메일을 입력해주세요.");
+					return;
+				}
+				userEmail.textContent = newEmail;
+
+				fetch("${pageContext.request.contextPath}/updateEmail.do", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ email: newEmail })
+				})
+				.then(res => res.ok ? alert("이메일이 수정되었습니다!") : alert("수정 실패"))
+				.catch(() => alert("서버 오류가 발생했습니다."));
+
+				emailEditBox.style.display = 'none';
+				editEmailBtn.style.display = 'inline-block';
+			});
+
+			cancelEmailBtn.addEventListener('click', () => {
+				emailEditBox.style.display = 'none';
+				editEmailBtn.style.display = 'inline-block';
+			});
+		  
+		  
+		  
+		  
+		  
+		  
 		});
-	</script>
-
-
+</script>
 </body>
 </html>

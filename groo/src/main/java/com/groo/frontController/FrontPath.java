@@ -9,8 +9,8 @@ public class FrontPath {
     public FrontPath() {
         jspMap = new HashMap<>();
         jspMap.put("/login.do", "/WEB-INF/view/user/login.jsp");
-        jspMap.put("/index.do", "/WEB-INF/view/index.jsp");
-        jspMap.put("/singup.do", "/WEB-INF/view/user/SignUpPage.jsp");
+        jspMap.put("/index.do", "/WEB-INF/view/index/index.jsp");
+        jspMap.put("/signup.do", "/WEB-INF/view/user/SignUpPage.jsp");
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userDetail.jsp");

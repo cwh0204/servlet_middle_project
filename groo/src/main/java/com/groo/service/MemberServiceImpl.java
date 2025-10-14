@@ -1,9 +1,5 @@
 package com.groo.service;
 
-import java.sql.SQLException;
-
-import javax.management.RuntimeErrorException;
-
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.config.SessionFactory;
