@@ -3,12 +3,19 @@
 /*[전체 구조]*/
 html, body {
 	margin: 0;
+	overflow: auto;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .t_container {
 	margin-top: 24px;
 	display: flex;
 	flex-direction: row;
+	height : 93vh;
 }
 
 .left_empty {
@@ -25,7 +32,6 @@ html, body {
 	display: flex;
 	flex: 1.5;
 	align-items: flex-start;
-	height: 975px;
 	flex-direction: column;
 	border: 1px solid #e6e6e6;
 	border-radius: 20px;
@@ -67,7 +73,7 @@ img {
 
 .big_cate {
 	font-size: 18px;
-	margin: 8px 10px;
+	margin: 5px 8px;
 	padding: 12px;
 	cursor: pointer;
 	position: relative;
@@ -122,9 +128,6 @@ img {
 /*[오른쪽 콘텐츠 영역 기본골자 종료]*/
 
 /*[우상단 메뉴 home/notice/logout 부분시작]*/
-
-
-
 .icon_line ul {
 	list-style: none;
 	display: flex;
@@ -157,16 +160,6 @@ img {
 /*[우상단 메뉴 home/notice/logout 부분 종료]*/
 
 /*[우측 달력, 기본정보, 새로운알림 영역]*/
-.study_alram, .short_board {
-	border: 1px solid #e6e6e6;
-	border-radius: 20px;
-	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
-	width: 1000px;
-	height: 176px;
-	border-radius: 14px;
-	margin-bottom: 20px;
-	height: 176px;
-}
 
 .top {
 	background-color: #28a745;
@@ -201,13 +194,13 @@ img {
 	border: 1px solid #e6e6e6;
 	border-radius: 20px;
 	box-shadow: 5px 0 18px rgba(0, 0, 0, 0.2);
-	width: 1019px;
 	border-radius: 14px;
 	margin-bottom: 20px;
 	height: 500px;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	transition : height 0.6s ease;/*스터디 일정 클릭시 달력이 길어지기 위해서 트랜지션 추가*/
 }
 
 .calander .top {
@@ -216,13 +209,18 @@ img {
 }
 
 .calander, .short_board, .study_alram {
-	width: 1000px; /* 또는 width:100%; max-width:1000px; */
+	width: 90vw; /* 브라우저 폭의 90% */
+	max-width: 1000px; /* 최대 폭 제한 (원하면 삭제 가능) */
 	border: 1px solid #e6e6e6;
-	border-radius: 20px;
+	border-radius: 14px;
 	box-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
 	margin-bottom: 20px;
 	box-sizing: border-box;
 	transition: all 0.3s ease;
+}
+
+.short_board, .study_alram {
+	height : 13.1vh;
 }
 
 .calander .top, .short_board .top, .study_alram .top {
@@ -311,5 +309,21 @@ img {
   outline: none !important;
 }
 
+/*[하위 카테고리 클릭시 콘텐츠 영역 숨김과 보이는 기능]*/
+
+.hidden-section {/*숨김 효과 (서서히 사라짐 + 높이 축소) */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/*보이는 상태 */
+.visible-section {/*보이는 상태 */
+  opacity: 1;
+  max-height: 300px;
+  transition: all 0.5s ease;
+}
+/*[]*/
 
 

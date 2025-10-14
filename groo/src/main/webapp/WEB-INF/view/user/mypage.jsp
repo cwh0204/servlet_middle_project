@@ -36,7 +36,7 @@
 						</li>
 						<li class="big_cate">스터디캘린더
 							<ul>
-								<li>스터디 일정</li>
+								<li class="studyScheduleBtn">스터디 일정</li>
 								<li>모임취소 요청하기</li>
 							</ul>
 						</li>
@@ -82,20 +82,44 @@
 					<div class="top">groo calander</div>
 					<div id="calendar"></div>
 				</div>
-				<div class="short_board basicInfoBtn">
-					<div class="top basicInfoBtn">기본정보</div>
+				<div class="short_board">
+					<div class="top">기본정보</div>
+					<div class="info_content">
+						<div class="info_row">
+							<span>닉네임 :</span> <span id="user_nickname">${user_nickname}</span>
+							<button id="editNicknameBtn" type="button" class="editBtn">변경</button>
+						</div>
+
+						<div id="nicknameEditBox" style="display: none;">
+							<input type="text" id="nicknameInput"
+								placeholder="새로운 닉네임을 입력해주세요">
+							<button id="saveNicknameBtn" type="button">저장</button>
+							<button id="cancelNicknameBtn" type="button">취소</button>
+						</div>
+
+						<div class="info_row">
+							<span>이메일 :</span> <span id="user_email">${user_email}</span>
+							<button id="editEmailBtn" type="button" class="editBtn">변경</button>
+						</div>
+
+						<div id="emailEditBox" style="display: none;">
+							<input type="email" id="emailInput" placeholder="새 이메일을 입력해주세요">
+							<button id="saveEmailBtn" type="button">저장</button>
+							<button id="cancelEmailBtn" type="button">취소</button>
+						</div>
+					</div>
+
+					<div class="study_alram">
+						<div class="top">새로운알림</div>
+					</div>
 				</div>
-				<div class="study_alram">
-					<div class="top">새로운알림</div>
-				</div>
+				<div class="right_empty"></div>
 			</div>
-			<div class="right_empty"></div>
-		</div>
 	</main>
 
 	<script>
 	document.addEventListener("DOMContentLoaded", () => {
-		  // 모든 .basicInfoBtn 요소 가져오기
+		  
 		  document.querySelectorAll(".basicInfoBtn").forEach(btn => {
 		    btn.addEventListener("click", () => {
 		      window.location.href = "${pageContext.request.contextPath}/userdetail.do";
@@ -106,7 +130,7 @@
 		  const calendarEl = document.getElementById('calendar');
 		  const calendar = new FullCalendar.Calendar(calendarEl, {
 		    initialView: 'dayGridMonth',
-		    height: 400,
+		    height: 390,
 		    locale: 'ko',
 		    headerToolbar: {        
 		        left: 'prev',    
@@ -123,6 +147,119 @@
 		    ]
 		  });
 		  calendar.render();
+		  
+		  const studyScheduleBtn = document.querySelector('.studyScheduleBtn');
+		  const calendarBox = document.querySelector('.calander');
+		  const shortBoard = document.querySelector('.short_board');
+		  const studyAlarm = document.querySelector('.study_alram');
+
+		  let isExpanded = false;
+		  
+		  
+
+		  const calendarSize = (event) => {
+			    
+			    if (event.target.closest('.fc-prev-button') || event.target.closest('.fc-next-button')) {
+			      return; // 함수 종료
+			    }
+
+			    if (!isExpanded) {
+			      calendarBox.style.height = '85vh';
+			      shortBoard.classList.add('hidden-section');
+			      studyAlarm.classList.add('hidden-section');
+			      isExpanded = true;
+			    } else {
+			      calendarBox.style.height = '500px';
+			      shortBoard.classList.remove('hidden-section');
+			      studyAlarm.classList.remove('hidden-section');
+			      isExpanded = false;
+			    }
+			  };
+		  studyScheduleBtn.addEventListener('click', calendarSize);
+		  calendarBox.addEventListener('click', calendarSize);
+		  
+		  const userNickname = document.getElementById('user_nickname');
+			const editNicknameBtn = document.getElementById('editNicknameBtn');
+			const nicknameEditBox = document.getElementById('nicknameEditBox');
+			const nicknameInput = document.getElementById('nicknameInput');
+			const saveNicknameBtn = document.getElementById('saveNicknameBtn');
+			const cancelNicknameBtn = document.getElementById('cancelNicknameBtn');
+
+			editNicknameBtn.addEventListener('click', () => {
+				nicknameEditBox.style.display = 'block';
+				nicknameInput.value = userNickname.textContent.trim();
+				editNicknameBtn.style.display = 'none';
+			});
+
+			saveNicknameBtn.addEventListener('click', () => {
+				const newNickname = nicknameInput.value.trim();
+				if (newNickname === "") {
+					alert("닉네임을 입력해주세요.");
+					return;
+				}
+				userNickname.textContent = newNickname;
+
+				fetch("${pageContext.request.contextPath}/updateNickname.do", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ nickname: newNickname })
+				})
+				.then(res => res.ok ? alert("닉네임이 수정되었습니다!") : alert("수정 실패"))
+				.catch(() => alert("서버 오류가 발생했습니다."));
+
+				nicknameEditBox.style.display = 'none';
+				editNicknameBtn.style.display = 'inline-block';
+			});
+
+			cancelNicknameBtn.addEventListener('click', () => {
+				nicknameEditBox.style.display = 'none';
+				editNicknameBtn.style.display = 'inline-block';
+			});
+
+			/* ✅ 이메일 수정 */
+			const userEmail = document.getElementById('user_email');
+			const editEmailBtn = document.getElementById('editEmailBtn');
+			const emailEditBox = document.getElementById('emailEditBox');
+			const emailInput = document.getElementById('emailInput');
+			const saveEmailBtn = document.getElementById('saveEmailBtn');
+			const cancelEmailBtn = document.getElementById('cancelEmailBtn');
+
+			editEmailBtn.addEventListener('click', () => {
+				emailEditBox.style.display = 'block';
+				emailInput.value = userEmail.textContent.trim();
+				editEmailBtn.style.display = 'none';
+			});
+
+			saveEmailBtn.addEventListener('click', () => {
+				const newEmail = emailInput.value.trim();
+				if (newEmail === "") {
+					alert("이메일을 입력해주세요.");
+					return;
+				}
+				userEmail.textContent = newEmail;
+
+				fetch("${pageContext.request.contextPath}/updateEmail.do", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ email: newEmail })
+				})
+				.then(res => res.ok ? alert("이메일이 수정되었습니다!") : alert("수정 실패"))
+				.catch(() => alert("서버 오류가 발생했습니다."));
+
+				emailEditBox.style.display = 'none';
+				editEmailBtn.style.display = 'inline-block';
+			});
+
+			cancelEmailBtn.addEventListener('click', () => {
+				emailEditBox.style.display = 'none';
+				editEmailBtn.style.display = 'inline-block';
+			});
+		  
+		  
+		  
+		  
+		  
+		  
 		});
 </script>
 </body>
