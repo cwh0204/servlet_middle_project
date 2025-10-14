@@ -6,10 +6,11 @@ import java.util.Map;
 import com.groo.controller.Controller;
 import com.groo.controller.LoginImpl;
 import com.groo.controller.MainImpl;
+import com.groo.controller.MyPageImpl;
 import com.groo.controller.SignUpImpl;
 import com.groo.controller.TeamCreateImpl;
 import com.groo.controller.TeamSelectImpl;
-import com.groo.controller.UserInfoImpl;
+
 
 public class FrontControllerPath {
 
@@ -21,7 +22,7 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpImpl());
         controllerMap.put("/teamcreates.do", new TeamCreateImpl());
         controllerMap.put("/teamselects.do", new TeamSelectImpl());
-        controllerMap.put("/mypage.do", new UserInfoImpl());
+        controllerMap.put("/mypage.do", new MyPageImpl());
     }
 
     public Controller getControllers(String command) {
