@@ -79,7 +79,7 @@
 			<div class="right_box">
 				<div class="icon_line">
 					<ul>
-						<li>home</li>
+						<li class = "homeBtn">home</li>
 						<li>notice</li>
 						<li>groo talk</li>
 						<li>logout</li>
@@ -131,22 +131,28 @@
 		</div>
 	</main>
 
-	<!-- JavaScript -->
+	<!-- ✅ JavaScript -->
 	<script>
 	document.addEventListener("DOMContentLoaded", () => {
 
-		// 회원상세 이동
+		// -----------------------------
+		// 1️⃣ 기본 이동 및 캘린더 설정
+		// -----------------------------
 		document.querySelectorAll(".basicInfoBtn").forEach(btn => {
 			btn.addEventListener("click", () => {
 				window.location.href = "${pageContext.request.contextPath}/userdetail.do";
 			});
 		});
+		
+		document.querySelector(".homeBtn").addEventListener("click",()=>{
+			window.location.href = "${pageContext.request.contextPath}/index.do";
+		});
 
-		// 캘린더 초기화
+		// FullCalendar 초기화
 		const calendarEl = document.getElementById('calendar');
 		const calendar = new FullCalendar.Calendar(calendarEl, {
 			initialView: 'dayGridMonth',
-			height: 390,
+			height: 432,
 			locale: 'ko',
 			headerToolbar: {
 				left: 'prev',
@@ -165,27 +171,27 @@
 		});
 		calendar.render();
 
+		// -----------------------------
+		// 2️⃣ 캘린더 박스 확장 토글
+		// -----------------------------
 		const studyScheduleBtn = document.querySelector('.studyScheduleBtn');
 		const calendarBox = document.querySelector('.calander');
 		const shortBoard = document.querySelector('.short_board');
 		const studyAlarm = document.querySelector('.study_alram');
 		let isExpanded = false;
 
-		// 캘린더 크기 토글
 		const calendarSize = (event) => {
-			if (event.target.closest('.fc-prev-button') || event.target.closest('.fc-next-button')) {
-				return;
-			}
+			if (event.target.closest('.fc-prev-button') || event.target.closest('.fc-next-button')) return;
 
 			if (!isExpanded) {
 				shortBoard.classList.add('hidden-section');
 				studyAlarm.classList.add('hidden-section');
 				calendarBox.style.transition = 'height 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
-				calendarBox.style.height = '85vh';
+				calendarBox.style.height = '75vh';
 				isExpanded = true;
 			} else {
 				calendarBox.style.transition = 'height 0.50s cubic-bezier(0.4, 0, 0.2, 1)';
-				calendarBox.style.height = '49vh';
+				calendarBox.style.height = '12vh';
 				setTimeout(() => {
 					shortBoard.classList.remove('hidden-section');
 					studyAlarm.classList.remove('hidden-section');
@@ -196,7 +202,9 @@
 		studyScheduleBtn.addEventListener('click', calendarSize);
 		calendarBox.addEventListener('click', calendarSize);
 
-		// 닉네임 수정
+		// -----------------------------
+		// 3️⃣ 닉네임 & 이메일 수정 기능
+		// -----------------------------
 		const userNickname = document.getElementById('user_nickname');
 		const editNicknameBtn = document.getElementById('editNicknameBtn');
 		const nicknameEditBox = document.getElementById('nicknameEditBox');
@@ -209,7 +217,6 @@
 			nicknameInput.value = userNickname.textContent.trim();
 			editNicknameBtn.style.display = 'none';
 		});
-
 		saveNicknameBtn.addEventListener('click', () => {
 			const newNickname = nicknameInput.value.trim();
 			if (newNickname === "") {
@@ -217,7 +224,6 @@
 				return;
 			}
 			userNickname.textContent = newNickname;
-
 			fetch("${pageContext.request.contextPath}/updateNickname.do", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -225,11 +231,9 @@
 			})
 			.then(res => res.ok ? alert("닉네임이 수정되었습니다!") : alert("수정 실패"))
 			.catch(() => alert("서버 오류가 발생했습니다."));
-
 			nicknameEditBox.style.display = 'none';
 			editNicknameBtn.style.display = 'inline-block';
 		});
-
 		cancelNicknameBtn.addEventListener('click', () => {
 			nicknameEditBox.style.display = 'none';
 			editNicknameBtn.style.display = 'inline-block';
@@ -248,7 +252,6 @@
 			emailInput.value = userEmail.textContent.trim();
 			editEmailBtn.style.display = 'none';
 		});
-
 		saveEmailBtn.addEventListener('click', () => {
 			const newEmail = emailInput.value.trim();
 			if (newEmail === "") {
@@ -256,7 +259,6 @@
 				return;
 			}
 			userEmail.textContent = newEmail;
-
 			fetch("${pageContext.request.contextPath}/updateEmail.do", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -264,16 +266,37 @@
 			})
 			.then(res => res.ok ? alert("이메일이 수정되었습니다!") : alert("수정 실패"))
 			.catch(() => alert("서버 오류가 발생했습니다."));
-
 			emailEditBox.style.display = 'none';
 			editEmailBtn.style.display = 'inline-block';
 		});
-
 		cancelEmailBtn.addEventListener('click', () => {
 			emailEditBox.style.display = 'none';
 			editEmailBtn.style.display = 'inline-block';
 		});
 
+		// -----------------------------
+		// 4️⃣ hover 애니메이션 (독립 작동)
+		// -----------------------------
+		const boxes = [
+		  document.querySelector('.calander'),
+		  document.querySelector('.short_board'),
+		  document.querySelector('.study_alram'),
+		  document.querySelector('.profile_category_line')
+		];
+
+		boxes.forEach(box => {
+		  if (!box) return;
+		  box.addEventListener('mouseover', (e) => {
+		    e.stopPropagation();
+		    e.currentTarget.classList.remove('lift-anim-down');
+		    e.currentTarget.classList.add('lift-anim-up');
+		  });
+		  box.addEventListener('mouseout', (e) => {
+		    e.stopPropagation();
+		    e.currentTarget.classList.remove('lift-anim-up');
+		    e.currentTarget.classList.add('lift-anim-down');
+		  });
+		});
 	});
 	</script>
 </body>
