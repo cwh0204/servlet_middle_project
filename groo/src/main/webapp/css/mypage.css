@@ -22,17 +22,18 @@ main {
 }
 
 .t_container {
+	margin: 2vh auto 0 auto;
 	display: flex;
 	flex-direction: row;
-	justify-content: center; /* ✅ 균등 배치 */
-	align-items: flex-start;
-	width: 80%;                     /* ✅ 중앙에 적당히 들어오도록 */
-	max-width: 1500px;              /* ✅ 너무 넓어지지 않게 */
-	margin: 2vh auto 0 auto;
-	gap: 1vw;                     /* ✅ 기존 2vw → 1.2vw로 축소 */
+	height: 93vh;
+	width: 90%;
+	max-width: 1600px;
 	box-sizing: border-box;
 }
-/*[왼쪽 프로필 영역]*/
+
+/*----------------------------------
+[왼쪽 프로필 영역]
+----------------------------------*/
 .profile_category_line {
 	display: flex;
 	flex: 1.5;
@@ -44,10 +45,11 @@ main {
 	margin-right: 2vw;
 	padding: 1rem 0 2.5rem 0;
 	box-sizing: border-box;
-	min-height: 650px; /* 기본 높이만 유지 */
-	height: auto;      /* 높이 자동 확장 가능 */
-	transition: height 0.4s ease; /*부드럽게 늘어나도록 */
+	min-height: 650px; /* ✅ 기본 높이만 유지 */
+	height: auto;      /* ✅ 높이 자동 확장 가능 */
+	transition: height 0.4s ease; /* ✅ 부드럽게 늘어나도록 */
 }
+
 
 img {
 	border-radius: 0.3rem;
@@ -61,8 +63,8 @@ img {
 }
 
 .profile_photo {
-	width: 130px;             
-	height: 130px;          
+	width: 130px;              /* ✅ 고정 크기 */
+	height: 130px;             /* ✅ 정사각형으로 맞춤 */
 	border-radius: 50%;
 	overflow: hidden;
 	display: flex;
@@ -70,13 +72,13 @@ img {
 	align-items: center;
 	margin: 2rem auto 0.5rem;
 	flex-shrink: 0;
-	background-color: #f8f9fa;
+	background-color: #f8f9fa; /* (선택) 빈공간 대비 배경 */
 }
 
 .profile_photo img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: cover;         /* ✅ 원본 비율 유지하며 꽉 채우기 */
 	border-radius: 50%;
 }
 
@@ -88,7 +90,9 @@ img {
 
 
 
-/*[왼쪽 카테고리 메뉴]*/
+/*----------------------------------
+[왼쪽 카테고리 메뉴]
+----------------------------------*/
 .category ul {
 	list-style: none;
 	padding-left: 0;
@@ -142,7 +146,9 @@ img {
 	width: 100%;
 }
 
-/*[오른쪽 콘텐츠 영역]*/
+/*----------------------------------
+[오른쪽 콘텐츠 영역]
+----------------------------------*/
 .content {
 	flex: 4;
 	width: auto;
@@ -151,7 +157,7 @@ img {
 	flex-direction: column;
 	align-items: center;
 	box-sizing: border-box;
-	min-height: 93vh;
+	min-height: 93vh; /* ✅ 프로필라인과 하단 정렬 */
 	position: relative;
 	z-index: 0;
 }
@@ -379,27 +385,6 @@ img {
 	opacity: 1;
 	max-height: 300px;
 	transition: all 0.5s ease;
-}
-
-.left_box {
-	width: 28%; /* ✅ 왼쪽 살짝 넓힘 */
-	min-width: 330px;
-	display: flex;
-	justify-content: center;
-}
-
-.right_box {
-	width: 68%; /* ✅ 오른쪽 여백 줄임 */
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.right_box .calander,
-.right_box .short_board,
-.right_box .study_alram {
-	width: 95%;
-	max-width: 940px;
 }
 
 
