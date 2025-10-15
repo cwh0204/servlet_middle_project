@@ -63,7 +63,7 @@ select {
       width: 100%;
       padding: 10px;
       border: 1px solid #ced4da;
-      border-radius: 5px;
+      border-radius: 12px;
       box-sizing: border-box;
       font-size: 14px;
 }
@@ -74,7 +74,7 @@ input[type="submit"] {
       background-color: #84d330;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 12px;
       font-size: 20px;
       cursor: pointer;
 }
@@ -100,7 +100,7 @@ input[type="submit"]:hover {
      background-color: #84d330;
      color: white;
      border: none;
-     border-radius: 4px;
+     border-radius: 12px;
      cursor: pointer;
      white-space: nowrap;
 }
@@ -118,7 +118,7 @@ input[type="submit"]:hover {
 .juminRow input[type="text"] {
   padding: 10px;
   border: 1px solid #ced4da;
-  border-radius: 5px;
+  border-radius: 12px;
   font-size: 14px;
 }
 
@@ -177,7 +177,7 @@ input[type="submit"]:hover {
   width: 100%;
   padding: 10px;
   border: 1px solid #ced4da;
-  border-radius: 5px;
+  border-radius: 12px;
   box-sizing: border-box;
   font-size: 14px;
 }
@@ -192,7 +192,7 @@ input[type="submit"]:hover {
   background-color: #84d330;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   width: 120px;
   height: 42px;
   padding: 10px;
