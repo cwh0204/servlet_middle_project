@@ -22,7 +22,6 @@
         background-color: #f8f9fa;
         padding-top: 50px;
         padding-bottom: 50px;
-        background-color = pink;
     }
 
     h1 {
@@ -61,7 +60,7 @@
         width: 100%;
         padding: 12px 14px;
         border: 1px solid #ccc;
-        border-radius: 8px;
+        border-radius: 12px;
         font-size: 15px;
     }
 
@@ -99,7 +98,7 @@
         padding: 14px;
         font-size: 17px;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         cursor: pointer;
         font-weight: bold;
     }
@@ -116,7 +115,7 @@
     
 </style>
 </head>
-<body>
+<body onload="checkPassword()">
     <h1>회원정보 상세페이지</h1>
     <form action="updateMember.do" method="post" enctype="multipart/form-data" onsubmit="return showAlert()">
   
@@ -130,58 +129,39 @@
   <input type="file" name="profile" id="profile" accept="image/*" onchange="previewProfile(event)" style="margin-left:200px;">
 </div>
 
-
-<script>
-function previewProfile(event) {
-  const file = event.target.files[0];
-  const preview = document.getElementById('profilePreview');
-
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-    }
-    reader.readAsDataURL(file);
-  } else {
-    // 파일 선택 취소 시 기본 이미지로 복원
-    preview.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
-  }
-}
-</script>
-
         <div class="input-group"> 
         <label>아이디</label> 
-        <input type="text" name="userID" value="userID" disabled>
+        <input type="text" name="userID" value="userID" disabled style="border-radius: 12px;">
         </div>
         
         <input type="hidden" name="password2" value="0">
         <input type="hidden" name="passtry2" value="0">
         <div class="input-group">
             <label>비밀번호</label>
-            <input type="password" name="password">
+            <input type="password" name="password" style="border-radius: 12px;">
         </div>
 
         <div class="input-group">
             <label>비밀번호 재확인</label>
-            <input type="password" name="passtry">
+            <input type="password" name="passtry" style="border-radius: 12px;">
         </div>
 
         <div class="input-group">
             <label>이름</label>
-            <input type="text" name="irum" value="user222" disabled>
+            <input type="text" name="irum" value="user222" disabled style="border-radius: 12px;">
         </div>
         
         <div class="input-group">
              <label>닉네임</label>
-             <input type="text" name="nickname">
+             <input type="text" name="nickname" style="border-radius: 12px;">
         </div>
         
         <div class="input-group">
             <label>주민등록번호</label>
             <div style="display: flex; align-items: center; gap:5px;">
-            <input type="text" name="jumin_front" maxlength="6" placeholder="123456" disabled style="width:120px; text-align:center;"> 
+            <input type="text" name="jumin_front" maxlength="6" placeholder="123456" disabled style="width:120px; text-align:center; border-radius:12px;" > 
             <span>-</span>
-            <input type="password" name="jumin_back" maxlength="1" placeholder="●" disabled style="width: 50px; text-align: center;">
+            <input type="password" name="jumin_back" maxlength="1" placeholder="●" disabled style="width: 50px; text-align: center; border-radius:12px;">
             <span>******</span>
         </div>
         </div>
@@ -189,11 +169,11 @@ function previewProfile(event) {
         <div class="input-group">
     <label>이메일</label>
     <div style="display: flex; align-items: center; gap: 5px;">
-        <input type="text" name="emailid" style="width:120px; text-align:center;">
+        <input type="text" name="emailid" style="width:120px; text-align:center; border-radius:12px;">
         <span>@</span>
-        <input type="text" name="emailadd" style="width:150px; text-align:center;">
+        <input type="text" name="emailadd" style="width:150px; text-align:center; border-radius:12px;">
     </div>
-    <select name="email_select" style="margin-top:5px; width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;">
+    <select name="email_select" style="margin-top:5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;">
         <option value="">- 이메일 선택 -</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
@@ -205,42 +185,28 @@ function previewProfile(event) {
         <div class="input-group">
             <label>전화번호</label>
             <div style="display:flex; gap:10px; align-items:center;">
-                <select name="phonenumber">
+                <select name="phonenumber" style="border-radius:12px;" >
                     <option value="010">010</option>
                     <option value="042">042</option>
                     <option value="02">02</option>
                 </select>
                 <span>-</span>
-                <input type="text" name="phonemiddle" maxlength="4">
+                <input type="text" name="phonemiddle" maxlength="4" style="border-radius:12px;">
                 <span>-</span>
-                <input type="text" name="phoneback" maxlength="4">
+                <input type="text" name="phoneback" maxlength="4" style="border-radius:12px;">
             </div>
         </div>
 
 <div class="input-group">
     <label>주소</label>
     <div style="display: flex; gap: 5px; align-items: center;">
-        <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" style="width:120px; text-align:center;" readonly>
-        <input type="button" value="우편번호검색" style="padding: 12px 14px; border-radius: 8px; cursor:pointer;" onclick="openPostcode()">
+        <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" style="width:120px; text-align:center; border-radius:12px;" readonly>
+        <input type="button" value="우편번호검색" style="padding: 12px 14px; border-radius: 12px; cursor:pointer;" onclick="openPostcode()">
     </div>
-    <input type="text" id="address1" name="address1" placeholder="주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;" readonly>
-    <input type="text" id="address2" name="address2" placeholder="상세주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:8px; border:1px solid #ccc;">
+    <input type="text" id="address1" name="address1" placeholder="주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;" readonly>
+    <input type="text" id="address2" name="address2" placeholder="상세주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;">
 </div>
 
-<!-- 카카오 우편번호 API -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-function openPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            document.getElementById('zipcode').value = data.zonecode; // 우편번호
-            document.getElementById('address1').value = data.roadAddress; // 도로명 주소
-            document.getElementById('address2').focus(); // 상세주소 입력창
-        }
-    }).open();
-}
-
-</script>
         <div class="input-group">
     <label>관심분야</label>
     <div class="checkbox-group">
@@ -283,7 +249,7 @@ function previewProfile(event) {
 <!-- 이메일 뒷부분 자동입력 및 직접입력 -->
 const domainInput = document.querySelector('input[name="emailadd"]');
 const domainSelect = document.querySelector('select[name="email_select"]');
-
+userDetail
 domainSelect.addEventListener('change', () => {
     if(domainSelect.value === "direct" || domainSelect.value === "") {
         domainInput.value = ""; 
@@ -294,26 +260,47 @@ domainSelect.addEventListener('change', () => {
     }
 });
 
-<!-- 우편번호 팝업창 열기 -->
+
+<!-- 카카오 우편번호api -->
 function openPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
             document.getElementById('zipcode').value = data.zonecode; // 우편번호
             document.getElementById('address1').value = data.roadAddress; // 도로명 주소
-            document.getElementById('address2').focus(); // 상세주소
+            document.getElementById('address2').focus(); // 상세주소 입력창
         }
     }).open();
 }
 
 
 <!-- 팝업창 -->
+function checkPassword() {
+    const correctPassword = "1234"; 
+    let pw = prompt("비밀번호를 입력하세요.");
+
+    if (pw === null) {
+        alert("비밀번호 입력이 취소되었습니다.");
+        window.location.href = "${pageContext.request.contextPath}/mypage.do"; 
+        return;
+    }
+
+    if (pw !== correctPassword) {
+        alert("비밀번호가 틀렸습니다.");
+        window.location.href = "${pageContext.request.contextPath}/mypage.do"; 
+    }
+   
+}
+
+
 function showCancelAlert() {
     alert("취소되었습니다."); 
+    
 }
 
 function showAlert() {
     alert("회원정보가 수정되었습니다."); 
-    return true; 
+    window.location.href = "${pageContext.request.contextPath}/mypage.do";
+    return false;
 }
 
 
