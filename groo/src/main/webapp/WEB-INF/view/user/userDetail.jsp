@@ -175,15 +175,15 @@
     </div>
     <select name="email_select" style="margin-top:5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;">
         <option value="">- 이메일 선택 -</option>
+        <option value="direct">직접입력</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
         <option value="daum.net">daum.net</option>
-        <option value="direct">직접입력</option>
     </select>
 </div>
 
         <div class="input-group">
-            <label>전화번호</label>
+            <label>전화번호(선택사항)</label>
             <div style="display:flex; gap:10px; align-items:center;">
                 <select name="phonenumber" style="border-radius:12px;" >
                     <option value="010">010</option>
@@ -246,6 +246,14 @@ function previewProfile(event) {
 }
 
 
+<!-- 비밀번호 자리수 제한 -->
+
+
+
+<!-- 닉네임 자리수 제한 -->
+
+
+
 <!-- 이메일 뒷부분 자동입력 및 직접입력 -->
 const domainInput = document.querySelector('input[name="emailadd"]');
 const domainSelect = document.querySelector('select[name="email_select"]');
@@ -292,17 +300,28 @@ function checkPassword() {
 }
 
 
+<!-- 취소버튼 눌렀을때 -->
 function showCancelAlert() {
     alert("취소되었습니다."); 
     
 }
 
+
+<!-- 비밀번호, 비밀번호재확인 비교 -->
 function showAlert() {
+	const passwordVal = document.querySelector('input[name="password"]').value;
+    const passtryVal = document.querySelector('input[name="passtry"]').value;
+
+    if (passwordVal !== passtryVal) {
+        alert("비밀번호가 다릅니다.");
+        document.querySelector('input[name="password"]').focus(); 
+        return false; 
+    }
+	
     alert("회원정보가 수정되었습니다."); 
     window.location.href = "${pageContext.request.contextPath}/mypage.do";
     return false;
-}
-
+} 
 
 
 </script>
