@@ -159,10 +159,9 @@ input[type="submit"]:hover {
    border: 0;
 }
 
-.signup {
-   display: flex;
-   justify-content: center;
-   margin-top: 20px;
+#emailVerify {
+	display: none;
+	overflow: hidden;
 }
 
 #postcode {
@@ -206,6 +205,12 @@ input[type="submit"]:hover {
   background-color: #1fb205;
 }
 
+.signup {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -218,22 +223,27 @@ input[type="submit"]:hover {
       	  <input type="text" id="userId" name="userId" required> 
       	  <input type="button" value="중복확인" onclick="checkDuplicateId()">
       	</div>
+      	
       	<div>
       	  <label for="pass1">비밀번호</label><br>
       	  <input type="password" id="pass1" name="password" required>
       	</div>
+      	
       	<div>
       	  <label for="pass2">비밀번호 재확인</label><br>
       	  <input type="password" id="pass2" name="confirmPassword" required>
         </div>
+        
         <div>
           <label for="name">이 름</label><br>
           <input type="text" id="name" name="name" required>
         </div>
+        
         <div>
           <label for="nickname">닉네임</label><br>
           <input type="text" id="nickname" name="nickname" required>
         </div>
+        
         <label for="jumin1">주민등록번호</label>
         <div class="juminRow">
           <input type="text" id="jumin1" name="jumin1" maxlength="6" placeholder="앞 6자리" required>
@@ -241,6 +251,7 @@ input[type="submit"]:hover {
           <input type="text" id="jumin2" name="jumin2" maxlength="1" class="oneChar" required>
           <span>******</span>
         </div>
+        
         <label for="emailId">이메일</label><br>
         <div class="emailRow">
           <input type="text" id="emailId" name="emailId" required> 
@@ -255,10 +266,18 @@ input[type="submit"]:hover {
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
-      	  
-      	  <input type="button" value="이메일 인증 요청" onclick="openEmailAuthPopup()">
-      	  
+      	  <div class="emailAuthBtnWrap">
+      	    <input type="button" value="이메일 인증 요청" id="emailAuthBtn">
+      	  </div>
+      	  <div id="emailVerify">
+      	  	<label for="emailCode">인증번호</label>
+      	  	<div class="verifyCode">
+      	  	  <input type="text" id="emailCode" name="emailCode" placeholder="인증번호">
+      	  	  <input type="button" value="확인" onclick="verifyEmailCode()">
+      	  	</div>
+      	  </div>
       	</div>
+      	
       	<div class="addressGroup">
           <label for="postcode">주소</label><br>
           
@@ -297,6 +316,24 @@ emailDomainSelect.addEventListener('change', function () {
     emailDomain.readOnly = true;
   }
 });
+
+<!-- 이메일 인증요청버튼 클릭 시 슬라이드 표시-->
+$('#emailAuthBtn').on('click', function(){
+	if(!$('#emailVerify').is(':visible')){
+	   $('#emailVerify').slideDown();
+	}
+});
+
+function verifyEmailCode(){
+	const code = $('#emailCode').val();
+	
+	if(!code){
+		alert('인증번호');
+		return;
+	}
+	
+	$
+}
 </script>
 
 <!-- 카카오 주소 API -->
