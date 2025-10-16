@@ -3,7 +3,8 @@ package com.groo.controller;
 import java.io.IOException;
 
 import com.groo.model.MyPageDTO;
-import com.groo.service.MpageselectNickImpl;
+import com.groo.service.MpageselectNick;
+import com.groo.service.MpageselectService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -32,15 +33,13 @@ public class MyPageImpl implements Controller {
 		
 		
 		String userId = request.getParameter("userId");
-		MpageselectNickImpl service = new MpageselectNickImpl();
+		MpageselectNick service = new MpageselectService();
 		MyPageDTO myPageDTO = new MyPageDTO();
 		myPageDTO.setBoard_user_id(userId);
 		
 		MyPageDTO getnickDTO = service.selectNickName(myPageDTO);
-		
-		
-		
-		
+		session.setAttribute("userId", getnickDTO);
+		//System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 		RequestDispatcher rd = request.getRequestDispatcher("mypage.do");
 		rd.forward(request, response);
 		

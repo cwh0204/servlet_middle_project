@@ -5,10 +5,10 @@ import org.apache.ibatis.session.SqlSession;
 public class MyPageDAOImpl implements MyPageDAO {
 
 	@Override
-	public MyPageDTO getuserId(MyPageDTO id, SqlSession session) {
+	public MyPageDTO getNickname(MyPageDTO nickname, SqlSession session) {
 		
 		MyPageDTO nick = new MyPageDTO();
-		nick = session.selectOne("userId", id);
+		nick = session.selectOne("usernickname", nickname);
 		return nick;
 	}
 

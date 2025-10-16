@@ -28,8 +28,8 @@
 					</div>
 
 					<div class="nick_name">
-						<p>닉네임 : ${user.nickname}</p>
-						<p>email : ${user.email}</p>
+						<p>닉네임 : ${userId}</p> <!-- impl에서 ""로 설정한 변수명으로 가져오기 나머지 변경할것-->
+						<p>email : ${email}</p> <!-- impl에서 ""로 설정한 변수명으로 가져오기 나머지 변경할것-->
 					</div>
 
 					<!-- 카테고리 메뉴 -->
