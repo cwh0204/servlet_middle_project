@@ -1,12 +1,10 @@
 package com.groo.model;
 
+import org.apache.ibatis.session.SqlSession;
+
 public interface MyPageDAO {
 	
-	public void update_id(MyPageDTO id);
-	public void update_email(MyPageDTO email);
-	public MyPageDTO getuserId(String id);
-	public MyPageDTO getemail(String email);
-	
-	
+	public MyPageDTO getuserId(MyPageDTO id, SqlSession session);
+	public MyPageDTO getemail(MyPageDTO email);
 
 }
