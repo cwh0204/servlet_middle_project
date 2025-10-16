@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-/* ================================
-   헤더 영역
-================================ */
+/*헤더 영역*/
 .header_Container {
 	display: flex;
 	flex-direction: row;
@@ -54,9 +52,7 @@
 	width: 100%;
 }
 
-/* ================================
-   검색창
-================================ */
+/* search bar */
 .searchbar {
 	display: flex;
 	align-items: center;
@@ -93,16 +89,19 @@
 	background-color: #218838;
 }
 
-.searchbar button:focus,
-.searchbar button:focus-visible {
+.searchbar button:focus, .searchbar button:focus-visible {
 	outline: none !important;
 	box-shadow: none !important;
 	border-color: #28a745;
 }
 
-/* ================================
-   메인 콘텐츠
-================================ */
+/*메인 콘텐츠 */
+
+.create_Line2{
+	margin-bottom : 60px;
+}
+
+
 main {
 	position: relative;
 	width: 100%;
@@ -111,138 +110,131 @@ main {
 	padding: 20px;
 	box-sizing: border-box;
 }
-.studyTitle_box,
+
+.studyTitle_box, 
 .studyLeader_box {
-	margin-top : 15px;
-  width: 700px;              /* 두 줄 모두 고정 폭 */
- /* 중앙 정렬 + 아래 간격 */
-  display: flex;             /* 수평 배치 */
-      /* 세로 중앙 정렬 */
+	
+	width: 700px;
+	display: flex;
+	
 }
 
-.studyTitle_box label,
-.studyLeader_box label,
-.teamCategory_box label {
-              /* 왼쪽 텍스트 폭 고정 */
-  font-weight: 600;
-  font-size: 16px;
+.studyTitle_box label, 
+.studyLeader_box label, 
+.teamCategory_box label,
+.mbercount_box label,
+.studycontent_box {
+	font-weight: 600px;
+	font-size: 16px;
+	margin-bottom : 15px;
+
 }
 
-.studyTitle_box input,
+.studyTitle_box input, 
 .studyLeader_box input {
-  width: 234px;              /* 오른쪽 입력창 폭 고정 */
-  height: 30px;
-  margin-left : 10px;
-
-  padding: 5px 10px;
-  border: 1px solid #28a745;
-  border-radius: 6px;
-  outline: none;
+	width: 234px;
+	height: 30px;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border: 1px solid #28a745;
+	border-radius: 6px;
+	outline: none;
 }
 
-.studyTitle_box input:focus,
-.studyLeader_box input:focus {
-  border-color: #218838;
+.studyTitle_box input:focus, .studyLeader_box input:focus {
+	border-color: #218838;
 }
+
+
 
 table {
-    width: 600px;                 
-    border-collapse: collapse;    
-               
-  }
-
-  tr, td {
-    border: 2px solid gray;    
-  }
-
-  td {
-    text-align: center;
-    padding: 15px;
-    font-size: 16px;
-    height: 50px;
-  }
-
-.teamCategory_box{
-	margin-top : 8px;
+	width: 600px;
+	border-collapse: collapse;
 }
 
-.radio_group label{
-	margin-top : 4px;
-	font-size : 15px
+tr, td {
+	border: 2px solid gray;
+}
+
+td {
+	text-align: center;
+	padding: 15px;
+	font-size: 16px;
+	height: 50px;
+}
+
+.teamCategory_box {
+	margin-top: 8px;
+}
+
+.radio_group label {
+	margin-top: 4px;
+	font-size: 15px
 }
 
 .membercount_box {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin: 10px 0 8px 0;
-  width: 400px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin: 10px 0 8px 0;
+	width: 400px;
 }
 
 .membercount_box label {
-  font-weight: 600;
-  font-size: 16px;
-  min-width: 80px;
+	font-weight: 600;
+	font-size: 16px;
+	min-width: 80px;
 }
 
 .membercount_box select {
-  width: 100px;
-  height: 35px;
-  border: 1px solid #28a745;
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-size: 15px;
-  outline: none;
-  background-color: #fff;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
+	width: 100px;
+	height: 35px;
+	border: 1px solid #28a745;
+	border-radius: 6px;
+	padding: 5px 10px;
+	font-size: 15px;
+	outline: none;
+	background-color: #fff;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
 }
 
 .membercount_box select:focus {
-  border-color: #218838;
-  box-shadow: 0 0 4px rgba(40,167,69,0.3);
+	border-color: #218838;
+	box-shadow: 0 0 4px rgba(40, 167, 69, 0.3);
 }
 
-
 .memberage_box {
-  display: flex;
- 
-
-  margin: 20px 0;
-  width: 400px;
+	display: flex;
+	margin: 20px 0;
+	width: 400px;
 }
 
 .memberage_box label {
-  font-weight: 600;
-  min-width: 80px;
+	font-weight: 600;
+	min-width: 80px;
 }
 
 .range-container {
-  display: flex;
-
-  gap: 10px;
-  flex: 1;
+	display: flex;
+	flex-direction : row;
 }
 
 .range-container input[type="range"] {
-  width: 300px;
-  accent-color: #28a745;  /* 초록색 슬라이더 */
-  cursor: pointer;
+	width: 300px;
+	accent-color: #28a745; /* 초록색 슬라이더 */
+	cursor: pointer;
 }
 
 .range-container span {
-  font-weight: bold;
-  color: #28a745;
-  width: 60px;
-  text-align: left;
+	font-weight: bold;
+	color: #28a745;
+	width: 60px;
+	text-align: left;
 }
 
-
-
-
 /* 기준 라인 (위, 아래 공통) */
-.underLine,
-.underLine2 {
+.underLine, .underLine2 {
 	position: relative;
 	height: 0;
 	margin-bottom: 1rem;
@@ -271,7 +263,7 @@ table {
 	transition: width 1.5s ease-out;
 }
 
-.underLine.animate + .create_Line::before {
+.underLine.animate+.create_Line::before {
 	width: 100%;
 }
 
@@ -298,20 +290,27 @@ table {
 	transition: width 1.5s ease-out;
 }
 
-.underLine2.animate + .create_Line2::before {
+.underLine2.animate+.create_Line2::before {
 	width: 100%;
 }
 
 /* ================================
    콘텐츠 표시 효과
 ================================ */
-main h3,
-main .category_container {
+main h3, main .category_container {
 	opacity: 0;
 	transition: opacity 1s ease;
 }
 
-main.showContent h3,
-main.showContent .category_container {
+main h3 {
+	text-align: center; /* 제목 중앙 정렬 (선택사항) */
+	margin-top: 25px; /* 위 라인과의 간격 */
+	margin-bottom: 25px; /* 아래 라인과의 간격 */
+	font-size: 22px;
+	font-weight: 700;
+	color: #333;
+}
+
+main.showContent h3, main.showContent .category_container {
 	opacity: 1;
 }

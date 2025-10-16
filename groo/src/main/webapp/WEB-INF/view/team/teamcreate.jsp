@@ -66,7 +66,7 @@
 				</div>
 
 				<div class="memberage_box">
-					<label for="teamMemberage">나이</label>
+					<div><label for="teamMemberage">나이</label></div>
 					<div class="range-container">
 						<input type="range" id="teamMemberage" name="teamMemberage"
 							min="19" max="50" step="1" value="25"> 
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				
-				<!-- ✅ 표준 HTML5 구조로 수정된 표 -->
+			
 				<table class="region-table">
 					<caption>지역</caption>
 					<tbody>
@@ -104,7 +104,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<!-- ✅ 표 수정 끝 -->
+			
 
 				<div class="teamCategory_box">
 					<label>개설하실 스터디의 분야를 선택해 주세요</label>
