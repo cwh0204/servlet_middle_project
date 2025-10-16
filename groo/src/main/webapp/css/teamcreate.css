@@ -1,26 +1,26 @@
 @charset "UTF-8";
 
-/* 헤더 컨테이너: 중앙 고정 + 최대 폭 제한 */
+/* ================================
+   헤더 영역
+================================ */
 .header_Container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%; /* 화면 전체 기준 */
-	max-width: 1200px; /* 최대 폭 제한 */
+	width: 100%;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 30px 20px;
 	box-sizing: border-box;
-	
 }
 
-/* 로고 */
 .img-fluid {
 	max-width: 13%;
 	height: auto;
 }
 
-/* 오른쪽 네비게이션 메뉴 */
+/* 네비게이션 */
 .reightNavi_box ul {
 	display: flex;
 	flex-direction: row;
@@ -32,7 +32,6 @@
 	padding: 0;
 }
 
-/* 우측상단 아이콘 밑줄 애니메이션 */
 .reightNavi_box li {
 	position: relative;
 	padding-bottom: 5px;
@@ -53,10 +52,11 @@
 
 .reightNavi_box li:hover::after {
 	width: 100%;
-} /*여기까지가 밑줄 애니메이션 입니다.*/
+}
 
-/* 검색창 한 줄 정렬 */
-/* 검색창 한 줄 정렬 */
+/* ================================
+   검색창
+================================ */
 .searchbar {
 	display: flex;
 	align-items: center;
@@ -77,7 +77,6 @@
 	box-shadow: none;
 }
 
-/* 버튼 */
 .searchbar button {
 	height: 35px;
 	padding: 0 15px;
@@ -88,10 +87,12 @@
 	cursor: pointer;
 	outline: none;
 	box-shadow: none;
-	transition: none;
 }
 
-/* 클릭 시 파란 테두리 제거 */
+.searchbar button:hover {
+	background-color: #218838;
+}
+
 .searchbar button:focus,
 .searchbar button:focus-visible {
 	outline: none !important;
@@ -99,78 +100,121 @@
 	border-color: #28a745;
 }
 
-/* hover 효과 */
-.searchbar button:hover {
-	background-color: #218838;
-}
-
-/*main 부분 시작입니다. */
+/* ================================
+   메인 콘텐츠
+================================ */
 main {
-	/*헤더와 사이즈 동일하게 했습니다.*/
+	position: relative;
 	width: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
 	box-sizing: border-box;
 }
-.underLine{
-	background-color : pink;
-	
+.studyTitle_box,
+.studyLeader_box {
+	margin-top : 15px;
+  width: 700px;              /* 두 줄 모두 고정 폭 */
+ /* 중앙 정렬 + 아래 간격 */
+  display: flex;             /* 수평 배치 */
+      /* 세로 중앙 정렬 */
 }
 
-h3 {
-  text-align: center;
-  font-size: 28px;
- 
-  margin-bottom: 20px;
-
-  padding-bottom: 10px;
+.studyTitle_box label,
+.studyLeader_box label,
+.teamCategory_box label {
+              /* 왼쪽 텍스트 폭 고정 */
+  font-weight: 600;
+  font-size: 16px;
 }
 
-/* 기준점 역할만 하는 라인 (보일 필요 없음) */
-.underLine {
-  position: relative;
-  height: 0;
-  margin-bottom: 1rem;
+.studyTitle_box input,
+.studyLeader_box input {
+  width: 500px;              /* 오른쪽 입력창 폭 고정 */
+  height: 35px;
+  padding: 5px 10px;
+  border: 1px solid #28a745;
+  border-radius: 8px;
+  outline: none;
 }
 
-/* 실제 애니메이션 라인 */
+.studyTitle_box input:focus,
+.studyLeader_box input:focus {
+  border-color: #218838;
+}
+
+/* 기준 라인 (위, 아래 공통) */
+.underLine,
+.underLine2 {
+	position: relative;
+	height: 0;
+	margin-bottom: 1rem;
+}
+
+/* ================================
+   위쪽 라인 애니메이션 (왼쪽→오른쪽)
+================================ */
 .create_Line {
-  position: relative;
-  width: 100%;
-  height: 3px;
-  background: transparent;
-  overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 3px;
+	background: transparent;
+	overflow: hidden;
 }
 
 .create_Line::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 0%;
-  height: 100%;
-  background-color: #28a745; /* 원하는 색상 */
-  transform: translateX(-50%);
-  transition: width 1.5s ease-out;
-  
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 100%;
+	background-color: #28a745;
+	transform: none;
+	transition: width 1.5s ease-out;
 }
 
-/* JS로 추가되는 .animate 클래스 */
 .underLine.animate + .create_Line::before {
-  width: 100%;
+	width: 100%;
 }
 
-/* 메인 콘텐츠 숨기기 */
+/* ================================
+   아래쪽 라인 애니메이션 (오른쪽→왼쪽)
+================================ */
+.create_Line2 {
+	position: relative;
+	width: 100%;
+	height: 3px;
+	background: transparent;
+	overflow: hidden;
+}
+
+.create_Line2::before {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 0%;
+	height: 100%;
+	background-color: #28a745;
+	transform: none;
+	transition: width 1.5s ease-out;
+}
+
+.underLine2.animate + .create_Line2::before {
+	width: 100%;
+}
+
+/* ================================
+   콘텐츠 표시 효과
+================================ */
 main h3,
 main .category_container {
 	opacity: 0;
 	transition: opacity 1s ease;
 }
 
-/* showContent가 붙으면 나타남 */
 main.showContent h3,
 main.showContent .category_container {
 	opacity: 1;
 }
-
