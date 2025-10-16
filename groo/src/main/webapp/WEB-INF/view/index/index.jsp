@@ -14,7 +14,6 @@
 
 <script>
 	$(document).ready(function() {
-		<!-- slick 라이브러리 -->
 		$('#hot-studies-carousel').slick({
 			arrows : false,
 			draggable : true,
@@ -26,19 +25,18 @@
 			speed : 500,
 		});
         
-        /* 💡 신규: 신규 스터디 (Masonry) 초기화 코드 */
-        var newGrid = document.querySelector('#new-studies-grid');
+        /* 💡 수정된: 활동중인 스터디 (Masonry) 초기화 코드 */
+        var activeGrid = document.querySelector('#active-studies-grid'); // ID 변경
         
-        if (newGrid) {
-            // Masonry는 DOM 준비 후, 이미지 로드 시간을 확보해야 안정적입니다.
+        if (activeGrid) {
             setTimeout(function() {
-                var msnry = new Masonry( newGrid, {
-                    itemSelector: '.new-grid-item',  // 그리드 아이템 클래스
-                    columnWidth: '.new-grid-sizer', // 그리드 크기 요소
-                    percentPosition: true,           // 너비를 퍼센트로 계산
-                    gutter: 0                        // 아이템 사이의 간격 (CSS padding: 10px으로 대체)
+                var msnry = new Masonry( activeGrid, {
+                    itemSelector: '.active-grid-item',  // 아이템 클래스 변경
+                    columnWidth: '.active-grid-sizer', // 크기 요소 클래스 변경
+                    percentPosition: true,
+                    gutter: 0                        
                 });
-            }, 500); // 0.5초 딜레이
+            }, 500);
         }
 	});
 </script>
@@ -154,30 +152,30 @@
 }
 
 /*--------------------------------------------------------------------------------*/
-
-.new-studies-section {
+/* 💡 활동중인 스터디 섹션 스타일 (수정) */
+.active-studies-section {
     width: 90%; 
     margin: 40px auto;
 }
-.new-studies-section h2 {
+.active-studies-section h2 {
     text-align: left;
     margin-bottom: 20px;
     color: #333;
 }
 
 /* 💡 Masonry 그리드 컨테이너 */
-.new-grid {
+.active-grid {
     /* Masonry는 float 기반으로 작동합니다. */
 }
 
 /* 💡 그리드 아이템의 너비 설정 (한 줄에 4개 표시) */
-.new-grid-sizer, 
-.new-grid-item {
+.active-grid-sizer, 
+.active-grid-item {
   width: 25%; /* 한 줄에 4개 */
 }
 
 /* 💡 그리드 아이템 내부 여백 및 박스 모델 설정 */
-.new-grid-item {
+.active-grid-item {
   box-sizing: border-box;
   padding: 10px; /* 아이템 주변 여백 */
   /* Masonry가 위치를 조정할 때 부드러운 애니메이션 효과를 위해 추가 */
@@ -268,14 +266,14 @@
 		</section>
 	</div>
 	<div class="flex_container">
-		<section class="new-studies-section">
-			<h2>✨ 새로 올라온 스터디</h2>
+		<section class="active-studies-section">
+			<h2>🏃 활동중인 스터디</h2>
 
-			<div id="new-studies-grid" class="new-grid">
+			<div id="active-studies-grid" class="active-grid">
 
-				<div class="new-grid-sizer"></div>
+				<div class="active-grid-sizer"></div>
 
-				<div class="new-grid-item">
+				<div class="active-grid-item">
 					<div class="study-card">
 						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">[신규] Vue.js & Nuxt 기초</span> <span class="study-meta">🖥️ 프론트엔드</span> <span class="study-members">인원: 1/5명</span>
 						<p style="font-size: 0.8em; margin-top: 5px;">*스터디 개설 1시간 전*</p>
@@ -283,61 +281,19 @@
 					</div>
 				</div>
 
-				<div class="new-grid-item">
+				<div class="active-grid-item">
 					<div class="study-card">
 						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">비전공자를 위한 Python</span> <span class="study-meta">🐍 백엔드/데이터</span> <span class="study-members">인원: 2/6명</span> <span class="like-count">❤️ 7</span>
 					</div>
 				</div>
 
-				<div class="new-grid-item" style="height: 350px;">
-					<div class="study-card">
-						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> 
-						<span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
-						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
-						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
-					</div>
-				</div>
-				
-				<div class="new-grid-item" style="height: 350px;">
+				<div class="active-grid-item" style="height: 350px;">
 					<div class="study-card">
 						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
 						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
 						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
 					</div>
 				</div>
-				
-				<div class="new-grid-item" style="height: 350px;">
-					<div class="study-card">
-						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
-						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
-						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
-					</div>
-				</div>
-				
-				<div class="new-grid-item" style="height: 350px;">
-					<div class="study-card">
-						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
-						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
-						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
-					</div>
-				</div>
-				
-				<div class="new-grid-item" style="height: 350px;">
-					<div class="study-card">
-						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
-						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
-						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
-					</div>
-				</div>
-				
-				<div class="new-grid-item" style="height: 350px;">
-					<div class="study-card">
-						<img class="study-image" src="images/hotstudy1.png" alt="신규 스터디 이미지"> <span class="study-title">CS 지식 면접 대비반 (네트워크, OS)</span> <span class="study-meta">📚 CS/면접</span>
-						<p>매주 토요일 오후 3시 온라인 진행. 기술 면접에서 자주 나오는 핵심 질문을 중심으로 2개월간 운영됩니다.</p>
-						<span class="study-members">인원: 5/10명</span> <span class="like-count">❤️ 12</span>
-					</div>
-				</div>
-
 			</div>
 		</section>
 	</div>

@@ -22,8 +22,11 @@ public class FrontControllerImpl extends HttpServlet {
 			throws ServletException, IOException {
 
 		String requestURI = request.getRequestURI();
+		System.out.println("requestURI : " + requestURI);
 		String contextPath = request.getContextPath();
+		System.out.println("contextPath : " + contextPath);
 		String command = requestURI.substring(contextPath.length());
+		System.out.println("command : " + command);
 
 		FrontPath pathMapper = new FrontPath();
 
