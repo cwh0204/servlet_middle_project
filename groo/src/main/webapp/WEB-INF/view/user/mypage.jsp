@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +27,9 @@
 						<img class="profileImage" src="./images/열공남.png" alt="프로필사진">
 					</div>
 
-					<div class="profile_nic">
-						<p>nickname</p>
-						<p>이메일</p>
+					<div class="nick_name">
+						<p>닉네임 : ${user.nickname}</p>
+						<p>email : ${user.email}</p>
 					</div>
 
 					<!-- 카테고리 메뉴 -->
@@ -100,7 +102,7 @@
 						<!-- 닉네임 표시 -->
 						<div class="info_row">
 							<span>닉네임 :</span>
-							<span id="nicknameText">${user_nickname}</span>
+							<span id="nicknameText">${user.nickname}</span>
 							<button type="button" id="editNicknameBtn" class="editBtn">변경</button>
 						</div>
 
@@ -109,7 +111,7 @@
 						      action="${pageContext.request.contextPath}/updateNickname.do" 
 						      method="post"
 						      style="display:none; margin-top:5px;">
-							<input type="text" name="nickname" value="${user_nickname}">
+							<input type="text" name="nickname" value="${user.nickname}">
 							<button type="submit">저장</button>
 							<button type="button" id="cancelNicknameBtn">취소</button>
 						</form>
@@ -117,7 +119,7 @@
 						<!-- 이메일 표시 -->
 						<div class="info_row">
 							<span>이메일 :</span>
-							<span id="emailText">${user_email}</span>
+							<span id="emailText">${user.email}</span>
 							<button type="button" id="editEmailBtn" class="editBtn">변경</button>
 						</div>
 
@@ -126,12 +128,12 @@
 						      action="${pageContext.request.contextPath}/updateEmail.do" 
 						      method="post"
 						      style="display:none; margin-top:5px;">
-							<input type="email" name="email" value="${user_email}">
+							<input type="email" name="email" value="${user.email}">
 							<button type="submit">저장</button>
 							<button type="button" id="cancelEmailBtn">취소</button>
 						</form>
 
-						<c:if test="${not empty message}">
+						<c:if test="${not empty message}"> <!-- service에서 message를 만들어줘야한다. -->
 							<p style="color:green;">${message}</p>
 						</c:if>
 
