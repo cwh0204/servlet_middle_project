@@ -130,11 +130,13 @@ main {
 
 .studyTitle_box input,
 .studyLeader_box input {
-  width: 500px;              /* 오른쪽 입력창 폭 고정 */
-  height: 35px;
+  width: 234px;              /* 오른쪽 입력창 폭 고정 */
+  height: 30px;
+  margin-left : 10px;
+
   padding: 5px 10px;
   border: 1px solid #28a745;
-  border-radius: 8px;
+  border-radius: 6px;
   outline: none;
 }
 
@@ -142,6 +144,111 @@ main {
 .studyLeader_box input:focus {
   border-color: #218838;
 }
+
+table {
+    width: 600px;                 /* 고정 폭 */
+    border-collapse: collapse;    /* ✅ 이거 꼭 있어야 내부 줄이 합쳐집니다 */
+               /* 가운데 정렬 */
+  }
+
+  tr, td {
+    border: 2px solid #28a745;    /* ✅ 초록색 테두리 */
+  }
+
+  td {
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    height: 50px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8fcf9;    /* 짝수 줄 은은한 배경 */
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+
+
+.teamCategory_box{
+	margin-top : 8px;
+}
+
+.radio_group label{
+	margin-top : 4px;
+	font-size : 15px
+}
+
+.membercount_box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0 8px 0;
+  width: 400px;
+}
+
+.membercount_box label {
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 80px;
+}
+
+.membercount_box select {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #28a745;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 15px;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.membercount_box select:focus {
+  border-color: #218838;
+  box-shadow: 0 0 4px rgba(40,167,69,0.3);
+}
+
+
+.memberage_box {
+  display: flex;
+ 
+
+  margin: 20px 0;
+  width: 400px;
+}
+
+.memberage_box label {
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.range-container {
+  display: flex;
+
+  gap: 10px;
+  flex: 1;
+}
+
+.range-container input[type="range"] {
+  width: 300px;
+  accent-color: #28a745;  /* 초록색 슬라이더 */
+  cursor: pointer;
+}
+
+.range-container span {
+  font-weight: bold;
+  color: #28a745;
+  width: 60px;
+  text-align: left;
+}
+
+
+
 
 /* 기준 라인 (위, 아래 공통) */
 .underLine,
