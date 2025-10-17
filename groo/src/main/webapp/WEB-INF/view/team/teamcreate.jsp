@@ -140,13 +140,16 @@
 					<input type="text" name="teamInfo" class="form-control" placeholder="개설하실 스터디에 대해 설명해주세요.">
 				</div>
 
-				<button type="submit" class="btn btn-primary submit-btn">Submit</button>
+				<button type="submit" class="btn btn-primary submit-btn">팀 생성하기</button>
+				<button type="reset" class="btn btn-primary reset-btn">돌아가기</button>
 			</div>
 			
 		</form>
 	</main>
 	<!----------------------------------------------스크립트영역입니다---------------------------------------------->
 	<script>
+	
+	
 	window.addEventListener("load", () => {
 		  document.querySelectorAll(".underLine, .underLine2").forEach(el => {
 		    el.classList.add("animate");
