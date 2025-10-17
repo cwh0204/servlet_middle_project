@@ -63,7 +63,7 @@ select {
       width: 100%;
       padding: 10px;
       border: 1px solid #ced4da;
-      border-radius: 12px;
+      border-radius: 6px;
       box-sizing: border-box;
       font-size: 14px;
 }
@@ -74,7 +74,7 @@ input[type="submit"] {
       background-color: #84d330;
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 6px;
       font-size: 20px;
       cursor: pointer;
 }
@@ -100,7 +100,7 @@ input[type="submit"]:hover {
      background-color: #84d330;
      color: white;
      border: none;
-     border-radius: 12px;
+     border-radius: 6px;
      cursor: pointer;
      white-space: nowrap;
 }
@@ -118,7 +118,7 @@ input[type="submit"]:hover {
 .juminRow input[type="text"] {
   padding: 10px;
   border: 1px solid #ced4da;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 14px;
 }
 
@@ -143,7 +143,7 @@ input[type="submit"]:hover {
      gap: 8px;
 }
 
-.email-row input[type="text"] {
+.emailRow input[type="text"] {
       flex: 1;
 }
 
@@ -162,47 +162,6 @@ input[type="submit"]:hover {
 #emailVerify {
 	display: none;
 	overflow: hidden;
-}
-
-#postcode {
-  width: 160px;         
-  height: 42px;
-  padding: 10px;         
-  font-size: 14px;
-}
-
-.addressGroup input[type="text"] {
-  margin-bottom: 2px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 12px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.addressRow {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.addressGroup input[type="button"] {
-  background-color: #84d330;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  width: 120px;
-  height: 42px;
-  padding: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-.addressGroup input[type="button"]:hover {
-  background-color: #1fb205;
 }
 
 .signup {
@@ -239,11 +198,6 @@ input[type="submit"]:hover {
           <input type="text" id="name" name="name" required>
         </div>
         
-        <div>
-          <label for="nickname">닉네임</label><br>
-          <input type="text" id="nickname" name="nickname" required>
-        </div>
-        
         <label for="jumin1">주민등록번호</label>
         <div class="juminRow">
           <input type="text" id="jumin1" name="jumin1" maxlength="6" placeholder="앞 6자리" required>
@@ -257,11 +211,10 @@ input[type="submit"]:hover {
           <input type="text" id="emailId" name="emailId" required> 
           <span>@</span>
           <label for="emailDomain" class="sr-only">도메인</label>
-          <input type="text" id="emailDomain" name="emailDomain" readonly required>
+          <input type="text" id="emailDomain" name="emailDomain" required>
       	  
       	  <select id="emailDomainSelect" name="emailDomainSelect">
-      	    <option value="" disabled selected>선택</option>
-      	    <option value="direct">직접 입력</option>
+      	    <option value="direct" selected>직접 입력</option>
       	    <option value="naver.com">naver.com</option>
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
@@ -278,18 +231,6 @@ input[type="submit"]:hover {
       	  </div>
       	</div>
       	
-      	<div class="addressGroup">
-          <label for="postcode">주소</label><br>
-          
-        <div class="addressRow">
-          <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly required>
-          <input type="button" onclick="execDaumPostcode()" value="우편번호 검색">
-        </div>
-          
-        <input type="text" id="address" name="address" placeholder="기본 주소" readonly required>
-        <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소" required>
-        </div>
-        
         <div class="g-recaptcha" data-sitekey="6LdJB-orAAAAAJkFTCtPCgXVGhgSTPN-NQGWtgAj"></div>
         
         <div class="signup">
@@ -334,22 +275,6 @@ function verifyEmailCode(){
 	
 	$
 }
-</script>
-
-<!-- 카카오 주소 API -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-  function execDaumPostcode() {
-    new daum.Postcode({
-      oncomplete: function(data) {
-        var addr = data.roadAddress ? data.roadAddress : data.jibunAddress;
-        
-        document.getElementById('postcode').value = data.zonecode;
-        document.getElementById("address").value = addr;
-        document.getElementById("addressDetail").focus();
-      }
-    }).open();
-  }
 </script>
 
 <!-- reCAPTCHA 로봇인지 확인 -->
