@@ -80,7 +80,7 @@
 				<ul>
 					<li class="homeBtn">home</li>
 					<li>notice</li>
-					<li>team create</li>
+					<li class="FmyTcreateBtn">team create</li>
 					<li>groo talk</li>
 					<li>logout</li>
 				</ul>
@@ -124,7 +124,7 @@
 					</form>
 
 					<div class="info_row">
-						<span>소속스터디 :</span>
+						<span>참여중인 스터디 :</span>
 						<span id="studyText">${user.studyname}</span>
 						<button type="button" id="editStudyBtn" class="editBtn">변경</button>
 					</div>
@@ -148,16 +148,26 @@
 
 <!-- ✅ JavaScript -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
 
+const href = (addr) => {
+	const PAGE_ADDR_GROO = "${pageContext.request.contextPath}";
+	window.location.href = PAGE_ADDR_GROO+addr;
+}
+document.addEventListener("DOMContentLoaded", () => {
+	
+	
   // 이동 버튼
   document.querySelector(".homeBtn").addEventListener("click", () => {
-    window.location.href = "${pageContext.request.contextPath}/index.do";
+	  href("/index.do");
+    /* window.location.href = PAGE_ADDR_GROO+"/index.do"; */
   });
   document.querySelectorAll(".basicInfoBtn").forEach(btn => {
     btn.addEventListener("click", () => {
-      window.location.href = "${pageContext.request.contextPath}/userdetail.do";
+    	 href("/userdetail.do");
     });
+    document.querySelector(".FmyTcreateBtn").addEventListener("click", () => {
+    	 href("/teamcreate.do");
+      });
   });
 
   // ✅ FullCalendar 초기화
