@@ -269,6 +269,26 @@ main {
   backface-visibility: hidden;
 }
 
+/* 달력 박스 기본 높이 */
+.calander {
+  margin-bottom: 1.5rem;
+  height: 12vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  will-change: height;
+  transition: height 0.4s ease;
+}
+
+/* 펼쳐짐 시 숨겨지는 영역 */
+.hidden-section {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+
 /*----------------------------------
 [FullCalendar 커스터마이징]
 ----------------------------------*/
@@ -351,7 +371,7 @@ main {
 [기본정보 & 새로운 알림 간격 및 hover 충돌 방지]
 ----------------------------------*/
 .short_board {
-  height: 14vh;
+  height: 20vh;
   margin-bottom: 2.2rem; /* 여백 확보 */
   position: relative;
   z-index: 1;
@@ -362,7 +382,7 @@ main {
 }
 
 .study_alram {
-  height: 14vh;
+  height: 30.5vh;
   margin-bottom: 1.8rem; /* 살짝 띄움 */
   position: relative;
   z-index: 1;

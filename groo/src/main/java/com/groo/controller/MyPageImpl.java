@@ -35,7 +35,7 @@ public class MyPageImpl implements Controller {
 		String userId = request.getParameter("userId");
 		MpageselectNick service = new MpageselectService();
 		MyPageDTO myPageDTO = new MyPageDTO();
-		myPageDTO.setBoard_user_id(userId);
+		myPageDTO.setUser_id(userId);
 		
 		MyPageDTO getnickDTO = service.selectNickName(myPageDTO);
 		session.setAttribute("userId", getnickDTO);
