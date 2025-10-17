@@ -116,11 +116,11 @@
 </style>
 </head>
 <body onload="checkPassword()">
-    <h1>회원정보 상세페이지</h1>
+    
     <form action="updateMember.do" method="post" enctype="multipart/form-data" onsubmit="return showAlert()">
-  
 
 <div class="input-group" style="text-align:center;">
+<h1>회원정보 상세페이지</h1>
   <!-- 기본 프로필 -->
   <img id="profilePreview" 
        src="https://i.postimg.cc/QtzLc2wK/reader.png" 
@@ -149,11 +149,6 @@
         <div class="input-group">
             <label>이름</label>
             <input type="text" name="irum" value="user222" disabled style="border-radius: 12px;">
-        </div>
-        
-        <div class="input-group">
-             <label>닉네임</label>
-             <input type="text" name="nickname" style="border-radius: 12px;">
         </div>
         
         <div class="input-group">
@@ -201,7 +196,7 @@
     <label>주소</label>
     <div style="display: flex; gap: 5px; align-items: center;">
         <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" style="width:120px; text-align:center; border-radius:12px;" readonly>
-        <input type="button" value="우편번호검색" style="padding: 12px 14px; border-radius: 12px; cursor:pointer;" onclick="openPostcode()">
+        <input type="button" value="우편번호검색" style="padding: 12px 14px; border-radius: 6px; cursor:pointer;" onclick="openPostcode()">
     </div>
     <input type="text" id="address1" name="address1" placeholder="주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;" readonly>
     <input type="text" id="address2" name="address2" placeholder="상세주소" style="margin-top: 5px; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ccc;">
@@ -229,6 +224,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script>
+
 <!-- 프로필 미리보기 -->
 function previewProfile(event) {
   const file = event.target.files[0];
@@ -247,10 +243,6 @@ function previewProfile(event) {
 
 
 <!-- 비밀번호 자리수 제한 -->
-
-
-
-<!-- 닉네임 자리수 제한 -->
 
 
 
@@ -295,6 +287,7 @@ function checkPassword() {
     if (pw !== correctPassword) {
         alert("비밀번호가 틀렸습니다.");
         window.location.href = "${pageContext.request.contextPath}/mypage.do"; 
+        return;
     }
    
 }
