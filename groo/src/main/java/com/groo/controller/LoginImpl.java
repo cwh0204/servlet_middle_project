@@ -1,10 +1,9 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
+import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServerErrorException;
 import com.groo.error.ResourceNotFoundException;
@@ -45,7 +44,6 @@ public class LoginImpl extends HttpServlet implements Controller {
 			if (reMemberDTO != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", reMemberDTO.getUserId());
-
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				response.sendRedirect("index.do");
 			} else {
