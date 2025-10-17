@@ -27,18 +27,22 @@ public class FrontControllerImpl extends HttpServlet {
 		System.out.println("contextPath : " + contextPath);
 		String command = requestURI.substring(contextPath.length());
 		System.out.println("command : " + command);
+		
+		System.out.println("Extracted Command (FINAL): [" + command + "]");
 
 		FrontPath pathMapper = new FrontPath();
 
 		FrontControllerPath controllerMapper = new FrontControllerPath(); 
-
+		
 		String jspPath = pathMapper.getJspPath(command);
 		Controller controller = controllerMapper.getControllers(command);
 		
-		if (jspPath == null && controller == null) {
-			response.sendRedirect("login.do");
-			return;
-		}
+		//API 컨트롤러만 존재할때 API를 실행하기 위해 주석처리
+		
+		/*
+		 * if (jspPath == null && controller == null) {
+		 * response.sendRedirect("login.do"); return; }
+		 */
 		
 		/*
 		if(!command.equals("/login.do") && !command.equals("/*.do") && !command.equals("/logins.do")) {
@@ -58,6 +62,6 @@ public class FrontControllerImpl extends HttpServlet {
 		if (controller != null) {
 			controller.service(request, response); // 해당 컨트롤러 실행
 			return;
-		}
+		} 
 	}
 }

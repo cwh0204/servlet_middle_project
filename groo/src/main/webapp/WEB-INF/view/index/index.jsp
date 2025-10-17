@@ -13,32 +13,58 @@
 </head>
 
 <script>
-	$(document).ready(function() {
-		$('#hot-studies-carousel').slick({
-			arrows : false,
-			draggable : true,
-			swipe : true,
-			slidesToShow : 4,
-			slidesToScroll : 1,
-			dots : false, // 번호 제거
-			infinite : false,
-			speed : 500,
-		});
-        
-        /* 💡 수정된: 활동중인 스터디 (Masonry) 초기화 코드 */
-        var activeGrid = document.querySelector('#active-studies-grid'); // ID 변경
-        
-        if (activeGrid) {
-            setTimeout(function() {
-                var msnry = new Masonry( activeGrid, {
-                    itemSelector: '.active-grid-item',  // 아이템 클래스 변경
-                    columnWidth: '.active-grid-sizer', // 크기 요소 클래스 변경
-                    percentPosition: true,
-                    gutter: 0                        
-                });
-            }, 500);
+/* HotStudy carousel 라이브러리 */
+$(document).ready(function() {		
+	
+	$.ajax({
+        url:"MemberSelectImplAPI.do", 
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            console.log("로그인 정보 : ", response);
+            
+            // 💡 response.userName도 세션에 저장했다면 추가하여 사용하세요.
+            if (response.userId != null) {
+                const currentUserName = response.userName || response.userId;
+                $('.member-info p').text(currentUserName + '님 환영합니다.');
+            } else {
+                $('.member-info p').text('로그인 해주세요.');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // alert("Ajax 실패!"); // 디버깅 완료 후 제거
+            console.error("ID 로드 실패:", textStatus, errorThrown);
+            $('.member-info p').text('정보 로딩에 실패했습니다.');
         }
-	});
+    });
+	
+    // Slick Carousel 초기화
+    $('#hot-studies-carousel').slick({
+        arrows: false,
+        draggable: true,
+        swipe: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: false, // 번호 제거
+        infinite: false,
+        speed: 500,
+    });
+    
+    // Masonry 초기화 (활동중인 스터디)
+    /* 💡 수정된: 활동중인 스터디 (Masonry) 초기화 코드 */
+    var activeGrid = document.querySelector('#active-studies-grid'); // ID 변경
+    
+    if (activeGrid) {
+        setTimeout(function() {
+            var msnry = new Masonry(activeGrid, {
+                itemSelector: '.active-grid-item',  // 아이템 클래스 변경
+                columnWidth: '.active-grid-sizer', // 크기 요소 클래스 변경
+                percentPosition: true,
+                gutter: 0                        
+            });
+        }, 500);
+    }
+});
 </script>
 
 <style>
@@ -154,32 +180,33 @@
 /*--------------------------------------------------------------------------------*/
 /* 💡 활동중인 스터디 섹션 스타일 (수정) */
 .active-studies-section {
-    width: 90%; 
-    margin: 40px auto;
+	width: 90%;
+	margin: 40px auto;
 }
+
 .active-studies-section h2 {
-    text-align: left;
-    margin-bottom: 20px;
-    color: #333;
+	text-align: left;
+	margin-bottom: 20px;
+	color: #333;
 }
 
 /* 💡 Masonry 그리드 컨테이너 */
 .active-grid {
-    /* Masonry는 float 기반으로 작동합니다. */
+	/* Masonry는 float 기반으로 작동합니다. */
+	
 }
 
 /* 💡 그리드 아이템의 너비 설정 (한 줄에 4개 표시) */
-.active-grid-sizer, 
-.active-grid-item {
-  width: 25%; /* 한 줄에 4개 */
+.active-grid-sizer, .active-grid-item {
+	width: 25%; /* 한 줄에 4개 */
 }
 
 /* 💡 그리드 아이템 내부 여백 및 박스 모델 설정 */
 .active-grid-item {
-  box-sizing: border-box;
-  padding: 10px; /* 아이템 주변 여백 */
-  /* Masonry가 위치를 조정할 때 부드러운 애니메이션 효과를 위해 추가 */
-  transition: opacity 0.4s, transform 0.4s; 
+	box-sizing: border-box;
+	padding: 10px; /* 아이템 주변 여백 */
+	/* Masonry가 위치를 조정할 때 부드러운 애니메이션 효과를 위해 추가 */
+	transition: opacity 0.4s, transform 0.4s;
 }
 </style>
 <body>
@@ -204,6 +231,9 @@
 	<div class="flex_container">
 		<div class="search-container">
 			<input type="text" class="search-input" placeholder="스터디를 검색하세요..."> <a href="http://www.naver.com"> <i class="bi bi-search"></i></a>
+		</div>
+		<div class="member-info">
+		<p></p>
 		</div>
 	</div>
 	<div class="flex_container">
