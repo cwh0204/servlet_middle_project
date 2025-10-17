@@ -91,7 +91,7 @@ class CustomUserBtnRenderer {
       const deleteBtn = document.createElement('button');
       
       updateBtn.className = 'user-randarer-button';
-      updateBtn.textContent = '수정';
+      updateBtn.textContent = '저장';
       updateBtn.dataset.type = 'update';
       
       deleteBtn.className = 'user-randarer-button';
@@ -140,7 +140,7 @@ class CustomUserBtnRenderer {
             console.log("삭제"+rowKey);
         } else if (actionType === 'update') {
             // 수정 기능 구현 (예: 특정 셀 편집 모드로 전환 또는 팝업 열기)
-            console.log("수정"+rowKey);
+            console.log("저장"+rowKey);
         }
         // 버튼 클릭 후 포커스 이동 방지
         event.stopPropagation();

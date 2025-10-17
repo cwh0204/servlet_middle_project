@@ -66,6 +66,7 @@
 }
 
 .btn-secondary:hover {
+	color: #2d6a4f;
 	background: #f0fdf4;
 }
 
@@ -75,9 +76,17 @@
 	border-radius: 12px 12px 0px 0px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	border: 1px solid #e5e7eb;
+	border-bottom: none;
 	overflow: hidden;
 }
-
+.card-content {
+	background: white;
+	border-radius: 0px 0px 12px 12px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border-top: none;
+	border: 1px solid #e5e7eb;
+	overflow: hidden;
+}
 /* 필터 및 검색 영역 */
 .filter-section {
 	padding: 20px 24px;
@@ -246,7 +255,9 @@
 .modified-row {
 	background-color: #fffacd !important; /* 밝은 노란색 */
 }
-
+.tui-grid-border-line.tui-grid-border-line-top{
+	display: none;
+}
 .modified-cell {
 	/* 기존 행의 배경색보다 진한 노란색/주황색 계열 적용 */
 	background-color: #fce899 !important;
@@ -294,7 +305,7 @@
 				<span>+</span> 사용자 추가
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span>*</span> 수정
+				<span>*</span> 저장
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
 				<span>-</span> 삭제
@@ -356,7 +367,7 @@
 			</div>
 		</div>
 	</div>
-	<div>
+	<div class="card-content">
 		<div id="grid"></div>
 	</div>
 </body>
@@ -416,8 +427,6 @@ var exportData = () => {
 };
 
 $(document).ready(function() {
-	
-	
 	
     grid = new tui.Grid({
 		el : document.getElementById('grid'),
