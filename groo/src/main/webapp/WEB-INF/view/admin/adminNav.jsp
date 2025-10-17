@@ -25,8 +25,11 @@
 					<div class="submenu-item " data-page="adminuser.do">
 						<span>유저 관리</span>
 					</div>
+					<div class="submenu-item" data-page="adminuserreport.do">
+						<span>신고 유저 관리</span>
+					</div>
 					<div class="submenu-item" data-page="adminuser.do">
-						<span>정지 유저 관리</span>
+						<span>유저 제제 내역</span>
 					</div>
 				</div>
 			</div>

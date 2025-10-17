@@ -11,12 +11,6 @@
 <style>
 
 /* 메인 콘텐츠 */
-.main-content {
-	flex: 1;
-	padding: 32px 40px;
-	overflow-y: auto;
-}
-
 .content-header {
 	margin-bottom: 24px;
 	display: flex;
@@ -223,6 +217,31 @@
 	color: #dc2626;
 }
 
+/* 커스텀 랜더러 */
+
+.btn-renderer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-randarer-button {
+    padding: 6px 15px;
+    border: 2px solid #2d6a4f;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2d6a4f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+}
+
+
 /*그리드 설정*/
 .modified-row {
 	background-color: #fffacd !important; /* 밝은 노란색 */
@@ -272,13 +291,13 @@
 				<span></span> 내보내기
 			</button>
 			<button class="btn btn-primary" onclick="addUser()">
-				<span></span> 사용자 추가
+				<span>+</span> 사용자 추가
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span></span> 임시 수정 롤백버튼
+				<span>*</span> 수정
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span></span> 임시 저장 버튼
+				<span>-</span> 삭제
 			</button>
 		</div>
 	</div>
@@ -398,6 +417,8 @@ var exportData = () => {
 
 $(document).ready(function() {
 	
+	
+	
     grid = new tui.Grid({
 		el : document.getElementById('grid'),
 		data : {
@@ -411,6 +432,7 @@ $(document).ready(function() {
 		rowKey: 'id',
 		scrollX : true,
 		scrollY : true,
+		rowHeaders: ['checkbox'],
 		columns : [ {
 			header : 'ID',
 			name : 'id'
@@ -430,7 +452,14 @@ $(document).ready(function() {
 			header : '전화번호',
 			name : 'phone',
 			editor : 'text'
-		}]
+		},	{
+	          header: 'Grade',
+	          name: 'grade',
+	          renderer: {
+	            type: CustomUserBtnRenderer,
+	          }
+	    }
+		]
 	});
     grid.on('response', function(ev) {
         let response = ev.xhr.responseText;
