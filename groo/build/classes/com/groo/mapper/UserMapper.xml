@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+	<insert id="insertUser" parameterType="com.groo.model.MemberDTO">
+		INSERT INTO users (NAME, USER_ID, PASSWORD)
+		VALUES (#{name}, #{userId}, #{password})
+	</insert>
+
+	<select id="loginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+		SELECT *
+		FROM USERS
+		WHERE USER_ID = #{userId} and PASSWORD = #{password}
+	</select>
+</mapper>

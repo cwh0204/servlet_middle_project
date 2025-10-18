@@ -6,7 +6,7 @@ public class MyPageDAOImpl implements MyPageDAO {
 
 	@Override
 	public MyPageDTO getNickname(MyPageDTO nickname, SqlSession session) {
-		
+
 		MyPageDTO nick = new MyPageDTO();
 		nick = session.selectOne("usernickname", nickname);
 		return nick;

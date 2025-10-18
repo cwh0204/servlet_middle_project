@@ -9,14 +9,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FrontControllerServlet
  */
 @WebServlet("*.do")
 public class FrontControllerImpl extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -28,18 +27,18 @@ public class FrontControllerImpl extends HttpServlet {
 
 		FrontPath pathMapper = new FrontPath();
 
-		FrontControllerPath controllerMapper = new FrontControllerPath(); 
-		
+		FrontControllerPath controllerMapper = new FrontControllerPath();
+
 		String jspPath = pathMapper.getJspPath(command);
 		Controller controller = controllerMapper.getControllers(command);
-		
+
 		//API 컨트롤러만 존재할때 API를 실행하기 위해 주석처리
-		
+
 		/*
 		 * if (jspPath == null && controller == null) {
 		 * response.sendRedirect("login.do"); return; }
 		 */
-		
+
 		/*
 		if(!command.equals("/login.do") && !command.equals("/*.do") && !command.equals("/logins.do")) {
 			HttpSession session = request.getSession(false);
@@ -58,6 +57,6 @@ public class FrontControllerImpl extends HttpServlet {
 		if (controller != null) {
 			controller.service(request, response); // 해당 컨트롤러 실행
 			return;
-		} 
+		}
 	}
 }

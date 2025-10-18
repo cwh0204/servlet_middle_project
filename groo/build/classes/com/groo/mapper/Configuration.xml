@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+  <environments default="development"> <!-- <environments default="development">에서 어떤 환경을 사용할지를 지정 -->
+    <environment id="development"> <!-- <environment id="development">	개발 환경 설정 블록 -->
+      <transactionManager type="JDBC"/>
+      <!-- 
+         <transactionManager type="JDBC"/> 의미는 MyBatis 또는 iBATIS(mybatis 구버전->온라인 기술지원 서비스 종료됨.즉 단종됨)
+          설정 파일에서 사용되며, 트랜잭션을 어떻게 관리할 것인지를 정의.
+         type="JDBC"는 JDBC API를 사용해서 트랜잭션을 수동으로 관리하겠다는 의미.
+         즉, JDBC 커넥션 객체의 commit(), rollback()을 직접 호출해서 트랜잭션을 제어.  
+       -->
+      <dataSource type="POOLED"> 
+      <!-- 
+         1. dataSource type="POOLED"은 일반적으로 Java 기반의 애플리케이션에서 데이터베이스 연결을 관리할 때 사용되는 
+            커넥션 풀(Connection Pool) 설정을 의미
+            커넥션 풀은 일정 수의 데이터베이스 연결을 미리 만들어두고, 요청이 있을 때마다 그 중 하나를 재사용하는 방식.
+            
+            커넥션 풀의 장점)
+             성능 향상: 매번 새로운 DB 연결을 만들지 않아도 됨.
+             리소스 관리: 동시에 사용할 수 있는 커넥션 수를 제한할 수 있어 과도한 부하 방지.
+             안정성: 재사용 가능한 커넥션 제공으로 시스템 안정성 증가.
+             
+         2. dataSource: 데이터베이스에 연결하기 위한 설정을 담고 있는 요소.
+       -->
+       
+        <property name="driver" value="oracle.jdbc.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+        <property name="username" value="c##groo" />
+        <property name="password" value="java" />
+        
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>  <!-- mappers 태그에는 SQL 코드 담고 있는 mybatis XML 매퍼 태그 파일이 있는 경로를  지정 --> 
+    <mapper resource="com/groo/mapper/TeamMapper.xml" />
+    <mapper resource="com/groo/mapper/UserMapper.xml" />
+    <mapper resource="com/groo/mapper/MypageMapper.xml"/>
+  </mappers>
+  
+</configuration>

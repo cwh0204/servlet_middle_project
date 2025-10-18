@@ -33,7 +33,7 @@ public class TeamfindImpl_Edit extends HttpServlet implements Controller{
 		try {
 			TeamServiceImpl serviceImpl = new TeamServiceImpl();
 			List<TeamDTO> teamList = serviceImpl.selectTeam(teamDTO);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(teamList);
 

@@ -1,14 +1,12 @@
 package com.groo.model;
 
-import java.time.LocalDateTime;
-
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalServerErrorException;
 import com.groo.error.ResourceNotFoundException;
 
 public class MemberDAOImpl implements MemberDAO{
-	
+
 	@Override
 	public void signUP(MemberDTO memberDTO, SqlSession session) {
 		try {
@@ -18,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO{
 			throw new ResourceNotFoundException("회원가입 중 데이터베이스 오류 발생", e);
 		}
 	}
-	
+
 	@Override
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub

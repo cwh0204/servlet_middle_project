@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TeamMapper">
+
+	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
+		INSERT INTO team
+		(TEAM_NAME, USER_ID, TEAM_INFO)
+		VALUES (#{teamName}, #{userId},
+		#{teamInfo})
+	</insert>
+
+	<select id="selectTeam" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT
+			TEAM_NAME AS teamName,
+			USER_ID AS userId,
+			TEAM_INFO AS teamInfo
+		FROM TEAM
+		WHERE USER_ID = #{userId}
+	</select>
+	
+	<select id="selectTeamAll" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT
+			TEAM_NAME AS teamName,
+			USER_ID AS userId,
+			TEAM_INFO AS teamInfo
+		FROM TEAM
+	</select>
+</mapper>
