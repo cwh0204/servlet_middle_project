@@ -18,7 +18,7 @@ public class MemberSelectImplAPI implements Controller	{
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		HttpSession httpSession = request.getSession(false); 
+		HttpSession httpSession = request.getSession(false);
 		Gson gson = new Gson();
 		Map<String, String> resultMap = new HashMap<>();
 
@@ -26,7 +26,7 @@ public class MemberSelectImplAPI implements Controller	{
 
 		if (userId != null) {
 			resultMap.put("status", "success");
-			resultMap.put("userId", userId); 
+			resultMap.put("userId", userId);
 		} else {
 			resultMap.put("status", "failure");
 			resultMap.put("message", "로그인 정보가 없습니다.");

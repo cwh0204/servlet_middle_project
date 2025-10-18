@@ -3,15 +3,15 @@ package com.groo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.ibatis.session.SqlSession;
+
 import com.groo.config.SessionFactory;
 import com.groo.error.ResourceNotFoundException;
 
 public class TeamDAOImpl implements TeamDAO{
-	
+
 	SessionFactory sessionFactory = new SessionFactory();
-	
+
 	@Override
 	public void insertTeam(TeamDTO teamDTO, SqlSession session) {
 		// TODO Auto-generated method stub
@@ -22,7 +22,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new ResourceNotFoundException("팀 생성 중 데이터베이스 오류 발생",e);
 		}
 	}
-	
+
 	@Override
 	public List<TeamDTO> selectTeam(TeamDTO teamDTO, SqlSession session) {
 		List<TeamDTO> list = new ArrayList<>();
@@ -34,7 +34,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<TeamDTO> selectTeamAll(SqlSession session) {
 

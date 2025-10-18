@@ -1,7 +1,7 @@
 package com.groo.error;
 
 public class InternalServerErrorException extends RuntimeException{
-	
+
 	public InternalServerErrorException() {
 		super();
 	}

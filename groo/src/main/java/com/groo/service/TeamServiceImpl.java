@@ -11,9 +11,9 @@ import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
 public class TeamServiceImpl implements TeamInsertTeam, TeamSelectTeamOne, TeamSelectTeamAll{
-	
+
 	TeamDAO dao = new TeamDAOImpl(); //업캐스팅
-	
+
 	@Override
 	public void insertTeam(TeamDTO teamDTO) {
 		SqlSession session = SessionFactory.getSqlSession();
