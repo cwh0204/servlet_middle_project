@@ -272,8 +272,6 @@ function verifyEmailCode(){
 		alert('인증번호');
 		return;
 	}
-	
-	$
 }
 </script>
 
