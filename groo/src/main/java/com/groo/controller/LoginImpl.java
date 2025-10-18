@@ -45,7 +45,7 @@ public class LoginImpl extends HttpServlet implements Controller {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", reMemberDTO.getUserId());
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
-				response.sendRedirect("index.do");
+				response.sendRedirect("main.do");
 			} else {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.do");
