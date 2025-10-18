@@ -2,7 +2,6 @@ package com.groo.controller;
 
 import java.io.IOException;
 
-import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 import com.groo.service.TeamServiceImpl;
 
@@ -27,11 +26,11 @@ public class TeamCreateImpl extends HttpServlet implements Controller{
 		String teamInfo = request.getParameter("teamInfo");
 
 		TeamDTO teamDTO = new TeamDTO();
-		
+
 		teamDTO.setTeamName(teamName);
 		teamDTO.setUserId(userId);
 		teamDTO.setTeamInfo(teamInfo);
-		
+
 		try {
 			TeamServiceImpl serviceImpl = new TeamServiceImpl();
 			serviceImpl.insertTeam(teamDTO);

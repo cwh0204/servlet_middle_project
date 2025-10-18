@@ -1,9 +1,7 @@
 package com.groo.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServerErrorException;
 import com.groo.error.ResourceNotFoundException;
@@ -28,19 +26,19 @@ public class LoginImpl extends HttpServlet implements Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		
+
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);
-		
+
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
-			
+
 			MemberDTO reMemberDTO = serviceImpl.loginUserService(memberDTO);
-			
+
 			if (reMemberDTO != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", reMemberDTO.getUserId());
