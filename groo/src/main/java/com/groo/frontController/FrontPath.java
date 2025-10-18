@@ -9,8 +9,8 @@ public class FrontPath {
     public FrontPath() {
         jspMap = new HashMap<>();
         jspMap.put("/login.do", "/WEB-INF/view/user/login.jsp");
-        jspMap.put("/index.do", "/WEB-INF/view/index.jsp");
-        jspMap.put("/singup.do", "/WEB-INF/view/user/SignUpPage.jsp");
+        jspMap.put("/main.do", "/WEB-INF/view/main/main.jsp");
+        jspMap.put("/signup.do", "/WEB-INF/view/user/SignUpPage.jsp");
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userDetail.jsp");
@@ -19,7 +19,9 @@ public class FrontPath {
         jspMap.put("/admin.do", "/WEB-INF/view/admin/admin.jsp");
         jspMap.put("/admindashboard.do", "/WEB-INF/view/admin/adminDashboard.jsp");
         jspMap.put("/adminuser.do", "/WEB-INF/view/admin/adminUser.jsp");
+        jspMap.put("/adminuserreport.do", "/WEB-INF/view/admin/adminUserReport.jsp");
         jspMap.put("/adminteam.do", "/WEB-INF/view/admin/adminTeam.jsp");
+        
     }
 
     public String getJspPath(String command) {

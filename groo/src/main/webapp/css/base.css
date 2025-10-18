@@ -16,7 +16,7 @@
 	font-weight: bold;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure, img
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, figure, img, /*쉼표빠져있어서 추가했습니다.*/
 	blockquote {
 	margin: 0;
 	padding: 0;

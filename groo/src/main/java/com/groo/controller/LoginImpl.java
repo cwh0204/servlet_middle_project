@@ -1,10 +1,9 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
+import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServerErrorException;
 import com.groo.error.ResourceNotFoundException;
@@ -22,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
  */
 
 public class LoginImpl extends HttpServlet implements Controller {
-	 
+
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -45,9 +44,8 @@ public class LoginImpl extends HttpServlet implements Controller {
 			if (reMemberDTO != null) {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("userId", reMemberDTO.getUserId());
-
 //				System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
-				response.sendRedirect("index.do");
+				response.sendRedirect("main.do");
 			} else {
 				response.getWriter().println("로그인 실패");
 				response.sendRedirect("login.do");
