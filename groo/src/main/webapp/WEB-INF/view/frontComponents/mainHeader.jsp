@@ -52,7 +52,7 @@ header {
     width: 100%; 
     transform: scaleX(0); 
     transform-origin: center; 
-    transition: transform 0.2s ease-out; 
+    transition: transform 0.1s ease-out; 
 }
 .main_kategorie_box div:hover::after {
     transform: scaleX(1); 
