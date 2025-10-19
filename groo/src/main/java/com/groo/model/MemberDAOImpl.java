@@ -22,7 +22,6 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
 		if(memberDTO.getUserId().equals("")) {
-			System.out.println("진입");
 			throw new InternalServerErrorException("사용자 입력데이터 불일치예외 발생");
 		}
 		try {
