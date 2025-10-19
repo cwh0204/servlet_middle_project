@@ -19,7 +19,6 @@ body {
 .admin_container {
 	height: calc(100% - 70px);
 }
-
 .a_r_container {
 	width: calc(100% - 260px);
 	height: 100%;

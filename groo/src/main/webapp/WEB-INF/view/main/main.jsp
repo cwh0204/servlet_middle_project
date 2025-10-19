@@ -14,12 +14,15 @@
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script
 	src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="js/mainComponent.js"></script>
 </head>
 
 <script>
 /* HotStudy carousel 라이브러리 */
-$(document).ready(function() {		
-	
+$(document).ready(function() {	
+	mainHome();
+	mainHeder();
+	refreshPage();
 	$.ajax({
         url:"MemberSelectImplAPI.do", 
         type: "GET",
