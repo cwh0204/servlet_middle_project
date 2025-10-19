@@ -68,19 +68,6 @@ $(document).ready(function() {
 </script>
 
 <style>
-/* header_container */
-/* .header_container {
-	display: flex; /* 자식 요소들을 가로로 배치 */
-	justify-content: space-between; /* 요소들 사이에 최대 공간을 배분 */
-	align-items: center; /* 요소들을 수직 중앙에 정렬 (선택 사항) */
-	padding: 10px 20px; /* 헤더 좌우 여백 설정 */
-}
-
-/* 로고 */
-.logo {
-	width: 150px;
-	margin: 5px;
-} */
 
 /* 검색창을 감싸는 컨테이너 */
 .search-container {
