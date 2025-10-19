@@ -66,22 +66,7 @@ $(document).ready(function() {
     }
 });
 </script>
-
 <style>
-/* header_container */
-/* .header_container {
-	display: flex; /* 자식 요소들을 가로로 배치 */
-	justify-content: space-between; /* 요소들 사이에 최대 공간을 배분 */
-	align-items: center; /* 요소들을 수직 중앙에 정렬 (선택 사항) */
-	padding: 10px 20px; /* 헤더 좌우 여백 설정 */
-}
-
-/* 로고 */
-.logo {
-	width: 150px;
-	margin: 5px;
-} */
-
 /* 검색창을 감싸는 컨테이너 */
 .search-container {
 	display: flex;
@@ -105,46 +90,6 @@ $(document).ready(function() {
 /* 검색창 아이콘 */
 .bi.bi-search {
 	color: black;
-}
-
-/* nav, 계정목록 */
-.accountmenu ul, .nav ul {
-	list-style: none;
-	display: flex;
-	gap: 80px;
-	margin: 10px;
-}
-
-/* nav, 계정목록 li */
-.accountmenu li, .nav li {
-	position: relative;
-	color: black;
-}
-
-/* nav, 계정목록 리스트 효과 */
-.accountmenu li::after, .nav li::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	bottom: 0;
-	width: 0%;
-	height: 2px;
-	background-color: #28a745;
-	transform: translateX(-50%);
-	transition: width 0.3s ease;
-}
-/* nav, 계정목록 효과 넓이 */
-.accountmenu li:hover::after, .nav li:hover::after {
-	width: 100%;
-}
-/* 네비 글자크기 */
-.nav li {
-	font-size: 25px;
-}
-
-/* 계정목록 글자크기 */
-.accountmenu ul {
-	gap: 30px;
 }
 
 /* 핫스터디 h2 */
