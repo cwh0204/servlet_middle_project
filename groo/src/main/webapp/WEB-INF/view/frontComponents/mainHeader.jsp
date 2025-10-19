@@ -57,6 +57,9 @@ header {
 .main_kategorie_box div:hover::after {
     transform: scaleX(1); 
 }
+.main_kategorie_box div.active::after {
+    transform: scaleX(1); 
+}
 </style>
 </head>
 <body>
@@ -64,7 +67,7 @@ header {
 		<div class="flex_container heder_container">
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
-				<div>공지사항</div>
+				<div class="active">공지사항</div>
 				<div>자유게시판</div>
 				<div>about us</div>
 				<div>성과(전체)게시판</div>
