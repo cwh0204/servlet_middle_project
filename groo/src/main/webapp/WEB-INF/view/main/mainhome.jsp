@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-<style>
-
 /* 검색창을 감싸는 컨테이너 */
 .search-container {
 	display: flex;
