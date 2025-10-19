@@ -24,41 +24,46 @@ header {
 .logo {
 	width: 180px;
 }
+
 .main_kategorie_box {
 	height: 100%;
-	gap : 30px;
+	gap: 30px;
 	font-size: 18px;
 	font-weight: bold;
 	gap: 30px;
 }
-.main_user_box {
-    gap: 30px;
-    font-size: 15px;
-}
-.main_kategorie_box div {
-    padding: 20px;
-    height: calc(100% - 4px);
 
-    position: relative; 
-    overflow: hidden; 
+.main_user_box {
+	gap: 30px;
+	font-size: 15px;
 }
+
+.main_kategorie_box div {
+	padding: 20px;
+	height: calc(100% - 4px);
+	position: relative;
+	overflow: hidden;
+}
+
 .main_kategorie_box div::after {
-    content: '';
-    position: absolute;
-    bottom: 8px; 
-    left: 0;
-    height: 3px; 
-    background-color: green; 
-    width: 100%; 
-    transform: scaleX(0); 
-    transform-origin: center; 
-    transition: transform 0.1s ease-out; 
+	content: '';
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	height: 3px;
+	background-color: green;
+	width: 100%;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.1s ease-out;
 }
+
 .main_kategorie_box div:hover::after {
-    transform: scaleX(1); 
+	transform: scaleX(1);
 }
+
 .main_kategorie_box div.active::after {
-    transform: scaleX(1); 
+	transform: scaleX(1);
 }
 </style>
 </head>
@@ -67,11 +72,11 @@ header {
 		<div class="flex_container heder_container">
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
-				<div class="active">공지사항</div>
-				<div data-page="">자유게시판</div>
-				<div data-page="">about us</div>
-				<div data-page="">성과(전체)게시판</div>
-				<div data-page="">스터디 생성</div>
+				<div class="menu-item-content active" data-page="mainhome.do">공지사항</div>
+				<div class="menu-item-content" data-page="login.do">자유게시판</div>
+				<div class="menu-item-content" data-page="signup.do">about us</div>
+				<div class="menu-item-content" data-page="teamfind.do">성과(전체)게시판</div>
+				<div class="menu-item-content" data-page="teamcreate.do">스터디 생성</div>
 			</div>
 			<div class="flex_container main_user_box">
 				<div>Login</div>

@@ -19,8 +19,10 @@
 
 <script>
 /* HotStudy carousel 라이브러리 */
-$(document).ready(function() {		
+$(document).ready(function() {	
 	mainHome();
+	mainHeder();
+	refreshPage();
 	$.ajax({
         url:"MemberSelectImplAPI.do", 
         type: "GET",
