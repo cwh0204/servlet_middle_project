@@ -65,7 +65,7 @@ $(document).ready(function() {
         }, 500);
     }
 });
-</script>
+</script> 
 <style>
 /* 검색창을 감싸는 컨테이너 */
 .search-container {

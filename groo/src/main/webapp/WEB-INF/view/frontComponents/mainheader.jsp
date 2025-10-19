@@ -68,10 +68,10 @@ header {
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="active">공지사항</div>
-				<div>자유게시판</div>
-				<div>about us</div>
-				<div>성과(전체)게시판</div>
-				<div>스터디 생성</div>
+				<div data-page="">자유게시판</div>
+				<div data-page="">about us</div>
+				<div data-page="">성과(전체)게시판</div>
+				<div data-page="">스터디 생성</div>
 			</div>
 			<div class="flex_container main_user_box">
 				<div>Login</div>
