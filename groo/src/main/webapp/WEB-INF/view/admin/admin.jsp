@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
-
+<script src="js/adminComponent.js"></script>
 <style>
 
 body {
@@ -32,9 +32,9 @@ body {
 </style>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <body>
-	<%@ include file="adminHeader.jsp"%>
+	<%@ include file="../frontComponents/adminHeader.jsp"%>
 	<div class="flex_container full_w_h admin_container">
-		<%@ include file="adminNav.jsp"%>
+		<%@ include file="../frontComponents/adminNav.jsp"%>
 		<div class="a_r_container">
  			<%@ include file="adminDashboard.jsp"%>
 		</div>
@@ -43,7 +43,7 @@ body {
 <script type="text/javascript">
 
 window.chartColl();
-
+adminHome();
 class CustomUserDeletRenderer {
     constructor(props) {
       const el = document.createElement('button');
