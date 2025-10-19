@@ -32,11 +32,11 @@ body {
 </style>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <body>
-	<%@ include file="../frontComponents/adminHeader.jsp"%>
+	<%@ include file="../frontComponents/adminheader.jsp"%>
 	<div class="flex_container full_w_h admin_container">
-		<%@ include file="../frontComponents/adminNav.jsp"%>
+ 		<%@ include file="../frontComponents/adminnav.jsp"%>
 		<div class="a_r_container">
- 			<%@ include file="adminDashboard.jsp"%>
+  			<%@ include file="admindashboard.jsp"%>
 		</div>
 	</div>
 </body>

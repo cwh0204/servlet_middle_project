@@ -17,10 +17,10 @@ public class FrontPath {
         jspMap.put("/mypage.do", "/WEB-INF/view/user/mypage.jsp");
 
         jspMap.put("/admin.do", "/WEB-INF/view/admin/admin.jsp");
-        jspMap.put("/admindashboard.do", "/WEB-INF/view/admin/adminDashboard.jsp");
-        jspMap.put("/adminuser.do", "/WEB-INF/view/admin/adminUser.jsp");
-        jspMap.put("/adminuserreport.do", "/WEB-INF/view/admin/adminUserReport.jsp");
-        jspMap.put("/adminteam.do", "/WEB-INF/view/admin/adminTeam.jsp");
+        jspMap.put("/admindashboard.do", "/WEB-INF/view/admin/admindashboard.jsp");
+        jspMap.put("/adminuser.do", "/WEB-INF/view/admin/adminuser.jsp");
+        jspMap.put("/adminuserreport.do", "/WEB-INF/view/admin/adminuserreport.jsp");
+        jspMap.put("/adminteam.do", "/WEB-INF/view/admin/adminteam.jsp");
 
     }
 
