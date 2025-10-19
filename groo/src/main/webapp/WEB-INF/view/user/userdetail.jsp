@@ -10,7 +10,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Noto Sans KR", sans-serif;
 }
 
 body {
@@ -213,7 +212,7 @@ textarea {
 </head>
 
 <body onload="checkPassword()">
-	<form action="updateMember.do" method="post">
+	<form action="/userdetail.do" method="post" onsubmit="return showAlert()">
 		<div class="container">
 
 			<div class="left-section">
@@ -246,13 +245,15 @@ textarea {
 						<div class="input-group">
 							<label>전화번호(선택사항)</label>
 							<div style="display: flex; gap: 10px; align-items: center;">
-								<select name="phonenumber">
+								<select name="phonenumber"
+									style="width: 65px; text-align: center;">
 									<option value="010">010</option>
 									<option value="042">042</option>
 									<option value="02">02</option>
 								</select> <span>-</span> <input type="text" name="phonemiddle"
-									maxlength="4"> <span>-</span> <input type="text"
-									name="phoneback" maxlength="4">
+									maxlength="4" style="width: 65px; text-align: center;">
+								<span>-</span> <input type="text" name="phoneback" maxlength="4"
+									style="width: 65px; text-align: center;">
 							</div>
 						</div>
 					</div>
@@ -268,13 +269,21 @@ textarea {
 			<div class="right-section">
 				<h1>회원정보 상세페이지</h1>
 
-				<div class="input-group">
-					<label>비밀번호</label> <input type="password" name="password">
+				<div class="input-group" style="position: relative;">
+					<label>비밀번호 <span style="font-size: 12px; color: #666;">(8~20자리,
+							특수문자 포함, 공백 제외)</span></label> 
+							<input type="password" name="password" id="password" style="width: 100%; padding-right: 30px;"> 
+						<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 38px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
 
-				<div class="input-group">
-					<label>비밀번호 재확인</label> <input type="password" name="passtry">
+				<div class="input-group" style="position: relative;">
+					<label>비밀번호 재확인</label> <input type="password" name="passtry" id="passtry" style="width: 100%; padding-right: 30px;"> 
+						<img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 38px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
+
+
 
 				<div class="input-group">
 					<label>주민등록번호</label>
@@ -354,10 +363,6 @@ function previewProfile(event) {
     }
 }
 
-<!-- 비밀번호 자리수 제한 -->
-
-
-
 <!-- 이메일 뒷부분 자동입력 및 직접입력 -->
 const domainInput = document.querySelector('input[name="emailadd"]');
 const domainSelect = document.querySelector('select[name="email_select"]');
@@ -404,17 +409,68 @@ function showCancelAlert() {
 }
 
 <!-- 비밀번호, 비밀번호재확인 비교 -->
-/* function showAlert() {
+<!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
+function showAlert() {
     const pw = document.querySelector('input[name="password"]').value;
     const pw2 = document.querySelector('input[name="passtry"]').value;
-    if (pw !== pw2) {
-        alert("비밀번호가 다릅니다.");
+
+    
+    if (pw === "") {
+        alert("회원정보가 수정되었습니다.");
+        window.location.href = "${pageContext.request.contextPath}/mypage.do";
         return false;
     }
+
+    
+    const lengthValid = pw.length >= 8 && pw.length <= 20; 
+    const noSpace = !/\s/.test(pw); 
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
+
+    if (!lengthValid || !noSpace || !hasSpecial) {
+        alert("비밀번호가 맞지 않습니다.");
+        document.querySelector('input[name="password"]').focus();
+        return false; 
+    }
+
+    if (pw !== pw2) {
+        alert("비밀번호가 다릅니다.");
+        document.querySelector('input[name="password"]').focus();
+        return false; 
+    }
+
     alert("회원정보가 수정되었습니다.");
     window.location.href = "${pageContext.request.contextPath}/mypage.do";
-    return false;
-} */
+    return false; 
+}
+
+<!--눈모양 토글-->
+const togglePassword = document.getElementById('togglePassword');
+const password = document.getElementById('password');
+
+togglePassword.addEventListener('click', () => {
+    if (password.type === 'password') {
+        password.type = 'text';
+        togglePassword.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; // 비밀번호 보일때
+    } else {
+        password.type = 'password';
+        togglePassword.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; // 비밀번호 안보일때
+    }
+});
+
+const togglePasstry = document.getElementById('togglePasstry');
+const passtry = document.getElementById('passtry');
+
+togglePasstry.addEventListener('click', () => {
+    if (passtry.type === 'password') {
+        passtry.type = 'text';
+        togglePasstry.src = 'https://i.postimg.cc/8z2sxNX4/view.png';
+    } else {
+        passtry.type = 'password';
+        togglePasstry.src = 'https://i.postimg.cc/TYkDN86M/hide.png';
+    }
+});
+
+
 
 const fileInput = document.getElementById('fileInput');
 const profileImage = document.getElementById('profileImage');
