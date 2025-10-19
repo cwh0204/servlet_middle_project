@@ -17,6 +17,7 @@
 </head>
 
 <script>
+mainHome(); //로고 클릭시 홈으로
 	/* HotStudy carousel 라이브러리 */
 	$(document)
 			.ready(
