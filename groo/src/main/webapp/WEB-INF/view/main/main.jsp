@@ -17,7 +17,6 @@
 </head>
 
 <script>
-<<<<<<< HEAD
 /* HotStudy carousel 라이브러리 */
 $(document).ready(function() {		
 	
