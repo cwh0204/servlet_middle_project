@@ -53,11 +53,11 @@ public class LoginImpl extends HttpServlet implements Controller {
 				}
 			}catch(ResourceNotFoundException rne) {
 				rne.printStackTrace();
-				ErrorDTO error = new ErrorDTO(500,"회원가입 중 오류 발생","MemberDAO");
+				ErrorDTO error = new ErrorDTO(500,"로그인 중 오류 발생","MemberDAO");
 				response.getWriter().println(error.getStatus()+error.getError());
 			}
 			catch(InternalServerErrorException ie) {
-				ErrorDTO error = new ErrorDTO(404,"회원가입 입력데이터 오류 발생","MemberDAO");
+				ErrorDTO error = new ErrorDTO(404,"로그인 입력데이터 오류 발생","MemberDAO");
 				response.getWriter().println(error.getStatus()+error.getError());
 			}catch(RuntimeException re) {
 				re.printStackTrace();
