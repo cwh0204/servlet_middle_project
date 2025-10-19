@@ -69,7 +69,7 @@ $(document).ready(function() {
 
 <style>
 /* header_container */
-.header_container {
+/* .header_container {
 	display: flex; /* 자식 요소들을 가로로 배치 */
 	justify-content: space-between; /* 요소들 사이에 최대 공간을 배분 */
 	align-items: center; /* 요소들을 수직 중앙에 정렬 (선택 사항) */
@@ -80,7 +80,7 @@ $(document).ready(function() {
 .logo {
 	width: 150px;
 	margin: 5px;
-}
+} */
 
 /* 검색창을 감싸는 컨테이너 */
 .search-container {
@@ -210,24 +210,7 @@ $(document).ready(function() {
 }
 </style>
 <body>
-	<header class="header_container">
-		<img class="logo" src="./images/로고.png">
-		<div class="nav">
-			<ul>
-				<li>🔔 공지사항</li>
-				<li>💬 자유게시판</li>
-				<li>ℹ️ about us</li>
-				<li>🏆 성과(전체)게시판</li>
-				<li>✍️ 스터디 생성</li>
-			</ul>
-		</div>
-		<div class="accountmenu">
-			<ul>
-				<li>Login</li>
-				<li>SignUp</li>
-			</ul>
-		</div>
-	</header>
+	<%@ include file="../frontComponents/mainHeader.jsp"%>
 	<div class="flex_container">
 		<div class="search-container">
 			<input type="text" class="search-input" placeholder="스터디를 검색하세요..."> <a href="http://www.naver.com"> <i class="bi bi-search"></i></a>
