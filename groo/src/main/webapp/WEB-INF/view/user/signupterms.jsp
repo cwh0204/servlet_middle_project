@@ -59,10 +59,10 @@ section {
  <section>
   <h2>Groo 서비스 이용 약관 동의</h2>
 
-  <form action="SignUpPage.jsp" method="get">
+  <form action="signuppage.jsp" method="get">
     <h4>이용약관[필수]</h4>
     <textarea class="termsBox" readonly>
-[이용약관 내용 입력]
+
     </textarea><br>
     <input type="checkbox" name="termsAgree" required> 위 약관에 동의합니다
 
