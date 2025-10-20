@@ -72,7 +72,8 @@ header {
 		<div class="flex_container heder_container">
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
-				<div class="menu-item-content active" data-page="mainhome.do">공지사항</div>
+				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
+				<div class="menu-item-content" data-page="mainhome.do">공지사항</div>
 				<div class="menu-item-content" data-page="login.do">자유게시판</div>
 				<div class="menu-item-content" data-page="signup.do">about us</div>
 				<div class="menu-item-content" data-page="teamfind.do">성과(전체)게시판</div>

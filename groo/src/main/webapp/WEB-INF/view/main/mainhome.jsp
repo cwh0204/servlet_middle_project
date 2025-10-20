@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 /* 검색창을 감싸는 컨테이너 */
 .search-container {
@@ -133,6 +134,7 @@
 	transition: opacity 0.4s, transform 0.4s;
 }
 </style>
+
 </head>
 <body>
 	<div class="flex_container">
