@@ -35,6 +35,8 @@ $(document).ready(function() {
 		const responseObject = JSON.parse(gitHubServiceResponse);
 		console.log(responseObject); //소셜로그인 테스트용	
 	}
+	
+	
 });
 </script>
 </head>
