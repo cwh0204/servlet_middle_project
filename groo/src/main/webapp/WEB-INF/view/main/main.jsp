@@ -21,6 +21,13 @@ $(document).ready(function() {
 	mainHome();
 	mainHeder();
 	refreshPage();
+	
+	// 네이버 소셜로그인 확인용
+	const serviceResponseJsonString = '${sessionScope.naverServiceResponse}';
+	if(serviceResponseJsonString !== '' && serviceResponseJsonString !== 'null'){
+		const responseObject = JSON.parse(serviceResponseJsonString);
+		console.log(responseObject); //소셜로그인 테스트용	
+	}
 });
 </script>
 </head>
