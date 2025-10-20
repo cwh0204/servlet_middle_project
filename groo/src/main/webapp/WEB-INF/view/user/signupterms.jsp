@@ -4,6 +4,8 @@
 <head>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/signup.css" rel="stylesheet">
+<link href="css/progress.css" rel="stylesheet">
+
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
