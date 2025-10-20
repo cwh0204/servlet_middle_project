@@ -10,6 +10,6 @@ public class MainImpl implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("main.jsp").forward(request, response);
+		request.getRequestDispatcher("main.do").forward(request, response);
 	}
 }

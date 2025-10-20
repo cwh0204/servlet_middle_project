@@ -74,10 +74,10 @@ button {
 
         <div class="input-group" style="position: relative;">
             <label>비밀번호</label>
-            <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력하세요" required>
+            <input type="password" name="pw" id="pw" required>
             <img id="togglePassword" 
                  src="https://i.postimg.cc/TYkDN86M/hide.png"
-                 style="position: absolute; right: 10px; top: 38px; cursor: pointer; width: 20px; height: 20px;">
+                 style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;">
         </div>
 
         <button type="submit">확인</button>

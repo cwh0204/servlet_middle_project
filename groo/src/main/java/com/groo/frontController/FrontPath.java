@@ -17,7 +17,6 @@ public class FrontPath {
         jspMap.put("/signupsuccess.do", "/WEB-INF/view/user/signupsuccess.jsp");
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
-        jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
         jspMap.put("/mypage.do", "/WEB-INF/view/user/mypage.jsp");
 

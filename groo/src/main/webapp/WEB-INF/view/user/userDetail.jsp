@@ -26,7 +26,8 @@ body {
 	background-color: white;
 	border-radius: 12px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-	width: 900px;
+	width: 100%;
+	max-width: 900px;
 	padding: 40px;
 	gap: 40px;
 }
@@ -36,7 +37,8 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 250px;
+	width: 100%;
+	max-width:250px;
 	border-right: 1px solid #ddd;
 	padding-right: 30px;
 }
@@ -79,7 +81,7 @@ button {
 }
 
 .okbutton {
-	background-color: #7FDBB6;
+	background-color: #5568d3;
 	color: white;
 }
 
@@ -111,9 +113,12 @@ button {
 	font-weight: 500;
 }
 
-.input-group input[type="text"], .input-group input[type="password"],
-	.input-group input[type="email"], .input-group input[type="date"],
-	.input-group select, .input-group textarea {
+.input-group input[type="text"], 
+.input-group input[type="password"],
+.input-group input[type="email"], 
+.input-group input[type="date"],
+.input-group select, 
+.input-group textarea {
 	width: 100%;
 	padding: 8px 12px;
 	border: 1px solid #ccc;
@@ -144,7 +149,6 @@ textarea {
 	align-items: center;
 	flex-direction: column;
 	gap: 40px;
-	align-items: center;
 }
 
 .address_btn {
@@ -271,16 +275,16 @@ textarea {
 
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호 <span style="font-size: 12px; color: #666;">(8~20자리,
-							특수문자 포함, 공백 제외)</span></label> 
+							최소 1개 이상 특수문자, 공백 제외)</span></label> 
 							<input type="password" name="password" id="password" style="width: 100%; padding-right: 30px;"> 
 						<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 38px; cursor: pointer; width: 20px; height: 20px;">
+						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
 
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호 재확인</label> <input type="password" name="passtry" id="passtry" style="width: 100%; padding-right: 30px;"> 
 						<img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 38px; cursor: pointer; width: 20px; height: 20px;">
+						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
 
 
@@ -443,7 +447,7 @@ function showAlert() {
     return false; 
 }
 
-<!--눈모양 토글-->
+<!--눈모양 아이콘-->
 const togglePassword = document.getElementById('togglePassword');
 const password = document.getElementById('password');
 
