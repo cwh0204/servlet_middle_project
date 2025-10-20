@@ -7,9 +7,15 @@
 <meta charset="UTF-8">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
-<script src="js/mainComponent.js"></script>
-<script src="js/main.js"></script>
+
 <script src="jquery/jquery-3.7.1.min.js"></script>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script src="js/mainComponent.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {	
 	mainHome();
