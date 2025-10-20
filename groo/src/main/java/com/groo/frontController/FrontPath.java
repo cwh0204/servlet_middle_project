@@ -11,9 +11,10 @@ public class FrontPath {
         jspMap.put("/login.do", "/WEB-INF/view/user/login.jsp");
         jspMap.put("/main.do", "/WEB-INF/view/main/main.jsp");
         jspMap.put("/mainhome.do", "/WEB-INF/view/main/mainhome.jsp");
-        
+
         jspMap.put("/signup.do", "/WEB-INF/view/user/signupterms.jsp");
         jspMap.put("/signuppage.do", "/WEB-INF/view/user/signuppage.jsp");
+        jspMap.put("/signupsuccess.do", "/WEB-INF/view/user/signupsuccess.jsp");
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");

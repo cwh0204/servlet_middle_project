@@ -53,8 +53,6 @@ form div {
 
 form label {
    font-weight: bold;
-  // display: block;
- //  margin-bottom: 6px;
 }
 
 input[type="text"],
@@ -173,6 +171,20 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
+<div class="progress-container">
+  <div class="step active">
+    <div class="circle">1</div>
+    <div class="label">약관 동의</div>
+  </div>
+  <div class="step active">
+    <div class="circle">2</div>
+    <div class="label">정보 입력</div>
+  </div>
+  <div class="step">
+    <div class="circle">3</div>
+    <div class="label">가입 완료</div>
+  </div>
+</div>
 <div class="section">
    <section>
    	 <h2>회원가입</h2>
