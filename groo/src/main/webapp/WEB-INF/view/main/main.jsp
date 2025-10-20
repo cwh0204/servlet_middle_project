@@ -23,9 +23,16 @@ $(document).ready(function() {
 	refreshPage();
 	
 	// 네이버 소셜로그인 확인용
-	const serviceResponseJsonString = '${sessionScope.naverServiceResponse}';
-	if(serviceResponseJsonString !== '' && serviceResponseJsonString !== 'null'){
-		const responseObject = JSON.parse(serviceResponseJsonString);
+	const naverServiceResponse = '${sessionScope.naverServiceResponse}';
+	if(naverServiceResponse !== '' && naverServiceResponse !== 'null'){
+		const responseObject = JSON.parse(naverServiceResponse);
+		console.log(responseObject); //소셜로그인 테스트용	
+	}
+	
+	// 깃허브 소셜로그인 확인용
+ 	const gitHubServiceResponse = '${sessionScope.gitHubServiceResponse}';
+	if(gitHubServiceResponse !== '' && gitHubServiceResponse !== 'null'){
+		const responseObject = JSON.parse(gitHubServiceResponse);
 		console.log(responseObject); //소셜로그인 테스트용	
 	}
 });

@@ -9,8 +9,8 @@
 <title></title>
 </head>
 <%
-	String state = java.util.UUID.randomUUID().toString();
-	session.setAttribute("naver_state", state);
+String state = java.util.UUID.randomUUID().toString();
+session.setAttribute("naver_state", state);
 %>
 <body>
 	<div class="l_c_container flex_container">
@@ -30,17 +30,29 @@
 							class="btn btn-success">로그인</button>
 						<button type="submit" name="login_type" value="nonmember"
 							class="btn nonmem-btn-success">비회원 로그인</button>
-						<a
-							href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TfAk2Y0BAm7L0CK2K9br&redirect_uri=http://localhost:8080/groo/naverlogin.do&state=<%=state%>">
-							네이버 로그인 </a>
 					</div>
 					<button type="submit" name="login_type" value="signup"
 						class="btn custom-btn-success">회원가입</button>
 				</div>
 			</div>
 		</form>
+		<button style="width: 100px;" class="naver-login">네이버 로그인</button>
+		<button style="width: 100px;" class="github-login">깃허브 로그인</button>
 	</div>
 </body>
+<script type="text/javascript">
+
+const naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TfAk2Y0BAm7L0CK2K9br&redirect_uri=http://localhost:8080/groo/naverlogin.do&state=<%=state%>";
+const gitHubUrl = "https://github.com/login/oauth/authorize?client_id=Ov23liAv6BKSjMxB6XaF&redirect_uri=http://localhost:8080/groo/githublogin.do&state=<%=state%>&scope=read:user";
+	$(function() {
+		$('.naver-login').click(function() {
+			window.location.href = naverUrl;
+		});
+		$('.github-login').click(function() {
+			window.location.href = gitHubUrl;
+		});
+	});
+</script>
 </html>
 
 

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.groo.controller.Controller;
+import com.groo.controller.GitHubLogin;
 import com.groo.controller.LoginImpl;
 import com.groo.controller.MainImpl;
 import com.groo.controller.MemberSelectImplAPI;
@@ -30,6 +31,7 @@ public class FrontControllerPath {
         controllerMap.put("/mypage.do", new MyPageImpl());
         
         controllerMap.put("/naverlogin.do", new NaverLogin());
+        controllerMap.put("/githublogin.do", new GitHubLogin());
         
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectImplAPI());
     }

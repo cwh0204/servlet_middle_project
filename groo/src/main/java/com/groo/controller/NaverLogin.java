@@ -63,7 +63,9 @@ public class NaverLogin implements Controller {
         
         // 2. Authorization 헤더에 Bearer 토큰 추가 (가장 중요한 부분)
         // curl -H "Authorization: Bearer {액세스 토큰}" 와 동일
-        conn.setRequestProperty("Authorization", "Bearer " + accessToken); 
+        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+        
+        System.out.println("네이버 토큰"+accessToken);
 
         // 3. 응답 코드 확인 및 응답 데이터 읽기
         int responseCode = conn.getResponseCode();
