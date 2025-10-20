@@ -111,7 +111,7 @@ p {
     <button class="btn-confirm" onclick="goToLogin()">확인</button>
 </div>
 
-<!-- 로그인하러 가기 누르면 로그인 창으로 이동 -->
+<!-- 확인 누르면 로그인 창으로 이동 -->
 <script>
 function goToLogin() {
   window.location.href = 'login.do';
