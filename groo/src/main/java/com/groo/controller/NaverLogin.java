@@ -15,6 +15,7 @@ import com.google.gson.JsonParser;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class NaverLogin implements Controller {
 	
@@ -37,7 +38,11 @@ public class NaverLogin implements Controller {
         try {
         	String token = getAccessToken(code, state);
         	String userDate = getUserProfile(token);
-        	response.getWriter().println(userDate);
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("naverServiceResponse", userDate);
+            
+            response.sendRedirect(request.getContextPath() + "/main.do");
         }catch (Exception e) {
 			// TODO: handle exception
 		}
