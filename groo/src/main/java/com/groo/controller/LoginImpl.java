@@ -22,12 +22,13 @@ public class LoginImpl extends HttpServlet implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
+		HttpSession session = request.getSession(false);
 		
-		String loginType = request.getParameter("login_type");
+		session.invalidate(); //세션종료
+		
+		String loginType = request.getParameter("login_type"); //로그인 타입
 		
 		if(loginType.equals("member")) {
 			String userId = request.getParameter("userId");
