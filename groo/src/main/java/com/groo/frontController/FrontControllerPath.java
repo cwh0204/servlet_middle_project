@@ -8,6 +8,7 @@ import com.groo.controller.LoginImpl;
 import com.groo.controller.MainImpl;
 import com.groo.controller.MemberSelectImplAPI;
 import com.groo.controller.MyPageImpl;
+import com.groo.controller.NaverLogin;
 import com.groo.controller.SignUpImpl;
 import com.groo.controller.TeamCreateImpl;
 import com.groo.controller.TeamSelectImpl;
@@ -25,7 +26,11 @@ public class FrontControllerPath {
         controllerMap.put("/teamcreates.do", new TeamCreateImpl());
         controllerMap.put("/teamselects.do", new TeamSelectImpl());
         controllerMap.put("/mypage.do", new MyPageImpl());
-
+        
+        controllerMap.put("/mypage.do", new MyPageImpl());
+        
+        controllerMap.put("/naverlogin.do", new NaverLogin());
+        
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectImplAPI());
     }
 
