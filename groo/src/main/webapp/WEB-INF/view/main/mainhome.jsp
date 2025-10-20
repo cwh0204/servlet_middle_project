@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="jquery/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -134,7 +138,6 @@
 	transition: opacity 0.4s, transform 0.4s;
 }
 </style>
-
 </head>
 <body>
 	<div class="flex_container">
