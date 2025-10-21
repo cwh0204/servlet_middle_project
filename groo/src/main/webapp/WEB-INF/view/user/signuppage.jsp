@@ -5,6 +5,8 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/signup.css" rel="stylesheet">
 <link href="css/progress.css" rel="stylesheet">
+<script src="jquery/jquery-3.7.1.min.js"></script>
+
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
@@ -196,7 +198,7 @@ input[type="submit"]:hover {
 <div class="section">
    <section>
    	 <h2>회원가입</h2>
-      <form action="/signup.do" method="post" onsubmit="return validateForm()">
+<!--       <form action="/signup.do" method="post" onsubmit="return validateForm()"> -->
       	<label for="userId">아이디</label>
       	<div class="idRow">
       	  <input type="text" id="userId" name="userId" required> 
@@ -254,13 +256,51 @@ input[type="submit"]:hover {
         <div class="g-recaptcha" data-sitekey="6LdJB-orAAAAAJkFTCtPCgXVGhgSTPN-NQGWtgAj"></div>
         
         <div class="signup">
-      	  <input type="submit" value="가입하기">
+      	  <input type="button" id="userSignUp" value="가입하기">
         </div>
-      </form>
+<!--       </form> -->
    </section>
 </div>
 
 <script>
+
+//비동기 통신
+
+$('#userSignUp').on('click', function(){
+	const userIdValue = $('#userId').val();
+	const userPwValue = $('#pass2').val();
+	const userNameValue = $('#name').val();
+	console.log("아이디는: "+userIdValue+" 비밀번호는"+userPwValue+"이름은"+userNameValue);
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'singnups.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+            userId: userIdValue,
+            userPw: userPwValue,
+            userName: userNameValue
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            // 예: 성공 메시지 표시 또는 페이지 이동
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    }); // $.ajax 끝
+});
+
+
+
 /*
  div 안에 비밀번호
  <img id="togglePassword1" src="https://i.postimg.cc/TYkDN86M/hide.png" alt="Toggle Password" style="cursor: pointer;"> 

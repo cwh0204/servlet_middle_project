@@ -22,10 +22,14 @@ public class SignUpImpl extends HttpServlet implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
 
-		String name = request.getParameter("name");
+		String name = request.getParameter("userName");
 		String userId = request.getParameter("userId");
-		String password = request.getParameter("password");
-
+		String password = request.getParameter("userPw");
+		
+		System.out.println(name);
+		System.out.println(userId);
+		System.out.println(password);
+		
 		MemberDTO memberDTO = new MemberDTO();
 
 		memberDTO.setName(name);
@@ -35,8 +39,9 @@ public class SignUpImpl extends HttpServlet implements Controller {
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
 			serviceImpl.insertUserService(memberDTO);
-			response.sendRedirect("login.jsp");
 			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
+			/* response.sendRedirect("login.do"); */
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("사용자 등록 실패: " + e.getMessage());
