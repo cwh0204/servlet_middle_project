@@ -107,7 +107,14 @@ input[type="submit"]:hover {
 .idRow input[type="button"]:hover {
   background-color: #1fb205;
 }
-
+/* 비밀번호 토글 
+#togglePassword1, #togglePassword2 {
+	width: 20px;
+	height: 20px;
+	right: 10px;
+	position: absolute;
+}
+*/
 .juminRow {
   display: flex;
   align-items: center;
@@ -232,8 +239,8 @@ input[type="submit"]:hover {
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
-      	  <div class="emailAuthBtnWrap">
-      	    <input type="button" value="이메일 인증 요청" id="emailAuthBtn">
+      	  <div class="emailAuthBtn">
+      	    <input type="button" value="인증 요청" id="emailAuthBtn">
       	  </div>
       	  <div id="emailVerify">
       	  	<label for="emailCode">인증번호</label>
@@ -253,6 +260,41 @@ input[type="submit"]:hover {
    </section>
 </div>
 
+<script>
+/*
+ div 안에 비밀번호
+ <img id="togglePassword1" src="https://i.postimg.cc/TYkDN86M/hide.png" alt="Toggle Password" style="cursor: pointer;"> 
+ 
+//비밀번호 토글 아이콘
+const togglePassword1 = document.getElementById('togglePassword1');
+const password1 = document.getElementById('pass1');
+
+togglePassword1.addEventListener('click', () => {
+    if (password1.type === 'password') {
+        password1.type = 'text';   // 비밀번호 보이기
+        togglePassword1.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; 
+    } else {
+        password1.type = 'password';  // 비밀번호 숨기기
+        togglePassword1.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; 
+    }
+});
+
+//비밀번호 재확인 토글 아이콘
+const togglePassword2 = document.getElementById('togglePassword2');
+const password2 = document.getElementById('pass2');
+
+togglePassword2.addEventListener('click', () => {
+    if (password2.type === 'password') {
+        password2.type = 'text';
+        togglePassword2.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; 
+    } else {
+        password2.type = 'password';
+        togglePassword1.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; 
+    }
+});
+*/
+</script>
+
 <!-- 이메일 도메인 선택 -->
 <script type="text/javascript">
 const emailDomain = document.getElementById('emailDomain');
@@ -270,6 +312,32 @@ emailDomainSelect.addEventListener('change', function () {
     emailDomain.readOnly = true;
   }
 });
+
+<!-- 이메일 인증요청버튼 클릭 시 이메일 전송 및 인증번호 확인을 위한 필드 표시 -->
+$('#emailAuthBtn').on('click', function(){
+	const email = $('#emailId').val() + $('#emailDomain').val();
+	if(email === ''){
+		alert('이메일을 입력해주세요.');
+		return;
+	}
+	
+	// 이메일 전송 요청(서버에 이메일 전송을 요청)
+	$.ajax({
+		url: '/verifyEmailCode',     // 인증번호 검증을 위한 서버 URL (백엔드 API)
+		type: 'POST',
+		data: { code: code },
+		success: function(response) {
+			if(response.success){
+				alert('인증이 완료되었습니다.');
+			}else {
+				alert('잘못된 인증번호입니다. 다시 시도해주세요.');
+			}
+		},
+		error: function() {
+		        alert('서버에 문제가 발생했습니다. 나중에 다시 시도해주세요.');
+		}        
+	});
+})
 
 <!-- 이메일 인증요청버튼 클릭 시 슬라이드 표시-->
 $('#emailAuthBtn').on('click', function(){

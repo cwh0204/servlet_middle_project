@@ -9,7 +9,6 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<meta charset="UTF-8">
 <title></title>
 
 <style>
@@ -17,13 +16,17 @@
 body {
 	background-color: #f8f9fa;
 	font-family: 'Segoe UI', sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
 	margin: 0;
 	overflow: hidden;
 }
+
+.centerMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 100px);
+}
+
 /*
 h2 {
     font-size: 28px;
@@ -41,7 +44,6 @@ p {
     color: #555;
     margin-bottom: 30px;
 }
-
 
 .successContainer {
   text-align: center;
@@ -91,7 +93,7 @@ p {
 </style> 
 </head>
 <body>
-<div class="progressContainer">
+<div class="progress-container">
   <div class="step active">
     <div class="circle">1</div>
     <div class="label">약관 동의</div>
@@ -105,11 +107,14 @@ p {
     <div class="label">가입 완료</div>
   </div>
 </div>
-<div class="successContainer">
+
+<div class="centerMessage">
+  <div class="successContainer">
     <div class="checkmark">✔</div>
     <h2>가입이 완료되었습니다!</h2>
     <p>Groo에 가입해주셔서 감사합니다.<br>이제 로그인 후 서비스를 이용하실 수 있습니다.</p>
     <button class="btn-confirm" onclick="goToLogin()">확인</button>
+  </div>
 </div>
 
 <!-- 확인 누르면 로그인 창으로 이동 -->
