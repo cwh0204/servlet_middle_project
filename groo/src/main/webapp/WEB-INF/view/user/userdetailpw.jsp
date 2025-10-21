@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <title>회원정보확인</title>
 <style>
@@ -68,7 +69,8 @@ button:hover {
 .pw-container {
 	display: none;
 }
-.pw-container.active{
+
+.pw-container.active {
 	display: block;
 	position: absolute;
 	background-color: black;
@@ -76,7 +78,8 @@ button:hover {
 	height: 100%;
 	opacity: 0.6;
 }
-.login-box{
+
+.login-box {
 	display: none;
 }
 </style>
@@ -96,28 +99,32 @@ button:hover {
 				style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;">
 		</div>
 
-		<button type="submit">확인</button>
+		<button id="userPwCk" type="submit">확인</button>
 	</div>
 </body>
 <script>
 <!-- 비밀번호 눈모양 아이콘 -->
-const togglePassword = document.getElementById('togglePassword');
-const password = document.getElementById('pw');
+const togglePasswordPw = document.getElementById('togglePassword');
+const passwordPw = document.getElementById('pw');
 
-togglePassword.addEventListener('click', () => {
-    if (password.type === 'password') {
-        password.type = 'text';
-        togglePassword.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; //보일때
+$("#userPwCk").on("click",function () {
+	   $(".pw-container").removeClass("active");
+});
+
+togglePasswordPw.addEventListener('click', () => {
+    if (passwordPw.type === 'password') {
+    	passwordPw.type = 'text';
+        togglePasswordPw.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; //보일때
     } else {
-        password.type = 'password';
-        togglePassword.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; //안보일때 
+        passwordPw.type = 'password';
+        togglePasswordPw.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; //안보일때 
     }
 });
 
 
 
 <!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
-function checkPassword() { 
+ function checkPassword() { 
     const pw = document.getElementById("pw").value;
     
     const lengthValid = pw.length >= 8 && pw.length <= 20; 
@@ -131,7 +138,7 @@ function checkPassword() {
     }
 
     
-<!-- 비밀번호 팝업창 -->    
+ <!-- 비밀번호 팝업창 -->    
 const correctPassword = "123456789!"; 
 
 if (pw === correctPassword) {

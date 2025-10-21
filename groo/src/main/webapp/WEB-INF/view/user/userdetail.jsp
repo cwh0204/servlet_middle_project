@@ -371,12 +371,18 @@ textarea {
             
          </div>
       </div>
-
+	<%@ include file="./userdetailpw.jsp"%>
    <!-- 카카오 우편번호api -->
    <script
       src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    <script>
+   $(function(){
+	   console.log("1234");
+	   $("#deletebutton").on("click",function () {
+		   $(".pw-container").addClass("active");
+	   });
+   });
 <!-- 프로필 미리보기 -->
 function previewProfile(event) {
     const file = event.target.files[0];
@@ -435,17 +441,6 @@ function showCancelAlert() {
     alert("취소되었습니다.");
 }
 
-<!-- 탈퇴버튼 -->
-$(function(){
-	   $("#deletebutton").css("background-color", 'green');
-	});
-	
-$("#deletebutton").hover(
-		  function() { $(this).css("background-color", "#a9a9a9"); },
-		  function() { $(this).css("background-color", "#d0d0d0"); }
-		);
-
-
 <!-- 비밀번호, 비밀번호재확인 비교 -->
 <!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
 function showAlert() {
@@ -465,7 +460,7 @@ function showAlert() {
     const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
 
     if (!lengthValid || !noSpace || !hasSpecial) {
-        alert("비밀번호가 맞지 않습니다.");
+        /* alert("비밀번호가 맞지 않습니다."); */
         document.querySelector('input[name="password"]').focus();
         return false; 
     }
