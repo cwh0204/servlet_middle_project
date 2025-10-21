@@ -28,7 +28,7 @@
   z-index: 1;
 }
 
-.step .active .circle {
+.step.active .circle {
   background-color: #28a745;
 }
 
