@@ -36,6 +36,12 @@ $(document).ready(function() {
 		console.log(responseObject); //소셜로그인 테스트용	
 	}
 	
+	//카카오 소셜로그인 확인용
+ 	const kakaoServiceResponse = '${sessionScope.kakaoServiceResponse}';
+	if(kakaoServiceResponse !== '' && kakaoServiceResponse !== 'null'){
+		const responseObject = JSON.parse(kakaoServiceResponse);
+		console.log(responseObject); //소셜로그인 테스트용
+	}
 	
 });
 </script>
