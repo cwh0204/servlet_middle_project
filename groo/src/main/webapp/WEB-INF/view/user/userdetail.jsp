@@ -81,13 +81,21 @@ button {
 }
 
 .okbutton {
-   background-color: #5568d3;
+   background-color: #9acd32;
    color: white;
 }
 
+.okbutton:hover {
+   background-color: #7fb824;
+}
+
 .cancelbutton {
-   background-color: #6c757d;
+   background-color: #a9a9a9;
    color: white;
+}
+
+.cancelbutton:hover {
+   background-color: #909090;
 }
 
 .right-section {
@@ -152,12 +160,21 @@ textarea {
 }
 
 .address_btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    padding: 8px;
+   height: 31px;
    border-radius: 6px;
    border: none;
    cursor: pointer;
-   background-color: #667eea;
+   background-color: #9acd32;
    color: white;
+   font-size: 12px;
+}
+
+.address_btn:hover {
+  background-color: #7fb824;
 }
 
 .profile-image {
@@ -168,11 +185,17 @@ textarea {
    display: flex;
    align-items: center;
    justify-content: center;
-   border: 3px solid #667eea;
+   border: 3px solid #9acd32; 
    overflow: hidden;
    position: relative;
    cursor: pointer;
    transition: all 0.3s;
+}
+
+.profile-image img{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 .profile-info {
@@ -185,7 +208,7 @@ textarea {
 }
 
 .upload-btn {
-   background: #667eea;
+   background: #9acd32;
    color: white;
    border: none;
    padding: 10px 20px;
@@ -199,7 +222,7 @@ textarea {
 }
 
 .upload-btn:hover {
-   background: #5568d3;
+   background: #7fb824;
    transform: translateY(-2px);
    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
@@ -245,7 +268,8 @@ textarea {
                         disabled="">
                   </div>
                   <div class="input-group">
-                     <label>전화번호(선택사항)</label>
+                     <label>전화번호<span style="font-size: 12px; color: #666;">(선택)</span>
+                     </label>
                      <div style="display: flex; gap: 10px; align-items: center;">
                         <select name="phonenumber"
                            style="width: 65px; text-align: center;">
@@ -272,9 +296,8 @@ textarea {
             <h1>회원정보 상세페이지</h1>
 
             <div class="input-group" style="position: relative;">
-               <label>비밀번호 <span style="font-size: 12px; color: #666;">(8~20자리,
-                     최소 1개 이상 특수문자, 공백 제외)</span></label> 
-                     <input type="password" name="password" id="password" style="width: 100%; padding-right: 30px;"> 
+               <label>비밀번호</label> 
+                     <input type="password" name="password" id="password" placeholder="8~20자리, 특수문자 1개 이상, 공백 제외" style="width: 100%; padding-right: 30px;"> 
                   <img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
                   style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
             </div>
@@ -320,8 +343,10 @@ textarea {
                <div style="display: flex; gap: 5px; align-items: center;">
                   <input type="text" id="zipcode" name="zipcode" placeholder="우편번호"
                      style="width: 120px; text-align: center;" readonly> <input
-                     type="button" value="우편번호검색" class="address_btn"
+                     type="button" value="우편번호" class="address_btn"
                      onclick="openPostcode()">
+                     
+              
                </div>
                <input type="text" id="address1" name="address1" placeholder="주소"
                   style="margin-top: 5px;" readonly> <input type="text"

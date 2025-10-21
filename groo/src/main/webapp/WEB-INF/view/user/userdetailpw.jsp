@@ -52,20 +52,23 @@ input[disabled] {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #7FDBB6;
+    background-color: #9acd32;
     border: none;
     color: white;
     font-size: 16px;
     border-radius: 6px;
     cursor: pointer;
 }
+
+button:hover{
+    background-color: #7fb824;;
+}
+
 </style>
 </head>
 
 <body>
-<div class="login-box">
-    <h2>회원정보확인</h2>
-    
+<div class="login-box"> 
     <form onsubmit="return checkPassword();">
         <div class="input-group">
             <label>아이디</label>
@@ -99,20 +102,37 @@ togglePassword.addEventListener('click', () => {
     }
 });
 
-<!-- 비밀번호 팝업창 -->
-function checkPassword() {
-    const correctPassword = "1234"; 
-    const pw = document.getElementById("pw").value;
 
-    if (pw === correctPassword) {
-        window.location.href = "${pageContext.request.contextPath}/userdetail.do";
-        return false; 
-    } else {
-        alert("비밀번호가 틀렸습니다.");
-        document.getElementById("pw").value = ""; 
-        document.getElementById("pw").focus();  
+
+<!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
+function checkPassword() { 
+    const pw = document.getElementById("pw").value;
+    
+    const lengthValid = pw.length >= 8 && pw.length <= 20; 
+    const noSpace = !/\s/.test(pw); 
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
+
+    if (!lengthValid || !noSpace || !hasSpecial) {
+        alert("비밀번호가 맞지 않습니다.");
+        document.querySelector('input[name="password"]').focus();
         return false; 
     }
+
+    
+<!-- 비밀번호 팝업창 -->    
+const correctPassword = "123456789!"; 
+
+if (pw === correctPassword) {
+    window.location.href = "${pageContext.request.contextPath}/userdetail.do";
+    return false; 
+} else {
+    alert("비밀번호가 틀렸습니다.");
+    document.getElementById("pw").value = ""; 
+    document.getElementById("pw").focus();  
+    return false; 
+}
+
+    
 }
 </script>
 </body>
