@@ -449,7 +449,7 @@ function showAlert() {
     
     const lengthValid = pw.length >= 8 && pw.length <= 20; 
     const noSpace = !/\s/.test(pw); 
-    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
+    const hasSpecial = / ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ₩ ] ^ _ ` { | } ~/.test(pw); 
 
     if (!lengthValid || !noSpace || !hasSpecial) {
         alert("비밀번호가 맞지 않습니다.");
