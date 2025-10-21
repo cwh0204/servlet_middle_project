@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class GitHubLogin implements Controller {
+public class GitHubLogin implements Controller,SocialLogin {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,6 +38,7 @@ public class GitHubLogin implements Controller {
 		}
 		System.out.println(code);
 	}
+	@Override
 	public String getUserProfile(String accessToken) throws IOException {
 		String userProfile = "https://api.github.com/user";
 		
@@ -83,7 +84,7 @@ public class GitHubLogin implements Controller {
 	    return null;
 	}
 	
-	
+	@Override
 	public String getAccessToken(String code, String state) throws IOException, ParseException {
 
 		String tokenUrl = "https://github.com/login/oauth/access_token";
@@ -144,7 +145,8 @@ public class GitHubLogin implements Controller {
         
         return null; // 응답 본문이 비었을 경우
     }
-    private String readResponse(BufferedReader br) throws IOException {
+	@Override
+    public String readResponse(BufferedReader br) throws IOException {
         StringBuilder responseJson = new StringBuilder();
         String line;
         while ((line = br.readLine()) != null) {

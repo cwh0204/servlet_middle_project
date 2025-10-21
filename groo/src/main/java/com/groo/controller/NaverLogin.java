@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class NaverLogin implements Controller {
+public class NaverLogin implements Controller,SocialLogin{
 	
 	private static final String CLIENT_ID = "TfAk2Y0BAm7L0CK2K9br";
 	private static final String CLIENT_SECRET = "oK7EL5nq2O";
@@ -54,6 +54,7 @@ public class NaverLogin implements Controller {
      * @return 사용자 프로필 정보가 담긴 JSON 문자열 (실패 시 null)
      * @throws IOException 네트워크 통신 오류 발생 시
      */
+	@Override
     public String getUserProfile(String accessToken) throws IOException {
         URL url = new URL(PROFILE_API_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -96,6 +97,7 @@ public class NaverLogin implements Controller {
      * @return 토큰
      * @throws IOException, ParseException
      */
+    @Override
 	public String getAccessToken(String code, String state) throws IOException, ParseException{
 		
         String tokenUrl = "https://nid.naver.com/oauth2.0/token";
@@ -164,7 +166,8 @@ public class NaverLogin implements Controller {
      * @return 응답 내용 문자열
      * @throws IOException
      */
-    private String readResponse(BufferedReader br) throws IOException {
+	@Override
+    public String readResponse(BufferedReader br) throws IOException {
         StringBuilder responseJson = new StringBuilder();
         String line;
         while ((line = br.readLine()) != null) {
