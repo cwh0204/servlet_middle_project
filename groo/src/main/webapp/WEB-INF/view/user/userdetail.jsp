@@ -90,12 +90,12 @@ button {
 }
 
 .cancelbutton {
-   background-color: #a9a9a9;
+   background-color: #CEF279;
    color: white;
 }
 
 .cancelbutton:hover {
-   background-color: #909090;
+   background-color: #BDD250;
 }
 
 .right-section {
@@ -235,11 +235,13 @@ textarea {
    background: white;
    border-radius: 6px;
 }
+
+
 </style>
 </head>
 
 <body onload="checkPassword()">
-   <form action="/userdetail.do" method="post" onsubmit="return showAlert()">
+
       <div class="container">
 
          <div class="left-section">
@@ -286,8 +288,8 @@ textarea {
             </div>
             <div class="button-group">
                <button type="submit" class="okbutton">회원정보수정</button>
-               <button type="reset" class="cancelbutton"
-                  onclick="showCancelAlert()">취소</button>
+               <button type="reset" class="cancelbutton" onclick="showCancelAlert()">취소</button>
+               <button type="button" id="deletebutton">회원탈퇴</button> 
             </div>
          </div>
 
@@ -366,14 +368,14 @@ textarea {
                </div>
                <textarea name="ff" placeholder="관심분야를 입력하세요"></textarea>
             </div>
+            
          </div>
       </div>
-   </form>
 
    <!-- 카카오 우편번호api -->
    <script
       src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    <script>
 <!-- 프로필 미리보기 -->
 function previewProfile(event) {
@@ -433,6 +435,17 @@ function showCancelAlert() {
     alert("취소되었습니다.");
 }
 
+<!-- 탈퇴버튼 -->
+$(function(){
+	   $("#deletebutton").css("background-color", 'green');
+	});
+	
+$("#deletebutton").hover(
+		  function() { $(this).css("background-color", "#a9a9a9"); },
+		  function() { $(this).css("background-color", "#d0d0d0"); }
+		);
+
+
 <!-- 비밀번호, 비밀번호재확인 비교 -->
 <!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
 function showAlert() {
@@ -449,7 +462,7 @@ function showAlert() {
     
     const lengthValid = pw.length >= 8 && pw.length <= 20; 
     const noSpace = !/\s/.test(pw); 
-    const hasSpecial = / ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ₩ ] ^ _ ` { | } ~/.test(pw); 
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
 
     if (!lengthValid || !noSpace || !hasSpecial) {
         alert("비밀번호가 맞지 않습니다.");

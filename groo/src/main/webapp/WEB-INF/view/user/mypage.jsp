@@ -15,7 +15,6 @@
 <body>
 	<%@ include file="../frontComponents/mainheader.jsp"%>
 	<%@ include file="../frontComponents/mypagenav.jsp"%>
-	
 </body>
 </html>
 
