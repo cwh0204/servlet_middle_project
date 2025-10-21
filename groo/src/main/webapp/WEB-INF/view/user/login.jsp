@@ -15,7 +15,8 @@ session.setAttribute("naver_state", state);
 <body>
 	<div class="l_c_container flex_container">
 		<div class="loginContiner">
-			<div class="imgBox">
+			<div>
+				<div class="imgBox">
 				<img src="./images/login.png">
 			</div>
 			<form action="logins.do" method="post">
@@ -39,6 +40,9 @@ session.setAttribute("naver_state", state);
 				<button class="id-search">아이디 찾기</button>
 				<button class="ps-search">비밀번호 찾기</button>
 			</div>
+			</div>
+			
+			
 		</div>
 		<div class="socialBox">
 			<button class="naver-login flex_container">

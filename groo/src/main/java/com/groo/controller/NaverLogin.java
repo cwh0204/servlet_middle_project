@@ -19,10 +19,6 @@ import jakarta.servlet.http.HttpSession;
 
 public class NaverLogin implements Controller,SocialLogin{
 	
-	private static final String CLIENT_ID = "TfAk2Y0BAm7L0CK2K9br";
-	private static final String CLIENT_SECRET = "oK7EL5nq2O";
-	private static final String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
-	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -56,7 +52,7 @@ public class NaverLogin implements Controller,SocialLogin{
      */
 	@Override
     public String getUserProfile(String accessToken) throws IOException {
-        URL url = new URL(PROFILE_API_URL);
+        URL url = new URL("https://openapi.naver.com/v1/nid/me");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         
         // 1. GET 요청 설정
@@ -104,8 +100,8 @@ public class NaverLogin implements Controller,SocialLogin{
         String grantType = "authorization_code";
 		
         String params = "grant_type=" + grantType
-                + "&client_id=" + CLIENT_ID
-                + "&client_secret=" + CLIENT_SECRET
+                + "&client_id=" + "TfAk2Y0BAm7L0CK2K9br"
+                + "&client_secret=" + "oK7EL5nq2O"
                 + "&code=" + code
                 + "&state=" + state;
         
