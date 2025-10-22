@@ -10,10 +10,10 @@ public class ErrorDTO {
 	private int status;
 	private String error;
 	private String path;
-	
+
 	public ErrorDTO() {
 	}
-	
+
 	public ErrorDTO(int status, String error, String path) {
 		// TODO Auto-generated constructor stub
 		timestamp = LocalDateTime.now();

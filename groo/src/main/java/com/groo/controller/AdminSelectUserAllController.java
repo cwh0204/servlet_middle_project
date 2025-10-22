@@ -3,6 +3,7 @@ package com.groo.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
@@ -19,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminSelectUserAllController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -33,7 +34,7 @@ public class AdminSelectUserAllController implements Controller {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		MemberDTO member = new MemberDTO();
 		ErrorDTO Error = new ErrorDTO();
 		try {
@@ -41,14 +42,14 @@ public class AdminSelectUserAllController implements Controller {
 			List<MemberDTO> list = adminService.adminSelectAll(member);
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch(InternalServiceException ise) {
 			ise.printStackTrace();
 			Error.setStatus(500);

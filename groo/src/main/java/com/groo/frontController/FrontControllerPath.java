@@ -32,25 +32,24 @@ public class FrontControllerPath {
         controllerMap.put("/teamcreates.do", new TeamCreateController());
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/mypages.do", new MyPageController());
-        
+
         controllerMap.put("/mypages.do", new MyPageController());
-        
-<<<<<<< HEAD
+
+
         controllerMap.put("/naverlogin.do", new NaverLogin());
         controllerMap.put("/githublogin.do", new GitHubLogin());
         controllerMap.put("/kakaologin.do", new KakaoLogin());
-                
+
         controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllImpl());
-=======
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
-        
+
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-        
+
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
 >>>>>>> d8320840eebe01509ddaee02a9940a10a93ccd9a

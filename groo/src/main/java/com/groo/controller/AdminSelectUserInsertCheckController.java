@@ -19,8 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminSelectUserInsertCheckController implements Controller{
-	
-	
+
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -35,24 +35,24 @@ public class AdminSelectUserInsertCheckController implements Controller{
 		String memNick = request.getParameter("memNick");
 		String memEmail = request.getParameter("memEmail");
 		String memPhone = request.getParameter("memPhone");
-		
+
 		MemberDTO member = new MemberDTO();
 		member.setMemLoginId(memLoginId);
 		member.setMemNick(memNick);
 		member.setMemEmail(memEmail);
 		member.setMemPhone(memPhone);
-		
+
 		List<MemberDTO> list =  new ArrayList<>();
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
 			list = service.adminSelectUserInsertCheck(member);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

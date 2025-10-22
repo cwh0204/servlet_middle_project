@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-
 import com.groo.error.InternalDataAccessException;
 import com.groo.model.MemberDTO;
 
@@ -13,8 +12,8 @@ import com.groo.model.MemberDTO;
  * 관리자가 사용하는 요청의 데이터 처리를 수행하기위한 클래스 구현체로 맴버의 조회,추가,수정,삭제 관련 서비스를 처리함
  */
 public class AdminDAOImpl implements AdminDAO {
-	
-	
+
+
 	/**
 	 * 회원 목록을 조회 메서드
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -35,7 +34,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return adminList;
 	}
-	
+
 	/**
 	 * 회원가입전 Unique확인용 조회 메서드
 	 * @param member 유저의 검색 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -48,10 +47,10 @@ public class AdminDAOImpl implements AdminDAO {
 		 * 멤버 데이터 처리를 위한 Data Access Object
 		 */
 		List<MemberDTO> adminList = new ArrayList<>();
-		
+
 		try {
 			adminList = session.selectList("adminSelectUserInsertCheck", member);
-			
+
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);

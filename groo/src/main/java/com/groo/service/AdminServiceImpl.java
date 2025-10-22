@@ -19,7 +19,7 @@ public class AdminServiceImpl implements AdminService {
 
 	/**
 	 * 회원 목록을 조회하는 서비스 메서드입니다.
-	 * 
+	 *
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @return 유저목록 조회 처리 결과
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 
 	/**
 	 * 회원가입을 하기전 Unique중복 식별 조회 서비스 메서드
-	 * 
+	 *
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @return 유저목록 조회 처리 결과
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스

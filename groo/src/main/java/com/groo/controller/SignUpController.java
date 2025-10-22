@@ -25,11 +25,11 @@ public class SignUpController extends HttpServlet implements Controller {
 		String name = request.getParameter("userName");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("userPw");
-		
+
 		System.out.println(name);
 		System.out.println(userId);
 		System.out.println(password);
-		
+
 		MemberDTO memberDTO = new MemberDTO();
 
 		memberDTO.setName(name);
@@ -41,7 +41,7 @@ public class SignUpController extends HttpServlet implements Controller {
 			serviceImpl.insertUserService(memberDTO);
 			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
 			/* response.sendRedirect("login.do"); */
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("사용자 등록 실패: " + e.getMessage());

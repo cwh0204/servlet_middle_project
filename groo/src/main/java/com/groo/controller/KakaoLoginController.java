@@ -23,37 +23,37 @@ public class KakaoLoginController implements Controller, SocialLogin {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json;charset=UTF-8");
-		
+
 		String code = request.getParameter("code"); // 인가 코드
         String state = request.getParameter("state"); // 상태값
-        
+
         try {
         	String token = getAccessToken(code,state);
         	System.out.println(token);
         	String userDate = getUserProfile(token);
-        	
+
             HttpSession session = request.getSession();
             session.setAttribute("kakaoServiceResponse", userDate);
-            
+
             response.sendRedirect(request.getContextPath() + "/main.do");
         }catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-	
+
 	@Override
 	public String getUserProfile(String accessToken) throws IOException {
 		URL url = new URL("https://kapi.kakao.com/v2/user/me");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		
+
 		conn.setRequestMethod("GET");
-		
+
 		conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-		
+
         int responseCode = conn.getResponseCode();
         String responseBody = null;
-		
-        if (responseCode == HttpURLConnection.HTTP_OK) { 
+
+        if (responseCode == HttpURLConnection.HTTP_OK) {
             // 성공 (200 OK)
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
                 responseBody = readResponse(br);
@@ -67,7 +67,7 @@ public class KakaoLoginController implements Controller, SocialLogin {
             }
             return null;
         }
-        
+
         // 4. 프로필 정보가 담긴 JSON 문자열 반환
         return responseBody;
 	}
@@ -84,11 +84,11 @@ public class KakaoLoginController implements Controller, SocialLogin {
                 + "&state=" + state;
         URL url = new URL(tokenUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
+
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // Content-Type 설정
-        
+
         // 4. 파라미터(Body) 전송
         try (OutputStream os = conn.getOutputStream()) {
             byte[] input = params.getBytes(StandardCharsets.UTF_8);
@@ -97,11 +97,11 @@ public class KakaoLoginController implements Controller, SocialLogin {
 
         // 5. 응답 코드 확인 및 응답 데이터 읽기
         int responseCode = conn.getResponseCode();
-        
+
         // 응답 내용을 담을 변수
         String responseBody = null;
-        
-        if (responseCode == HttpURLConnection.HTTP_OK) { 
+
+        if (responseCode == HttpURLConnection.HTTP_OK) {
             // 성공 (200 OK): 일반 입력 스트림 사용
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
                 responseBody = readResponse(br);
@@ -115,13 +115,13 @@ public class KakaoLoginController implements Controller, SocialLogin {
             }
             return null; // 토큰 발급 실패 시 즉시 null 반환
         }
-        
+
         // 6. JSON 응답에서 액세스 토큰 추출 (Gson 사용)
         if (responseBody != null) {
             try {
                 // Gson의 JsonParser를 사용하여 응답 문자열을 JsonObject로 파싱
                 JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-                
+
                 // access_token 값을 String으로 추출하여 반환
                 return jsonObject.get("access_token").getAsString();
             } catch (Exception e) {
@@ -129,7 +129,7 @@ public class KakaoLoginController implements Controller, SocialLogin {
                 return null;
             }
         }
-        
+
 		return null;
 	}
 
