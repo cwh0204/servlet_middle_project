@@ -9,4 +9,5 @@ import com.groo.model.MemberDTO;
 public interface AdminDAO {
 	public List<MemberDTO> adminSelectAll(MemberDTO member, SqlSession session);
 	public List<MemberDTO> adminSelectUserInsertCheck(MemberDTO member, SqlSession session);
+	public void adminInsertUser(MemberDTO member, SqlSession session);
 }

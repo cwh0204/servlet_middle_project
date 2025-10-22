@@ -3,6 +3,7 @@ package com.groo.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.groo.controller.AdminInsertUserController;
 import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.Controller;
@@ -46,6 +47,11 @@ public class FrontControllerPath {
 
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
+<<<<<<< HEAD
+        controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
+
+=======
+>>>>>>> 43b48194c75fc6523bf66488e14bc1847f60cf5c
     }
 
     public Controller getControllers(String command) {

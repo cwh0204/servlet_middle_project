@@ -77,6 +77,12 @@ header {
 #profile-dropdown-menu {
 	display: none;
 }
+
+#profile-icon-container {
+    width: 180px;
+    display: flex;
+    justify-content: end;
+}
 </style>
 </head>
 <body>

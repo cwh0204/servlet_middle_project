@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/base.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
 .boardlist .write:active {
     background-color: #b0b0b0 !important; 

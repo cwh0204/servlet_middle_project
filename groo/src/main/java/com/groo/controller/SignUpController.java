@@ -42,9 +42,10 @@ public class SignUpController extends HttpServlet implements Controller {
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
 			serviceImpl.insertUserService(memberDto);
-			response.getWriter().println("회원가입 완료: "+ memberDto.getMemId());
+			response.getWriter().println("회원가입 완료: "+ memberDto.getMemLoginId());
 		}catch(Exception e) {
-			
+			e.printStackTrace();
+			response.getWriter().println("회원가입 실패: "+ e.getMessage());
 		}
 	}
 
