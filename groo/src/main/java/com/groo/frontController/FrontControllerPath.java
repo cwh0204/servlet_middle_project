@@ -3,6 +3,7 @@ package com.groo.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.groo.controller.AdminUserSelectAllImpl;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLogin;
 import com.groo.controller.KakaoLogin;
@@ -38,6 +39,8 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLogin());
         
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectImplAPI());
+        
+        controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllImpl());
     }
 
     public Controller getControllers(String command) {

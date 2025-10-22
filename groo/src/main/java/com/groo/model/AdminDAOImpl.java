@@ -4,22 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import com.groo.error.InternalDataAccessException;
 
+/**
+ * 관리자가 사용하는 요청의 데이터 처리를 수행하기위한 클래스 구현체로 맴버의 조회,추가,수정,삭제 관련 서비스를 처리함
+ */
 public class AdminDAOImpl implements AdminDAO {
-	private static final Logger log = LoggerFactory.getLogger(AdminDAOImpl.class);
+	
+	
+	/**
+	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 유저 목록 조회 처리 결과
+	 */
 	@Override
 	public List<MemberDTO> adminSelectAll(MemberDTO member, SqlSession session) {
-		
+		/**
+		 * 맴버 데이터 처리를 위한 Data Access Object
+		 */
 		List<MemberDTO> adminList = new ArrayList<>();
 		try {
 			adminList = session.selectList("adminSelectUserAll", member);
 		}catch (Exception e) {
-			log.error("DAO 접근 오류 발생: {}", e.getMessage(), e);
-			throw new InternalDataAccessException("adminSelectAll 예외발생", e);
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
 		return adminList;
 	}
