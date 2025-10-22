@@ -449,7 +449,8 @@ $(document).ready(function() {
 		rowHeaders: ['checkbox'],
 		columns : [ {
 			header : '아이디',
-			name : 'memLoginId'
+			name : 'memLoginId',
+			editor : 'text'
 		}, {
 			header : '이름',
 			name : 'memName',
@@ -502,11 +503,18 @@ $(document).ready(function() {
         console.log(grid.getModifiedRows());
         const changeUser = grid.getModifiedRows();
         
-        const create
-        
         console.log(changeUser.updatedRows);
     });
-    
+    grid.on('beforeEdit', (ev) => {
+
+        const rowKey = ev.rowKey;
+
+        if (typeof ev.rowKey === 'number') {
+            console.log(`기존 행 (Key: ${rowKey}) 편집 차단`);
+            ev.stop(); // ev.stop() 또는 return false;
+        }
+        // else: 문자열(새 행)인 경우, 기본 동작(편집)을 허용합니다.
+    });
     grid.setBodyHeight(450);
     
     grid.on('beforeChange', ev => {
