@@ -48,7 +48,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<%@ include file="../frontComponents/mainheader.jsp"%>
+	<%@ include file="../frontComponents/mainnonheader.jsp"%>
 	<main>
 		<%@ include file="./mainhome.jsp"%>
 	</main>
