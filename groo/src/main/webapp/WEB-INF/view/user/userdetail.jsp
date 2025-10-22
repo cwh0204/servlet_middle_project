@@ -98,6 +98,15 @@ button {
    background-color: #BDD250;
 }
 
+#deletebutton {
+   background-color: #c0c0c0;
+   color: white;
+}
+
+#deletebutton:hover {
+   background-color: #a9a9a9;
+}
+
 .right-section {
    flex: 1;
 }
