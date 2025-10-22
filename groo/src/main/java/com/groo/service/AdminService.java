@@ -1,5 +1,9 @@
 package com.groo.service;
 
-public interface AdminService {
+import java.util.List;
 
+import com.groo.model.MemberDTO;
+
+public interface AdminService {
+	public List<MemberDTO> adminSelectAll(MemberDTO member);
 }

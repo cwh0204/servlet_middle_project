@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AdminMapper">
-	<select id="adminSelectUserAll" parameterType="com.groo,model.MemberDTO" resultType="com.groo,model.MemberDTO">
+	<select id="adminSelectUserAll" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 		SELECT
 			MEM_LOGIN_ID,
 			MEM_NAME,
