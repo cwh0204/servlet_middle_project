@@ -8,7 +8,6 @@ import com.groo.controller.GitHubLogin;
 import com.groo.controller.KakaoLogin;
 import com.groo.controller.LoginImpl;
 import com.groo.controller.MainImpl;
-import com.groo.controller.MemberSelectImplAPI;
 import com.groo.controller.MyPageImpl;
 import com.groo.controller.NaverLogin;
 import com.groo.controller.SignUpImpl;
@@ -36,8 +35,6 @@ public class FrontControllerPath {
         controllerMap.put("/naverlogin.do", new NaverLogin());
         controllerMap.put("/githublogin.do", new GitHubLogin());
         controllerMap.put("/kakaologin.do", new KakaoLogin());
-        
-        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectImplAPI());
     }
 
     public Controller getControllers(String command) {
