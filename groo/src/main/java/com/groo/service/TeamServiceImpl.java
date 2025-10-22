@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.groo.DAO.TeamDAO;
+import com.groo.DAO.TeamDAOImpl;
 import com.groo.config.SessionFactory;
-import com.groo.model.TeamDAO;
-import com.groo.model.TeamDAOImpl;
 import com.groo.model.TeamDTO;
 
 public class TeamServiceImpl implements TeamInsertTeam, TeamSelectTeamOne, TeamSelectTeamAll{

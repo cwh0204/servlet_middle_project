@@ -3,18 +3,18 @@ package com.groo.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.groo.controller.AdminUserSelectAllImpl;
+import com.groo.controller.AdminUserSelectAllController;
 import com.groo.controller.Controller;
-import com.groo.controller.GitHubLogin;
-import com.groo.controller.KakaoLogin;
-import com.groo.controller.LoginImpl;
-import com.groo.controller.MainImpl;
-import com.groo.controller.MemberSelectImplAPI;
-import com.groo.controller.MyPageImpl;
-import com.groo.controller.NaverLogin;
-import com.groo.controller.SignUpImpl;
-import com.groo.controller.TeamCreateImpl;
-import com.groo.controller.TeamSelectImpl;
+import com.groo.controller.GitHubLoginController;
+import com.groo.controller.KakaoLoginController;
+import com.groo.controller.LoginController;
+import com.groo.controller.MainController;
+import com.groo.controller.MemberSelectController;
+import com.groo.controller.MyPageController;
+import com.groo.controller.NaverLoginController;
+import com.groo.controller.SignUpController;
+import com.groo.controller.TeamCreateController;
+import com.groo.controller.TeamSelectController;
 
 
 
@@ -24,23 +24,23 @@ public class FrontControllerPath {
     private Map<String, Controller> controllerMap = new HashMap<>();
 
     public FrontControllerPath() {
-        controllerMap.put("/logins.do", new LoginImpl());
+        controllerMap.put("/logins.do", new LoginController());
         //controllerMap.put("/index.do", new MainImpl()); // indexImpl 재구성
-        controllerMap.put("/mains.do", new MainImpl());
-        controllerMap.put("/singnups.do", new SignUpImpl());
-        controllerMap.put("/teamcreates.do", new TeamCreateImpl());
-        controllerMap.put("/teamselects.do", new TeamSelectImpl());
-        controllerMap.put("/mypages.do", new MyPageImpl());
+        controllerMap.put("/mains.do", new MainController());
+        controllerMap.put("/singnups.do", new SignUpController());
+        controllerMap.put("/teamcreates.do", new TeamCreateController());
+        controllerMap.put("/teamselects.do", new TeamSelectController());
+        controllerMap.put("/mypages.do", new MyPageController());
         
-        controllerMap.put("/mypages.do", new MyPageImpl());
+        controllerMap.put("/mypages.do", new MyPageController());
         
-        controllerMap.put("/naverlogin.do", new NaverLogin());
-        controllerMap.put("/githublogin.do", new GitHubLogin());
-        controllerMap.put("/kakaologin.do", new KakaoLogin());
+        controllerMap.put("/naverlogin.do", new NaverLoginController());
+        controllerMap.put("/githublogin.do", new GitHubLoginController());
+        controllerMap.put("/kakaologin.do", new KakaoLoginController());
         
-        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectImplAPI());
+        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
         
-        controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllImpl());
+        controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllController());
     }
 
     public Controller getControllers(String command) {

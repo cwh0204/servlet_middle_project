@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.groo.DAO.AdminDAO;
+import com.groo.DAO.AdminDAOImpl;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminDAO;
-import com.groo.model.AdminDAOImpl;
 import com.groo.model.MemberDTO;
 
 public class AdminServiceImpl implements AdminService {
