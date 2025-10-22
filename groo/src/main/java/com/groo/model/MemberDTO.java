@@ -1,5 +1,7 @@
 package com.groo.model;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -16,7 +18,7 @@ public class MemberDTO {
 	private String memType;
 	private String memLoginToken;
 	private String memNick;
-	private int memBirth;
+	private String memBirth;
 	private String memGender;
 	private String memEmail;
 	private String memImgPath;
