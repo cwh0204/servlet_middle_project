@@ -1,6 +1,7 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
@@ -21,30 +22,30 @@ public class SignUpController extends HttpServlet implements Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-
-		String name = request.getParameter("userName");
-		String userId = request.getParameter("userId");
-		String password = request.getParameter("userPw");
-
-		System.out.println(name);
-		System.out.println(userId);
-		System.out.println(password);
-
-		MemberDTO memberDTO = new MemberDTO();
-
-		memberDTO.setName(name);
-		memberDTO.setUserId(userId);
-		memberDTO.setPassword(password);
-
+		
+		String memLoginId = request.getParameter("userLoginId");
+		String memPass = request.getParameter("userPass");
+		String memName = request.getParameter("userName");
+		String memEmail = request.getParameter("userEmail");
+		String memBirth = request.getParameter("userBirth");
+		String memGender = request.getParameter("userGender");
+		
+		MemberDTO memberDto = new MemberDTO();
+		
+		memberDto.setMemLoginId(memLoginId);
+		memberDto.setMemPass(memPass);
+		memberDto.setMemName(memName);
+		memberDto.setMemEmail(memEmail);
+		memberDto.setMemBirth(memBirth);
+		memberDto.setMemGender(memGender);
+		
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
-			serviceImpl.insertUserService(memberDTO);
-			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
-			/* response.sendRedirect("login.do"); */
-
-		} catch (Exception e) {
+			serviceImpl.insertUserService(memberDto);
+			response.getWriter().println("회원가입 완료: "+ memberDto.getMemLoginId());
+		}catch(Exception e) {
 			e.printStackTrace();
-			response.getWriter().println("사용자 등록 실패: " + e.getMessage());
+			response.getWriter().println("회원가입 실패: "+ e.getMessage());
 		}
 	}
 

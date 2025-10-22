@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.groo.model.MemberDTO;
 
 public interface MemberDAO {
-	public void signUP(MemberDTO memberDTO, SqlSession session);
+//	public void signUP(MemberDTO memberDTO, SqlSession session);
+	public void signUp(MemberDTO memberDto, SqlSession session);
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session);
 }
