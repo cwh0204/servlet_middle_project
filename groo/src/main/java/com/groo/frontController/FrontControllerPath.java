@@ -26,7 +26,6 @@ public class FrontControllerPath {
 
     public FrontControllerPath() {
         controllerMap.put("/logins.do", new LoginController());
-        //controllerMap.put("/index.do", new MainImpl()); // indexImpl 재구성
         controllerMap.put("/mains.do", new MainController());
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/teamcreates.do", new TeamCreateController());
