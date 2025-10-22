@@ -2,11 +2,11 @@ package com.groo.service;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.groo.DAO.MemberDAO;
+import com.groo.DAO.MemberDAOImpl;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
-import com.groo.model.MemberDAO;
-import com.groo.model.MemberDAOImpl;
 import com.groo.model.MemberDTO;
 
 public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //ISP 적용

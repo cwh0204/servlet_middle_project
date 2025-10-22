@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,9 +143,7 @@
 		<div class="search-container">
 			<input type="text" class="search-input" placeholder="스터디를 검색하세요..."> <a href="http://www.naver.com"> <i class="bi bi-search"></i></a>
 		</div>
-		<div class="member-info">
-		<p></p>
-		</div>
+		<div class="member-info"></div>
 	</div>
 	<div class="flex_container">
 		<section class="hot-studies-section">
