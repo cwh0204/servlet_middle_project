@@ -36,11 +36,6 @@ public class FrontControllerPath {
         controllerMap.put("/mypages.do", new MyPageController());
 
 
-        controllerMap.put("/naverlogin.do", new NaverLogin());
-        controllerMap.put("/githublogin.do", new GitHubLogin());
-        controllerMap.put("/kakaologin.do", new KakaoLogin());
-
-        controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllImpl());
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
@@ -52,7 +47,6 @@ public class FrontControllerPath {
 
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
->>>>>>> d8320840eebe01509ddaee02a9940a10a93ccd9a
 
     }
 
