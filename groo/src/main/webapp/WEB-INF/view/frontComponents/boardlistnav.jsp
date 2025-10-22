@@ -36,7 +36,7 @@
 		
 		<div class="menu-item has-submenu" data-page="">
 		    <div class="menu-item-content">
-		        <span>성과(전체)게시판</span>
+		        <span>성과게시판</span>
 		    </div>
 		</div>
 		
