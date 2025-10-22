@@ -2,8 +2,8 @@ package com.groo.model;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.groo.error.InternalServerErrorException;
-import com.groo.error.ResourceNotFoundException;
+import com.groo.error.InternalDataAccessException;
+import com.groo.error.InternalServiceException;
 
 public class MemberDAOImpl implements MemberDAO{
 
@@ -13,7 +13,7 @@ public class MemberDAOImpl implements MemberDAO{
 			session.insert("insertUser", memberDTO);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new ResourceNotFoundException("회원가입 중 데이터베이스 오류 발생", e);
+			throw new InternalServiceException("회원가입 중 데이터베이스 오류 발생", e);
 		}
 	}
 
@@ -22,14 +22,14 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
 		if(memberDTO.getUserId().equals("")) {
-			throw new InternalServerErrorException("사용자 입력데이터 불일치예외 발생");
+			throw new InternalDataAccessException("사용자 입력데이터 불일치예외 발생");
 		}
 		try {
 			memberRe = session.selectOne("loginUser",memberDTO);
 			System.out.println(memberRe);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new ResourceNotFoundException("로그인 중 데이터베이스 오류 발생", e);
+			throw new InternalServiceException("로그인 중 데이터베이스 오류 발생", e);
 		}
 		return memberRe;
 	}

@@ -36,6 +36,7 @@
 		<mapper resource="com/groo/mapper/TeamMapper.xml" />
 		<mapper resource="com/groo/mapper/UserMapper.xml" />
 		<mapper resource="com/groo/mapper/MypageMapper.xml" />
+		<mapper resource="com/groo/mapper/AdminMapper.xml" />
 	</mappers>
 
 </configuration>
