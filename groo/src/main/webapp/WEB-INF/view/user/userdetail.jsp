@@ -382,12 +382,11 @@ textarea {
       </div>
 	<%@ include file="./userdetailpw.jsp"%>
    <!-- 카카오 우편번호api -->
-   <script
-      src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    <script>
    $(function(){
-	   console.log("1234");
+
 	   $("#deletebutton").on("click",function () {
 		   $(".pw-container").addClass("active");
 	   });
@@ -491,6 +490,7 @@ const password = document.getElementById('password');
 
 togglePassword.addEventListener('click', () => {
     if (password.type === 'password') {
+    	
         password.type = 'text';
         togglePassword.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; // 비밀번호 보일때
     } else {
