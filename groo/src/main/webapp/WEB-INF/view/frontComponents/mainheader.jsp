@@ -79,10 +79,10 @@ header {
 	display: none;
 }
 
-#prifile-icon-container{
-	display:flex;
-	width : 180px;
-	justify-content:flex-end;
+#profile-icon-container {
+    width: 180px;
+    display: flex;
+    justify-content: end;
 }
 </style>
 </head>
