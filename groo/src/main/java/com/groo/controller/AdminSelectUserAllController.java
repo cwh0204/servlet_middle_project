@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 관리자 페이지에서 회원목록 조회 요청을 처리하는 Controller 구현 클래스
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
-public class AdminUserSelectAllController implements Controller {
+public class AdminSelectUserAllController implements Controller {
 	
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.

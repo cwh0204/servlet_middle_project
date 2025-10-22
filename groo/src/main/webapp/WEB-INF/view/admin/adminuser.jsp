@@ -433,8 +433,13 @@ $(document).ready(function() {
 		data : {
 			api : {
 				readData : {
-					url : 'https://koreanjson.com/users',
-					method : 'GET',
+					url : 'http://localhost:8080/groo/adminuserselectall.do',
+					method : 'POST',
+					data: {
+/* 	                    searchKeyword: '홍길동',
+	                    searchType: 'name',
+	                    onlyActive: true */
+	                }
 				}
 			},
 		},
@@ -443,25 +448,37 @@ $(document).ready(function() {
 		scrollY : true,
 		rowHeaders: ['checkbox'],
 		columns : [ {
-			header : 'ID',
-			name : 'id'
+			header : '아이디',
+			name : 'memLoginId'
 		}, {
 			header : '이름',
-			name : 'name',
+			name : 'memName',
 			editor : 'text'
 		}, {
-			header : '유저',
-			name : 'username',
+			header : '비밀번호',
+			name : 'memPass',
+			editor : 'text'
+		}, {
+			header : '닉네임',
+			name : 'memNick',
 			editor : 'text'
 		}, {
 			header : '이메일',
-			name : 'email',
+			name : 'memEmail',
 			editor : 'text'
-		}, {
+		},{
 			header : '전화번호',
-			name : 'phone',
+			name : 'memPhone',
 			editor : 'text'
-		},	{
+		},{
+			header : '주소',
+			name : 'memAddr',
+			editor : 'text'
+		},{
+			header :'탈퇴여부',
+			name : 'memStatus',
+			editor : 'text'
+		},{
 	          header: 'Grade',
 	          name: 'grade',
 	          renderer: {
@@ -483,6 +500,11 @@ $(document).ready(function() {
     	console.log('after change:', ev.changes[0].columnName);
         console.log('after change:', ev.changes[0].value);
         console.log(grid.getModifiedRows());
+        const changeUser = grid.getModifiedRows();
+        
+        const create
+        
+        console.log(changeUser.updatedRows);
     });
     
     grid.setBodyHeight(450);
@@ -494,7 +516,7 @@ $(document).ready(function() {
   	  const columnName = ev.changes[0].columnName;
   	  // 수정이 발생한 행에 'modified-row' 클래스 추가
   	  grid.addRowClassName(rowKey, 'modified-row');
-  	  grid.addCellClassName(rowKey, columnName, 'modified-cell'); 
+  	  grid.addCellClassName(rowKey, columnName, 'modified-cell');
   });
 });
 

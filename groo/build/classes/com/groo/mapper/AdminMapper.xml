@@ -15,4 +15,18 @@
 			MEM_STATUS
 		FROM MEMBER
 	</select>
+	
+	<select id="adminSelectUserInsertCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+		SELECT 
+			MEM_LOGIN_ID,
+			MEM_NAME,
+			MEM_PASS,
+			MEM_NICK,
+			MEM_EMAIL,
+			MEM_PHONE,
+			MEM_ADDR,
+			MEM_STATUS
+		FROM MEMBER
+		WHERE MEM_LOGIN_ID = #{memLoginId} OR MEM_NICK = #{memNick} OR MEM_PHONE = #{memPhone} OR MEM_EMAIL = #{memEmail}
+	</select>
 </mapper>
