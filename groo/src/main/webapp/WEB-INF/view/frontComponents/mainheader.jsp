@@ -78,6 +78,12 @@ header {
 #profile-dropdown-menu {
 	display: none;
 }
+
+#prifile-icon-container{
+	display:flex;
+	width : 180px;
+	justify-content:flex-end;
+}
 </style>
 </head>
 <body>
