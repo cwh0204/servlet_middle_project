@@ -10,43 +10,26 @@
 <!-- 	</insert>  -->
 
 	<insert id="insertMember" parameterType="com.groo.model.MemberDTO">
-	  insert into member (
-	  						mem_id, 
-	  						mem_name, 
-	  						mem_login_id, 
-	  						mem_pass, 
-	  						mem_type, 
-	  						mem_login_token, 
-	  						mem_nick, 
-	  						mem_birth, 
-	  						mem_gender, 
-	  						mem_email, 
-	  						mem_img_path, 
-	  						mem_phone, 
-	  						mem_addr, 
-	  						mem_interest, 
-	  						mem_signup_date, 
-	  						mem_out_date, 
-	  						mem_status
+		<selectKey keyProperty="memId" resultType="String" order="BEFORE">
+           SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+	  INSERT INTO MEMBER (
+	  						MEM_ID,
+	  						MEM_NAME, 
+	  						MEM_LOGIN_ID, 
+	  						MEM_PASS, 
+ 	  						MEM_BIRTH,
+	  						MEM_GENDER, 
+	  						MEM_EMAIL
 	  						)
 	  			  values (
 	  			 			#{memId}, 
 	  			 			#{memName}, 
 	  			 			#{memLoginId}, 
 	  			 			#{memPass}, 
-	  			 			#{memType}, 
-	  			 			#{memLoginToken}, 
-	  			 			#{memNick}, 
-	  			 			#{memBirth}, 
+ 	  			 			#{memBirth},
 	  			 			#{memGender}, 
-	  			 			#{memEmail}, 
-	  					    #{memImgPath}, 
-	  					    #{memPhone}, 
-	  					    #{memAddr}, 
-	  					    #{memInterest}, 
-	  					    #{memSignupSysdate}, 
-	  					    #{memOutDate}, 
-	  					    #{memStatus}
+	  			 			#{memEmail} 
 	  					    )
 	</insert>
 

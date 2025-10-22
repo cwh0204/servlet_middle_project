@@ -35,18 +35,36 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //
 		return member;
 	}
 
+
+//	@Override
+//	public void insertUserService(MemberDTO memberDTO) {
+//		// TODO Auto-generated method stub
+//		SqlSession session = SessionFactory.getSqlSession();
+//		dao.signUP(memberDTO, session);
+//		try {
+//			session.commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException("insertUserService에서 예외 발생",e);
+//		} finally {
+//			session.close();
+//		}
+//	}
+	
 	@Override
 	public void insertUserService(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
 		SqlSession session = SessionFactory.getSqlSession();
-		dao.signUP(memberDTO, session);
+		
 		try {
+			dao.signUp(memberDTO, session);
 			session.commit();
-		} catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("insertUserService에서 예외 발생",e);
-		} finally {
+			session.rollback();
+			throw new IllegalStateException("회원가입 실패", e);
+		}finally {
 			session.close();
 		}
 	}
+	
 }
