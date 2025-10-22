@@ -505,16 +505,6 @@ $(document).ready(function() {
         
         console.log(changeUser.updatedRows);
     });
-    grid.on('beforeEdit', (ev) => {
-
-        const rowKey = ev.rowKey;
-
-        if (typeof ev.rowKey === 'number') {
-            console.log(`기존 행 (Key: ${rowKey}) 편집 차단`);
-            ev.stop(); // ev.stop() 또는 return false;
-        }
-        // else: 문자열(새 행)인 경우, 기본 동작(편집)을 허용합니다.
-    });
     grid.setBodyHeight(450);
     
     grid.on('beforeChange', ev => {

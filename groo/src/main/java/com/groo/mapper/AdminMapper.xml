@@ -29,4 +29,43 @@
 		FROM MEMBER
 		WHERE MEM_LOGIN_ID = #{memLoginId} OR MEM_NICK = #{memNick} OR MEM_PHONE = #{memPhone} OR MEM_EMAIL = #{memEmail}
 	</select>
+	<insert id="adminInsertUser" parameterType="com.groo.model.MemberDTO">
+		<selectKey keyProperty="memId" resultType="String" order="BEFORE">
+        	SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
+    	</selectKey>
+		INSERT INTO MEMBER 
+		(	
+			MEM_ID,
+			MEM_LOGIN_ID,
+			MEM_NAME,
+			MEM_PASS,
+			MEM_NICK,
+			MEM_EMAIL,
+			MEM_PHONE,
+			MEM_ADDR
+		)
+		VALUES
+		(	
+			#{memId},
+			#{memLoginId},
+			#{memName},
+			#{memPass},
+			#{memNick},
+			#{memEmail},
+			#{memPhone},
+			#{memAddr}
+		)
+	</insert>
+	<update id="adminUpdateUser" parameterType="com.groo.model.MemberDTO">
+		UPDATE MEMBER
+		SET
+			MEM_NAME = #{memName},
+			MEM_PASS = #{memPass},
+			MEM_NICK = #{memNick},
+			MEM_EMAIL = #{memEmail},
+			MEM_PHONE = #{memPhone},
+			MEM_ADDR = #{memAddr}
+		WHERE
+			MEM_LOGIN_ID = #{memLoginId}
+	</update>
 </mapper>
