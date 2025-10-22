@@ -45,7 +45,6 @@ public class AdminUserSelectAllImpl implements Controller {
 		}catch(InternalServiceException ise) {
 			log.error("DB 접근 오류로 인한 서비스 예외로 인한 컨트롤러 예외: {}", ise.getMessage(), ise);
 			Error.setStatus(500);
-			
 		}catch(Exception e) {
 			log.error("예상치못한 컨트롤러 오류 발생 {}", e.getMessage(), e);
 			Error.setStatus(500);
