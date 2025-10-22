@@ -87,10 +87,10 @@ header {
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
 				<div class="menu-item-content">공지사항</div>
-				<div class="menu-item-content" data-page="login.do">자유게시판</div>
-				<div class="menu-item-content" data-page="signup.do">about us</div>
-				<div class="menu-item-content" data-page="teamfind.do">성과(전체)게시판</div>
-				<div class="menu-item-content" data-page="teamcreate.do">스터디 생성</div>
+				<div class="menu-item-content" data-page="login.do">팀</div>
+				<div class="menu-item-content" data-page="signup.do">게시판</div>
+				<div class="menu-item-content" data-page="teamfind.do">자유게시판</div>
+				<div class="menu-item-content" data-page="teamcreate.do">Groo 소개글</div>
 			</div>
 			<div id=profile-icon-container>
 				<i class="bi bi-person-circle fs-3"></i>
