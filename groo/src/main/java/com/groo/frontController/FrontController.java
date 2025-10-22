@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class FrontControllerServlet
  */
 @WebServlet("*.do")
-public class FrontControllerImpl extends HttpServlet {
+public class FrontController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)

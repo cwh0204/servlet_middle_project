@@ -18,32 +18,32 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 public class NaverLoginController implements Controller,SocialLogin{
-	
+
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		response.setContentType("application/json;charset=UTF-8");
-		
+
 		String code = request.getParameter("code"); // 인가 코드
         String state = request.getParameter("state"); // 상태값
-        
+
         System.out.println(code);
         System.out.println(state);
-        
+
         try {
         	String token = getAccessToken(code, state);
         	String userDate = getUserProfile(token);
-            
+
             HttpSession session = request.getSession();
             session.setAttribute("naverServiceResponse", userDate);
-            
+
             response.sendRedirect(request.getContextPath() + "/main.do");
         }catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-	
+
 	/**
      * 획득한 액세스 토큰을 사용하여 네이버 사용자 프로필 정보를 조회합니다.
      * @param accessToken 네이버로부터 발급받은 액세스 토큰
@@ -54,21 +54,21 @@ public class NaverLoginController implements Controller,SocialLogin{
     public String getUserProfile(String accessToken) throws IOException {
         URL url = new URL("https://openapi.naver.com/v1/nid/me");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
+
         // 1. GET 요청 설정
         conn.setRequestMethod("GET");
-        
+
         // 2. Authorization 헤더에 Bearer 토큰 추가 (가장 중요한 부분)
         // curl -H "Authorization: Bearer {액세스 토큰}" 와 동일
         conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-        
+
         System.out.println("네이버 토큰"+accessToken);
 
         // 3. 응답 코드 확인 및 응답 데이터 읽기
         int responseCode = conn.getResponseCode();
         String responseBody = null;
 
-        if (responseCode == HttpURLConnection.HTTP_OK) { 
+        if (responseCode == HttpURLConnection.HTTP_OK) {
             // 성공 (200 OK)
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
                 responseBody = readResponse(br);
@@ -82,11 +82,11 @@ public class NaverLoginController implements Controller,SocialLogin{
             }
             return null;
         }
-        
+
         // 4. 프로필 정보가 담긴 JSON 문자열 반환
         return responseBody;
     }
-    
+
     /**
      * 요청으로온 code와 state를 통해 토큰을 생성후 리턴
      * @param code, state
@@ -95,19 +95,19 @@ public class NaverLoginController implements Controller,SocialLogin{
      */
     @Override
 	public String getAccessToken(String code, String state) throws IOException, ParseException{
-		
+
         String tokenUrl = "https://nid.naver.com/oauth2.0/token";
         String grantType = "authorization_code";
-		
+
         String params = "grant_type=" + grantType
                 + "&client_id=" + "TfAk2Y0BAm7L0CK2K9br"
                 + "&client_secret=" + "oK7EL5nq2O"
                 + "&code=" + code
                 + "&state=" + state;
-        
+
         URL url = new URL(tokenUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        
+
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); // Content-Type 설정
@@ -120,11 +120,11 @@ public class NaverLoginController implements Controller,SocialLogin{
 
         // 5. 응답 코드 확인 및 응답 데이터 읽기
         int responseCode = conn.getResponseCode();
-        
+
         // 응답 내용을 담을 변수
         String responseBody = null;
-        
-        if (responseCode == HttpURLConnection.HTTP_OK) { 
+
+        if (responseCode == HttpURLConnection.HTTP_OK) {
             // 성공 (200 OK): 일반 입력 스트림 사용
             try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
                 responseBody = readResponse(br);
@@ -138,13 +138,13 @@ public class NaverLoginController implements Controller,SocialLogin{
             }
             return null; // 토큰 발급 실패 시 즉시 null 반환
         }
-        
+
         // 6. JSON 응답에서 액세스 토큰 추출 (Gson 사용)
         if (responseBody != null) {
             try {
                 // Gson의 JsonParser를 사용하여 응답 문자열을 JsonObject로 파싱
                 JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-                
+
                 // access_token 값을 String으로 추출하여 반환
                 return jsonObject.get("access_token").getAsString();
             } catch (Exception e) {
@@ -152,10 +152,10 @@ public class NaverLoginController implements Controller,SocialLogin{
                 return null;
             }
         }
-        
+
         return null; // 응답 본문이 비었을 경우
     }
-    
+
     /**
      * BufferedReader로부터 모든 응답 내용을 읽어 String으로 반환하는 헬퍼 메서드
      * @param br BufferedReader

@@ -433,8 +433,13 @@ $(document).ready(function() {
 		data : {
 			api : {
 				readData : {
-					url : 'https://koreanjson.com/users',
-					method : 'GET',
+					url : 'http://localhost:8080/groo/adminuserselectall.do',
+					method : 'POST',
+					data: {
+/* 	                    searchKeyword: '홍길동',
+	                    searchType: 'name',
+	                    onlyActive: true */
+	                }
 				}
 			},
 		},
@@ -443,25 +448,38 @@ $(document).ready(function() {
 		scrollY : true,
 		rowHeaders: ['checkbox'],
 		columns : [ {
-			header : 'ID',
-			name : 'id'
-		}, {
-			header : '이름',
-			name : 'name',
+			header : '아이디',
+			name : 'memLoginId',
 			editor : 'text'
 		}, {
-			header : '유저',
-			name : 'username',
+			header : '이름',
+			name : 'memName',
+			editor : 'text'
+		}, {
+			header : '비밀번호',
+			name : 'memPass',
+			editor : 'text'
+		}, {
+			header : '닉네임',
+			name : 'memNick',
 			editor : 'text'
 		}, {
 			header : '이메일',
-			name : 'email',
+			name : 'memEmail',
 			editor : 'text'
-		}, {
+		},{
 			header : '전화번호',
-			name : 'phone',
+			name : 'memPhone',
 			editor : 'text'
-		},	{
+		},{
+			header : '주소',
+			name : 'memAddr',
+			editor : 'text'
+		},{
+			header :'탈퇴여부',
+			name : 'memStatus',
+			editor : 'text'
+		},{
 	          header: 'Grade',
 	          name: 'grade',
 	          renderer: {
@@ -483,8 +501,20 @@ $(document).ready(function() {
     	console.log('after change:', ev.changes[0].columnName);
         console.log('after change:', ev.changes[0].value);
         console.log(grid.getModifiedRows());
+        const changeUser = grid.getModifiedRows();
+        
+        console.log(changeUser.updatedRows);
     });
-    
+    grid.on('beforeEdit', (ev) => {
+
+        const rowKey = ev.rowKey;
+
+        if (typeof ev.rowKey === 'number') {
+            console.log(`기존 행 (Key: ${rowKey}) 편집 차단`);
+            ev.stop(); // ev.stop() 또는 return false;
+        }
+        // else: 문자열(새 행)인 경우, 기본 동작(편집)을 허용합니다.
+    });
     grid.setBodyHeight(450);
     
     grid.on('beforeChange', ev => {
@@ -494,7 +524,7 @@ $(document).ready(function() {
   	  const columnName = ev.changes[0].columnName;
   	  // 수정이 발생한 행에 'modified-row' 클래스 추가
   	  grid.addRowClassName(rowKey, 'modified-row');
-  	  grid.addCellClassName(rowKey, columnName, 'modified-cell'); 
+  	  grid.addCellClassName(rowKey, columnName, 'modified-cell');
   });
 });
 

@@ -30,8 +30,8 @@ public class LoginController extends HttpServlet implements Controller {
 
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		
-		
+
+
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setUserId(userId);
 		memberDTO.setPassword(password);

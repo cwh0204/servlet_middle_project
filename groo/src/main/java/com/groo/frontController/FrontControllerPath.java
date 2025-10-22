@@ -3,9 +3,9 @@ package com.groo.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.groo.controller.AdminUserSelectAllController;
+import com.groo.controller.AdminSelectUserAllController;
+import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.Controller;
-
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.LoginController;
@@ -31,20 +31,21 @@ public class FrontControllerPath {
         controllerMap.put("/teamcreates.do", new TeamCreateController());
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/mypages.do", new MyPageController());
-        
-        controllerMap.put("/mypages.do", new MyPageController());
-        
-        controllerMap.put("/naverlogin.do", new NaverLoginController());
-        controllerMap.put("/githublogin.do", new GitHubLoginController());
-        controllerMap.put("/kakaologin.do", new KakaoLoginController());
-        controllerMap.put("/naverlogin.do", new NaverLoginController());
-        controllerMap.put("/githublogin.do", new GitHubLoginController());
-        controllerMap.put("/kakaologin.do", new KakaoLoginController());
-        
-        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-        
-        controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllController());
 
+        controllerMap.put("/mypages.do", new MyPageController());
+
+
+        controllerMap.put("/naverlogin.do", new NaverLoginController());
+        controllerMap.put("/githublogin.do", new GitHubLoginController());
+        controllerMap.put("/kakaologin.do", new KakaoLoginController());
+        controllerMap.put("/naverlogin.do", new NaverLoginController());
+        controllerMap.put("/githublogin.do", new GitHubLoginController());
+        controllerMap.put("/kakaologin.do", new KakaoLoginController());
+
+        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
+
+        controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
+        controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
     }
 
     public Controller getControllers(String command) {

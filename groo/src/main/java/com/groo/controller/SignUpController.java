@@ -23,6 +23,7 @@ public class SignUpController extends HttpServlet implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
 
+<<<<<<< HEAD
 //		String name = request.getParameter("userName");
 //		String userId = request.getParameter("userId");
 //		String password = request.getParameter("userPw");
@@ -76,6 +77,29 @@ public class SignUpController extends HttpServlet implements Controller {
 			serviceImpl.insertUserService(memberDto);
 			response.getWriter().println("회원가입 완료: "+ memberDto.getMemId());
 		}catch(Exception e) {
+=======
+		String name = request.getParameter("userName");
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("userPw");
+
+		System.out.println(name);
+		System.out.println(userId);
+		System.out.println(password);
+
+		MemberDTO memberDTO = new MemberDTO();
+
+		memberDTO.setName(name);
+		memberDTO.setUserId(userId);
+		memberDTO.setPassword(password);
+
+		try {
+			MemberServiceImpl serviceImpl = new MemberServiceImpl();
+			serviceImpl.insertUserService(memberDTO);
+			response.getWriter().println("사용자 등록 완료: " + memberDTO.getUserId());
+			/* response.sendRedirect("login.do"); */
+
+		} catch (Exception e) {
+>>>>>>> 3a9a40ba71211eee6914313d568effa99e774eb3
 			e.printStackTrace();
 			response.getWriter().println("회원가입 실패: "+ e.getMessage());
 		}
