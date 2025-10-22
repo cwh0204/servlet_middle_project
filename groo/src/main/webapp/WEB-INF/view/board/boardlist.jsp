@@ -12,7 +12,7 @@
 	<%@ include file="../frontComponents/boardlistheader.jsp"%>
 	<%@ include file="../frontComponents/boardlistnav.jsp"%>
 	<main>
-	 <%@ include file="./boardlisthome.jsp" %>
+	 <%@ include file="./boardfree.jsp" %>
 	</main>
 </body>
 </html>
