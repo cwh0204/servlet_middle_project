@@ -112,7 +112,7 @@ input[type="search"]::-webkit-search-cancel-button {
                     <th scope="row">9</th>
                     <td>999</td>
                     <td>이00</td>
-                    <td>프리미엄 회원</td>
+                    <td>전체 회원</td>
                     <td>2025.10.10</td>
                     <td>1,120</td>
                 </tr>
@@ -120,7 +120,7 @@ input[type="search"]::-webkit-search-cancel-button {
                     <th scope="row">8</th>
                     <td>888</td>
                     <td>박00</td>
-                    <td>전체 사용자</td>
+                    <td>전체 회원</td>
                     <td>2025.10.05</td>
                     <td>450</td>
                 </tr>

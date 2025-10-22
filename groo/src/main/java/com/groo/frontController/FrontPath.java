@@ -28,6 +28,8 @@ public class FrontPath {
         jspMap.put("/adminteam.do", "/WEB-INF/view/admin/adminteam.jsp");
         
         jspMap.put("/boardlist.do", "/WEB-INF/view/board/boardlist.jsp");
+        jspMap.put("/boardlistnav.do", "/WEB-INF/view/frontComponents/boardlistnav.jsp");
+        jspMap.put("/boardlisthome.do", "/WEB-INF/view/board/boardlisthome.jsp");
 
     }
 
