@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.config.SessionFactory;
-import com.groo.error.ResourceNotFoundException;
+import com.groo.error.InternalServiceException;
 
 public class TeamDAOImpl implements TeamDAO{
 
@@ -19,7 +19,7 @@ public class TeamDAOImpl implements TeamDAO{
 			session.insert("insertTeam", teamDTO);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new ResourceNotFoundException("팀 생성 중 데이터베이스 오류 발생",e);
+			throw new InternalServiceException("팀 생성 중 데이터베이스 오류 발생",e);
 		}
 	}
 
@@ -30,7 +30,7 @@ public class TeamDAOImpl implements TeamDAO{
 			list = session.selectList("selectTeam",teamDTO);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new ResourceNotFoundException("팀 검색 중 데이터베이스 오류 발생",e);
+			throw new InternalServiceException("팀 검색 중 데이터베이스 오류 발생",e);
 		}
 		return list;
 	}
@@ -43,7 +43,7 @@ public class TeamDAOImpl implements TeamDAO{
 			list = session.selectList("selectTeamAll");
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new ResourceNotFoundException("팀 전체 검색 중 데이터베이스 오류 발생",e);
+			throw new InternalServiceException("팀 전체 검색 중 데이터베이스 오류 발생",e);
 		}
 		return list;
 	}

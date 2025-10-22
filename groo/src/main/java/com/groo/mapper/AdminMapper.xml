@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminMapper">
+	<select id="adminSelectUserAll" parameterType="com.groo,model.MemberDTO" resultType="com.groo,model.MemberDTO">
+		SELECT
+			MEM_LOGIN_ID,
+			MEM_NAME,
+			MEM_PASS,
+			MEM_NICK,
+			MEM_EMAIL,
+			MEM_PHONE,
+			MEM_ADDR,
+			MEM_STATUS
+		FROM MEMBER
+	</select>
+</mapper>
