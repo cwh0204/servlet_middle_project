@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.groo.controller.AdminUserSelectAllController;
 import com.groo.controller.Controller;
+
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.LoginController;
@@ -37,10 +38,14 @@ public class FrontControllerPath {
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
+        controllerMap.put("/naverlogin.do", new NaverLoginController());
+        controllerMap.put("/githublogin.do", new GitHubLoginController());
+        controllerMap.put("/kakaologin.do", new KakaoLoginController());
         
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
         
         controllerMap.put("/adminuserselectall.do", new AdminUserSelectAllController());
+
     }
 
     public Controller getControllers(String command) {

@@ -1,29 +1,9 @@
-/**
+/** 
  * 
  */
 const mainHome = () => {
 	console.log("mainHome 함수 실행: 동적 콘텐츠 초기화 시작");
 
-    // 1. 로그인 정보 로드 및 UI 업데이트 (AJAX)
-    $.ajax({
-        url:"MemberSelectImplAPI.do", 
-        type: "POST", // POST로 유지 (GET으로 변경된 부분을 POST로 되돌림)
-        dataType: "json",
-        success: function(response) {
-            console.log("로그인 정보 로드 성공");
-            
-            if (response.userId != null) {
-                const currentUserName = response.userName || response.userId;
-                $('.member-info p').text(currentUserName + '님 환영합니다.');
-            } else {
-                $('.member-info p').text('로그인 해주세요.');
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error("ID 로드 실패:", textStatus, errorThrown);
-            $('.member-info p').text('정보 로딩에 실패했습니다.');
-        }
-    });
 		
     // 2. Slick Carousel 초기화 (재사용을 위해 unslick() 로직 추가)
     const $carousel = $('#hot-studies-carousel');
