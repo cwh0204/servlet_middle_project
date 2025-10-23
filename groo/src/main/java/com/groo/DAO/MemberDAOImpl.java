@@ -31,7 +31,34 @@ public class MemberDAOImpl implements MemberDAO{
 			throw new PersistenceException("회원가입 중 DB 오류 발생", e);		//이메일이나 ID 중복 등일 때 발생
 		}
 	}
+	
+	@Override
+	public String selectLoginId(String memLoginId, SqlSession session) {
+		
+		try {
+			return session.selectOne("selectLoginId", memLoginId);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public String selectEmail(String memEmail, SqlSession session) {
+		
+		try {
+			return session.selectOne("selectEmail", memEmail);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 
+	
 	@Override
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
@@ -48,5 +75,8 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return memberRe;
 	}
+
+
+
 
 }

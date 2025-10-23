@@ -66,5 +66,41 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //
 			session.close();
 		}
 	}
-	
+
+
+	@Override
+	public String selectLoginIdService(String memLoginId) {
+		SqlSession session = SessionFactory.getSqlSession();
+		String resultLoginId = null;
+
+		try {
+			resultLoginId = dao.selectLoginId(memLoginId, session);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+
+		}finally {
+			session.close();
+		}
+		return resultLoginId;
+	}
+
+
+	@Override
+	public String selectEmailService(String memEmail) {
+		SqlSession session = SessionFactory.getSqlSession();
+		String resultEmail = null;
+		
+		try {
+			resultEmail = dao.selectEmail(memEmail, session);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			session.close();
+		}
+		return resultEmail;
+	}
+
 }
