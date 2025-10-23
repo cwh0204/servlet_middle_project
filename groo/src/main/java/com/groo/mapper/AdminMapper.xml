@@ -14,6 +14,7 @@
 			MEM_ADDR,
 			MEM_STATUS
 		FROM MEMBER
+		WHERE MEM_STATUS = 'N'
 	</select>
 	
 	<select id="adminSelectUserInsertCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
@@ -68,4 +69,17 @@
 		WHERE
 			MEM_LOGIN_ID = #{memLoginId}
 	</update>
+	<select id="adminAvgUser" resultType="com.groo.model.AdminStatsDTO">
+		SELECT
+		    COUNT(*) AS total_members,
+		    COUNT(CASE WHEN MEM_STATUS = 'Y' THEN 1 END) AS active_members,
+		    COUNT(CASE WHEN MEM_STATUS = 'N' THEN 1 END) AS inactive_members,
+		    COUNT(
+		        CASE
+		            WHEN TRUNC(MEM_SIGNUP_DATE, 'IW') = TRUNC(SYSDATE, 'IW') THEN 1
+		            ELSE NULL
+		        END
+		    ) AS weekly_signups
+		FROM MEMBER
+	</select>
 </mapper>

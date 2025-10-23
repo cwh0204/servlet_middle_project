@@ -304,7 +304,7 @@
 			<button class="btn btn-primary" onclick="addUser()">
 				<span>+</span> 사용자 추가
 			</button>
-			<button class="btn btn-primary" onclick="rollbackRowData()">
+			<button class="btn btn-primary" onclick="userCeckInsert()">
 				<span>*</span> 저장
 			</button>
 			<button class="btn btn-primary" onclick="rollbackRowData()">
@@ -318,7 +318,7 @@
 				<span class="stat-label">전체 사용자</span>
 				<div class="stat-icon green"></div>
 			</div>
-			<div class="stat-value">1,284</div>
+			<div class="stat-value total-member">1,284</div>
 			<div class="stat-change up">↑ 전월 대비 +12%</div>
 		</div>
 		<div class="stat-card">
@@ -326,7 +326,7 @@
 				<span class="stat-label">활성 사용자</span>
 				<div class="stat-icon blue"></div>
 			</div>
-			<div class="stat-value">1,156</div>
+			<div class="stat-value inactive-member">1,156</div>
 			<div class="stat-change up">↑ 전월 대비 +8%</div>
 		</div>
 		<div class="stat-card">
@@ -334,7 +334,7 @@
 				<span class="stat-label">신규 가입</span>
 				<div class="stat-icon yellow"></div>
 			</div>
-			<div class="stat-value">48</div>
+			<div class="stat-value weekly-signups">48</div>
 			<div class="stat-change up">↑ 이번 주</div>
 		</div>
 		<div class="stat-card">
@@ -342,7 +342,7 @@
 				<span class="stat-label">비활성</span>
 				<div class="stat-icon red"></div>
 			</div>
-			<div class="stat-value">128</div>
+			<div class="stat-value active-member">128</div>
 			<div class="stat-change down">↓ 전월 대비 -5%</div>
 		</div>
 	</div>
@@ -380,10 +380,7 @@ var addUser = () => {
     }
 
     const newRowData = {
-        name: '새 사용자',
-        username: 'new_user',
-        email: 'new@example.com',
-        phone: '000-0000-0000'
+
     };
     
     // 가장 위에 새 행을 추가하고 포커스를 줍니다.
@@ -392,7 +389,6 @@ var addUser = () => {
         focus: true 
     });
 };
-
 var rollbackRowData = () => {
 	const targetRowKey = 0;
 	const originalRowData = originalFullData.find(row => row.id === targetRowKey+1);
@@ -426,8 +422,144 @@ var exportData = () => {
     });
 };
 
-$(document).ready(function() {
+var userStats = () => {
 	
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminstatsuser.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            console.log("서버 응답:", response.activeMembers);
+            // 예: 성공 메시지 표시 또는 페이지 이동
+            $('.total-member').text(response.totalMembers);
+            $('.inactive-member').text(response.inactiveMembers);
+            $('.weekly-signups').text(response.weeklySignups);
+            $('.active-member').text(response.activeMembers);
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    }); // $.ajax 끝
+}
+
+var userCheck = (row) => {
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminuserselectcheck.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        	memLoginId : row.memLoginId,
+        	memNick : row.memNick,
+        	memEmail : row.memEmail,
+        	memPhone : row.memPhone
+        },
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            if(response.length === 0){
+             	console.log("로우확인"+row.memLoginId);
+             	userInsert(row);
+            }
+        },
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    });
+}
+var userInsert = (row) => {
+	console.log("로우확인2"+row);
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminuserinsert.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        	memLoginId : row.memLoginId,
+        	memName : row.memLoginId,
+        	memPass : row.memLoginId,
+        	memNick : row.memLoginId,
+        	memEmail : row.memLoginId,
+        	memPhone : row.memLoginId,
+        	memAddr : row.memLoginId,
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            console.log("서버 응답:", response.activeMembers);
+
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    });
+}
+var userCeckInsert = () => {
+	
+	const createdRows = grid.getModifiedRows().createdRows;
+	console.log(createdRows);
+	createdRows.forEach(function(row) {
+		
+		if(row.memLoginId !== null){
+			console.log(row.memLoginId);
+			userCheck(row);
+		}
+	});
+	
+	/* $.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminuserinsert.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        	
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            console.log("서버 응답:", response.activeMembers);
+
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    }); // $.ajax 끝 */
+}
+
+$(document).ready(function() {
+	userStats();
     grid = new tui.Grid({
 		el : document.getElementById('grid'),
 		data : {

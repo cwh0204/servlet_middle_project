@@ -11,5 +11,4 @@ $(() => {
 		sessionStorage.setItem('main_last_view','mainhome.do');
 		window.location.href = 'main.do'
 	});
-	
 });
