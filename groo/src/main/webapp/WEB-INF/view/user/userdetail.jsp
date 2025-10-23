@@ -317,6 +317,8 @@ textarea {
                <label>비밀번호 재확인</label> <input type="password" name="passtry" id="passtry" style="width: 100%; padding-right: 30px;"> 
                   <img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
                   style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
+             <!-- 검증 폰트 -->
+             <font id = "checkpw" size = "2"></font>
             </div>
 
             <div class="input-group">
@@ -391,6 +393,7 @@ textarea {
 		   $(".pw-container").addClass("active");
 	   });
    });
+   
 <!-- 프로필 미리보기 -->
 function previewProfile(event) {
     const file = event.target.files[0];
@@ -483,6 +486,31 @@ function showAlert() {
     window.location.href = "${pageContext.request.contextPath}/mypage.do";
     return false; 
 }
+
+
+<!-- 비밀번호 검증 문구 및 테두리 -->
+$("#password,#passtry").keyup(function(){
+    let password = $("#password").val();
+    let passtry = $("#passtry").val();
+
+    if(password=='' && passtry==''){
+        $("#checkmsg").text("");
+        return;
+    }
+
+    if(password.length >= 8 && passtry.length >= 8){
+        if(password == passtry){
+            $("#checkmsg").text("비밀번호 일치").css('color','#000');
+            return;
+        }
+        if(password != passtry){
+            $("#checkmsg").text("비밀번호 불일치").css('color','#fba082');
+            return;					
+        }
+    }
+});
+
+
 
 <!--눈모양 아이콘-->
 const togglePassword = document.getElementById('togglePassword');
