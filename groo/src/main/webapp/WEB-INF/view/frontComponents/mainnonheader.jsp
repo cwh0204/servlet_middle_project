@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/mainnonHeader.js"></script>
 <style type="text/css">
 header {
 	background-color: white;
@@ -65,23 +66,28 @@ header {
 .main_kategorie_box div.active::after {
 	transform: scaleX(1);
 }
+
+.main_user_box:hover {
+	cursor: pointer;
+}
+
 </style>
 </head>
 <body>
 	<header>
 		<div class="flex_container heder_container">
-			<img class="logo" src="./images/로고.png">
+			<img class="logo" id="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
-				<div class="menu-item-content">공지사항</div>
-				<div class="menu-item-content" data-page="login.do">자유게시판</div>
-				<div class="menu-item-content" data-page="signup.do">about us</div>
-				<div class="menu-item-content" data-page="teamfind.do">성과(전체)게시판</div>
-				<div class="menu-item-content" data-page="teamcreate.do">스터디 생성</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">공지사항</div>
+				<div class="menu-item-content" data-page="login.do">팀</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">자유게시판</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">Groo 소개글</div>
 			</div>
 			<div class="flex_container main_user_box">
-				<div>Login</div>
-				<div>SignUp</div>
+				<div id="login">Login</div>
+				<div id="signUp">SignUp</div>
 			</div>
 		</div>
 	</header>

@@ -52,6 +52,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
         controllerMap.put("/adminupdateuser.do", new AdminUpdateUserController());
         controllerMap.put("/adminstatsuser.do", new AdminStatsUserController());
+
     }
 
     public Controller getControllers(String command) {

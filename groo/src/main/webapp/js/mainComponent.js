@@ -59,7 +59,7 @@ const refreshPage = () => {
 	                // 3. ⭐ 템플릿 리터럴을 사용하여 메뉴 항목을 활성화합니다.
 	                // data-page 값이 일치하는 모든 요소에 active 클래스를 추가합니다.
 	                
-	                $('[data-page="' + lastPage + '"]').addClass('active');	                
+	                $('[data-page="' + lastPage + '"]').addClass('active');
 	                if (typeof window.chartColl === 'function') {
 	                    window.chartColl();
 	                }
@@ -78,6 +78,7 @@ const mainHeder = () => {
 		if (pageToLoad) {
 			// 페이지 정보를 Session Storage에 저장함
 			sessionStorage.setItem('main_last_view', pageToLoad);
+			console.log(pageToLoad);
 			$('main').load(pageToLoad, function(response, status, xhr) {
 				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 					mainHome();

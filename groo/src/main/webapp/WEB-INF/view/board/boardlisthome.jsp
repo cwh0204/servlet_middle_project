@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <%@ include file="../frontComponents/boardlistheader.jsp"%>
 	<%@ include file="../frontComponents/boardlistnav.jsp"%>
 	<main>
-	 <%@ include file="./boardfree.jsp" %>
+ 		<%@ include file="./boardfree.jsp" %>
 	</main>
 </body>
 </html>

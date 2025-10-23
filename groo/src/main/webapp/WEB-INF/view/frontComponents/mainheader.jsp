@@ -18,7 +18,6 @@ header {
 
 .flex_container.heder_container {
 	justify-content: space-between;
-	height: 70px;
 	padding: 0 35px;
 }
 
@@ -92,10 +91,10 @@ header {
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
-				<div class="menu-item-content">공지사항</div>
+				<div class="menu-item-content" data-page="boardlist.do">공지사항</div>
 				<div class="menu-item-content" data-page="login.do">팀</div>
-				<div class="menu-item-content" data-page="signup.do">게시판</div>
-				<div class="menu-item-content" data-page="teamfind.do">자유게시판</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
+				<div class="menu-item-content" data-page="boardlist.do">자유게시판</div>
 				<div class="menu-item-content" data-page="teamcreate.do">Groo 소개글</div>
 			</div>
 			<div id=profile-icon-container>

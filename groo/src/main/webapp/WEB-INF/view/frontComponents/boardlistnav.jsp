@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <link href="css/adminCss/adminnav.css" rel="stylesheet">
 <title>관리자 페이지</title>
-<script src="jquery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<main>
@@ -43,9 +42,9 @@
 	</aside>
 	</main>
 	
-		<script type="text/javascript">
+<script type="text/javascript">
 
-		$(document).ready(function() {// 일반 메뉴 아이템 클릭 이벤트
+ 		$(document).ready(function() {// 일반 메뉴 아이템 클릭 이벤트
 		//refreshPage();
 		$('.menu-item').on('click',function() {// 모든 active 클래스 제거
 		$('.menu-item').removeClass('active');
