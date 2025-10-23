@@ -17,32 +17,32 @@ session.setAttribute("naver_state", state);
 		<div class="loginContiner">
 			<div>
 				<div class="imgBox">
-				<img src="./images/login.png">
-			</div>
-			<form action="logins.do" method="post">
-				<div class="loginBox">
-					<input type="text" name="userId" class="form-control"
-						placeholder="아이디를 입력하세요."> <input type="password"
-						name="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+					<img src="./images/login.png">
 				</div>
-				<div class="methodBox">
-					<div class="login flex_container">
-						<button type="submit" name="login_type" value="member"
-							class="btn btn-success">로그인</button>
-						<button type="submit" name="login_type" value="nonmember"
-							class="btn nonmem-btn-success">비회원 로그인</button>
+				<form action="logins.do" method="post">
+					<div class="loginBox">
+						<input type="text" name="userId" class="form-control"
+							placeholder="아이디를 입력하세요."> <input type="password"
+							name="password" class="form-control" placeholder="비밀번호를 입력하세요.">
 					</div>
-					<button type="submit" name="login_type" value="signup"
-						class="btn custom-btn-success">회원가입</button>
+					<div class="methodBox">
+						<div class="login flex_container">
+							<button type="submit" name="login_type" value="member"
+								class="btn btn-success">로그인</button>
+							<button type="submit" name="login_type" value="nonmember"
+								class="btn nonmem-btn-success">비회원 로그인</button>
+						</div>
+						<button type="submit" name="login_type" value="signup"
+							class="btn custom-btn-success">회원가입</button>
+					</div>
+				</form>
+				<div class="search-box flex_container">
+					<button class="id-search">아이디 찾기</button>
+					<button class="ps-search">비밀번호 찾기</button>
 				</div>
-			</form>
-			<div class="search-box flex_container">
-				<button class="id-search">아이디 찾기</button>
-				<button class="ps-search">비밀번호 찾기</button>
 			</div>
-			</div>
-			
-			
+
+
 		</div>
 		<div class="socialBox">
 			<button class="naver-login flex_container">
@@ -59,12 +59,24 @@ session.setAttribute("naver_state", state);
 			</button>
 		</div>
 	</div>
+	<div class="dropdown">
+		<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+			id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+			Dropdown link </a>
+
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<li><a class="dropdown-item" href="#">Action</a></li>
+			<li><a class="dropdown-item" href="#">Another action</a></li>
+			<li><a class="dropdown-item" href="#">Something else here</a></li>
+		</ul>
+	</div>
 </body>
 <script type="text/javascript">
 
 const naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TfAk2Y0BAm7L0CK2K9br&redirect_uri=http://localhost:8080/groo/naverlogin.do&state=<%=state%>";
 const gitHubUrl = "https://github.com/login/oauth/authorize?client_id=Ov23liAv6BKSjMxB6XaF&redirect_uri=http://localhost:8080/groo/githublogin.do&state=<%=state%>&scope=read:user";
-const kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=27b3c6cc330385465c1b7c244ef648c6&redirect_uri=http://localhost:8080/groo/kakaologin.do&state=<%=state%>";
+const kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=27b3c6cc330385465c1b7c244ef648c6&redirect_uri=http://localhost:8080/groo/kakaologin.do&state=<%=state%>
+	";
 
 	$(function() {
 		$('.naver-login').click(function() {
