@@ -26,7 +26,7 @@
 }
 
 .left-section {
-   /* display: flex; */
+   display: flex;
    flex-direction: column;
    justify-content: space-around;
    align-items: center;

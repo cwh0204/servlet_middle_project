@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>회원정보확인</title>
 <style>
+
+
 .pw-container.active ~ .login-box {
 	display: block;
 	background-color: #fff;
