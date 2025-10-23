@@ -65,7 +65,8 @@
 			MEM_NICK = #{memNick},
 			MEM_EMAIL = #{memEmail},
 			MEM_PHONE = #{memPhone},
-			MEM_ADDR = #{memAddr}
+			MEM_ADDR = #{memAddr},
+			MEM_STATUS = #{memStatus}
 		WHERE
 			MEM_LOGIN_ID = #{memLoginId}
 	</update>

@@ -37,8 +37,7 @@ public class AdminUpdateUserController implements Controller {
 		String memEmail = request.getParameter("memEmail");
 		String memPhone = request.getParameter("memPhone");
 		String memAddr = request.getParameter("memAddr");
-		
-		System.out.println("asdasd");
+		String memStatus = request.getParameter("memStatus");
 		
 		MemberDTO member = new MemberDTO();
 		
@@ -49,6 +48,7 @@ public class AdminUpdateUserController implements Controller {
 		member.setMemEmail(memEmail);
 		member.setMemPhone(memPhone);
 		member.setMemAddr(memAddr);
+		member.setMemStatus(memStatus);
 
 		
 		AdminServiceImpl service = new AdminServiceImpl();
