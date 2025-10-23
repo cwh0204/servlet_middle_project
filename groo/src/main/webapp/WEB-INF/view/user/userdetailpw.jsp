@@ -7,13 +7,6 @@
 <meta charset="UTF-8">
 <title>회원정보확인</title>
 <style>
-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
 .pw-container.active ~ .login-box {
 	display: block;
 	background-color: #fff;

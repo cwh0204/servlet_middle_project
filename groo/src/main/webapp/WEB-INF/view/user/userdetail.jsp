@@ -12,17 +12,10 @@
    box-sizing: border-box;
 }
 
-body {
-   display: flex;
-   justify-content: center;
-   align-items: flex-start;
-   min-height: 100vh;
-   background-color: #f8f9fa;
-   padding: 30px;
-}
 
-.container {
-   display: flex;
+ 
+ .container {
+   display: flex; 
    background-color: white;
    border-radius: 12px;
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -33,7 +26,7 @@ body {
 }
 
 .left-section {
-   display: flex;
+   /* display: flex; */
    flex-direction: column;
    justify-content: space-around;
    align-items: center;
@@ -153,11 +146,6 @@ button {
    flex-wrap: wrap;
    gap: 15px;
    margin-top: 8px;
-}
-
-textarea {
-   resize: none;
-   height: 100px;
 }
 
 .left_user_box {
