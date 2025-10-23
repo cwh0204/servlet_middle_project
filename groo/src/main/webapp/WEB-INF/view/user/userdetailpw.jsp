@@ -75,6 +75,7 @@ button:hover {
 .login-box {
 	display: none;
 }
+
 </style>
 </head>
 
@@ -95,6 +96,7 @@ button:hover {
 		<button id="userPwCk" type="submit">확인</button>
 	</div>
 </body>
+
 <script>
 <!-- 비밀번호 눈모양 아이콘 -->
 const togglePasswordPw = document.getElementById('togglePassword');
@@ -115,7 +117,6 @@ togglePasswordPw.addEventListener('click', () => {
 });
 
 
-
 <!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
  function checkPassword() { 
     const pw = document.getElementById("pw").value;
@@ -130,6 +131,7 @@ togglePasswordPw.addEventListener('click', () => {
         return false; 
     }
 
+    
     
  <!-- 비밀번호 팝업창 -->    
 const correctPassword = "123456789!"; 

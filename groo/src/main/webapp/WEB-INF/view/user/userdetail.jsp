@@ -12,8 +12,6 @@
    box-sizing: border-box;
 }
 
-
- 
  .container {
    display: flex; 
    background-color: white;
@@ -305,8 +303,7 @@ button {
                <label>비밀번호 재확인</label> <input type="password" name="passtry" id="passtry" style="width: 100%; padding-right: 30px;"> 
                   <img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
                   style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
-             <!-- 검증 폰트 -->
-             <font id = "checkpw" size = "2"></font>
+             
             </div>
 
             <div class="input-group">
@@ -477,26 +474,33 @@ function showAlert() {
 
 
 <!-- 비밀번호 검증 문구 및 테두리 -->
-$("#password,#passtry").keyup(function(){
-    let password = $("#password").val();
-    let passtry = $("#passtry").val();
+$(document).ready(function() {
+    const pw = $("#password");
+    const pwCheck = $("#passtry");
+    
 
-    if(password=='' && passtry==''){
-        $("#checkmsg").text("");
-        return;
-    }
-
-    if(password.length >= 8 && passtry.length >= 8){
-        if(password == passtry){
-            $("#checkmsg").text("비밀번호 일치").css('color','#000');
+    // 입력할 때마다 실행
+    pwCheck.on("input", function() {
+        const pwVal = pw.val();
+        const checkVal = pwCheck.val();
+       
+    // 입력취소시 색초기화
+        if (checkVal.length === 0) {
+            pwCheck.css("border", "1px solid #ccc");
+            msg.text("").css("color", "");
             return;
         }
-        if(password != passtry){
-            $("#checkmsg").text("비밀번호 불일치").css('color','#fba082');
-            return;					
+
+        if (pwVal === checkVal) {
+            pwCheck.css("border", "2px solid #28a745"); // 초록색
+            msg.text("비밀번호가 일치합니다.").css("color", "#28a745");
+        } else {
+            pwCheck.css("border", "2px solid #dc3545"); // 빨간색
+            msg.text("비밀번호가 일치하지 않습니다.").css("color", "#dc3545");
         }
-    }
+    });
 });
+
 
 
 
