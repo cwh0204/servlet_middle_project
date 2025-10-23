@@ -20,13 +20,11 @@ public class FrontPath {
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
         
-<<<<<<< HEAD
+
         jspMap.put("/mypage.do", "/WEB-INF/view/mypage/mypage.jsp");
-=======
-        jspMap.put("/mypage.do", "/WEB-INF/view/user/mypage.jsp");
         jspMap.put("/mypageprofile.do","/WEB-INF/view/mypage/mypageprofile.jsp");
         jspMap.put("/mypagedashboard.do", "/WEB-INF/view/mypage/mypagedashboard.jsp");
->>>>>>> 8ee1d54feff346bab086bc18bbfa34bb08eed461
+
 
         jspMap.put("/admin.do", "/WEB-INF/view/admin/admin.jsp");
         jspMap.put("/admindashboard.do", "/WEB-INF/view/admin/admindashboard.jsp");
