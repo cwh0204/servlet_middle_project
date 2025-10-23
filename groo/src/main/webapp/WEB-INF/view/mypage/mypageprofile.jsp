@@ -5,19 +5,17 @@
 <meta charset="UTF-8">
 <title></title>
 <style>
-
 .total_container {
 	display: flex;
-	margin-top : 40px;
-	margin-left : 250px;
-	flex-direction: row;
+	margin-top: 40px;
+	margin-left: 250px; flex-direction : row;
 	align-items: flex-start;
 	padding: 20px;
-	gap: 30px; /* 좌우 간격 */
+	gap: 30px;
+	flex-direction: row; /* 좌우 간격 */
 }
 
 .mypage_profile_container {
-	
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,13 +23,12 @@
 }
 
 .text_container {
-	display : flex;
-	gap : 15px;
-	flex-direction: column;
+	display: flex;
+	gap: 15px; flex-direction : column;
 	justify-content: center;
 	width: 400px;
-	margin-top : 40px;
-	
+	margin-top: 40px;
+	flex-direction: column;
 }
 
 .profile-image {
@@ -43,7 +40,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: 3px solid #28a745;;
+	border: 3px solid #28a745;
 	overflow: hidden;
 	position: relative;
 	cursor: pointer;
@@ -61,7 +58,6 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	
 }
 
 #fileInput {
@@ -69,7 +65,7 @@
 }
 
 .upload-btn {
-	background: #9acd32;
+	background: #28a745;
 	color: white;
 	border: none;
 	padding: 10px 20px;
@@ -98,6 +94,25 @@
 	word-break: break-all;
 	padding: 8px;
 }
+
+
+.input-group .form-control:focus{
+  box-shadow: none;
+  outline: none; 
+  border-color :  #28a745;   
+ 
+}
+
+.input-group .btn:focus,
+.input-group .btn:active,
+.input-group .btn:focus-visible {
+  box-shadow: none;
+  outline: none; 
+  border-color :  #28a745;
+  }
+  
+.input-group .btn.btn-outline-secondary:hover {
+background-color: #218838;
 </style>
 </head>
 <body>
@@ -117,8 +132,24 @@
 			<div>
 				<div class="text_container">
 					<h6>그루에서 사용할 닉네일과 이메일을 입력해 주세요</h6>
-					<input type="text" placeholder="닉네임을 작성해 주세요">
-					<input type="text" placeholder="이메일을 작성해 주세요">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control"
+							placeholder="닉네임"
+							aria-label="닉네임"
+							aria-describedby="button-addon2">
+						<button class="btn btn-outline-secondary" type="button"
+							id="button-addon2">Button</button>
+					</div>
+
+					<div class="input-group mb-3">
+						<input type="text" class="form-control"
+							placeholder="이메일"
+							aria-label="이메일"
+							aria-describedby="button-addon2">
+						<button class="btn btn-outline-secondary" type="button"
+							id="button-addon2">Button</button>
+					</div>
+
 				</div>
 			</div>
 		</div>
