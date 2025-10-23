@@ -67,9 +67,9 @@ input[type="search"]::-webkit-search-cancel-button {
 </head>
 <body>
 
-	<div class="boardlist" style="width: 1300px; margin-left: auto; margin-right: 6%; margin-top: -150px;">
+	<div class="boardlist" style="width: 1300px; margin-left: auto; margin-right: 6%; margin-top: -150px; width: 800px;">
 	
-	<nav class="navbar p-0 mb-3 d-flex justify-content-end">
+	<nav class="navbar p-0 mb-3 d-flex justify-content-center">
 	<div class="search-container position-relative">
             <form class="d-flex">
                 <input class="form-control form-control-sm me-2 rounded-pill search-input"
