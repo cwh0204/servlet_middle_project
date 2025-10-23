@@ -9,7 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class SignUpSelectLoginId implements Controller {
+public class SignUpSelectEmailController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,13 +17,13 @@ public class SignUpSelectLoginId implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
 		
-		String memLoginId = request.getParameter("userLoginId");
+		String memEmail = request.getParameter("userEmail");
 		
 		MemberServiceImpl serviceImpl = new MemberServiceImpl();
-		String checkLoginId = serviceImpl.selectLoginIdService(memLoginId);
+		String checkEmail = serviceImpl.selectEmailService(memEmail);
 		
-		if(checkLoginId != null) {
-			response.getWriter().write(checkLoginId);
+		if(checkEmail != null) {
+			response.getWriter().write(checkEmail);
 		}else {
 			response.getWriter().write("yes");
 		}

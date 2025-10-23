@@ -2,6 +2,7 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
@@ -12,13 +13,13 @@ import com.groo.service.AdminServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+
 /**
- * 관리자 페이지에서 유저 정보를 수정하는 Controller 구현 클래스
- * Service 계층을 호출하고 업데이트 처리 결과를 json 형태로 클라이언트에 응답
+ * 관리자 페이지에서 유저조회(검색)을 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 클라이언트에 응답
  */
-public class AdminUpdateUserController implements Controller {
-	
-	
+public class AdminSelectSearchUserController implements Controller {
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -30,34 +31,25 @@ public class AdminUpdateUserController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String memLoginId = request.getParameter("memLoginId");
-		String memName = request.getParameter("memName");
-		String memPass = request.getParameter("memPass");
-		String memNick = request.getParameter("memNick");
-		String memEmail = request.getParameter("memEmail");
-		String memPhone = request.getParameter("memPhone");
-		String memAddr = request.getParameter("memAddr");
-		String memStatus = request.getParameter("memStatus");
+		String serchName = request.getParameter("serchName");
 		
 		MemberDTO member = new MemberDTO();
 		
-		member.setMemLoginId(memLoginId);
-		member.setMemName(memName);
-		member.setMemPass(memPass);
-		member.setMemNick(memNick);
-		member.setMemEmail(memEmail);
-		member.setMemPhone(memPhone);
-		member.setMemAddr(memAddr);
-		member.setMemStatus(memStatus);
-
+		member.setMemLoginId(serchName);
+		member.setMemName(serchName);
+		member.setMemPass(serchName);
+		member.setMemNick(serchName);
+		member.setMemEmail(serchName);
+		member.setMemPhone(serchName);
+		member.setMemAddr(serchName);
 		
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
-			service.adminUpdateUser(member);
 			
+			List<MemberDTO> list = service.adminSelectSearchUser(member);
 			Gson gson = new Gson();
-			String json = gson.toJson("sucsess");
-			
+			String json = gson.toJson(list);
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			

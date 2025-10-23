@@ -111,5 +111,26 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return member;
 	}
+	
+	/**
+	 * 회원정보 검색을 위한 메서드
+	 * @param member 유저 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 사용자 통계 조회 처리 결과
+	 */
+	@Override
+	public List<MemberDTO> adminSelectSearchUser(MemberDTO member,SqlSession session) {
+		/**
+		 * 멤버 데이터 처리를 위한 Data Access Object
+		 */
+		List<MemberDTO> adminList = new ArrayList<>();
 
+		try {
+			adminList = session.selectList("adminSelectSearchUser", member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
+		}
+		return adminList;
+	}
 }

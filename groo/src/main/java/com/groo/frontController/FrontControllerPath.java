@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.groo.controller.AdminInsertUserController;
+import com.groo.controller.AdminSelectSearchUserController;
 import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
@@ -17,6 +18,8 @@ import com.groo.controller.MemberSelectController;
 import com.groo.controller.MyPageController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
+import com.groo.controller.SignUpSelectEmailController;
+import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamCreateController;
 import com.groo.controller.TeamSelectController;
 
@@ -37,6 +40,8 @@ public class FrontControllerPath {
 
         controllerMap.put("/mypages.do", new MyPageController());
 
+        controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());
+        controllerMap.put("/selectemail.do", new SignUpSelectEmailController());
 
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
@@ -46,12 +51,13 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
 
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-
+        
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
         controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
         controllerMap.put("/adminupdateuser.do", new AdminUpdateUserController());
         controllerMap.put("/adminstatsuser.do", new AdminStatsUserController());
+        controllerMap.put("/adminselectsearchuser.do", new AdminSelectSearchUserController());
 
     }
 

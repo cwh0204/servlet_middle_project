@@ -82,7 +82,7 @@ class CustomUserDeletRenderer {
     }
 }
 
-class CustomUserBtnRenderer {
+/* class CustomUserBtnRenderer {
     constructor(props) {
       const container = document.createElement('div');
       container.className = 'btn-renderer-container';
@@ -120,7 +120,7 @@ class CustomUserBtnRenderer {
     }
 
     render(props) {
-/*       this.container.value = String(props.value); */
+       this.container.value = String(props.value);
     }
     
     onClick(props, event) {
@@ -145,7 +145,7 @@ class CustomUserBtnRenderer {
         // 버튼 클릭 후 포커스 이동 방지
         event.stopPropagation();
     }
-}
+} */
 
 </script>
 </html>

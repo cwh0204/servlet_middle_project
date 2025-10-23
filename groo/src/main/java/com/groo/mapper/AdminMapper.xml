@@ -3,84 +3,140 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AdminMapper">
-	<select id="adminSelectUserAll" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+	<select id="adminSelectUserAll"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
 		SELECT
-			MEM_LOGIN_ID,
-			MEM_NAME,
-			MEM_PASS,
-			MEM_NICK,
-			MEM_EMAIL,
-			MEM_PHONE,
-			MEM_ADDR,
-			MEM_STATUS
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
 		FROM MEMBER
 		WHERE MEM_STATUS = 'N'
 	</select>
-	
-	<select id="adminSelectUserInsertCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
-		SELECT 
-			MEM_LOGIN_ID,
-			MEM_NAME,
-			MEM_PASS,
-			MEM_NICK,
-			MEM_EMAIL,
-			MEM_PHONE,
-			MEM_ADDR,
-			MEM_STATUS
+
+	<select id="adminSelectUserInsertCheck"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
+		SELECT
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
 		FROM MEMBER
-		WHERE MEM_LOGIN_ID = #{memLoginId} OR MEM_NICK = #{memNick} OR MEM_PHONE = #{memPhone} OR MEM_EMAIL = #{memEmail}
+		WHERE MEM_LOGIN_ID =
+		#{memLoginId} OR MEM_NICK = #{memNick}
+		OR MEM_PHONE = #{memPhone} OR
+		MEM_EMAIL = #{memEmail}
 	</select>
-	<insert id="adminInsertUser" parameterType="com.groo.model.MemberDTO">
-		<selectKey keyProperty="memId" resultType="String" order="BEFORE">
-        	SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
-    	</selectKey>
-		INSERT INTO MEMBER 
-		(	
-			MEM_ID,
-			MEM_LOGIN_ID,
-			MEM_NAME,
-			MEM_PASS,
-			MEM_NICK,
-			MEM_EMAIL,
-			MEM_PHONE,
-			MEM_ADDR
+	<select id="adminSelectSearchUser"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
+		SELECT
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
+		FROM MEMBER
+		<where>
+			AND MEM_STATUS = 'N'
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="memLoginId != null and memLoginId != ''">
+					OR MEM_LOGIN_ID LIKE '%' || #{memLoginId} || '%'
+				</if>
+				<if test="memName != null and memName != ''">
+					OR MEM_NAME LIKE '%' || #{memName} || '%'
+				</if>
+				<if test="memNick != null and memNick != ''">
+					OR MEM_NICK LIKE '%' || #{memNick} || '%'
+				</if>
+				<if test="memPass != null and memPass != ''">
+					OR MEM_PASS LIKE '%' || #{memPass} || '%'
+				</if>
+				<if test="memEmail != null and memEmail != ''">
+					OR MEM_EMAIL LIKE '%' || #{memEmail} || '%'
+				</if>
+				<if test="memPhone != null and memPhone != ''">
+					OR MEM_PHONE LIKE '%' || #{memPhone} || '%'
+				</if>
+				<if test="memAddr != null and memAddr != ''">
+					OR MEM_ADDR LIKE '%' || #{memAddr} || '%'
+				</if>
+			</trim>
+		</where>
+	</select>
+	<insert id="adminInsertUser"
+		parameterType="com.groo.model.MemberDTO">
+		<selectKey keyProperty="memId" resultType="String"
+			order="BEFORE">
+			SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MEMBER
+		(
+		MEM_ID,
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR
 		)
 		VALUES
-		(	
-			#{memId},
-			#{memLoginId},
-			#{memName},
-			#{memPass},
-			#{memNick},
-			#{memEmail},
-			#{memPhone},
-			#{memAddr}
+		(
+		#{memId},
+		#{memLoginId},
+		#{memName},
+		#{memPass},
+		#{memNick},
+		#{memEmail},
+		#{memPhone},
+		#{memAddr}
 		)
 	</insert>
-	<update id="adminUpdateUser" parameterType="com.groo.model.MemberDTO">
+	<update id="adminUpdateUser"
+		parameterType="com.groo.model.MemberDTO">
 		UPDATE MEMBER
 		SET
-			MEM_NAME = #{memName},
-			MEM_PASS = #{memPass},
-			MEM_NICK = #{memNick},
-			MEM_EMAIL = #{memEmail},
-			MEM_PHONE = #{memPhone},
-			MEM_ADDR = #{memAddr},
-			MEM_STATUS = #{memStatus}
+		MEM_NAME = #{memName},
+		MEM_PASS =
+		#{memPass},
+		MEM_NICK = #{memNick},
+		MEM_EMAIL = #{memEmail},
+		MEM_PHONE =
+		#{memPhone},
+		MEM_ADDR = #{memAddr},
+		MEM_STATUS = #{memStatus}
 		WHERE
-			MEM_LOGIN_ID = #{memLoginId}
+		MEM_LOGIN_ID = #{memLoginId}
 	</update>
-	<select id="adminAvgUser" resultType="com.groo.model.AdminStatsDTO">
+	<select id="adminAvgUser"
+		resultType="com.groo.model.AdminStatsDTO">
 		SELECT
-		    COUNT(*) AS total_members,
-		    COUNT(CASE WHEN MEM_STATUS = 'Y' THEN 1 END) AS active_members,
-		    COUNT(CASE WHEN MEM_STATUS = 'N' THEN 1 END) AS inactive_members,
-		    COUNT(
-		        CASE
-		            WHEN TRUNC(MEM_SIGNUP_DATE, 'IW') = TRUNC(SYSDATE, 'IW') THEN 1
-		            ELSE NULL
-		        END
-		    ) AS weekly_signups
+		COUNT(*) AS total_members,
+		COUNT(CASE WHEN MEM_STATUS
+		= 'Y' THEN 1 END) AS active_members,
+		COUNT(CASE WHEN MEM_STATUS = 'N'
+		THEN 1 END) AS inactive_members,
+		COUNT(
+		CASE
+		WHEN TRUNC(MEM_SIGNUP_DATE,
+		'IW') = TRUNC(SYSDATE, 'IW') THEN 1
+		ELSE NULL
+		END
+		) AS weekly_signups
 		FROM MEMBER
 	</select>
 </mapper>
