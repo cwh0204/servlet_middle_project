@@ -96,7 +96,7 @@ input[type="search"]::-webkit-search-cancel-button {
                     <th scope="row">필독</th>
                     <td>**[긴급]** 개인정보 보호를 위한 비밀번호 변경 권고</td>
                     <td>관리자</td>
-                    <td>전체 회원</td>
+                    <td>공지사항222</td>
                     <td>2025.10.22</td>
                     <td>2,500</td>
                 </tr>
