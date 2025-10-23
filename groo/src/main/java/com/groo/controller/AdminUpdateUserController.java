@@ -58,8 +58,6 @@ public class AdminUpdateUserController implements Controller {
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");
 			
-			System.out.println("실행");
-			
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			

@@ -10,6 +10,6 @@ public interface AdminService {
 	public List<MemberDTO> adminSelectUserInsertCheck(MemberDTO member);
 	public void adminInsertUser(MemberDTO member);
 	public void adminUpdateUser(MemberDTO member);
-	
+	public List<MemberDTO> adminSelectSearchUser(MemberDTO member);
 	public AdminStatsDTO adminStatsUser();
 }

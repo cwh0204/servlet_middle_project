@@ -35,7 +35,7 @@ const refreshPage = () => {
 	}
 }
 //로고 버튼 누를시 홈으로 이동
-const mypageHome = () => {
+const adminHome = () => {
 	$('.heder_container').click(function() {
 		sessionStorage.setItem('admin_last_view','admindashboard.do');
 		window.location.href = 'admin.do';

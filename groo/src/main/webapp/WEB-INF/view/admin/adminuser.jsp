@@ -359,20 +359,12 @@
 		<div class="filter-section">
 			<div class="search-box">
 				<span class="search-icon"></span> <input type="text"
-					id="searchInput" placeholder="이름, 이메일로 검색...">
+					id="searchInput" placeholder="검색...">
 			</div>
 			<div class="filter-group">
-				<select class="filter-select" id="statusFilter">
-					<option value="">전체 상태</option>
-					<option value="활성">활성</option>
-					<option value="비활성">비활성</option>
-					<option value="대기중">대기중</option>
-				</select> <select class="filter-select" id="roleFilter">
-					<option value="">전체 권한</option>
-					<option value="관리자">관리자</option>
-					<option value="매니저">매니저</option>
-					<option value="일반">일반 사용자</option>
-				</select>
+				<button class="btn btn-secondary" onclick="searchUser()">
+					검색
+				</button>
 			</div>
 		</div>
 	</div>
@@ -409,7 +401,6 @@ var addUser = () => {
     }
 
     const newRowData = {
-
     };
     
     // 가장 위에 새 행을 추가하고 포커스를 줍니다.
@@ -418,6 +409,63 @@ var addUser = () => {
         focus: true 
     });
 };
+
+var resetGridData = () => {
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminuserselectall.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            console.log("서버 응답 아작스:", response.activeMembers);
+            grid.resetData(response);
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    });
+}
+
+var searchUser = () => {
+	const serchInput = $('#searchInput').val();
+	console.log(serchInput);
+	$.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminselectsearchuser.do',
+        // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        type: 'POST', 
+        // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        data: {
+        	serchName : serchInput
+        },        
+        // 데이터 전송 성공 시 실행
+        success: function(response){
+            // response는 서버에서 돌려준 데이터입니다.
+            console.log("서버 응답:", response);
+            console.log("서버 응답:", response.activeMembers);
+            grid.resetData(response);
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error){
+            console.error("AJAX 통신 실패!");
+            console.log("상태:", status);
+            console.log("에러:", error);
+            alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
+        }
+    });
+}
 var rollbackRowData = () => {
 	const targetRowKey = 0;
 	const originalRowData = originalFullData.find(row => row.id === targetRowKey+1);
@@ -567,6 +615,7 @@ var userInsert = (row) => {
             // response는 서버에서 돌려준 데이터입니다.
             console.log("서버 응답:", response);
             console.log("서버 응답:", response.activeMembers);
+			resetGridData();
 
         },
         
@@ -603,6 +652,7 @@ var userUpdate = (row) => {
             // response는 서버에서 돌려준 데이터입니다.
             console.log("서버 응답:", response);
             console.log("서버 응답:", response.activeMembers);
+			resetGridData();
 
         },
         

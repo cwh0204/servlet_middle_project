@@ -12,6 +12,6 @@ public interface AdminDAO {
 	public List<MemberDTO> adminSelectUserInsertCheck(MemberDTO member, SqlSession session);
 	public void adminInsertUser(MemberDTO member, SqlSession session);
 	public void adminUpdateUser(MemberDTO member, SqlSession session);
-	
+	public List<MemberDTO> adminSelectSearchUser(MemberDTO member, SqlSession session);
 	public AdminStatsDTO adminStatsUser(SqlSession session);
 }
