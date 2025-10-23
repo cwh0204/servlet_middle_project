@@ -47,6 +47,6 @@ public class SignUpController extends HttpServlet implements Controller {
 			e.printStackTrace();
 			response.getWriter().println("회원가입 실패: "+ e.getMessage());
 		}
+		
 	}
-
 }

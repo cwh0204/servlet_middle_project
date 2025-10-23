@@ -15,7 +15,7 @@
 				 <span>전체보기</span>
 			</div>
 		</div>
-		<div class="menu-item has-submenu" data-page="mypagedashboard.do"><!-- !!has-submenu가 밑에 하위카테고리를 가지고 있으면 내리는 효과를 가지고 있다.  -->
+		<div class="menu-item has-submenu" data-page="mypageprofile.do"><!-- !!has-submenu가 밑에 하위카테고리를 가지고 있으면 내리는 효과를 가지고 있다.  -->
 			<div class="menu-item-content">
 				<span>프로필</span>
 			</div>
@@ -24,7 +24,7 @@
 					<div class="submenu-item " data-page="mypageprofile.do"><!--하위카테고리-->
 						<span>내 프로필</span>
 					</div>
-					<div class="submenu-item">
+					<div class="submenu-item" data-page="userdetail.do">
 						<span>회원상세페이지</span><!-- 버튼을 클릭하면 회원정보상세페이지로 넘어가게 만들기  -->
 					</div>
 				</div>

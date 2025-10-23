@@ -32,7 +32,28 @@
 	  			 			#{memEmail} 
 	  					    )
 	</insert>
-
+	
+	<select id="selectLoginId" parameterType="String" resultType="String">
+	  select MEM_LOGIN_ID from member where MEM_LOGIN_ID=#{memLoginId}
+	</select>
+	
+	<select id="selectEmail" parameterType="String" resultType="String">
+	  select MEM_EMAIL from member where MEM_EMAIL=#{memEmail}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<select id="loginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 		SELECT *
 		FROM USERS

@@ -19,10 +19,10 @@
 <script src="js/adminComponent.js"></script>
 <style>
 
-body {
+ body {
 	min-width: 1080px;
-}
-.admin_container {
+} 
+ .admin_container {
 	height: calc(100% - 70px);
 }
 .a_r_container {
@@ -32,13 +32,13 @@ body {
 	padding: 30px 40px;
 	overflow: scroll;
 	overflow-x: hidden;
-}
+} 
 
 </style>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <body>
 	<%@ include file="../frontComponents/mainheader.jsp"%>
-	<div class="flex_container full_w_h admin_container">
+	<div class="flex_container full_w_h mypage_container">
  		<%@ include file="../frontComponents/mypagenav.jsp"%>
 		<div class="a_r_container">
   			<%@ include file="mypagedashboard.jsp"%>
