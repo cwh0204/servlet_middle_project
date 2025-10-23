@@ -708,7 +708,6 @@ $(document).ready(function() {
 		rowKey: 'id',
 		scrollX : true,
 		scrollY : true,
-		rowHeaders: ['checkbox'],
 		columns : [ {
 			header : '아이디',
 			name : 'memLoginId',
@@ -741,13 +740,17 @@ $(document).ready(function() {
 			header :'탈퇴여부',
 			name : 'memStatus',
 			editor : 'text'
-		},{
+		}
+		
+/* 		,{
 	          header: 'Grade',
 	          name: 'grade',
 	          renderer: {
 	            type: CustomUserBtnRenderer,
 	          }
-	    }
+	    } */
+		
+		
 		]
 	});
     grid.on('response', function(ev) {

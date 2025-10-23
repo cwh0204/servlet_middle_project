@@ -18,6 +18,8 @@ import com.groo.controller.MemberSelectController;
 import com.groo.controller.MyPageController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
+import com.groo.controller.SignUpSelectEmailController;
+import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamCreateController;
 import com.groo.controller.TeamSelectController;
 
