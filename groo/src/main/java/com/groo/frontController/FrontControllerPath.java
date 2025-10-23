@@ -6,6 +6,8 @@ import java.util.Map;
 import com.groo.controller.AdminInsertUserController;
 import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
+import com.groo.controller.AdminStatsUserController;
+import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
@@ -48,6 +50,9 @@ public class FrontControllerPath {
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
         controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
+        controllerMap.put("/adminupdateuser.do", new AdminUpdateUserController());
+        controllerMap.put("/adminstatsuser.do", new AdminStatsUserController());
+
     }
 
     public Controller getControllers(String command) {

@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.groo.DAO.AdminDAO;
 import com.groo.DAO.AdminDAOImpl;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
+import com.groo.model.AdminStatsDTO;
 import com.groo.model.MemberDTO;
 
 public class AdminServiceImpl implements AdminService {
@@ -23,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @return 유저목록 조회 처리 결과
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
-	 *                                  예외
+	 * 예외
 	 */
 	@Override
 	public List<MemberDTO> adminSelectAll(MemberDTO member) {
@@ -49,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @return 유저목록 조회 처리 결과
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
-	 *                                  예외
+	 * 예외
 	 */
 	@Override
 	public List<MemberDTO> adminSelectUserInsertCheck(MemberDTO member) {
@@ -73,7 +75,7 @@ public class AdminServiceImpl implements AdminService {
 	 *
 	 * @param member 유저의 회원가입을 하기위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
-	 *                                  예외
+	 * 예외
 	 */
 	@Override
 	public void adminInsertUser(MemberDTO member) {
@@ -91,5 +93,57 @@ public class AdminServiceImpl implements AdminService {
 		} finally {
 			session.close();
 		}
+	}
+	/**
+	 * 회원정보수정 서비스 메서드
+	 *
+	 * @param member 유저의 회원가입을 하기위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminUpdateUser(MemberDTO member) {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminUpdateUser(member, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
+	
+	
+	/**
+	 * 유저통계 서비스 메서드
+	 *
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 유저통계 조회 처리 결과
+	 */
+	
+	@Override
+	public AdminStatsDTO adminStatsUser() {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		AdminStatsDTO member = new AdminStatsDTO();
+		try {
+			member = dao.adminStatsUser(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return member;
 	}
 }
