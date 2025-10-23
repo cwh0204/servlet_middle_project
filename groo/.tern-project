@@ -1,15 +1,12 @@
 {
   "ecmaVersion": 5,
-  "plugins": {
-    "guess-types": {
-      
-    },
-    "outline": {
-      
-    }
-  },
   "libs": [
     "browser",
     "jquery"
-  ]
+  ],
+  "plugins": {
+    "ckeditor4.4.x": {
+      
+    }
+  }
 }

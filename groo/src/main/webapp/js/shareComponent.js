@@ -1,15 +1,15 @@
 /**
- *  admin 공용 컴포넌트
+ * mypage공용 컴포넌트
  */
 
 //새로고침시 현재 있던 페이지로 새로고침
-const refreshPage = () => {
+const refreshPage = () => {//리프레시 함수에 대한것이다.
 	// 2. 파라미터가 있다면 해당 페이지를 로드합니다.
-	const lastPage = sessionStorage.getItem('admin_last_view');
+	const lastPage = sessionStorage.getItem('mypage_last_view');
 		
 	if (lastPage) {
 	    // 2. 해당 페이지를 로드합니다.
-	    $('.a_r_container').load(
+	    $('.m_p_container').load(
 	    	lastPage,
 	        function(response, status, xhr) {
 	            if (status === "success") {
@@ -24,9 +24,6 @@ const refreshPage = () => {
 	                $('[data-page="' + lastPage + '"]').addClass('active');
 	                $('[data-page="' + lastPage + '"]').closest('.has-submenu').addClass('open active');
 	                
-	                if (typeof window.chartColl === 'function') {
-	                    window.chartColl();
-	                }
 	            } else {
 	                console.error("새로고침 시 페이지 로드 실패");
 	            }
@@ -37,7 +34,7 @@ const refreshPage = () => {
 //로고 버튼 누를시 홈으로 이동
 const mypageHome = () => {
 	$('.heder_container').click(function() {
-		sessionStorage.setItem('admin_last_view','admindashboard.do');
-		window.location.href = 'admin.do';
+		sessionStorage.setItem('mypage_last_view','mypagedashboard.do');
+		window.location.href = 'mypage.do';
 	});
 }
