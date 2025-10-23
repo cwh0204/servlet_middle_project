@@ -38,6 +38,8 @@ public class FrontControllerPath {
 
         controllerMap.put("/mypages.do", new MyPageController());
 
+        controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());
+        controllerMap.put("/selectemail.do", new SignUpSelectEmailController());
 
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
@@ -47,7 +49,7 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
 
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-
+        
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
         controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
