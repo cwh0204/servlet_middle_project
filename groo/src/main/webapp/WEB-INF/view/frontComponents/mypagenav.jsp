@@ -10,18 +10,18 @@
 <body>
 	<aside class="sidebar">
 		<div class="sidebar-header">마이페이지</div>
-		<div class="menu-item active" data-page="mypagedashboard.jsp"><!--컨트롤러 페이지를 만들어서 전체적인 대쉬보드를 만들어 줘야된다. -->
+		<div class="menu-item active" data-page="mypagedashboard.do"><!--컨트롤러 페이지를 만들어서 전체적인 대쉬보드를 만들어 줘야된다. -->
 			<div class="menu-item-content">
 				 <span>전체보기</span>
 			</div>
 		</div>
-		<div class="menu-item has-submenu" data-page="mypagedashboard.jsp"><!-- !!has-submenu가 밑에 하위카테고리를 가지고 있으면 내리는 효과를 가지고 있다.  -->
+		<div class="menu-item has-submenu" data-page="mypagedashboard.do"><!-- !!has-submenu가 밑에 하위카테고리를 가지고 있으면 내리는 효과를 가지고 있다.  -->
 			<div class="menu-item-content">
 				<span>프로필</span>
 			</div>
 			<div>
 				<div class="submenu">
-					<div class="submenu-item " data-page="adminuser.do"><!--하위카테고리-->
+					<div class="submenu-item " data-page="mypageprofile.do"><!--하위카테고리-->
 						<span>내 프로필</span>
 					</div>
 					<div class="submenu-item">
