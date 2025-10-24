@@ -88,4 +88,21 @@ const mainHeder = () => {
 			});
 		}
 	});
+	
+	$('.dropdown-item').on('click', function() {// 모든 active 클래스 제거
+				$('.dropdown-item').removeClass('active');
+			$(this).addClass('active');
+			const pageToLoad = $(this).data('page');
+			if (pageToLoad) {
+				// 페이지 정보를 Session Storage에 저장함
+				sessionStorage.setItem('main_last_view', pageToLoad);
+				console.log(pageToLoad);
+				$('main').load(pageToLoad, function(response, status, xhr) {
+					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
+					} else {
+						console.error("페이지 로드 실패");
+					}
+				});
+			}
+		});
 }

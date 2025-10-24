@@ -124,7 +124,7 @@ a#dropdownMenuLink {
 					id="dropdownMenuLink" data-bs-toggle="dropdown"
 					aria-expanded="false"><i class="bi bi-person-circle fs-3"></i></a>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<li><a class="dropdown-item" href="#">계정 설정</a></li>
+					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
 					<li><a class="dropdown-item" href="#">마이 페이지</a></li>
 					<li><a class="dropdown-item" href="#">알림</a></li>
 					<li><a class="dropdown-item" href="#">좋아요</a></li>
