@@ -140,6 +140,35 @@ $(function(){ //document.ready(() => { })
        alert("취소되었습니다.");
    }
    
+   function resetFields() {
+       document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
+       document.querySelectorAll('textarea').forEach(el => el.value = '');
+	   document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
+	   const profileImage = document.getElementById('profileImage');
+	   const existingImg = profileImage.querySelector('img');
+	   if (existingImg) {
+		    existingImg.remove();
+		  }
+	   document.getElementById('fileName').textContent = '이미지를 선택해주세요';
+	   profileImage.classList.remove('has-image');
+	   
+	   // 이메일 초기화
+	       const domainInput = document.querySelector('input[name="emailadd"]');
+	       const domainSelect = document.querySelector('select[name="email_select"]');
+	       domainInput.removeAttribute('readonly');
+	       domainSelect.value = ''; 
+       // 비밀번호 테두리 초기화
+	   const pw = document.getElementById('password');
+	   const pwCheck = document.getElementById('passtry');
+	   const msg = document.getElementById('checkpw');
+
+	   pw.style.border = '1px solid #ccc';
+	   pwCheck.style.border = '1px solid #ccc';
+	   msg.textContent = '';
+
+   }
+
+   
  
 
    
