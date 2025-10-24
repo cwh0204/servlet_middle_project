@@ -24,6 +24,53 @@ $(document).ready(() => {
 	}
 });
 
+var userIdCheck = (userLoginId) => {
+
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'singnupselectloginid.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			userLoginId : userLoginId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			alert('사용할수 있는 아이디입니다.');
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+
+		}
+	}); // $.ajax 끝
+}
+
+var userEmailCheck = () => {
+
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'singnupselectemail.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			userEmail : userEmail
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			// 예: 성공 메시지 표시 또는 페이지 이동
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+
+		}
+	}); // $.ajax 끝
+}
+
 $('#userSignUp').on('click', function() {
 	const userIdValue = $('#userId').val();
 	const userPwValue = $('#pass2').val();
@@ -88,33 +135,11 @@ $(document).ready(() => {
 	});
 });
 
-var userIdCheck = () => {
-
-	$.ajax({
-		// 데이터를 전송할 서버 URL
-		url: 'adminstatsuser.do',
-		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
-		type: 'POST',
-		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-		data: {
-		},
-		// 데이터 전송 성공 시 실행
-		success: function(response) {
-			// response는 서버에서 돌려준 데이터입니다.
-			// 예: 성공 메시지 표시 또는 페이지 이동
-		},
-
-		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
-		error: function(xhr, status, error) {
-
-		}
-	}); // $.ajax 끝
-}
-
 function checkDuplicateId() {
-	const userIdInput = document.getElementById('userId');
-	const userId = userIdInput.val();
-
+/*	const userIdInput = document.getElementById('userId');
+	const userId = userIdInput.val();*/
+	
+	const userId = $('#userId').val();
 	// 정규 표현식 (4~20자리, 영문소문자, 숫자, _, -)
 	const idRegExp = /^[a-z0-9_-]{4,20}$/;
 
@@ -127,7 +152,7 @@ function checkDuplicateId() {
 		userIdInput.focus();
 		return;
 	} else{
-		
+		userIdCheck(userId);
 	}
 }
 
