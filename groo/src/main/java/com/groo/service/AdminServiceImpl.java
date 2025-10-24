@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.groo.DAO.AdminDAO;
 import com.groo.DAO.AdminDAOImpl;
@@ -118,8 +117,8 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
-	
+
+
 	/**
 	 * 유저통계 서비스 메서드
 	 *
@@ -127,7 +126,7 @@ public class AdminServiceImpl implements AdminService {
 	 * 예외
 	 * @return 유저통계 조회 처리 결과
 	 */
-	
+
 	@Override
 	public AdminStatsDTO adminStatsUser() {
 		// TODO Auto-generated method stub

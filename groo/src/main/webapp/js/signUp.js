@@ -2,6 +2,28 @@
 
 console.log("asASDasd");
 
+/* 이메일 도메인 선택 */
+$(document).ready(()=>{
+const emailDomain = document.getElementById('emailDomain');
+const emailDomainSelect = document.getElementById('emailDomainSelect');
+
+  // 요소가 존재하는지 안전하게 확인하는 것이 좋습니다.
+  if (emailDomain && emailDomainSelect) {
+      emailDomainSelect.addEventListener('change', function () {
+          const selected = this.value;
+
+          if (selected === 'direct') {
+              emailDomain.value = '';
+              emailDomain.readOnly = false;
+              emailDomain.focus();
+          } else {
+              emailDomain.value = selected;
+              emailDomain.readOnly = true;
+          }
+      });
+  }
+});
+
 $('#userSignUp').on('click', function(){
 	const userIdValue = $('#userId').val();
 	const userPwValue = $('#pass2').val();
@@ -67,24 +89,6 @@ let checkDuplicateId = () => {
 	});
 }*/
 
-/* 이메일 도메인 선택 
-<script type="text/javascript">
-/* const emailDomain = document.getElementById('emailDomain');
-const emailDomainSelect = document.getElementById('emailDomainSelect');
-
-emailDomainSelect.addEventListener('change', function () {
-  const selected = this.value;
-
-  if (selected === 'direct') {
-    emailDomain.value = '';
-    emailDomain.readOnly = false;
-    emailDomain.focus();
-  } else {
-    emailDomain.value = selected;
-    emailDomain.readOnly = true;
-  }
-});
-*/
 
 /* 이메일 인증요청 버튼 클릭 시 이메일 중복확인 -> 인증메일 요청
 $('#emailAuthBtn').on('click', function(){

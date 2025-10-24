@@ -19,7 +19,7 @@ public class FrontPath {
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
-        
+
 
         jspMap.put("/mypage.do", "/WEB-INF/view/mypage/mypage.jsp");
         jspMap.put("/mypageprofile.do","/WEB-INF/view/mypage/mypageprofile.jsp");
@@ -31,12 +31,12 @@ public class FrontPath {
         jspMap.put("/adminuser.do", "/WEB-INF/view/admin/adminuser.jsp");
         jspMap.put("/adminuserreport.do", "/WEB-INF/view/admin/adminuserreport.jsp");
         jspMap.put("/adminteam.do", "/WEB-INF/view/admin/adminteam.jsp");
-        
+
         jspMap.put("/boardlist.do", "/WEB-INF/view/board/boardlist.jsp");
         jspMap.put("/boardlisthome.do", "/WEB-INF/view/board/boardlisthome.jsp");
         jspMap.put("/boardfreehome.do", "/WEB-INF/view/board/boardfreehome.jsp");
         jspMap.put("/boardnoticehome.do", "/WEB-INF/view/board/boardnoticehome.jsp");
-      
+
 
     }
 
