@@ -37,7 +37,11 @@ var userIdCheck = (userLoginId) => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			alert('사용할수 있는 아이디입니다.');
+			if(response == "yes"){
+				alert('사용할수 있는 아이디입니다.');	
+			}else{
+				alert('이미 사용중인 아이디입니다.');	
+			}
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -94,7 +98,7 @@ var signUpUser = (userIdValue,userPwValue,userNameValue,userEmail,userjumin1Valu
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
 			console.log("서버 응답:", response);
-			// 예: 성공 메시지 표시 또는 페이지 이동
+			window.location.href = "signupsuccess.do";
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -115,14 +119,8 @@ var signUpUserValidation = () => {
 	const userjumin1Value = $('#jumin1').val(); //Date 형식이므로 유효성검사 필요함.
 	const emailId = $("#emailId").val();
 	const emailDomain = $("#emailDomain").val();
-	const userEmail = emailId + "@" + emailDomain;
-	let userGender = $('#jumin2').val();
-	if (userGender == 1) {
-		userGender = "M"; // 남자
-	} else if (userGender == 2) {
-		userGender = "W"; // 여자
-	}
-	console.log(userGender);
+	const userEmail = emailId + "@" + emailDomain;	
+	const userGender = 	($('#jumin2').val() == '1') ? "M" : "W";
 	if (userIdValue != "" && userPwValue != "" && userNameValue != "") {
 		signUpUser(userIdValue,userPwValue,userNameValue,userEmail,userjumin1Value,userGender); //유효성검사가 끝나면 회원가입 요청을 보냄
 	}
