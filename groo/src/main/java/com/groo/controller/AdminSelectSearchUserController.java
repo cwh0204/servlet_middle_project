@@ -32,6 +32,7 @@ public class AdminSelectSearchUserController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String serchName = request.getParameter("serchName");
+		String memStatus = request.getParameter("memStatus");
 		
 		MemberDTO member = new MemberDTO();
 		
@@ -42,7 +43,7 @@ public class AdminSelectSearchUserController implements Controller {
 		member.setMemEmail(serchName);
 		member.setMemPhone(serchName);
 		member.setMemAddr(serchName);
-		
+		member.setMemStatus(memStatus);
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
 			

@@ -16,7 +16,7 @@
 		MEM_ADDR,
 		MEM_STATUS
 		FROM MEMBER
-		WHERE MEM_STATUS = 'N'
+		WHERE MEM_STATUS = #{memStatus}
 	</select>
 
 	<select id="adminSelectUserInsertCheck"
@@ -51,7 +51,7 @@
 		MEM_STATUS
 		FROM MEMBER
 		<where>
-			AND MEM_STATUS = 'N'
+			AND MEM_STATUS = #{memStatus}
 			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
 				<if test="memLoginId != null and memLoginId != ''">
 					OR MEM_LOGIN_ID LIKE '%' || #{memLoginId} || '%'

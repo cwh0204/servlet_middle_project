@@ -32,11 +32,14 @@ public class AdminSelectUserAllController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/plain; charset=UTF-8");
-
+		String memStatus = request.getParameter("memStatus");
+		
 		MemberDTO member = new MemberDTO();
+		
+		member.setMemStatus(memStatus);
+		
 		ErrorDTO Error = new ErrorDTO();
+		
 		try {
 			AdminService adminService = new AdminServiceImpl();
 			List<MemberDTO> list = adminService.adminSelectAll(member);
