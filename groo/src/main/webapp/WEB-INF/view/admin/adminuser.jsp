@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
-<script src="js/adminUser.js"></script>
+<script src="js/adminJs/adminUser.js"></script>
 <script src="js/adminAjax/adminUserAjax.js"></script>
 </head>
 <body>
@@ -25,11 +25,8 @@
 			<button class="btn btn-primary" onclick="addUser()">
 				<span>+</span> 사용자 추가
 			</button>
-			<button class="btn btn-primary" onclick="userCeckInsert()">
+			<button class="btn btn-primary" onclick="userCheckInsert()">
 				<span>*</span> 저장
-			</button>
-			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span>-</span> 삭제
 			</button>
 			<button type="button" class="btn btn-primary none"
 				data-bs-toggle="modal" data-bs-target="#exampleModal">Launch

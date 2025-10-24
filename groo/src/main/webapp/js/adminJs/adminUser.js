@@ -49,7 +49,7 @@ var exportData = () => {
 		onlySelected: false              // 선택된 행만 내보낼지 여부 (false면 전체)
 	});
 };
-var userCeckInsert = () => {
+var userCheckInsert = () => {
 
 	const createdRows = grid.getModifiedRows().createdRows;
 	const updatedRows = grid.getModifiedRows().updatedRows;
