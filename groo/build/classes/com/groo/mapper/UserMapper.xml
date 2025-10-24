@@ -15,7 +15,7 @@
         </selectKey>
 	  INSERT INTO MEMBER (
 	  						MEM_ID,
-	  						MEM_NAME, 
+	  						MEM_NAME,
 	  						MEM_LOGIN_ID, 
 	  						MEM_PASS, 
  	  						MEM_BIRTH,

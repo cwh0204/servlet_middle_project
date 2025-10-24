@@ -33,7 +33,7 @@ var userIdCheck = (userLoginId) => {
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-			userLoginId : userLoginId
+			userLoginId: userLoginId
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
@@ -42,12 +42,11 @@ var userIdCheck = (userLoginId) => {
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
-
 		}
 	}); // $.ajax 끝
 }
 
-var userEmailCheck = () => {
+var userEmailCheck = (userEmail) => {
 
 	$.ajax({
 		// 데이터를 전송할 서버 URL
@@ -56,12 +55,17 @@ var userEmailCheck = () => {
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-			userEmail : userEmail
+			userEmail: userEmail
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
 			// 예: 성공 메시지 표시 또는 페이지 이동
+			if (response != null) {
+				alert("이미 존재하는 이메일입니다!");
+			} else {
+				signUpUserValidation(); //존재하는 이메일이 아니면 회원가입 유효성을 검사함
+			};
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -71,11 +75,7 @@ var userEmailCheck = () => {
 	}); // $.ajax 끝
 }
 
-$('#userSignUp').on('click', function() {
-	const userIdValue = $('#userId').val();
-	const userPwValue = $('#pass2').val();
-	const userNameValue = $('#name').val();
-	console.log("아이디는: " + userIdValue + " 비밀번호는" + userPwValue + "이름은" + userNameValue);
+var signUpUser = (userIdValue,userPwValue,userNameValue,userEmail,userjumin1Value,userGender) => {
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'singnups.do',
@@ -83,9 +83,12 @@ $('#userSignUp').on('click', function() {
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-			userId: userIdValue,
-			userPw: userPwValue,
-			userName: userNameValue
+			userLoginId: userIdValue,
+			userPass: userPwValue,
+			userName: userNameValue,
+			userEmail: userEmail,
+			userBirth: userjumin1Value, //유효성 검사 필요
+			userGender: userGender
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
@@ -101,11 +104,41 @@ $('#userSignUp').on('click', function() {
 			console.log("에러:", error);
 			alert('데이터 전송에 실패했습니다. 다시 시도해 주세요.');
 		}
-	}); // $.ajax 끝
-});
+	});
+}
+
+//회원가입 유효성검사
+var signUpUserValidation = () => {
+	const userIdValue = $('#userId').val();
+	const userPwValue = $('#pass2').val();
+	const userNameValue = $('#name').val();
+	const userjumin1Value = $('#jumin1').val(); //Date 형식이므로 유효성검사 필요함.
+	const emailId = $("#emailId").val();
+	const emailDomain = $("#emailDomain").val();
+	const userEmail = emailId + "@" + emailDomain;
+	let userGender = $('#jumin2').val();
+	if (userGender == 1) {
+		userGender = "M"; // 남자
+	} else if (userGender == 2) {
+		userGender = "W"; // 여자
+	}
+	console.log(userGender);
+	if (userIdValue != "" && userPwValue != "" && userNameValue != "") {
+		signUpUser(userIdValue,userPwValue,userNameValue,userEmail,userjumin1Value,userGender); //유효성검사가 끝나면 회원가입 요청을 보냄
+	}
+}
 
 /* 아이디 실시간 검사 */
 $(document).ready(() => {
+
+	//회원가입 버튼클릭
+	$('#userSignUp').on('click', function() {
+		const emailId = $("#emailId").val();
+		const emailDomain = $("#emailDomain").val();
+		const userEmail = emailId + "@" + emailDomain;
+		userEmailCheck(userEmail); //이메일 체크를 먼저함
+	});
+
 	const $userId = $('userId');
 	const idRegExp = /^[a-z0-9_-]{4,20}$/;
 
@@ -133,12 +166,13 @@ $(document).ready(() => {
 				.css('color', 'green');
 		}
 	});
+
 });
 
 function checkDuplicateId() {
-/*	const userIdInput = document.getElementById('userId');
-	const userId = userIdInput.val();*/
-	
+	/*	const userIdInput = document.getElementById('userId');
+		const userId = userIdInput.val();*/
+
 	const userId = $('#userId').val();
 	// 정규 표현식 (4~20자리, 영문소문자, 숫자, _, -)
 	const idRegExp = /^[a-z0-9_-]{4,20}$/;
@@ -151,7 +185,7 @@ function checkDuplicateId() {
 		alert("아이디는 4~20자의 영문 소문자, 숫자, 밑줄(_), 하이픈(-), 공백없이만 사용할 수 있습니다.");
 		userIdInput.focus();
 		return;
-	} else{
+	} else {
 		userIdCheck(userId);
 	}
 }

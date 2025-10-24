@@ -62,16 +62,13 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session) {
 		// TODO Auto-generated method stub
 		MemberDTO memberRe = new MemberDTO();
-		if(memberDTO.getmemId().equals("")) {
-			throw new InternalDataAccessException("사용자 입력데이터 불일치예외 발생");
-		}
-		try {
-			memberRe = session.selectOne("loginUser",memberDTO);
-			System.out.println(memberRe);
-		}catch (Exception e) {
-			e.printStackTrace();
-			throw new InternalServiceException("로그인 중 데이터베이스 오류 발생", e);
-		}
+		/*
+		 * if(memberDTO.getmemId().equals("")) { throw new
+		 * InternalDataAccessException("사용자 입력데이터 불일치예외 발생"); } try { memberRe =
+		 * session.selectOne("loginUser",memberDTO); System.out.println(memberRe);
+		 * }catch (Exception e) { e.printStackTrace(); throw new
+		 * InternalServiceException("로그인 중 데이터베이스 오류 발생", e); }
+		 */
 		return memberRe;
 	}
 
