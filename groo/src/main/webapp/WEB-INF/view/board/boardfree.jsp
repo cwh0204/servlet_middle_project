@@ -6,64 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/base.css" rel="stylesheet">
-<style>
-/* ... (기존 CSS 코드는 생략) ... */
-.boardlist .write:active {
-    background-color: #b0b0b0 !important; 
-    color: black;
-}
-
-.pagination .page-link {
-    color: black; 
-}
-
-/* 포커스 및 활성 상태의 box-shadow 제거 */
-.pagination .page-link:focus,
-.pagination .page-item.active .page-link {
-    box-shadow: none !important; 
-    outline: none !important;
-}
-
-/* 활성 상태 색상 */
-.pagination .page-item.active .page-link {
-    background-color: black;
-    color: white;
-    border-color: black;
-}
-
-/* 마우스 오버 시 스타일 */
-.pagination .page-link:hover {
-    background-color: #f0f0f0;
-    color: black;
-}
-
-/* 마우스 클릭 시 (Active) 스타일 */
-.pagination .page-link:active {
-    background-color: #d0d5db !important;
-    color: black;
-}
-
-/* 글쓰기 버튼 클릭 시 어두운 색 */
-.boardlist .write:active {
-    background-color: #b9dbcb !important;
-    color: black;
-}
-
-.pagination .page-link {
-    color: black;
-}
-
-/* 검색창에 x버튼 제거 */
-input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.search-input:focus {
-    border-color:#D1E7DD;
-}
-
-</style>
+<script src="js/boardfree.js"></script>
 </head>
 <body>
 
