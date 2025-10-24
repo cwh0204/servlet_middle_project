@@ -1,7 +1,6 @@
 package com.groo.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
@@ -22,23 +21,23 @@ public class SignUpController extends HttpServlet implements Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String memLoginId = request.getParameter("userLoginId");
 		String memPass = request.getParameter("userPass");
 		String memName = request.getParameter("userName");
 		String memEmail = request.getParameter("userEmail");
 		String memBirth = request.getParameter("userBirth");
 		String memGender = request.getParameter("userGender");
-		
+
 		MemberDTO memberDto = new MemberDTO();
-		
+
 		memberDto.setMemLoginId(memLoginId);
 		memberDto.setMemPass(memPass);
 		memberDto.setMemName(memName);
 		memberDto.setMemEmail(memEmail);
 		memberDto.setMemBirth(memBirth);
 		memberDto.setMemGender(memGender);
-		
+
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
 			serviceImpl.insertUserService(memberDto);
@@ -47,6 +46,6 @@ public class SignUpController extends HttpServlet implements Controller {
 			e.printStackTrace();
 			response.getWriter().println("회원가입 실패: "+ e.getMessage());
 		}
-		
+
 	}
 }

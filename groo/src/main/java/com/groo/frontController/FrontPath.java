@@ -36,7 +36,9 @@ public class FrontPath {
         jspMap.put("/boardlisthome.do", "/WEB-INF/view/board/boardlisthome.jsp");
         jspMap.put("/boardfreehome.do", "/WEB-INF/view/board/boardfreehome.jsp");
         jspMap.put("/boardnoticehome.do", "/WEB-INF/view/board/boardnoticehome.jsp");
+
         jspMap.put("/boardgesihome.do", "/WEB-INF/view/board/boardgesihome.jsp");
+
 
 
     }
