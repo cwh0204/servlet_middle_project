@@ -57,6 +57,61 @@ $('#userSignUp').on('click', function(){
     }); // $.ajax 끝
 });
 
+/* 아이디 실시간 검사 */
+$(document).ready(() => {
+	const $userId = $('userId');
+	const idRegExp = /^[a-z0-9_-]{4,20}$/;
+	
+	// 입력이 바뀔 때마다 실행
+	$userId.on('input', function() {
+		const userId = $(this).val();
+		
+		// 아무것도 입력 안했을 때는 초기화
+		if(userId.length === 0)	{
+			$(this).css('border', '1px solid #ccc');
+			$('#idMessage').text('');
+			return;
+		}
+		
+		// 정규식 검사
+		if(!idRegExp.test($userId)){
+			$(this).css('border', '2px solid red');
+	        $('#idMessage')
+			     .text('아이디는 4~20자의 영문 소문자, 숫자, _, - 만 가능합니다.')
+			     .css('color', 'red');
+       } else {
+	      $(this).css('border', '2px solid green');
+	      $('#idMessage')
+		      .text('사용 가능한 형식입니다. ✔')
+		      .css('color', 'green');
+       }
+   });
+});
+			
+				
+
+function checkDuplicateId() {
+	const userIdInput = document.getElementById('userId');
+	const userId = userIdInput.val();
+	
+	// 정규 표현식 (4~20자리, 영문소문자, 숫자, _, -)
+	const idRegExp = /^[a-z0-9_-]{4,20}$/;
+	
+	if(userId === 0){
+		alert('아이디를 입력해주세요.');
+		userIdInput.focus();
+		return;
+	}
+	
+	if(!idRegExp.test(userId)){
+		alert("아이디는 4~20자의 영문 소문자, 숫자, 밑줄(_), 하이픈(-), 공백없이만 사용할 수 있습니다.");
+		userIdInput.focus();
+		return;
+	}
+	
+	
+}
+
 /* -- 아이디 중복확인 AJAX (버튼 클릭 시) 
 let checkDuplicateId = () => {
 	const userLoginId = $('#userId').val();

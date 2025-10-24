@@ -38,6 +38,7 @@
       	  <input type="text" id="userId" name="userId" required> 
       	  <input type="button" value="중복확인" onclick="checkDuplicateId()">
       	</div>
+      	<span id="idMessage" style="font-size: 0.9em;"></span>
       	
       	<div>
       	  <label for="pass1">비밀번호</label><br>
