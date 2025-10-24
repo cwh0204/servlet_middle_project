@@ -24,7 +24,7 @@
 }
 
 .left-section {
-   display: flex;
+   /* display: flex; */
    flex-direction: column;
    justify-content: space-around;
    align-items: center;
@@ -303,7 +303,7 @@ button {
                <label>비밀번호 재확인</label> <input type="password" name="passtry" id="passtry" style="width: 100%; padding-right: 30px;"> 
                   <img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
                   style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
-             
+
             </div>
 
             <div class="input-group">
@@ -477,29 +477,31 @@ function showAlert() {
 $(document).ready(function() {
     const pw = $("#password");
     const pwCheck = $("#passtry");
+    const msg = $("#checkpw");
     
 
     // 입력할 때마다 실행
-    pwCheck.on("input", function() {
-        const pwVal = pw.val();
-        const checkVal = pwCheck.val();
+//     pwCheck.on("input", function() {
+//         const pwVal = pw.val();
+//         const checkVal = pwCheck.val();
+//         const validpw = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=\S+$).{8,20}$/;
        
-    // 입력취소시 색초기화
-        if (checkVal.length === 0) {
-            pwCheck.css("border", "1px solid #ccc");
-            msg.text("").css("color", "");
-            return;
-        }
+//     // 입력취소시 색초기화
+//         if (checkVal.length === 0) {
+//             pwCheck.css("border", "1px solid #ccc");
+//             msg.text("").css("color", "");
+//             return;
+//         }
 
-        if (pwVal === checkVal) {
-            pwCheck.css("border", "2px solid #28a745"); // 초록색
-            msg.text("비밀번호가 일치합니다.").css("color", "#28a745");
-        } else {
-            pwCheck.css("border", "2px solid #dc3545"); // 빨간색
-            msg.text("비밀번호가 일치하지 않습니다.").css("color", "#dc3545");
-        }
-    });
-});
+//         if (!validpw.test(pwVal) || pwVal !== checkVal) {
+//             pwCheck.css("border", "2px solid #dc3545"); 
+//             msg.text("8~20자리, 특수문자 1개 이상, 공백 제외").css("color", "#dc3545");
+//             return;
+           
+//         pwCheck.css("border", "2px solid #28a745");
+//         msg.text("비밀번호가 일치합니다.").css("color", "#28a745")
+//     });
+// });
 
 
 
