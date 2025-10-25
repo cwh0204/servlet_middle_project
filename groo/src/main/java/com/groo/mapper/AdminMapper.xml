@@ -158,10 +158,16 @@
 			AND ACTION_CONTENT IS NULL
 			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
 		        <if test="reportId != null and reportId != ''">
-		            OR C.REPORT_ID LIKE LIKE '%' || #{reportId} || '%'
+		            OR C.REPORT_ID LIKE '%' || #{reportId} || '%'
 		        </if>
 		        <if test="memReporter != null and memReporter != ''">
 		            OR D.MEM_LOGIN_ID LIKE '%' || #{memReporter} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.COMENT_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.BOARD_ID LIKE '%' || #{reportBoard} || '%'
 		        </if>
 	        	<if test="memSuspect != null and memSuspect != ''">
 		            OR A.MEM_LOGIN_ID LIKE '%' || #{memSuspect} || '%'

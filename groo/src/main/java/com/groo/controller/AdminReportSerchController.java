@@ -31,20 +31,20 @@ public class AdminReportSerchController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String reportId = request.getParameter("reportId");
-		String memReporter = request.getParameter("memReporter");
-		String memSuspect = request.getParameter("memSuspect");
-		String reportContent = request.getParameter("reportContent");
+		String serchName = request.getParameter("serchName");
+		
+		System.out.println(serchName);
 		
 		AdminReportDTO report = new AdminReportDTO();
 		
-		report.setReportId(reportId);
-		report.setMemReporter(memReporter);
-		report.setMemSuspect(memSuspect);
-		report.setReportContent(reportContent);
-		
+		report.setReportId(serchName);
+		report.setMemReporter(serchName);
+		report.setMemSuspect(serchName);
+		report.setReportContent(serchName);
+		report.setReportBoard(serchName);
 		
 		AdminServiceImpl service = new AdminServiceImpl();
+		
 		try {
 			List<AdminReportDTO> reportList = new ArrayList<>();
 			reportList = service.adminReportSerch(report);
