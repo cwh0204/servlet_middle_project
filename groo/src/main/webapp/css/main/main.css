@@ -1,0 +1,120 @@
+/* 검색창을 감싸는 컨테이너 */
+.search-container {
+	display: flex;
+	align-items: center;
+	width: 600px;
+	padding: 8px 15px;
+	border: 2px solid #28a745;
+	border-radius: 30px;
+	margin: 10px;
+}
+
+/* 검색창 */
+.search-input {
+	border: none;
+	outline: none;
+	flex-grow: 1;
+	padding: 5px;
+	font-size: 15px;
+}
+
+/* 검색창 아이콘 */
+.bi.bi-search {
+	color: black;
+}
+
+/* nav, 계정목록 */
+.accountmenu ul, .nav ul {
+	list-style: none;
+	display: flex;
+	gap: 80px;
+	margin: 10px;
+}
+
+/* nav, 계정목록 li */
+.accountmenu li, .nav li {
+	position: relative;
+	color: black;
+}
+
+/* nav, 계정목록 리스트 효과 */
+.accountmenu li::after, .nav li::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 0%;
+	height: 2px;
+	background-color: #28a745;
+	transform: translateX(-50%);
+	transition: width 0.3s ease;
+}
+/* nav, 계정목록 효과 넓이 */
+.accountmenu li:hover::after, .nav li:hover::after {
+	width: 100%;
+}
+/* 네비 글자크기 */
+.nav li {
+	font-size: 25px;
+}
+
+/* 계정목록 글자크기 */
+.accountmenu ul {
+	gap: 30px;
+}
+
+/* 핫스터디 h2 */
+.hot-studies-section h2 {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+/*slick 라이브러리*/
+/*--------------------------------------------------------------------------------*/
+/* Slick Carousel의 기본 여백/위치 조정 */
+
+/* 핫 스터디 섹션 */
+.hot-studies-section {
+	width: 90%;
+	margin: 40px auto;
+}
+
+/* Slick이 생성하는 ul.slick-dots의 위치 조정 */
+/* 페이지네이션 점이 카드 아래 중앙에 오도록 조정 */
+.slick-dots {
+	list-style: none;
+	display: flex !important;
+	justify-content: center;
+	margin-top: 20px; /* 카드와 점 사이 간격 */
+}
+
+/* 검색창 컨테이너 하단 마진 제거 (캐러셀과 너무 떨어지는 것을 방지) */
+.search-container {
+	margin-top: 30px;
+}
+
+/*--------------------------------------------------------------------------------*/
+/* 💡 활동중인 스터디 섹션 스타일 (수정) */
+.active-studies-section {
+	width: 90%;
+	margin: 40px auto;
+}
+
+.active-studies-section h2 {
+	text-align: left;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+/* 💡 그리드 아이템의 너비 설정 (한 줄에 4개 표시) */
+.active-grid-sizer, .active-grid-item {
+	width: 25%; /* 한 줄에 4개 */
+}
+
+/* 💡 그리드 아이템 내부 여백 및 박스 모델 설정 */
+.active-grid-item {
+	box-sizing: border-box;
+	padding: 10px; /* 아이템 주변 여백 */
+	/* Masonry가 위치를 조정할 때 부드러운 애니메이션 효과를 위해 추가 */
+	transition: opacity 0.4s, transform 0.4s;
+}

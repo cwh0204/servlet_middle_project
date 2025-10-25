@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="js/mainComponent.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/mainHeader.js"></script>
+<script src="js/mainComponent.js"></script>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
@@ -127,7 +127,7 @@ a#dropdownMenuLink {
 					id="dropdownMenuLink" data-bs-toggle="dropdown"
 					aria-expanded="false"><i class="bi bi-person-circle fs-3"></i></a>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<li><a class="dropdown-item" href="userdetail.do">계정 설정</a></li>
+					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
 					<li><a class="dropdown-item" href="#">마이 페이지</a></li>
 					<li><a class="dropdown-item" href="#">알림</a></li>
 					<li><a class="dropdown-item" href="#">좋아요</a></li>

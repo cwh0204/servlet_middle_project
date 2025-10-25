@@ -3,45 +3,6 @@
  */
 const mainHome = () => {
 	console.log("mainHome 함수 실행: 동적 콘텐츠 초기화 시작");
-
-		
-    // 2. Slick Carousel 초기화 (재사용을 위해 unslick() 로직 추가)
-    const $carousel = $('#hot-studies-carousel');
-    
-    // 재실행 시 오류 방지를 위해 unslick()을 먼저 호출
-    if ($carousel.hasClass('slick-initialized')) {
-        $carousel.slick('unslick');
-    }
-    
-    $carousel.slick({
-        arrows: false,
-        draggable: true,
-        swipe: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        dots: false, // 번호 제거
-        infinite: false,
-        speed: 500,
-    });
-    
-    // 3. Masonry 초기화 (활동중인 스터디)
-    var activeGrid = document.querySelector('#active-studies-grid');
-    
-    if (activeGrid) {
-        // 기존 Masonry 인스턴스가 있다면 제거 (선택적)
-        if (activeGrid.masonry) {
-             activeGrid.masonry.destroy();
-        }
-        // DOM 렌더링 후 레이아웃 재조정을 위해 setTimeout 사용
-        setTimeout(function() {
-            new Masonry(activeGrid, {
-                itemSelector: '.active-grid-item',
-                columnWidth: '.active-grid-sizer',
-                percentPosition: true,
-                gutter: 0                        
-            });
-        }, 500);
-    }
 }
 const refreshPage = () => {
 	// 2. 파라미터가 있다면 해당 페이지를 로드합니다.
