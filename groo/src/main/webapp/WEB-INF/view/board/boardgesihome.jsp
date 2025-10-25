@@ -8,7 +8,6 @@
 </head>
 <body>
 	<%@ include file="boardlistnav.jsp"%>
-
 	<main>
  		<%@ include file="./boardgesi.jsp" %>
 	</main>
