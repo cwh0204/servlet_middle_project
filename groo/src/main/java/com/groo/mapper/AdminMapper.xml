@@ -139,4 +139,37 @@
 		) AS weekly_signups
 		FROM MEMBER
 	</select>
+	
+	<select id="adminReportSerch" resultType="com.groo.model.AdminReportDTO">
+		SELECT
+			C.REPORT_ID AS REPORT_ID,
+			D.MEM_LOGIN_ID AS MEM_REPORTER,
+			A.MEM_LOGIN_ID AS MEM_SUSPECT,
+			CASE WHEN C.COMENT_ID IS NULL THEN C.BOARD_ID
+				 ELSE C.COMENT_ID
+			END AS REPORT_BOARD,
+			C.REPORT_CONTENT AS REPORT_CONTENT,
+			C.REPORT_DATE AS REREPORT_DATE
+		FROM MEMBER A
+		INNER JOIN BOARD B ON A.MEM_ID = B.MEM_ID
+		INNER JOIN REPORT C ON C.BOARD_ID = B.BOARD_ID
+		INNER JOIN MEMBER D ON C.MEM_ID = D.MEM_ID
+		<where>
+			AND ACTION_CONTENT IS NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		        <if test="reportId != null and reportId != ''">
+		            OR C.REPORT_ID LIKE LIKE '%' || #{reportId} || '%'
+		        </if>
+		        <if test="memReporter != null and memReporter != ''">
+		            OR D.MEM_LOGIN_ID LIKE '%' || #{memReporter} || '%'
+		        </if>
+	        	<if test="memSuspect != null and memSuspect != ''">
+		            OR A.MEM_LOGIN_ID LIKE '%' || #{memSuspect} || '%'
+		        </if>
+		        <if test="reportContent != null and reportContent != ''">
+		            OR C.REPORT_CONTENT LIKE '%' || #{memReporter} || '%'
+		        </if>
+	        </trim>
+        </where>
+	</select>
 </mapper>

@@ -152,12 +152,12 @@ $(document).ready(function() {
 	var resetReportGridData = () => {
 		$.ajax({
 			// 데이터를 전송할 서버 URL
-			url: '',
+			url: 'adminreportserch.do',
 			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 			type: 'POST',
 			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 			data: {
-				memStatus: 'Y'
+				
 			},
 			// 데이터 전송 성공 시 실행
 			success: function(response) {
@@ -170,47 +170,41 @@ $(document).ready(function() {
 			}
 		});
 	}
+	
+	resetReportGridData();
+	
 	reportUsergrid = new tui.Grid({
 	    el: document.getElementById('reportUsergrid'),
 	    data: [], // 초기 데이터는 빈 배열로 설정
 	    rowKey: 'id',
 	    scrollX: true,
 	    scrollY: true,
+	    columnOptions: {
+	        resizable: true // 이 값이 false이면 리사이징 기능이 비활성화됩니다.
+	    },
 	    columns: [{
-	        header: '아이디',
-	        name: 'memLoginId',
-	        editor: 'text'
+	        header: '신고번호',
+	        name: 'reportId',
+	        width: 100
 	    }, {
-	        header: '이름',
-	        name: 'memName',
-	        editor: 'text'
+	        header: '신고자',
+	        name: 'memReporter',
+	        width: 100
 	    }, {
-	        header: '비밀번호',
-	        name: 'memPass',
-	        editor: 'text'
+	        header: '신고아이디',
+	        name: 'memSuspect',
+	        width: 100
 	    }, {
-	        header: '닉네임',
-	        name: 'memNick',
-	        editor: 'text'
-	    }, {
-	        header: '이메일',
-	        name: 'memEmail',
-	        editor: 'text'
-	    }, {
-	        header: '전화번호',
-	        name: 'memPhone',
-	        editor: 'text'
-	    }, {
-	        header: '주소',
-	        name: 'memAddr',
-	        editor: 'text'
-	    }, {
-	        header: '탈퇴여부',
-	        name: 'memStatus',
-	        editor: 'text'
+	        header: '글번호',
+	        name: 'reportBoard',
+	        width: 100
+	    },{
+	        header: '신고사유',
+	        name: 'reportContent'
 	    },{
         header: 'Grade',
         name: 'grade',
+        width: 150,
         renderer: {
           type: CustomUserBtnRenderer,
         }

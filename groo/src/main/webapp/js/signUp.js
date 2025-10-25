@@ -38,12 +38,11 @@ var userIdCheck = (userLoginId) => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			if(response == "yes"){
-				alert('사용할수 있는 아이디입니다.');	
+				alert('사용할수 있는 아이디입니다.');
 			}else{
 				alert('이미 사용중인 아이디입니다.');	
 			}
 		},
-
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
 		}
