@@ -6,12 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/base.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<div class="search-container">
-		<input type="text" class="search-input" placeholder="공지사항을 검색하세요...">
-		<a href="http://www.naver.com"> <i class="bi bi-search"></i></a>
-	</div>
 <body>
 	<div class="boardlist">
 	<table class="table table-hover">
