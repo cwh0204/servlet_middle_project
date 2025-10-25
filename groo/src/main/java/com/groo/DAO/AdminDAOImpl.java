@@ -175,4 +175,24 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return report;
 	}
+	
+	/**
+	 * 신고조치 완료 정보 검색을 위한 메서드
+	 * @param report 신고 조치완료 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 신고 정보 조회 처리 결과
+	 */
+	@Override
+	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session) {
+		// TODO Auto-generated method stub
+		List<AdminReportDTO> reportList = new ArrayList<>();
+		
+		try {
+			reportList = session.selectList("adminReportProcessUserSerch",report);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminReportProcessUserSerch 예외발생",e);
+		}
+		return reportList;
+	}
 }

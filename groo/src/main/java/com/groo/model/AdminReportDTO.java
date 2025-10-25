@@ -10,4 +10,7 @@ public class AdminReportDTO {
 	private String reportBoard;
 	private String reportContent;
 	private String reportDate;
+	private String actionContent;
+	private String actionDate;
+	private String endActionDate;
 }

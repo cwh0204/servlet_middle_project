@@ -15,11 +15,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 /**
- * 관리자 페이지에서 신고정보 검색을 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 관리자 페이지에서 조치완료된 신고 리스트를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class AdminReportSerchController implements Controller {
+public class AdminReportProcessUserSerchController implements Controller {
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -40,12 +41,13 @@ public class AdminReportSerchController implements Controller {
 		report.setMemSuspect(serchName);
 		report.setReportContent(serchName);
 		report.setReportBoard(serchName);
+		report.setActionContent(serchName);
 		
 		AdminServiceImpl service = new AdminServiceImpl();
 		
 		try {
 			List<AdminReportDTO> reportList = new ArrayList<>();
-			reportList = service.adminReportSerch(report);
+			reportList = service.adminReportProcessUserSerch(report);
 			Gson gson = new Gson();
 			String json = gson.toJson(reportList);
 			

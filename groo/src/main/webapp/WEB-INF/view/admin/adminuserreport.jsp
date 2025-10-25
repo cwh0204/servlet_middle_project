@@ -259,6 +259,7 @@ $(document).ready(function() {
 	    }    
 	    ]
 	});
+	reportUsergrid.setBodyHeight(450);
 });
 </script>
 </html>

@@ -256,7 +256,9 @@
 	background-color: #fce899 !important;
 	font-weight: bold; /* 선택적으로 폰트도 강조 */
 }
-
+td.tui-grid-cell.tui-grid-cell-has-input {
+    background-color: white;
+}
 /* .btn.btn-primary{
 	display: none;
 } */
