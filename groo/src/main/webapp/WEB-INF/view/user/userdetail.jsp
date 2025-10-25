@@ -8,8 +8,8 @@
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/userDetail.js"></script>
-<link rel="stylesheet" href="css/userdetail.css">
 <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/userdetail.css">
 </head>
 <body>
 <%@ include file="../frontComponents/mainheader.jsp"%>
