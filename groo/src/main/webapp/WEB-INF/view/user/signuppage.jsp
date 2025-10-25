@@ -34,17 +34,19 @@
       	<div class="idRow">
       	  <input type="text" id="userId" name="userId" required> 
       	  <input type="button" value="중복확인" onclick="checkDuplicateId()">
+      	  <span id="idMessage" style="font-size: 0.9em;"></span>
       	</div>
-      	<span id="idMessage" style="font-size: 0.9em;"></span>
       	
       	<div>
       	  <label for="pass1">비밀번호</label><br>
       	  <input type="password" id="pass1" name="password" required>
+      	  <span id="pass1Message" style="font-size: 0.9em;"></span>
       	</div>
-      	
+      		
       	<div>
       	  <label for="pass2">비밀번호 재확인</label><br>
       	  <input type="password" id="pass2" name="confirmPassword" required>
+          <span id="pass2Message" style="font-size: 0.9em;"></span>
         </div>
         
         <div>
