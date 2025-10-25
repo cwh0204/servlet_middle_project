@@ -7,6 +7,7 @@ $(document).ready(()=> {
 const mainHome = () => {
 	console.log("mainHome 함수 실행: 동적 콘텐츠 초기화 시작");
 }
+
 const refreshPage = () => {
 	// 2. 파라미터가 있다면 해당 페이지를 로드합니다.
 	const lastPage = sessionStorage.getItem('main_last_view');
