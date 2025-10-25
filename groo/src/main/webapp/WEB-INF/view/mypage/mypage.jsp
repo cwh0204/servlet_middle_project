@@ -2,10 +2,6 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <!DOCTYPE html>
-<html>
-<head>
-<%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
 <html style="overflow: hidden;">
 <head>
 <meta charset="UTF-8">
@@ -19,12 +15,6 @@
 <script src="js/adminComponent.js"></script>
 <style>
 
- body {
-	min-width: 1080px;
-} 
- .admin_container {
-	height: calc(100% - 70px);
-}
 .a_r_container {
 	width: calc(100% - 260px);
 	height: 100%;

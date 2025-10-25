@@ -9,8 +9,10 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/userDetail.js"></script>
 <link rel="stylesheet" href="css/userdetail.css">
+<link rel="stylesheet" href="css/base.css">
 </head>
-<body> <!-- onload="checkPassword()" -->
+<body>
+<%@ include file="../frontComponents/mainheader.jsp"%>
 	<div class="real">
       <div class="container">
          <div class="left-section">
