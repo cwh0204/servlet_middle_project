@@ -33,8 +33,9 @@ public class LoginController extends HttpServlet implements Controller {
 
 
 		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setUserId(userId);
-		memberDTO.setPassword(password);
+		/*
+		 * memberDTO.setUserId(userId); memberDTO.setPassword(password);
+		 */
 
 		try {
 			MemberServiceImpl serviceImpl = new MemberServiceImpl();
@@ -43,7 +44,7 @@ public class LoginController extends HttpServlet implements Controller {
 
 			if (reMemberDTO != null) {
 				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("userId", reMemberDTO.getUserId());
+				/* httpSession.setAttribute("userId", reMemberDTO.getUserId()); */
 //					System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 				response.sendRedirect("main.do");
 			} else {

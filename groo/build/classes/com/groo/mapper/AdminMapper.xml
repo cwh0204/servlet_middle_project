@@ -186,4 +186,49 @@
 			COUNT(CASE WHEN TRUNC(REPORT_DATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS pending_report
 		FROM REPORT
 	</select>
+	<select id="adminReportProcessUserSerch" parameterType="com.groo.model.AdminReportDTO" resultType="com.groo.model.AdminReportDTO">
+	
+		SELECT
+			C.REPORT_ID AS REPORT_ID,
+			D.MEM_LOGIN_ID AS MEM_REPORTER,
+			A.MEM_LOGIN_ID AS MEM_SUSPECT,
+			CASE WHEN C.COMENT_ID IS NULL THEN C.BOARD_ID
+				 ELSE C.COMENT_ID
+			END AS REPORT_BOARD,
+			C.REPORT_CONTENT,
+			C.ACTION_CONTENT,
+			C.ACTION_DATE,
+			C.ENDACTION_DATE,
+			C.REPORT_DATE
+			FROM MEMBER A
+			INNER JOIN BOARD B ON A.MEM_ID = B.MEM_ID
+			INNER JOIN REPORT C ON C.BOARD_ID = B.BOARD_ID
+			INNER JOIN MEMBER D ON C.MEM_ID = D.MEM_ID
+		<where>
+			AND C.ACTION_CONTENT IS NOT NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		        <if test="reportId != null and reportId != ''">
+		            OR C.REPORT_ID LIKE '%' || #{reportId} || '%'
+		        </if>
+		        <if test="memReporter != null and memReporter != ''">
+		            OR D.MEM_LOGIN_ID LIKE '%' || #{memReporter} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.COMENT_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+ 		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.BOARD_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+	        	<if test="memSuspect != null and memSuspect != ''">
+		            OR A.MEM_LOGIN_ID LIKE '%' || #{memSuspect} || '%'
+		        </if>
+		        <if test="actionContent != null and actionContent != ''">
+		            OR C.ACTION_CONTENT LIKE '%' || #{actionContent} || '%'
+		        </if>
+		        <if test="reportContent != null and reportContent != ''">
+		            OR C.REPORT_CONTENT LIKE '%' || #{memReporter} || '%'
+		        </if>
+	        </trim>
+        </where>
+	</select>
 </mapper>

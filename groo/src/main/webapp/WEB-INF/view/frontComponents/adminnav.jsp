@@ -30,8 +30,8 @@
 					<div class="submenu-item" data-page="adminuserreport.do">
 						<span>신고 유저 관리</span>
 					</div>
-					<div class="submenu-item" data-page="adminuserBan.do">
-						<span>유저 제제 내역</span>
+					<div class="submenu-item" data-page="adminuserreportprocess.do">
+						<span>유저 제재 내역</span>
 					</div>
 				</div>
 			</div>

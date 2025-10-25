@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.groo.controller.AdminAvgReportController;
 import com.groo.controller.AdminInsertUserController;
+import com.groo.controller.AdminReportProcessUserSerchController;
 import com.groo.controller.AdminReportSerchController;
 import com.groo.controller.AdminSelectSearchUserController;
 import com.groo.controller.AdminSelectUserAllController;
@@ -66,6 +67,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminselectsearchuser.do", new AdminSelectSearchUserController());
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
+        controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
     }
 
     public Controller getControllers(String command) {

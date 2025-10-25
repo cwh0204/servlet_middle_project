@@ -225,4 +225,30 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return report;
 	}
+	/**
+	 * 신고 정보 통계 조회하는 서비스 메서드입니다.
+	 *
+	 * @param 신고완료 조회 목록을 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @return 신고완료 조회를 목록 처리 결과
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report) {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<AdminReportDTO> reportList = new ArrayList<>();
+		
+		try {
+			reportList = dao.adminReportProcessUserSerch(report,session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return reportList;
+	}
 }

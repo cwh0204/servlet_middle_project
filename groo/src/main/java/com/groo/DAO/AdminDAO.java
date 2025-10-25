@@ -20,4 +20,6 @@ public interface AdminDAO {
 	public AdminAvgReportDTO adminStatsReport(SqlSession session);
 	
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session);
+	
+	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
 }
