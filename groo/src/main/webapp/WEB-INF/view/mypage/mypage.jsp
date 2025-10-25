@@ -27,7 +27,6 @@
 </style>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <body>
-	<%@ include file="../frontComponents/mainheader.jsp"%>
 	<div class="flex_container full_w_h mypage_container">
  		<%@ include file="../frontComponents/mypagenav.jsp"%>
 		<div class="a_r_container">

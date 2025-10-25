@@ -10,7 +10,7 @@
 
 <body>
 	<%@ include file="../frontComponents/boardlistheader.jsp"%>
-	<%@ include file="../frontComponents/boardlistnav.jsp"%>
+	<%@ include file="boardlistnav.jsp"%>
 	<main>
 	 <%@ include file="./boardnotice.jsp" %>
 	</main>

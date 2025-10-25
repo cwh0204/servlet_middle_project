@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="boardlistnav.jsp"%>
 
-	<main>
- 		<%@ include file="./boardgesi.jsp" %>
-	</main>
 </body>
 </html>

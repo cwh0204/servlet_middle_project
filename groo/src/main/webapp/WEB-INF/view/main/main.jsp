@@ -19,9 +19,9 @@
 	
 </head>
 <body>
-	<%@ include file="../frontComponents/mainheader.jsp"%>
+	<%@ include file="mainheader.jsp"%>
 	<main>
-		<%@ include file="./mainhome.jsp"%>
+		<%@ include file="mainhome.jsp"%>
 	</main>
 </body>
 </html>
