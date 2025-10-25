@@ -6,8 +6,6 @@ $(document).ready(()=> {
 
 const mainHome = () => {
 	console.log("mainHome 함수 실행: 동적 콘텐츠 초기화 시작");
-	const main = sessionStorage.getItem('main_last_view');
-	console.log("main",main);
 }
 
 const refreshPage = () => {
@@ -20,15 +18,20 @@ const refreshPage = () => {
 	    	lastPage,
 	        function(response, status, xhr) {
 	            if (status === "success") {
+					mainHome();
 	                // 기존 active 클래스 제거 (필수)
 	                $('.menu-item-content').removeClass('active');
+	                // 3. ⭐ 템플릿 리터럴을 사용하여 메뉴 항목을 활성화합니다.
+	                // data-page 값이 일치하는 모든 요소에 active 클래스를 추가합니다.
+	                
 	                $('[data-page="' + lastPage + '"]').addClass('active');
-	            } 
+	            } else {
+	                console.error("새로고침 시 페이지 로드 실패");
+	            }
 	        }
 	    );
 	}
 }
-
 const mainHeder = () => {
 	$('.menu-item-content').on('click', function() {// 모든 active 클래스 제거
 			$('.menu-item-content').removeClass('active');
@@ -39,9 +42,8 @@ const mainHeder = () => {
 			sessionStorage.setItem('main_last_view', pageToLoad);
 			console.log(pageToLoad);
 			$('main').load(pageToLoad, function(response, status, xhr) {
-				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다.
-				 window.initializeStudyFeatures();
-
+				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
+					window.initializeStudyFeatures();
 				} else {
 					console.error("페이지 로드 실패");
 				}
@@ -59,6 +61,7 @@ const mainHeder = () => {
 				console.log(pageToLoad);
 				$('main').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
+						window.initializeStudyFeatures();
 					} else {
 						console.error("페이지 로드 실패");
 					}
