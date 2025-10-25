@@ -2,15 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/signup.css" rel="stylesheet">
-<link href="css/progress.css" rel="stylesheet">
-<link href="css/base.css" rel="stylesheet">
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="js/signUp.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="css/signup.css" rel="stylesheet">
+<link href="css/progress.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title></title>
 </head>

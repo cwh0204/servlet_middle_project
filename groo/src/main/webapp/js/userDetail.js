@@ -167,9 +167,3 @@ $(function(){ //document.ready(() => { })
 	   msg.textContent = '';
 
    }
-
-   
- 
-
-   
-   

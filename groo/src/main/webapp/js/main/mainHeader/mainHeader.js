@@ -28,6 +28,7 @@ const refreshPage = () => {
 	    );
 	}
 }
+
 const mainHeder = () => {
 	$('.menu-item-content').on('click', function() {// 모든 active 클래스 제거
 			$('.menu-item-content').removeClass('active');
@@ -40,6 +41,7 @@ const mainHeder = () => {
 			$('main').load(pageToLoad, function(response, status, xhr) {
 				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다.
 				 window.initializeStudyFeatures();
+
 				} else {
 					console.error("페이지 로드 실패");
 				}
