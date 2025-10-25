@@ -20,8 +20,8 @@
 </head>
 <body>
 	<%@ include file="mainheader.jsp"%>
-	<main>
+	<div id="contentArea">
 		<%@ include file="mainhome.jsp"%>
-	</main>
+	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+s<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="boardlistnav.jsp"%>
+<%-- 	<%@ include file="boardlistnav.jsp"%> --%>
+	<%@ include file="boardfree.jsp" %>
 	<main>
- 		<%@ include file="./boardgesi.jsp" %>
 	</main>
 </body>
 </html>

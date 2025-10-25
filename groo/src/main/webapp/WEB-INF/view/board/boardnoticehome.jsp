@@ -16,7 +16,7 @@
 <style>
 </style>
 <body>
-	<%@ include file="boardlistnav.jsp"%>
 	<%@ include file="boardnotice.jsp" %>
+	<%@ include file="boardlistnav.jsp"%>
 </body>
 </html>

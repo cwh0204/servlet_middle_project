@@ -14,7 +14,7 @@ const refreshPage = () => {
 	console.log("lastPage",lastPage);
 	if (lastPage) {
 	    // 2. 해당 페이지를 로드합니다.
-	    $('main').load(
+	    $('#contentArea').load(
 	    	lastPage,
 	        function(response, status, xhr) {
 	            if (status === "success") {
@@ -41,7 +41,7 @@ const mainHeder = () => {
 			// 페이지 정보를 Session Storage에 저장함
 			sessionStorage.setItem('main_last_view', pageToLoad);
 			console.log(pageToLoad);
-			$('main').load(pageToLoad, function(response, status, xhr) {
+			$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 					window.initializeStudyFeatures();
 				} else {
@@ -59,7 +59,7 @@ const mainHeder = () => {
 				// 페이지 정보를 Session Storage에 저장함
 				sessionStorage.setItem('main_last_view', pageToLoad);
 				console.log(pageToLoad);
-				$('main').load(pageToLoad, function(response, status, xhr) {
+				$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 						window.initializeStudyFeatures();
 					} else {
