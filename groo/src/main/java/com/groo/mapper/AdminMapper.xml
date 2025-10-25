@@ -140,7 +140,7 @@
 		FROM MEMBER
 	</select>
 	
-	<select id="adminReportSerch" resultType="com.groo.model.AdminReportDTO">
+	<select id="adminReportSerch" parameterType="com.groo.model.AdminReportDTO" resultType="com.groo.model.AdminReportDTO">
 		SELECT
 			C.REPORT_ID AS REPORT_ID,
 			D.MEM_LOGIN_ID AS MEM_REPORTER,
@@ -177,5 +177,13 @@
 		        </if>
 	        </trim>
         </where>
+	</select>
+	<select id="adminAvgReport" resultType="com.groo.model.AdminAvgReportDTO">
+		SELECT 
+			COUNT(*) AS total_report,
+			COUNT(CASE WHEN ACTION_CONTENT IS NOT NULL THEN 1 ELSE NULL END) AS resolver_report,
+			COUNT(CASE WHEN ACTION_CONTENT IS NULL THEN 1 ELSE NULL END) AS new_report,
+			COUNT(CASE WHEN TRUNC(REPORT_DATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS pending_report
+		FROM REPORT
 	</select>
 </mapper>

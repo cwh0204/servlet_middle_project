@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
+import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.MemberDTO;
@@ -151,8 +152,27 @@ public class AdminDAOImpl implements AdminDAO {
 			reportList = session.selectList("adminReportSerch", report);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new InternalDataAccessException("DAO:adminReportDTO 예외발생",e);
+			throw new InternalDataAccessException("DAO:adminReportSerch 예외발생",e);
 		}
 		return reportList;
+	}
+	
+	/**
+	 * 신고정보 통계 검색을 위한 메서드
+	 * @param report 신고 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 신고 정보 조회 처리 결과
+	 */
+	@Override
+	public AdminAvgReportDTO adminStatsReport(SqlSession session) {
+		AdminAvgReportDTO report = new AdminAvgReportDTO();
+		
+		try {
+			report = session.selectOne("adminAvgReport");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminStatsReport 예외발생",e);
+		}
+		return report;
 	}
 }

@@ -2,6 +2,7 @@ package com.groo.service;
 
 import java.util.List;
 
+import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.MemberDTO;
@@ -15,4 +16,6 @@ public interface AdminService {
 	public AdminStatsDTO adminStatsUser();
 	
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report);
+	
+	public AdminAvgReportDTO adminStatsReport();
 }

@@ -21,12 +21,6 @@
 			<button class="btn btn-secondary" onclick="exportData()">
 				<span></span> 내보내기
 			</button>
-			<button class="btn btn-primary" onclick="userCheckInsert()">
-				<span>*</span> 저장
-			</button>
-			<button type="button" class="btn btn-primary none"
-				data-bs-toggle="modal" data-bs-target="#exampleModal">Launch
-				demo modal</button>
 		</div>
 	</div>
 	<div class="stats-row">
@@ -51,7 +45,7 @@
 				<span class="stat-label">신규 신고</span>
 				<div class="stat-icon yellow"></div>
 			</div>
-			<div class="stat-value weekly-signups">48</div>
+			<div class="stat-value weekly-signups">0</div>
 			<div class="stat-change up">↑ 이번 주</div>
 		</div>
 		<div class="stat-card">
@@ -59,7 +53,7 @@
 				<span class="stat-label">미처리 신고</span>
 				<div class="stat-icon red"></div>
 			</div>
-			<div class="stat-value active-member">128</div>
+			<div class="stat-value active-member">0</div>
 			<div class="stat-change down">↓ 전월 대비 -5%</div>
 		</div>
 	</div>
@@ -78,25 +72,6 @@
 	<!-- Modal -->
 	<div class="card-content">
 		<div id="reportUsergrid"></div>
-	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">중복된 데이터를
-						사용하는 유저가 있습니다</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body check-date">...</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
 	</div>
 </body>
 <script type="text/javascript">
@@ -149,6 +124,31 @@ $(document).ready(function() {
 	    }
 	}
 	
+	var avgReport = () => {
+		$.ajax({
+			// 데이터를 전송할 서버 URL
+			url: 'adminavgreport.do',
+			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+			type: 'POST',
+			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+			data: {
+			},
+			// 데이터 전송 성공 시 실행
+			success: function(response) {
+				// response는 서버에서 돌려준 데이터입니다.
+				console.log(response);
+				$('.total-member').text(response.totalReport);
+				$('.inactive-member').text(response.resolverReport);
+				$('.weekly-signups').text(response.newReport);
+				$('.active-member').text(response.pendingReport);
+			},
+
+			// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+			error: function(xhr, status, error) {
+			}
+		});
+	}
+	avgReport();
 	var resetReportGridData = () => {
 		
 		$.ajax({
