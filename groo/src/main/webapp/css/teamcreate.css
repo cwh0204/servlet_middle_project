@@ -351,7 +351,7 @@ main.showContent h3, main.showContent .category_container {
    opacity: 1;
 }
 
-/* 라디오 버튼 커스텀 스타일 */
+/* 개설 스터디 분야 */
 .radio_group input[type="radio"] {
   display: none;
 }
@@ -360,9 +360,9 @@ main.showContent h3, main.showContent .category_container {
   display: inline-block;
   padding: 8px 18px;
   margin: 6px;
-  border-radius: 25px; /* 타원형 */
-  background-color: #b8e986; /* 연두색 */
-  color: white; /* 글씨 흰색 */
+  border-radius: 25px; 
+  background-color: #b8e986; 
+  color: white; 
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.25s ease, transform 0.15s ease;
@@ -375,3 +375,41 @@ main.showContent h3, main.showContent .category_container {
 .radio_group input[type="radio"]:checked + label {
   background-color: #28a745; /* 클릭 시 초록색 */
 }
+
+/*지역*/
+.region-table {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.region-table caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.region-table td {
+  padding: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* 마우스 올릴 때 */
+.region-table td:hover {
+  background-color: #f2f2f2;
+}
+
+/* 선택된 셀 */
+.region-table td.selected {
+  background-color: #e0e0e0; /* 클릭 시 연회색 */
+  font-weight: 600;
+}
+
+
