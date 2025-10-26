@@ -7,6 +7,7 @@ header {
 	position: sticky;
 	top: 0;
 	font-family: 'normal';
+	z-index: 1000;
 }
 
 .flex_container.heder_container {

@@ -6,14 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/main/main.css">
+<script src="js/main/main.js"></script>
 </head>
 <body>
 	<%@ include file="search.jsp"%>
-
-	<h1 sytle="min-width:1200px">🔥 핫스터디 목록</h1>
 	
+	<h1>🔥 핫스터디 목록</h1>
+
 	<div class="hot-study-list">
-		<div class="hot-study-card" data-hot-study-id="1">
+
+		<div class="hot-study-card" data-hot-study-id="1"
+			data-link-url="detail.jsp?id=1">
 			<img src="images/hotstudy1.png" alt="핫스터디 리액트 이미지"
 				class="hot-study-image">
 			<div class="hot-study-tags">
@@ -35,10 +38,10 @@
 				</p>
 			</div>
 			<div class="hot-study-progress">✅ 모집 중! 마감 임박</div>
-			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
 
-		<div class="hot-study-card" data-hot-study-id="2">
+		<div class="hot-study-card" data-hot-study-id="2"
+			data-link-url="detail.jsp?id=2">
 			<img src="images/hotstudy2.png" alt="핫스터디 스프링 부트 이미지"
 				class="hot-study-image">
 			<div class="hot-study-tags">
@@ -61,10 +64,10 @@
 			</div>
 			<div class="hot-study-progress" style="color: #F44336;">❌ 마감
 				완료! 다음 기수 대기</div>
-			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
 
-		<div class="hot-study-card" data-hot-study-id="3">
+		<div class="hot-study-card" data-hot-study-id="3"
+			data-link-url="detail.jsp?id=3">
 			<img src="images/hotstudy3.png" alt="핫스터디 영어 회화 이미지"
 				class="hot-study-image">
 			<div class="hot-study-tags">
@@ -86,10 +89,10 @@
 				</p>
 			</div>
 			<div class="hot-study-progress">✅ 모집 중!</div>
-			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
 
-		<div class="hot-study-card" data-hot-study-id="4">
+		<div class="hot-study-card" data-hot-study-id="4"
+			data-link-url="detail.jsp?id=4">
 			<img src="images/hotstudy4.png" alt="핫스터디 데이터 분석 이미지"
 				class="hot-study-image">
 			<div class="hot-study-tags">
@@ -111,10 +114,10 @@
 				</p>
 			</div>
 			<div class="hot-study-progress">✅ 모집 중! 늦기 전에 신청하세요</div>
-			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
 
-		<div class="hot-study-card" data-hot-study-id="5">
+		<div class="hot-study-card" data-hot-study-id="5"
+			data-link-url="detail.jsp?id=5">
 			<img src="images/hotstudy5.png" alt="핫스터디 UX/UI 디자인 이미지"
 				class="hot-study-image">
 			<div class="hot-study-tags">
@@ -136,8 +139,83 @@
 				</p>
 			</div>
 			<div class="hot-study-progress">✅ 자리 여유 있음! 부담 없이 신청하세요</div>
-			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
+
+		<div class="hot-study-card" data-hot-study-id="6"
+			data-link-url="detail.jsp?id=6">
+			<img src="images/hotstudy6.png" alt="핫스터디 알고리즘 이미지"
+				class="hot-study-image">
+			<div class="hot-study-tags">
+				<span class="hot-study-tag">#코딩테스트</span> <span
+					class="hot-study-tag">#알고리즘</span> <span class="hot-study-tag">#평일저녁</span>
+			</div>
+			<h3>백준 문제 풀이 (Java/Python)</h3>
+			<p class="hot-study-description">주요 기업 코딩 테스트 대비를 위한 주 3회 알고리즘
+				스터디입니다.</p>
+			<div class="hot-study-info">
+				<p>
+					<strong>지역:</strong> 온라인 (Gather Town)
+				</p>
+				<p>
+					<strong>모집 인원:</strong> 6/8명
+				</p>
+				<p>
+					<strong>기간:</strong> 12주 심화
+				</p>
+			</div>
+			<div class="hot-study-progress">✅ 모집 중! 2자리 남음</div>
+		</div>
+
+		<div class="hot-study-card" data-hot-study-id="7"
+			data-link-url="detail.jsp?id=7">
+			<img src="images/hotstudy7.png" alt="핫스터디 마케팅 기획 이미지"
+				class="hot-study-image">
+			<div class="hot-study-tags">
+				<span class="hot-study-tag">#마케팅</span> <span class="hot-study-tag">#기획</span>
+				<span class="hot-study-tag">#포트폴리오</span>
+			</div>
+			<h3>실전 서비스 마케팅 전략 수립</h3>
+			<p class="hot-study-description">가상의 서비스를 기획하고 A/B 테스트 및 성과 분석을
+				진행합니다.</p>
+			<div class="hot-study-info">
+				<p>
+					<strong>지역:</strong> 오프라인 (서울 홍대)
+				</p>
+				<p>
+					<strong>모집 인원:</strong> 4/4명
+				</p>
+				<p>
+					<strong>기간:</strong> 7주 과정
+				</p>
+			</div>
+			<div class="hot-study-progress" style="color: #F44336;">❌ 모집 완료</div>
+		</div>
+
+		<div class="hot-study-card" data-hot-study-id="8"
+			data-link-url="detail.jsp?id=8">
+			<img src="images/hotstudy8.png" alt="핫스터디 독서 교양 이미지"
+				class="hot-study-image">
+			<div class="hot-study-tags">
+				<span class="hot-study-tag">#독서</span> <span class="hot-study-tag">#인문학</span>
+				<span class="hot-study-tag">#주말오전</span>
+			</div>
+			<h3>고전 읽기 토론 및 발제 스터디</h3>
+			<p class="hot-study-description">매주 한 권씩 고전 인문학 도서를 읽고 심도 있는 토론을
+				진행합니다.</p>
+			<div class="hot-study-info">
+				<p>
+					<strong>지역:</strong> 온라인 (Discord)
+				</p>
+				<p>
+					<strong>모집 인원:</strong> 3/6명
+				</p>
+				<p>
+					<strong>기간:</strong> 15주
+				</p>
+			</div>
+			<div class="hot-study-progress">✅ 모집 중!</div>
+		</div>
+
 	</div>
 
 </body>
