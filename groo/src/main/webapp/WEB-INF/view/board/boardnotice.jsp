@@ -8,10 +8,7 @@
 <link href="css/base.css" rel="stylesheet">
 </head>
 <body>
-<body>
-
-	<div class="boardlist" style="width: 1300px; margin-left: auto; margin-right: 6%; margin-top: -100px;">
-        
+<body>        
 	<table class="table table-hover">
             <thead class="table-light">
                 <tr>
@@ -122,7 +119,7 @@
         </table>
         
         
-        </div>
+      <!--   </div>
         <nav aria-label="Page navigation example" 
      class="mt-4"
      style="width: 1300px; margin-left: auto; margin-right: auto; margin-top: -20px;"> <ul class="pagination justify-content-center">
@@ -140,7 +137,7 @@
       </a>
     </li>
   </ul>
-</nav> 
+</nav>  -->
 
 </body>
 </body>
