@@ -27,7 +27,6 @@
 .hot-study-card h3 {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	color: #4CAF50; /* 메인 초록색 타이틀 컬러 */
 }
 
 .hot-study-image {
@@ -77,4 +76,9 @@
 	text-decoration: none;
 	border-radius: 4px;
 	font-weight: bold;
+}
+
+.hot-study-link:hover {
+    background-color: #4CAF50; /* 호버 시 배경색 고정 (이전 요청) */
+    color: white; /* 호버 시 텍스트 색상을 흰색으로 고정 (이번 요청) */
 }

@@ -10,14 +10,12 @@
 <body>
 	<%@ include file="search.jsp"%>
 
-	<h1>🔥 핫스터디 목록</h1>
-
+	<h1 sytle="min-width:1200px">🔥 핫스터디 목록</h1>
+	
 	<div class="hot-study-list">
-
 		<div class="hot-study-card" data-hot-study-id="1">
-			<img
-				src="images/hotstudy1.png"
-				alt="핫스터디 리액트 이미지" class="hot-study-image">
+			<img src="images/hotstudy1.png" alt="핫스터디 리액트 이미지"
+				class="hot-study-image">
 			<div class="hot-study-tags">
 				<span class="hot-study-tag">#프론트엔드</span> <span
 					class="hot-study-tag">#온라인</span> <span class="hot-study-tag">#주2회</span>
@@ -41,9 +39,8 @@
 		</div>
 
 		<div class="hot-study-card" data-hot-study-id="2">
-			<img
-				src="images/hotstudy2.png"
-				alt="핫스터디 스프링 부트 이미지" class="hot-study-image">
+			<img src="images/hotstudy2.png" alt="핫스터디 스프링 부트 이미지"
+				class="hot-study-image">
 			<div class="hot-study-tags">
 				<span class="hot-study-tag">#백엔드</span> <span class="hot-study-tag">#오프라인</span>
 				<span class="hot-study-tag">#평일저녁</span>
@@ -62,14 +59,14 @@
 					<strong>기간:</strong> 6주 과정
 				</p>
 			</div>
-			<div class="hot-study-progress" style="color: #F44336;">❌ 마감 완료! 다음 기수 대기</div>
+			<div class="hot-study-progress" style="color: #F44336;">❌ 마감
+				완료! 다음 기수 대기</div>
 			<a href="#" class="hot-study-link">자세히 보기</a>
 		</div>
 
 		<div class="hot-study-card" data-hot-study-id="3">
-			<img
-				src="images/hotstudy3.png"
-				alt="핫스터디 영어 회화 이미지" class="hot-study-image">
+			<img src="images/hotstudy3.png" alt="핫스터디 영어 회화 이미지"
+				class="hot-study-image">
 			<div class="hot-study-tags">
 				<span class="hot-study-tag">#외국어</span> <span class="hot-study-tag">#영어회화</span>
 				<span class="hot-study-tag">#주말</span>
@@ -93,9 +90,8 @@
 		</div>
 
 		<div class="hot-study-card" data-hot-study-id="4">
-			<img
-				src="images/hotstudy4.png"
-				alt="핫스터디 데이터 분석 이미지" class="hot-study-image">
+			<img src="images/hotstudy4.png" alt="핫스터디 데이터 분석 이미지"
+				class="hot-study-image">
 			<div class="hot-study-tags">
 				<span class="hot-study-tag">#자격증</span> <span class="hot-study-tag">#데이터분석</span>
 				<span class="hot-study-tag">#파이썬</span>
@@ -119,9 +115,8 @@
 		</div>
 
 		<div class="hot-study-card" data-hot-study-id="5">
-			<img
-				src="images/hotstudy5.png"
-				alt="핫스터디 UX/UI 디자인 이미지" class="hot-study-image">
+			<img src="images/hotstudy5.png" alt="핫스터디 UX/UI 디자인 이미지"
+				class="hot-study-image">
 			<div class="hot-study-tags">
 				<span class="hot-study-tag">#디자인</span> <span class="hot-study-tag">#UX/UI</span>
 				<span class="hot-study-tag">#포트폴리오</span>
