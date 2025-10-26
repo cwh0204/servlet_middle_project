@@ -1,10 +1,53 @@
 .hot-study-slider-area {
     width: 1200px; 
     margin: 20px auto; 
+    position: relative; /* 자식 요소(링크)의 절대 위치 기준점 */
+    padding: 0 30px; 
+    box-sizing: border-box; 
+}
+
+/* ⭐ 수정: 제목 컨테이너는 이제 제목만 중앙에 배치 */
+.hot-study-header {
+    width: 1140px; 
+    margin: 0 auto 20px auto; 
+    display: flex;
+    justify-content: center; /* 제목을 중앙에 배치 */
+    align-items: center; 
+}
+
+/* 제목 크기 유지 */
+.hot-study-header h1 {
+    /* text-align: left; 제거 */ 
+    margin: 0; 
+    font-size: 2.5em; 
+    color: #333; 
+}
+
+/* ⭐ 수정: 링크를 hot-study-slider-area 기준 우측 상단에 배치 */
+.view-more-link {
+    position: absolute; /* 부모(hot-study-slider-area) 기준 절대 위치 */
+    top: 30px; /* 상단에서 띄움 */
+    right: 30px; /* 우측 패딩 끝에 맞춤 (hot-study-slider-area의 padding: 0 30px;) */
+    color: #4CAF50; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em; 
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.view-more-link:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.hot-study-slider-area {
+    width: 1200px; 
+    margin: 20px auto; 
     position: relative;
     padding: 0 30px; 
     box-sizing: border-box; 
-    /* ⭐ 수정: 테두리, 둥근 모서리, 그림자 스타일 제거됨 */
 }
 
 .hot-study-list {
@@ -29,7 +72,6 @@
     min-width: 1140px; 
     width: 1140px; 
     box-sizing: border-box;
-    /* 슬라이드 간 간격 (60px) 유지 */
     margin-right: 60px; 
 }
 
@@ -40,7 +82,6 @@
 	padding: 15px;
 	width: 360px; 
 	box-shadow: 2px 2px 8px rgba(76, 175, 80, 0.2); 
-	/* 카드 모서리 둥글기 유지 */
 	border-radius: 16px; 
 	overflow: hidden;
 	display: flex;
@@ -48,6 +89,7 @@
 	transition: transform 0.2s;
     cursor: pointer; 
     flex-shrink: 0;
+    position: relative;
 }
 
 .hot-study-card:hover {
@@ -65,7 +107,6 @@
 	width: 100%;
 	height: 200px; 
 	object-fit: cover;
-	/* 이미지 모서리 둥글기 유지 */
 	border-radius: 12px; 
 	margin-bottom: 10px;
 }
@@ -94,11 +135,29 @@
 	margin-bottom: 5px;
 }
 
+/* 모집 현황 및 좋아요 버튼을 감싸는 컨테이너 */
 .hot-study-progress {
 	margin-top: 10px;
 	font-weight: bold;
-	color: #4CAF50; 
 	padding-bottom: 5px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* ⭐ 새로 추가: 모집 현황 텍스트 스타일 */
+.hot-study-status {
+    color: #4CAF50; /* 기본 녹색 */
+}
+
+/* ⭐ 새로 추가: 좋아요 수 표시 스타일 (빨간색 하트 유지) */
+.hot-study-likes-count {
+    color: #F44336; 
+    font-size: 0.9em;
+    font-weight: normal; 
+    display: flex;
+    align-items: center;
+    gap: 5px; 
 }
 
 .hot-study-link {
