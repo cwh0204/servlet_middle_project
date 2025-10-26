@@ -113,7 +113,7 @@ a#dropdownMenuLink {
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
-				<div class="menu-item-content" data-page="boardnoticehome.do">공지사항</div>
+				<div class="menu-item-content" data-page="boardnotice.do">공지사항</div>
 				<div class="menu-item-content" data-page="createteam.do">팀</div>
 				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
 				<div class="menu-item-content" data-page="boardfreehome.do">자유게시판</div>

@@ -34,10 +34,10 @@ public class FrontPath {
         jspMap.put("/admindisableuser.do", "/WEB-INF/view/admin/admindisableuser.jsp");
         jspMap.put("/adminuserreportprocess.do", "/WEB-INF/view/admin/adminuserreportprocess.jsp");
         
-        jspMap.put("/boardlist.do", "/WEB-INF/view/board/boardlist.jsp");
+        jspMap.put("/boardlist.do", "/WEB-INF/view/board/notice/boardlist.jsp");
         jspMap.put("/boardlisthome.do", "/WEB-INF/view/board/boardlisthome.jsp");
         jspMap.put("/boardfreehome.do", "/WEB-INF/view/board/boardfreehome.jsp");
-        jspMap.put("/boardnoticehome.do", "/WEB-INF/view/board/boardnoticehome.jsp");
+        jspMap.put("/boardnotice.do", "/WEB-INF/view/board/notice/boardnotice.jsp");
 
         jspMap.put("/boardgesihome.do", "/WEB-INF/view/board/boardgesihome.jsp");
 

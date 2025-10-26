@@ -12,11 +12,11 @@
 
 </style>
 <body>
-	<%@ include file="search.jsp"%>
+	<%@ include file="../search.jsp"%>
 	<div class=boardcontainer>
-		<%@ include file="boardlistnav.jsp"%>
+		<%@ include file="../boardlistnav.jsp"%>
 		<div class="boardcotent"></div>
-		<%@ include file="boardnotice.jsp"%>
+		<%@ include file="boardnoticehome.jsp"%>
 	</div>
 </body>
 </html>
