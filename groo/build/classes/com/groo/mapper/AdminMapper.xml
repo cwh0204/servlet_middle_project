@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminMapper">
+	<select id="adminSelectUserAll"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
+		SELECT
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
+		FROM MEMBER
+		WHERE MEM_STATUS = #{memStatus}
+	</select>
+
+	<select id="adminSelectUserInsertCheck"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
+		SELECT
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
+		FROM MEMBER
+		WHERE MEM_LOGIN_ID =
+		#{memLoginId} OR MEM_NICK = #{memNick}
+		OR MEM_PHONE = #{memPhone} OR
+		MEM_EMAIL = #{memEmail}
+	</select>
+	<select id="adminSelectSearchUser"
+		parameterType="com.groo.model.MemberDTO"
+		resultType="com.groo.model.MemberDTO">
+		SELECT
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR,
+		MEM_STATUS
+		FROM MEMBER
+		<where>
+			AND MEM_STATUS = #{memStatus}
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="memLoginId != null and memLoginId != ''">
+					OR MEM_LOGIN_ID LIKE '%' || #{memLoginId} || '%'
+				</if>
+				<if test="memName != null and memName != ''">
+					OR MEM_NAME LIKE '%' || #{memName} || '%'
+				</if>
+				<if test="memNick != null and memNick != ''">
+					OR MEM_NICK LIKE '%' || #{memNick} || '%'
+				</if>
+				<if test="memPass != null and memPass != ''">
+					OR MEM_PASS LIKE '%' || #{memPass} || '%'
+				</if>
+				<if test="memEmail != null and memEmail != ''">
+					OR MEM_EMAIL LIKE '%' || #{memEmail} || '%'
+				</if>
+				<if test="memPhone != null and memPhone != ''">
+					OR MEM_PHONE LIKE '%' || #{memPhone} || '%'
+				</if>
+				<if test="memAddr != null and memAddr != ''">
+					OR MEM_ADDR LIKE '%' || #{memAddr} || '%'
+				</if>
+			</trim>
+		</where>
+	</select>
+	<insert id="adminInsertUser"
+		parameterType="com.groo.model.MemberDTO">
+		<selectKey keyProperty="memId" resultType="String"
+			order="BEFORE">
+			SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MEMBER
+		(
+		MEM_ID,
+		MEM_LOGIN_ID,
+		MEM_NAME,
+		MEM_PASS,
+		MEM_NICK,
+		MEM_EMAIL,
+		MEM_PHONE,
+		MEM_ADDR
+		)
+		VALUES
+		(
+		#{memId},
+		#{memLoginId},
+		#{memName},
+		#{memPass},
+		#{memNick},
+		#{memEmail},
+		#{memPhone},
+		#{memAddr}
+		)
+	</insert>
+	<update id="adminUpdateUser"
+		parameterType="com.groo.model.MemberDTO">
+		UPDATE MEMBER
+		SET
+		MEM_NAME = #{memName},
+		MEM_PASS =
+		#{memPass},
+		MEM_NICK = #{memNick},
+		MEM_EMAIL = #{memEmail},
+		MEM_PHONE =
+		#{memPhone},
+		MEM_ADDR = #{memAddr},
+		MEM_STATUS = #{memStatus}
+		WHERE
+		MEM_LOGIN_ID = #{memLoginId}
+	</update>
+	<select id="adminAvgUser"
+		resultType="com.groo.model.AdminStatsDTO">
+		SELECT
+		COUNT(*) AS total_members,
+		COUNT(CASE WHEN MEM_STATUS
+		= 'Y' THEN 1 END) AS active_members,
+		COUNT(CASE WHEN MEM_STATUS = 'N'
+		THEN 1 END) AS inactive_members,
+		COUNT(
+		CASE
+		WHEN TRUNC(MEM_SIGNUP_DATE,
+		'IW') = TRUNC(SYSDATE, 'IW') THEN 1
+		ELSE NULL
+		END
+		) AS weekly_signups
+		FROM MEMBER
+	</select>
+	
+	<select id="adminReportSerch" parameterType="com.groo.model.AdminReportDTO" resultType="com.groo.model.AdminReportDTO">
+		SELECT
+			C.REPORT_ID AS REPORT_ID,
+			D.MEM_LOGIN_ID AS MEM_REPORTER,
+			A.MEM_LOGIN_ID AS MEM_SUSPECT,
+			CASE WHEN C.COMENT_ID IS NULL THEN C.BOARD_ID
+				 ELSE C.COMENT_ID
+			END AS REPORT_BOARD,
+			C.REPORT_CONTENT AS REPORT_CONTENT,
+			C.REPORT_DATE AS REREPORT_DATE
+		FROM MEMBER A
+		INNER JOIN BOARD B ON A.MEM_ID = B.MEM_ID
+		INNER JOIN REPORT C ON C.BOARD_ID = B.BOARD_ID
+		INNER JOIN MEMBER D ON C.MEM_ID = D.MEM_ID
+		<where>
+			AND ACTION_CONTENT IS NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		        <if test="reportId != null and reportId != ''">
+		            OR C.REPORT_ID LIKE '%' || #{reportId} || '%'
+		        </if>
+		        <if test="memReporter != null and memReporter != ''">
+		            OR D.MEM_LOGIN_ID LIKE '%' || #{memReporter} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.COMENT_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.BOARD_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+	        	<if test="memSuspect != null and memSuspect != ''">
+		            OR A.MEM_LOGIN_ID LIKE '%' || #{memSuspect} || '%'
+		        </if>
+		        <if test="reportContent != null and reportContent != ''">
+		            OR C.REPORT_CONTENT LIKE '%' || #{memReporter} || '%'
+		        </if>
+	        </trim>
+        </where>
+	</select>
+	<select id="adminAvgReport" resultType="com.groo.model.AdminAvgReportDTO">
+		SELECT 
+			COUNT(*) AS total_report,
+			COUNT(CASE WHEN ACTION_CONTENT IS NOT NULL THEN 1 ELSE NULL END) AS resolver_report,
+			COUNT(CASE WHEN ACTION_CONTENT IS NULL THEN 1 ELSE NULL END) AS new_report,
+			COUNT(CASE WHEN TRUNC(REPORT_DATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS pending_report
+		FROM REPORT
+	</select>
+	<select id="adminReportProcessUserSerch" parameterType="com.groo.model.AdminReportDTO" resultType="com.groo.model.AdminReportDTO">
+	
+		SELECT
+			C.REPORT_ID AS REPORT_ID,
+			D.MEM_LOGIN_ID AS MEM_REPORTER,
+			A.MEM_LOGIN_ID AS MEM_SUSPECT,
+			CASE WHEN C.COMENT_ID IS NULL THEN C.BOARD_ID
+				 ELSE C.COMENT_ID
+			END AS REPORT_BOARD,
+			C.REPORT_CONTENT,
+			C.ACTION_CONTENT,
+			C.ACTION_DATE,
+			C.ENDACTION_DATE,
+			C.REPORT_DATE
+			FROM MEMBER A
+			INNER JOIN BOARD B ON A.MEM_ID = B.MEM_ID
+			INNER JOIN REPORT C ON C.BOARD_ID = B.BOARD_ID
+			INNER JOIN MEMBER D ON C.MEM_ID = D.MEM_ID
+		<where>
+			AND C.ACTION_CONTENT IS NOT NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		        <if test="reportId != null and reportId != ''">
+		            OR C.REPORT_ID LIKE '%' || #{reportId} || '%'
+		        </if>
+		        <if test="memReporter != null and memReporter != ''">
+		            OR D.MEM_LOGIN_ID LIKE '%' || #{memReporter} || '%'
+		        </if>
+		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.COMENT_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+ 		        <if test="reportBoard != null and reportBoard != ''">
+		            OR C.BOARD_ID LIKE '%' || #{reportBoard} || '%'
+		        </if>
+	        	<if test="memSuspect != null and memSuspect != ''">
+		            OR A.MEM_LOGIN_ID LIKE '%' || #{memSuspect} || '%'
+		        </if>
+		        <if test="actionContent != null and actionContent != ''">
+		            OR C.ACTION_CONTENT LIKE '%' || #{actionContent} || '%'
+		        </if>
+		        <if test="reportContent != null and reportContent != ''">
+		            OR C.REPORT_CONTENT LIKE '%' || #{memReporter} || '%'
+		        </if>
+	        </trim>
+        </where>
+	</select>
+</mapper>

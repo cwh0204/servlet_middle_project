@@ -4,6 +4,8 @@
 <head>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/signup.css" rel="stylesheet">
+<link href="css/progress.css" rel="stylesheet">
+
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
@@ -40,9 +42,20 @@ section {
 	   border: none;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px; 
+  font-size: 50px; 
+}
+
+h5 {
+  margin-top: 20px;   
+}
+
 .termsBox {
   width: 100%;
   height: 200px;
+  margin-bottom: 15px;
   overflow-y: scroll;
   padding: 10px;
   resize: none;
@@ -52,33 +65,110 @@ section {
   background-color: #f9f9f9;
   box-sizing: border-box;
 }
+
+.btn {
+  width: 48%;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.btn-next {
+  background-color: #84d330;
+  color: white;
+}
+
+.btn-next:hover {
+  background-color: #1fb205;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #D5D5D5;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #BDBDBD;
+  color: white;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 </style>
 </head>
 <body>
+<div class="progress-container">
+  <div class="step active">
+    <div class="circle">1</div>
+    <div class="label">약관 동의</div>
+  </div>
+  <div class="step">
+    <div class="circle">2</div>
+    <div class="label">정보 입력</div>
+  </div>
+  <div class="step">
+    <div class="circle">3</div>
+    <div class="label">가입 완료</div>
+  </div>
+</div>
 <div class="section">
  <section>
-  <h2>Groo 서비스 이용 약관 동의</h2>
+  <h1>Groo</h1>
 
-  <form action="signuppage.do" method="get">
-    <h4>이용약관[필수]</h4>
-    <textarea class="termsBox" readonly>
+  <form action="signuppage.do" method="post">
+   <div>
+    <input type="checkbox" id="agreeAll">
+    <label for="agreeAll"><strong>모두 동의합니다.</strong></label>
+    <hr>
+  </div>
+    <h5>이용약관[필수]</h5>
+    <div class="termsBox">
+	  <jsp:include page="/WEB-INF/view/terms/terms.jsp" />
+    </div>
+    <input type="checkbox" id="termsAgree" name="termsAgree" required>
+    <label for="termsAgree">위 약관에 동의합니다.</label>
 
-    </textarea><br>
-    <input type="checkbox" name="termsAgree" required> 위 약관에 동의합니다
+    <h5>개인정보 수집 및 이용 동의[필수]</h5>
+    <div class="termsBox">
+      <jsp:include page="/WEB-INF/view/terms/privacy.jsp" />
+    </div>
+    <input type="checkbox" id="privacyAgree" name="privacyAgree" required> 
+    <label for="privacyAgree">개인정보 수집 및 이용에 동의합니다.</label>
 
-    <h4>개인정보 수집 및 이용 동의[필수]</h4>
-    <textarea class="termsBox" readonly>
-[개인정보 수집 및 이용 동의 내용 입력]
-    </textarea><br>
-    <input type="checkbox" name="privacyAgree" required> 개인정보 수집 및 이용에 동의합니다
-
-    <br><br>
-    <input type="submit" value="다음">
-    <input type="button" value="취소" onclick="goToLogin()">
+    <div class="buttonGroup">
+    <input type="submit" value="다음" class="btn btn-next">
+    <input type="button" value="취소" class="btn btn-cancel" onclick="goToLogin()">
+    </div>
   </form>
  </section>
 </div>
 <script>
+
+$(document).ready(function() {
+    // 모두 동의 클릭 시
+    $('#agreeAll').on('change', function() {
+        const checked = $(this).is(':checked');
+        $('input[name="termsAgree"], input[name="privacyAgree"]').prop('checked', checked);
+    });
+
+    // 개별 체크 해제 시 '모두 동의'도 해제
+    $('input[name="termsAgree"], input[name="privacyAgree"]').on('change', function() {
+        const allChecked = $('input[name="termsAgree"]').is(':checked') &&
+                           $('input[name="privacyAgree"]').is(':checked');
+        $('#agreeAll').prop('checked', allChecked);
+    });
+});
+
+
+<!-- 취소 버튼 누르면 로그인 페이지로 이동 -->
 function goToLogin() {
     window.location.href = 'login.do';
 }

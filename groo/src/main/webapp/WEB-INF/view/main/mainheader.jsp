@@ -1,0 +1,138 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="jquery/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main/mainHeader/mainHeader.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+header {
+	background-color: white;
+	padding: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
+	font-family: 'normal';
+}
+
+.flex_container.heder_container {
+	justify-content: space-between;
+	padding: 0 35px;
+}
+
+.logo {
+	width: 180px;
+}
+
+.main_kategorie_box {
+	height: 100%;
+	gap: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	gap: 30px;
+}
+
+.main_user_box {
+	gap: 30px;
+	font-size: 15px;
+}
+
+.main_kategorie_box div {
+	padding: 20px;
+	height: calc(100% - 4px);
+	position: relative;
+	overflow: hidden;
+}
+
+.main_kategorie_box div::after {
+	content: '';
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	height: 3px;
+	background-color: green;
+	width: 100%;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.1s ease-out;
+}
+
+.main_kategorie_box div:hover::after {
+	transform: scaleX(1);
+}
+
+.main_kategorie_box div.active::after {
+	transform: scaleX(1);
+}
+
+.fs-3 {
+	color: #28a745;
+}
+
+#profile-icon-span {
+	cursor: pointer;
+}
+
+#profile-dropdown-menu {
+	display: none;
+}
+
+#profile-icon-container {
+	width: 180px;
+	display: flex;
+	justify-content: end;
+}
+
+.fs-3 {
+	cursor: pointer;
+}
+a#dropdownMenuLink {
+    color: white;
+    background-color: white;
+    border: none;
+}
+
+.dropdown-toggle {
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+	text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+	<header>
+		<div class="flex_container heder_container">
+			<img class="logo" src="./images/로고.png">
+			<div class="flex_container main_kategorie_box">
+				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
+				<div class="menu-item-content" data-page="boardnoticehome.do">공지사항</div>
+				<div class="menu-item-content" data-page="createteam.do">팀</div>
+				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
+				<div class="menu-item-content" data-page="boardfreehome.do">자유게시판</div>
+				<div class="menu-item-content" data-page="boardintro.do">Groo
+					소개글</div>
+			</div>
+
+			<div class="dropdown">
+				<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+					id="dropdownMenuLink" data-bs-toggle="dropdown"
+					aria-expanded="false"><i class="bi bi-person-circle fs-3"></i></a>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
+					<li><a class="dropdown-item" href="#">마이 페이지</a></li>
+					<li><a class="dropdown-item" href="#">알림</a></li>
+					<li><a class="dropdown-item" href="#">좋아요</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+</body>
+</html>

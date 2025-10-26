@@ -11,6 +11,9 @@ public class ErrorDTO {
 	private String error;
 	private String path;
 
+	public ErrorDTO() {
+	}
+
 	public ErrorDTO(int status, String error, String path) {
 		// TODO Auto-generated constructor stub
 		timestamp = LocalDateTime.now();

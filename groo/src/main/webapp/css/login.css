@@ -23,7 +23,7 @@
 }
 
 .loginContiner {
-	width: 600px;
+	width: 500px;
 	height: 800px;
 	box-shadow: 3px 3px 3px 3px #5555;
 }
@@ -43,12 +43,11 @@ img {
 	margin-top: 20px;
 	padding: 0 85px;
 	width: 100%;
-	
 }
 
 .btn {
 	width: 100%;
-    height: 45xp;
+	height: 45xp;
 }
 
 placeholder {
@@ -57,11 +56,11 @@ placeholder {
 
 .btn.custom-btn-success {
 	background-color: #91D653;
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .login.flex_container {
-	gap : 10px;
+	gap: 10px;
 }
 
 .btn.nonmem-btn-success {
@@ -70,7 +69,78 @@ placeholder {
 }
 
 .carousel-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.socialBox {
+	display: flex;
+	height: 800px;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	margin-left: 60px;
+}
+
+.socialBox  button {
+	width: 430px;
+	height: 45px;
+	border: none;
+	border-radius: 7px;
+}
+
+.socialIcon {
+	position: relative;
+	right: 85px;
+	font-size: 22px;
+}
+
+button.gogle-login {
+	background-color: cornflowerblue;
+	color: white;
+}
+
+span {
+	width: 200px;
+	font-weight: 600;
+}
+
+i.bi.bi-google {
+	color: white;
+}
+
+button.github-login {
+	background-color: black;
+	color: white;
+}
+
+i.bi.bi-github {
+	color: white;
+}
+
+.naverLogo {
+	font-weight: bolder;
+	font-size: x-large;
+	width: 22px;
+}
+
+button.naver-login {
+	background-color: #03C75A;
+	color: white;
+}
+
+button.kakao-login{
+	background-color: rgb(250, 225, 0);
+	color: black;
+}
+
+.search-box {
+	margin-top: 50px;
+	gap: 25px;
+}
+.search-box  button{
+	border: none;
+    background-color: white;
+    color: grey;
 }

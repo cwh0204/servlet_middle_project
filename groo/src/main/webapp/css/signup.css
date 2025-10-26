@@ -1,13 +1,169 @@
 @charset "UTF-8";
 
-.form-control {
-	width: 300px;
-	padding: 10px;
-	margin: 5px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-bottom: 10px;
-	width: 100%;
+.section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+section {
+   width: 100%;
+   max-width: 600px;
+   background-color: white;
+   padding:40px;
+   margin: 30px 0;
+   border-radius: 12px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   border: none;
+}
+
+section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    
+form div {
+   margin-bottom: 16px;
+}
+
+form label {
+   font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+}
+
+input[type="submit"] {
+      width: 60%;
+      padding: 10px;
+      background-color: #84d330;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 20px;
+      cursor: pointer;
+}
+
+input[type="submit"]:hover {
+      background-color: #1fb205;
+}
+
+.idRow {
+     display: flex;
+     gap: 8px;
+     align-items: center;
+}
+
+.idRow input[type="text"] {
+     flex: 1;
+}
+
+.idRow input[type="button"] {
+	 flex: none;
+     padding: 10px;
+     width: 80px;
+     background-color: #84d330;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     cursor: pointer;
+     white-space: nowrap;
+}
+
+.idRow input[type="button"]:hover {
+  background-color: #1fb205;
+}
+/* 비밀번호 토글 
+#togglePassword1, #togglePassword2 {
+	width: 20px;
+	height: 20px;
+	right: 10px;
+	position: absolute;
+}
+*/
+.juminRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.juminRow input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.juminRow span {
+  font-size: 18px;
+}
+
+.oneChar {
+   width: 30px;
+   flex: 0 0 50px;
+   box-sizing: border-box;
+   text-align: center;
+}
+
+#jumin1 {
+	width: 250px;
+}
+.emailRow {
+     display: grid;
+     grid-template-columns: 2fr auto 2fr auto;
+     align-items: center;
+     gap: 8px;
+}
+
+.emailRow input[type="text"] {
+      flex: 1;
+}
+
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0,0,0,0);
+   white-space: nowrap;
+   border: 0;
+}
+
+#emailVerify {
+	display: none;
+	overflow: hidden;
+}
+
+.signup {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+}
+
+#userSignUp {
+	width: 50%;
+	padding: 8px;
+	border-radius: 6px;
+	border: none;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #84d330;
+	color: white;
+	cursor: pointer;
+}
+
+#userSignUp:hover {
+  background-color: #1fb205;
 }
