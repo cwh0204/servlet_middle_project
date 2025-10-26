@@ -1,5 +1,9 @@
 
-// 이메일 인증 상태 변수 (false: 미인증, true: 인증 완료)
+// 아이디 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
+let isIdChecked = false; 
+// 아이디 형식 유효성 통과 상태 (정규식 통과)
+let isIdValid = false;
+// 이메일 인증 상태 (false: 미인증, true: 인증 완료)
 let isEmailVerified = false;
 
 /**
@@ -19,8 +23,10 @@ var userIdCheck = (userLoginId) => {
 		success: function(response) {
 			if(response == "yes"){
 				alert('사용할 수 있는 아이디입니다.✅');
+		  isIdChecked = true;	// 중복확인 완료로 사용가능 상태
 			}else{
-				alert('이미 사용중인 아이디입니다.❌');	
+				alert('이미 사용중인 아이디입니다.❌');
+		  isIdChecked = false;	 // 사용 불가
 			}
 		},
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -201,12 +207,17 @@ $(document).ready(() => {
 			$idMessage
 				.text('아이디는 4~20자의 영문 소문자, 숫자, _, - 만 가능합니다.')
 				.css('color', 'red');
+			isIdValid = false;	 // 형식 불일치
 		} else {
 			$(this).css('border', '2px solid green');
 			$idMessage
 				.text('사용 가능한 형식입니다. ✔')
 				.css('color', 'green');
+			isIdValid = true; 	 // 형식 일치	
 		}
+		
+		// 아이디가 변경되면 중복확인 상태 초기화
+		isIdChecked = false;
 	});
 	
 	/* 비밀번호 */
@@ -366,8 +377,44 @@ function checkDuplicateId() {
 		$('#userId').focus();
 		return;
 	} else {
-		// 유효성 검사를 통과하면 중복확인 요청	
+		// 형식 유효성 검사 통과 시 중복확인 요청	
 		userIdCheck(userId);
 	}
 }
 
+/**
+ * 주민등록번호 (앞6+뒤1) 유효성 검사 함수
+ * @returns {boolean} 유효하면 true, 아니면 false
+ */
+function validateJumin(){
+	const jumin1 = $('#jumin1').val();
+	const jumin2 = $('#jumin2').val();
+	
+	// 길이 및 필수 입력 검사
+	if(jumin1.length !== 6){
+		alert('주민등록번호 앞 6자리를 모두 입력해주세요.');
+		$('#jumin1').focus();
+		return false;
+	}
+	if(jumin2 !== 1){
+		alert('주민등록번호 뒷 1자리를 입력해주세요.');
+		$('#jumin2').focus();
+		return false;
+	}
+	
+	// 숫자 형식 검사
+	if(!/^\d{6}$/.test(jumin1) || !/^\d{1}$/.test(jumin2)){
+		alert('주민등록번호는 숫자로만 입력가능합니다.');
+		return false;
+	}
+	
+	// 뒷자리 성별/세기 코드 유효성 검사
+	const genderCode = jumin2.charAt(0);
+	const validGenderCodes = ['1','2','3','4','5','6','7','8'];
+	if(!validGenderCodes.includes(genderCode)){
+		alert('주민등록번호 뒷자리가 올바르지 않습니다.');
+		return false;
+	}
+	
+	// 생년월일 논리적 유효성 검사 (윤달 등 체크)
+}
