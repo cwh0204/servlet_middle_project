@@ -1,50 +1,79 @@
-@charset "UTF-8";
-
-.hot-study-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	padding: 20px;
+.hot-study-slider-area {
+    width: 1200px; 
+    margin: 20px auto; 
+    position: relative;
+    padding: 0 30px; 
+    box-sizing: border-box; 
+    /* ⭐ 수정: 테두리, 둥근 모서리, 그림자 스타일 제거됨 */
 }
 
+.hot-study-list {
+    display: flex;
+    overflow: hidden; 
+    width: 1140px; 
+    margin: 0 auto;
+    padding: 22px 0 20px 0; 
+}
+
+/* 모든 슬라이드 아이템을 담는 컨테이너 */
+.slide-container {
+    display: flex;
+    transition: margin-left 0.8s ease; 
+}
+
+/* 3개 카드를 묶는 슬라이드 아이템 */
+.slide-item {
+    display: flex;
+    gap: 30px; 
+    padding: 0; 
+    min-width: 1140px; 
+    width: 1140px; 
+    box-sizing: border-box;
+    /* 슬라이드 간 간격 (60px) 유지 */
+    margin-right: 60px; 
+}
+
+/* -------------------- 카드 스타일 (둥근 모서리 16px 유지) -------------------- */
+
 .hot-study-card {
-	border: 1px solid #81C784;
+	border: 1px solid #81C784; 
 	padding: 15px;
-	width: 300px;
-	box-shadow: 2px 2px 8px rgba(76, 175, 80, 0.2);
-	border-radius: 8px;
+	width: 360px; 
+	box-shadow: 2px 2px 8px rgba(76, 175, 80, 0.2); 
+	/* 카드 모서리 둥글기 유지 */
+	border-radius: 16px; 
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	transition: all 0.2s ease-in-out;
-	/* 2. 카드 전체를 클릭 가능하게 만들고 커서를 포인터로 변경 */
-	cursor: pointer;
+	transition: transform 0.2s;
+    cursor: pointer; 
+    flex-shrink: 0;
 }
 
-/* 마우스를 올렸을 때 클릭 가능함을 강조하기 위한 호버 효과를 다시 추가하는 것이 일반적입니다. */
 .hot-study-card:hover {
-	box-shadow: 4px 4px 12px rgba(76, 175, 80, 0.3); /* 그림자를 더 진하게 */
-	transform: translateY(-2px); /* 살짝 위로 이동 */
+	transform: translateY(-5px); 
+	box-shadow: 4px 4px 12px rgba(76, 175, 80, 0.3); 
 }
 
 .hot-study-card h3 {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	color: #4CAF50;
+	color: #4CAF50; 
 }
 
 .hot-study-image {
 	width: 100%;
-	height: 180px;
+	height: 200px; 
 	object-fit: cover;
-	border-radius: 4px;
+	/* 이미지 모서리 둥글기 유지 */
+	border-radius: 12px; 
 	margin-bottom: 10px;
 }
 
 .hot-study-tag {
 	display: inline-block;
-	background-color: #E8F5E9;
-	color: #4CAF50;
+	background-color: #E8F5E9; 
+	color: #4CAF50; 
 	padding: 3px 8px;
 	margin-right: 5px;
 	margin-bottom: 5px;
@@ -58,8 +87,7 @@
 	font-size: 0.9em;
 	color: #666;
 	flex-grow: 1;
-	/* '자세히 보기' 버튼이 없어지면서 생기는 간극을 메우기 위해 약간의 하단 여백 추가 */
-	margin-bottom: 5px;
+	margin-bottom: 5px; 
 }
 
 .hot-study-info p {
@@ -69,7 +97,22 @@
 .hot-study-progress {
 	margin-top: 10px;
 	font-weight: bold;
-	color: #4CAF50;
-	/* 버튼이 없어지면서 이 요소가 가장 아래로 내려왔습니다. */
-	padding-bottom: 5px;
+	color: #4CAF50; 
+	padding-bottom: 5px; 
+}
+
+.hot-study-link {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+	padding: 8px;
+	background-color: #4CAF50; 
+	color: white;
+	text-decoration: none;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+.hot-study-link:hover {
+    background-color: #4CAF50;
 }
