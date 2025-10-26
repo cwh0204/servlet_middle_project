@@ -174,5 +174,206 @@
 			</div>
 		</div>
 	</div>
+	<div class="new-study-area">
+		<h1>✨ 신규 스터디</h1>
+
+		<div class="new-study-list">
+
+			<div class="hot-study-card" data-hot-study-id="7"
+				data-link-url="detail.jsp?id=7">
+				<img src="images/newstudy1.png" alt="신규 스터디 C++ 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#CS지식</span> <span
+						class="hot-study-tag">#C++</span> <span class="hot-study-tag">#오프라인</span>
+				</div>
+				<h3>C++ 기반 컴퓨터 구조 스터디</h3>
+				<p class="hot-study-description">C++을 활용하여 운영체제 및 컴퓨터 구조를 깊이 있게
+					학습합니다.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 서울 신촌
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 3/4명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 1</span>
+				</div>
+			</div>
+
+			<div class="hot-study-card" data-hot-study-id="8"
+				data-link-url="detail.jsp?id=8">
+				<img src="images/newstudy2.png" alt="신규 스터디 일본어 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#외국어</span> <span class="hot-study-tag">#일본어</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>JLPT N1 대비 독해 모임</h3>
+				<p class="hot-study-description">매주 주말, N1 독해 섹션 문제 풀이와 문법 정리.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 온라인 (Discord)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 6/6명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status" style="color: #F44336;">❌ 마감
+						완료!</span> <span class="hot-study-likes-count">♥ 8</span>
+				</div>
+			</div>
+
+			<div class="hot-study-card" data-hot-study-id="9"
+				data-link-url="detail.jsp?id=9">
+				<img src="images/newstudy3.png" alt="신규 스터디 마케팅 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#마케팅</span> <span class="hot-study-tag">#실무</span>
+					<span class="hot-study-tag">#평일</span>
+				</div>
+				<h3>데이터 기반 퍼포먼스 마케팅 실무</h3>
+				<p class="hot-study-description">Google Analytics와 SQL을 활용한 데이터
+					분석 및 광고 최적화.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 온라인
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 1/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 3</span>
+				</div>
+			</div>
+
+			<div class="hot-study-card" data-hot-study-id="10"
+				data-link-url="detail.jsp?id=10">
+				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>쉽고 빠른 베이킹 클래스</h3>
+				<p class="hot-study-description">초보자도 쉽게 따라하는 다양한 디저트 레시피.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 오프라인 (홍대)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 2/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 0</span>
+				</div>
+			</div>
+			
+			<div class="hot-study-card" data-hot-study-id="10"
+				data-link-url="detail.jsp?id=10">
+				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>쉽고 빠른 베이킹 클래스</h3>
+				<p class="hot-study-description">초보자도 쉽게 따라하는 다양한 디저트 레시피.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 오프라인 (홍대)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 2/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 0</span>
+				</div>
+			</div>
+			
+			<div class="hot-study-card" data-hot-study-id="10"
+				data-link-url="detail.jsp?id=10">
+				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>쉽고 빠른 베이킹 클래스</h3>
+				<p class="hot-study-description">초보자도 쉽게 따라하는 다양한 디저트 레시피.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 오프라인 (홍대)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 2/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 0</span>
+				</div>
+			</div>
+			
+			<div class="hot-study-card" data-hot-study-id="10"
+				data-link-url="detail.jsp?id=10">
+				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>쉽고 빠른 베이킹 클래스</h3>
+				<p class="hot-study-description">초보자도 쉽게 따라하는 다양한 디저트 레시피.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 오프라인 (홍대)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 2/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 0</span>
+				</div>
+			</div>
+			
+			<div class="hot-study-card" data-hot-study-id="10"
+				data-link-url="detail.jsp?id=10">
+				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+					class="hot-study-image">
+				<div class="hot-study-tags">
+					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
+					<span class="hot-study-tag">#주말</span>
+				</div>
+				<h3>쉽고 빠른 베이킹 클래스</h3>
+				<p class="hot-study-description">초보자도 쉽게 따라하는 다양한 디저트 레시피.</p>
+				<div class="hot-study-info">
+					<p>
+						<strong>지역:</strong> 오프라인 (홍대)
+					</p>
+					<p>
+						<strong>모집 인원:</strong> 2/5명
+					</p>
+				</div>
+				<div class="hot-study-progress">
+					<span class="hot-study-status">✅ 모집 중!</span> <span
+						class="hot-study-likes-count">♥ 0</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

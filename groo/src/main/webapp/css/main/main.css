@@ -175,3 +175,32 @@
 .hot-study-link:hover {
     background-color: #4CAF50;
 }
+
+.new-study-area {
+    width: 1200px; 
+    margin: 40px auto 20px auto; 
+    padding: 0 30px; 
+    box-sizing: border-box; 
+}
+.new-study-area h1 {
+    text-align: center;
+    font-size: 2.5em; 
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ⭐ 핵심: 신규 스터디 목록 (3개씩 나열, 줄 바꿈, 세로 확장) */
+.new-study-list {
+    display: flex;
+    gap: 30px; 
+    width: 1140px; 
+    margin: 0 auto; 
+    padding: 20px 0; 
+    
+    /* 줄 바꿈 허용: 카드가 3개 이상이면 다음 줄로 내려갑니다. */
+    flex-wrap: wrap;      
+    
+    /* 높이 제한 없음: 컨텐츠에 따라 페이지가 아래로 길어지며 스크롤이 생깁니다. */
+    overflow-x: visible; 
+    padding-bottom: 20px;
+}
