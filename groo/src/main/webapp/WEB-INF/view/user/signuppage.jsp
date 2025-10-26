@@ -52,6 +52,7 @@
         <div>
           <label for="name">이 름</label><br>
           <input type="text" id="name" name="name" required>
+          <span id="nameMessage" style="font-size: 0.9em;"></span> 
         </div>
         
         <label for="jumin1">주민등록번호</label>

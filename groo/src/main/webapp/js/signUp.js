@@ -171,7 +171,69 @@ var signUpUserValidation = () => {
 	const emailId = $("#emailId").val();
 	const emailDomain = $("#emailDomain").val();
 	const userEmail = emailId + "@" + emailDomain;	
-	const userGender = 	($('#jumin2').val() == '1') ? "M" : "W";
+	const jumin2Value = $('#jumin2').val();
+	const userGender = 	(['1', '3', '5', '7'].includes(jumin2Value)) ? "M" : "W";
+	
+	// 정규식 (ready 함수 안에 있지만, 여기서도 사용하기 위해 정의하거나 전역 변수로 관리)
+	const idRegExp = /^[a-z0-9_-]{4,20}$/;
+	const pwRegExp = /^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?~`])(?=\S+$).{8,20}$/;
+	const nameRegExp = /^[가-힣a-zA-Z]{2,20}$/;
+	
+	// 아이디 중복확인 검사 (중복확인 버튼을 안 눌렀을 경우 여기서 걸림)
+	if (!isIdChecked) {
+	    alert('아이디 중복확인을 완료해주세요.');
+	    $('#userId').focus();
+	    return;
+    }
+	
+	// 아이디 형식 검사 
+	if (!idRegExp.test(userIdValue)) {
+	    alert('아이디 형식이 올바르지 않습니다.');
+	    $('#userId').focus();
+	    return;
+	}
+	
+	
+    // 비밀번호 형식 및 일치 검사 (실시간 검사와 별개로 최종 확인은 필수)
+    if (!pwRegExp.test(userPw1Value) || userPw1Value !== userPw2Value) {
+	    alert('비밀번호 형식이 올바르지 않거나 일치하지 않습니다.');
+	    $('#pass1').focus();
+	    return;
+    }
+	
+    // 이름 검사 (최종 필수 입력 및 길이 확인)
+    if (!nameRegExp.test(userNameValue.trim())) {
+        alert('이름을 2자 이상 20자 이하로 입력해주세요.');
+	    $('#name').focus();
+	    return;
+    }	
+	
+	// 주민등록번호 유효성 검사	
+	if (!validateJumin()) {
+	    return; 
+    }	
+	
+	// 이메일 입력 확인 (인증 요청 전에 입력했는지 확인)
+	if (emailId.trim() === '' || emailDomain.trim() === '') {
+	    alert('이메일 주소를 모두 입력해주세요.');
+	    $('#emailId').focus();
+	    return;
+    }		
+	
+	// 이메일 인증 완료 여부 확인 (인증 요청 후 확인 버튼을 안 눌렀을 경우 여기서 걸림)
+    if (!isEmailVerified) { 
+	    alert("이메일 인증을 완료해주세요. ⚠️");
+	    return;
+	}
+	
+	// reCAPTCHA 응답 확인
+	const recaptchaResponse = grecaptcha.getResponse();
+    if (recaptchaResponse.length === 0) {
+	    alert('자동 가입 방지(reCAPTCHA)를 확인해주세요.');
+	    return;
+   
+    }
+	 
 	if (userIdValue != "" && userPwValue != "" && userNameValue != "") {
 		//유효성 검사가 끝나면 회원가입 요청을 보냄
 		signUpUser(userIdValue,userPwValue,userNameValue,userEmail,userjumin1Value,userGender); 
@@ -280,7 +342,38 @@ $(document).ready(() => {
 		              .css('color', 'red');
 		    }
        }	
-				
+	
+	/* 이름 */ 
+	const $name = $('#name');   
+	const $nameMessage = $('#nameMessage');
+	
+	// 한글 또는 영문 대소문자만 허용, 2~20자 이하 정규식
+	const nameRegExp = /^[가-힣a-zA-Z]{2,20}$/;   
+	 
+	$name.on('input', function() {
+	    const currentName = $(this).val().trim(); // 앞뒤 공백 제거
+	    
+		// 아무것도 입력 안 했을 때 초기화
+	    if (currentName.length === 0) {
+	        $(this).css('border', '1px solid #ccc');
+			$nameMessage.text('');
+			return;
+	    }  
+		
+		// 형식 및 길이 검사
+		if (!nameRegExp.test(currentName)) {
+		    $(this).css('border', '2px solid red');
+		    $nameMessage
+		        .text('이름은 2~20자의 한글 또는 영문만 가능합니다.')
+		        .css('color', 'red');
+		}else {	// 형식 통과 시
+			        $(this).css('border', '2px solid green');
+			        $nameMessage
+			            .text('사용 가능한 형식입니다. ✔')
+			            .css('color', 'green');
+			    }
+		
+	   			
 	/* 이메일 */
 	
 	// 이메일 도메인 선택
@@ -396,7 +489,7 @@ function validateJumin(){
 		$('#jumin1').focus();
 		return false;
 	}
-	if(jumin2 !== 1){
+	if(jumin2.length !== 1){
 		alert('주민등록번호 뒷 1자리를 입력해주세요.');
 		$('#jumin2').focus();
 		return false;
@@ -417,4 +510,23 @@ function validateJumin(){
 	}
 	
 	// 생년월일 논리적 유효성 검사 (윤달 등 체크)
+	const yearPrefix = 
+	  (genderCode === '1' || genderCode === '2' || genderCode === '5' || genderCode === '6')
+	  ? 1900 : 2000;
+	const fullYear = yearPrefix + parseInt(jumin1.substring(0, 2), 10);
+	const month = parseInt(jumin1.substring(2, 4), 10);
+    const day = parseInt(jumin1.substring(4, 6), 10);
+
+    const birthDate = new Date(fullYear, month - 1, day);	// 월은 0부터 시작
+	
+	// Date 객체의 년, 월, 일이 입력값과 일치하는지 확인 (잘못된 날짜 필터링하는 경우도 발생하기 때문)
+	if (birthDate.getFullYear() !== fullYear || 
+	    birthDate.getMonth() !== month - 1 || 
+	    birthDate.getDate() !== day) {
+	    alert('유효하지 않은 생년월일입니다. 주민등록번호를 확인해 주세요.');
+	    return false;
+    }
+	
+	// 모든 검사 통과
+	return true; 
 }
