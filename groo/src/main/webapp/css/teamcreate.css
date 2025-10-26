@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .form-box {
    width: 100%;
    max-width: 800px;
@@ -11,6 +12,7 @@
    box-sizing: border-box;
 }
 
+/* 버튼 */
 .submit-btn, .reset-btn {
    margin-top: 20px;
    margin-right: 10px;
@@ -51,7 +53,7 @@
    height: auto;
 }
 
-/* 네비게이션 */
+/* 우측 상단 정렬 */
 .reightNavi_box ul {
    display: flex;
    flex-direction: row;
@@ -146,11 +148,12 @@ main {
 
 .studyTitle_box, 
 .studyLeader_box {
-   
    width: 700px;
-   display: flex;
-   
+   margin-bottom: 5px;     
+   font-weight: bold;
+   margin-bottom: 20px;
 }
+
 
 .studyTitle_box label, 
 .studyLeader_box label, 
@@ -159,15 +162,15 @@ main {
 .studycontent_box {
    font-weight: 600px;
    font-size: 16px;
-   margin-bottom : 15px;
+   margin-bottom : 5px;
 
 }
 
 .studyTitle_box input, 
 .studyLeader_box input {
-   width: 234px;
+   width: 750px;
    height: 30px;
-   margin-left: 10px;
+   margin-left: 0px;
    padding: 5px 10px;
    border: 1px solid #28a745;
    border-radius: 6px;
@@ -255,7 +258,7 @@ td {
 
 .range-container input[type="range"] {
    width: 300px;
-   accent-color: #28a745;
+   accent-color: #28a745; 
    cursor: pointer;
 }
 
@@ -346,4 +349,29 @@ main h3 {
 
 main.showContent h3, main.showContent .category_container {
    opacity: 1;
+}
+
+/* 라디오 버튼 커스텀 스타일 */
+.radio_group input[type="radio"] {
+  display: none;
+}
+
+.radio_group label {
+  display: inline-block;
+  padding: 8px 18px;
+  margin: 6px;
+  border-radius: 25px; /* 타원형 */
+  background-color: #b8e986; /* 연두색 */
+  color: white; /* 글씨 흰색 */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.radio_group label:hover {
+  transform: scale(1.05);
+}
+
+.radio_group input[type="radio"]:checked + label {
+  background-color: #28a745; /* 클릭 시 초록색 */
 }
