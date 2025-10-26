@@ -157,7 +157,7 @@ background-color: #218838;
 </body>
 <script>
 <!-- 프로필 미리보기 -->
-function previewProfile(event) {
+/* function previewProfile(event) {
     const file = event.target.files[0];
     const preview = document.getElementById('profilePreview');
     if (file) {
@@ -200,6 +200,6 @@ function previewProfile(event) {
 
 			reader.readAsDataURL(file);
 		}
-	});
+	}); */
 </script>
 </html>

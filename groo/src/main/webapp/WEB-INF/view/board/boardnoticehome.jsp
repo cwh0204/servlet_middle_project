@@ -11,10 +11,8 @@
 <style>
 </style>
 <body>
-	<div class="boardcontainer">
 	    <%@ include file="search.jsp"%>
 		<%@ include file="boardlistnav.jsp"%>
 		<%@ include file="boardnotice.jsp"%>
-	</div>
 </body>
 </html>
