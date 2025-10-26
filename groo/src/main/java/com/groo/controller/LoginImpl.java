@@ -26,9 +26,9 @@ public class LoginImpl extends HttpServlet implements Controller {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String loginType = request.getParameter("login_type");
-		
+
 		if(loginType.equals("member")) {
 			String userId = request.getParameter("userId");
 			String password = request.getParameter("password");
