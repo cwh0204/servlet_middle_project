@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    if (typeof window.initializeStudyFeatures === 'function') {
-        window.initializeStudyFeatures();
-    }
+    $('.hot-study-card').on('click', function() {
+		console.log("ASdas");
+        const url = $(this).data('link-url'); 
+        
+        if (url) {
+            window.location.href = url;
+        }
+    });
 });
-
-window.initializeStudyFeatures = function() {
-
-};

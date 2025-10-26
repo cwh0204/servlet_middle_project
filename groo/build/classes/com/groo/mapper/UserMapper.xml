@@ -13,7 +13,7 @@
 		<selectKey keyProperty="memId" resultType="String" order="BEFORE">
            SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-	  INSERT INTO MEMBER (
+	  INSERT INTO MEMBER (c
 	  						MEM_ID,
 	  						MEM_NAME,
 	  						MEM_LOGIN_ID, 
