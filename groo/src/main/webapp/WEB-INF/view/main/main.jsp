@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/main/main.css">
 </head>
 <body>
 	<%@ include file="mainheader.jsp"%>
