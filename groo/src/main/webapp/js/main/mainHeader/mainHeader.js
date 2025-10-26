@@ -43,7 +43,6 @@ const mainHeder = () => {
 			console.log(pageToLoad);
 			$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 				if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
-					window.initializeStudyFeatures();
 				} else {
 					console.error("페이지 로드 실패");
 				}
@@ -61,7 +60,6 @@ const mainHeder = () => {
 				console.log(pageToLoad);
 				$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
-						window.initializeStudyFeatures();
 					} else {
 						console.error("페이지 로드 실패");
 					}

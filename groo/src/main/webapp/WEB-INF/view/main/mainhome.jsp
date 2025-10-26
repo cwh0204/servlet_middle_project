@@ -176,12 +176,10 @@
 	</div>
 	<div class="new-study-area">
 		<h1>✨ 신규 스터디</h1>
-
 		<div class="new-study-list">
-
 			<div class="hot-study-card" data-hot-study-id="7"
 				data-link-url="detail.jsp?id=7">
-				<img src="images/newstudy1.png" alt="신규 스터디 C++ 이미지"
+				<img src="images/hotstudy1.png" alt="신규 스터디 C++ 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#CS지식</span> <span
@@ -206,7 +204,7 @@
 
 			<div class="hot-study-card" data-hot-study-id="8"
 				data-link-url="detail.jsp?id=8">
-				<img src="images/newstudy2.png" alt="신규 스터디 일본어 이미지"
+				<img src="images/hotstudy2.png" alt="신규 스터디 일본어 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#외국어</span> <span class="hot-study-tag">#일본어</span>
@@ -230,7 +228,7 @@
 
 			<div class="hot-study-card" data-hot-study-id="9"
 				data-link-url="detail.jsp?id=9">
-				<img src="images/newstudy3.png" alt="신규 스터디 마케팅 이미지"
+				<img src="images/hotstudy3.png" alt="신규 스터디 마케팅 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#마케팅</span> <span class="hot-study-tag">#실무</span>
@@ -255,7 +253,7 @@
 
 			<div class="hot-study-card" data-hot-study-id="10"
 				data-link-url="detail.jsp?id=10">
-				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+				<img src="images/hotstudy3.png" alt="신규 스터디 요리 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
@@ -276,10 +274,10 @@
 						class="hot-study-likes-count">♥ 0</span>
 				</div>
 			</div>
-			
+
 			<div class="hot-study-card" data-hot-study-id="10"
 				data-link-url="detail.jsp?id=10">
-				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+				<img src="images/hotstudy5.png" alt="신규 스터디 요리 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
@@ -300,10 +298,10 @@
 						class="hot-study-likes-count">♥ 0</span>
 				</div>
 			</div>
-			
+
 			<div class="hot-study-card" data-hot-study-id="10"
 				data-link-url="detail.jsp?id=10">
-				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+				<img src="images/hotstudy1.png" alt="신규 스터디 요리 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
@@ -324,10 +322,10 @@
 						class="hot-study-likes-count">♥ 0</span>
 				</div>
 			</div>
-			
+
 			<div class="hot-study-card" data-hot-study-id="10"
 				data-link-url="detail.jsp?id=10">
-				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+				<img src="images/hotstudy2.png" alt="신규 스터디 요리 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>
@@ -348,10 +346,10 @@
 						class="hot-study-likes-count">♥ 0</span>
 				</div>
 			</div>
-			
+
 			<div class="hot-study-card" data-hot-study-id="10"
 				data-link-url="detail.jsp?id=10">
-				<img src="images/newstudy4.png" alt="신규 스터디 요리 이미지"
+				<img src="images/hotstudy3.png" alt="신규 스터디 요리 이미지"
 					class="hot-study-image">
 				<div class="hot-study-tags">
 					<span class="hot-study-tag">#취미</span> <span class="hot-study-tag">#요리</span>

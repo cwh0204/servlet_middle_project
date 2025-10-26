@@ -178,29 +178,32 @@
 
 .new-study-area {
     width: 1200px; 
-    margin: 40px auto 20px auto; 
-    padding: 0 30px; 
+    margin: 40px auto 20px auto; /* 컨테이너 자체는 중앙에 위치 */
+    padding: 0 30px; /* 좌우 30px 패딩 유지 */
     box-sizing: border-box; 
 }
+
+/* ⭐ 수정: new-study-area 내부의 h1을 왼쪽으로 정렬합니다. ⭐ */
 .new-study-area h1 {
-    text-align: center;
+    /* text-align: center; <--- 이 부분을 제거하거나 left로 변경 */
+    text-align: left; /* 왼쪽 정렬 */
     font-size: 2.5em; 
     color: #333;
     margin-bottom: 20px;
+    padding-left: 30px; /* new-study-area의 좌측 패딩 30px만큼 밀어넣습니다. */
 }
 
-/* ⭐ 핵심: 신규 스터디 목록 (3개씩 나열, 줄 바꿈, 세로 확장) */
+/* ⭐ new-study-list의 justify-content: center; 는 제거하여 목록을 왼쪽으로 다시 붙입니다. ⭐ */
 .new-study-list {
     display: flex;
     gap: 30px; 
     width: 1140px; 
     margin: 0 auto; 
     padding: 20px 0; 
-    
-    /* 줄 바꿈 허용: 카드가 3개 이상이면 다음 줄로 내려갑니다. */
     flex-wrap: wrap;      
     
-    /* 높이 제한 없음: 컨텐츠에 따라 페이지가 아래로 길어지며 스크롤이 생깁니다. */
+    justify-content: flex-start; /* 왼쪽 정렬 (기본값이지만 명시적으로 설정) */
+    
     overflow-x: visible; 
     padding-bottom: 20px;
 }
