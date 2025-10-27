@@ -3,7 +3,9 @@ package com.groo.controller;
 import java.io.IOException;
 
 import com.groo.error.ErrorDTO;
+import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServerErrorException;
+import com.groo.error.InternalServiceException;
 import com.groo.error.ResourceNotFoundException;
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
@@ -34,8 +36,8 @@ public class LoginImpl extends HttpServlet implements Controller {
 			String password = request.getParameter("password");
 
 			MemberDTO memberDTO = new MemberDTO();
-			memberDTO.setUserId(userId);
-			memberDTO.setPassword(password);
+			memberDTO.setMemId(userId);
+			memberDTO.setMemPass(password);
 
 			try {
 				MemberServiceImpl serviceImpl = new MemberServiceImpl();
@@ -44,23 +46,16 @@ public class LoginImpl extends HttpServlet implements Controller {
 
 				if (reMemberDTO != null) {
 					HttpSession httpSession = request.getSession();
-					httpSession.setAttribute("userId", reMemberDTO.getUserId());
+					httpSession.setAttribute("userId", reMemberDTO.getMemId());
 //					System.out.println("로그인 세션 정보 "+httpSession.getAttribute("userId"));
 					response.sendRedirect("main.do");
 				} else {
 					response.getWriter().println("로그인 실패");
 					response.sendRedirect("login.do");
 				}
-			}catch(ResourceNotFoundException rne) {
-				rne.printStackTrace();
-				ErrorDTO error = new ErrorDTO(500,"회원가입 중 오류 발생","MemberDAO");
-				response.getWriter().println(error.getStatus()+error.getError());
-			}
-			catch(InternalServerErrorException ie) {
+			}catch(InternalServiceException ise) {
 				ErrorDTO error = new ErrorDTO(404,"회원가입 입력데이터 오류 발생","MemberDAO");
 				response.getWriter().println(error.getStatus()+error.getError());
-			}catch(RuntimeException re) {
-				re.printStackTrace();
 			}catch (Exception e) {
 				e.printStackTrace();
 				response.getWriter().println("로그인 실패: " + e.getMessage());
