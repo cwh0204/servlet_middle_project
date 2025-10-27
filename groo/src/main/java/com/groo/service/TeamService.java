@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.groo.model.TeamDTO;
 
-public interface TeamSelectTeamAll {
-	public List<TeamDTO> selectTeamAll();
+public interface TeamService {
+	public List<TeamDTO> selectTeam(TeamDTO team);
 }

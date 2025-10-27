@@ -23,7 +23,6 @@ import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
 import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
-import com.groo.controller.TeamCreateController;
 import com.groo.controller.TeamSelectController;
 
 
@@ -41,7 +40,6 @@ public class FrontControllerPath {
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
 
-        controllerMap.put("/teamcreates.do", new TeamCreateController());
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/mypages.do", new MyPageController());
 
