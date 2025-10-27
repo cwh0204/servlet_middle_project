@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title></title>
+</head>
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/adminCss/adminUser/adminUser.css" rel="stylesheet">
-
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
@@ -70,10 +71,10 @@
 		</div>
 	</div>
 	<div>
-		<div id="gridTeam"></div>
+		<div id="gridDisableTeam"></div>
 	</div>
 </body>
-<script>
+<script type="text/javascript">
 
 var teamStats = () => {
 	$.ajax({
@@ -104,10 +105,9 @@ var teamStats = () => {
 
 searchTeam = () => {
 	const search = $('#searchInput').val();
-	console.log
 	$.ajax({
 		// 데이터를 전송할 서버 URL
-		url: 'teamselects.do',
+		url: 'teamdisableselects.do',
 		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
@@ -117,7 +117,7 @@ searchTeam = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
-			gridTeam.resetData(response);
+			gridDisableTeam.resetData(response);
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -125,10 +125,11 @@ searchTeam = () => {
 		}
 	});
 }
+
 $(document).ready(function() {
 	teamStats();
-    gridTeam = new tui.Grid({
-		el : document.getElementById('gridTeam'),
+    gridDisableTeam = new tui.Grid({
+		el : document.getElementById('gridDisableTeam'),
 		data : {
 			api : {
 				readData : {
@@ -159,10 +160,10 @@ $(document).ready(function() {
 			header : '스터디내용',
 			name : 'studyIntroContent'
 		},{
-			header : '스터디 생성일',
-			name : 'studyCreateDate'
+			header : '스터디 삭제일',
+			name : 'studyDeleteDate'
 		},{
-			header: '비활성화',
+			header: '활성화',
 			name: 'grade',
 			width: 150,
 			renderer: {
@@ -171,34 +172,8 @@ $(document).ready(function() {
 		}
 		]
 	});
-    CustomTeamBtnRenderer
-    gridTeam.on('response', function(ev) {
-        let response = ev.xhr.responseText;
-        let data = JSON.parse(response);
-        
-        originalFullData = data;
-        
-        gridTeam.resetData(data);
-    });
-    
-    gridTeam.on('afterChange', ev => {
-    	console.log('after change:', ev.changes[0].columnName);
-        console.log('after change:', ev.changes[0].value);
-        console.log(gridTeam.getModifiedRows());
-    });
-    
-    gridTeam.setBodyHeight(450);
-    
-    gridTeam.on('beforeChange', ev => {
-  	  // `ev.changes`는 배열 형태로 여러 변경 사항을 포함할 수 있습니다.
-  	  // 여기서는 첫 번째 변경 사항에 접근합니다.
-  	  const { rowKey } = ev.changes[0];
-  	  const columnName = ev.changes[0].columnName;
-  	  // 수정이 발생한 행에 'modified-row' 클래스 추가
-  	  gridTeam.addRowClassName(rowKey, 'modified-row');
-  	  gridTeam.addCellClassName(rowKey, columnName, 'modified-cell'); 
-  });
+    gridDisableTeam.setBodyHeight(450);
+    searchTeam();
 });
-
 </script>
 </html>

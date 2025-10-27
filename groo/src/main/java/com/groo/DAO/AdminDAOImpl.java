@@ -9,6 +9,7 @@ import com.groo.error.InternalDataAccessException;
 import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
+import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.MemberDTO;
 
 /**
@@ -194,5 +195,25 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminReportProcessUserSerch 예외발생",e);
 		}
 		return reportList;
+	}
+	
+	/**
+	 * 팀 맴버 정보 검색을 위한 메서드
+	 * @param member 팀 맴버 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 팀 맴버 조회 결과
+	 */
+	@Override
+	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session) {
+		
+		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
+		
+		try {
+			memberList = session.selectList("adminSelectStudyMember",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectStudyMember 예외발생",e);
+		}
+		return memberList;
 	}
 }

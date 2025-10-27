@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
+import com.groo.model.TeamAvgDTO;
 import com.groo.model.TeamDTO;
 
 public class TeamDAOImpl implements TeamDAO{
@@ -40,5 +41,38 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
 		}
 		return list;
+	}
+	
+	/**
+	 * 비활성 팀 검색을 위한 메서드
+	 * @param team 팀을 검색 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 비활성 팀 목록 조회 처리 결과
+	 */
+	@Override
+	public List<TeamDTO> selectDisableTeam(TeamDTO team, SqlSession session) {
+		List<TeamDTO> list = new ArrayList<>();
+		try {
+			list = session.selectList("selectDisableTeam",team);
+		}catch (Exception e) {
+			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
+		}
+		return list;
+	}
+	
+	/**
+	 * 팀 통계를 불러오기 위한 메서드
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 비활성 팀 목록 조회 처리 결과
+	 */
+	@Override
+	public TeamAvgDTO teamStats(SqlSession session) {
+		TeamAvgDTO team = new TeamAvgDTO();
+		try {
+			team = session.selectOne("selectStateTeam");
+		}catch (Exception e) {
+			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
+		}
+		return team;
 	}
 }
