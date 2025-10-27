@@ -1,8 +1,3 @@
-$(document).ready(()=> {
-	mainHome();
-	mainHeder();
-	refreshPage();
-});
 
 const mainHome = () => {
 	console.log("mainHome 함수 실행: 동적 콘텐츠 초기화 시작");

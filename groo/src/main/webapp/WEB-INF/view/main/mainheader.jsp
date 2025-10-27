@@ -39,4 +39,11 @@
 		</div>
 	</header>
 </body>
+<script type="text/javascript">
+$(document).ready(()=> {
+  	mainHome();
+	mainHeder();
+ 	refreshPage();
+});
+</script>
 </html>

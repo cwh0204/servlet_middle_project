@@ -22,7 +22,7 @@
 </style>
 <body>
 	<div class="flex_container full_w_h mypage_container">
- 		<%@ include file="../frontComponents/mypagenav.jsp"%>
+  		<%@ include file="../frontComponents/mypagenav.jsp"%>
 		<div class="a_r_container">
   			<%@ include file="mypagedashboard.jsp"%>
 		</div>
