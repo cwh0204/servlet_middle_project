@@ -37,7 +37,7 @@ public class AdminSelectStudyMemberController implements Controller {
 		member.setMemName(search);
 		member.setStudyTitle(search);
 		member.setStudyRoll(search);
-		member.setStudyJoinDate(search);
+		member.setStudyJoinedDate(search);
 		
 		AdminServiceImpl service = new AdminServiceImpl();
 		

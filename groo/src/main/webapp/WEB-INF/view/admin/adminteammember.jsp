@@ -122,7 +122,14 @@ $(document).ready(function() {
 			name : 'studyRoll'
 		}, {
 			header : '스터디참여일',
-			name : 'studyJoinDate'
+			name : 'studyJoinedDate'
+		},{
+			header: '팀 탈퇴',
+			name: 'grade',
+			width: 150,
+			renderer: {
+				type: CustomTeamMemberBtnRenderer,
+			}
 		}
 		]
 	});

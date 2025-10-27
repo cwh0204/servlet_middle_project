@@ -246,19 +246,19 @@
 			INNER JOIN STUDY C ON A.STUDY_ID = C.STUDY_ID
 			
 			<where>
-				AND STUDY_MSTATE = 'Y'
+				AND A.STUDY_OUTDATE IS NULL
 				<trim prefix="AND (" suffix=")" prefixOverrides="OR">
-			        <if test="memName != null and memName != ''">
-			            OR B.MEM_ID LIKE '%' || #{memName} || '%'
-			        </if>
+					<if test="memName != null and memName != ''">
+					    OR B.MEM_NAME LIKE '%' || #{memName} || '%'
+					</if>
 			        <if test="studyTitle != null and studyTitle != ''">
 			            OR C.STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
 			        </if>
 			        <if test="studyRoll != null and studyRoll != ''">
 			            OR A.STUDY_ROLL = CASE #{studyRoll} WHEN '팀장' THEN 'L' WHEN '팀원' THEN 'M' ELSE A.STUDY_ROLL END
 			        </if>
-	 		        <if test="studyJoinDate != null and studyJoinDate != ''">
-	 		        	OR A.STUDY_JOINEDDATE LIKE '%' || #{studyJoinDate} || '%'
+	 		        <if test="studyJoinedDate != null and studyJoinedDate != ''">
+	 		        	OR A.STUDY_JOINEDDATE LIKE '%' || #{studyJoinedDate} || '%'
 			        </if>
 		        </trim>
         	</where>

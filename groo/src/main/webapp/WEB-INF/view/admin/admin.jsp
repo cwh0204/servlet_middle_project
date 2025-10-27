@@ -138,5 +138,52 @@ class CustomTeamBtnRenderer {
         event.stopPropagation();
     }
 }
+
+class CustomTeamMemberBtnRenderer {
+    constructor(props) {
+      const container = document.createElement('div');
+      container.className = 'btn-renderer-container';
+      
+      const deleteBtn = document.createElement('button');
+     
+      
+      deleteBtn.className = 'user-randarer-button';
+      deleteBtn.textContent = '팀 탈퇴';
+      deleteBtn.dataset.type = 'delete';
+      
+      deleteBtn.addEventListener('click', (event) => {
+          this.onClick(props, event);
+      });
+      
+      container.appendChild(deleteBtn);
+      
+      this.container = container;
+      
+      this.render(props);
+    }
+
+    getElement() {
+      return this.container;
+    }
+
+    render(props) {
+       this.container.value = String(props.value);
+    }
+    
+    onClick(props, event) {
+    	
+        const { grid, rowKey } = props;
+        const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
+
+        if (!targetBtn) return;
+        
+        const actionType = targetBtn.dataset.type;
+        
+        if (actionType === 'delete') {
+            console.log("안녕");
+        }
+        event.stopPropagation();
+    }
+}
 </script>
 </html>

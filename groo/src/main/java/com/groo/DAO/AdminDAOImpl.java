@@ -207,7 +207,6 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session) {
 		
 		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
-		
 		try {
 			memberList = session.selectList("adminSelectStudyMember",member);
 		}catch (Exception e) {
