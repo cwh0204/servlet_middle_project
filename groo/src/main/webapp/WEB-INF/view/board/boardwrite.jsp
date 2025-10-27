@@ -1,47 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세 보기</title>
+<title>Summernote JSP</title>
+
+<script src="jquery/jquery-3.7.1.min.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/js/bootstrap.min.js" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
-<link href="css/board/detail.css" rel="stylesheet">
-</head>
+<link href="css/board/boardwrite.css" rel="stylesheet">
+<script src="js/board/boardwrite.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 <body>
 
-    <div class="container">
-        <h2 class="detail-title">${post.title}</h2> 
-        
-        <div class="post-info">
-            <span class="writer">작성자: ${post.writer}</span>
-            <span class="date">작성일: ${post.regDate}</span>
-            <span class="views">조회수: ${post.views}</span>
-        </div>
-        
-        <hr>
-        
-        <div class="post-content">
-            <p>${post.content}</p> 
-        </div>
-        
-        <hr>
+<!-- 	<form id="postForm" action="boardwrite.do" method="post"> -->
+		<div class="board-form-container">
+			<h2 class="mb-4 board-title-heading">✏️ 새 게시글 작성</h2>
 
-        <div class="actions">
-            <button class="btn btn-like">👍 좋아요 (${post.likes})</button>
-            
-            <a href="noticelist.do" class="btn btn-list">목록으로</a> 
-            
-            <%-- <c:if test="${sessionScope.userId == post.writerId}"> --%>
-                <a href="noticeedit.do?id=${post.id}" class="btn btn-edit">수정</a>
-                <button class="btn btn-delete" onclick="deletePost(${post.id})">삭제</button>
-            <%-- </c:if> --%>
-        </div>
-        <%-- 
-        <div class="comment-section">
-            <h3>댓글 (${post.commentCount})</h3>
-            <%@ include file="commentlist.jsp" %>
-        </div> --%>
-    </div>
+			<div class="form-group">
+				<label for="postTitle">제목</label> <input type="text"
+					class="form-control" id="postTitle" name="title"
+					placeholder="제목을 입력해 주세요." value="제목을 입력해주세요" required>
+			</div>
+
+			<div class="form-group">
+				<label for="postWriter">작성자</label> <input type="text"
+					class="form-control" id="postWriter" name="writer"
+					value="테스터 (test01)" readonly>
+			</div>
+
+			<div class="form-group">
+				<label>내용</label>
+				<div class="summernote" id="postContent" name="content">
+					<p>여기에 입력해주세요.</p>
+				</div>
+			</div>
+			<div class="action-buttons">
+				<button class="btn btn-primary" id="submitBtn">등록</button>
+				<a href="boardlist.do" class="btn btn-secondary">취소</a>
+			</div>
+			<input type="text" style=" display: none; "class="border-type" value="1111">
+		</div>
+<!-- 	</form> -->
 </body>
+<script type="text/javascript">
+$('#submitBtn').click(function () {
+	const content = $('#postContent').summernote('code');
+	const contitle = $('#postTitle').val();
+	const contitle1 = $('.border-type').val();
+	console.log(contitle);
+	console.log(content);
+	console.log(contitle1);
+});
+</script>
 </html>
