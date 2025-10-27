@@ -231,4 +231,36 @@
 	        </trim>
         </where>
 	</select>
+	<select id="adminSelectStudyMember" parameterType="com.groo.model.AdminTeamMemberDTO" resultType="com.groo.model.AdminTeamMemberDTO">
+			SELECT
+				B.MEM_NAME AS MEM_NAME,
+				C.STUDY_TITLE AS STUDY_TITLE,
+				CASE A.STUDY_ROLL
+			        WHEN 'L' THEN '팀장'
+			        WHEN 'M' THEN '팀원'
+			        ELSE '기타'
+			    END AS STUDY_ROLL,
+				A.STUDY_JOINEDDATE AS STUDY_JOINEDDATE
+			FROM STUDYMEMBER A
+			INNER JOIN MEMBER B ON A.MEM_ID = B.MEM_ID
+			INNER JOIN STUDY C ON A.STUDY_ID = C.STUDY_ID
+			
+			<where>
+				AND STUDY_MSTATE = 'Y'
+				<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+			        <if test="memName != null and memName != ''">
+			            OR B.MEM_ID LIKE '%' || #{memName} || '%'
+			        </if>
+			        <if test="studyTitle != null and studyTitle != ''">
+			            OR C.STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+			        </if>
+			        <if test="studyRoll != null and studyRoll != ''">
+			            OR A.STUDY_ROLL = CASE #{studyRoll} WHEN '팀장' THEN 'L' WHEN '팀원' THEN 'M' ELSE A.STUDY_ROLL END
+			        </if>
+	 		        <if test="studyJoinDate != null and studyJoinDate != ''">
+	 		        	OR A.STUDY_JOINEDDATE LIKE '%' || #{studyJoinDate} || '%'
+			        </if>
+		        </trim>
+        	</where>
+	</select>
 </mapper>

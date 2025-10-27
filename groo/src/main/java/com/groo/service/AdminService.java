@@ -5,6 +5,7 @@ import java.util.List;
 import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
+import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminService {
@@ -17,6 +18,7 @@ public interface AdminService {
 
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report);
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report);
-
 	public AdminAvgReportDTO adminStatsReport();
+	
+	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member);
 }
