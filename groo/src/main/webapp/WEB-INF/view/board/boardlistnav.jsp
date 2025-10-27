@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="menu-item" data-page=""> 
+        <div class="menu-item" data-page="boardteamhome.do"> 
             <div class="menu-item-content">
                 <span>팀 게시판</span>
             </div>
