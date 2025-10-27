@@ -37,11 +37,17 @@ public class FrontPath {
         jspMap.put("/adminteammember.do", "/WEB-INF/view/admin/adminteammember.jsp");
         
         jspMap.put("/boardlist.do", "/WEB-INF/view/board/notice/boardlist.jsp");
-        jspMap.put("/boardlisthome.do", "/WEB-INF/view/board/boardlisthome.jsp");
+        jspMap.put("/boardnoticehome.do", "/WEB-INF/view/board/notice/boardnoticehome.jsp");
         jspMap.put("/boardfree.do", "/WEB-INF/view/board/free/boardfree.jsp");
+        jspMap.put("/boardfreehome.do", "/WEB-INF/view/board/free/boardfreehome.jsp");
         jspMap.put("/boardnotice.do", "/WEB-INF/view/board/notice/boardnotice.jsp");
+        jspMap.put("/boardteam.do", "/WEB-INF/view/board/teamboard/boardteam.jsp");
+        jspMap.put("/boardteamhome.do", "/WEB-INF/view/board/teamboard/boardteamhome.jsp");
+        jspMap.put("/boardgoal.do", "/WEB-INF/view/board/goal/goalteam.jsp");
+        jspMap.put("/boardgoalhome.do", "/WEB-INF/view/board/goal/boardgoalhome.jsp");
         jspMap.put("/boardwrite.do", "/WEB-INF/view/board/boardwrite.jsp");
 
+        jspMap.put("/team.do", "/WEB-INF/view/team/team.jsp");
 
 
 

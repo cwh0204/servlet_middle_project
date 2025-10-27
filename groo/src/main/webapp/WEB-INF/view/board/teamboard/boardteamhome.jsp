@@ -9,7 +9,7 @@
 <link href="css/board/boardtable.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file="freesearch.jsp"%>
+<%@ include file="teamsearch.jsp"%>
 	<table class="table table-hover">
 		<thead class="table-light">
 			<tr>
@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<th scope="row">10</th>
-				<td><a href="noticedetail.do?id=${number}">101010</a></td>
+				<td><a href="noticedetail.do?id=10">101010</a></td>
 				<td>김00</td>
 				<td>2025.10.15</td>
 				<td>870</td>
@@ -123,7 +123,6 @@
 				<td>4</td>
 			</tr>
 		</tbody>
-	</table>
 	</table>
 </body>
 </html>

@@ -11,25 +11,25 @@
 <body>
     <aside class="sidebar">
         
-        <div class="menu-item active" data-page="boardnotice.do" data-content-only="true">
+        <div class="menu-item active" data-page="boardnoticehome.do">
             <div class="menu-item-content">
                 <span>공지사항</span>
             </div>
         </div>
         
-        <div class="menu-item" data-page="boardfree.do">
+        <div class="menu-item" data-page="boardfreehome.do">
             <div class="menu-item-content">
                 <span>자유게시판</span>
             </div>
         </div>
 
-        <div class="menu-item has-submenu" data-page=""> 
+        <div class="menu-item" data-page="boardteamhome.do"> 
             <div class="menu-item-content">
                 <span>팀 게시판</span>
             </div>
             </div>
 
-        <div class="menu-item has-submenu" data-page="">
+        <div class="menu-item" data-page="boardgoalhome.do">
             <div class="menu-item-content">
                 <span>성과게시판</span>
             </div>

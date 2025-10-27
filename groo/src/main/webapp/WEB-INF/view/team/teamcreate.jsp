@@ -7,28 +7,8 @@
 <title>team create</title>
 <link href="css/base.css" rel="stylesheet">
 <link href="css/teamcreate.css" rel="stylesheet">
-
+<head>
 </head>
-<body>
-   <header>
-      <div class="header_Container">
-         <img src="./images/로고.png" alt="로고" class="img-fluid">
-         <div class="searchbar">
-            <input type="text" class="form-control" placeholder="find the group you're looking for">
-            <button type="button" class="btn btn-success">searching</button>
-         </div>
-         <div class="reightNavi_box">
-            <ul>
-               <li>home</li>
-               <li>notice</li>
-               <li>my page</li>
-               <li>go board</li>
-               <li>logout</li>
-            </ul>
-         </div>
-      </div>
-   </header>
-
    <main>
       <div class="underLine"></div>
       <div class="create_Line"></div>
@@ -44,11 +24,12 @@
                   <label>스터디명 </label><br>
                   <input type="text" name="teamName" class="form-control" placeholder="스터디명을 입력해주세요.">
                </div>
-
-               <div class="studyLeader_box">
-                  <label>스터디장</label><br>
-                  <input type="text" name="userId" class="form-control" placeholder="스터디장을 입력하세요.">
+               
+               <div class="studycontent_box">
+                  여러분의 스터디를 소개해 주세요
+                  <input type="text" name="teamInfo" class="form-control" placeholder="개설하실 스터디에 대해 설명해주세요.">
                </div>
+               
             
                <div class="membercount_box">
                   <label for="teamMember">모집인원:</label> 
@@ -149,10 +130,6 @@
 </div>
 
                </div><br>
-               <div class="studycontent_box">
-                  여러분의 스터디를 소개해 주세요
-                  <input type="text" name="teamInfo" class="form-control" placeholder="개설하실 스터디에 대해 설명해주세요.">
-               </div>
 
                <button type="submit" class="btn btn-primary submit-btn">팀 생성하기</button>
                <button type="reset" class="btn btn-primary reset-btn">돌아가기</button>

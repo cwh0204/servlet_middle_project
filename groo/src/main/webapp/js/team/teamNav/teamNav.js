@@ -15,12 +15,17 @@ $(document).ready(function() {
 		console.log(pageToLoad);
 		
 		if (pageToLoad) {
-			$('.boardcotent').load(pageToLoad, function(response, status, xhr) {
+			$('.teamcotent').load(pageToLoad, function(response, status, xhr) {
 				if (status == "error") {
                     console.error("페이지 로드 실패");
 				}
 			});
 		}
+	});
+	
+	$('.menu-item.has-submenu').on('click',function(e) {
+	    $(this).toggleClass('open'); // 상위 메뉴에 open 클래스 추가/제거
+	    $(this).find('.submenu').toggleClass('active'); // 서브메뉴에 active 클래스 추가/제거
 	});
 });
 

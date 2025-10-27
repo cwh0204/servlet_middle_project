@@ -11,7 +11,7 @@
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
-		<%@ include file="boardnoticehome.jsp"%>
+		<%@ include file="boardteamhome.jsp"%>
 	</div>
 </div>
 <%@ include file="../boardpage.jsp"%>
