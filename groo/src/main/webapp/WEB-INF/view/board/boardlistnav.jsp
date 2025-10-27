@@ -29,7 +29,7 @@
             </div>
             </div>
 
-        <div class="menu-item" data-page="">
+        <div class="menu-item" data-page="boardgoalhome.do">
             <div class="menu-item-content">
                 <span>성과게시판</span>
             </div>
