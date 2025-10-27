@@ -8,16 +8,13 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.TeamDTO;
-import com.groo.service.AdminServiceImpl;
 import com.groo.service.TeamServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * 팀목록 조회를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
@@ -34,29 +31,29 @@ public class TeamSelectController extends HttpServlet implements Controller{
 	 */
     @Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-    	
+
 		String search = request.getParameter("search");
-		
+
 		TeamDTO team = new TeamDTO();
-		
+
 		if(search != null && !search.isEmpty()) {
 			int serchMax = Integer.parseInt(request.getParameter("search"));
 			team.setStudyMax(serchMax);
 		}
 		TeamServiceImpl service = new TeamServiceImpl();
-		
+
 		team.setStudyId(search);
 		team.setStudyTitle(search);
 		team.setStudyCategory(search);
 		team.setStudyIntro(search);
 		team.setStudyIntroContent(search);
 
-		
+
 		List<TeamDTO> teamList = new ArrayList<>();
-		
+
 		try {
 
 			teamList = service.selectTeam(team);
@@ -65,7 +62,7 @@ public class TeamSelectController extends HttpServlet implements Controller{
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();

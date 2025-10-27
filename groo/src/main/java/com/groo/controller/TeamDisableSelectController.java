@@ -31,25 +31,25 @@ public class TeamDisableSelectController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-    	
+
 		String search = request.getParameter("search");
-		
+
 		TeamServiceImpl service = new TeamServiceImpl();
 		TeamDTO team = new TeamDTO();
 		if(search != null && !search.isEmpty()) {
 			int serchMax = Integer.parseInt(request.getParameter("search"));
 			team.setStudyMax(serchMax);
 		}
-		
+
 		team.setStudyId(search);
 		team.setStudyTitle(search);
 		team.setStudyCategory(search);
 		team.setStudyIntro(search);
 		team.setStudyIntroContent(search);
 		team.setStudyDeleteDate(search);
-		
+
 		List<TeamDTO> teamList = new ArrayList<>();
-		
+
 		try {
 
 			teamList = service.selectDisableTeam(team);
@@ -58,7 +58,7 @@ public class TeamDisableSelectController implements Controller {
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();

@@ -1,12 +1,115 @@
 @charset "UTF-8";
 
 body {
-	margin: 0;
+	margin: 0; 
 	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
 	color: #0f1724;
 }
 
 section.hero {
-	background: url("../images/group.jpg")
-	
+	height: 100vh;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 0 20px;
+    box-sizing: border-box; 
+    background: url("/groo/images/group.jpg") center center/cover no-repeat; 
+}
+
+section.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+section.hero > div {
+    position: relative;
+    z-index: 1;
+}
+
+section.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+section.hero p {
+    font-size: 1.3rem;
+    color: #e8e8e8;
+    line-height: 1.6;
+}
+
+/* 소개 섹션 */
+section.intro {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+section.intro h2 {
+    font-size: 1.8rem;
+    color: #1fb06b;
+    margin-bottom: 40px;
+}
+
+/* 카드형 소개 */
+.intro-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.intro-cards .card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.intro-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+.intro-cards .card h3 {
+    color: #1fb06b;
+    margin-bottom: 10px;
+}
+
+.intro-cards .card p {
+    color: #444;
+    line-height: 1.5;
+}
+
+.footer-msg {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    section.hero h1 {
+        font-size: 2rem;
+    }
+    
+    section.hero p {
+        font-size: 1rem;
+    }
+    
+    section.intro h2 {
+        font-size: 1.4rem;
+    }
+    
+    .intro-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
