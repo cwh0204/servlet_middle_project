@@ -26,10 +26,10 @@ import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
+
+import com.groo.controller.boardController_EX;
+
 import com.groo.controller.TeamStatsController;
-
-
-
 
 public class FrontControllerPath {
 
@@ -75,6 +75,11 @@ public class FrontControllerPath {
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
+
+        
+        controllerMap.put("/noticedetail.do", new boardController_EX());
+        
+       
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
     }
 
