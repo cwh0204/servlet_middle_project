@@ -13,6 +13,7 @@ import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminUpdateUserController;
+import com.groo.controller.BoardInsertController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
@@ -27,7 +28,6 @@ import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
-import com.groo.controller.boardController_EX;
 
 public class FrontControllerPath {
 
@@ -40,7 +40,10 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-
+        
+        //게시판
+        controllerMap.put("/boardinsert.do", new BoardInsertController());
+        
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
@@ -73,9 +76,6 @@ public class FrontControllerPath {
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
-
-
-        controllerMap.put("/noticedetail.do", new boardController_EX());
 
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
