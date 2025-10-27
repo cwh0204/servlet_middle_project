@@ -14,7 +14,7 @@ var userIdCheck = (userLoginId) => {
 
 	$.ajax({
 		// 데이터를 전송할 서버 URL
-		url: 'singnupselectloginid.do',
+		url: contextPath + '/singnupselectloginid.do',
 		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
@@ -372,7 +372,7 @@ $(document).ready(() => {
 			            .text('사용 가능한 형식입니다. ✔')
 			            .css('color', 'green');
 			    }
-		
+	});	
 	   			
 	/* 이메일 */
 	
@@ -412,12 +412,12 @@ $(document).ready(() => {
 
 			// 이메일 중복확인 AJAX
 			$.ajax({
-				url: '/singnupselectemail.do',
+				url: '/groo/singnupselectemail.do',
 				type: 'POST',
 				data:{ userEmail : userEmail },
 				success: function(response){
-
-					if(response != 'null'){
+					console.log(userEmail, response);
+					if(response != null){
 						alert('이미 사용중인 이메일입니다.❌');
 						isEmailVerified = false; 	// 인증 상태 초기화
 					}else{
@@ -454,9 +454,7 @@ $(document).ready(() => {
  * 아이디 중복확인 버튼 클릭 시 실행
  */
 function checkDuplicateId() {
-	/*	const userIdInput = document.getElementById('userId');
-		const userId = userIdInput.val();*/
-
+	
 	const userId = $('#userId').val();
 	// 정규 표현식 (4~20자리, 영문소문자, 숫자, _, -)
 	const idRegExp = /^[a-z0-9_-]{4,20}$/;
@@ -529,4 +527,4 @@ function validateJumin(){
 	
 	// 모든 검사 통과
 	return true; 
-}
+  };
