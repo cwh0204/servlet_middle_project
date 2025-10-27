@@ -25,7 +25,7 @@
 		<tbody>
 			<tr class="table-success">
 				<th scope="row">필독</th>
-				<td>**[긴급]** 개인정보 보호를 위한 비밀번호 변경 권고</td>
+				<td><a href="noticedetail.do?id=NOTICE_0"><strong>[긴급]</strong> 개인정보 보호를 위한 비밀번호 변경 권고</a></td>
 				<td>관리자</td>
 				<td>2025.10.22</td>
 				<td>2,500</td>
@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<th scope="row">10</th>
-				<td>101010</td>
+				<td><a href="noticedetail.do?id=10">101010</a></td>
 				<td>김00</td>
 				<td>2025.10.15</td>
 				<td>870</td>
@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<th scope="row">9</th>
-				<td>999</td>
+				<td><a href="noticedetail.do?id=9">999</a></td>
 				<td>이00</td>
 				<td>2025.10.10</td>
 				<td>1,120</td>
@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<th scope="row">8</th>
-				<td>888</td>
+				<td><a href="noticedetail.do?id=8">888</a></td>
 				<td>박00</td>
 				<td>2025.10.05</td>
 				<td>450</td>
@@ -61,7 +61,7 @@
 			</tr>
 			<tr>
 				<th scope="row">7</th>
-				<td>777</td>
+				<td><a href="noticedetail.do?id=7">777</a></td>
 				<td>최00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -70,7 +70,7 @@
 			</tr>
 			<tr>
 				<th scope="row">6</th>
-				<td>666</td>
+				<td><a href="noticedetail.do?id=6">666</a></td>
 				<td>정00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -79,7 +79,7 @@
 			</tr>
 			<tr>
 				<th scope="row">5</th>
-				<td>555</td>
+				<td><a href="noticedetail.do?id=5">555</a></td>
 				<td>윤00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -88,7 +88,7 @@
 			</tr>
 			<tr>
 				<th scope="row">4</th>
-				<td>444</td>
+				<td><a href="noticedetail.do?id=4">444</a></td>
 				<td>장00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -97,7 +97,7 @@
 			</tr>
 			<tr>
 				<th scope="row">3</th>
-				<td>333</td>
+				<td><a href="noticedetail.do?id=3">333</a></td>
 				<td>신00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -106,7 +106,7 @@
 			</tr>
 			<tr>
 				<th scope="row">2</th>
-				<td>222</td>
+				<td><a href="noticedetail.do?id=2">222</a></td>
 				<td>임00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
@@ -115,7 +115,7 @@
 			</tr>
 			<tr>
 				<th scope="row">1</th>
-				<td>111</td>
+				<td><a href="noticedetail.do?id=1">111</a></td>
 				<td>고00</td>
 				<td>2025.09.28</td>
 				<td>620</td>
