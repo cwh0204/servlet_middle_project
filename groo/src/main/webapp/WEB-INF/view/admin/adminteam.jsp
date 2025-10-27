@@ -315,17 +315,8 @@
 					id="searchInput" placeholder="이름, 이메일로 검색...">
 			</div>
 			<div class="filter-group">
-				<select class="filter-select" id="statusFilter">
-					<option value="">전체 상태</option>
-					<option value="활성">활성</option>
-					<option value="비활성">비활성</option>
-					<option value="대기중">대기중</option>
-				</select> <select class="filter-select" id="roleFilter">
-					<option value="">전체 권한</option>
-					<option value="관리자">관리자</option>
-					<option value="매니저">매니저</option>
-					<option value="일반">일반 사용자</option>
-				</select>
+				<button class="btn btn-secondary" onclick="searchTeam()">
+					검색</button>
 			</div>
 		</div>
 	</div>
