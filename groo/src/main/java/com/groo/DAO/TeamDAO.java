@@ -11,5 +11,4 @@ public interface TeamDAO {
 
 	public List<TeamDTO> selectTeam(TeamDTO teamDTO, SqlSession session);
 
-	public List<TeamDTO> selectTeamAll(SqlSession session);
 }

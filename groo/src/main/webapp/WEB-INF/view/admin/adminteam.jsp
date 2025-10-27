@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 <style>
 .main-content {
 	flex: 1;
@@ -326,15 +329,39 @@
 </body>
 <script>
 
+searchTeam = () => {
+	const serchName = $('#searchInput').val();
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teamselects.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			serchName : serchName
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			console.
+			gridTeam.resetData(response);
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
+
 $(document).ready(function() {
-	
+/*     searchTeam(); */
     gridTeam = new tui.Grid({
 		el : document.getElementById('gridTeam'),
 		data : {
 			api : {
 				readData : {
-					url : 'https://koreanjson.com/users',
-					method : 'GET',
+					url : 'teamselects.do',
+					method : 'POST',
 				}
 			},
 		},
@@ -342,25 +369,28 @@ $(document).ready(function() {
 		scrollX : true,
 		scrollY : true,
 		columns : [ {
-			header : 'ID',
-			name : 'id'
+			header : '스터디ID',
+			name : 'studyId'
 		}, {
-			header : '이름',
-			name : 'name',
-			editor : 'text'
+			header : '스터디이름',
+			name : 'studyTitle'
 		}, {
-			header : '유저',
-			name : 'username',
-			editor : 'text'
+			header : '카테고리',
+			name : 'studyCategory'
 		}, {
-			header : '이메일',
-			name : 'email',
-			editor : 'text'
+			header : '최대인원',
+			name : 'studyMax'
 		}, {
-			header : '전화번호',
-			name : 'phone',
-			editor : 'text'
-		}]
+			header : '스터디타이틀',
+			name : 'studyIntro'
+		},{
+			header : '스터디내용',
+			name : 'studyIntroContent'
+		},{
+			header : '스터디 생성일',
+			name : 'studyCreateDate'
+		}
+		]
 	});
     gridTeam.on('response', function(ev) {
         let response = ev.xhr.responseText;
