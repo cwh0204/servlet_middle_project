@@ -26,14 +26,10 @@ import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
-<<<<<<< HEAD
+
 import com.groo.controller.boardController_EX;
-=======
+
 import com.groo.controller.TeamStatsController;
-
-
-
->>>>>>> cbe151f1b014d59d819afc41e7848cc4c09dfc1b
 
 public class FrontControllerPath {
 
@@ -79,14 +75,12 @@ public class FrontControllerPath {
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
-<<<<<<< HEAD
+
         
         controllerMap.put("/noticedetail.do", new boardController_EX());
         
-        
-=======
+       
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
->>>>>>> cbe151f1b014d59d819afc41e7848cc4c09dfc1b
     }
 
     public Controller getControllers(String command) {
