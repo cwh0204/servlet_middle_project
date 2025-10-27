@@ -8,11 +8,11 @@
 <link href="css/base.css" rel="stylesheet">
 <link href="css/board/board.css" rel="stylesheet">
 </head>
-<%@ include file="noticesearch.jsp"%>
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
-		<h2>공지사항 게시판</h2>
+	<%@ include file="noticesearch.jsp"%>
+		<h2>공지사항 게시판</h2> <br>
 		<%@ include file="boardnoticehome.jsp"%>
 	</div>
 </div>

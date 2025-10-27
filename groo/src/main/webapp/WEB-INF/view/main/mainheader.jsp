@@ -20,7 +20,7 @@
 				<div class="menu-item-content" data-page="boardnotice.do">공지사항</div>
 				<div class="menu-item-content" data-page="createteam.do">팀</div>
 				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
-				<div class="menu-item-content" data-page="boardfreehome.do">자유게시판</div>
+				<div class="menu-item-content" data-page="boardfree.do">자유게시판</div>
 				<div class="menu-item-content" data-page="boardintro.do">Groo
 					소개글</div>
 			</div>
