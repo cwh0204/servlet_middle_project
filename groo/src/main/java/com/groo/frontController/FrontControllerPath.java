@@ -26,10 +26,8 @@ import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
-
-import com.groo.controller.boardController_EX;
-
 import com.groo.controller.TeamStatsController;
+import com.groo.controller.boardController_EX;
 
 public class FrontControllerPath {
 
@@ -42,13 +40,13 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
         controllerMap.put("/teamstats.do", new TeamStatsController());
-        
-        
+
+
         controllerMap.put("/mypages.do", new MyPageController());
 
         controllerMap.put("/mypages.do", new MyPageController());
@@ -64,7 +62,7 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
 
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-        
+
         //관리자 관련 API
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
@@ -76,10 +74,10 @@ public class FrontControllerPath {
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
 
-        
+
         controllerMap.put("/noticedetail.do", new boardController_EX());
-        
-       
+
+
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
     }
 

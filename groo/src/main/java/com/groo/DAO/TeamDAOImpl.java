@@ -25,7 +25,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalServiceException("팀 생성 중 데이터베이스 오류 발생",e);
 		}
 	}
-	
+
 	/**
 	 * 팀 검색을 위한 메서드
 	 * @param team 팀을 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -42,7 +42,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 비활성 팀 검색을 위한 메서드
 	 * @param team 팀을 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -59,7 +59,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 팀 통계를 불러오기 위한 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체

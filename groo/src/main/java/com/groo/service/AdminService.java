@@ -19,6 +19,6 @@ public interface AdminService {
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report);
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report);
 	public AdminAvgReportDTO adminStatsReport();
-	
+
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member);
 }

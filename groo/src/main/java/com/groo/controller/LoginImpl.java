@@ -3,10 +3,7 @@ package com.groo.controller;
 import java.io.IOException;
 
 import com.groo.error.ErrorDTO;
-import com.groo.error.InternalDataAccessException;
-import com.groo.error.InternalServerErrorException;
 import com.groo.error.InternalServiceException;
-import com.groo.error.ResourceNotFoundException;
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
 
