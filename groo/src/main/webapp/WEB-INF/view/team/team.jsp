@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/base.css" rel="stylesheet">
-<link href="css/board/board.css" rel="stylesheet">
+<link href="css/team/team.css" rel="stylesheet">
 </head>
-<div class="boardcontainer">
-	<%@ include file="../boardlistnav.jsp"%>
-	<div class="boardcotent">
-		<%@ include file="boardnoticehome.jsp"%>
+<body>
+<div class="teamcontainer">
+	<%@ include file="teamnav.jsp"%>
+	<div class="teamcotent">
+		<%@ include file="teamcreate.jsp"%>
 	</div>
 </div>
-<%@ include file="../boardpage.jsp"%>
+</body>
 </html>

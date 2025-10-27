@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.teamcontainer {
+	display: flex;
+}
+
+.teamcotent {
+	margin: 30px;
+}

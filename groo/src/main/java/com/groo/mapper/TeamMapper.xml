@@ -4,29 +4,42 @@
 
 <mapper namespace="TeamMapper">
 
-	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
-		INSERT INTO team
-		(TEAM_NAME, USER_ID, TEAM_INFO)
-		VALUES (#{teamName}, #{userId},
-		#{teamInfo})
-	</insert>
-
 	<select id="selectTeam" parameterType="com.groo.model.TeamDTO"
 		resultType="com.groo.model.TeamDTO">
-		SELECT
-			TEAM_NAME AS teamName,
-			USER_ID AS userId,
-			TEAM_INFO AS teamInfo
-		FROM TEAM
-		WHERE USER_ID = #{userId}
-	</select>
-	
-	<select id="selectTeamAll" parameterType="com.groo.model.TeamDTO"
-		resultType="com.groo.model.TeamDTO">
-		SELECT
-			TEAM_NAME AS teamName,
-			USER_ID AS userId,
-			TEAM_INFO AS teamInfo
-		FROM TEAM
+		SELECT 
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_INTRO,
+			STUDY_INTROCONTENT,
+			STUDY_CREATEDATE
+		FROM STUDY
+		<where>
+			AND STUDY_DELETEDATE IS NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="studyId != null and studyId != ''">
+					OR STUDY_ID LIKE '%' || #{studyId} || '%'
+				</if>
+				<if test="studyTitle != null and studyTitle != ''">
+					OR STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+				</if>
+				<if test="studyCategory != null and studyCategory != ''">
+					OR STUDY_CATEGORY LIKE '%' || #{studyCategory} || '%'
+				</if>
+				<if test="studyMax != null and studyMax != ''">
+					OR STUDY_MAX LIKE '%' || #{studyMax} || '%'
+				</if>
+				<if test="studyIntro != null and studyIntro != ''">
+					OR STUDY_INTRO LIKE '%' || #{studyIntro} || '%'
+				</if>
+				<if test="studyIntroContent != null and studyIntroContent != ''">
+					OR STUDY_INTROCONTENT LIKE '%' || #{studyIntroContent} || '%'
+				</if>
+				<if test="studyCreateDate != null and studyCreateDate != ''">
+					OR STUDY_CREATEDATE LIKE '%' || #{studyCreateDate} || '%'
+				</if>
+			</trim>
+		</where>
 	</select>
 </mapper>
