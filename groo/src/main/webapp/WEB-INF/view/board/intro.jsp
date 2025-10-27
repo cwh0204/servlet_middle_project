@@ -8,30 +8,38 @@
 </head>
 <body>
 
-<section class="main">
+<section class="main" style="background: url('${pageContext.request.contextPath}/images/group.jpg') center/cover no-repeat;">
 	<div>
 		<h1>함께 성장하는 개발자들의 공간, Groo</h1>
 		<p>
-		    혼자 들어와도 OK 여러명이 들어와도 OK<br>
-		    개발자도 OK 개발의 꿈을 가진 분이라면 OK<br>
+		    혼자 들어와도 OK, 여러명이 들어와도 OK<br>
+		    개발자도 OK, 개발의 꿈을 가진 분이라면 OK<br>
 		    내가 원하는 주제로 스터디 GOGO
 		</p>
 	</div>
-</section>
+</section> 
 
-<section class="intro">
-	<h2>Groo는 웹 개발을 위한 스터디 플랫폼입니다.</h2>
-	<p>
-		Groo는 웹 개발을 원하는 분들이라면 함께 배우고 협업할 수 있도록 돕는 공간입니다.<br>
-		스터디를 생성하고 소속될 수도 있으며 팀원들이 스터디 주제를 제안하고 투표할 수 있습니다.<br>
-		선정된 주제로 스터디를 진행하고 결과물도 공유할 수 있습니다.<br>
-		다양한 개발 주제로 스터디에 참여해보세요.<br><br>
-		<hr color="green">
-		Groo에서 팀스터디를 진행하면서 필요한 것을 배우고 그로 인해 성장하고,<br>
-		개발에 대해 도움이 필요한 분들에게 자신의 지식을 나눠주고 같이 성장할 수 있는 기회가 된다면 정말 멋지겠네요.<br>
-		당신의 성장을 늘 응원하겠습니다.<br><br>
-		Groo 일동 올림
-	</p>
+<section class="intro" id="intro">
+    <h2>Groo는 웹 개발을 위한 스터디 플랫폼입니다.</h2>
+    <div class="intro-cards">
+        <div class="card">
+            <h3>스터디 생성</h3>
+            <p>스터디를 생성하고 팀원을 모집할 수 있어요.</p>
+        </div>
+        <div class="card">
+            <h3>투표 & 참여</h3>
+            <p>팀원들이 주제를 제안하고 투표로 원하는 주제를 선정할 수 있어요.</p>
+        </div>
+        <div class="card">
+            <h3>결과 공유</h3>
+            <p>스터디 결과물을 공유하고 함께 성장할 수 있어요.</p>
+        </div>
+    </div>
+    <p class="footer-msg">
+        Groo에서 팀스터디를 진행하며 필요한 것을 배우고 성장하세요.<br>
+        당신의 성장을 늘 응원합니다.<br>
+        - Groo 일동 올림
+    </p>
 </section>
 
 </body>
