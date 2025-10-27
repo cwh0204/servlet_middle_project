@@ -153,7 +153,7 @@
 			</div>
 			<div class="stats-grid">
 				<div class="stat-card">
-					<div class="stat-label">방문자수</div>
+					<div class="stat-label">신규게시글</div>
 					<div class="stat-value">
 						4 <span class="stat-unit">명</span>
 					</div>
