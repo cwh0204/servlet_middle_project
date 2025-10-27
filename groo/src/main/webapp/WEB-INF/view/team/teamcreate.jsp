@@ -32,9 +32,7 @@
    <main>
       <div class="underLine"></div>
       <div class="create_Line"></div>
-      <h3>스터디 생성</h3>
-      <div class="underLine2"></div>
-      <div class="create_Line2"></div>
+
 
       <form action="teamcreate" method="post">
          
@@ -107,50 +105,50 @@
                   <div class="radio_group">
   <div class="radio_row">
     <input type="radio" id="catDev" name="teamCategory" value="개발">
-    <label for="catDev">개발</label>
+    <label for="Dev">개발</label>
 
     <input type="radio" id="catDesign" name="teamCategory" value="디자인">
-    <label for="catDesign">디자인</label>
+    <label for="Design">디자인</label>
 
     <input type="radio" id="catMarketing" name="teamCategory" value="마케팅">
-    <label for="catMarketing">마케팅</label>
+    <label for="Marketing">마케팅</label>
 
     <input type="radio" id="catLang" name="teamCategory" value="어학">
-    <label for="catLang">외국어</label>
+    <label for="Lang">외국어</label>
   </div>
 
   <div class="radio_row">
     <input type="radio" id="catFinance" name="teamCategory" value="금융">
-    <label for="catFinance">재테크</label>
+    <label for="Finance">재테크</label>
 
     <input type="radio" id="catPhoto" name="teamCategory" value="사진">
-    <label for="catPhoto">사진</label>
+    <label for="Photo">사진</label>
 
     <input type="radio" id="catMusic" name="teamCategory" value="음악">
-    <label for="catMusic">음악</label>
+    <label for="Music">음악</label>
 
     <input type="radio" id="catArt" name="teamCategory" value="미술">
-    <label for="catArt">미술</label>
+    <label for="Art">미술</label>
   </div>
 
   <div class="radio_row">
     <input type="radio" id="catArch" name="teamCategory" value="건축">
-    <label for="catArch">건축</label>
+    <label for="Arch">건축</label>
 
     <input type="radio" id="catVideo" name="teamCategory" value="영상편집">
-    <label for="catVideo">영상편집</label>
+    <label for="Video">영상편집</label>
 
     <input type="radio" id="catFashion" name="teamCategory" value="패션">
-    <label for="catFashion">패션</label>
+    <label for="Fashion">패션</label>
 
     <input type="radio" id="catEng" name="teamCategory" value="공학">
-    <label for="catEng">공학</label>
+    <label for="Eng">공학</label>
   </div>
 </div>
 
                </div><br>
                <div class="studycontent_box">
-                  여러분의 스터디를 소개해 주세요
+                  <label>여러분의 스터디를 소개해 주세요</label>
                   <input type="text" name="teamInfo" class="form-control" placeholder="개설하실 스터디에 대해 설명해주세요.">
                </div>
 
