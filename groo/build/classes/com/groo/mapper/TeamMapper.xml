@@ -42,4 +42,50 @@
 			</trim>
 		</where>
 	</select>
+	<select id="selectDisableTeam" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT 
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_INTRO,
+			STUDY_INTROCONTENT,
+			STUDY_DELETEDATE
+		FROM STUDY
+		<where>
+			AND STUDY_DELETEDATE IS NOT NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="studyId != null and studyId != ''">
+					OR STUDY_ID LIKE '%' || #{studyId} || '%'
+				</if>
+				<if test="studyTitle != null and studyTitle != ''">
+					OR STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+				</if>
+				<if test="studyCategory != null and studyCategory != ''">
+					OR STUDY_CATEGORY LIKE '%' || #{studyCategory} || '%'
+				</if>
+				<if test="studyMax != null and studyMax != ''">
+					OR STUDY_MAX LIKE '%' || #{studyMax} || '%'
+				</if>
+				<if test="studyIntro != null and studyIntro != ''">
+					OR STUDY_INTRO LIKE '%' || #{studyIntro} || '%'
+				</if>
+				<if test="studyIntroContent != null and studyIntroContent != ''">
+					OR STUDY_INTROCONTENT LIKE '%' || #{studyIntroContent} || '%'
+				</if>
+				<if test="studyCreateDate != null and studyCreateDate != ''">
+					OR STUDY_DELETEDATE LIKE '%' || #{studyCreateDate} || '%'
+				</if>
+			</trim>
+		</where>
+	</select>
+	<select id="selectStateTeam" resultType="com.groo.model.TeamAvgDTO">
+			SELECT
+				COUNT(*) AS total_teams,
+				COUNT(CASE WHEN STUDY_DELETEDATE IS null THEN 1 END) AS active_teams,
+				COUNT(CASE WHEN STUDY_DELETEDATE IS NOT null THEN 1 END) AS inactive_teams,
+				COUNT(CASE WHEN TRUNC(STUDY_CREATEDATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_teams
+			FROM STUDY
+	</select>
 </mapper>

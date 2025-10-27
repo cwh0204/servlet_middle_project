@@ -8,6 +8,7 @@ import com.groo.controller.AdminInsertUserController;
 import com.groo.controller.AdminReportProcessUserSerchController;
 import com.groo.controller.AdminReportSerchController;
 import com.groo.controller.AdminSelectSearchUserController;
+import com.groo.controller.AdminSelectStudyMemberController;
 import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
@@ -23,8 +24,16 @@ import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
 import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
+import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
+<<<<<<< HEAD
 import com.groo.controller.boardController_EX;
+=======
+import com.groo.controller.TeamStatsController;
+
+
+
+>>>>>>> cbe151f1b014d59d819afc41e7848cc4c09dfc1b
 
 public class FrontControllerPath {
 
@@ -37,8 +46,13 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-
+        
+        //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
+        controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
+        controllerMap.put("/teamstats.do", new TeamStatsController());
+        
+        
         controllerMap.put("/mypages.do", new MyPageController());
 
         controllerMap.put("/mypages.do", new MyPageController());
@@ -54,7 +68,8 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
 
         controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-
+        
+        //관리자 관련 API
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
         controllerMap.put("/adminuserinsert.do", new AdminInsertUserController());
@@ -64,10 +79,14 @@ public class FrontControllerPath {
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
+<<<<<<< HEAD
         
         controllerMap.put("/noticedetail.do", new boardController_EX());
         
         
+=======
+        controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
+>>>>>>> cbe151f1b014d59d819afc41e7848cc4c09dfc1b
     }
 
     public Controller getControllers(String command) {

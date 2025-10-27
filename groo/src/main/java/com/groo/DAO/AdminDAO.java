@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
+import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminDAO {
@@ -20,6 +21,7 @@ public interface AdminDAO {
 	public AdminAvgReportDTO adminStatsReport(SqlSession session);
 
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session);
-
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
+	
+	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session);
 }
