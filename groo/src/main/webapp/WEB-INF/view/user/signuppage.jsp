@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+  const contextPath = '<%= request.getContextPath() %>';
+</script>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="js/signUp.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
