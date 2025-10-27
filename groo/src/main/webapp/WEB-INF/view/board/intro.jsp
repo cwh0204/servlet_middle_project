@@ -2,25 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7b6fdb32b38b5fe3f3519e23177d5fb"></script>
+
+<script src="js/board/intro.js"></script>
 <link href="css/board/intro.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title> </title>
 </head>
 <body>
 
-<section class="main" style="background: url('${pageContext.request.contextPath}/images/group.jpg') center/cover no-repeat;">
-	<div>
-		<h1>함께 성장하는 개발자들의 공간, Groo</h1>
+<section class="main">
+	<img src="${pageContext.request.contextPath}/images/intro-study.png" alt="Groo 스터디 그룹">
+	<div class="main-text">
+		<h1>함께 성장하는 모두의 공간, Groo</h1>
 		<p>
 		    혼자 들어와도 OK, 여러명이 들어와도 OK<br>
-		    개발자도 OK, 개발의 꿈을 가진 분이라면 OK<br>
-		    내가 원하는 주제로 스터디 GOGO
+		    누구든지 OK, 분야 상관없이 OK<br>
+		    내가 원하는 주제로 스터디 GO❗ GO❗
 		</p>
 	</div>
+	
+	<!-- 스크롤 유도 화살표 -->
+	<a href="#intro" class="scroll-down">&#x2193;</a>
 </section> 
 
 <section class="intro" id="intro">
-    <h2>Groo는 웹 개발을 위한 스터디 플랫폼입니다.</h2>
+    <h2>Groo는 스터디 플랫폼입니다.</h2>
     <div class="intro-cards">
         <div class="card">
             <h3>스터디 생성</h3>
@@ -40,6 +48,11 @@
         당신의 성장을 늘 응원합니다.<br>
         - Groo 일동 올림
     </p>
+</section>
+
+<section class="map-section" id="map">
+    <h2>Groo 위치</h2>
+    <div id="map-container"></div>
 </section>
 
 </body>

@@ -17,8 +17,8 @@ public class TeamServiceImpl implements TeamService{
 
 	TeamDAO dao = new TeamDAOImpl(); //업캐스팅
 	List<TeamDTO> teamlist = new ArrayList<>();
-	
-	
+
+
 	/**
 	 * 회원 목록을 조회하는 서비스 메서드입니다.
 	 *
@@ -29,7 +29,7 @@ public class TeamServiceImpl implements TeamService{
 	 */
 	@Override
 	public List<TeamDTO> selectTeam(TeamDTO team) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
 			teamlist = dao.selectTeam(team, session);
@@ -69,7 +69,7 @@ public class TeamServiceImpl implements TeamService{
 		}
 		return teamlist;
 	}
-	
+
 	/**
 	 * 팀통계를 조회하는 서비스 메서드입니다.
 	 * @return 비활성 팀목록 조회 처리 결과
