@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+/* 사이드바 */
+.sidebar {
+	width: 260px;
+	height: 100%;
+	background: white;
+	border-right: 1px solid #e5e7eb;
+	padding: 24px 0;
+}
+
+.sidebar-header {
+	padding: 0 24px 16px;
+	color: #6b7280;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.menu-item {
+	cursor: pointer;
+	transition: all 0.3s ease;
+	color: #4b5563;
+	font-weight: bold;
+	font-size: 15px;
+	border-left: 3px solid transparent;
+	position: relative;
+}
+
+.menu-item-content {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding: 10px 20px 10px 20px;
+}
+
+/* .menu-item:hover {
+	background: #f0fdf4;
+	color: #2d6a4f;
+} */
+
+.menu-item-content:hover {
+	background-color: #f0fdf4;
+	color: #2d6a4f;
+}
+
+.submenu-item:hover {
+	background-color: #f0fdf4;
+	color: #2d6a4f;
+}
+
+.menu-item.active {
+/* 	background: #f0fdf4; */
+	color: #2d6a4f;
+	border-left-color: #2d6a4f;
+	font-weight: 600;
+}
+
+.menu-item-content.active {
+	background: #f0fdf4;
+		color: #2d6a4f;
+}
+.submenu-item.active {
+	background: #f0fdf4;
+	color: #2d6a4f;
+}
+.menu-icon {
+	font-size: 20px;
+	width: 24px;
+	text-align: center;
+}
+/* 서브메뉴 */
+.menu-item.has-submenu {
+	cursor: pointer;
+}
+
+.submenu {
+	display: none;
+}
+
+.submenu.active {
+	display: block;
+}
+
+.submenu-item {
+	padding: 15px 20px 15px 35px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	color: #4b5563;
+	font-size: 13px;
+	position: relative;
+}
+
+.menu-icon.arrow {
+	display: inline-block; 
+	opacity: 0.7;
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.menu-item.has-submenu.open .menu-icon.arrow {
+    transform: rotate(90deg); /* 예시 속성 */
+}

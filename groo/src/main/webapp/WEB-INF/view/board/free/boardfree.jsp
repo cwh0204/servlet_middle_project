@@ -11,8 +11,6 @@
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
-	<%@ include file="freesearch.jsp"%>
-		<h2>자유 게시판</h2> <br>
 		<%@ include file="boardfreehome.jsp"%>
 	</div>
 </div>

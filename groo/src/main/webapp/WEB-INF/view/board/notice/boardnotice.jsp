@@ -11,8 +11,6 @@
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
-	<%@ include file="noticesearch.jsp"%>
-		<h2>공지사항 게시판</h2> <br>
 		<%@ include file="boardnoticehome.jsp"%>
 	</div>
 </div>

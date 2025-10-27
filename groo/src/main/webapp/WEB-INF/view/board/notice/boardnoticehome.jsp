@@ -9,6 +9,7 @@
 <link href="css/board/boardtable.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="noticesearch.jsp"%>
 	<table class="table table-hover">
 		<thead class="table-light">
 			<tr>
