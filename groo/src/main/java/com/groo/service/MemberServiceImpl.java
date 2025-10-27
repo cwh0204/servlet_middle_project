@@ -50,11 +50,11 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //
 //			session.close();
 //		}
 //	}
-	
+
 	@Override
 	public void insertUserService(MemberDTO memberDTO) {
 		SqlSession session = SessionFactory.getSqlSession();
-		
+
 		try {
 			dao.signUp(memberDTO, session);
 			session.commit();
@@ -90,13 +90,13 @@ public class MemberServiceImpl implements MemberLoginUser, MemberInsertUser { //
 	public String selectEmailService(String memEmail) {
 		SqlSession session = SessionFactory.getSqlSession();
 		String resultEmail = null;
-		
+
 		try {
 			resultEmail = dao.selectEmail(memEmail, session);
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
-			
+
 		}finally {
 			session.close();
 		}

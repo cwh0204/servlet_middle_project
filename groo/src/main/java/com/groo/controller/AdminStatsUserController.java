@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminStatsUserController implements Controller{
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 * @param request  HTTP 요청 객체
@@ -31,15 +31,15 @@ public class AdminStatsUserController implements Controller{
 		// TODO Auto-generated method stub
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
-			
+
 			AdminStatsDTO stats = service.adminStatsUser();
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(stats);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

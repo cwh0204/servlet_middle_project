@@ -3,8 +3,6 @@ package com.groo.DAO;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 
-import com.groo.error.InternalDataAccessException;
-import com.groo.error.InternalServiceException;
 import com.groo.model.MemberDTO;
 
 public class MemberDAOImpl implements MemberDAO{

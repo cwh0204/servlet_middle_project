@@ -36,15 +36,15 @@ public class FrontControllerPath {
     public FrontControllerPath() {
         controllerMap.put("/logins.do", new LoginController());
         controllerMap.put("/mains.do", new MainController());
-        
+
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         controllerMap.put("/teamcreates.do", new TeamCreateController());
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/mypages.do", new MyPageController());
-        
+
         controllerMap.put("/mypages.do", new MyPageController());
 
         controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());

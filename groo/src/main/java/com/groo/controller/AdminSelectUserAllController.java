@@ -33,13 +33,13 @@ public class AdminSelectUserAllController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String memStatus = request.getParameter("memStatus");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemStatus(memStatus);
-		
+
 		ErrorDTO Error = new ErrorDTO();
-		
+
 		try {
 			AdminService adminService = new AdminServiceImpl();
 			List<MemberDTO> list = adminService.adminSelectAll(member);

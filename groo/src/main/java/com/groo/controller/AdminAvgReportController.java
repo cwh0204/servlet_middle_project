@@ -29,20 +29,20 @@ public class AdminAvgReportController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		AdminAvgReportDTO report = new AdminAvgReportDTO();
-		
+
 		try {
-			
+
 			report = service.adminStatsReport();
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(report);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

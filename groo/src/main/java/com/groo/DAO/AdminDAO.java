@@ -16,10 +16,10 @@ public interface AdminDAO {
 	public void adminUpdateUser(MemberDTO member, SqlSession session);
 	public List<MemberDTO> adminSelectSearchUser(MemberDTO member, SqlSession session);
 	public AdminStatsDTO adminStatsUser(SqlSession session);
-	
+
 	public AdminAvgReportDTO adminStatsReport(SqlSession session);
-	
+
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session);
-	
+
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
 }

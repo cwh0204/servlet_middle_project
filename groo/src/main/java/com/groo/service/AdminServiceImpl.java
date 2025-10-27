@@ -182,7 +182,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		List<AdminReportDTO> reportList = new ArrayList<>();
 		try {
@@ -208,10 +208,10 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public AdminAvgReportDTO adminStatsReport() {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		AdminAvgReportDTO report = new AdminAvgReportDTO();
-		
+
 		try {
 			report = dao.adminStatsReport(session);
 		} catch (InternalDataAccessException ide) {
@@ -237,7 +237,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report) {
 		SqlSession session = SessionFactory.getSqlSession();
 		List<AdminReportDTO> reportList = new ArrayList<>();
-		
+
 		try {
 			reportList = dao.adminReportProcessUserSerch(report,session);
 		} catch (InternalDataAccessException ide) {

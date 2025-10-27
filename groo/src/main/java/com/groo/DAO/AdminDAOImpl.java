@@ -68,7 +68,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public void adminInsertUser(MemberDTO member, SqlSession session) {
-		
+
 		try {
 			session.insert("adminInsertUser",member);
 		}catch (Exception e) {
@@ -76,7 +76,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 회원정보 수정을 위한 메서드
 	 * @param member 유저 정부 수정을 하기위한 Data Transfer Object 데이터 클래스
@@ -85,7 +85,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public void adminUpdateUser(MemberDTO member, SqlSession session) {
-		
+
 		try {
 			session.update("adminUpdateUser",member);
 		}catch (Exception e) {
@@ -93,7 +93,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 회원정보 수정을 위한 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
@@ -101,19 +101,19 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public AdminStatsDTO adminStatsUser(SqlSession session) {
-		
+
 		AdminStatsDTO member = new AdminStatsDTO();
-		
+
 		try {
 			member = session.selectOne("adminAvgUser");
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
-		
+
 		return member;
 	}
-	
+
 	/**
 	 * 회원정보 검색을 위한 메서드
 	 * @param member 유저 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -135,7 +135,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return adminList;
 	}
-	
+
 	/**
 	 * 신고정보 검색을 위한 메서드
 	 * @param report 신고 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -145,9 +145,9 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session) {
 		// TODO Auto-generated method stub
-		
+
 		List<AdminReportDTO> reportList = new ArrayList<>();
-		
+
 		try {
 			reportList = session.selectList("adminReportSerch", report);
 		}catch (Exception e) {
@@ -156,7 +156,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return reportList;
 	}
-	
+
 	/**
 	 * 신고정보 통계 검색을 위한 메서드
 	 * @param report 신고 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -166,7 +166,7 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public AdminAvgReportDTO adminStatsReport(SqlSession session) {
 		AdminAvgReportDTO report = new AdminAvgReportDTO();
-		
+
 		try {
 			report = session.selectOne("adminAvgReport");
 		}catch (Exception e) {
@@ -175,7 +175,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return report;
 	}
-	
+
 	/**
 	 * 신고조치 완료 정보 검색을 위한 메서드
 	 * @param report 신고 조치완료 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -186,7 +186,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session) {
 		// TODO Auto-generated method stub
 		List<AdminReportDTO> reportList = new ArrayList<>();
-		
+
 		try {
 			reportList = session.selectList("adminReportProcessUserSerch",report);
 		}catch (Exception e) {

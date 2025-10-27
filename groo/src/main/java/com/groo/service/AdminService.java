@@ -14,9 +14,9 @@ public interface AdminService {
 	public void adminUpdateUser(MemberDTO member);
 	public List<MemberDTO> adminSelectSearchUser(MemberDTO member);
 	public AdminStatsDTO adminStatsUser();
-	
+
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report);
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report);
-	
+
 	public AdminAvgReportDTO adminStatsReport();
 }

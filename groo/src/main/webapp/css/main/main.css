@@ -190,7 +190,6 @@
     font-size: 2.5em; 
     color: #333;
     margin-bottom: 20px;
-    padding-left: 30px; /* new-study-area의 좌측 패딩 30px만큼 밀어넣습니다. */
 }
 
 /* ⭐ new-study-list의 justify-content: center; 는 제거하여 목록을 왼쪽으로 다시 붙입니다. ⭐ */

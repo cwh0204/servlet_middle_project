@@ -9,7 +9,7 @@ public interface MemberDAO {
 	public void signUp(MemberDTO memberDto, SqlSession session);
 	public String selectLoginId(String memLoginId, SqlSession session);
 	public String selectEmail(String memEmail, SqlSession session);
-	
-	
+
+
 	public MemberDTO login(MemberDTO memberDTO, SqlSession session);
 }
