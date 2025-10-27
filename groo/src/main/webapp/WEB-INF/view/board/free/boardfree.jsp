@@ -8,12 +8,12 @@
 <link href="css/base.css" rel="stylesheet">
 <link href="css/board/board.css" rel="stylesheet">
 </head>
-<%@ include file="noticesearch.jsp"%>
+<%@ include file="freesearch.jsp"%>
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
 		<h2>자유 게시판</h2>
-		<%@ include file="boardnoticehome.jsp"%>
+		<%@ include file="boardfreehome.jsp"%>
 	</div>
 </div>
 <%@ include file="../boardpage.jsp"%>

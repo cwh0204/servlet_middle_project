@@ -9,21 +9,21 @@
 </head>
 	<aside class="sidebar">
 		<div class="menu-item has-submenu">
-			<div class="menu-item active" data-page="">
+			<div class="menu-item active" data-page="noticeboard.do">
 				<div class="menu-item-content">
 					<span>공지사항</span>
 				</div>
 			</div>
 		</div>
-		<div class="menu-item has-submenu" data-page="">
-			<div class="menu-item-content">
+		<div class="menu-item has-submenu">
+			<div class="menu-item-content" data-page="">
 				<span>자유게시판</span>
 			</div>
 		</div>
 
 		<div class="menu-item has-submenu" data-page="">
 			<div class="menu-item-content">
-				<span>스터디게시판</span>
+				<span>팀 게시판</span>
 			</div>
 		</div>
 

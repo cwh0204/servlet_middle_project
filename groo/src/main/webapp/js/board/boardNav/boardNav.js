@@ -5,10 +5,11 @@ $(document).ready(function() {
 		$(this).addClass('active');
 		
 		const pageToLoad = $(this).data('page');
+		console.log(pageToLoad);
 		
 		if (pageToLoad) {
 			sessionStorage.setItem('admin_last_view',pageToLoad);
-			$('.a_r_container').load(pageToLoad,function(response,status,xhr) {
+			$('.boardcotent').load(pageToLoad,function(response,status,xhr) {
 				if (typeof window.chartColl === 'function') {window.chartColl();
 					}
 					if (status == "error") {console.error("페이지 로드 실패");
@@ -27,8 +28,9 @@ $(document).ready(function() {
 		$(this).closest('.menu-item').addClass('active');
 		$(this).addClass('active');
 		const pageToLoad = $(this).data('page');
+		console.log(pageToLoad);
 		sessionStorage.setItem('admin_last_view',pageToLoad);
-		if (pageToLoad) {$('.a_r_container').load(pageToLoad,function(response,	status, xhr) {
+		if (pageToLoad) {$('.boardcotent').load(pageToLoad,function(response,	status, xhr) {
 			if (status == "error") {console.error("페이지 로드 실패");
 				
 			}
