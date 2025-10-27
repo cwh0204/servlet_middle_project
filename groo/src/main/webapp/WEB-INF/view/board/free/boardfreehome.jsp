@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,8 @@
 		<tbody>
 			<tr class="table-success">
 				<th scope="row">필독</th>
-				<td><a href="noticedetail.do?id=NOTICE_0"><strong>[긴급]</strong> 개인정보 보호를 위한 비밀번호 변경 권고</a></td>
+				<td><a href="noticedetail.do?id=NOTICE_0"><strong>[긴급]</strong>
+						개인정보 보호를 위한 비밀번호 변경 권고</a></td>
 				<td>관리자</td>
 				<td>2025.10.22</td>
 				<td>2,500</td>
@@ -124,6 +126,7 @@
 			</tr>
 		</tbody>
 	</table>
-	</table>
+	<c:set var="boardType" value="team" scope="request" />
+	<jsp:include page="../write.jsp" />
 </body>
 </html>

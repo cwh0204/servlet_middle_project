@@ -19,7 +19,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void insertBoard(BoardDTO board, SqlSession session) {
 		try {
-			session.selectList("adminSelectUserAll", board);
+			session.selectList("insertBoard", board);
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);

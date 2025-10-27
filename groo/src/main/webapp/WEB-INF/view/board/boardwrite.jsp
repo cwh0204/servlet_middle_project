@@ -45,18 +45,41 @@
 				<button class="btn btn-primary" id="submitBtn">등록</button>
 				<a href="boardlist.do" class="btn btn-secondary">취소</a>
 			</div>
-			<input type="text" style=" display: none; "class="border-type" value="1111">
+			<input type="text" style=" display: none; "id="border-type" value="1111">
 		</div>
 <!-- 	</form> -->
 </body>
 <script type="text/javascript">
+
+boardInsert = () => {
+	const postContent = $('#postContent').summernote('code');
+	const postTitle = $('#postTitle').val();
+	
+ 	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'boardinsert.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			memId : '',
+			boardType : '',
+			postContent : postContent,
+			postTitle : postTitle
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			console.log("성공");
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
+
 $('#submitBtn').click(function () {
-	const content = $('#postContent').summernote('code');
-	const contitle = $('#postTitle').val();
-	const contitle1 = $('.border-type').val();
-	console.log(contitle);
-	console.log(content);
-	console.log(contitle1);
+	boardInsert();
 });
 </script>
 </html>
