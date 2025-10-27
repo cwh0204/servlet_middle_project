@@ -8,7 +8,6 @@
 <link href="css/base.css" rel="stylesheet">
 <link href="css/board/board.css" rel="stylesheet">
 </head>
-
 <div class="boardcontainer">
 	<%@ include file="../boardlistnav.jsp"%>
 	<div class="boardcotent">
