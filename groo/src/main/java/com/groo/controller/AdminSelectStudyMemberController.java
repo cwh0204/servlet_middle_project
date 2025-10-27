@@ -31,16 +31,16 @@ public class AdminSelectStudyMemberController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String search = request.getParameter("search");
-		
+
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
-		
+
 		member.setMemName(search);
 		member.setStudyTitle(search);
 		member.setStudyRoll(search);
 		member.setStudyJoinedDate(search);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
-		
+
 		try {
 			List<AdminTeamMemberDTO> list = service.adminSelectStudyMember(member);
 			Gson gson = new Gson();

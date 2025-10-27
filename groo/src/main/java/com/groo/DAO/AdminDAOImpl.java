@@ -196,7 +196,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return reportList;
 	}
-	
+
 	/**
 	 * 팀 맴버 정보 검색을 위한 메서드
 	 * @param member 팀 맴버 정보를 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -205,7 +205,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session) {
-		
+
 		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
 		try {
 			memberList = session.selectList("adminSelectStudyMember",member);
