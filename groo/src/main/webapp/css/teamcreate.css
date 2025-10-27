@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .form-box {
    width: 100%;
    max-width: 800px;
@@ -131,11 +130,9 @@
 }
 
 /*메인 콘텐츠 */
-
 .create_Line2{
    margin-bottom : 60px;
 }
-
 
 main {
    position: relative;
@@ -147,27 +144,27 @@ main {
 }
 
 .studyTitle_box, 
-.studyLeader_box {
+.pw_box,
+.studycontent_box {
    width: 700px;
    margin-bottom: 5px;     
    font-weight: bold;
    margin-bottom: 20px;
 }
 
-
-.studyTitle_box label, 
-.studyLeader_box label, 
+.studyTitle_box label,  
 .teamCategory_box label,
-.mbercount_box label,
-.studycontent_box {
+.membercount_box label,
+.pw_box label,
+.studycontent_box label {
    font-weight: 600;
    font-size: 16px;
    margin-bottom : 5px;
-
 }
 
 .studyTitle_box input, 
-.studyLeader_box input {
+.pw_box input,
+.studycontent_box input {
    width: 750px;
    height: 30px;
    margin-left: 0px;
@@ -177,11 +174,11 @@ main {
    outline: none;
 }
 
-.studyTitle_box input:focus, .studyLeader_box input:focus {
+.studyTitle_box input:focus, 
+.pw_box input:focus, 
+.studycontent_box input:focus {
    border-color: #218838;
 }
-
-
 
 table {
    width: 600px;
@@ -269,7 +266,6 @@ td {
    text-align: left;
 }
 
-
 /* ================================
    콘텐츠 표시 효과
 ================================ */
@@ -277,8 +273,6 @@ main .category_container {
    opacity: 1;
    transition: opacity 1s ease;
 }
-
-
 
 /* 개설 스터디 분야 */
 .radio_group input[type="radio"] {
@@ -305,47 +299,209 @@ main .category_container {
   background-color: #28a745; /* 클릭 시 초록색 */
 }
 
-/*지역*/
-.region-table {
-  width: 100%;
-  max-width: 500px;
-  border-collapse: collapse;
-  margin: 20px auto;
-  text-align: center;
+/* 개설 스터디 분야 */
+.category-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin: 30px 0;
 }
 
-.region-table caption {
-  caption-side: top;
+/* 큰 카테고리 박스 */
+.category-box {
+  border: 2px solid #b8e986; 
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #f9fff9;
+  width: 290px;
+}
+
+/* 큰 카테고리 제목 */
+.category-title {
   font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 1.2em;
+  color: #28a745;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.region-table td {
-  padding: 12px 0;
-  border: 1px solid #ddd;
+/* 세부 항목 그룹 */
+.subcategory-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 실제 라디오 버튼 숨기기 */
+.subcategory-group input[type="radio"] {
+  display: none;
+}
+
+/* 라벨 기본 모양 (노란 테두리 박스) */
+.subcategory-group label {
+  padding: 8px 15px;
+  border: 2px solid #f5d742;
   border-radius: 20px;
-  background-color: #fff;
   cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* 마우스 올릴 때 */
-.region-table td:hover {
-  background-color: #f2f2f2;
+/* hover 효과 */
+.subcategory-group label:hover {
+  background-color: #fff8cc;
 }
 
-/* 선택된 셀 */
-.region-table td.selected {
-  background-color: #e0e0e0; /* 클릭 시 연회색 */
+/* 선택된 상태 */
+.subcategory-group input[type="radio"]:checked + label {
+  background-color: #f5d742;
+  color: white;
+}
+
+/* ================================
+   달력 스타일
+================================ */
+.date_box {
+  width: 750px;
+  margin-bottom: 20px;
+}
+
+.date_box label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-daterange {
+  display: flex;
+  gap: 10px;
+}
+
+.datepicker-input {
+  padding: 10px 15px !important;
+  border: 1px solid #28a745 !important;
+  border-radius: 6px !important;
+  box-sizing: border-box;
+  background-color: #fff !important;
+  color: #333 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  height: 40px !important;
+}
+
+.datepicker-input:focus {
+  border-color: #218838 !important;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.3) !important;
+  outline: none !important;
+}
+
+.datepicker-input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/* Datepicker 팝업 */
+.datepicker {
+  background-color: #fff;
+  border-radius: 8px !important;
+  padding: 15px 20px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid #28a745;
+}
+
+.datepicker-dropdown {
+  top: 0;
+}
+
+.datepicker-dropdown.datepicker-orient-left:before {
+  border-bottom-color: #28a745;
+}
+
+.datepicker-dropdown.datepicker-orient-left:after {
+  border-bottom-color: #fff;
+}
+
+/* 오늘 날짜 */
+.datepicker table tr td.today, 
+.datepicker span.focused {
+  border-radius: 50% !important;
+  background-color: #b8e986 !important;
+  color: #333;
+}
+
+.datepicker table tr td.today.range {
+  background-color: #e8f5e9 !important;
+  border-radius: 0 !important;
+}
+
+/* 요일 헤더 */
+.datepicker thead tr:nth-child(3) th {
+  font-weight: bold !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #28a745;
+}
+
+/* 날짜 셀 */
+.datepicker .old, 
+.datepicker .day, 
+.datepicker .new {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 4px !important;
+  border: none !important;
+  transition: all 0.2s ease;
+}
+
+.datepicker .day.old, 
+.datepicker .day.new {
+  background-color: #f5f5f5 !important;
+  color: #bdbdbd !important;
+}
+
+.datepicker .old-day:hover, 
+.datepicker .day:hover, 
+.datepicker .new-day:hover {
+  border-radius: 50% !important;
+  background-color: #e8f5e9 !important;
+}
+
+/* 선택된 날짜 */
+.datepicker .active {
+  border-radius: 50% !important;
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+/* 범위 시작/종료 */
+.datepicker .range-start, 
+.datepicker .range-end {
+  border-radius: 50% !important;
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+/* 범위 내 날짜 */
+.datepicker .range {
+  background-color: #e8f5e9 !important;
+  color: #28a745 !important;
+}
+
+/* 이전/다음/월 선택 버튼 */
+.datepicker .prev, 
+.datepicker .next, 
+.datepicker .datepicker-switch {
+  border-radius: 4px !important;
+  padding: 10px !important;
+  font-size: 16px;
+  color: #28a745;
   font-weight: 600;
 }
 
-
-
-
-
-
-
-
-
+.datepicker .prev:hover, 
+.datepicker .next:hover, 
+.datepicker .datepicker-switch:hover {
+  background-color: #e8f5e9 !important;
+}
