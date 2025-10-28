@@ -39,13 +39,12 @@ $.ajax({
     type: 'POST',
     // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
     data: {
+    
     },
     // 데이터 전송 성공 시 실행
     success: function(response) {
+    	
        // response는 서버에서 돌려준 데이터입니다.
-       const $tableBody = $('#boardDataBody');
-       $tableBody.empty();
-       console.log(response);
        response.forEach(item => {
         const writeDateOnly = item.postingDate ? item.postingDate.split(' ')[0] : '-';
         const $newRow = $('<tr>').addClass('table-hover'); // table-success 대신 table-hover 사용
@@ -68,7 +67,7 @@ $.ajax({
 
         // 5. 완성된 <tr>을 <tbody>에 추가합니다.
         $('#boardDataBody').append($newRow);
-       });
+       }); 
     },
  
     // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
