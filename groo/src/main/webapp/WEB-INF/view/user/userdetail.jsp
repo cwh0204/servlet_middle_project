@@ -141,7 +141,7 @@
 				</div>
 			</div>
 		</div>
+		<%@ include file="./userdetailpw.jsp"%>
 	</div>
-<%@ include file="./userdetailpw.jsp"%>
 </body>
 </html>
