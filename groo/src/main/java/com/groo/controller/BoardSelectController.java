@@ -32,11 +32,12 @@ public class BoardSelectController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String findField = request.getParameter("findField");
 		String findName = request.getParameter("findName");
-
+		String boardTypeId = request.getParameter("boardTypeId");
 		BoardDTO board = new BoardDTO();
 
 		board.setFindField(findField);
 		board.setFindName(findName);
+		board.setBoardTypeId(boardTypeId);
 
 		BoardServiceImpl service = new BoardServiceImpl();
 

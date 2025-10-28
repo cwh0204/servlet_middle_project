@@ -18,7 +18,7 @@
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
 				<div class="menu-item-content" data-page="boardnotice.do">공지사항</div>
-				<div class="menu-item-content" data-page="createteam.do">팀</div>
+				<div class="menu-item-content" data-page="teamcreate.do">팀</div>
 				<div class="menu-item-content" data-page="boardfree.do">자유게시판</div>
 				<div class="menu-item-content" data-page="intro.do">Groo 소개글</div>
 			</div>

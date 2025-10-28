@@ -1,9 +1,11 @@
 function boardInsert() {
 	const postContent = $('#postContent').summernote('code');
-	console.log("postContent",postContent);
 	const postTitle = $('#postTitle').val();
-	console.log("postTitle",postTitle);
-								
+	
+	const queryString = window.location.search; 
+	const urlParams = new URLSearchParams(queryString);
+	const typeValue = urlParams.get('type');
+	
 	$.ajax({
 	
 	url: 'boardinsert.do',
@@ -12,7 +14,7 @@ function boardInsert() {
 	
 	data: {
 		memId : '',
-		boardType : '',
+		boardType : typeValue,
 		postContent : postContent,
 		postTitle : postTitle
 	},
@@ -27,8 +29,7 @@ function boardInsert() {
 	});
 }
 
-$(document).ready(function() {
-	
+$(document).ready(function() {	
     $('.summernote').summernote({
           height: 400,
           placeholder: '게시글 내용을 입력해 주세요.',
@@ -54,10 +55,8 @@ $(document).ready(function() {
         boardInsert(); 
     });        
 	
-	const currentBoardType = '${boardType}';
-	console.log(currentBoardType);
-    
 }); // $(document).ready() 끝!
+
 	
 	
 	
