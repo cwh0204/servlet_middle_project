@@ -50,7 +50,7 @@
 </section>
 
 <section class="map-section" id="map">
-    <h2>Groo 현위치📍</h2>
+    <h2>Groo 현위치 <img src="https://i.postimg.cc/LXthnrvR/map.png" class="map"></h2>
     <div id="map-container"></div>
 </section>
 
