@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.service.AdminServiceImpl;
 
@@ -20,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class AdminStudyMemberDeleteController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 * @param request  HTTP 요청 객체
@@ -30,18 +29,18 @@ public class AdminStudyMemberDeleteController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String memName = request.getParameter("memName");
-		
+
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
-		
+
 		member.setMemName(memName);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
-		
+
 		try {
 
 			service.adminStudyMemberDelete(member);

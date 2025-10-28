@@ -15,7 +15,7 @@ public class BoardDTO {
 	private String postingDelCheck;
 	private int postViews;
 	private int comentCount;
-	
+
 	private String findField;
 	private String findName;
 }

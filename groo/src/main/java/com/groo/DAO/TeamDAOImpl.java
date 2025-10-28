@@ -25,7 +25,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalServiceException("팀 생성 중 데이터베이스 오류 발생",e);
 		}
 	}
-	
+
 	/**
 	 * 팀 검색을 위한 메서드
 	 * @param team 팀을 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -35,7 +35,7 @@ public class TeamDAOImpl implements TeamDAO{
 	@Override
 	public List<TeamDTO> selectTeam(TeamDTO team, SqlSession session) {
 		List<TeamDTO> list = new ArrayList<>();
-		
+
 		try {
 			list = session.selectList("selectTeam",team);
 		}catch (Exception e) {
@@ -43,7 +43,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 비활성 팀 검색을 위한 메서드
 	 * @param team 팀을 검색 하기위한 Data Transfer Object 데이터 클래스
@@ -60,7 +60,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 팀 통계를 불러오기 위한 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
@@ -76,7 +76,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return team;
 	}
-	
+
 	/**
 	 * 팀 비활성화를 하기 위한 메서드
 	 * @param team 팀을 비활성 하기위한 Data Transfer Object 데이터 클래스
@@ -91,7 +91,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 팀 활성화를 하기 위한 메서드
 	 * @param team 팀을 활성 하기위한 Data Transfer Object 데이터 클래스
@@ -99,7 +99,7 @@ public class TeamDAOImpl implements TeamDAO{
 	 */
 	@Override
 	public void activateTeam(TeamDTO team, SqlSession session) {
-		
+
 		try {
 			session.update("activateTeam",team);
 		}catch (Exception e) {

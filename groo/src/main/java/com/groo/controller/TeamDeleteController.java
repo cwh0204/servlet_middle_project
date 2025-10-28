@@ -32,15 +32,15 @@ public class TeamDeleteController implements Controller {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		String studyId = request.getParameter("studyId");
-		
+
 		TeamDTO team = new TeamDTO();
-		
+
 		team.setStudyId(studyId);
-		
+
 		TeamServiceImpl service = new TeamServiceImpl();
-		
+
 		try {
-			
+
 			service.deleteTeam(team);
 			Gson gson = new Gson();
 			String json = gson.toJson("성공");
