@@ -9,7 +9,7 @@ public class BoardDTO {
 	private String boardTypeId;
 	private String postTitle;
 	private String postContent;
-	private String postDate;
+	private String postingDate;
 	private String postUpdate;
 	private String postDel;
 	private String postingDelCheck;
