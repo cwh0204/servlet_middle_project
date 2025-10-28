@@ -84,7 +84,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
         controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
-        
+
         controllerMap.put("/noticedetail.do", new boardController_EX());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());

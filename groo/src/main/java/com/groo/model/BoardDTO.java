@@ -13,9 +13,10 @@ public class BoardDTO {
 	private String postUpdate;
 	private String postDel;
 	private String postingDelCheck;
+	private String memNick;
 	private int postViews;
 	private int comentCount;
-	
+
 	private String findField;
 	private String findName;
 }

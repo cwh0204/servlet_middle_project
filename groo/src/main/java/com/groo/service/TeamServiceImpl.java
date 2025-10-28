@@ -94,8 +94,8 @@ public class TeamServiceImpl implements TeamService{
 		}
 		return team;
 	}
-	
-	
+
+
 	/**
 	 * 팀을 비활성하기위한 서비스 메서드입니다.
 	 *
@@ -120,7 +120,7 @@ public class TeamServiceImpl implements TeamService{
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 팀을 활성화 하기위한 서비스 메서드입니다.
 	 *

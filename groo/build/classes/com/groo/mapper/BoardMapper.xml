@@ -38,26 +38,28 @@
 		    ) AS COMENT_COUNT
 		FROM BOARD A
 		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
-			<where>
-				AND POSTING_DEL IS NULL
-				<trim prefix="AND (" suffix=")" prefixOverrides="OR">
-					<if test="findField == null and findField == ''">
-						
-					</if>
-					<if test="findField == 'title'">
-						OR A.POST_TITLE LIKE '%' || #{findName} || '%'
-					</if>
-					<if test="findField == 'contents'">
-						OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
-					</if>
-					<if test="findField == 'titleAndContent'">
-						OR A.POST_TITLE LIKE '%' || #{findName} || '%'
-						OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
-					</if>
-					<if test="findField == 'author'">
-						OR B.MEM_NICK LIKE '%' || #{findName} || '%'
-					</if>
-				</trim>
-			</where>
+		<where>
+		    POSTING_DEL IS NULL 
+		    
+		    <if test="boardTypeId != null and boardTypeId != ''">
+		        AND A.BOARD_TYPE_ID = #{boardTypeId}
+		    </if>
+		    
+		    <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		        <if test="findField == 'title'">
+		            OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+		        </if>
+		        <if test="findField == 'contents'">
+		            OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
+		        </if>
+		        <if test="findField == 'titleAndContent'">
+		            OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+		            OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
+		        </if>
+		        <if test="findField == 'author'">
+		            OR B.MEM_NICK LIKE '%' || #{findName} || '%'
+		        </if>
+		    </trim>
+		</where>
 	</select>
 </mapper>

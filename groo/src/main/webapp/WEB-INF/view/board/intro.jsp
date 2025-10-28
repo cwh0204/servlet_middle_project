@@ -45,7 +45,7 @@
     <p class="footer-msg">
         Groo에서 팀스터디를 진행하며 필요한 것을 배우고 성장하세요.<br>
         당신의 성장을 늘 응원합니다.<br>
-        - Groo 일동 올림
+         🍀Groo 일동 올림
     </p>
 </section>
 

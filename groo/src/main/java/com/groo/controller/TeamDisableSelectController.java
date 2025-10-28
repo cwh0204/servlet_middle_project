@@ -33,7 +33,7 @@ public class TeamDisableSelectController implements Controller {
 		response.setCharacterEncoding("UTF-8");
 
 		String search = request.getParameter("search");
-		
+
 		TeamServiceImpl service = new TeamServiceImpl();
 		TeamDTO team = new TeamDTO();
 		if(search != null && !search.isEmpty()) {

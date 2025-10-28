@@ -36,7 +36,7 @@ public class BoardDAOImpl implements BoardDAO {
 	 */
 	@Override
 	public List<BoardDTO> selectBoard(BoardDTO board, SqlSession session) {
-		
+
 		List<BoardDTO> list = new ArrayList<>();
 		try {
 			list = session.selectList("selectBoard",board);

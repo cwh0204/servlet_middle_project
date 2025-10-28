@@ -5,7 +5,7 @@ function initializeKakaoMap() {
 	if (typeof kakao !== 'undefined' && typeof kakao.maps !== 'undefined') {
 		kakao.maps.load(function() {
 			// 대전 중구 계룡로 846 3층 좌표 (위도, 경도)
-			var coords = new kakao.maps.LatLng(36.3225, 127.4235);
+			var coords = new kakao.maps.LatLng(36.3252, 127.4087);
 
 			var mapContainer = document.getElementById('map-container');
 			var mapOption = {
@@ -23,7 +23,7 @@ function initializeKakaoMap() {
 
 			// 마커에 정보창 표시
 			var infowindow = new kakao.maps.InfoWindow({
-				content: '<div style="padding:5px;">대전 중구 계룡로 846 4층 - Groo</div>'
+				content: '<div style="padding:5px;"> 대덕인재개발원 Groo </div>'
 			});
 			infowindow.open(map, marker);
 		});

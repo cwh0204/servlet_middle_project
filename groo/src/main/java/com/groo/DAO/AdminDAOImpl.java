@@ -215,7 +215,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return memberList;
 	}
-	
+
 	/**
 	 * 팀 맴버 비활성화를 위한 메서드
 	 * @param member 팀 맴버 비활성화를 하기위한 Data Transfer Object 데이터 클래스

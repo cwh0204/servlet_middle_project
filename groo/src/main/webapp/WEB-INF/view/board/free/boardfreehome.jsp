@@ -130,6 +130,7 @@
 	<jsp:include page="../writebtn.jsp" />
 </body>
 <script type="text/javascript">
+<<<<<<< HEAD
 $.ajax({
     // 필수 설정
     url: 'boardselect.do', 
@@ -188,3 +189,32 @@ $.ajax({
 </script>
 
 </html>
+=======
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'boardselect.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			response.forEach(item => {
+			    console.log(item.boardId);
+			    console.log(item.postTitle);
+			    console.log(item.postViews);
+			    console.log(item.comentCount);
+			    console.log(item.memNick);
+			    
+			});
+		},
+	
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+</script>
+</html>
+>>>>>>> 9fe9828144bbb52d58aa93507aa81728ec6b9df1
