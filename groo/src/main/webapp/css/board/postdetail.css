@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+.view-container {
+    width: 1500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+/* 1. 게시글 헤더 (제목 및 메타 정보) */
+.board-header {
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #4CAF50; /* 포인트 색상 */
+}
+
+.post-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+}
+
+.post-meta strong {
+    color: #555;
+    font-weight: 600;
+}
+
+.meta-item {
+    padding: 0 10px 0 0;
+}
+
+.meta-separator {
+    color: #ccc;
+    margin-right: 10px;
+}
+
+/* 2. 게시글 본문 및 첨부파일 */
+.board-content {
+    min-height: 250px;
+    padding: 20px 0;
+    line-height: 1.8;
+    color: #444;
+    font-size: 16px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.board-content p {
+    margin-bottom: 15px;
+    white-space: pre-wrap; /* 줄바꿈 유지 */
+}
+
+.attachments a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #b3d9ff;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* 3. 버튼 영역 */
+.board-actions {
+    text-align: right;
+    padding: 15px 0;
+}
+
+.board-actions button {
+    padding: 10px 18px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-primary { 
+    background-color: #007bff;
+    color: white;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* 4. 좋아요 영역 */
+.recommend-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#likeBtn {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ffc107;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#likeBtn:hover {
+    background-color: #fff3cd;
+    transform: scale(1.02);
+}
+
+/* 5. 댓글 영역 */
+.comment-section h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.comment-form {
+    display: flex;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.comment-form textarea {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    resize: vertical;
+    outline: none;
+}
+
+.comment-form button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.comment-item {
+    position: relative; /* 💡 comment-delete 버튼의 기준점이 됩니다. */
+    border-bottom: 1px solid #eee;
+    padding: 15px; 
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fcfcfc;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between; /* 닉네임과 날짜를 양 끝으로 분리 */
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    
+    /* 💡 날짜가 버튼 영역을 침범하지 않도록 오른쪽 공간을 확보 */
+    padding-right: 70px; /* 삭제 버튼 영역만큼 공간을 줍니다. */
+}
+
+/* 댓글 내용 (p): 삭제 버튼 공간을 위해 오른쪽 패딩 유지 */
+.comment-item p {
+    margin: 5px 0;
+    padding-right: 80px; /* 내용이 삭제 버튼과 겹치지 않도록 */
+    line-height: 1.5;
+}
+
+/* 삭제 버튼 위치 확정 */
+.comment-delete {
+    position: absolute; /* 💡 절대 위치로 고정 (날짜와 독립) */
+    top: 15px; /* 상단에서 시작 (comment-meta 아래로 내려오도록) */
+    right: 15px; /* comment-item 오른쪽 경계에서 15px 안쪽 */
+    
+    /* 스타일 유지 */
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 5px;
+}
