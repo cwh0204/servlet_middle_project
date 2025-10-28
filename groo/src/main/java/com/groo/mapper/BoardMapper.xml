@@ -63,4 +63,25 @@
 		</where>
 		ORDER BY A.POSTING_DATE DESC
 	</select>
+	
+	<select id="selectBoardDetail" resultType="com.groo.model.BoardDTO">
+		SELECT 
+			A.BOARD_ID,
+			B.MEM_NICK,
+			A.POST_TITLE,
+			A.POSTING_DATE,
+			A.POST_VIEWS,
+			(SELECT
+				COUNT(C.COMENT_ID)
+			FROM COMENT C
+			WHERE
+				C.COMENT_END IS NULL AND
+				C.BOARD_ID = A.BOARD_ID
+		    ) AS COMENT_COUNT,
+		    A.POST_CONTENT
+		FROM BOARD A
+		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		WHERE BOARD_ID = #{boardId}
+	</select>
+	
 </mapper>

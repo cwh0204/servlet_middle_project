@@ -14,6 +14,7 @@ import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateUserController;
+import com.groo.controller.BoardDetailSelectController;
 import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardSelectController;
 import com.groo.controller.Controller;
@@ -49,7 +50,9 @@ public class FrontControllerPath {
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
-
+        controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
+        
+        
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
