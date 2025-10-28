@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class BoardInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -35,18 +35,18 @@ public class BoardInsertController implements Controller {
 		String boardType = request.getParameter("boardType");
 		String postTitle = request.getParameter("postTitle");
 		String postContent = request.getParameter("postContent");
-		
+
 		BoardDTO board = new BoardDTO();
-		
+
 		board.setMemId(memId);
 		board.setBoardTypeId(boardType);
 		board.setPostTitle(postTitle);
 		board.setPostContent(postContent);
-		
-		
+
+
 		BoardServiceImpl service = new BoardServiceImpl();
 		try {
-			
+
 			service.insertBoard(board);
 			Gson gson = new Gson();
 			String json = gson.toJson("성공");

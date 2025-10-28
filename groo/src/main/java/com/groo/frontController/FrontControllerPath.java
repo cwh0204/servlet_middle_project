@@ -41,10 +41,10 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
-        
+
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
