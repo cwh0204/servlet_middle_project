@@ -75,6 +75,33 @@
 </body>
 <script type="text/javascript">
 
+var teamStats = () => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teamstats.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			// 예: 성공 메시지 표시 또는 페이지 이동
+			console.log(response);
+			$('.total-teams').text(response.totalTeams);
+			$('.inactive-teams').text(response.inactiveTeams);
+			$('.weekly-teams').text(response.weeklyTeams);
+			$('.active-teams').text(response.activeTeams);
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+
+		}
+	}); // $.ajax 끝
+}
+
 searchTeam = () => {
 	const search = $('#searchInput').val();
 	$.ajax({
@@ -98,6 +125,7 @@ searchTeam = () => {
 		});
 	}
 $(document).ready(function() {
+	teamStats();
 	gridTeamMember = new tui.Grid({
 		el : document.getElementById('gridTeamMember'),
 		data : {
@@ -133,6 +161,7 @@ $(document).ready(function() {
 		}
 		]
 	});
+	gridTeamMember.setBodyHeight(450);
 	searchTeam();
 });
 </script>

@@ -2,27 +2,27 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminStatsDTO;
-import com.groo.model.AdminTeamMemberDTO;
-import com.groo.service.AdminServiceImpl;
+import com.groo.model.BoardDTO;
+import com.groo.service.BoardServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 관리자 페이지에서 팀맴버를 비활성화 시키는 Controller 구현 클래스
- * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
+ * 게시판 목록조회를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 클라이언트에 응답
  */
-
-public class AdminStudyMemberDeleteController implements Controller {
-	
+public class BoardSelectController implements Controller {
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
+	 *
 	 * @param request  HTTP 요청 객체
 	 * @param response HTTP 응답 객체
 	 * @throws ServletException 서블릿 관련 오류 발생 시
@@ -30,24 +30,24 @@ public class AdminStudyMemberDeleteController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String findField = request.getParameter("findField");
+		String findName = request.getParameter("findName");
 		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
+		BoardDTO board = new BoardDTO();
 		
-		String memName = request.getParameter("memName");
+		board.setFindField(findField);
+		board.setFindName(findName);
 		
-		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
+		BoardServiceImpl service = new BoardServiceImpl();
 		
-		member.setMemName(memName);
-		
-		AdminServiceImpl service = new AdminServiceImpl();
+		List<BoardDTO> list = new ArrayList<>();
 		
 		try {
-
-			service.adminStudyMemberDelete(member);
+			
+			list = service.selectBoard(board);
 
 			Gson gson = new Gson();
-			String json = gson.toJson("성공");
+			String json = gson.toJson(list);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

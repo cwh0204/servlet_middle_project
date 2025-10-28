@@ -1,5 +1,8 @@
 package com.groo.DAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
@@ -24,5 +27,23 @@ public class BoardDAOImpl implements BoardDAO {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
+	}
+	/**
+	 * 게시판 목록 검색 메서드
+	 * @param board 게시판 검색을 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 게시판 검색 내용
+	 */
+	@Override
+	public List<BoardDTO> selectBoard(BoardDTO board, SqlSession session) {
+		
+		List<BoardDTO> list = new ArrayList<>();
+		try {
+			list = session.selectList("selectBoard",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
+		}
+		return list;
 	}
 }
