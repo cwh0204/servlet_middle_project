@@ -23,14 +23,18 @@
 <main>
 	<form action="teamcreate" method="post">
 		<div class="form-box">
+			<div class="form-header">
+				<h2 class="form-title"> 스터디 팀 만들기  </h2>
+			</div>
+			
 			<div class="category_container">
 				<div class="studyTitle_box">
-					<label>스터디명</label><br> 
+					<label>📚 스터디명</label>
 					<input type="text" name="teamName" class="teamName" placeholder="스터디명을 입력해주세요.">
 				</div>
 
 				<div class="teamCategory_box">
-					<label>개설 스터디 분야</label>
+					<label>🎯 개설 스터디 분야</label>
 					<div class="category-section">
 						<div class="category-box">
 							<div class="category-title">지식 & 비즈니스</div>
@@ -82,17 +86,17 @@
 					<div class="left-column">
 						<!-- 달력 -->
 						<div class="date_box">
-							<label>스터디 기간</label>
+							<label>📅 스터디 기간</label>
 							<div class="input-group input-daterange" id="teamDateRange">
-								<input type="text" class="form-control datepicker-input" name="startDate" placeholder="시작일" readonly>
-								<input type="text" class="form-control datepicker-input" name="endDate" placeholder="종료일" readonly>
+								<input type="text" class="form-control datepicker-input" name="startDate" placeholder="🗓️ 시작일" readonly>
+								<input type="text" class="form-control datepicker-input" name="endDate" placeholder="🗓️ 종료일" readonly>
 							</div>
 						</div>
 
 						<div class="membercount_box">
-							<label for="teamMember">모집인원</label> 
+							<label for="teamMember">👥 모집인원</label> 
 							<select name="teamMember" id="teamMember" class="form-select">
-								<option value="" disabled selected>모집인원</option>
+								<option value="" disabled selected>모집인원을 선택하세요</option>
 								<option value="2명">2명</option>
 								<option value="3명">3명</option>
 								<option value="4명">4명</option>
@@ -102,31 +106,29 @@
 							</select>
 						</div>
 
-						<div class="memberage_box">
-							<label for="teamMemberage">나이</label>
-							<div class="range-container">
-								<input type="range" id="teamMemberage" name="teamMemberage" min="14" max="70" step="1" value="25"> 
-								<span id="ageValue">25세</span>
-							</div>
-						</div>
-
 						<div class="pw_box">
-							<label>비밀번호(선택)</label>
-							<input type="text" name="teampw" class="teampw">
+							<div class="pw_label_wrapper">
+								<label>🔒 비밀번호</label>
+								<div class="checkbox_wrapper">
+									<input type="checkbox" id="pwCheckbox" class="pw_checkbox">
+									<label for="pwCheckbox" class="checkbox_label"></label>
+								</div>
+							</div>
+							<input type="text" name="teampw" id="teampw" class="teampw">
 						</div>
 					</div>
 
 					<div class="right-column">
 						<div class="studycontent_box">
-							<label>스터디 소개</label> 
-							<textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요."></textarea>
+							<label>📝 스터디 소개</label> 
+							<textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요!&#10;- 목표&#10;- 방식&#10;"></textarea>
 						</div>
 					</div>
 				</div>
 
 				<div class="button-group">
-					<button type="reset" class="btn btn-secondary reset-btn">돌아가기</button>
 					<button type="submit" class="btn btn-primary submit-btn">팀 생성하기</button>
+					<button type="reset" class="btn btn-secondary reset-btn">돌아가기</button>	
 				</div>
 			</div>
 		</div>
