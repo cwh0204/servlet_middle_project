@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/board/write.css" rel="stylesheet">
+<link href="css/board/writebtn.css" rel="stylesheet">
 </head>
 <body>
 	<div class="d-flex justify-content-end">
