@@ -96,7 +96,7 @@
 						<div class="membercount_box">
 							<label for="teamMember">👥 모집인원</label> 
 							<select name="teamMember" id="teamMember" class="form-select">
-								<option value="" disabled selected>모집인원을 선택해주세요</option>
+								<option value="" disabled selected>모집인원을 선택하세요</option>
 								<option value="2명">2명</option>
 								<option value="3명">3명</option>
 								<option value="4명">4명</option>
@@ -121,7 +121,7 @@
 					<div class="right-column">
 						<div class="studycontent_box">
 							<label>📝 스터디 소개</label> 
-							<textarea name="teamInfo" class="teamInfo" placeholder="💡 우리 스터디를 소개해주세요!&#10;- 목표&#10;- 방식&#10;"></textarea>
+							<textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요!&#10;- 목표&#10;- 방식&#10;"></textarea>
 						</div>
 					</div>
 				</div>
