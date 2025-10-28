@@ -15,6 +15,7 @@ import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.BoardInsertController;
+import com.groo.controller.BoardSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
@@ -47,6 +48,7 @@ public class FrontControllerPath {
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
+        controllerMap.put("/boardselect.do", new BoardSelectController());
 
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
