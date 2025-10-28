@@ -38,7 +38,7 @@ public class BoardSelectController implements Controller {
 		board.setFindField(findField);
 		board.setFindName(findName);
 		board.setBoardTypeId(boardTypeId);
-		
+
 		BoardServiceImpl service = new BoardServiceImpl();
 
 		List<BoardDTO> list = new ArrayList<>();
