@@ -25,5 +25,4 @@ public class BoardDAOImpl implements BoardDAO {
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
 	}
-
 }

@@ -43,6 +43,7 @@ public class BoardInsertController implements Controller {
 		board.setPostTitle(postTitle);
 		board.setPostContent(postContent);
 		
+		
 		BoardServiceImpl service = new BoardServiceImpl();
 		try {
 			
