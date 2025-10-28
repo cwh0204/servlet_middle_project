@@ -1,9 +1,12 @@
 package com.groo.DAO;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.model.BoardDTO;
 
 public interface BoardDAO {
 	public void insertBoard(BoardDTO board, SqlSession session);
+	public List<BoardDTO> selectBoard(BoardDTO board, SqlSession session);
 }

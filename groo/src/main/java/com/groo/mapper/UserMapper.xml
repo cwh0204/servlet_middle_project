@@ -13,14 +13,15 @@
 		<selectKey keyProperty="memId" resultType="String" order="BEFORE">
            SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
         </selectKey>
-	  INSERT INTO MEMBER (c
+	  INSERT INTO MEMBER (
 	  						MEM_ID,
 	  						MEM_NAME,
 	  						MEM_LOGIN_ID, 
 	  						MEM_PASS, 
  	  						MEM_BIRTH,
 	  						MEM_GENDER, 
-	  						MEM_EMAIL
+	  						MEM_EMAIL,
+	  						MEM_NICK
 	  						)
 	  			  values (
 	  			 			#{memId}, 
@@ -29,7 +30,8 @@
 	  			 			#{memPass}, 
  	  			 			#{memBirth},
 	  			 			#{memGender}, 
-	  			 			#{memEmail} 
+	  			 			#{memEmail},
+	  			 			'USER_' || MEMBER_SEQ.NEXTVAL
 	  					    )
 	</insert>
 	

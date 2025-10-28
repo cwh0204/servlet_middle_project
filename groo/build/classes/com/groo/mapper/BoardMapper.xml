@@ -4,21 +4,60 @@
 
 <mapper namespace="BoardMapper">
 	<insert id="insertBoard" parameterType="com.groo.model.BoardDTO">
-	INSERT INTO BOARD
-		(
-			BOARD_ID,
-			MEM_ID,
-			BOARD_TYPE_ID,
-			POST_TITLE,
-			POST_CONTENT
-		)
-	VALUES
-		(
-			'B'||BOARD_SEQ.NEXTVAL,
-			#{memId},
-			#{boardTypeId},
-			#{postTitle},
-			#{postContent}
-		)
+		INSERT INTO BOARD
+			(
+				BOARD_ID,
+				MEM_ID,
+				BOARD_TYPE_ID,
+				POST_TITLE,
+				POST_CONTENT
+			)
+		VALUES
+			(
+				'B'||BOARD_SEQ.NEXTVAL,
+				#{memId},
+				#{boardTypeId},
+				#{postTitle},
+				#{postContent}
+			)
 	</insert>
+	
+	<select id="selectBoard" resultType="com.groo.model.BoardDTO">
+		SELECT 
+			A.BOARD_ID,
+			B.MEM_NICK,
+			A.POST_TITLE,
+			A.POSTING_DATE,
+			A.POST_VIEWS,
+			(SELECT
+				COUNT(C.COMENT_ID)
+			FROM COMENT C
+			WHERE
+				C.COMENT_END IS NULL AND
+				C.BOARD_ID = A.BOARD_ID
+		    ) AS COMENT_COUNT
+		FROM BOARD A
+		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+			<where>
+				AND POSTING_DEL IS NULL
+				<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+					<if test="findField == null and findField == ''">
+						
+					</if>
+					<if test="findField == 'title'">
+						OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+					</if>
+					<if test="findField == 'contents'">
+						OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
+					</if>
+					<if test="findField == 'titleAndContent'">
+						OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+						OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
+					</if>
+					<if test="findField == 'author'">
+						OR B.MEM_NICK LIKE '%' || #{findName} || '%'
+					</if>
+				</trim>
+			</where>
+	</select>
 </mapper>
