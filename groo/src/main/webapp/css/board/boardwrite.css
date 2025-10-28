@@ -6,7 +6,8 @@
 
 /* 폼 컨테이너 중앙 정렬 및 기본 스타일 */
 .board-form-container {
-	width: 800px;
+	width: 1200px;
+	max-width: 100%;
 	margin: 50px auto;
 	padding: 20px;
 	border: 1px solid #eee;
@@ -39,7 +40,7 @@
 
 .action-buttons {
 	display: flex; /* Flexbox 활성화 */
-	justify-content: center; /* 자식 요소(버튼) 가운데 정렬 */
+	justify-content: flex-end; /* 자식 요소(버튼) 가운데 정렬 */
 	gap: 10px; /* 버튼 사이의 간격 (원하는 값으로 수정 가능) */
 	margin-top: 20px; /* 에디터 내용과의 상단 간격 */
 }
