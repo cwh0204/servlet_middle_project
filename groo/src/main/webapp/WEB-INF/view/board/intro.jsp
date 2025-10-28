@@ -3,8 +3,7 @@
 <html>
 <head>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7b6fdb32b38b5fe3f3519e23177d5fb"></script>
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7b6fdb32b38b5fe3f3519e23177d5fb&autoload=false"></script>
 <script src="js/board/intro.js"></script>
 <link href="css/board/intro.css" rel="stylesheet">
 <meta charset="UTF-8">
