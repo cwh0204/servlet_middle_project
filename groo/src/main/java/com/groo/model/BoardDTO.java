@@ -16,7 +16,7 @@ public class BoardDTO {
 	private String memNick;
 	private int postViews;
 	private int comentCount;
-
+	//검색
 	private String findField;
 	private String findName;
 }
