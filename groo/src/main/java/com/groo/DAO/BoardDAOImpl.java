@@ -46,4 +46,25 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return list;
 	}
+	
+	/**
+	 * 게시판 상세 검색 메서드
+	 * @param board 게시판 상세페이지 정보를 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 게시판상세 데이터
+	 */
+	@Override
+	public BoardDTO selectBoardDetail(BoardDTO board, SqlSession session) {
+		
+		BoardDTO boardDetail = new BoardDTO();
+		
+		try {
+			boardDetail = session.selectOne("selectBoardDetail",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
+		}
+		
+		return boardDetail;
+	}
 }

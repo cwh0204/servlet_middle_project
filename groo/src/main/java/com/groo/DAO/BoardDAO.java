@@ -9,4 +9,5 @@ import com.groo.model.BoardDTO;
 public interface BoardDAO {
 	public void insertBoard(BoardDTO board, SqlSession session);
 	public List<BoardDTO> selectBoard(BoardDTO board, SqlSession session);
+	public BoardDTO selectBoardDetail(BoardDTO board, SqlSession session);
 }
