@@ -61,5 +61,6 @@
 		        </if>
 		    </trim>
 		</where>
+		ORDER BY A.POSTING_DATE DESC
 	</select>
 </mapper>
