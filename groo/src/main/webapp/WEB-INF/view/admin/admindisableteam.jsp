@@ -167,7 +167,7 @@ $(document).ready(function() {
 			name: 'grade',
 			width: 150,
 			renderer: {
-				type: CustomTeamBtnRenderer,
+				type: CustomTeamActivateBtnRenderer,
 			}
 		}
 		]

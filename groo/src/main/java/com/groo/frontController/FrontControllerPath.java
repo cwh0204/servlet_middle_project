@@ -12,6 +12,7 @@ import com.groo.controller.AdminSelectStudyMemberController;
 import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
+import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.BoardInsertController;
 import com.groo.controller.Controller;
@@ -25,6 +26,8 @@ import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
 import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
+import com.groo.controller.TeamActivateController;
+import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
@@ -49,7 +52,8 @@ public class FrontControllerPath {
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
         controllerMap.put("/teamstats.do", new TeamStatsController());
-
+        controllerMap.put("/teamdelete.do", new TeamDeleteController());
+        controllerMap.put("/teamactivate.do", new TeamActivateController());
 
         controllerMap.put("/mypages.do", new MyPageController());
 
@@ -77,7 +81,8 @@ public class FrontControllerPath {
         controllerMap.put("/adminreportserch.do", new AdminReportSerchController());
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
-
+        controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
+        
         controllerMap.put("/noticedetail.do", new boardController_EX());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());

@@ -88,4 +88,15 @@
 				COUNT(CASE WHEN TRUNC(STUDY_CREATEDATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_teams
 			FROM STUDY
 	</select>
+	
+	<update id="deleteTeam" parameterType="com.groo.model.TeamDTO">
+		UPDATE STUDY
+			SET STUDY_DELETEDATE = SYSDATE
+		WHERE STUDY_ID = #{studyId}
+	</update>
+	<update id="activateTeam" parameterType="com.groo.model.TeamDTO">
+		UPDATE STUDY
+			SET STUDY_DELETEDATE = NULL
+		WHERE STUDY_ID = #{studyId}
+	</update>
 </mapper>

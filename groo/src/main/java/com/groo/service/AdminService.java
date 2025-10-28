@@ -21,4 +21,5 @@ public interface AdminService {
 	public AdminAvgReportDTO adminStatsReport();
 
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member);
+	public void adminStudyMemberDelete(AdminTeamMemberDTO member);
 }

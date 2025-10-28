@@ -215,4 +215,19 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return memberList;
 	}
+	
+	/**
+	 * 팀 맴버 비활성화를 위한 메서드
+	 * @param member 팀 맴버 비활성화를 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminStudyMemberDelete(AdminTeamMemberDTO member, SqlSession session) {
+		try {
+			session.update("studyMemberDelete",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminStudyMemberDelete 예외발생",e);
+		}
+	}
 }

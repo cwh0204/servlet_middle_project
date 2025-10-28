@@ -263,4 +263,13 @@
 		        </trim>
         	</where>
 	</select>
+	<update id="studyMemberDelete" parameterType="com.groo.model.AdminTeamMemberDTO">
+		UPDATE STUDYMEMBER
+			SET STUDY_OUTDATE = SYSDATE
+		WHERE MEM_ID = (SELECT B.MEM_ID
+						FROM MEMBER A
+						INNER JOIN STUDYMEMBER B  ON (B.MEM_ID = A.MEM_ID)
+						WHERE A.MEM_NAME = #{memName}
+						)
+	</update>
 </mapper>
