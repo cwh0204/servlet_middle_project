@@ -50,9 +50,11 @@
 </section>
 
 <section class="map-section" id="map">
-    <h2>Groo 위치</h2>
+    <h2>Groo 현위치📍</h2>
     <div id="map-container"></div>
 </section>
+
+<div class="bottom-spacer"></div>
 
 </body>
 </html>
