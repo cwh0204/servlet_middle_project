@@ -127,6 +127,6 @@
 		</tbody>
 	</table>
 	<c:set var="boardType" value="team" scope="request" />
-	<jsp:include page="../write.jsp" />
+	<jsp:include page="../writebtn.jsp" />
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 
 <section class="main">
-	<img src="${pageContext.request.contextPath}/images/intro-study.png" alt="Groo 스터디 그룹">
+	<img src="images/intro-study.png" alt="Groo 스터디 그룹">
 	<div class="main-text">
 		<h1>함께 성장하는 모두의 공간, Groo</h1>
 		<p>
