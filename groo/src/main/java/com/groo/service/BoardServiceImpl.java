@@ -13,7 +13,7 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.BoardDTO;
 
 public class BoardServiceImpl implements BoardService {
-	
+
 	BoardDAO dao = new BoardDAOImpl();
 	/**
 	 * 게시판 등록 서비스 메서드입니다.

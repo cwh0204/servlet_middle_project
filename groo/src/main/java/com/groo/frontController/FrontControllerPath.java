@@ -45,7 +45,7 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
