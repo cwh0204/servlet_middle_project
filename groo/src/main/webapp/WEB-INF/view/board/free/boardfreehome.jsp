@@ -55,7 +55,7 @@ $.ajax({
         $newRow.append($th);
 
         // 3. <td> 요소 (제목)를 생성하고 <tr>에 추가합니다.
-        const $a = $('<a>').attr('href', 'noticedetail.do?id=12').text(item.postTitle);
+        const $a = $('<a>').attr('href', 'postdetail.do?id='+ item.boardId).text(item.postTitle);
         const $tdTitle = $('<td>').append($a);
         $newRow.append($tdTitle);
 

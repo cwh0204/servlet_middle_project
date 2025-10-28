@@ -4,6 +4,7 @@ body {
 	margin: 0; 
 	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
 	color: #0f1724;
+	padding-bottom: 30px;
 }
 
 section.main {
@@ -126,6 +127,15 @@ section.intro h2 {
 	height: 400px;
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.bottom-spacer {
+    height: 20px; 
+    width: 50%;
+}
+
+section.map-section h2 {
+	margin-bottom: 20px;
 }
 
 /* 반응형 */
