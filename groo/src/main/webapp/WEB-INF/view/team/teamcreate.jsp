@@ -21,9 +21,6 @@
 </head>
 <body>
 <main>
-	<div class="underLine"></div>
-	<div class="create_Line"></div>
-
 	<form action="teamcreate" method="post">
 		<div class="form-box">
 			<div class="category_container">
@@ -81,52 +78,56 @@
 					</div>
 				</div>
 
-				<!-- 달력 -->
-				<div class="date_box">
-					<label>스터디 기간</label>
-					<div class="input-group input-daterange" id="teamDateRange">
-						<input type="text" class="form-control datepicker-input" name="startDate" placeholder="시작일" readonly>
-						<input type="text" class="form-control datepicker-input" name="endDate" placeholder="종료일" readonly>
+				<div class="bottom-section">
+					<div class="left-column">
+						<!-- 달력 -->
+						<div class="date_box">
+							<label>스터디 기간</label>
+							<div class="input-group input-daterange" id="teamDateRange">
+								<input type="text" class="form-control datepicker-input" name="startDate" placeholder="시작일" readonly>
+								<input type="text" class="form-control datepicker-input" name="endDate" placeholder="종료일" readonly>
+							</div>
+						</div>
+
+						<div class="membercount_box">
+							<label for="teamMember">모집인원</label> 
+							<select name="teamMember" id="teamMember" class="form-select">
+								<option value="" disabled selected>모집인원</option>
+								<option value="2명">2명</option>
+								<option value="3명">3명</option>
+								<option value="4명">4명</option>
+								<option value="5명">5명</option>
+								<option value="6명">6명</option>
+								<option value="7명 이상">7명 이상</option>
+							</select>
+						</div>
+
+						<div class="memberage_box">
+							<label for="teamMemberage">나이</label>
+							<div class="range-container">
+								<input type="range" id="teamMemberage" name="teamMemberage" min="14" max="70" step="1" value="25"> 
+								<span id="ageValue">25세</span>
+							</div>
+						</div>
+
+						<div class="pw_box">
+							<label>비밀번호(선택)</label>
+							<input type="text" name="teampw" class="teampw">
+						</div>
+					</div>
+
+					<div class="right-column">
+						<div class="studycontent_box">
+							<label>스터디 소개</label> 
+							<textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요."></textarea>
+						</div>
 					</div>
 				</div>
 
-				<div class="membercount_box">
-					<label for="teamMember">모집인원:</label> 
-					<select name="teamMember" id="teamMember" class="form-select">
-						<option value="" disabled selected>모집인원</option>
-						<option value="2명">2명</option>
-						<option value="3명">3명</option>
-						<option value="4명">4명</option>
-						<option value="5명">5명</option>
-						<option value="6명">6명</option>
-						<option value="7명 이상">7명 이상</option>
-					</select>
+				<div class="button-group">
+					<button type="reset" class="btn btn-secondary reset-btn">돌아가기</button>
+					<button type="submit" class="btn btn-primary submit-btn">팀 생성하기</button>
 				</div>
-
-				<div class="memberage_box">
-					<div>
-						<label for="teamMemberage">나이</label>
-					</div>
-					<div class="range-container">
-						<input type="range" id="teamMemberage" name="teamMemberage" min="14" max="70" step="1" value="25"> 
-						<span id="ageValue">25세</span>
-					</div>
-				</div>
-
-				<div class="pw_box">
-					<div>
-						<label>비밀번호(선택)</label>
-					</div>
-					<input type="text" name="teampw" class="teampw">
-				</div>
-
-				<div class="studycontent_box">
-					<label>스터디 소개</label> 
-					<input type="text" name="teamInfo" class="teamInfo" placeholder="">
-				</div>
-
-				<button type="submit" class="btn btn-primary submit-btn">팀 생성하기</button>
-				<button type="reset" class="btn btn-primary reset-btn">돌아가기</button>
 			</div>
 		</div>
 	</form>

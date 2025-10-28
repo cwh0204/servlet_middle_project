@@ -2,8 +2,6 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
@@ -14,11 +12,12 @@ import com.groo.service.TeamServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 /**
- * 비활성 팀 목록 조회를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 팀비활성화를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class TeamDisableSelectController implements Controller {
+public class TeamDeleteController implements Controller {
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -29,32 +28,22 @@ public class TeamDisableSelectController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-
-		String search = request.getParameter("search");
+		String studyId = request.getParameter("studyId");
+		
+		TeamDTO team = new TeamDTO();
+		
+		team.setStudyId(studyId);
 		
 		TeamServiceImpl service = new TeamServiceImpl();
-		TeamDTO team = new TeamDTO();
-		if(search != null && !search.isEmpty()) {
-			int serchMax = Integer.parseInt(request.getParameter("search"));
-			team.setStudyMax(serchMax);
-		}
-
-		team.setStudyId(search);
-		team.setStudyTitle(search);
-		team.setStudyCategory(search);
-		team.setStudyIntro(search);
-		team.setStudyIntroContent(search);
-		team.setStudyDeleteDate(search);
-
-		List<TeamDTO> teamList = new ArrayList<>();
-
+		
 		try {
-
-			teamList = service.selectDisableTeam(team);
+			
+			service.deleteTeam(team);
 			Gson gson = new Gson();
-			String json = gson.toJson(teamList);
+			String json = gson.toJson("성공");
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

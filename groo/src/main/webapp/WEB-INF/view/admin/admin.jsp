@@ -125,7 +125,10 @@ class CustomTeamBtnRenderer {
     
     onClick(props, event) {
     	
-        const { grid, rowKey } = props;
+        const { grid, rowKey} = props;
+        
+        const rowData = grid.getRow(rowKey);
+        
         const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
 
         if (!targetBtn) return;
@@ -133,7 +136,96 @@ class CustomTeamBtnRenderer {
         const actionType = targetBtn.dataset.type;
         
         if (actionType === 'delete') {
-            console.log("안녕");
+        	
+        	console.log("삭제");
+        	$.ajax({
+        		// 데이터를 전송할 서버 URL
+        		url: 'teamdelete.do',
+        		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        		type: 'POST',
+        		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        		data: {
+        			studyId: rowData.studyId
+        		},
+        		// 데이터 전송 성공 시 실행
+        		success: function(response) {
+        			// response는 서버에서 돌려준 데이터입니다.
+        			searchTeam();
+        		},
+
+        		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        		error: function(xhr, status, error) {
+        		}
+        	});
+        }
+        event.stopPropagation();
+    }
+}
+
+class CustomTeamActivateBtnRenderer {
+    constructor(props) {
+      const container = document.createElement('div');
+      container.className = 'btn-renderer-container';
+      
+      const activateBtn = document.createElement('button');
+     
+      
+      activateBtn.className = 'user-randarer-button';
+      activateBtn.textContent = '팀활성';
+      activateBtn.dataset.type = 'activate';
+      
+      activateBtn.addEventListener('click', (event) => {
+          this.onClick(props, event);
+      });
+      
+      container.appendChild(activateBtn);
+      
+      this.container = container;
+      
+      this.render(props);
+    }
+
+    getElement() {
+      return this.container;
+    }
+
+    render(props) {
+       this.container.value = String(props.value);
+    }
+    
+    onClick(props, event) {
+    	
+        const { grid, rowKey} = props;
+        
+        const rowData = grid.getRow(rowKey);
+        
+        const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
+
+        if (!targetBtn) return;
+        
+        const actionType = targetBtn.dataset.type;
+        
+        if (actionType === 'activate') {
+        	
+        	$.ajax({
+        		// 데이터를 전송할 서버 URL
+        		url: 'teamactivate.do',
+        		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        		type: 'POST',
+        		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        		data: {
+        			studyId: rowData.studyId
+        		},
+        		// 데이터 전송 성공 시 실행
+        		success: function(response) {
+        			// response는 서버에서 돌려준 데이터입니다.
+        			searchTeam();
+        		},
+
+        		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        		error: function(xhr, status, error) {
+        		}
+        	});
         }
         event.stopPropagation();
     }

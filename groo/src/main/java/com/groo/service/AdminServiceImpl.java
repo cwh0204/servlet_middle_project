@@ -277,4 +277,26 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return memberList;
 	}
+	/**
+	 * 팀원을 비활성화하는 서비스 메서드입니다.
+	 * @param 팀원의 비활성화를 하기위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminStudyMemberDelete(AdminTeamMemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminStudyMemberDelete(member,session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
 }

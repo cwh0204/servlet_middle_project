@@ -24,4 +24,6 @@ public interface AdminDAO {
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
 
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session);
+	
+	public void adminStudyMemberDelete(AdminTeamMemberDTO member, SqlSession session);
 }
