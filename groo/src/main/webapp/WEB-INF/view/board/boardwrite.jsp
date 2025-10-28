@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +45,5 @@
 			<a href="boardlist.do" class="btn btn-secondary">취소</a>
 		</div>
 	</div>
-	<input type="text" style="display: none;" id="border-type" value="1111">
 </body>
 </html>
