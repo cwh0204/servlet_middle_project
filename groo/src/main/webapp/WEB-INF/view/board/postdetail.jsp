@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세 보기</title>
+<script src="jquery/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="css/board/postdetail.css">
 </head>
 <body>
@@ -13,12 +14,12 @@
 	<div class="view-container">
 
 		<div class="board-header">
-			<h2 class="post-title">시스템 업데이트 완료 및 기능 개선 안내 (2025년 10월)</h2>
+			<h2 class="post-title"></h2>
 			<div class="post-meta">
-				<span class="meta-item">게시자: <strong>운영팀 (Gemini)</strong></span> <span
-					class="meta-separator">|</span> <span class="meta-item">작성일:
-					2025-10-28 19:00:00</span> <span class="meta-separator">|</span> <span
-					class="meta-item">조회수: 340</span>
+				<span class="meta-item">게시자: <strong></strong></span>
+				 <span class="meta-separator">|</span>
+				  <span class="meta-item" id="Date"></span> <span class="meta-separator">|</span> <span
+					class="meta-item" id="postViews">조회수: 340</span>
 			</div>
 		</div>
 
@@ -90,4 +91,37 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		/* const writer = 로그인한 사용자 ID (세션); */
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const boardId = urlParams.get('id');
+
+ 		$.ajax({
+			url : 'boarddetailselect.do',
+			type : 'POST',
+			dataType : 'json',
+			data : {
+				boardId : boardId
+			},
+			success : function(response) {
+				console.log(response)
+				response.postTitle;
+				$('.post-title').text(response.postTitle);
+				$('.meta-item strong').text(response.memNick);
+				$('#Data').text(response.postingDate);
+				$('.board-content').text(response.postContent);
+				$('.comment-section h3').text(`댓글 (${response.comentCount})`);
+				$('#postViews').text(response.postViews);
+				
+				
+			},
+			error : function() {
+				alert("서버 통신 오류가 발생했습니다.");
+			}
+		});
+	});
+</script>
 </html>

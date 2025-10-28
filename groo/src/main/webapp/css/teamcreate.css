@@ -14,93 +14,10 @@ main {
 	overflow: hidden;
 }
 
-main::before {
-	content: '';
-	position: absolute;
-	width: 800px;
-	height: 800px;
-	background: radial-gradient(circle, rgba(76, 175, 80, 0.08) 0%, transparent 70%);
-	top: -200px;
-	right: -200px;
-	border-radius: 50%;
-	animation: float 20s ease-in-out infinite;
-}
-
-main::after {
-	content: '';
-	position: absolute;
-	width: 600px;
-	height: 600px;
-	background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
-	bottom: -100px;
-	left: -100px;
-	border-radius: 50%;
-	animation: float 25s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-	}
-	50% {
-		transform: translate(30px, -30px) scale(1.1);
-	}
-}
-
-/* 폼 컨테이너 */
-.form-container {
-	width: 100%;
-	max-width: 1300px;
-	position: relative;
-	z-index: 1;
-}
-
-/* 폼 박스 */
-.form-box {
-	background: rgba(255, 255, 255, 0.95);
-	backdrop-filter: blur(20px);
-	border-radius: 32px;
-	padding: 60px;
-	box-shadow: 
-		0 20px 60px rgba(0, 0, 0, 0.08),
-		0 0 1px rgba(0, 0, 0, 0.05),
-		inset 0 1px 0 rgba(255, 255, 255, 0.9);
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(40px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
 /* 폼 헤더 */
 .form-header {
 	text-align: center;
 	margin-bottom: 60px;
-	position: relative;
-}
-
-.header-icon {
-	font-size: 56px;
-	margin-bottom: 20px;
-	display: inline-block;
-	animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-	0%, 100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-10px);
-	}
 }
 
 .form-title {
@@ -112,14 +29,6 @@ main::after {
 	background-clip: text;
 	margin-bottom: 12px;
 	letter-spacing: -1px;
-}
-
-.form-subtitle {
-	font-size: 16px;
-	color: #636e72;
-	margin: 0;
-	font-weight: 500;
-	letter-spacing: -0.3px;
 }
 
 /* 섹션 카드 */
@@ -146,10 +55,6 @@ main::after {
 	margin-bottom: 16px;
 }
 
-.label-icon {
-	font-size: 22px;
-	line-height: 1;
-}
 
 .label-wrapper label {
 	font-weight: 700;
@@ -237,9 +142,6 @@ main::after {
 
 /* 큰 카테고리 제목 */
 .category-title {
-	display: flex;
-	align-items: center;
-	gap: 10px;
 	font-weight: 800;
 	color: #2d3436;
 	font-size: 16px;
@@ -248,11 +150,7 @@ main::after {
 	border-bottom: 2px solid rgba(76, 175, 80, 0.15);
 	position: relative;
 	z-index: 1;
-	justify-content: center;
-}
-
-.category-emoji {
-	font-size: 20px;
+	text-align: center;
 }
 
 /* 세부 항목 그룹 */
@@ -414,12 +312,6 @@ main::after {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 16px;
-}
-
-.checkbox_wrapper {
-	display: flex;
-	align-items: center;
-	gap: 8px;
 }
 
 .pw_checkbox {
@@ -616,38 +508,53 @@ main::after {
 }
 
 .reset-btn {
-	background: rgba(255, 255, 255, 0.9);
-	color: #636e72;
-	border: 2px solid rgba(0, 0, 0, 0.08);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* 텍스트와 화살표 간격 */
+    height: 60px;
+    padding: 0 48px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #b0b0b0; /* 밝은 회색 */
+    color: #ffffff; /* 글씨 하얀색 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
 }
 
-.reset-btn::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.02);
-	opacity: 0;
-	transition: opacity 0.3s ease;
+.reset-btn .btn-arrow {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-image: url('https://i.postimg.cc/905XXpvy/refresh-24dp-1F1F1F.png'); /* 화살표 이미지 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1); /* 화살표 하얀색 */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reset-btn:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-	border-color: rgba(0, 0, 0, 0.12);
-	color: #2d3436;
+    background-color: #999999; /* 마우스 올리면 살짝 진한 회색 */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.reset-btn:hover::before {
-	opacity: 1;
+.reset-btn:hover .btn-arrow {
+    transform: rotate(90deg);
 }
 
 .reset-btn:active {
-	transform: translateY(-1px);
+    transform: translateY(-1px);
 }
+
+
+
 
 /* Datepicker 팝업 */
 .datepicker {
@@ -657,18 +564,6 @@ main::after {
 	padding: 24px 28px;
 	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 	border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.datepicker-dropdown {
-	top: 0;
-}
-
-.datepicker-dropdown.datepicker-orient-left:before {
-	border-bottom-color: rgba(255, 255, 255, 0.8);
-}
-
-.datepicker-dropdown.datepicker-orient-left:after {
-	border-bottom-color: rgba(255, 255, 255, 0.98);
 }
 
 .datepicker table tr td.today,
@@ -762,97 +657,11 @@ main::after {
 	transform: scale(1.05);
 }
 
-/* 반응형 디자인 */
-@media (max-width: 1024px) {
-	.category-section {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	
-	.form-box {
-		padding: 48px;
-	}
+
+.input-icon {
+    width: 25px;  /* 라벨 글씨 크기와 맞춤 */
+    height: 25px;
+    margin-right: 6px;
+    vertical-align: middle;
 }
 
-@media (max-width: 768px) {
-	main {
-		padding: 40px 16px;
-	}
-	
-	.form-box {
-		padding: 32px 24px;
-		border-radius: 28px;
-	}
-	
-	.form-header {
-		margin-bottom: 40px;
-	}
-	
-	.header-icon {
-		font-size: 48px;
-	}
-	
-	.form-title {
-		font-size: 28px;
-	}
-	
-	.form-subtitle {
-		font-size: 14px;
-	}
-	
-	.section-card {
-		padding: 24px;
-		border-radius: 20px;
-	}
-
-	.category-section {
-		grid-template-columns: 1fr;
-		gap: 16px;
-	}
-
-	.bottom-section {
-		grid-template-columns: 1fr;
-		gap: 24px;
-	}
-
-	.button-group {
-		flex-direction: column;
-		gap: 12px;
-	}
-
-	.submit-btn,
-	.reset-btn {
-		width: 100%;
-		justify-content: center;
-	}
-	
-	.date-separator {
-		font-size: 18px;
-	}
-}
-
-@media (max-width: 480px) {
-	.form-box {
-		padding: 24px 20px;
-	}
-	
-	.label-icon {
-		font-size: 20px;
-	}
-	
-	.label-wrapper label {
-		font-size: 15px;
-	}
-	
-	.studyTitle_box input,
-	.input-daterange .datepicker-input,
-	.membercount_box select,
-	.pw_box input[type="text"] {
-		height: 52px;
-		font-size: 14px;
-	}
-	
-	.studycontent_box textarea {
-		min-height: 240px;
-		font-size: 14px;
-	}
-}
