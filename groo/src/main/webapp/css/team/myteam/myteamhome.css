@@ -4,7 +4,7 @@
 	max-width: 100%;
 	min-height: 100vh;
 	margin: 0 auto;
-	background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
+	background: #f8fdf4; 
 	box-sizing: border-box;
  	padding: 3rem 1.5rem;
  	overflow-x: hidden;
@@ -12,14 +12,13 @@
 
 .header {
 	text-align: center;
-	margin-bottom: 4rem;
-/*	animation: fadeInDown 0.8s ease;  */
+	margin-bottom: 4rem;  
 }
 
 .title {
-	font-size: 3.5rem;
-	font-weight: 800;
-	background: linear-gradient(135deg, #ffffff 0%, #d4f7c5 100%);
+	font-size: 3rem;
+	font-weight: 600;
+	background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
@@ -28,102 +27,82 @@
 
 .subtitle {
 	font-size: 1.25rem;
-	font-weight: 500;
-	color: rgba(255, 255, 255, 0.9);
+	font-weight: 600;
+	color: #4b5563;
 }
 
 .card-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-	gap: 2.5rem;
-	animation: fadeInUp 0.8s ease 0.2s backwards;
+	gap: 2rem;
+	max-width: 100%;
 }
 
 .study-card {
 	position: relative;
 	border-radius: 24px;
 	padding: 2rem;
-	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	cursor: pointer;
 	overflow: hidden;
+	background: #ffffff;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	border: 1px solid #e5e7eb;
+	max-width: 450px;
+	width: 100%;
 }
 
 .study-card:hover {
-	transform: translateY(-10px) scale(1.02);
+	transform: translateY(-8px);
+	box-shadow: 0 12px 35px rgba(155, 225, 93, 0.15);
+	border-color: rgba(155, 225, 93, 0.3);
 }
 
-.study-card::before {
-	content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 24px;
-}
-
-.study-card:hover::before {
-    opacity: 1;
-}
-
-.card-content {
-    position: relative;
-    z-index: 2;
-}
-
-.glass-card {
-	background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.glass-card::before {
-	background: rgba(255, 255, 255, 0.05);
-}
-
-.glass-card .card-gradient {
+.card-gradient {
 	position: absolute;
-	top: -50%;
-	left: -50%;
-	width: 200%;
-	height: 200%;
-	background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 5px;
+	background: linear-gradient(90deg, #9be15d 0%, #00e3ae 100%);
 	opacity: 0;
-	transition: opacity 0.4s ease;
+	transition: opacity 0.3s ease;
 }
 
-.glass-card:hover .card-gradient {
+.study-card:hover .card-gradient {
 	opacity: 1;
-	animation: rotate 8s linear infinite;
 }
+
 
 .card-header {
+	text-align: center;
     margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f3f4f6;
 }
 
 .study-name {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.5rem;
+    background: linear-gradient(135deg, rgba(155, 225, 93, 0.15) 0%, rgba(0, 227, 174, 0.15) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(155, 225, 93, 0.3);
     transition: all 0.3s ease;
 }
 
 .study-card:hover .study-name {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(155, 225, 93, 0.25) 0%, rgba(0, 227, 174, 0.25) 100%);
+    border-color: rgba(155, 225, 93, 0.3);
+    transform: scale(1.03);
 }
 
 .name-text {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white;
+    background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 
@@ -132,17 +111,16 @@
     align-items: center;
     gap: 1.5rem;
     padding: 1.25rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: #fafafa;
     border-radius: 16px;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
 }
 
 .study-card:hover .study-stats {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.02);
+    background: #f5faf3;
+    border-color: rgba(155, 225, 93, 0.2);
 }
 
 .stat-item {
@@ -153,8 +131,9 @@
 }
 
 .stat-icon {
-    font-size: 1.5rem;
-    animation: bounce 2s ease-in-out infinite;
+    font-size: 1.75rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    animation: float 3s ease-in-out infinite;
 }
 
 .stat-info {
@@ -165,55 +144,158 @@
 
 .stat-label {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 500;
+    color: #9ca3af;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
 .stat-value {
     font-size: 1.25rem;
-    font-weight: 700;
-    color: white;
+    font-weight: 800;
+    color: #1f2937;
 }
 
 .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 2px;
+    height: 45px;
+    background: #e5e7eb;
+    border-radius: 1px;
 }
 
 .leader-info {
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
-	padding: 1rem 1.25rem;
-	background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+	padding: 1rem;
+	background: #fafafa;
     border-radius: 16px;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
 }
 
 .study-card:hover .leader-info {
-	background: rgba(255, 255, 255, 0.15);
+	background: #fffbeb;
+	border-color: rgba(251, 191, 36, 0.2);
 }
 
 .leader-info span:first-child {
-    padding: 0.25rem 0.75rem;
-    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-    border-radius: 50px;
-    font-size: 0.75rem;
+    padding: 0.4rem 0.9rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #00a86b;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.leader-info span:first-child::before {
+    content: "👑";
+    font-size: 0.9rem;
 }
 
 .leader-name {
 	font-size: 1rem;
-	font-weight: 500;
-	color: white;
+	font-weight: 700;
+	color: #1f2937;
+}
+
+
+.card-actions {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.btn-report,
+.btn-leave {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.88rem 1.25rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-report::before,
+.btn-leave::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-report:hover::before,
+.btn-leave:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-report span,
+.btn-leave span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-report:hover,
+.btn-leave:hover {
+    transform: translateY(-3px);
+}
+
+.btn-report {
+    background: #fef2f2;
+    border: 2px solid #fecaca;
+    color: #dc2626;
+}
+
+.btn-report::before {
+	background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-report:hover {
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.15);
+    background: #fee2e2;
+}
+
+.btn-leave {
+    background: #fffbeb;
+    border: 2px solid #fde68a;
+    color: #d97706;
+}
+
+.btn-leave::before {
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.btn-leave:hover {
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.15);
+    background: #fef3c7;
+}
+
+
+/* 애니메이션 */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
