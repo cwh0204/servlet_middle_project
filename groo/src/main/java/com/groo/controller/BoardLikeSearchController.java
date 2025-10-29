@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class BoardLikeSearchController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -32,21 +32,21 @@ public class BoardLikeSearchController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String findName = request.getParameter("findName");
 		String boardId = request.getParameter("boardId");
-		
+
 		BoardDTO board = new BoardDTO();
 		board.setBoardId(boardId);
 		board.setFindName(findName);
-		
+
 		BoardServiceImpl service = new BoardServiceImpl();
 		BoardDTO boardLike = new BoardDTO();
 		try {
 			boardLike = service.selectBoardLikeSearch(board);
 			Gson gson = new Gson();
 			String json = gson.toJson(boardLike);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

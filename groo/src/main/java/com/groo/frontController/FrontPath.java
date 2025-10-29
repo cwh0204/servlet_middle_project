@@ -17,6 +17,7 @@ public class FrontPath {
         jspMap.put("/signupsuccess.do", "/WEB-INF/view/user/signupsuccess.jsp");
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate/teamcreate.jsp");
         jspMap.put("/myteamhome.do", "/WEB-INF/view/team/myteam/myteamhome.jsp");
+        jspMap.put("/myteamall.do", "/WEB-INF/view/team/myteam/myteamall.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
         jspMap.put("/myteam.do", "/WEB-INF/view/team/myteam.jsp");
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
@@ -50,9 +51,9 @@ public class FrontPath {
         jspMap.put("/boardgoalhome.do", "/WEB-INF/view/board/goal/boardgoalhome.jsp");
         jspMap.put("/boardwrite.do", "/WEB-INF/view/board/boardwrite.jsp");
         jspMap.put("/postdetail.do", "/WEB-INF/view/board/postdetail.jsp");
-        
+
         jspMap.put("/boardteamhome.do", "/WEB-INF/view/team/boardteamhome.jsp");
-        
+
 
         jspMap.put("/team.do", "/WEB-INF/view/team/team.jsp");
 
