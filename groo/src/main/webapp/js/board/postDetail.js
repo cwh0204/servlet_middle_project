@@ -2,6 +2,26 @@
  * 
  */
 
+boardComentinsert = (boardId) => {
+	const commentContent = $('#commentContent').val();
+	$.ajax({
+		url: 'comentinsert.do',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			memLoginId: 'cwh0204',
+			boardId: boardId,
+			comentContent: commentContent
+		},
+		success: function(response) {
+			console.log(response);
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
 boardLikeUserCheck = (boardId) => {
 	$.ajax({
 		url: 'boardlikesearch.do',
@@ -97,8 +117,12 @@ $(document).ready(function() {
 
 	boarddetailselect(boardId);
 	boardLikeUserCheck(boardId);
-	
+
 	$('#likeBtn').on('click', function() {
 		boardlikeinsert(boardId);
+	});
+
+	$('#commentSubmit').on('click', function() {
+		boardComentinsert(boardId);
 	});
 });

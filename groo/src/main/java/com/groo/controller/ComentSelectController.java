@@ -2,12 +2,13 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.ComentDTO;
-import com.groo.service.ComentService;
 import com.groo.service.ComentServiceImpl;
 
 import jakarta.servlet.ServletException;
@@ -15,13 +16,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 댓글 등록을 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 댓글을 조회하기위한 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class ComentInsertController implements Controller {
-
+public class ComentSelectController implements Controller {
+	
 	/**
-	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
+	 * HTTP 요청을 받아 댓글 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
 	 * @param request  HTTP 요청 객체
 	 * @param response HTTP 응답 객체
@@ -30,23 +31,20 @@ public class ComentInsertController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String memLoginId = request.getParameter("memLoginId");
 		String boardId = request.getParameter("boardId");
-		String comentContent = request.getParameter("comentContent");
-
+		String memLoginId = request.getParameter("memLoginId");
+		
 		ComentDTO coment = new ComentDTO();
-		coment.setMemLoginId(memLoginId);
 		coment.setBoardId(boardId);
-		coment.setComentContent(comentContent);
-
-		ComentService service = new ComentServiceImpl();
+		coment.setMemLoginId(memLoginId);
+		
+		ComentServiceImpl service = new ComentServiceImpl();
+		
 		try {
-
-			service.comentInsert(coment);
-
+			List<ComentDTO> comentList = new ArrayList<>();
+			comentList = service.comentSelect(coment);
 			Gson gson = new Gson();
-			String json = gson.toJson("sucsses");
+			String json = gson.toJson(comentList);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

@@ -83,6 +83,17 @@ public class MemberDAOImpl implements MemberDAO{
 			session.update("userDelete", member);
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:userdetailpw 예외발생", e);
+		}
+	}
+
+	@Override
+	public void userUpdate(MemberDTO member, SqlSession session) {
+		// TODO Auto-generated method stub
+		try {
+			session.update("userUpdate", member);
+		}catch(Exception e) {
+			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:userdetail 예외발생", e);
 		}
 	}

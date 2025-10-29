@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class MemberDeleteController implements Controller {
 
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -34,13 +34,13 @@ public class MemberDeleteController implements Controller {
 		String memLoginId = request.getParameter("memLoginId");
 		MemberDTO member = new MemberDTO();
 		member.setMemLoginId(memLoginId);
-		
+
 		MemberServiceImpl service = new MemberServiceImpl();
 		try {
 			service.userDelete(member);
 
 			Gson gson = new Gson();
-			String json = gson.toJson("sucsess");
+			String json = gson.toJson("success");
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

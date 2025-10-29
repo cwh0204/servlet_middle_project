@@ -7,7 +7,8 @@ public interface MemberService {
 	public void insertUserService(MemberDTO memberDTO);
 	public String selectLoginIdService(String memLoginId);
 	public String selectEmailService(String memEmail);
-	
+
 	//이수민
 	public void userDelete(MemberDTO member);
+	public void userUpdate(MemberDTO member);
 }
