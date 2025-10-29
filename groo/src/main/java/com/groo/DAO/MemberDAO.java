@@ -13,4 +13,5 @@ public interface MemberDAO {
 	
 	//이수민
 	public void userDelete(MemberDTO member, SqlSession session);
+	public void userUpdate(MemberDTO member, SqlSession session);
 }
