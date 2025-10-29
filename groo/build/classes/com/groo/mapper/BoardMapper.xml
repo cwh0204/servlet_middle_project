@@ -117,6 +117,11 @@
 	<select id="selectBoardLikeSearch" resultType="com.groo.model.BoardDTO">
 		SELECT COUNT(*) as BOARD_LIKE_COUNT
 		FROM BOARD_LIKE
-		WHERE BOARD_ID = #{boardId} AND MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{findName})
+		<where>
+		    BOARD_ID = #{boardId} 
+		    <if test="findName != null and findName != ''">
+		        AND MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{findName})
+		    </if>
+		</where>
 	</select>
 </mapper>
