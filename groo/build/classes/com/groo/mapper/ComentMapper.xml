@@ -19,5 +19,20 @@
 				SYSDATE
 			)
 	</insert>
-
+	<select id="comentSelect" parameterType="com.groo.model.ComentDTO" resultType="com.groo.model.ComentDTO">
+		SELECT
+			A.COMENT_ID,
+			B.MEM_NICK,
+			A.COMENT_CONTENT,
+			A.COMENT_DATE
+		FROM COMENT A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		<where>
+			A.COMENT_END IS NULL AND
+			A.BOARD_ID = #{boardId} 
+			<if test="memLoginId != null and memLoginId != ''">
+				AND A.MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId})
+			</if>
+		</where>
+	</select>
 </mapper>
