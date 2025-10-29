@@ -2,22 +2,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="css/myteam.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title> </title>
 </head>
 <body>
 <div class="container">
-  <header class="page-header">
-	<h1>내 스터디</h1>
-	<p>참여 중인 스터디를 확인해보세요</p>
-  </header>
+  <div class="header">
+	<h1 class="title">내 스터디</h1>
+	<p class="subtitle">참여 중인 스터디를 확인해보세요</p>
+  </div>
   
   <div class="card-grid" id="cardGrid">
   	<article class="glass-card">
   	  <div class="card-gradient"></div>
   	   <div class="card-header">
   	     <div class="study-name">
-  	       <span class="name-text">스터디명1</span>
+  	       <span class="name-text">스터디명</span>
   	     </div>
   	   </div>
   	   
@@ -40,7 +42,18 @@
   	   </div>
   	   
   	   <div class="leader-info">
+  	       <span>팀장</span>
+  	     <span class="leader-name">김아무개</span>
+  	   </div>
   	   
+  	   <div class="card-actions">
+  	     <button class="btn-report">
+  	       <span>신고</span>
+  	     </button>
+  	     
+  	     <button class="btn-leave">
+  	       <span>탈퇴</span>
+  	     </button>
   	   </div>
   	</article>
   </div>	
