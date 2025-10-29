@@ -54,12 +54,8 @@ public class FrontControllerPath {
 
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
-<<<<<<< HEAD
-
-=======
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
         
->>>>>>> e47f4c84fe5b204d44836a4950d18656872c48f1
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
