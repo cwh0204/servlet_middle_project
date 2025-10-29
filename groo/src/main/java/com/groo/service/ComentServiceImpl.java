@@ -57,6 +57,7 @@ public class ComentServiceImpl implements ComentService {
 		List<ComentDTO> comentList = new ArrayList<>();
 		try {
 			comentList = dao.comentSelect(coment, session);
+			session.commit();
 		}catch(InternalDataAccessException ie) {
 			throw new InternalDataAccessException(ie);
 		}catch(InternalServiceException rne) {
