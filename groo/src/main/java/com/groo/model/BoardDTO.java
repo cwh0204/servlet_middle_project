@@ -14,6 +14,7 @@ public class BoardDTO {
 	private String postDel;
 	private String postingDelCheck;
 	private String memNick;
+	private String memLoginId;
 	private int postViews;
 	private int comentCount;
 	//검색

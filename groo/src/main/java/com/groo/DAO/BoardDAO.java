@@ -15,4 +15,6 @@ public interface BoardDAO {
 	public BoardDTO selectBoardLikeSearch(BoardDTO board, SqlSession session);
 	public void insertBoardLike(BoardDTO board, SqlSession session);
 	public void deleteBoardLike(BoardDTO board, SqlSession session);
+	
+	public void updateBoard(BoardDTO board, SqlSession session);
 }
