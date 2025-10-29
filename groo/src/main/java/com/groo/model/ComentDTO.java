@@ -10,7 +10,7 @@ public class ComentDTO {
 	private String comentContent;
 	private String comentDate;
 	private String comentEnd;
-	
+
 	private String memLoginId;
 	private String memNick;
 }

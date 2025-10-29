@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class ComentInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -34,12 +34,12 @@ public class ComentInsertController implements Controller {
 		String memLoginId = request.getParameter("memLoginId");
 		String boardId = request.getParameter("boardId");
 		String comentContent = request.getParameter("comentContent");
-		
+
 		ComentDTO coment = new ComentDTO();
 		coment.setMemLoginId(memLoginId);
 		coment.setBoardId(boardId);
 		coment.setComentContent(comentContent);
-		
+
 		ComentService service = new ComentServiceImpl();
 		try {
 

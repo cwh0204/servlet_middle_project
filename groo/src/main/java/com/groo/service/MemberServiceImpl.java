@@ -1,7 +1,6 @@
 package com.groo.service;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.groo.DAO.MemberDAO;
 import com.groo.DAO.MemberDAOImpl;
