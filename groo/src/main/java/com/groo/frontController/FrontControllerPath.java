@@ -20,6 +20,7 @@ import com.groo.controller.BoardLikeInsertController;
 import com.groo.controller.BoardLikeSearchController;
 import com.groo.controller.BoardSelectController;
 import com.groo.controller.ComentInsertController;
+import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
@@ -67,6 +68,7 @@ public class FrontControllerPath {
         
         //댓글
         controllerMap.put("/comentinsert.do", new ComentInsertController());
+        controllerMap.put("/comentselect.do", new ComentSelectController());
 
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
