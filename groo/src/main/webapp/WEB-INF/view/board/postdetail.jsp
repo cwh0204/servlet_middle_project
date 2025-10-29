@@ -19,29 +19,30 @@
 			<div class="post-meta">
 				<span class="meta-item">게시자: <strong></strong></span>
 				 <span class="meta-separator">|</span>
-				  <span class="meta-item" id="Date"></span> <span class="meta-separator">|</span> <span
-					class="meta-item" id="postViews">조회수: 340</span>
+				  <span class="meta-item" id="Date"></span> 
+				  <span class="meta-separator">|</span> 
+				  <span class="meta-item" id="postViews"></span>
 			</div>
 		</div>
 
 		<div class="board-content">
 			<div class="attachments">
-				<a href="download.do?fileId=F999">첨부파일 다운로드 (업데이트 요약.pdf)</a>
+				<a href="download.do?fileId=F999">첨부파일 다운로드 (업데이트 요약.pdf)</a> <!-- 수정필요 -->
 			</div>
 		</div>
 
 		<div class="board-actions">
 			<button class="btn-primary"
-				onclick="location.href='boardmodify.do?id=A1'">수정</button>
+				onclick="location.href='boardmodify.do?id=A1'">수정</button> <!-- 수정필요 -->
 			<button class="btn-danger"
-				onclick="location.href='boarddelete.do?id=A1'">삭제</button>
-			<button class="btn-secondary" onclick="location.href='boardlist.do'">목록으로</button>
+				onclick="location.href='boarddelete.do?id=A1'">삭제</button> <!-- 수정필요 -->
+			<button class="btn-secondary" onclick="location.href='boardlist.do'">목록으로</button> <!-- 수정필요 -->
 		</div>
 
 		<div class="reaction-section">
-			<button id="likeBtn">👍 좋아요 (55)</button>
+			<button id="likeBtn">👍 좋아요 (55)</button> <!-- 수정필요 -->
 			<button id="reportPostBtn"
-				onclick="location.href='boardreport.do?id=A1'">🚨 게시글 신고</button>
+				onclick="location.href='boardreport.do?id=A1'">🚨 게시글 신고</button> <!-- 수정필요 -->
 		</div>
 
 		<div class="comment-section">
@@ -55,7 +56,7 @@
 			<div class="comment-list">
 
 				<div class="comment-item">
-					<div class="comment-meta">
+					<div class="comment-meta"> <!-- 수정필요 -->
 						<strong>파워유저</strong> <span>2025-10-28 18:55:00</span>
 					</div>
 					<p>로딩 속도 정말 빨라졌어요! 체감됩니다.</p>
