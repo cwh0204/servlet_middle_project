@@ -10,14 +10,14 @@
 </head>
 <body>
 	<aside class="sidebar">
-
-		<div class="menu-item active" data-page="teamcreate.do">
+		<div class="sidebar-header">팀 관련 목록</div>
+		<div class="menu-item active" data-page="teamcreatehome.do">
 			<div class="menu-item-content">
 				<span>팀 생성</span>
 			</div>
 		</div>
 
-		<div class="menu-item" data-page="">
+		<div class="menu-item" data-page="myteamhome.do">
 			<div class="menu-item-content">
 				<span>팀 보기</span>
 			</div>
