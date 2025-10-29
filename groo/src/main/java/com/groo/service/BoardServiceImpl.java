@@ -130,7 +130,7 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			
 			boardLike = dao.selectBoardLikeSearch(board, session);
-			if(boardLike.getBoardCount() == 0) {
+			if(boardLike.getBoardLikeCount() == 0) {
 				dao.insertBoardLike(board, session);
 			}else {
 				dao.deleteBoardLike(board, session);

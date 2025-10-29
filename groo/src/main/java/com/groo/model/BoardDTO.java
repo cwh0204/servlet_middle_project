@@ -20,5 +20,5 @@ public class BoardDTO {
 	private String findField;
 	private String findName;
 	
-	private int boardCount;
+	private int boardLikeCount;
 }
