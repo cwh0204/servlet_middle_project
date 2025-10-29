@@ -46,8 +46,7 @@
 		</div>
 
 		<div class="comment-section">
-			<h3>댓글 (3)</h3>
-
+			<h3></h3>
 			<div class="comment-form">
 				<textarea id="commentContent" placeholder="댓글을 입력하세요..." rows="3"></textarea>
 				<button id="commentSubmit">등록</button>

@@ -19,11 +19,6 @@ public class BoardDTO {
 	//검색
 	private String findField;
 	private String findName;
-<<<<<<< HEAD
-
-	private int boardCount;
-=======
 	
 	private int boardLikeCount;
->>>>>>> c6139642a40849f776352de923a47802e16c10f6
 }
