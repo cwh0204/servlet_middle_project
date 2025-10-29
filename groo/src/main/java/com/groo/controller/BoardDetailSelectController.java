@@ -42,6 +42,9 @@ public class BoardDetailSelectController implements Controller {
 		try {
 			
 			boardDetail = service.selectBoardDetail(board);
+			
+			service.updateViews(board); // 조회수 증가
+			
 			Gson gson = new Gson();
 			String json = gson.toJson(boardDetail);
 

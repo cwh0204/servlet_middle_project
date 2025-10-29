@@ -84,4 +84,12 @@
 		WHERE BOARD_ID = #{boardId}
 	</select>
 	
+	<update id="updateViews" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD 
+		SET
+			POST_VIEWS = POST_VIEWS + 1
+		WHERE 
+			BOARD_ID = #{boardId}
+	</update>
+	
 </mapper>
