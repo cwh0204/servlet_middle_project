@@ -19,6 +19,7 @@ import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardLikeInsertController;
 import com.groo.controller.BoardLikeSearchController;
 import com.groo.controller.BoardSelectController;
+import com.groo.controller.ComentInsertController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
@@ -49,10 +50,10 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
-        
+
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
@@ -60,9 +61,10 @@ public class FrontControllerPath {
 
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
-
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
-
+        
+        //댓글
+        controllerMap.put("/comentinsert.do", new ComentInsertController());
 
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
