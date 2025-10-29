@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>게시글 상세 보기</title>
 <script src="jquery/jquery-3.7.1.min.js"></script>
+<script src="js/board/postDetail.js"></script>
 <link rel="stylesheet" href="css/board/postdetail.css">
 </head>
 <body>
@@ -24,13 +25,6 @@
 		</div>
 
 		<div class="board-content">
-			<p>
-				커뮤니티 사용자 여러분께, 안정적인 서비스 제공을 위한 업데이트가 성공적으로 완료되었습니다.<br> <br>
-				**[주요 개선 사항]**<br> 1. 게시판 목록 로딩 속도가 획기적으로 개선되었습니다.<br> 2.
-				댓글 시스템의 Ajax 처리 오류가 완전히 수정되었습니다.<br> 3. 모바일 환경에서의 가독성이
-				최적화되었습니다.<br> <br> 이용에 불편함이 없도록 최선을 다하겠습니다. 감사합니다.
-			</p>
-
 			<div class="attachments">
 				<a href="download.do?fileId=F999">첨부파일 다운로드 (업데이트 요약.pdf)</a>
 			</div>
@@ -91,37 +85,4 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		/* const writer = 로그인한 사용자 ID (세션); */
-		const queryString = window.location.search;
-		const urlParams = new URLSearchParams(queryString);
-		const boardId = urlParams.get('id');
-
- 		$.ajax({
-			url : 'boarddetailselect.do',
-			type : 'POST',
-			dataType : 'json',
-			data : {
-				boardId : boardId
-			},
-			success : function(response) {
-				console.log(response)
-				response.postTitle;
-				$('.post-title').text(response.postTitle);
-				$('.meta-item strong').text(response.memNick);
-				$('#Data').text(response.postingDate);
-				$('.board-content').text(response.postContent);
-				$('.comment-section h3').text(`댓글 (${response.comentCount})`);
-				$('#postViews').text(response.postViews);
-				
-				
-			},
-			error : function() {
-				alert("서버 통신 오류가 발생했습니다.");
-			}
-		});
-	});
-</script>
 </html>
