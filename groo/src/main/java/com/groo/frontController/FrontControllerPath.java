@@ -17,6 +17,7 @@ import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.BoardDetailSelectController;
 import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardLikeInsertController;
+import com.groo.controller.BoardLikeSearchController;
 import com.groo.controller.BoardSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
@@ -52,10 +53,10 @@ public class FrontControllerPath {
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
-        
+
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
-        
+        controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
         
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
