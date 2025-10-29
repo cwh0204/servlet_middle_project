@@ -82,4 +82,50 @@ public class BoardDAOImpl implements BoardDAO {
 			throw new InternalDataAccessException("DAO:updateViews 예외발생", e);
 		}
 	}
+	/**
+	 * 게시판 좋아요 증가 메서드
+	 * @param board 게시판 정보를 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void insertBoardLike(BoardDTO board, SqlSession session) {
+		try {
+			session.insert("insertBoardLike",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:insertBoardLike 예외발생", e);
+		}
+	}
+	/**
+	 * 게시판 좋아요 삭제 메서드
+	 * @param board 게시판 정보를 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void deleteBoardLike(BoardDTO board, SqlSession session) {
+		try {
+			session.delete("deleteBoardLike",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:insertBoardLike 예외발생", e);
+		}
+		
+	}
+	/**
+	 * 게시판 좋아요 삭제,추가 판단 검색 메서드
+	 * @param board 게시판 정보를 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public BoardDTO selectBoardLikeSearch(BoardDTO board, SqlSession session) {
+		BoardDTO boardLike = new BoardDTO();
+		try {
+			boardLike = session.selectOne("selectBoardLikeSearch",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:selectBoardLikeSearch 예외발생",e);
+		}
+		return boardLike;
+	}
+
 }

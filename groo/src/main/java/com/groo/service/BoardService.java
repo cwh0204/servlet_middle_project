@@ -9,4 +9,5 @@ public interface BoardService {
 	public List<BoardDTO>selectBoard(BoardDTO board);
 	public BoardDTO selectBoardDetail(BoardDTO board);
 	public void updateViews(BoardDTO board);
+	public void insertBoardLike(BoardDTO board);
 }
