@@ -146,7 +146,7 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 회원의 좋아요 여부 판단 서비스 메서드입니다.
 	 *
@@ -159,7 +159,7 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDTO selectBoardLikeSearch(BoardDTO board) {
 		SqlSession session = SessionFactory.getSqlSession();
 		BoardDTO boardLike = new BoardDTO();
-		
+
 		try {
 			boardLike = dao.selectBoardLikeSearch(board, session);
 		} catch (InternalDataAccessException ide) {
@@ -171,7 +171,7 @@ public class BoardServiceImpl implements BoardService {
 		} finally {
 			session.close();
 		}
-		
+
 		return boardLike;
 	}
 

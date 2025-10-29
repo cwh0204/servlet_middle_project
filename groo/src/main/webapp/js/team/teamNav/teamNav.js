@@ -15,7 +15,7 @@ $(document).ready(function() {
 		console.log(pageToLoad);
 		
 		if (pageToLoad) {
-			$('.teamcotent').load(pageToLoad, function(response, status, xhr) {
+			$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
 				if (status == "error") {
                     console.error("페이지 로드 실패");
 				}

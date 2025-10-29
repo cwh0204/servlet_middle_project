@@ -252,9 +252,9 @@ main {
 	flex: 1;
 	padding: 16px 20px;
 	border: 2px solid rgba(0, 0, 0, 0.06);
-	border-radius: 16px;
 	box-sizing: border-box;
 	background: rgba(255, 255, 255, 0.9);
+	border-radius: 16px;
 	color: #2d3436;
 	font-size: 15px;
 	font-weight: 600;
