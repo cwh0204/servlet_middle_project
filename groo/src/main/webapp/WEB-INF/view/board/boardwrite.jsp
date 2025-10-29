@@ -14,8 +14,8 @@
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
 	rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
-<link href="css/board/boardwrite.css" rel="stylesheet">
-<script src="js/board/boardwrite.js"></script>
+<link href="css/board/boardWrite.css" rel="stylesheet">
+<script src="js/board/boardWrite.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 <body>

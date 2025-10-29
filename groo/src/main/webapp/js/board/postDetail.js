@@ -20,12 +20,10 @@ $(document).ready(function() {
 				response.postTitle;
 				$('.post-title').text(response.postTitle);
 				$('.meta-item strong').text(response.memNick);
-				$('#Data').text(response.postingDate);
+				$('#Date').text(response.postingDate);
 				$('.board-content').text(response.postContent);
 				$('.comment-section h3').text(`댓글 (${response.comentCount})`);
-				$('#postViews').text(response.postViews);
-				
-				
+				$('#postViews').text(response.postViews);				
 			},
 			error : function() {
 				alert("서버 통신 오류가 발생했습니다.");
