@@ -10,4 +10,5 @@ public interface MemberService {
 
 	//이수민
 	public void userDelete(MemberDTO member);
+	public void userUpdate(MemberDTO member);
 }

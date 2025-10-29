@@ -27,6 +27,7 @@ import com.groo.controller.LoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberSelectController;
+import com.groo.controller.MemberUpdateController;
 import com.groo.controller.MyPageController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.SignUpController;
@@ -53,7 +54,12 @@ public class FrontControllerPath {
 
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
+<<<<<<< HEAD
 
+=======
+        controllerMap.put("/memberupdate.do", new MemberUpdateController());
+        
+>>>>>>> e47f4c84fe5b204d44836a4950d18656872c48f1
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
