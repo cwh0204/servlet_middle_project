@@ -3,7 +3,8 @@
 <html>
 <head>
 
-<link href="css/team/myteam/myteam.css" rel="stylesheet">
+<link href="css/team/myteam/myteamhome.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title> </title>
 </head>
