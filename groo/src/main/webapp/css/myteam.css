@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+ /*	background: linear-gradient(135deg, #b7f8db 0%, #50a7c2 100%); */
+  /*  background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%); */
+    background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
+ 	min-height: 100vh;
+ 	padding: 3rem 1.5rem;
+ 	overflow-x: hidden;
+}
+
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 4rem;
+/*	animation: fadeInDown 0.8s ease;  */
+}
+
+.title {
+	font-size: 3.5rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #ffffff 0%, #d4f7c5 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 1rem;
+}
+
+.subtitle {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.9);
+}
+/*
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+	gap: 2.5rem;
+	animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+*/
+.glass-card {
+	position: relative;
+	overflow: hidden;
+}
