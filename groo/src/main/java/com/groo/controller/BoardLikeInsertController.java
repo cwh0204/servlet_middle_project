@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class BoardLikeInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -32,25 +32,25 @@ public class BoardLikeInsertController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String findName = request.getParameter("findName");
 		String boardId = request.getParameter("boardId");
-		
+
 		BoardDTO board = new BoardDTO();
 		board.setBoardId(boardId);
 		board.setFindName(findName);
-		
+
 		BoardServiceImpl service = new BoardServiceImpl();
-		
+
 		try {
 			service.insertBoardLike(board);
 			Gson gson = new Gson();
 			String json = gson.toJson("성공");
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
@@ -61,7 +61,7 @@ public class BoardLikeInsertController implements Controller {
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
 		}
-		
+
 	}
 
 }

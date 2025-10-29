@@ -15,14 +15,9 @@ public class FrontPath {
         jspMap.put("/signup.do", "/WEB-INF/view/user/signupterms.jsp");
         jspMap.put("/signuppage.do", "/WEB-INF/view/user/signuppage.jsp");
         jspMap.put("/signupsuccess.do", "/WEB-INF/view/user/signupsuccess.jsp");
-        jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate/teamcreate.jsp");
-        jspMap.put("/myteamhome.do", "/WEB-INF/view/team/myteam/myteamhome.jsp");
-        jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
-        jspMap.put("/myteam.do", "/WEB-INF/view/team/myteam.jsp");
+
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
-
-
         jspMap.put("/mypage.do", "/WEB-INF/view/mypage/mypage.jsp");
         jspMap.put("/mypageprofile.do","/WEB-INF/view/mypage/mypageprofile.jsp");
         jspMap.put("/mypagedashboard.do", "/WEB-INF/view/mypage/mypagedashboard.jsp");
@@ -37,7 +32,8 @@ public class FrontPath {
         jspMap.put("/adminuserreportprocess.do", "/WEB-INF/view/admin/adminuserreportprocess.jsp");
         jspMap.put("/admindisableteam.do", "/WEB-INF/view/admin/admindisableteam.jsp");
         jspMap.put("/adminteammember.do", "/WEB-INF/view/admin/adminteammember.jsp");
-
+        
+        //board 경로
         jspMap.put("/intro.do", "/WEB-INF/view/board/intro.jsp");
         jspMap.put("/boardlist.do", "/WEB-INF/view/board/notice/boardlist.jsp");
         jspMap.put("/boardnoticehome.do", "/WEB-INF/view/board/notice/boardnoticehome.jsp");
@@ -50,11 +46,15 @@ public class FrontPath {
         jspMap.put("/boardgoalhome.do", "/WEB-INF/view/board/goal/boardgoalhome.jsp");
         jspMap.put("/boardwrite.do", "/WEB-INF/view/board/boardwrite.jsp");
         jspMap.put("/postdetail.do", "/WEB-INF/view/board/postdetail.jsp");
-        
-        jspMap.put("/boardteamhome.do", "/WEB-INF/view/team/boardteamhome.jsp");
-        
-
+     
+        //team 경로
+        jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate/teamcreate.jsp");
+        jspMap.put("/teamcreatehome.do", "/WEB-INF/view/team/teamcreate/teamcreatehome.jsp");
         jspMap.put("/team.do", "/WEB-INF/view/team/team.jsp");
+        jspMap.put("/myteamhome.do", "/WEB-INF/view/team/myteam/myteamhome.jsp");
+        jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
+        jspMap.put("/myteam.do", "/WEB-INF/view/team/myteam.jsp");
+        jspMap.put("/myteamall.do", "/WEB-INF/view/team/myteam/myteamall.jsp");
 
 
 

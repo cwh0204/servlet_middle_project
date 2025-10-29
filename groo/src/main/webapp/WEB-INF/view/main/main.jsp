@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@ include file="mainheader.jsp"%>
-	<div id="contentArea">
+	<div class="full_w_h" id="contentArea">
 	<%@ include file="mainhome.jsp"%>
 	</div>
 </body>

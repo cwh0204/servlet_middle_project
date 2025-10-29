@@ -3,21 +3,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ComentMapper">
 
-	<insert id="comentInsert">
+	<insert id="comentInsert" parameterType="com.groo.model.ComentDTO">
 		INSERT INTO COMENT
-		(
-			COMENT_ID,
-			MEM_ID,
-			BOARD_ID,
-			COMENT_CONTENT,
-			COMENT_DATE
-		)VALUES(
-			'C'||COMENT_SEQ.NEXTVAL,
-			'mem_no_10',
-			'B1',
-			'테스트용 데이터입니다!!',
-			SYSDATE
-		)
+			(
+				COMENT_ID,
+				MEM_ID,
+				BOARD_ID,
+				COMENT_CONTENT,
+				COMENT_DATE
+			)VALUES(
+				'C'||COMENT_SEQ.NEXTVAL,
+				(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId}),
+				#{boardId},
+				#{comentContent},
+				SYSDATE
+			)
 	</insert>
 
 </mapper>
