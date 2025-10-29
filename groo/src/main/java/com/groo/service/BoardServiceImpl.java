@@ -180,6 +180,7 @@ public class BoardServiceImpl implements BoardService {
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
 			dao.updateBoard(board, session);
+			session.commit();
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
