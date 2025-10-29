@@ -20,6 +20,7 @@
 <link href="css/datepicker-custom.css" rel="stylesheet">
 </head>
 <body>
+
 <main>
 	<form action="teamcreate" method="post">
 		<div class="form-container">
@@ -30,17 +31,18 @@
 				
 				<div class="category_container">
 					<div class="studyTitle_box section-card">
-						<div class="label-wrapper">
-							<span class="label-icon">📚</span>
-							<label>스터디명</label>
-						</div>
-						<input type="text" name="teamName" class="teamName" placeholder="스터디명을 입력해주세요">
-					</div>
+    <div class="label-wrapper">
+        <label>
+            <img src="https://i.postimg.cc/gkjfg3hB/book.png" class="input-icon"> 스터디명
+        </label>
+    </div>
+    <input type="text" name="teamName" class="teamName" placeholder="스터디명을 입력해주세요">
+</div>
 
 					<div class="teamCategory_box section-card">
 						<div class="label-wrapper">
-							<span class="label-icon">🎯</span>
-							<label>개설 스터디 분야</label>
+							
+							<label><img src="https://i.postimg.cc/jd5NFSZf/education-1.png" class="input-icon">개설 스터디 분야</label>
 						</div>
 						<div class="category-section">
 							<div class="category-box">
@@ -104,56 +106,60 @@
 					<div class="bottom-section">
 						<div class="left-column">
 							<div class="date_box section-card">
-								<div class="label-wrapper">
-									<span class="label-icon">📅</span>
-									<label>스터디 기간</label>
-								</div>
-								<div class="input-group input-daterange" id="teamDateRange">
-									<input type="text" class="form-control datepicker-input" name="startDate" placeholder="시작일" readonly>
-									<span class="date-separator">→</span>
-									<input type="text" class="form-control datepicker-input" name="endDate" placeholder="종료일" readonly>
-								</div>
-							</div>
+    <div class="label-wrapper">
+        <label>
+            <img src="https://i.postimg.cc/QN4zKVzy/calendar.png" class="input-icon"> 스터디 기간
+        </label>
+    </div>
+    <div class="input-group input-daterange" id="teamDateRange">
+        <input type="text" class="form-control datepicker-input" name="startDate" placeholder="시작일" readonly>
+        <span class="date-separator">→</span>
+        <input type="text" class="form-control datepicker-input" name="endDate" placeholder="종료일" readonly>
+    </div>
+</div>
 
 							<div class="membercount_box section-card">
-								<div class="label-wrapper">
-									<span class="label-icon">👥</span>
-									<label for="teamMember">모집인원</label>
-								</div>
-								<select name="teamMember" id="teamMember" class="form-select">
-									<option value="" disabled selected>모집인원을 선택하세요</option>
-									<option value="2명">2명</option>
-									<option value="3명">3명</option>
-									<option value="4명">4명</option>
-									<option value="5명">5명</option>
-									<option value="6명">6명</option>
-									<option value="7명 이상">7명 이상</option>
-								</select>
-							</div>
+    <div class="label-wrapper">
+        <label>
+            <img src="https://i.postimg.cc/prMXvqtq/person.png" class="input-icon"> 모집인원
+        </label>
+    </div>
+    <select name="teamMember" id="teamMember" class="form-select">
+        <option value="" disabled selected>모집인원을 선택하세요</option>
+        <option value="2명">2명</option>
+        <option value="3명">3명</option>
+        <option value="4명">4명</option>
+        <option value="5명">5명</option>
+        <option value="6명">6명</option>
+        <option value="7명 이상">7명 이상</option>
+    </select>
+</div>
 
 							<div class="pw_box section-card">
-								<div class="pw_label_wrapper">
-									<div class="label-wrapper">
-										<span class="label-icon">🔒</span>
-										<label>비밀번호</label>
-									</div>
-									<div class="checkbox_wrapper">
-										<input type="checkbox" id="pwCheckbox" class="pw_checkbox">
-										<label for="pwCheckbox" class="checkbox_label"></label>
-									</div>
-								</div>
-								<input type="text" name="teampw" id="teampw" class="teampw" placeholder="선택사항입니다">
-							</div>
+    <div class="pw_label_wrapper">
+        <div class="label-wrapper">
+            <label>
+                <img src="https://i.postimg.cc/FskTfpcM/padlock.png" class="input-icon"> 비밀번호
+            </label>
+        </div>
+        <div class="checkbox_wrapper">
+            <input type="checkbox" id="pwCheckbox" class="pw_checkbox">
+            <label for="pwCheckbox" class="checkbox_label"></label>
+        </div>
+    </div>
+    <input type="text" name="teampw" id="teampw" class="teampw" placeholder="선택사항입니다" disabled>
+</div>
 						</div>
 
 						<div class="right-column">
 							<div class="studycontent_box section-card">
-								<div class="label-wrapper">
-									<span class="label-icon">📝</span>
-									<label>스터디 소개</label>
-								</div>
-								<textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요!&#10;&#10;예시)&#10;• 목표&#10;• 방식&#10;"></textarea>
-							</div>
+    <div class="label-wrapper">
+        <label>
+            <img src="https://i.postimg.cc/wMkCykSd/pencil.png" class="input-icon"> 스터디 소개
+        </label>
+    </div>
+    <textarea name="teamInfo" class="teamInfo" placeholder="스터디를 소개해주세요!&#10;&#10;예시)&#10;• 목표&#10;• 방식&#10;"></textarea>
+</div>
 						</div>
 					</div>
 
@@ -163,9 +169,9 @@
 							<span class="btn-arrow">→</span>
 						</button>
 						<button type="reset" class="btn btn-secondary reset-btn">
-							<span class="btn-text">돌아가기</span>
-							<i class="bi bi-arrow-counterclockwise"></i>
-						</button>	
+    <span class="btn-text">돌아가기</span>
+    <span class="btn-arrow"></span>  <!-- 이렇게 변경! -->
+</button>	
 					</div>
 				</div>
 			</div>
