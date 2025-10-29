@@ -69,6 +69,7 @@
 		SELECT 
 			A.BOARD_ID,
 			B.MEM_NICK,
+			B.MEM_LOGIN_ID,
 			A.POST_TITLE,
 			A.POSTING_DATE,
 			A.POST_VIEWS,
@@ -93,6 +94,14 @@
 			POST_VIEWS = POST_VIEWS + 1
 		WHERE 
 			BOARD_ID = #{boardId}
+	</update>
+	
+	<update id="updateBoard" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD SET
+			POST_TITLE = #{postTitle},
+			POST_CONTENT = #{postContent},
+			POSTING_DATE = SYSDATE
+		WHERE BOARD_ID = #{boardId}
 	</update>
 	
 	<insert id="insertBoardLike" parameterType="com.groo.model.BoardDTO">
