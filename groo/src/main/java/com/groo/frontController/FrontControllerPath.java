@@ -52,11 +52,11 @@ public class FrontControllerPath {
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
-        
+
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
-        
-        
+
+
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());

@@ -19,6 +19,6 @@ public class BoardDTO {
 	//검색
 	private String findField;
 	private String findName;
-	
+
 	private int boardCount;
 }

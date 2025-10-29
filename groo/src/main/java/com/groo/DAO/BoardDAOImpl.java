@@ -46,7 +46,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 게시판 상세 검색 메서드
 	 * @param board 게시판 상세페이지 정보를 가져오기위한 Data Transfer Object 데이터 클래스
@@ -55,16 +55,16 @@ public class BoardDAOImpl implements BoardDAO {
 	 */
 	@Override
 	public BoardDTO selectBoardDetail(BoardDTO board, SqlSession session) {
-		
+
 		BoardDTO boardDetail = new BoardDTO();
-		
+
 		try {
 			boardDetail = session.selectOne("selectBoardDetail",board);
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
-		
+
 		return boardDetail;
 	}
 	/**
@@ -74,7 +74,7 @@ public class BoardDAOImpl implements BoardDAO {
 	 */
 	@Override
 	public void updateViews(BoardDTO board, SqlSession session) {
-		
+
 		try {
 			session.update("updateViews",board);
 		}catch (Exception e) {
@@ -109,7 +109,7 @@ public class BoardDAOImpl implements BoardDAO {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:insertBoardLike 예외발생", e);
 		}
-		
+
 	}
 	/**
 	 * 게시판 좋아요 삭제,추가 판단 검색 메서드

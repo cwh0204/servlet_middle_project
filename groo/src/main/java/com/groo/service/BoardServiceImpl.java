@@ -63,7 +63,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 게시판목록 검색 서비스 메서드입니다.
 	 *
@@ -90,7 +90,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return boardDetail;
 	}
-	
+
 	/**
 	 * 게시판조회수 증가 서비스 메서드입니다.
 	 *
@@ -128,7 +128,7 @@ public class BoardServiceImpl implements BoardService {
 		SqlSession session = SessionFactory.getSqlSession();
 		BoardDTO boardLike = new BoardDTO();
 		try {
-			
+
 			boardLike = dao.selectBoardLikeSearch(board, session);
 			if(boardLike.getBoardCount() == 0) {
 				dao.insertBoardLike(board, session);
