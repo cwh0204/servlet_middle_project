@@ -48,6 +48,6 @@
 		UPDATE member
         SET MEM_STATUS = 'Y',
         	MEM_OUT_DATE = SYSDATE
-        WHERE MEM_LOGIN_ID = #{memLoginId};
+        WHERE MEM_LOGIN_ID = #{memLoginId}
 	</update>
 </mapper>

@@ -117,6 +117,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
 			dao.userDelete(member, session);
+			session.commit();
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
