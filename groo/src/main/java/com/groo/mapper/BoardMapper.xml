@@ -35,7 +35,8 @@
 			WHERE
 				C.COMENT_END IS NULL AND
 				C.BOARD_ID = A.BOARD_ID
-		    ) AS COMENT_COUNT
+		    ) AS COMENT_COUNT,
+		    (SELECT COUNT(*) AS BOARD_LIKE_COUNT FROM BOARD_LIKE C WHERE C.BOARD_ID = A.BOARD_ID ) AS BOARD_LIKE_COUNT
 		FROM BOARD A
 		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		<where>
@@ -78,7 +79,9 @@
 				C.COMENT_END IS NULL AND
 				C.BOARD_ID = A.BOARD_ID
 		    ) AS COMENT_COUNT,
-		    A.POST_CONTENT
+		    A.POST_CONTENT,
+		    (SELECT COUNT(*) AS BOARD_LIKE_COUNT FROM BOARD_LIKE WHERE BOARD_ID = #{boardId}) AS BOARD_LIKE_COUNT
+		    
 		FROM BOARD A
 		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		WHERE BOARD_ID = #{boardId}
@@ -92,4 +95,33 @@
 			BOARD_ID = #{boardId}
 	</update>
 	
+	<insert id="insertBoardLike" parameterType="com.groo.model.BoardDTO">
+		INSERT INTO BOARD_LIKE 
+			(
+				MEM_ID,
+				BOARD_ID
+			)VALUES(
+				(SELECT
+					MEM_ID
+				FROM MEMBER
+				WHERE MEM_LOGIN_ID = #{findName}),
+				#{boardId}
+			)
+	</insert>
+	<delete id="deleteBoardLike" parameterType="com.groo.model.BoardDTO">
+		DELETE BOARD_LIKE
+		WHERE 
+			MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{findName}) AND
+			BOARD_ID = #{boardId}
+	</delete>
+	<select id="selectBoardLikeSearch" resultType="com.groo.model.BoardDTO">
+		SELECT COUNT(*) as BOARD_LIKE_COUNT
+		FROM BOARD_LIKE
+		<where>
+		    BOARD_ID = #{boardId} 
+		    <if test="findName != null and findName != ''">
+		        AND MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{findName})
+		    </if>
+		</where>
+	</select>
 </mapper>
