@@ -144,7 +144,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		} finally {
 			session.close();
 		}
-		
+
 	}
 
 }

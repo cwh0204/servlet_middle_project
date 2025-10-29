@@ -53,34 +53,6 @@
 			</div>
 
 			<div class="comment-list">
-
-				<div class="comment-item">
-					<div class="comment-meta"> <!-- 수정필요 -->
-						<strong>파워유저</strong> <span>2025-10-28 18:55:00</span>
-					</div>
-					<p>로딩 속도 정말 빨라졌어요! 체감됩니다.</p>
-					<button class="comment-report">신고</button>
-					<button class="comment-delete">삭제</button>
-				</div>
-
-				<div class="comment-item">
-					<div class="comment-meta">
-						<strong>궁금러</strong> <span>2025-10-28 19:00:00</span>
-					</div>
-					<p>모바일 최적화 정말 필요했는데 감사합니다!</p>
-					<button class="comment-report">신고</button>
-					<button class="comment-delete">삭제</button>
-				</div>
-
-				<div class="comment-item">
-					<div class="comment-meta">
-						<strong>AI팬</strong> <span>2025-10-28 19:05:00</span>
-					</div>
-					<p>수고하셨습니다. 덕분에 게시판 이용이 훨씬 쾌적해졌어요.</p>
-					<button class="comment-report">신고</button>
-					<button class="comment-delete">삭제</button>
-				</div>
-
 			</div>
 		</div>
 	</div>

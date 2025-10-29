@@ -56,7 +56,7 @@ public class FrontControllerPath {
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
-        
+
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
@@ -65,7 +65,7 @@ public class FrontControllerPath {
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
-        
+
         //댓글
         controllerMap.put("/comentinsert.do", new ComentInsertController());
         controllerMap.put("/comentselect.do", new ComentSelectController());

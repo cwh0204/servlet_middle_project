@@ -2,6 +2,102 @@
  * 
  */
 
+mycoment = (boardId) => {
+	$.ajax({
+		url: 'comentselect.do',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			boardId: boardId,
+			memLoginId: 'cwh0204'
+		},
+		success: function(response) {
+			if (response.length != 0) {
+				allcoment(boardId, response[0].memNick);
+			} else {
+				allcoment(boardId);
+			}
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
+allcoment = (boardId, userNickName) => {
+	$.ajax({
+		url: 'comentselect.do',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			boardId: boardId
+		},
+		success: function(response) {
+
+			// 🚨 개선된 부분: 새로운 목록을 추가하기 전에 기존 목록을 모두 비웁니다.
+			$('.comment-list').empty();
+
+			// 네이티브 forEach로 배열을 순회합니다.
+			response.forEach(item => {
+
+				if (item.memNick === userNickName) {
+					// 1. 각 요소를 jQuery 객체로 생성 및 속성 설정
+					const $commentItem = $('<div>').addClass('comment-item')
+						.attr('data-comment-id', item.comentId);
+
+					const $commentMeta = $('<div>').addClass('comment-meta');
+
+					// 2. 메타 정보 추가
+					$commentMeta.append($('<strong>').text(item.memNick));
+					$commentMeta.append($('<span>').text(item.comentDate));
+
+					const $commentContent = $('<p>').text(item.comentContent);
+
+					// 3. 버튼 추가
+					const $reportButton = $('<button>').addClass('comment-report').text('신고')
+					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block');;
+					// 4. 모든 요소를 최상위 요소에 조립
+					$commentItem.append($commentMeta);
+					$commentItem.append($commentContent);
+					$commentItem.append($reportButton);
+					$commentItem.append($deleteButton);
+
+					// 5. 완성된 항목을 DOM에 추가
+					$('.comment-list').append($commentItem);
+				} else {
+					// 1. 각 요소를 jQuery 객체로 생성 및 속성 설정
+					const $commentItem = $('<div>').addClass('comment-item')
+						.attr('data-comment-id', item.comentId);
+
+					const $commentMeta = $('<div>').addClass('comment-meta');
+
+					// 2. 메타 정보 추가
+					$commentMeta.append($('<strong>').text(item.memNick));
+					$commentMeta.append($('<span>').text(item.comentDate));
+
+					const $commentContent = $('<p>').text(item.comentContent);
+
+					// 3. 버튼 추가
+					const $reportButton = $('<button>').addClass('comment-report').text('신고')
+					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId);
+
+					// 4. 모든 요소를 최상위 요소에 조립
+					$commentItem.append($commentMeta);
+					$commentItem.append($commentContent);
+					$commentItem.append($reportButton);
+					$commentItem.append($deleteButton);
+
+					// 5. 완성된 항목을 DOM에 추가
+					$('.comment-list').append($commentItem);
+				}
+			});
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
 boardComentinsert = (boardId) => {
 	const commentContent = $('#commentContent').val();
 	$.ajax({
@@ -9,12 +105,11 @@ boardComentinsert = (boardId) => {
 		type: 'POST',
 		dataType: 'json',
 		data: {
-			memLoginId: 'cwh0204',
+			memLoginId: 'aqw1232',
 			boardId: boardId,
 			comentContent: commentContent
 		},
 		success: function(response) {
-			console.log(response);
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
@@ -65,7 +160,6 @@ boardLikeTotalCount = (boardId) => {
 	});
 }
 
-
 boardlikeinsert = (boardId) => {
 	$.ajax({
 		url: 'boardlikeinsert.do',
@@ -93,8 +187,6 @@ boarddetailselect = (boardId) => {
 			boardId: boardId
 		},
 		success: function(response) {
-			console.log(response)
-			response.postTitle;
 			$('.post-title').text(response.postTitle);
 			$('.meta-item strong').text(response.memNick);
 			$('#Date').text(response.postingDate);
@@ -102,6 +194,8 @@ boarddetailselect = (boardId) => {
 			$('#likeBtn').text(`👍 좋아요 (${response.boardLikeCount})`);
 			$('.comment-section h3').text(`댓글 (${response.comentCount})`);
 			$('#postViews').text(response.postViews);
+			
+			console.log(response);
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
@@ -125,4 +219,15 @@ $(document).ready(function() {
 	$('#commentSubmit').on('click', function() {
 		boardComentinsert(boardId);
 	});
+
+	allcoment(boardId);
+	mycoment(boardId);
+	
+	
+	
 });
+
+
+
+
+

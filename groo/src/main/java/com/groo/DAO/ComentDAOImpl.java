@@ -29,7 +29,7 @@ public class ComentDAOImpl implements ComentDAO {
 			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 댓글 조회 메서드
 	 * @param coment 정보를 가져오기 위한 Date Transfer Object 데이터 클래스

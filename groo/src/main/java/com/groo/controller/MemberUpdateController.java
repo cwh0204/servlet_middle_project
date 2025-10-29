@@ -23,16 +23,16 @@ public class MemberUpdateController implements Controller {
 		String memEmail = request.getParameter("memEmail");
 		String memAddr = request.getParameter("memAddr");
 		String memInterest = request.getParameter("memInterest");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(memLoginId);
 		member.setMemNick(memNick);
 		member.setMemPass(memPass);
 		member.setMemEmail(memEmail);
 		member.setMemAddr(memAddr);
 		member.setMemInterest(memInterest);
-		
+
 		MemberServiceImpl service = new MemberServiceImpl();
 		try {
 			service.userUpdate(member);
