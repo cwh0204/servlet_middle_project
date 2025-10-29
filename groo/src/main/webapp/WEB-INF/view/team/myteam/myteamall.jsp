@@ -3,12 +3,13 @@
 <html>
 <head>
 
-<link href="css/team/myteam/myteam.css" rel="stylesheet">
+<link href="css/team/myteam/myteamhome.css" rel="stylesheet">
+
 <meta charset="UTF-8">
 <title> </title>
 </head>
 <body>
-<div class="container">
+ <div class="container">
   <div class="header">
 	<h1 class="title">내 스터디</h1>
 	<p class="subtitle">참여 중인 스터디를 확인해보세요</p>
@@ -57,7 +58,7 @@
   	   </div>
   	</article>
   </div>	
-</div>
+ </div>
 </body>
 </html>
 

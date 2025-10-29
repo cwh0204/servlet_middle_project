@@ -24,6 +24,7 @@ import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.LoginController;
 import com.groo.controller.MainController;
+import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberSelectController;
 import com.groo.controller.MyPageController;
 import com.groo.controller.NaverLoginController;
@@ -48,7 +49,10 @@ public class FrontControllerPath {
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-
+        
+        //이수민
+        controllerMap.put("/memberdelete.do", new MemberDeleteController());
+        
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
@@ -58,7 +62,7 @@ public class FrontControllerPath {
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
 
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
-        
+
 
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
