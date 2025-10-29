@@ -15,16 +15,7 @@ public class FrontPath {
         jspMap.put("/signup.do", "/WEB-INF/view/user/signupterms.jsp");
         jspMap.put("/signuppage.do", "/WEB-INF/view/user/signuppage.jsp");
         jspMap.put("/signupsuccess.do", "/WEB-INF/view/user/signupsuccess.jsp");
-<<<<<<< HEAD
-        
-       
-=======
-        jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate/teamcreate.jsp");
-        jspMap.put("/myteamhome.do", "/WEB-INF/view/team/myteam/myteamhome.jsp");
-        jspMap.put("/myteamall.do", "/WEB-INF/view/team/myteam/myteamall.jsp");
-        jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
-        jspMap.put("/myteam.do", "/WEB-INF/view/team/myteam.jsp");
->>>>>>> b83cf06f5ea3a38c83e40e7656b5887aceb02400
+
         jspMap.put("/userdetail.do", "/WEB-INF/view/user/userdetail.jsp");
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
         jspMap.put("/mypage.do", "/WEB-INF/view/mypage/mypage.jsp");
@@ -55,17 +46,10 @@ public class FrontPath {
         jspMap.put("/boardgoalhome.do", "/WEB-INF/view/board/goal/boardgoalhome.jsp");
         jspMap.put("/boardwrite.do", "/WEB-INF/view/board/boardwrite.jsp");
         jspMap.put("/postdetail.do", "/WEB-INF/view/board/postdetail.jsp");
-<<<<<<< HEAD
-                
+     
         //team 경로
         jspMap.put("/teamcreate.do", "/WEB-INF/view/team/teamcreate/teamcreate.jsp");
         jspMap.put("/teamcreatehome.do", "/WEB-INF/view/team/teamcreate/teamcreatehome.jsp");
-=======
-
-        jspMap.put("/boardteamhome.do", "/WEB-INF/view/team/boardteamhome.jsp");
-
-
->>>>>>> b83cf06f5ea3a38c83e40e7656b5887aceb02400
         jspMap.put("/team.do", "/WEB-INF/view/team/team.jsp");
         jspMap.put("/myteamhome.do", "/WEB-INF/view/team/myteam/myteamhome.jsp");
         jspMap.put("/teamfind.do", "/WEB-INF/view/team/teamfind.jsp");
