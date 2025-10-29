@@ -22,11 +22,6 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
-	$('.menu-item.has-submenu').on('click',function(e) {
-	    $(this).toggleClass('open'); // 상위 메뉴에 open 클래스 추가/제거
-	    $(this).find('.submenu').toggleClass('active'); // 서브메뉴에 active 클래스 추가/제거
-	});
 });
 
 

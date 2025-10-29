@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class BoardDetailSelectController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -31,20 +31,20 @@ public class BoardDetailSelectController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String boardId = request.getParameter("boardId");
-		
+
 		BoardDTO board = new BoardDTO();
-		
+
 		board.setBoardId(boardId);
-		
+
 		BoardServiceImpl service = new BoardServiceImpl();
-		
+
 		BoardDTO boardDetail = new BoardDTO();
 		try {
-			
+
 			boardDetail = service.selectBoardDetail(board);
-			
+
 			service.updateViews(board); // 조회수 증가
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(boardDetail);
 

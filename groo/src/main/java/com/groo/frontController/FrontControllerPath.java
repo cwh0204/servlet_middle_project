@@ -60,8 +60,10 @@ public class FrontControllerPath {
 
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
+
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
         
+
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());

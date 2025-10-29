@@ -4,16 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="css/base.css" rel="stylesheet">
+<title>team create</title>
 <link href="css/team/team.css" rel="stylesheet">
 </head>
 <body>
-<div class="teamcontainer">
-	<%@ include file="teamnav.jsp"%>
-	<div class="teamcotent">
-		<%@ include file="teamcreate.jsp"%>
+	<div class="teamcontainer">
+		<%@ include file="../teamnav.jsp"%>
+		<div class="teamcotent">
+			<%@ include file="teamcreatehome.jsp"%>
+		</div>
 	</div>
-</div>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <html>
 <head>
 
-<link href="css/myteam.css" rel="stylesheet">
+<link href="css/team/myteam/myteamhome.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title> </title>
 </head>
@@ -15,7 +16,7 @@
   </div>
   
   <div class="card-grid" id="cardGrid">
-  	<article class="glass-card">
+  	<article class="study-card glass-card">
   	  <div class="card-gradient"></div>
   	   <div class="card-header">
   	     <div class="study-name">
@@ -60,3 +61,4 @@
 </div>
 </body>
 </html>
+
