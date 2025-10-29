@@ -10,7 +10,7 @@
 <body>
 	<div class="teamcontainer">
 		<%@ include file="../teamnav.jsp"%>
-		<div class="teamcotent">
+		<div class="teamcontent">
 			<%@ include file="myteamhome.jsp"%>
 		</div>
 	</div>
