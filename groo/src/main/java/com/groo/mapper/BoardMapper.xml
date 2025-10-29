@@ -95,6 +95,14 @@
 			BOARD_ID = #{boardId}
 	</update>
 	
+	<update id="updateBoard" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD SET
+			POST_TITLE = #{postTitle},
+			POST_CONTENT = #{postContent},
+			POSTING_DATE = SYSDATE
+		WHERE BOARD_ID = #{boardId}
+	</update>
+	
 	<insert id="insertBoardLike" parameterType="com.groo.model.BoardDTO">
 		INSERT INTO BOARD_LIKE 
 			(

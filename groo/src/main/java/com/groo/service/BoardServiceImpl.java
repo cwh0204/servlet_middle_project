@@ -174,5 +174,21 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardLike;
 	}
+	@Override
+	public void updateBoard(BoardDTO board) {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.updateBoard(board, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
 
 }

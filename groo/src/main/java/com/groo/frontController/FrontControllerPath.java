@@ -19,6 +19,7 @@ import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardLikeInsertController;
 import com.groo.controller.BoardLikeSearchController;
 import com.groo.controller.BoardSelectController;
+import com.groo.controller.BoardUpdateController;
 import com.groo.controller.ComentInsertController;
 import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
@@ -61,7 +62,8 @@ public class FrontControllerPath {
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
-
+        controllerMap.put("/boardupdate.do", new BoardUpdateController());
+        
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
