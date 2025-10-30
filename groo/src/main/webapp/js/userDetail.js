@@ -1,3 +1,40 @@
+//닉네임 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
+let NicknameCheck = false;
+//닉네임 형식 유효성 통과 상태 (정규식 통과)
+let NickValid = false;
+
+/**
+ * 닉네임 중복 확인 요청
+ * @param {string} userNickname - 확인할 사용자 닉네임
+ */
+var nicknameCheck = (userNickname) => {
+	
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: '',
+		type: 'POST',
+		data: { 
+				memNick: userNickname
+				},
+		
+		success: function(response){
+			if (response == "yes") {
+				alert('사용할 수 있는 닉네임입니다.✅');
+				NicknameCheck = true; //중복확인 완료
+			}else {
+				alert('이미 사용 중인 닉네임입니다.❌');
+				NicknameCheck = false; //사용 불가
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+			alert('닉네임 확인 중 오류가 발생했습니다.');
+		}
+	});
+}
+
+
+
 $(function() { //document.ready(() => { })
 	$.ajax({
 		// 데이터를 전송할 서버 URL
