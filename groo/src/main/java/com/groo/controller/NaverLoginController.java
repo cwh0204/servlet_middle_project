@@ -9,8 +9,15 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.groo.error.ErrorDTO;
+import com.groo.error.InternalServiceException;
+import com.groo.model.MemberDTO;
+import com.groo.service.MemberService;
+import com.groo.service.MemberServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,19 +35,40 @@ public class NaverLoginController implements Controller,SocialLogin{
 		String code = request.getParameter("code"); // 인가 코드
         String state = request.getParameter("state"); // 상태값
 
-        System.out.println(code);
-        System.out.println(state);
-
         try {
         	String token = getAccessToken(code, state);
         	String userDate = getUserProfile(token);
-
+            
+            JsonObject responseObject = extractIdFromJson(userDate);
+            
+            String memLoginId = responseObject.get("id").getAsString();
+            String memName = responseObject.get("name").getAsString();
+            
+            MemberDTO member = new MemberDTO();
+            member.setMemLoginId(memLoginId);
+            member.setMemName(memName);
+            
+            MemberService service = new MemberServiceImpl();
+            
+			MemberDTO socialMember = service.selectSocialLoginCheck(member);
             HttpSession session = request.getSession();
-            session.setAttribute("naverServiceResponse", userDate);
-
-            response.sendRedirect(request.getContextPath() + "/main.do");
-        }catch (Exception e) {
-			// TODO: handle exception
+			if(socialMember == null) {
+				service.insertSociallMember(member);
+	            session.setAttribute("loginServiceResponse", memLoginId);
+				response.sendRedirect(request.getContextPath() + "/main.do");
+			}else {
+	            session.setAttribute("loginServiceResponse", memLoginId);
+				response.sendRedirect(request.getContextPath() + "/main.do");
+			}
+        }catch (InternalServiceException ise) {
+			ise.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
 		}
 	}
 
@@ -61,8 +89,6 @@ public class NaverLoginController implements Controller,SocialLogin{
         // 2. Authorization 헤더에 Bearer 토큰 추가 (가장 중요한 부분)
         // curl -H "Authorization: Bearer {액세스 토큰}" 와 동일
         conn.setRequestProperty("Authorization", "Bearer " + accessToken);
-
-        System.out.println("네이버 토큰"+accessToken);
 
         // 3. 응답 코드 확인 및 응답 데이터 읽기
         int responseCode = conn.getResponseCode();
@@ -170,5 +196,33 @@ public class NaverLoginController implements Controller,SocialLogin{
             responseJson.append(line);
         }
         return responseJson.toString();
+    }
+	
+	
+    /**
+     * Json 형식의 데이터중 객체로 변환후 id를 반환하는 메서드
+     * @param jsonString 유저정보를 담고있는 json
+     * @return String 형식으로 변환된 userId
+     * @throws IOException
+     */
+	public static JsonObject extractIdFromJson(String jsonString) {
+        try {
+            // 1. 문자열을 JsonElement로 파싱합니다.
+            JsonElement jsonElement = JsonParser.parseString(jsonString);
+            // 2. 최상위 객체(JsonObject)로 변환합니다.
+            JsonObject rootObject = jsonElement.getAsJsonObject();
+            // 3. 'response' 키를 가진 중첩 객체를 가져옵니다.
+            JsonObject responseObject = rootObject.getAsJsonObject("response");
+            // 4. 'response' 객체에서 'id' 키의 값을 문자열로 추출합니다.
+			/* String idValue = responseObject.get("id").getAsString(); */
+            return responseObject;
+
+        } catch (JsonSyntaxException e) {
+            System.err.println("JSON 파싱 오류: 유효하지 않은 JSON 형식입니다.");
+            return null;
+        } catch (Exception e) {
+            System.err.println("JSON 키 접근 오류: 'response'나 'id' 키가 존재하지 않거나 형식이 다릅니다.");
+            return null;
+        }
     }
 }
