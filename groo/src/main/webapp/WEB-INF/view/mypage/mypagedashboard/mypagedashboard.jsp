@@ -10,21 +10,13 @@
 <link href="css/base.css" rel="stylesheet">
 <style>
 
-.a_r_container {
-	width: calc(100% - 260px);
-	height: 100%;
-	background: #f8faf9;
-	padding: 30px 40px;
-	overflow: scroll;
-	overflow-x: hidden;
-} 
 
 </style>
 <body>
-	<div class="flex_container full_w_h mypage_container">
-  		<%@ include file="../frontComponents/mypagenav.jsp"%>
+	<div class="flex_container full_w_h">
+  		<%@ include file="../mypagenav.jsp"%>
 		<div class="a_r_container">
-  			<%@ include file="mypagedashboard.jsp"%>
+  			<%@ include file="../mypagedashboard.jsp"%>
 		</div>
 	</div>
 </body>

@@ -20,7 +20,7 @@ public class FrontPath {
         jspMap.put("/userdetailpw.do", "/WEB-INF/view/user/userdetailpw.jsp");
         jspMap.put("/mypage.do", "/WEB-INF/view/mypage/mypage.jsp");
         jspMap.put("/mypageprofile.do","/WEB-INF/view/mypage/mypageprofile.jsp");
-        jspMap.put("/mypagedashboard.do", "/WEB-INF/view/mypage/mypagedashboard.jsp");
+        jspMap.put("/mypagedashboard.do", "/WEB-INF/view/mypage/mypagedashboard/mypagedashboard.jsp");
 
 
         jspMap.put("/admin.do", "/WEB-INF/view/admin/admin.jsp");
