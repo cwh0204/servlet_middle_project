@@ -37,20 +37,20 @@ public class KakaoLoginController implements Controller, SocialLogin {
         try {
         	String token = getAccessToken(code,state);
         	String userDate = getUserProfile(token);
-        	
+
             JsonObject responseObject = extractIdFromJson(userDate);
             JsonObject responseNicknameObject = responseObject.getAsJsonObject("properties");
-            
+
             String memLoginId = responseObject.get("id").getAsString();
             String memName = responseNicknameObject.get("nickname").getAsString();
-        	
+
             MemberDTO member = new MemberDTO();
             member.setMemLoginId(memLoginId);
             member.setMemName(memName);
-            
+
             MemberService service = new MemberServiceImpl();
 			MemberDTO socialMember = service.selectSocialLoginCheck(member);
-			
+
             HttpSession session = request.getSession();
 			if(socialMember == null) {
 				service.insertSociallMember(member);
@@ -173,7 +173,7 @@ public class KakaoLoginController implements Controller, SocialLogin {
         }
         return responseJson.toString();
 	}
-	
+
 	public static JsonObject extractIdFromJson(String jsonString) {
         try {
             // 1. 문자열을 JsonElement로 파싱합니다.

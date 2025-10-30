@@ -1,46 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>HTML/CSS 캘린더 구조</title>
-<script src="jquery/jquery-3.7.1.min.js"></script>
-<script src="js/mypage/mypagedashboard/mypagedashboard.js"></script>
-<link rel="stylesheet"
-	href="css/mypage/mypagedashboard/mypagedashboard.css">
+<title>Insert title here</title>
+<link href="css/mypage/mypagedashboard/mypagedashboard.css"
+	rel="stylesheet">
 </head>
 <body>
-	<div id="page-wrapper">
-		<div id="calendar-container">
 
-			<div class="calendar-header">
-				<button id="prev-month-btn" class="nav-btn">◀</button>
-				<span id="month-year-display" class="month-year"></span>
-				<button id="next-month-btn" class="nav-btn">▶</button>
-			</div>
-
-			<div class="weekdays">
-				<div class="day-name sunday">일</div>
-				<div class="day-name">월</div>
-				<div class="day-name">화</div>
-				<div class="day-name">수</div>
-				<div class="day-name">목</div>
-				<div class="day-name">금</div>
-				<div class="day-name saturday">토</div>
-			</div>
-
-			<div id="days-grid" class="days-grid">
-				<div class="day-cell is-today">
-					<span class="day-number">25</span>
-					<div class="schedules">
-						<div class="schedule">단순 회의</div>
-						<div class="schedule vote">주제 투표</div>
-						<div class="schedule important">🔥 최종 마감</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<table class="calendar">
+		<caption>
+			<h2>2025년 10월</h2>
+		</caption>
+		<thead>
+			<tr class="day-name">
+				<th class="sunday">일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th class="saturday">토</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="sunday"><span class="date-number">19</span></td>
+				<td><span class="date-number">20</span></td>
+				<td><span class="date-number">21</span>
+					<div class="schedule-list">
+						<div class="schedule-item">팀 회의 (오전)</div>
+					</div></td>
+				<td><span class="date-number">22</span></td>
+				<td><span class="date-number">23</span>
+					<div class="schedule-list">
+						<div class="schedule-item">프로젝트 마감</div>
+						<div class="schedule-item">고객 미팅</div>
+					</div></td>
+				<td><span class="date-number">24</span></td>
+				<td class="saturday"><span class="date-number">25</span></td>
+			</tr>
+			<tr>
+				<td class="sunday"><span class="date-number">26</span></td>
+				<td><span class="date-number">27</span>
+					<div class="schedule-list">
+						<div class="schedule-item">월요일 업무</div>
+					</div></td>
+				<td><span class="date-number">28</span></td>
+				<td><span class="date-number">29</span>
+					<div class="schedule-list">
+						<div class="schedule-item">병원 예약</div>
+					</div></td>
+				<td class="today"><span class="date-number">30</span>
+					<div class="schedule-list">
+						<div class="schedule-item"
+							style="background-color: #f8d7da; color: #721c24;">발표 준비</div>
+					</div></td>
+				<td><span class="date-number">31</span></td>
+				<td class="saturday"><span class="date-number">1</span></td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

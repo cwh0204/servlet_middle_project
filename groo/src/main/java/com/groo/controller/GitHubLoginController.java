@@ -43,12 +43,12 @@ public class GitHubLoginController implements Controller, SocialLogin {
 			MemberDTO member = new MemberDTO();
             member.setMemLoginId(memLoginId);
             member.setMemName(memName);
-            
+
             MemberService service = new MemberServiceImpl();
-			
+
 			MemberDTO socialMember = service.selectSocialLoginCheck(member);
             HttpSession session = request.getSession();
-            
+
 			if(socialMember == null) {
 				service.insertSociallMember(member);
 	            session.setAttribute("loginServiceResponse", memLoginId);
@@ -186,7 +186,7 @@ public class GitHubLoginController implements Controller, SocialLogin {
 
 	/**
 	 * Json 형식의 데이터중 객체로 변환후 id를 반환하는 메서드
-	 * 
+	 *
 	 * @param jsonString 유저정보를 담고있는 json
 	 * @return String 형식으로 변환된 userId
 	 * @throws IOException
