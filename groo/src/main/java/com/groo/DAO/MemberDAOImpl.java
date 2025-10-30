@@ -84,7 +84,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 		MemberDTO socialMember = new MemberDTO();
 		try {
-			socialMember = session.selectOne("socialLoginCheck", member);
+			socialMember = session.selectOne("selectSocialLoginCheck", member);
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:socialLoginCheck 예외발생", e);
