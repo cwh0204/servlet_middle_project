@@ -5,36 +5,30 @@
 <meta charset="UTF-8">
 <link href="css/adminCss/adminnav.css" rel="stylesheet">
 <title>마이페이지</title>
-<script src="jquery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<aside class="sidebar">
 		<div class="sidebar-header">마이페이지</div>
 		<div class="menu-item active" data-page="mypagedashboard.do">
-			<!--컨트롤러 페이지를 만들어서 전체적인 대쉬보드를 만들어 줘야된다. -->
 			<div class="menu-item-content">
 				<span>전체보기</span>
 			</div>
 		</div>
 		<div class="menu-item has-submenu" data-page="mypageprofile.do">
-			<!-- !!has-submenu가 밑에 하위카테고리를 가지고 있으면 내리는 효과를 가지고 있다.  -->
 			<div class="menu-item-content">
 				<span>프로필</span>
 			</div>
 			<div>
 				<div class="submenu">
 					<div class="submenu-item " data-page="mypageprofile.do">
-						<!--하위카테고리-->
 						<span>내 프로필</span>
 					</div>
 					<div class="submenu-item" data-page="userdetail.do">
 						<span>회원상세페이지</span>
-						<!-- 버튼을 클릭하면 회원정보상세페이지로 넘어가게 만들기  -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- !!has-submenu의 영향권 하위카테고리를 가지고 있는 것의 한 섹션은 여기서 끝난다. -->
 		<div class="menu-item has-submenu" data-page="">
 			<div class="menu-item-content">
 				<span>나의 스터디</span>
@@ -42,20 +36,16 @@
 			<div>
 				<div class="submenu">
 					<div class="submenu-item " data-page="">
-						<!--하위카테고리-->
 						<span>스터디 일정표</span>
 					</div>
 					<div class="submenu-item" data-page="">
 						<span>참여중인 스터디</span>
-						<!-- 하위카테고리  -->
 					</div>
 					<div class="submenu-item" data-page="">
 						<span>나의 관심스터디</span>
-						<!-- 하위카테고리  -->
 					</div>
 					<div class="submenu-item" data-page="">
 						<span>스터디 탈퇴</span>
-						<!-- 하위카테고리  -->
 					</div>
 				</div>
 			</div>
@@ -68,16 +58,13 @@
 				<div>
 					<div class="submenu">
 						<div class="submenu-item " data-page="">
-							<!--하위카테고리-->
 							<span>나의 목표</span>
 						</div>
 						<div class="submenu-item" data-page="">
 							<span>나의 게시글</span>
-							<!-- 하위카테고리  -->
 						</div>
 						<div class="submenu-item" data-page="">
 							<span>나의 리뷰</span>
-							<!-- 하위카테고리  -->
 						</div>
 					</div>
 				</div>

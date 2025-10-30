@@ -11,7 +11,7 @@ $(function() { //document.ready(() => { })
 			memPass: '1432',
 			memEmail: 'sum@naver.com',
 			memAddr: '유성구',
-			memInterest: '한야구',
+			memInterest: '야구',
 			memNick: '숨'
 		},
 		// 데이터 전송 성공 시 실행
@@ -163,6 +163,11 @@ function openPostcode() {
 /*취소버튼 눌렀을때*/
 function showCancelAlert() {
 	alert("취소되었습니다.");
+}
+
+/*회원정보수정버튼 눌렀을때*/
+function showSubmitALert(){
+	alert("회원정보가 수정되었습니다.");
 }
 
 function resetFields() {

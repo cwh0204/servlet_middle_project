@@ -7,7 +7,7 @@
 	background: white;
 	border-right: 1px solid #e5e7eb;
 	padding: 24px 0;
-	flex-shrink: 0;
+	min-width: 220px;
 }
 
 .sidebar-header {

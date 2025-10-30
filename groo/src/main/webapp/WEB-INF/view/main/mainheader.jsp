@@ -29,7 +29,7 @@
 					aria-expanded="false"><i class="bi bi-person-circle fs-3"></i></a>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
-					<li><a class="dropdown-item" data-page="mypage.do">마이 페이지</a></li>
+					<li><a class="dropdown-item" data-page="mypagedashboard.do">마이 페이지</a></li>
 				</ul>
 			</div>
 		</div>

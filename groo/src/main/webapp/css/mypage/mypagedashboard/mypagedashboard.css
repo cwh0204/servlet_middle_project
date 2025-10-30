@@ -1,0 +1,173 @@
+#page-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	min-height: 100%;
+	/* ❗ 배경: 연한 녹색/베이지색 계열 배경 */
+	background-color: #f0f7f4;
+	padding: 60px 20px;
+	user-select: none;
+}
+
+#calendar-container {
+	width: 100%;
+	min-width: 500px;
+	max-width: 750px; /* 최대 너비 750px 유지 */
+	/* ❗ 배경: 달력 본체는 흰색 배경 */
+	background-color: #fff;
+	/* 깔끔한 박스 스타일 복원 */
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	font-family: 'Malgun Gothic', 'Arial', sans-serif;
+	user-select: none;
+}
+
+.calendar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 0 10px;
+}
+
+.month-year {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #333;
+}
+
+/* === 화살표 스타일 (녹색, 깔끔) === */
+.nav-btn {
+	/* ❗ 배경: 투명 배경 */
+	background: transparent;
+	color: #4CAF50;
+	border: none;
+	padding: 0 5px;
+	cursor: pointer;
+	font-size: 1.6em;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	transition: color 0.2s;
+}
+
+.nav-btn:hover {
+	color: #388E3C;
+	transform: none;
+	box-shadow: none;
+}
+
+.nav-btn:focus {
+	outline: none;
+	box-shadow: none;
+}
+/* =================== */
+.weekdays {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	text-align: center;
+	font-weight: bold;
+	color: #777;
+	border-bottom: 2px solid #ccc;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+#days-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+}
+
+.day-cell {
+	min-height: 100px;
+	padding: 3px;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	position: relative;
+	/* ❗ 배경: 기본 셀 배경은 상속 (흰색) */
+	background-color: inherit;
+}
+
+.day-number {
+	font-weight: bold;
+	font-size: 1em;
+	padding: 1px 4px;
+	color: #333;
+}
+
+.sunday .day-number {
+	color: #cc3333;
+}
+
+.saturday .day-number {
+	color: #3366cc;
+}
+
+.prev-month, .next-month {
+	/* ❗ 배경: 이전/다음 달 셀 배경은 밝은 회색 */
+	background-color: #f9f9f9;
+}
+
+.prev-month .day-number, .next-month .day-number {
+	color: #ccc;
+}
+
+.is-today {
+	/* ❗ 배경: 오늘 날짜 셀 배경은 연한 녹색 */
+	background-color: #e8f5e9;
+}
+
+.is-today .day-number {
+	/* ❗ 배경: 오늘 날짜 원 배경색은 진한 녹색 */
+	background-color: #4CAF50;
+	color: #fff;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
+.schedules {
+	width: 100%;
+	padding-top: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.schedule {
+	width: 95%;
+	/* ❗ 배경: 일반 스케줄 배경은 연한 베이지색/노란색 */
+	background-color: #fff8e1;
+	color: #5d4037;
+	padding: 1px 3px;
+	margin-top: 1px;
+	margin-left: 1px;
+	border-radius: 2px;
+	font-size: 0.7em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.schedule.important {
+	width: 95%;
+	/* ❗ 배경: 강조 스케줄 배경은 녹색 계열 */
+	background-color: #81c784;
+	color: #1b5e20;
+}
