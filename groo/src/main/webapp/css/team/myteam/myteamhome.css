@@ -78,6 +78,7 @@
 	text-align: center;
     margin-bottom: 1.5rem;
     border-bottom: 2px solid #f3f4f6;
+    background-color: #ffffff;
 }
 
 .study-name {
@@ -210,7 +211,7 @@
 	margin-top: 1.5rem;
 }
 
-.btn-report,
+.btn-detail,
 .btn-leave {
 	flex: 1;
 	display: flex;
@@ -228,7 +229,7 @@
     overflow: hidden;
 }
 
-.btn-report::before,
+.btn-detail::before,
 .btn-leave::before {
     content: '';
     position: absolute;
@@ -241,34 +242,40 @@
     transition: width 0.5s ease, height 0.5s ease;
 }
 
-.btn-report:hover::before,
+.btn-detail:hover::before,
 .btn-leave:hover::before {
     width: 300px;
     height: 300px;
 }
 
-.btn-report span,
+.btn-detail span,
 .btn-leave span {
     position: relative;
     z-index: 1;
 }
 
-.btn-report:hover,
+.btn-detail:hover,
 .btn-leave:hover {
     transform: translateY(-3px);
 }
 
-.btn-report {
-    background: #fef2f2;
-    border: 2px solid #fecaca;
-    color: #dc2626;
+.btn-detail {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: 12px;
+    background: #ecfdf5;
+    border: 2px solid #a7f3d0;
+    color: #047857;
 }
 
-.btn-report::before {
+.btn-detail::before {
 	background: rgba(239, 68, 68, 0.1);
 }
 
-.btn-report:hover {
+.btn-detail:hover {
     box-shadow: 0 6px 20px rgba(220, 38, 38, 0.15);
     background: #fee2e2;
 }
