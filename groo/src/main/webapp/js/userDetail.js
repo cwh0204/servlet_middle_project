@@ -8,7 +8,7 @@ $(function() { //document.ready(() => { })
 		dataType: 'json',
 		data: {
 			memLoginId: 'hong123',
-			memPass: '1244',
+			memPass: '1432',
 			memEmail: 'sum@naver.com',
 			memAddr: '유성구',
 			memInterest: '한야구',
