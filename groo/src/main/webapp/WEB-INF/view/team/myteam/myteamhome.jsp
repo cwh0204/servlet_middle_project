@@ -59,6 +59,27 @@
            </div>
   	   </div>
   	   
+  	   <div class="badge-info">
+  	      <div class="badge-stat-gold">
+  	        <div class="badge-stat-count">0</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-silver">
+  	        <div class="badge-stat-count">3</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-bronze">
+  	        <div class="badge-stat-count">2</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	   </div>
+  	   
   	   <div class="leader-info">
   	       <span>팀장</span>
   	       
