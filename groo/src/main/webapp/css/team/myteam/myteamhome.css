@@ -111,6 +111,7 @@
 	height: 50px;
 	background-image: url('https://i.postimg.cc/rFs4kGRm/icons8-first-place-ribbon-64.png');
 	background-size: contain;
+	background-repeat: no-repeat;
 	vertical-align: middle;
 }
 
@@ -129,6 +130,7 @@
 	height: 50px;
 	background-image: url('https://i.postimg.cc/6627bWkN/icons8-second-place-ribbon-64.png');
 	background-size: contain;
+	background-repeat: no-repeat;
 	vertical-align: middle;
 }
 
@@ -147,6 +149,7 @@
 	height: 50px;
 	background-image: url('https://i.postimg.cc/zvt0fJk5/icons8-third-place-ribbon-64.png');
 	background-size: contain;
+	background-repeat: no-repeat;
 	vertical-align: middle;
 }
 
@@ -273,18 +276,72 @@
 
 .badge-info {
 	display: flex;
-	justify-content: center;
-	gap: 0.75rem;
-	padding: 1rem;
-	background: #f9fafb;
+	align-items: center;
+	justify-content: space-evenly; 
+	gap: 1.2rem;
+	padding: 0.2rem;
+	background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
 	border: 1px solid #e5e7eb;
-	border-radius: 16px;
+	border-radius: 14px;
 	margin-bottom: 1.5rem;
 }
 
 .study-card:hover .badge-info {
-	background: #f4fdf0;
-	border-color: rgba(155, 225, 93, 0.4);
+	background: linear-gradient(135deg, #fefdf6 0%, #f9f9ef 100%);
+	border-color: rgba(180, 220, 120, 0.5);
+}
+
+.badge-stat-gold,
+.badge-stat-silver,
+.badge-stat-bronze {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	flex-direction: row; 	/* 숫자 → 아이콘 순서 */
+	text-align: center;
+}
+
+.badge-stat-icon::before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+}
+
+.badge-stat-gold .badge-stat-icon::before {
+	background-image: url('https://i.postimg.cc/FHmN8Bg7/icons8-first-place-ribbon-50.png'); 
+}
+
+.badge-stat-silver .badge-stat-icon::before {
+	background-image: url('https://i.postimg.cc/BnVNXXZj/icons8-second-place-ribbon-50.png');
+}
+
+.badge-stat-bronze .badge-stat-icon::before {
+	background-image: url('https://i.postimg.cc/HnYbSgWN/icons8-third-place-ribbon-50.png');
+}
+
+.badge-stat-count {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1f2937;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+	height: 30px;
+	justify-content: center;  
+}
+
+.badge-divider {
+	width: 1px;
+	height: 28px;
+	background: #e5e7eb;
+	border-radius: 1px;
+	align-self: center;
 }
 
 .leader-info {
