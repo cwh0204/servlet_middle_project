@@ -174,12 +174,12 @@ $(function(){ //document.ready(() => { })
 	   	   type: 'POST',
 	   	   // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 	   	   data: {
-	   	      memLoginId: 'aqw1232',
-	   	      memPass: '12333',
-	   	      memEmail: 'hong@nate.com',
-	   	      memAddr: '청주시',
-	   	      memInterest: '달리기',
-	   	      memNick: '길동이'
+	   	      memLoginId: 'hong123',
+	   	      memPass: '1244',
+	   	      memEmail: 'sum@naver.com',
+	   	      memAddr: '유성구',
+	   	      memInterest: '야구',
+	   	      memNick: '숨'
 	   	   },
 	   	   // 데이터 전송 성공 시 실행
 	   	   success: function(response) {

@@ -27,13 +27,18 @@
 					</div>
 					<div class="user_attribute">
 						<div class="input-group">
-							<label>아이디</label> <input type="text" name="userID"
-								value="userID" disabled="">
+							<label>아이디</label> <input type="text" name="memLoginId"
+								value="${member.memLoginId}" disabled="">
 						</div>
 						<div class="input-group">
 							<label>이름</label> <input type="text" name="irum" value="user222"
 								disabled="">
 						</div>
+						
+						<div class="input-group">
+							<label>닉네임</label> <input type="text" name="memNick" value="${member.memNick}">
+						</div>
+						
 						<div class="input-group">
 							<label>전화번호<span style="font-size: 12px; color: #666;">(선택)</span>
 							</label>
@@ -64,9 +69,9 @@
 				<h1>회원정보 상세페이지</h1>
 
 				<div class="input-group" style="position: relative;">
-					<label>비밀번호</label> <input type="password" name="password"
-						id="password" placeholder="8~20자리, 특수문자 1개 이상, 공백 제외"
-						style="width: 100%; padding-right: 30px;"> <img
+					<label>비밀번호</label> <input type="password" name="memPass"
+						id="memPass" placeholder="8~20자리, 특수문자 1개 이상, 공백 제외"
+						style="width: 100%; padding-right: 30px;" value="${member.memPass}"> <img
 						id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
 						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
@@ -96,9 +101,10 @@
 				<div class="input-group">
 					<label>이메일</label>
 					<div style="display: flex; align-items: center; gap: 5px;">
-						<input type="text" name="emailid"
+						<div style="display: flex; align-items: center; gap: 5px;">
+						<input type="text" id="emailid" name="emailid" value="${fn:substringBefore(member.memEmail, '@')}"
 							style="width: 120px; text-align: center;"> <span>@</span>
-						<input type="text" name="emailadd"
+						<input type="text" id="emailadd" name="emailadd" value="${fn:substringAfter(member.memEmail, '@')}"
 							style="width: 150px; text-align: center;">
 					</div>
 					<select name="email_select"
