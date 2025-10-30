@@ -73,6 +73,86 @@
 	opacity: 1;
 }
 
+.badge-corner {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+/*	padding: 0.5rem 1rem;  */
+	border-radius: 30px;
+	font-weight: 700;
+	font-size: 0.85rem;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s ease;
+	animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.badge-corner::before {
+	font-size: 1.1rem;
+}
+
+.badge-gold {
+	background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+	color: #ffffff;
+	border: 2px solid #FFE55C;
+}
+
+
+.badge-gold::before {
+	content: "";
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-image: url('https://i.postimg.cc/rFs4kGRm/icons8-first-place-ribbon-64.png');
+	background-size: contain;
+	vertical-align: middle;
+}
+
+
+.badge-silver {
+	background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 100%);
+	color: #ffffff;
+	border: 2px solid #D3D3D3;
+}
+
+
+.badge-silver::before {
+	content: "";
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-image: url('https://i.postimg.cc/6627bWkN/icons8-second-place-ribbon-64.png');
+	background-size: contain;
+	vertical-align: middle;
+}
+
+
+.badge-bronze {
+	background: linear-gradient(135deg, #CD7F32 0%, #B8732E 100%);
+	color: #ffffff;
+	border: 2px solid #E89A5A;
+}
+
+
+.badge-bronze::before {
+	content: "";
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-image: url('https://i.postimg.cc/zvt0fJk5/icons8-third-place-ribbon-64.png');
+	background-size: contain;
+	vertical-align: middle;
+}
+
+
+.study-card:hover .badge-corner {
+	transform: scale(1.08) rotate(-5deg);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
 
 .card-header {
 	text-align: center;
@@ -106,6 +186,32 @@
     background-clip: text;
 }
 
+.btn-report {
+	position: absolute;
+/*	margin-bottom: 2rem; */
+	top: 1rem;
+	right: 1rem;
+	padding: 0.2rem 0.5rem;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #dc2626;
+	background: #fee2e2;
+	border: 1px solid #fecaca;
+	cursor: pointer;
+	z-index: 5;
+}
+
+.btn-report:hover {
+	background: #fecaca;
+	box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.waring {
+	align-items: center;	
+	text-align: center;
+}
 
 .study-stats {
     display: flex;
@@ -144,7 +250,7 @@
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: #9ca3af;
     font-weight: 600;
     text-transform: uppercase;
@@ -161,6 +267,22 @@
     height: 45px;
     background: #e5e7eb;
     border-radius: 1px;
+}
+
+.badge-info {
+	display: flex;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 1rem;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 16px;
+	margin-bottom: 1.5rem;
+}
+
+.study-card:hover .badge-info {
+	background: #f4fdf0;
+	border-color: rgba(155, 225, 93, 0.4);
 }
 
 .leader-info {
@@ -213,7 +335,6 @@
 
 .btn-detail,
 .btn-leave {
-	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -260,39 +381,35 @@
 }
 
 .btn-detail {
-	flex: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	border-radius: 12px;
+	flex: 8;
     background: #ecfdf5;
     border: 2px solid #a7f3d0;
     color: #047857;
 }
 
 .btn-detail::before {
-	background: rgba(239, 68, 68, 0.1);
+	background: rgba(16, 185, 129, 0.1);
 }
 
 .btn-detail:hover {
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.15);
-    background: #fee2e2;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+    background: #d1fae5;
 }
 
 .btn-leave {
-    background: #fffbeb;
-    border: 2px solid #fde68a;
-    color: #d97706;
+	flex: 2;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    color: #4b5563;
 }
 
 .btn-leave::before {
-    background: rgba(245, 158, 11, 0.1);
+    background: rgba(107, 114, 128, 0.1);
 }
 
 .btn-leave:hover {
-    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.15);
-    background: #fef3c7;
+    box-shadow: 0 6px 20px rgba(107, 114, 128, 0.15);
+    background: #f3f4f6;
 }
 
 
@@ -305,4 +422,13 @@
     50% {
         transform: translateY(-8px);
     }
+}
+
+@keyframes badgeFloat {
+	0%, 100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-5px);
+	}
 }
