@@ -71,16 +71,14 @@
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호</label> <input type="password" name="password"
 						id="password" placeholder="8~20자리, 특수문자 1개 이상, 공백 제외"
-						style="width: 100%; padding-right: 30px;"> <img
-						id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
+						style="width: 100%; padding-right: 30px;"> <img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 36px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
 
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호 재확인</label> <input type="password" name="passtry"
-						id="passtry" style="width: 100%; padding-right: 30px;"> <img
-						id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
+						id="passtry" style="width: 100%; padding-right: 30px;"> <img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;">
 					<!-- 문구 표시 -->
 					<span id="checkpw"
 						style="font-size: 12px; display: block; margin-top: 5px;"></span>
