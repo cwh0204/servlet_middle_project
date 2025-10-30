@@ -37,7 +37,7 @@
 				onclick="location.href='boarddelete.do?id=A1'" id="deleteButton">삭제</button> <!-- 수정필요 -->
 			<button class="btn-secondary">목록으로</button> <!-- 수정필요 -->
 		</div>
-
+                 
 		<div class="reaction-section">
 			<button id="likeBtn"></button>
 			<button id="reportPostBtn"
