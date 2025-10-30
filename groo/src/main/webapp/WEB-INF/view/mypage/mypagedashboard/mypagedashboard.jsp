@@ -2,21 +2,17 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <!DOCTYPE html>
-<html style="overflow: hidden;">
+<html>
 <head>
 <meta charset="UTF-8">
 <title></title>
 </head>
-<link href="css/base.css" rel="stylesheet">
-<style>
-
-
-</style>
+<link href="css/mypage/mypagedashboard.css" rel="stylesheet">
 <body>
-	<div class="flex_container full_w_h">
+	<div class="mypagecontainer">
   		<%@ include file="../mypagenav.jsp"%>
-		<div class="a_r_container">
-  			<%@ include file="../mypagedashboard.jsp"%>
+		<div class="mypagecontent">
+  			<%@ include file="mypagedashboardhome.jsp"%>
 		</div>
 	</div>
 </body>
