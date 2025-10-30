@@ -32,7 +32,11 @@ function initializeDisableUserGrid() {
 		}, {
 			header: '신고사유',
 			name: 'reportContent'
-		}, {
+		},{
+			header: '신고일',
+			name: 'reportDate',
+			width: 150
+		},{
 			header: 'Grade',
 			name: 'grade',
 			width: 150,

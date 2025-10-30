@@ -13,4 +13,5 @@ public class AdminReportDTO {
 	private String actionContent;
 	private String actionDate;
 	private String endActionDate;
+	private String boardId;
 }

@@ -19,7 +19,7 @@ $(document).ready(function() {
 	const loginServiceResponse = '${sessionScope.loginServiceResponse}';
 	if(loginServiceResponse !== '' && loginServiceResponse !== 'null'){
 		const serviceResponseJsonString = '${sessionScope.loginServiceResponse}'; //소셜로그인 테스트용
-		console.log(serviceResponseJsonString);
+		sessionStorage.setItem('userId', serviceResponseJsonString);
 	}
 });
 </script>

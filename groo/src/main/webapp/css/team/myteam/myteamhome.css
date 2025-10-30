@@ -83,7 +83,7 @@
 	gap: 0.4rem;
 /*	padding: 0.5rem 1rem;  */
 	border-radius: 30px;
-	font-weight: 700;
+/*	font-weight: 700; */
 	font-size: 0.85rem;
 	backdrop-filter: blur(10px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -91,12 +91,14 @@
 	animation: badgeFloat 3s ease-in-out infinite;
 }
 
+/*
 .badge-corner::before {
 	font-size: 1.1rem;
 }
+*/
 
 .badge-gold {
-	background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+	background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%);
 	color: #ffffff;
 	border: 2px solid #FFE55C;
 }
@@ -114,7 +116,7 @@
 
 
 .badge-silver {
-	background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 100%);
+	background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 50%);
 	color: #ffffff;
 	border: 2px solid #D3D3D3;
 }
@@ -132,7 +134,7 @@
 
 
 .badge-bronze {
-	background: linear-gradient(135deg, #CD7F32 0%, #B8732E 100%);
+	background: linear-gradient(135deg, #CD7F32 0%, #B8732E 50%);
 	color: #ffffff;
 	border: 2px solid #E89A5A;
 }
