@@ -165,6 +165,11 @@ function showCancelAlert() {
 	alert("취소되었습니다.");
 }
 
+/*회원정보수정버튼 눌렀을때*/
+function showSubmitALert(){
+	alert("회원정보가 수정되었습니다.");
+}
+
 function resetFields() {
 	document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
 	document.querySelectorAll('textarea').forEach(el => el.value = '');
