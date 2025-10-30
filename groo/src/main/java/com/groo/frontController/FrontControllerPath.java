@@ -46,8 +46,8 @@ public class FrontControllerPath {
     private Map<String, Controller> controllerMap = new HashMap<>();
 
     public FrontControllerPath() {
-    	
-    	
+
+
         controllerMap.put("/mains.do", new MainController());
 
         controllerMap.put("/singnups.do", new SignUpController());

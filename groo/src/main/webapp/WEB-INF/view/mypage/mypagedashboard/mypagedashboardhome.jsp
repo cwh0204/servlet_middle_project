@@ -7,7 +7,8 @@
 <title>HTML/CSS 캘린더 구조</title>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="js/mypage/mypagedashboard/mypagedashboard.js"></script>
-<link rel="stylesheet" href="css/mypage/mypagedashboard/mypagedashboard.css">
+<link rel="stylesheet"
+	href="css/mypage/mypagedashboard/mypagedashboard.css">
 </head>
 <body>
 	<div id="page-wrapper">
@@ -29,6 +30,17 @@
 				<div class="day-name saturday">토</div>
 			</div>
 
-			<div id="days-grid" class="days-grid"></div>
+			<div id="days-grid" class="days-grid">
+				<div class="day-cell is-today">
+					<span class="day-number">25</span>
+					<div class="schedules">
+						<div class="schedule">단순 회의</div>
+						<div class="schedule vote">주제 투표</div>
+						<div class="schedule important">🔥 최종 마감</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+</body>
+</html>

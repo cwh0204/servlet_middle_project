@@ -3,7 +3,7 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	min-height: 100%;
-	/* ❗ 배경: 연한 녹색/베이지색 계열 배경 */
+	/* 배경 유지 */
 	background-color: #f0f7f4;
 	padding: 60px 20px;
 	user-select: none;
@@ -12,10 +12,9 @@
 #calendar-container {
 	width: 100%;
 	min-width: 500px;
-	max-width: 750px; /* 최대 너비 750px 유지 */
-	/* ❗ 배경: 달력 본체는 흰색 배경 */
+	max-width: 750px;
+	/* 배경 유지 */
 	background-color: #fff;
-	/* 깔끔한 박스 스타일 복원 */
 	border: none;
 	border-radius: 8px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -37,9 +36,8 @@
 	color: #333;
 }
 
-/* === 화살표 스타일 (녹색, 깔끔) === */
+/* === 화살표 스타일 (녹색 유지) === */
 .nav-btn {
-	/* ❗ 배경: 투명 배경 */
 	background: transparent;
 	color: #4CAF50;
 	border: none;
@@ -88,9 +86,9 @@
 	border-bottom: 1px solid #eee;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	/* 스케줄 가운데 정렬은 유지 */
+	align-items: center;
 	position: relative;
-	/* ❗ 배경: 기본 셀 배경은 상속 (흰색) */
 	background-color: inherit;
 }
 
@@ -99,18 +97,22 @@
 	font-size: 1em;
 	padding: 1px 4px;
 	color: #333;
+	/* ❗ 수정: 날짜 숫자를 오른쪽 상단에 배치하도록 복원 */
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	left: auto; /* 왼쪽 위치 지정 해제 */
 }
 
 .sunday .day-number {
-	color: #cc3333;
+	color: #ff5252;
 }
 
 .saturday .day-number {
-	color: #3366cc;
+	color: #536dfe;
 }
 
 .prev-month, .next-month {
-	/* ❗ 배경: 이전/다음 달 셀 배경은 밝은 회색 */
 	background-color: #f9f9f9;
 }
 
@@ -119,12 +121,12 @@
 }
 
 .is-today {
-	/* ❗ 배경: 오늘 날짜 셀 배경은 연한 녹색 */
-	background-color: #e8f5e9;
+	/* ❗ 수정: 오늘 날짜 셀 배경을 연한 초록색으로 */
+	background-color: #e8f5e9; /* Light Green */
 }
 
 .is-today .day-number {
-	/* ❗ 배경: 오늘 날짜 원 배경색은 진한 녹색 */
+	/* 오늘 날짜 원 배경색 스타일은 유지 */
 	background-color: #4CAF50;
 	color: #fff;
 	border-radius: 50%;
@@ -134,9 +136,11 @@
 	justify-content: center;
 	align-items: center;
 	padding: 0;
+	/* ❗ 수정: 오늘 날짜 원도 오른쪽 상단으로 복원 */
 	position: absolute;
 	top: 3px;
 	right: 3px;
+	left: auto;
 }
 
 .schedules {
@@ -144,20 +148,23 @@
 	padding-top: 30px;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	/* ❗ 추가: 스케줄 아이템을 가운데 정렬 */
+	align-items: center;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 
+/* ❗ 단순 일정: 주황색 (마진 수정) */
 .schedule {
 	width: 95%;
-	/* ❗ 배경: 일반 스케줄 배경은 연한 베이지색/노란색 */
-	background-color: #fff8e1;
-	color: #5d4037;
+	/* 배경: 연한 주황색 */
+	background-color: #FFECB3;
+	/* 진한 주황색 글자 */
+	color: #F57C00;
 	padding: 1px 3px;
-	margin-top: 1px;
-	margin-left: 1px;
+	/* ❗ 수정: 스케줄 아이템을 가로 가운데 정렬 */
+	margin: 1px auto;
 	border-radius: 2px;
 	font-size: 0.7em;
 	overflow: hidden;
@@ -165,9 +172,134 @@
 	text-overflow: ellipsis;
 }
 
+/* 중요 일정: 빨간색 (마진 수정) */
 .schedule.important {
 	width: 95%;
-	/* ❗ 배경: 강조 스케줄 배경은 녹색 계열 */
-	background-color: #81c784;
-	color: #1b5e20;
+	/* 배경: 연한 빨간색 배경 */
+	background-color: #FFCDD2;
+	/* 진한 빨간색 글자 */
+	color: #D32F2F;
+	/* ❗ 추가: 스케줄 아이템을 가로 가운데 정렬 */
+	margin: 1px auto;
+}
+
+/* 투표 일정: 청록색/시안색 (마진 수정) */
+.schedule.vote {
+	width: 95%;
+	/* 배경: 연한 청록색 */
+	background-color: #B2EBF2;
+	/* 진한 청록색 글자 */
+	color: #0097A7;
+	/* ❗ 추가: 스케줄 아이템을 가로 가운데 정렬 */
+	margin: 1px auto;
+}
+
+/*오늘의 목표*/
+#goals-container {
+	width: 100%;
+	min-width: 300px;
+	max-width: 350px;
+	margin-left: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	font-family: 'Malgun Gothic', 'Arial', sans-serif;
+	align-self: flex-start;
+}
+
+.goals-header {
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #388E3C;
+	border-bottom: 2px solid #4CAF50;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+/* 목표 입력 영역 스타일 */
+#goals-container {
+	width: 100%;
+	min-width: 350px;
+	max-width: 450px; /* ❗ 수정: 최대 너비를 450px로 확장 */
+	margin-left: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	padding: 25px; /* ❗ 수정: 내부 패딩을 약간 늘림 */
+	font-family: 'Malgun Gothic', 'Arial', sans-serif;
+	align-self: flex-start;
+}
+
+.goals-header {
+	font-size: 1.6em; /* ❗ 수정: 헤더 글자 크기 키움 */
+	font-weight: bold;
+	color: #388E3C;
+	border-bottom: 2px solid #4CAF50;
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+}
+
+/* 목표 입력 영역 스타일 */
+#goal-input-area {
+	display: flex;
+	margin-bottom: 25px; /* ❗ 수정: 아래 마진 늘림 */
+}
+
+#new-goal-text {
+	flex-grow: 1;
+	padding: 10px 12px; /* ❗ 수정: 입력 필드 패딩 늘림 */
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 1em; /* ❗ 수정: 글자 크기 키움 */
+	outline: none;
+}
+
+#add-goal-btn {
+	padding: 10px 18px; /* ❗ 수정: 버튼 패딩 늘림 */
+	border: none;
+	background-color: #4CAF50;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 0 4px 4px 0;
+	transition: background-color 0.2s;
+	font-size: 1em; /* ❗ 수정: 버튼 글자 크기 키움 */
+}
+
+#add-goal-btn:hover {
+	background-color: #388E3C;
+}
+
+/* 목표 목록 아이템 스타일 */
+.goal-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 14px; /* ❗ 수정: 항목 간 간격 늘림 */
+	padding: 10px 0; /* ❗ 수정: 항목 내부 패딩 늘림 */
+	cursor: pointer;
+}
+
+.goal-checkbox {
+	width: 22px; /* ❗ 수정: 체크박스 크기 키움 */
+	height: 22px;
+	border: 2px solid #4CAF50;
+	border-radius: 4px;
+	margin-right: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.2s;
+}
+
+.goal-item.completed .goal-checkbox:after {
+	content: '✓';
+	color: #fff;
+	font-size: 16px; /* ❗ 수정: 체크 표시 크기 키움 */
+}
+
+.goal-text {
+	font-size: 1.05em; /* ❗ 수정: 목표 텍스트 크기 키움 */
+	color: #333;
+	flex-grow: 1;
 }
