@@ -28,15 +28,15 @@
 					<div class="user_attribute">
 						<div class="input-group">
 							<label>아이디</label> <input type="text" name="userID"
-								value="userID" disabled="">
+								value="" disabled=>
 						</div>
 						<div class="input-group">
 							<label>이름</label> <input type="text" name="irum" value=""
-								disabled="">
+								disabled>
 						</div>
 						
 						<div class="input-group">
-							<label>닉네임</label> <input type="text" name="name" value="user222">
+							<label>닉네임</label> <input type="text" name="name" value="">
 						</div>
 						
 						<div class="input-group">

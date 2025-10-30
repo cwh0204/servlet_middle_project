@@ -11,7 +11,7 @@ $(function() { //document.ready(() => { })
 			memPass: '1432',
 			memEmail: 'sum@naver.com',
 			memAddr: '유성구',
-			memInterest: '한야구',
+			memInterest: '야구',
 			memNick: '숨'
 		},
 		// 데이터 전송 성공 시 실행
