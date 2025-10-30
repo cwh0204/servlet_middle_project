@@ -76,4 +76,9 @@ $(document).ready(function(){
             ageValue.textContent = ageSlider.value + "세";
         });
     }
+	
+	
+	 
 });
+
+
