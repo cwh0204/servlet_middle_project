@@ -104,7 +104,7 @@ allcoment = (boardId, userNickName) => {
 
 boardComentinsert = (boardId) => {
 	const commentContent = $('#commentContent').val();
-	
+		
 	$.ajax({
 		url: 'comentinsert.do',
 		type: 'POST',

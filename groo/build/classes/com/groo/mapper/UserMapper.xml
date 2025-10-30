@@ -19,7 +19,7 @@
 	  						MEM_NICK
 	  						)
 	  			  values (
-	  			 			#{memId}, 
+	  			 			'M' || MEMBER_SEQ.NEXTVAL
 	  			 			#{memName}, 
 	  			 			#{memLoginId}, 
 	  			 			#{memPass}, 
