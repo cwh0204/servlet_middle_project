@@ -89,7 +89,6 @@ var teamStats = () => {
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
 			// 예: 성공 메시지 표시 또는 페이지 이동
-			console.log(response);
 			$('.total-teams').text(response.totalTeams);
 			$('.inactive-teams').text(response.inactiveTeams);
 			$('.weekly-teams').text(response.weeklyTeams);
