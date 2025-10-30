@@ -38,18 +38,18 @@ public class NaverLoginController implements Controller,SocialLogin{
         try {
         	String token = getAccessToken(code, state);
         	String userDate = getUserProfile(token);
-            
+
             JsonObject responseObject = extractIdFromJson(userDate);
-            
+
             String memLoginId = responseObject.get("id").getAsString();
             String memName = responseObject.get("name").getAsString();
-            
+
             MemberDTO member = new MemberDTO();
             member.setMemLoginId(memLoginId);
             member.setMemName(memName);
-            
+
             MemberService service = new MemberServiceImpl();
-            
+
 			MemberDTO socialMember = service.selectSocialLoginCheck(member);
             HttpSession session = request.getSession();
 			if(socialMember == null) {
@@ -197,8 +197,8 @@ public class NaverLoginController implements Controller,SocialLogin{
         }
         return responseJson.toString();
     }
-	
-	
+
+
     /**
      * Json 형식의 데이터중 객체로 변환후 id를 반환하는 메서드
      * @param jsonString 유저정보를 담고있는 json

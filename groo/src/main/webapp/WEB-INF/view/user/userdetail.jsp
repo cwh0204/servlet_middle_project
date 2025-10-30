@@ -36,7 +36,7 @@
 						</div>
 						
 						<div class="input-group">
-							<label>닉네임</label> <input type="text" name="name" value="">
+							<label>닉네임</label> <input type="text" id="userNick" name="name" value="">
 						</div>
 						
 						<div class="input-group">
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<div class="button-group">
-					<button type="submit" class="okbutton"
+					<button type="button" class="okbutton"
 					    onclick="showSubmitALert()">회원정보수정</button>
 					<button type="reset" class="cancelbutton"
 						onclick="showCancelAlert(); resetFields();">취소</button>

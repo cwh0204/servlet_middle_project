@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	
 	const lastPage = sessionStorage.getItem('board_last_view');
 
 	if (lastPage) {

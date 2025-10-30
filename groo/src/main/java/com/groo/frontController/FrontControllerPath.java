@@ -28,6 +28,7 @@ import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
+//import com.groo.controller.MemberLoginController;
 import com.groo.controller.MemberSelectController;
 import com.groo.controller.MemberUpdateController;
 import com.groo.controller.MyPageController;
@@ -47,17 +48,17 @@ public class FrontControllerPath {
     private Map<String, Controller> controllerMap = new HashMap<>();
 
     public FrontControllerPath() {
-    	
-    	
+
+
         controllerMap.put("/mains.do", new MainController());
 
         controllerMap.put("/singnups.do", new SignUpController());
         controllerMap.put("/singnupselectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
-        
+
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
-        
+
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());

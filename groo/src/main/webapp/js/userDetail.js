@@ -1,4 +1,94 @@
-$(function() { //document.ready(() => { })
+//닉네임 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
+let NicknameCheck = false;
+//닉네임 형식 유효성 통과 상태 (정규식 통과)
+let NickValid = false;
+
+/**
+ * 닉네임 중복 확인 요청
+ * @param {string} userNickname - 확인할 사용자 닉네임
+ */
+var nicknameCheck = (userNickname) => {
+
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: '',
+		type: 'POST',
+		data: {
+			memNick: userNickname
+		},
+
+		success: function(response) {
+			if (response == "yes") {
+				alert('사용할 수 있는 닉네임입니다.✅');
+				NicknameCheck = true; //중복확인 완료
+			} else {
+				alert('이미 사용 중인 닉네임입니다.❌');
+				NicknameCheck = false; //사용 불가
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+			alert('닉네임 확인 중 오류가 발생했습니다.');
+		}
+	});
+}
+
+
+/*카카오 우편번호api*/
+function openPostcode() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			document.getElementById('zipcode').value = data.zonecode;
+			document.getElementById('address1').value = data.roadAddress;
+			document.getElementById('address2').focus();
+		}
+	}).open();
+}
+
+/*취소버튼 눌렀을때*/
+function showCancelAlert() {
+	alert("취소되었습니다.");
+}
+
+function resetFields() {
+	document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
+	document.querySelectorAll('textarea').forEach(el => el.value = '');
+	document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
+	const profileImage = document.getElementById('profileImage');
+	const existingImg = profileImage.querySelector('img');
+	if (existingImg) {
+		existingImg.remove();
+	}
+	document.getElementById('fileName').textContent = '이미지를 선택해주세요';
+	profileImage.classList.remove('has-image');
+
+	// 이메일 초기화
+	const domainInput = document.querySelector('input[name="emailadd"]');
+	const domainSelect = document.querySelector('select[name="email_select"]');
+	domainInput.removeAttribute('readonly');
+	domainSelect.value = '';
+	// 비밀번호 테두리 초기화
+	const pw = document.getElementById('password');
+	const pwCheck = document.getElementById('passtry');
+	const msg = document.getElementById('checkpw');
+
+	pw.style.border = '1px solid #ccc';
+	pwCheck.style.border = '1px solid #ccc';
+	msg.textContent = '';
+}
+
+const showSubmitALert = () => {
+	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+	console.log(userId);
+	const memPass = $('#passtry').val();
+	const memEmail = $('[name="emailid"]').val() + '@' + $('[name="emailadd"]').val();
+	const memAddr = $('#zipcode').val() + $('#address1').val() +$('#address2').val();
+	const memNick = $('#userNick').val();
+	//관심분야 추가해서 요청에 같이 보내기
+	
+	
+	console.log(memAddr);
+	//취미 받아오는건 직접 해보기
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'memberupdate.do',
@@ -7,23 +97,29 @@ $(function() { //document.ready(() => { })
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		dataType: 'json',
 		data: {
-			memLoginId: 'hong123',
-			memPass: '1432',
-			memEmail: 'sum@naver.com',
-			memAddr: '유성구',
+			memLoginId: userId,
+			memPass: memPass,
+			memEmail: memEmail,
+			memAddr: memAddr,
 			memInterest: '야구',
-			memNick: '숨'
+			memNick: memNick
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			// response는 서버에서 돌려준 데이터입니다.
+			console.log(response);
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
 		}
 	});
+}
+
+$(function() { //document.ready(() => { })
+	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+
 	
+
 	$("#deletebutton").on("click", function() {
 		$(".pw-container").addClass("active");
 	});
@@ -148,55 +244,3 @@ $(function() { //document.ready(() => { })
 		}
 	});
 });
-
-/*카카오 우편번호api*/
-function openPostcode() {
-	new daum.Postcode({
-		oncomplete: function(data) {
-			document.getElementById('zipcode').value = data.zonecode;
-			document.getElementById('address1').value = data.roadAddress;
-			document.getElementById('address2').focus();
-		}
-	}).open();
-}
-
-/*취소버튼 눌렀을때*/
-function showCancelAlert() {
-	alert("취소되었습니다.");
-}
-
-/*회원정보수정버튼 눌렀을때*/
-function showSubmitALert(){
-	alert("회원정보가 수정되었습니다.");
-}
-
-function resetFields() {
-	document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
-	document.querySelectorAll('textarea').forEach(el => el.value = '');
-	document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
-	const profileImage = document.getElementById('profileImage');
-	const existingImg = profileImage.querySelector('img');
-	if (existingImg) {
-		existingImg.remove();
-	}
-	document.getElementById('fileName').textContent = '이미지를 선택해주세요';
-	profileImage.classList.remove('has-image');
-
-	// 이메일 초기화
-	const domainInput = document.querySelector('input[name="emailadd"]');
-	const domainSelect = document.querySelector('select[name="email_select"]');
-	domainInput.removeAttribute('readonly');
-	domainSelect.value = '';
-	// 비밀번호 테두리 초기화
-	const pw = document.getElementById('password');
-	const pwCheck = document.getElementById('passtry');
-	const msg = document.getElementById('checkpw');
-
-	pw.style.border = '1px solid #ccc';
-	pwCheck.style.border = '1px solid #ccc';
-	msg.textContent = '';
-
-
-
-
-}

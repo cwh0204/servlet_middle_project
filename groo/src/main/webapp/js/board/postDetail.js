@@ -1,15 +1,11 @@
-/**
- * 
- */
-
-mycoment = (boardId) => {
+mycoment = (boardId, writer) => {
 	$.ajax({
 		url: 'comentselect.do',
 		type: 'POST',
 		dataType: 'json',
 		data: {
 			boardId: boardId,
-			memLoginId: 'cwh0204'
+			memLoginId: writer
 		},
 		success: function(response) {
 			if (response.length != 0) {
@@ -41,9 +37,10 @@ allcoment = (boardId, userNickName) => {
 			response.forEach(item => {
 
 				if (item.memNick === userNickName) {
+					console.log("item.memNick : ", item.memNick);
+					console.log("userNickName : ", userNickName);
 					// 1. 각 요소를 jQuery 객체로 생성 및 속성 설정
-					const $commentItem = $('<div>').addClass('comment-item')
-						.attr('data-comment-id', item.comentId);
+					const $commentItem = $('<div>').addClass('comment-item').attr('data-comment-id', item.comentId);
 
 					const $commentMeta = $('<div>').addClass('comment-meta');
 
@@ -102,39 +99,39 @@ allcoment = (boardId, userNickName) => {
 	});
 }
 
-boardComentinsert = (boardId) => {
+boardComentinsert = (boardId, writer) => {
 	const commentContent = $('#commentContent').val();
-		
+
 	$.ajax({
 		url: 'comentinsert.do',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-			memLoginId: 'aqw1232',
+			memLoginId: writer,
 			boardId: boardId,
 			comentContent: commentContent
-		}, //컨트롤러에게 보내는 데이터
-		
+		},
+
 		success: function(response) {
-			const commentCount = $('.comment-list .comment-item').length+1;
+			const commentCount = $('.comment-list .comment-item').length + 1;
 			$('.comment-section h3').text(`댓글 (${commentCount})`);
 			$('.comment-list').empty();
 			allcoment(boardId);
 		},
-		
+
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
 		}
 	});
 }
 
-boardLikeUserCheck = (boardId) => {
+boardLikeUserCheck = (boardId, writer) => {
 	$.ajax({
 		url: 'boardlikesearch.do',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-			findName: 'aqw1232',
+			findName: writer,
 			boardId: boardId
 		},
 		success: function(response) {
@@ -171,13 +168,13 @@ boardLikeTotalCount = (boardId) => {
 	});
 }
 
-boardlikeinsert = (boardId) => {
+boardlikeinsert = (boardId, writer) => {
 	$.ajax({
 		url: 'boardlikeinsert.do',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-			findName: 'aqw1232',
+			findName: writer,
 			boardId: boardId
 		},
 		success: function(response) {
@@ -189,7 +186,7 @@ boardlikeinsert = (boardId) => {
 	});
 }
 
-boarddetailselect = (boardId) => {
+boarddetailselect = (boardId, writer) => {
 	$.ajax({
 		url: 'boarddetailselect.do',
 		type: 'POST',
@@ -197,7 +194,7 @@ boarddetailselect = (boardId) => {
 		data: {
 			boardId: boardId
 		},
-		success: function(response) {			
+		success: function(response) {
 			$('.post-title').text(response.postTitle);
 			$('.meta-item strong').text(response.memNick);
 			$('#Date').text(response.postingDate);
@@ -205,8 +202,8 @@ boarddetailselect = (boardId) => {
 			$('#likeBtn').text(`👍 좋아요 (${response.boardLikeCount})`);
 			$('.comment-section h3').text(`댓글 (${response.comentCount})`);
 			$('#postViews').text(response.postViews);
-			
-			if(response.memLoginId != 'aqw1232') {
+
+			if (response.memLoginId != writer) {
 				const $modifyButton = $('#modifyButton');
 				const $deleteButton = $('#deleteButton');
 				$modifyButton.hide();
@@ -220,31 +217,30 @@ boarddetailselect = (boardId) => {
 }
 
 $(document).ready(function() {
-	/* const writer = 로그인한 사용자 ID (세션); */
+	const writer = sessionStorage.getItem('userId');
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const boardId = urlParams.get('id');
 
-	boarddetailselect(boardId);
-	boardLikeUserCheck(boardId);
+	console.log(writer);
+
+	boarddetailselect(boardId, writer);
+	boardLikeUserCheck(boardId, writer);
 
 	$('#likeBtn').on('click', function() {
-		boardlikeinsert(boardId);
+		boardlikeinsert(boardId, writer);
 	});
 
 	$('#commentSubmit').on('click', function() {
-		boardComentinsert(boardId);
+		boardComentinsert(boardId, writer);
 	});
-	
+
 	$('.btn-secondary').on('click', function() {
-	        window.history.back();
+		window.history.back();
 	});
-	
-	allcoment(boardId);
-	mycoment(boardId);
-	
-	
-	
+
+	allcoment(boardId, writer);
+	mycoment(boardId, writer);
 });
 
 

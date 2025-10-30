@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpSession;
  * 클라이언트에 응답
  */
 public class MemberLoginController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 로그인정보를 가져오고 JSON 응답을 생성합니다.
 	 *
@@ -32,21 +32,21 @@ public class MemberLoginController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String memLoginId = request.getParameter("memLoginId");
 		String memPass = request.getParameter("memPass");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(memLoginId);
 		member.setMemPass(memPass);
-		
+
 		MemberService service = new MemberServiceImpl();
 		HttpSession session = request.getSession();
 		try {
-			
+
 			MemberDTO memberLogin = service.selectLoginMember(member);
-			
+
 			if(memberLogin != null) {
 				session.setAttribute("loginServiceResponse", memLoginId);
 			}
@@ -55,11 +55,11 @@ public class MemberLoginController implements Controller {
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
