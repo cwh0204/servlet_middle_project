@@ -11,7 +11,12 @@ public interface MemberService {
 	//이수민
 	public void userDelete(MemberDTO member);
 	public void userUpdate(MemberDTO member);
+<<<<<<< HEAD
 
+=======
+	public String selectUserNicknameCheck(MemberDTO member);
+	
+>>>>>>> ecdae6bb7ec53ce6473d2f953a7a29cda4e33d44
 	//일반 로그인
 	public MemberDTO selectLoginMember(MemberDTO member);
 
