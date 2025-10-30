@@ -115,7 +115,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 	}
 
-	
+
 	/**
 	 * 소셜로그인 회원가입 여부를 확인하기 위한 서비스 메서드
 	 * @param member는 유저를 조회 하기 위한 Data Transfer Object 데이터 클래스
@@ -125,7 +125,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectSocialLoginCheck(MemberDTO member) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO socialMember = new MemberDTO();
 		try {

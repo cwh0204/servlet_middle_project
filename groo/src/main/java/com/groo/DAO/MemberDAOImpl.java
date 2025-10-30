@@ -78,7 +78,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 	}
 
-	
+
 	/**
 	 * 소셜로그인 회원의 회원가입 여부를 확인하는 메서드
 	 * @param member 유저의 검색정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -87,7 +87,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 */
 	@Override
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session) {
-		
+
 		MemberDTO socialMember = new MemberDTO();
 		try {
 			socialMember = session.selectOne("selectSocialLoginCheck", member);
@@ -95,10 +95,10 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:socialLoginCheck 예외발생", e);
 		}
-		
+
 		return socialMember;
 	}
-	
+
 	/**
 	 * 소셜로그인 회원의 회원가입 메서드
 	 * @param member 유저의 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -106,7 +106,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 */
 	@Override
 	public void insertSociallMember(MemberDTO member, SqlSession session) {
-		
+
 		try {
 			session.insert("insertSociallMember", member);
 		}catch(Exception e) {

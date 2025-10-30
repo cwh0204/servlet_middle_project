@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>게시글 상세 보기</title>
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="js/board/postDetail.js"></script>
@@ -38,7 +37,7 @@
 				onclick="location.href='boarddelete.do?id=A1'" id="deleteButton">삭제</button> <!-- 수정필요 -->
 			<button class="btn-secondary">목록으로</button> <!-- 수정필요 -->
 		</div>
-
+                 
 		<div class="reaction-section">
 			<button id="likeBtn"></button>
 			<button id="reportPostBtn"
