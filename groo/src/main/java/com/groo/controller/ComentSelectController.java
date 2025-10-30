@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class ComentSelectController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 댓글 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -33,13 +33,13 @@ public class ComentSelectController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String boardId = request.getParameter("boardId");
 		String memLoginId = request.getParameter("memLoginId");
-		
+
 		ComentDTO coment = new ComentDTO();
 		coment.setBoardId(boardId);
 		coment.setMemLoginId(memLoginId);
-		
+
 		ComentServiceImpl service = new ComentServiceImpl();
-		
+
 		try {
 			List<ComentDTO> comentList = new ArrayList<>();
 			comentList = service.comentSelect(coment);

@@ -127,7 +127,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return boardLike;
 	}
-	
+
 	/**
 	 * 게시판 수정 메서드
 	 * @param board 게시판 수정 정보를 가져오기위한 Data Transfer Object 데이터 클래스
@@ -141,7 +141,7 @@ public class BoardDAOImpl implements BoardDAO {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:selectBoardLikeSearch 예외발생",e);
 		}
-		
+
 	}
 
 }

@@ -63,7 +63,7 @@ public class FrontControllerPath {
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
         controllerMap.put("/boardupdate.do", new BoardUpdateController());
-        
+
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());

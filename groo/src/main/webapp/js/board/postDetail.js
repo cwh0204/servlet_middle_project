@@ -55,11 +55,13 @@ allcoment = (boardId, userNickName) => {
 
 					// 3. 버튼 추가
 					const $reportButton = $('<button>').addClass('comment-report').text('신고')
-					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block');;
+					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId).css('display', 'block');
+					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block');
 					// 4. 모든 요소를 최상위 요소에 조립
 					$commentItem.append($commentMeta);
 					$commentItem.append($commentContent);
 					$commentItem.append($reportButton);
+					$commentItem.append($editButton);
 					$commentItem.append($deleteButton);
 
 					// 5. 완성된 항목을 DOM에 추가
@@ -79,12 +81,14 @@ allcoment = (boardId, userNickName) => {
 
 					// 3. 버튼 추가
 					const $reportButton = $('<button>').addClass('comment-report').text('신고')
+					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId);
 					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId);
 
 					// 4. 모든 요소를 최상위 요소에 조립
 					$commentItem.append($commentMeta);
 					$commentItem.append($commentContent);
 					$commentItem.append($reportButton);
+					$commentItem.append($editButton);
 					$commentItem.append($deleteButton);
 
 					// 5. 완성된 항목을 DOM에 추가
@@ -100,6 +104,7 @@ allcoment = (boardId, userNickName) => {
 
 boardComentinsert = (boardId) => {
 	const commentContent = $('#commentContent').val();
+	
 	$.ajax({
 		url: 'comentinsert.do',
 		type: 'POST',
@@ -108,9 +113,15 @@ boardComentinsert = (boardId) => {
 			memLoginId: 'aqw1232',
 			boardId: boardId,
 			comentContent: commentContent
-		},
+		}, //컨트롤러에게 보내는 데이터
+		
 		success: function(response) {
+			const commentCount = $('.comment-list .comment-item').length+1;
+			$('.comment-section h3').text(`댓글 (${commentCount})`);
+			$('.comment-list').empty();
+			allcoment(boardId);
 		},
+		
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
 		}
@@ -186,7 +197,7 @@ boarddetailselect = (boardId) => {
 		data: {
 			boardId: boardId
 		},
-		success: function(response) {
+		success: function(response) {			
 			$('.post-title').text(response.postTitle);
 			$('.meta-item strong').text(response.memNick);
 			$('#Date').text(response.postingDate);
@@ -195,7 +206,12 @@ boarddetailselect = (boardId) => {
 			$('.comment-section h3').text(`댓글 (${response.comentCount})`);
 			$('#postViews').text(response.postViews);
 			
-			console.log(response);
+			if(response.memLoginId != 'aqw1232') {
+				const $modifyButton = $('#modifyButton');
+				const $deleteButton = $('#deleteButton');
+				$modifyButton.hide();
+				$deleteButton.hide();
+			}
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
@@ -219,7 +235,11 @@ $(document).ready(function() {
 	$('#commentSubmit').on('click', function() {
 		boardComentinsert(boardId);
 	});
-
+	
+	$('.btn-secondary').on('click', function() {
+	        window.history.back();
+	});
+	
 	allcoment(boardId);
 	mycoment(boardId);
 	

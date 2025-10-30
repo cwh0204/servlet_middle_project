@@ -33,16 +33,16 @@
 
 		<div class="board-actions">
 			<button class="btn-primary"
-				onclick="location.href='boardmodify.do?id=A1'">수정</button> <!-- 수정필요 -->
+				onclick="location.href='boardmodify.do?id=A1'" id="modifyButton">수정</button> <!-- 수정필요 -->
 			<button class="btn-danger"
-				onclick="location.href='boarddelete.do?id=A1'">삭제</button> <!-- 수정필요 -->
-			<button class="btn-secondary" onclick="location.href='boardlist.do'">목록으로</button> <!-- 수정필요 -->
+				onclick="location.href='boarddelete.do?id=A1'" id="deleteButton">삭제</button> <!-- 수정필요 -->
+			<button class="btn-secondary">목록으로</button> <!-- 수정필요 -->
 		</div>
 
 		<div class="reaction-section">
-			<button id="likeBtn">👍 좋아요 (55)</button> <!-- 수정필요 -->
+			<button id="likeBtn"></button>
 			<button id="reportPostBtn"
-				onclick="location.href='boardreport.do?id=A1'">🚨 게시글 신고</button> <!-- 수정필요 -->
+				onclick="location.href='boardreport.do?id=A1'">🚨 게시글 신고</button>
 		</div>
 
 		<div class="comment-section">
