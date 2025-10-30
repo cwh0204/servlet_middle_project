@@ -81,14 +81,19 @@ const showSubmitALert = () => {
 	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 	console.log(userId);
 	const memPass = $('#passtry').val();
+	console.log(memPass);
 	const memEmail = $('[name="emailid"]').val() + '@' + $('[name="emailadd"]').val();
+	console.log(memEmail);
 	const memAddr = $('#zipcode').val() + $('#address1').val() +$('#address2').val();
-	const memNick = $('#userNick').val();
-	//관심분야 추가해서 요청에 같이 보내기
-	
-	
 	console.log(memAddr);
-	//취미 받아오는건 직접 해보기
+	const memNick = $('#userNick').val();
+	console.log(memNick);
+	const memInterest = [
+		...$('input[name="ff"]:checked').map((_, el) => el.value).get(),
+		$('textarea[name="ff"]').val().trim()
+			].filter(Boolean).join(',');
+	console.log(memInterest);
+	
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'memberupdate.do',
@@ -101,7 +106,7 @@ const showSubmitALert = () => {
 			memPass: memPass,
 			memEmail: memEmail,
 			memAddr: memAddr,
-			memInterest: '야구',
+			memInterest: memInterest,
 			memNick: memNick
 		},
 		// 데이터 전송 성공 시 실행
