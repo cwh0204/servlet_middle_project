@@ -9,9 +9,13 @@ public interface MemberDAO {
 	public void signUp(MemberDTO memberDto, SqlSession session);
 	public String selectLoginId(String memLoginId, SqlSession session);
 	public String selectEmail(String memEmail, SqlSession session);
-	public MemberDTO login(MemberDTO memberDTO, SqlSession session);
 
 	//이수민
 	public void userDelete(MemberDTO member, SqlSession session);
 	public void userUpdate(MemberDTO member, SqlSession session);
+	
+	//소셜로그인
+	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);
+	public void insertSociallMember(MemberDTO member, SqlSession session);
+	public MemberDTO selectLoginMember(MemberDTO member, SqlSession session);
 }

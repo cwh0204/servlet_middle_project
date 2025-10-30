@@ -30,18 +30,8 @@
 	  					    )
 	</insert>
 	
-	<select id="selectLoginId" parameterType="String" resultType="String">
-	  select MEM_LOGIN_ID from member where MEM_LOGIN_ID=#{memLoginId}
-	</select>
-	
 	<select id="selectEmail" parameterType="String" resultType="String">
 	  select MEM_EMAIL from member where MEM_EMAIL=#{memEmail}
-	</select>
-	
-	<select id="loginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
-		SELECT *
-		FROM USERS
-		WHERE USER_ID = #{userId} and PASSWORD = #{password}
 	</select>
 	
 	<update id="userDelete" parameterType="com.groo.model.MemberDTO">
@@ -60,4 +50,44 @@
             MEM_INTEREST = #{memInterest}
         where MEM_LOGIN_ID = #{memLoginId}
 	</update>
+	
+	<select id="selectLoginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+		SELECT *
+		FROM MEMBER
+		WHERE MEM_LOGIN_ID = #{memLoginId} and MEM_PASS = #{memPass}
+	</select>
+	
+	<select id="selectLoginId" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+	  select MEM_LOGIN_ID from member where MEM_LOGIN_ID=#{memLoginId}
+	</select>
+	
+	<select id="selectSocialLoginCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+		SELECT MEM_LOGIN_ID 
+		FROM MEMBER 
+		WHERE MEM_LOGIN_ID = #{memLoginId}
+	</select>
+	
+	<insert id="insertSociallMember" parameterType="com.groo.model.MemberDTO">
+		INSERT INTO MEMBER	
+		(
+			MEM_ID,
+			MEM_LOGIN_ID,
+			MEM_NAME,
+			MEM_LOGIN_TOKEN
+		)VALUES(
+			'M' || MEMBER_SEQ.NEXTVAL,
+			#{memLoginId},
+			#{memName},
+			#{memLoginId}
+		)
+	</insert>
+	<select id="selectLoginMember" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+		SELECT 
+			MEM_LOGIN_ID,
+			MEM_PASS
+		FROM MEMBER
+		WHERE
+			MEM_LOGIN_ID = #{memLoginId} AND
+			MEM_PASS = #{memPass}
+	</select>
 </mapper>
