@@ -200,7 +200,18 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public String selectUserNicknameCheck(MemberDTO member) {
-		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		String resultNickname = null;
+		
+		try {
+			resultNickname = dao.selectUserNicknameCheck(memNick, session);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			
+		}
+		
 		return null;
 	}
 
