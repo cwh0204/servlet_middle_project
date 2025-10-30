@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/board/free/free.js"></script>
-<link href="css/base.css" rel="stylesheet">
 <link href="css/board/boardtable.css" rel="stylesheet">
 </head>
 <body>

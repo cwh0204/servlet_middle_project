@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <link href="css/adminCss/adminnav.css" rel="stylesheet">
 <title>마이페이지</title>
-<script src="jquery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<aside class="sidebar">

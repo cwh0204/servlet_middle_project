@@ -1,43 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>TOAST UI Simple Calendar</title>
-    
-    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
-    
-    <style>
-        /* 캘린더가 제대로 보이도록 높이를 지정해 줍니다. */
-        #calendar {
-            height: 700px;
-            max-width: 1000px;
-            margin: 50px auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>HTML/CSS 캘린더 구조</title>
+<script src="jquery/jquery-3.7.1.min.js"></script>
+<script src="js/mypage/mypagedashboard/mypagedashboard.js"></script>
+<link rel="stylesheet" href="css/mypage/mypagedashboard/mypagedashboard.css">
 </head>
 <body>
+	<div id="page-wrapper">
+		<div id="calendar-container">
 
-    <div id="calendar"></div>
+			<div class="calendar-header">
+				<button id="prev-month-btn" class="nav-btn">◀</button>
+				<span id="month-year-display" class="month-year"></span>
+				<button id="next-month-btn" class="nav-btn">▶</button>
+			</div>
 
-    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+			<div class="weekdays">
+				<div class="day-name sunday">일</div>
+				<div class="day-name">월</div>
+				<div class="day-name">화</div>
+				<div class="day-name">수</div>
+				<div class="day-name">목</div>
+				<div class="day-name">금</div>
+				<div class="day-name saturday">토</div>
+			</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 3. Calendar 클래스를 가져옵니다.
-            const Calendar = tui.Calendar; 
-            const container = document.getElementById('calendar');
-
-            // 4. 최소한의 옵션으로 캘린더 인스턴스를 생성합니다.
-            const calendar = new Calendar(container, {
-                // 월간(month) 뷰를 기본으로 설정합니다.
-                defaultView: 'month',
-                // 현재 시간을 기준으로 달력이 초기화됩니다.
-            });
-            
-            // 5. 달력 제목을 콘솔에 출력 (디버깅용)
-            console.log("Calendar initialized:", calendar.getDate());
-        });
-    </script>
-</body>
-</html>
+			<div id="days-grid" class="days-grid"></div>
+		</div>
+	</div>

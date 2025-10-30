@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
-<link href="css/mypage/mypagedashboard.css" rel="stylesheet">
+<link href="css/mypage/mypage.css" rel="stylesheet">
 <body>
 	<div class="mypagecontainer">
   		<%@ include file="../mypagenav.jsp"%>

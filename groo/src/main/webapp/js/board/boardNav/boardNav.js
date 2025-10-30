@@ -15,7 +15,7 @@ $(document).ready(function() {
 			}
 		};
 
-		$('.boardcotent').load(lastPage, function(response, status, xhr) {
+		$('.boardcontent').load(lastPage, function(response, status, xhr) {
 			if (status === "error") {
 				console.error("저장된 페이지 로드 실패. HTTP 상태:", xhr.status, xhr.statusText);
 				sessionStorage.removeItem('board_last_view');
@@ -38,7 +38,7 @@ $(document).ready(function() {
 		if (pageToLoad) {
 			sessionStorage.setItem('board_last_view', pageToLoad);
 
-			$('.boardcotent').load(pageToLoad, function(response, status, xhr) {
+			$('.boardcontent').load(pageToLoad, function(response, status, xhr) {
 				if (status === "error") {
 					console.error("페이지 로드 실패. HTTP 상태:", status);
 				}
