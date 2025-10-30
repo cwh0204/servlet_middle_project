@@ -27,6 +27,7 @@ import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
+import com.groo.controller.MemberLoginController;
 //import com.groo.controller.MemberLoginController;
 import com.groo.controller.MemberSelectController;
 import com.groo.controller.MemberUpdateController;
@@ -56,7 +57,7 @@ public class FrontControllerPath {
         controllerMap.put("/singnupselectemail.do", new SignUpSelectEmailController());
 
         //로그인
-        //controllerMap.put("/memberlogin.do", new MemberLoginController());
+        controllerMap.put("/memberlogin.do", new MemberLoginController());
 
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
