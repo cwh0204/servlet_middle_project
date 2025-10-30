@@ -34,5 +34,6 @@
 				AND A.MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId})
 			</if>
 		</where>
+		ORDER BY A.COMENT_DATE
 	</select>
 </mapper>

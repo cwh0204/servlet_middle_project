@@ -25,7 +25,6 @@ import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.KakaoLoginController;
-import com.groo.controller.LoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberSelectController;
@@ -47,7 +46,8 @@ public class FrontControllerPath {
     private Map<String, Controller> controllerMap = new HashMap<>();
 
     public FrontControllerPath() {
-        controllerMap.put("/logins.do", new LoginController());
+    	
+    	
         controllerMap.put("/mains.do", new MainController());
 
         controllerMap.put("/singnups.do", new SignUpController());
