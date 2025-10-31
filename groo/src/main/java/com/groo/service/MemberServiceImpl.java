@@ -213,6 +213,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 	    return memberNickname;
 	}
+
 }
 
 
