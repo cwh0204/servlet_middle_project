@@ -30,10 +30,10 @@ public class BoardDeleteController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String boardId = request.getParameter("boardId");
-		
+
 		BoardDTO board = new BoardDTO();
 		board.setBoardId(boardId);
-		
+
 		BoardServiceImpl service = new BoardServiceImpl();
 		try {
 

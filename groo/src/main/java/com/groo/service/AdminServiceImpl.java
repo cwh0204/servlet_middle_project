@@ -299,7 +299,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 신고내역에 대한 조치를 하는 서비스 메서드입니다.
 	 * @param 신고내역에 대한 조치를 하기위한 Data Transfer Object 데이터 클래스

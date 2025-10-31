@@ -1,30 +1,56 @@
 package com.groo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import com.google.gson.Gson;
+import com.groo.error.ErrorDTO;
+import com.groo.error.InternalServiceException;
+import com.groo.model.MemberDTO;
+import com.groo.service.MemberService;
 import com.groo.service.MemberServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class SignUpSelectLoginIdController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/plain; charset=UTF-8");
-
 		String memLoginId = request.getParameter("userLoginId");
+		
+		MemberDTO memberDto = new MemberDTO();
+		
+		memberDto.setMemLoginId(memLoginId);
+		
+		MemberService service = new MemberServiceImpl();
+		HttpSession session = request.getSession();
+		
+		try {
 
-		MemberServiceImpl serviceImpl = new MemberServiceImpl();
-		String checkLoginId = serviceImpl.selectLoginIdService(memLoginId);
+			MemberDTO member = service.selectLoginIdService(memberDto);
+			Gson gson = new Gson();
+			String json = gson.toJson(member);
 
-		if(checkLoginId != null) {
-			response.getWriter().write(checkLoginId);
-		}else {
-			response.getWriter().write("yes");
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+
+		}catch (InternalServiceException ise) {
+			ise.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
 		}
 	}
 }

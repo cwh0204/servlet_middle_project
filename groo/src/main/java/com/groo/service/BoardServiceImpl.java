@@ -174,7 +174,7 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardLike;
 	}
-	
+
 	/**
 	 * 게시글 수정 서비스 메서드입니다.
 	 *
@@ -199,7 +199,7 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 게시글 삭제 서비스 메서드입니다.
 	 *

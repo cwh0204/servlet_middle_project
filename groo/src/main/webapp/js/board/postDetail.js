@@ -71,24 +71,6 @@ comentdelete = (boardId, writer) => {
 
 */
 
-//게시물 수정
-boardedit = (boardId, writer) => {
-	$.ajax({
-		url: 'boarddetailselect.do',
-		type: 'POST',
-		dataType: 'json',
-		data: {
-			boardId: boardId,
-			memLoginId: writer
-		},
-		success: function(response) {
-			console.log(response);
-		},
-		error: function() {
-			alert("서버 통신 오류가 발생했습니다.");
-		}
-	});
-}
 //게시물 삭제
 boardelete = (boardId) => {
 	$.ajax({
@@ -353,7 +335,7 @@ $(document).ready(function() {
 
 		//수정버튼 클릭시
 		$('.btn-primary').on('click', function() {
-			boardedit(boardId);
+			window.location.href = "boardedit.do?id=" + boardId;
 		});
 
 		/*//댓글등록 클릭시
@@ -375,7 +357,6 @@ $(document).ready(function() {
 		$('.btn-danger').on('click', function() {
 			boardelete(boardId);
 		});
-
 
 		allcoment(boardId, writer);
 		mycoment(boardId, writer);

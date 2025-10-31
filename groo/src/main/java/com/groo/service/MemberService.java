@@ -5,13 +5,14 @@ import com.groo.model.MemberDTO;
 public interface MemberService {
 
 	public void insertUserService(MemberDTO memberDTO);
-	public String selectLoginIdService(String memLoginId);
-	public String selectEmailService(String memEmail);
+	public MemberDTO selectLoginIdService(MemberDTO memberDTO);
+	public MemberDTO selectEmailService(MemberDTO memberDTO);
 
 	//이수민
 	public void userDelete(MemberDTO member);
 	public void userUpdate(MemberDTO member);
-	public MemberDTO selectUserNicknameCheck(MemberDTO member);
+
+	public String selectUserNicknameCheck(MemberDTO member);
 
 	//일반 로그인
 	public MemberDTO selectLoginMember(MemberDTO member);

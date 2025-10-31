@@ -54,7 +54,7 @@
 	<select id="selectUserNicknameCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	  	SELECT MEM_NICK 
         FROM MEMBER 
-        WHERE MEM_NICK= #{memNick};
+        WHERE MEM_NICK= #{memNick}
 	</select>
 	
 	<select id="selectLoginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
