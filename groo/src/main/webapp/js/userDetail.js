@@ -7,6 +7,27 @@ let NickValid = false;
  * 닉네임 중복 확인 요청
  * @param {string} userNickname - 확인할 사용자 닉네임
  */
+
+
+var testAjax = () => {
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: 'usernicknamecheck.do',
+		type: 'POST',
+		data: {
+			memNick: "일번"
+		},
+
+		success: function(response) {
+			console.log("테스트아작스 데이터");
+			console.log(response);
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+		}
+	});
+}
+
 var nicknameCheck = (userNickname) => {
 
 	$.ajax({
@@ -84,16 +105,16 @@ const showSubmitALert = () => {
 	console.log(memPass);
 	const memEmail = $('[name="emailid"]').val() + '@' + $('[name="emailadd"]').val();
 	console.log(memEmail);
-	const memAddr = $('#zipcode').val() + $('#address1 ').val() +$('#address2').val();
+	const memAddr = $('#zipcode').val() + $('#address1 ').val() + $('#address2').val();
 	console.log(memAddr);
 	const memNick = $('#userNick').val();
 	console.log(memNick);
 	const memInterest = [
 		...$('input[name="ff"]:checked').map((_, el) => el.value).get(), //...를 붙여 각 요소를 배열에 넣고 값을 가져옴
 		$('textarea[name="ff"]').val().trim()
-			].filter(Boolean).join(','); //빈 값이면 제거하고 ,로 합침
+	].filter(Boolean).join(','); //빈 값이면 제거하고 ,로 합침
 	console.log(memInterest);
-	
+
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'memberupdate.do',
@@ -123,7 +144,7 @@ const showSubmitALert = () => {
 $(function() { //document.ready(() => { })
 	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 
-	
+	testAjax(); // 테스트 야작스
 
 	$("#deletebutton").on("click", function() {
 		$(".pw-container").addClass("active");

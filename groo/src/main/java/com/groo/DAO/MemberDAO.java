@@ -14,12 +14,7 @@ public interface MemberDAO {
 	public void userDelete(MemberDTO member, SqlSession session);
 	public void userUpdate(MemberDTO member, SqlSession session);
 
-	public String selectUserNicknameCheck(MemberDTO member, SqlSession session);
-<<<<<<< HEAD
 	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session);
-
-=======
->>>>>>> eb47e4af82baf361e1aa9d6015dc7053392898b3
 
 	//소셜로그인
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);
