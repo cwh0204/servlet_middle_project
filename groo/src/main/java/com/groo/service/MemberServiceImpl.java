@@ -198,19 +198,24 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
-
 	@Override
-	public String selectUserNicknameCheck(String memNick) {
+	public MemberDTO selectUserNicknameCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
-		String resultNickname = null;
+	    MemberDTO memberNickname = new MemberDTO();
 
-		try {
-			resultNickname = dao.selectUserNicknameCheck(memNick, session);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return resultNickname;
+	    try {
+	    	memberNickname = dao.selectUserNicknameCheck(member, session);
+	    } catch (Exception e) {
+	        e.printStackTrace(); 
+	    } finally {
+	        session.close();
+	    }
+
+	    return memberNickname;
 	}
 }
+
+
+	
+	
+		

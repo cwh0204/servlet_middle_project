@@ -137,16 +137,24 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 닉네임 정보를 리턴
 	 */
+	
 	@Override
-	public String selectUserNicknameCheck(String memNick, SqlSession session) {
-			try {
-				return session.selectOne("selectUserNicknameCheck", memNick);
-			}catch(Exception e) {
-				e.printStackTrace();
-				return null;
-			}
+	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
+		MemberDTO memberNickname = new MemberDTO();
+		try {
+			return session.selectOne("selectUserNicknameCheck", member);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return memberNickname;
 		}
-	}
+}
+}
+
+
+	
+	
+
+	
 
 
 
