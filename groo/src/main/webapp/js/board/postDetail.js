@@ -196,7 +196,7 @@ boarddetailselect = (boardId, writer) => {
 			$('.post-title').text(response.postTitle);
 			$('.meta-item strong').text(response.memNick);
 			$('#Date').text(response.postingDate);
-			$('.board-content').text(response.postContent);
+			$('.board-content').html(response.postContent);
 			$('#likeBtn').text(`👍 좋아요 (${response.boardLikeCount})`);
 			$('.comment-section h3').text(`댓글 (${response.comentCount})`);
 			$('#postViews').text(response.postViews);

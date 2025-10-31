@@ -25,7 +25,7 @@
 		<div class="form-group">
 			<label for="postTitle">제목</label> <input type="text"
 				class="form-control" id="postTitle" name="title"
-				placeholder="제목을 입력해 주세요." value="제목을 입력해주세요" required>
+				placeholder="제목을 입력해 주세요." required>
 		</div>
 
 		<div class="form-group">
@@ -35,10 +35,9 @@
 
 		<div class="form-group">
 			<label>내용</label>
-			<div class="summernote" id="postContent" name="content">
-				<p>여기에 입력해주세요.</p>
-			</div>
+			<textarea class="summernote" id="postContent" name="content"></textarea>
 		</div>
+		
 		<div class="action-buttons">
 			<button class="btn btn-primary" id="submitBtn">등록</button>
 			<a href="boardlist.do" class="btn btn-secondary">취소</a>
