@@ -21,21 +21,9 @@ import jakarta.servlet.http.HttpSession;
 public class UserdetailSelectNicknameController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-
-		String memNick = request.getParameter("userNickname");
-
-		MemberServiceImpl  serviceImpl = new MemberServiceImpl();
-		String checkNickname = serviceImpl.selectUserNicknameCheck(memNick);
-
-		if(checkNickname != null) {
-			response.getWriter().write(checkNickname);
-		}else {
-			response.getWriter().write("yes");
-=======
 		 
 		String memNick = request.getParameter("memNick");
 		
@@ -48,7 +36,6 @@ public class UserdetailSelectNicknameController implements Controller {
 		try {
 			MemberDTO memberNickname = service.selectUserNicknameCheck(member);
 
-			
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			
@@ -67,7 +54,6 @@ public class UserdetailSelectNicknameController implements Controller {
 			e.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
->>>>>>> eb47e4af82baf361e1aa9d6015dc7053392898b3
 		}
 	}
 }
