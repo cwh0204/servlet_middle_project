@@ -1,4 +1,4 @@
-function boardInsert() {
+function boardInsert(writer) {
 	const postContent = $('#postContent').summernote('code');
 	const postTitle = $('#postTitle').val();
 	const queryString = window.location.search; 
@@ -12,7 +12,7 @@ function boardInsert() {
 	type: 'POST',
 	
 	data: {
-		memId : '',
+		memId : writer,
 		boardType : typeValue,
 		postContent : postContent,
 		postTitle : postTitle
@@ -29,6 +29,10 @@ function boardInsert() {
 }
 
 $(document).ready(function() {	
+	
+	const writer = sessionStorage.getItem('userId');
+	$('#postWriter').val(writer);
+	
 		
     $('.summernote').summernote({
           height: 400,
@@ -52,7 +56,7 @@ $(document).ready(function() {
     });
 	
     $('#submitBtn').click(function () {
-        boardInsert(); 
+        boardInsert(writer); 
     });        
 	
 }); // $(document).ready() 끝!

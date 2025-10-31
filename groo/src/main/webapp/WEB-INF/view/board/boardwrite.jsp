@@ -30,7 +30,7 @@
 
 		<div class="form-group">
 			<label for="postWriter">작성자</label> <input type="text"
-				class="form-control" id="postWriter" name="writer" value="" readonly>
+				class="form-control" id="postWriter" name="writer" readonly>
 		</div>
 
 		<div class="form-group">

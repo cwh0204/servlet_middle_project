@@ -219,9 +219,7 @@ $(document).ready(function() {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const boardId = urlParams.get('id');
-
-	console.log(writer);
-
+	
 	if (writer) {
 		boarddetailselect(boardId, writer);
 		boardLikeUserCheck(boardId, writer);

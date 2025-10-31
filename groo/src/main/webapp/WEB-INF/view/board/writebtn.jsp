@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/board/writebtn.css" rel="stylesheet">
+<script src="js/board/writebtn.js"></script>
 </head>
 <body>
 	<div class="d-flex justify-content-end">
