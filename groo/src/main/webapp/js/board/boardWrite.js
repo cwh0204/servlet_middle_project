@@ -1,7 +1,6 @@
 function boardInsert() {
 	const postContent = $('#postContent').summernote('code');
 	const postTitle = $('#postTitle').val();
-	
 	const queryString = window.location.search; 
 	const urlParams = new URLSearchParams(queryString);
 	const typeValue = urlParams.get('type');
@@ -30,6 +29,7 @@ function boardInsert() {
 }
 
 $(document).ready(function() {	
+		
     $('.summernote').summernote({
           height: 400,
           placeholder: '게시글 내용을 입력해 주세요.',

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +30,7 @@
 
 		<div class="form-group">
 			<label for="postWriter">작성자</label> <input type="text"
-				class="form-control" id="postWriter" name="writer"
-				value="테스터 (test01)" readonly>
+				class="form-control" id="postWriter" name="writer" value="" readonly>
 		</div>
 
 		<div class="form-group">

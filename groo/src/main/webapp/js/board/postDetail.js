@@ -37,8 +37,6 @@ allcoment = (boardId, userNickName) => {
 			response.forEach(item => {
 
 				if (item.memNick === userNickName) {
-					console.log("item.memNick : ", item.memNick);
-					console.log("userNickName : ", userNickName);
 					// 1. 각 요소를 jQuery 객체로 생성 및 속성 설정
 					const $commentItem = $('<div>').addClass('comment-item').attr('data-comment-id', item.comentId);
 
@@ -224,23 +222,28 @@ $(document).ready(function() {
 
 	console.log(writer);
 
-	boarddetailselect(boardId, writer);
-	boardLikeUserCheck(boardId, writer);
+	if (writer) {
+		boarddetailselect(boardId, writer);
+		boardLikeUserCheck(boardId, writer);
 
-	$('#likeBtn').on('click', function() {
-		boardlikeinsert(boardId, writer);
-	});
+		$('#likeBtn').on('click', function() {
+			boardlikeinsert(boardId, writer);
+		});
 
-	$('#commentSubmit').on('click', function() {
-		boardComentinsert(boardId, writer);
-	});
+		$('#commentSubmit').on('click', function() {
+			boardComentinsert(boardId, writer);
+		});
 
-	$('.btn-secondary').on('click', function() {
-		window.history.back();
-	});
+		$('.btn-secondary').on('click', function() {
+			window.history.back();
+		});
 
-	allcoment(boardId, writer);
-	mycoment(boardId, writer);
+		allcoment(boardId, writer);
+		mycoment(boardId, writer);
+	} else {
+		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
+		history.go(-1);
+	}
 });
 
 
