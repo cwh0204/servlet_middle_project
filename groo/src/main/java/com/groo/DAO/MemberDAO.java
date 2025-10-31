@@ -6,10 +6,6 @@ import com.groo.model.MemberDTO;
 
 public interface MemberDAO {
 
-	public void signUp(MemberDTO memberDto, SqlSession session);
-	public MemberDTO selectLoginId(MemberDTO memberDto, SqlSession session);
-	public MemberDTO selectEmail(MemberDTO memberDto, SqlSession session);
-
 	//이수민
 	public void userDelete(MemberDTO member, SqlSession session);
 	public void userUpdate(MemberDTO member, SqlSession session);

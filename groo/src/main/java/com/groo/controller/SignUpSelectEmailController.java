@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.google.gson.Gson;
-import com.groo.service.MemberServiceImpl;
+import com.groo.model.MemberDTO;
+import com.groo.service.jiwonService;
+import com.groo.service.jiwonServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,8 +19,12 @@ public class SignUpSelectEmailController implements Controller {
 
 		String memEmail = request.getParameter("userEmail");
 
-		MemberServiceImpl serviceImpl = new MemberServiceImpl();
-		String checkEmail = serviceImpl.selectEmailService(memEmail);
+		jiwonService serviceImpl = new jiwonServiceImpl();
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setMemEmail(memEmail);
+		
+		MemberDTO checkEmail = serviceImpl.selectEmailService(memberDTO);
 
 		Gson gson = new Gson();
 		String json = gson.toJson(checkEmail);

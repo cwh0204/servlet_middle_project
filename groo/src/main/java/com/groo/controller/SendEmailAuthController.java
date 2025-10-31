@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Random;
 
 import com.groo.service.MemberServiceImpl;
+import com.groo.service.jiwonService;
+import com.groo.service.jiwonServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,14 +28,13 @@ public class SendEmailAuthController implements Controller {	// 인증번호 발
 		httpSession.setAttribute("emailAuthTarget", email);
 
 		// 이메일 발송 서비스 호출
-		MemberServiceImpl serviceImpl = new MemberServiceImpl();
-		boolean result = service.sendEmailAuth(email, authCode);
-
-		response.setContentType("text/plain; charset=utf-8");
-		if(result) {
-			response.getWriter().write("success");
-		}else {
-			response.getWriter().write("fail");
-		}
+		/*
+		 * jiwonService service = new jiwonServiceImpl(); boolean result =
+		 * service.selectEmailService(email, authCode);
+		 * 
+		 * response.setContentType("text/plain; charset=utf-8"); if(result) {
+		 * response.getWriter().write("success"); }else {
+		 * response.getWriter().write("fail"); }
+		 */
 	}
 }

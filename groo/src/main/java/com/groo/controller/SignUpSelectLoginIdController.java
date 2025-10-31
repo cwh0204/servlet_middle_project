@@ -7,8 +7,8 @@ import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.MemberDTO;
-import com.groo.service.MemberService;
-import com.groo.service.MemberServiceImpl;
+import com.groo.service.jiwonService;
+import com.groo.service.jiwonServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,12 +26,12 @@ public class SignUpSelectLoginIdController implements Controller {
 		
 		memberDto.setMemLoginId(memLoginId);
 		
-		MemberService service = new MemberServiceImpl();
+		jiwonService serviceImpl = new jiwonServiceImpl();
 		HttpSession session = request.getSession();
 		
 		try {
 
-			MemberDTO member = service.selectLoginIdService(memberDto);
+			MemberDTO member = serviceImpl.selectLoginIdService(memberDto);
 			Gson gson = new Gson();
 			String json = gson.toJson(member);
 

@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import com.groo.model.MemberDTO;
 import com.groo.service.MemberServiceImpl;
+import com.groo.service.jiwonService;
+import com.groo.service.jiwonServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -39,7 +41,7 @@ public class SignUpController extends HttpServlet implements Controller {
 		memberDto.setMemGender(memGender);
 
 		try {
-			MemberServiceImpl serviceImpl = new MemberServiceImpl();
+			jiwonService serviceImpl = new jiwonServiceImpl();
 			serviceImpl.insertUserService(memberDto);
 			response.getWriter().println("회원가입 완료: "+ memberDto.getMemLoginId());
 		}catch(Exception e) {

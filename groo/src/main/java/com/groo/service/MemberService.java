@@ -4,10 +4,6 @@ import com.groo.model.MemberDTO;
 
 public interface MemberService {
 
-	public void insertUserService(MemberDTO memberDTO);
-	public MemberDTO selectLoginIdService(MemberDTO memberDTO);
-	public MemberDTO selectEmailService(MemberDTO memberDTO);
-
 	//이수민
 	public void userDelete(MemberDTO member);
 	public void userUpdate(MemberDTO member);
