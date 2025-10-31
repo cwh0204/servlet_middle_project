@@ -133,4 +133,12 @@
 		    </if>
 		</where>
 	</select>
+	
+	<update id="deleteBoard" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD
+		SET
+			POSTING_DEL = SYSDATE,
+			POSTINGDEL_CHECK = 'Y'
+		WHERE BOARD_ID = #{boardId}
+	</update>
 </mapper>

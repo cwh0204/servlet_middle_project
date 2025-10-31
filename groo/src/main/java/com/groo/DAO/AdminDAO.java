@@ -22,6 +22,7 @@ public interface AdminDAO {
 
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session);
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
+	public void adminUpdateReport(AdminReportDTO report, SqlSession session);
 
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session);
 

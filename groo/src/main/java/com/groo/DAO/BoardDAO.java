@@ -17,4 +17,5 @@ public interface BoardDAO {
 	public void deleteBoardLike(BoardDTO board, SqlSession session);
 
 	public void updateBoard(BoardDTO board, SqlSession session);
+	public void deleteBoard(BoardDTO board, SqlSession session);
 }

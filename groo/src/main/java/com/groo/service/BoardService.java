@@ -12,4 +12,5 @@ public interface BoardService {
 	public void insertBoardLike(BoardDTO board);
 	public BoardDTO selectBoardLikeSearch(BoardDTO board);
 	public void updateBoard(BoardDTO board);
+	public void deleteBoard(BoardDTO board);
 }
