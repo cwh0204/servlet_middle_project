@@ -6,34 +6,36 @@ import java.io.PrintWriter;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.MemberDTO;
-import com.groo.service.MemberService;
-import com.groo.service.MemberServiceImpl;
+import com.groo.model.ComentDTO;
+import com.groo.service.ComentService;
+import com.groo.service.ComentServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-public class SignUpSelectLoginIdController implements Controller {
+/**
+ * 댓글 수정을 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 클라이언트에 응답
+ */
+public class ComentEditController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String memLoginId = request.getParameter("userLoginId");
+		// TODO Auto-generated method stub
+		String comentId = request.getParameter("comentId");
+		String comentContent = request.getParameter("comentContent");
 		
-		MemberDTO memberDto = new MemberDTO();
+		ComentDTO coment = new ComentDTO();
+		coment.setComentId(comentId);
+		coment.setComentContent(comentContent);
 		
-		memberDto.setMemLoginId(memLoginId);
-		
-		MemberService service = new MemberServiceImpl();
-		HttpSession session = request.getSession();
+		ComentService service = new ComentServiceImpl();
 		
 		try {
-
-			MemberDTO member = service.selectLoginIdService(memberDto);
+			service.comentEdit(coment);
 			Gson gson = new Gson();
-			String json = gson.toJson(member);
+			String json = gson.toJson("sucsses");
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -41,7 +43,6 @@ public class SignUpSelectLoginIdController implements Controller {
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();

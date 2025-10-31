@@ -54,7 +54,7 @@
 	<select id="selectUserNicknameCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	  	SELECT MEM_NICK 
         FROM MEMBER 
-        WHERE MEM_NICK= #{memNick};
+        WHERE MEM_NICK= #{memNick}
 	</select>
 	
 	<select id="selectLoginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
@@ -79,12 +79,14 @@
 			MEM_ID,
 			MEM_LOGIN_ID,
 			MEM_NAME,
-			MEM_LOGIN_TOKEN
+			MEM_LOGIN_TOKEN,
+			MEM_NICK
 		)VALUES(
 			'M' || MEMBER_SEQ.NEXTVAL,
 			#{memLoginId},
 			#{memName},
-			#{memLoginId}
+			#{memLoginId},
+			'SociallUser_' || MEMBER_SEQ.NEXTVAL
 		)
 	</insert>
 	<select id="selectLoginMember" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
