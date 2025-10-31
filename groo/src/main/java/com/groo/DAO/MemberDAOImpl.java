@@ -61,7 +61,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 	}
 
-	
+
 	/**
 	 * 회원을 수정 시키는 메서드
 	 * @param member 유저의 수정할 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -131,7 +131,7 @@ public class MemberDAOImpl implements MemberDAO{
 		return memberLogin;
 	}
 
-	
+
 	/**
 	 * 닉네임을 중복 여부를 확인하는 메서드
 	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스

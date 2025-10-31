@@ -168,7 +168,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 	/**
 	 * 일반회원 로그인을 하기위한 서비스 메서드
-	 * @param member는 유저를 회원가입 하기 위한 Data Transfer Object 데이터 클래스 
+	 * @param member는 유저를 회원가입 하기 위한 Data Transfer Object 데이터 클래스
 	 * @return 중복확인 정보return
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
@@ -193,7 +193,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 	/**
 	 * 닉네임을 중복 여부를 하기위한 서비스 메서드
-	 * @param member는 유저를 회원가입 하기 위한 Data Transfer Object 데이터 클래스 
+	 * @param member는 유저를 회원가입 하기 위한 Data Transfer Object 데이터 클래스
 	 * @return 중복확인 정보return
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
@@ -202,16 +202,16 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	public String selectUserNicknameCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
 		String resultNickname = null;
-		
+
 		try {
 			resultNickname = dao.selectUserNicknameCheck(memNick, session);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			
-			
+
+
 		}
-		
+
 		return null;
 	}
 

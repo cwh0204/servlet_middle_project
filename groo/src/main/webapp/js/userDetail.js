@@ -84,14 +84,14 @@ const showSubmitALert = () => {
 	console.log(memPass);
 	const memEmail = $('[name="emailid"]').val() + '@' + $('[name="emailadd"]').val();
 	console.log(memEmail);
-	const memAddr = $('#zipcode').val() + $('#address1').val() +$('#address2').val();
+	const memAddr = $('#zipcode').val() + $('#address1 ').val() +$('#address2').val();
 	console.log(memAddr);
 	const memNick = $('#userNick').val();
 	console.log(memNick);
 	const memInterest = [
-		...$('input[name="ff"]:checked').map((_, el) => el.value).get(),
+		...$('input[name="ff"]:checked').map((_, el) => el.value).get(), //...를 붙여 각 요소를 배열에 넣고 값을 가져옴
 		$('textarea[name="ff"]').val().trim()
-			].filter(Boolean).join(',');
+			].filter(Boolean).join(','); //빈 값이면 제거하고 ,로 합침
 	console.log(memInterest);
 	
 	$.ajax({
