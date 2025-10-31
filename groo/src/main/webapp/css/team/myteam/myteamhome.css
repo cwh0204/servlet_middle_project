@@ -81,21 +81,12 @@
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
-/*	padding: 0.5rem 1rem;  */
 	border-radius: 30px;
-/*	font-weight: 700; */
-	font-size: 0.85rem;
 	backdrop-filter: blur(10px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 	transition: all 0.3s ease;
 	animation: badgeFloat 3s ease-in-out infinite;
 }
-
-/*
-.badge-corner::before {
-	font-size: 1.1rem;
-}
-*/
 
 .badge-gold {
 	background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%);
@@ -193,7 +184,6 @@
 
 .btn-report {
 	position: absolute;
-/*	margin-bottom: 2rem; */
 	top: 1rem;
 	right: 1rem;
 	padding: 0.2rem 0.5rem;
@@ -248,6 +238,12 @@
     animation: float 3s ease-in-out infinite;
 }
 
+.stat-icon .heart {
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+}
+
 .stat-info {
     display: flex;
     flex-direction: column;
@@ -278,7 +274,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly; 
-	gap: 1.2rem;
 	padding: 0.2rem;
 	background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
 	border: 1px solid #e5e7eb;
@@ -287,8 +282,13 @@
 }
 
 .study-card:hover .badge-info {
-	background: linear-gradient(135deg, #fefdf6 0%, #f9f9ef 100%);
-	border-color: rgba(180, 220, 120, 0.5);
+/*	background: linear-gradient(135deg, #fefdf6 0%, #f9f9ef 100%);
+	border-color: rgba(180, 220, 120, 0.5);  
+	background: #f9fef6;
+	border-color: #a3e635;  */
+	background: rgba(255, 255, 255, 0.7);
+	border-color: rgba(200, 200, 200, 0.5);
+	backdrop-filter: blur(15px);
 }
 
 .badge-stat-gold,

@@ -49,7 +49,8 @@
   	     </div>
   	     <div class="stat-divider"></div>
            <div class="stat-item">
-              <div class="stat-icon">❤️</div>
+              <div class="stat-icon">
+                 <img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>
                  <div class="stat-info">
                     <span class="stat-label">좋아요</span>
                     
@@ -100,13 +101,15 @@
   	
        <%-- 반복문 종료 	</c:forEach> --%>
   	
-  	<article class="study-card glass-card">
+    <article class="study-card glass-card">
   	  <div class="card-gradient"></div>
   	  
   	  <div class="badge-corner badge-silver"></div>
   	  
   	   <div class="card-header">
   	     <div class="study-name">
+  	     
+  	     <%-- 스터디명 ${study.name} --%>
   	       <span class="name-text">스터디명</span>
   	     </div>
   	     
@@ -119,22 +122,50 @@
   	       <div class="stat-icon">👥</div>
   	       <div class="stat-info">
              <span class="stat-label">팀원</span>
+             
+             <%-- 팀원 수 동적 출력 ${study.userCount} --%>
              <span class="stat-value">8명</span>
            </div>
   	     </div>
   	     <div class="stat-divider"></div>
            <div class="stat-item">
-              <div class="stat-icon">❤️</div>
+              <div class="stat-icon">
+                 <img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>
                  <div class="stat-info">
                     <span class="stat-label">좋아요</span>
-                    <span class="stat-value">124</span>
+                    
+                    <%-- 좋아요 수 동적 출력 ${study.likes} --%>
+                    <span class="stat-value">214</span>
            		 </div>
            </div>
   	   </div>
   	   
+  	   <div class="badge-info">
+  	      <div class="badge-stat-none">
+  	        <div class="badge-stat-count">0</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-silver">
+  	        <div class="badge-stat-count">3</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-bronze">
+  	        <div class="badge-stat-count">2</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	   </div>
+  	   
   	   <div class="leader-info">
   	       <span>팀장</span>
-  	     <span class="leader-name">김아무개</span>
+  	       
+  	       <%-- 팀장 이름 동적 출력 ${study.leaderName} --%>
+  	     <span class="leader-name">아무개</span>
   	   </div>
   	   
   	   <div class="card-actions">
@@ -147,6 +178,7 @@
   	     </button>
   	   </div>
   	</article>
+  	
   	
   	<article class="study-card glass-card">
   	  <div class="card-gradient"></div>
@@ -155,6 +187,8 @@
   	  
   	   <div class="card-header">
   	     <div class="study-name">
+  	     
+  	     <%-- 스터디명 ${study.name} --%>
   	       <span class="name-text">스터디명</span>
   	     </div>
   	     
@@ -167,22 +201,50 @@
   	       <div class="stat-icon">👥</div>
   	       <div class="stat-info">
              <span class="stat-label">팀원</span>
+             
+             <%-- 팀원 수 동적 출력 ${study.userCount} --%>
              <span class="stat-value">8명</span>
            </div>
   	     </div>
   	     <div class="stat-divider"></div>
            <div class="stat-item">
-              <div class="stat-icon">❤️</div>
+              <div class="stat-icon">
+                 <img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>
                  <div class="stat-info">
                     <span class="stat-label">좋아요</span>
-                    <span class="stat-value">124</span>
+                    
+                    <%-- 좋아요 수 동적 출력 ${study.likes} --%>
+                    <span class="stat-value">214</span>
            		 </div>
            </div>
   	   </div>
   	   
+  	   <div class="badge-info">
+  	      <div class="badge-stat-gold">
+  	        <div class="badge-stat-count">0</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-silver">
+  	        <div class="badge-stat-count">3</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-bronze">
+  	        <div class="badge-stat-count">2</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	   </div>
+  	   
   	   <div class="leader-info">
   	       <span>팀장</span>
-  	     <span class="leader-name">김아무개</span>
+  	       
+  	       <%-- 팀장 이름 동적 출력 ${study.leaderName} --%>
+  	     <span class="leader-name">아무개</span>
   	   </div>
   	   
   	   <div class="card-actions">
@@ -196,11 +258,16 @@
   	   </div>
   	</article>
   	
+  	
   	<article class="study-card glass-card">
   	  <div class="card-gradient"></div>
   	  
+  <!-- 	  <div class="badge-corner badge-gold"></div>   -->
+  	  
   	   <div class="card-header">
   	     <div class="study-name">
+  	     
+  	     <%-- 스터디명 ${study.name} --%>
   	       <span class="name-text">스터디명</span>
   	     </div>
   	     
@@ -213,22 +280,50 @@
   	       <div class="stat-icon">👥</div>
   	       <div class="stat-info">
              <span class="stat-label">팀원</span>
+             
+             <%-- 팀원 수 동적 출력 ${study.userCount} --%>
              <span class="stat-value">8명</span>
            </div>
   	     </div>
   	     <div class="stat-divider"></div>
            <div class="stat-item">
-              <div class="stat-icon">❤️</div>
+              <div class="stat-icon">
+                 <img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>
                  <div class="stat-info">
                     <span class="stat-label">좋아요</span>
-                    <span class="stat-value">124</span>
+                    
+                    <%-- 좋아요 수 동적 출력 ${study.likes} --%>
+                    <span class="stat-value">214</span>
            		 </div>
            </div>
   	   </div>
   	   
+  	   <div class="badge-info">
+  	      <div class="badge-stat-gold">
+  	        <div class="badge-stat-count">0</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-silver">
+  	        <div class="badge-stat-count">3</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	       
+  	      <div class="badge-divider"></div>
+  	       
+  	      <div class="badge-stat-bronze">
+  	        <div class="badge-stat-count">2</div>
+  	        <div class="badge-stat-icon"></div>
+  	      </div>
+  	   </div>
+  	   
   	   <div class="leader-info">
   	       <span>팀장</span>
-  	     <span class="leader-name">김아무개</span>
+  	       
+  	       <%-- 팀장 이름 동적 출력 ${study.leaderName} --%>
+  	     <span class="leader-name">아무개</span>
   	   </div>
   	   
   	   <div class="card-actions">
@@ -241,6 +336,7 @@
   	     </button>
   	   </div>
   	</article>
+
   </div>	
  </div>
 </body>
