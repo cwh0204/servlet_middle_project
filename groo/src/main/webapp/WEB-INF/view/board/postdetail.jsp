@@ -31,11 +31,9 @@
 		</div>
 
 		<div class="board-actions">
-			<button class="btn-primary"
-				onclick="location.href='boardmodify.do?id=A1'" id="modifyButton">수정</button> <!-- 수정필요 -->
-			<button class="btn-danger"
-				onclick="location.href='boarddelete.do?id=A1'" id="deleteButton">삭제</button> <!-- 수정필요 -->
-			<button class="btn-secondary">목록으로</button> <!-- 수정필요 -->
+			<button class="btn-primary" id="modifyButton">수정</button>
+			<button class="btn-danger" id="deleteButton">삭제</button> 
+			<button class="btn-secondary">목록으로</button>
 		</div>
                  
 		<div class="reaction-section">

@@ -4,8 +4,14 @@ function boardInsert(writer) {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const typeValue = urlParams.get('type');
-
-	if (postTitle) {
+	
+	//postContent 유효성 검사
+	const pureText = $('<div>').html(postContent).text();
+	const trimmedText = pureText.replace(/\s/g, '');
+	
+	console.log("trimmedText.length : ", trimmedText.length);
+	
+	if (postTitle && trimmedText.length !== 0) {
 		$.ajax({
 
 			url: 'boardinsert.do',
@@ -20,7 +26,7 @@ function boardInsert(writer) {
 			},
 
 			success: function(response) {
-				console.log("성공");
+				window.location.href = "main.do";
 			},
 
 			error: function(xhr, status, error) {
@@ -28,7 +34,7 @@ function boardInsert(writer) {
 			}
 		});
 	} else {
-		alert("게시물 제목을 입력하세요.");
+		alert("게시물 제목, 글내용을 입력하세요.");
 	}
 }
 
@@ -61,6 +67,10 @@ $(document).ready(function() {
 
 	$('#submitBtn').click(function() {
 		boardInsert(writer);
+	});
+	
+	$('.btn-secondary').click(function() {
+		history.back();
 	});
 
 }); // $(document).ready() 끝!
