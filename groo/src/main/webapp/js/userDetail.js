@@ -54,6 +54,26 @@ var nicknameCheck = (userNickname) => {
 	});
 }
 
+var testAjax = () => {
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: 'useremailcheck.do',
+		type: 'POST',
+		data: {
+			memNick: "수민"
+		},
+
+		success: function(response) {
+			console.log(response);
+			console.log(response);
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+		}
+	});
+}
+
+
 
 /*카카오 우편번호api*/
 function openPostcode() {

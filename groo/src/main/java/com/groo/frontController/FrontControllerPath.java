@@ -68,7 +68,7 @@ public class FrontControllerPath {
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
         controllerMap.put("/usernicknamecheck.do", new UserdetailSelectNicknameController());
-        controllerMap.put("/selectUserEmailCheck.do", new UserdetailSelectEmailController());
+        controllerMap.put("/useremailcheck.do", new UserdetailSelectEmailController());
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
