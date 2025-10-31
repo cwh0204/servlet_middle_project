@@ -80,12 +80,19 @@ class CustomReportProcessBtnRenderer {
     	
         const { grid, rowKey } = props;
         const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
+        
+        const rowData = grid.getRow(rowKey);
 
         if (!targetBtn) return;
         
         const actionType = targetBtn.dataset.type;
         
         if (actionType === 'reportCheck') {
+        	$('#memReporter').text(rowData.memReporter);
+        	$('#reportDate').text(rowData.reportDate);
+        	$('#reportContent').text(rowData.reportContent);
+        	$('#memSuspect').text(rowData.memSuspect);
+        	$('#confirmBtn').val(rowData.reportId);
             $("#reportCheckBtn").trigger("click");
         }
         event.stopPropagation();
