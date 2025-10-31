@@ -21,27 +21,31 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public String selectLoginId(String memLoginId, SqlSession session) {
+	public MemberDTO selectLoginId(MemberDTO memberDto, SqlSession session) {
 
+		MemberDTO member = new MemberDTO();
+		
 		try {
-			return session.selectOne("selectLoginId", memLoginId);
+			member = session.selectOne("selectLoginId", memberDto);
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		return member;
 	}
 
 	@Override
-	public String selectEmail(String memEmail, SqlSession session) {
+	public MemberDTO selectEmail(MemberDTO memberDto, SqlSession session) {
 
+		MemberDTO member = new MemberDTO();
+		
 		try {
-			return session.selectOne("selectEmail", memEmail);
+			member = session.selectOne("selectEmail", memberDto);
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		return member;
 	}
 
 
@@ -131,30 +135,20 @@ public class MemberDAOImpl implements MemberDAO{
 		return memberLogin;
 	}
 
+
 	/**
 	 * 닉네임을 중복 여부를 확인하는 메서드
 	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 닉네임 정보를 리턴
 	 */
-	
 	@Override
-	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
-		MemberDTO memberNickname = new MemberDTO();
+	public String selectUserNicknameCheck(MemberDTO member, SqlSession session) {
 		try {
 			return session.selectOne("selectUserNicknameCheck", member);
 		}catch(Exception e) {
 			e.printStackTrace();
-			return memberNickname;
+			return null;
 		}
+	}
 }
-}
-
-
-	
-	
-
-	
-
-
-

@@ -31,12 +31,12 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 
 	@Override
-	public String selectLoginIdService(String memLoginId) {
+	public MemberDTO selectLoginIdService(MemberDTO memberDTO) {
 		SqlSession session = SessionFactory.getSqlSession();
-		String resultLoginId = null;
+		MemberDTO member = new MemberDTO();
 
 		try {
-			resultLoginId = dao.selectLoginId(memLoginId, session);
+			member = dao.selectLoginId(memberDTO, session);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -44,17 +44,17 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}finally {
 			session.close();
 		}
-		return resultLoginId;
+		return member;
 	}
 
 
 	@Override
-	public String selectEmailService(String memEmail) {
+	public MemberDTO selectEmailService(MemberDTO memberDto) {
 		SqlSession session = SessionFactory.getSqlSession();
-		String resultEmail = null;
+		MemberDTO member = new MemberDTO();
 
 		try {
-			resultEmail = dao.selectEmail(memEmail, session);
+			member = dao.selectEmail(memEmail, session);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -199,23 +199,20 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * 예외
 	 */
 	@Override
-	public MemberDTO selectUserNicknameCheck(MemberDTO member) {
+	public String selectUserNicknameCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
-	    MemberDTO memberNickname = new MemberDTO();
+		String resultNickname = null;
 
-	    try {
-	    	memberNickname = dao.selectUserNicknameCheck(member, session);
-	    } catch (Exception e) {
-	        e.printStackTrace(); 
-	    } finally {
-	        session.close();
-	    }
+		try {
+			resultNickname = dao.selectUserNicknameCheck(memNick, session);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
 
-	    return memberNickname;
+
+		}
+
+		return null;
 	}
+
 }
-
-
-	
-	
-		
