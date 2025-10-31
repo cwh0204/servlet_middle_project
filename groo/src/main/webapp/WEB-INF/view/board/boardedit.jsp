@@ -15,12 +15,12 @@
 	rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
 <link href="css/board/boardWrite.css" rel="stylesheet">
-<script src="js/board/boardWrite.js"></script>
+<script src="js/board/boardedit.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 <body>
 	<div class="board-form-container">
-		<h2 class="mb-4 board-title-heading">✏️ 새 게시글 작성</h2>
+		<h2 class="mb-4 board-title-heading">✏️ 게시글 수정</h2>
 
 		<div class="form-group">
 			<label for="postTitle">제목</label> <input type="text"

@@ -143,7 +143,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 
 	}
-	
+
 	/**
 	 * 게시판 삭제 메서드
 	 * @param board 게시판 삭제 정보를 가져오기위한 Data Transfer Object 데이터 클래스

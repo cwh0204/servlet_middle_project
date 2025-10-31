@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class AdminUpdateReportController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 신고내역을 업데이트하고 JSON 응답을 생성합니다.
 	 *
@@ -33,18 +33,18 @@ public class AdminUpdateReportController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String reportContent = request.getParameter("reportContent");
 		String reportId = request.getParameter("reportId");
 		String endActionDate = request.getParameter("endActionDate");
-		
+
 		AdminReportDTO report = new AdminReportDTO();
 		report.setReportContent(reportContent);
 		report.setReportId(reportId);
 		report.setEndActionDate(endActionDate);
-		
+
 		AdminService service = new AdminServiceImpl();
-		
+
 		try {
 			service.adminUpdateReport(report);
 			Gson gson = new Gson();

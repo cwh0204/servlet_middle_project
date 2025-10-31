@@ -230,7 +230,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminStudyMemberDelete 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 신고내역을 확인하고 조치를 위한 메서드
 	 * @param report 신고조치를 하기위한 Data Transfer Object 데이터 클래스

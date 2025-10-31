@@ -206,7 +206,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	    try {
 	    	memberNickname = dao.selectUserNicknameCheck(member, session);
 	    } catch (Exception e) {
-	        e.printStackTrace(); 
+	        e.printStackTrace();
 	    } finally {
 	        session.close();
 	    }
@@ -216,6 +216,5 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 }
 
 
-	
-	
-		
+
+
