@@ -44,6 +44,7 @@ import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
+import com.groo.controller.UserdetailSelectEmailController;
 import com.groo.controller.UserdetailSelectNicknameController;
 import com.groo.controller.boardController_EX;
 
@@ -67,6 +68,7 @@ public class FrontControllerPath {
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
         controllerMap.put("/usernicknamecheck.do", new UserdetailSelectNicknameController());
+        controllerMap.put("/selectUserEmailCheck.do", new UserdetailSelectEmailController());
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());

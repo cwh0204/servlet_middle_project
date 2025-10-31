@@ -9,6 +9,7 @@ public interface MemberService {
 	public void userUpdate(MemberDTO member);
 
 	public MemberDTO selectUserNicknameCheck(MemberDTO member);
+	public MemberDTO selectUserEmailCheck(MemberDTO member);
 
 	//일반 로그인
 	public MemberDTO selectLoginMember(MemberDTO member);

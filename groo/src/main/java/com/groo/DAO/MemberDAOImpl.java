@@ -1,6 +1,5 @@
 package com.groo.DAO;
 
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
@@ -111,6 +110,23 @@ public class MemberDAOImpl implements MemberDAO{
 			return memberNickname;
 		}
 }
+
+	/**
+	 * 이메일을 중복 여부를 확인하는 메서드
+	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 이메일 정보를 리턴
+	 */
+	@Override
+	public MemberDTO selectUserEmailCheck(MemberDTO member, SqlSession session) {
+		MemberDTO memberEmail = new MemberDTO();
+		try {
+			return session.selectOne("selectUserEmailCheck", member);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return memberEmail;
+		}
+	}
 }
 
 
