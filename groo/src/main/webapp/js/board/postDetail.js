@@ -1,67 +1,34 @@
-/*
-
-
-
 //댓글 수정
-comentedit = (boardId, writer) => {
+comentedit = (boardId, comentId, comentContent) => {
 	$.ajax({
-		url: '',
+		url: 'comentedit.do',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-
-
-
-
-
-
-
-
+				comentId : comentId,
+				comentContent : comentContent
 		},
 		success: function(response) {
-
-
-
-
-
-
-
-
+			window.location.href = "postdetail.do?id=" + boardId;
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
 		}
 	});
 }
-
-
-
 
 //댓글 삭제
-comentdelete = (boardId, writer) => {
+comentdelete = (boardId, commentIdToDelete) => {
 	$.ajax({
-		url: '',
+		url: 'comentdelete.do ',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-
-
-
-
-
-
-
-
+			comentId: commentIdToDelete
 		},
 		success: function(response) {
-
-
-
-
-
-
-
-
+			console.log("asdasd");
+			window.location.href = "postdetail.do?id=" + boardId;
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
@@ -69,7 +36,7 @@ comentdelete = (boardId, writer) => {
 	});
 }
 
-*/
+
 
 //게시물 삭제
 boardelete = (boardId) => {
@@ -122,7 +89,6 @@ allcoment = (boardId, userNickName) => {
 			boardId: boardId
 		},
 		success: function(response) {
-
 			// 🚨 개선된 부분: 새로운 목록을 추가하기 전에 기존 목록을 모두 비웁니다.
 			$('.comment-list').empty();
 
@@ -143,8 +109,60 @@ allcoment = (boardId, userNickName) => {
 
 					// 3. 버튼 추가
 					const $reportButton = $('<button>').addClass('comment-report').text('신고')
-					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId).css('display', 'block');
-					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block');
+					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId).css('display', 'block').on('click', function() {
+
+						// 1. 클릭된 버튼을 기준으로 해당 댓글 항목(부모 요소)을 찾습니다.
+						const $commentItem = $(this).closest('.comment-item'); // ⭐️ .comment-item 클래스를 부모 요소로 가정
+						console.log($commentItem);
+
+						const $contentP = $commentItem.find('p');
+						console.log($contentP);
+
+						const currentContent = $contentP.text().trim();
+
+						const $editTextarea = $('<textarea>')
+							.addClass('form-comment-item comment-meta')
+							.val(currentContent);
+							
+						const $saveButton = $('<button>')
+							.addClass('comment-edit save-edit-btn me-1')
+							.text('완료')
+							.attr('data-comment-id', item.comentId)
+							.css({
+								'display': 'block',
+							}).on('click', function() {
+								const commentId = $(this).data('commentId');
+								comentedit(boardId, commentId, $editTextarea[0].value);
+							});
+								
+						const $cancelButton = $('<button>')
+							.addClass('comment-delete save-edit-btn me-1')
+							.text('취소')
+							.css({
+								'display': 'block',
+							})
+
+						$contentP.replaceWith($editTextarea);
+
+						$(this).hide(); // 수정 버튼 숨김 (클릭된 자기 자신)
+						$commentItem.find('.comment-delete').hide();
+
+						$editTextarea.after($saveButton, $cancelButton);
+
+						$cancelButton.on('click', function() {
+							$editTextarea.replaceWith($contentP.show()); // <p> 태그 복원
+							$saveButton.remove();
+							$cancelButton.remove();
+							$editButton.show(); // 수정 버튼 다시 표시
+							$commentItem.find('.comment-delete').show(); // 삭제 버튼 다시 표시
+						});
+					});
+					
+					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block').on('click', function() {
+						const commentId = $(this).data('commentId');
+						comentdelete(boardId, commentId);
+					});
+
 					// 4. 모든 요소를 최상위 요소에 조립
 					$commentItem.append($commentMeta);
 					$commentItem.append($commentContent);
@@ -322,6 +340,8 @@ $(document).ready(function() {
 	if (writer) {
 		boarddetailselect(boardId, writer);
 		boardLikeUserCheck(boardId, writer);
+		allcoment(boardId, writer);
+		mycoment(boardId, writer);
 
 		//좋아요 클릭시
 		$('#likeBtn').on('click', function() {
@@ -338,28 +358,21 @@ $(document).ready(function() {
 			window.location.href = "boardedit.do?id=" + boardId;
 		});
 
-		/*//댓글등록 클릭시
+		//댓글등록 클릭시
 		$('#commentSubmit').on('click', function() {
+			window.location.href = "postdetail.do?id=" + boardId;
 			boardComentinsert(boardId, writer);
-		});
-		
-		//댓글삭제버튼 클릭시
-		$('.comment-delete').on('click', function() {
-			comentdelete(boardId, writer);
 		});
 
 		//댓글수정버튼 클릭시
 		$('.comment-delete').on('click', function() {
 			comentedit(boardId, writer);
-		});*/
+		});
 
 		//삭제버튼 클릭시
 		$('.btn-danger').on('click', function() {
 			boardelete(boardId);
 		});
-
-		allcoment(boardId, writer);
-		mycoment(boardId, writer);
 
 	} else {
 		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
