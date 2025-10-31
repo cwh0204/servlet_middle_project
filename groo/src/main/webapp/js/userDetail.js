@@ -15,11 +15,11 @@ var testAjax = () => {
 		url: 'usernicknamecheck.do',
 		type: 'POST',
 		data: {
-			memNick: "일번"
+			memNick: "수민"
 		},
 
 		success: function(response) {
-			console.log("테스트아작스 데이터");
+			console.log(response);
 			console.log(response);
 		},
 		error: function(xhr, status, error) {
