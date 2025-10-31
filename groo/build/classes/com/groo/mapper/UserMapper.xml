@@ -80,12 +80,14 @@
 			MEM_ID,
 			MEM_LOGIN_ID,
 			MEM_NAME,
-			MEM_LOGIN_TOKEN
+			MEM_LOGIN_TOKEN,
+			MEM_NICK
 		)VALUES(
 			'M' || MEMBER_SEQ.NEXTVAL,
 			#{memLoginId},
 			#{memName},
-			#{memLoginId}
+			#{memLoginId},
+			'SociallUser_' || MEMBER_SEQ.NEXTVAL
 		)
 	</insert>
 	<select id="selectLoginMember" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">

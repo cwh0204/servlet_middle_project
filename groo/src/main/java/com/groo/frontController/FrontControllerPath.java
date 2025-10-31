@@ -21,6 +21,8 @@ import com.groo.controller.BoardLikeInsertController;
 import com.groo.controller.BoardLikeSearchController;
 import com.groo.controller.BoardSelectController;
 import com.groo.controller.BoardUpdateController;
+import com.groo.controller.ComentDeleteController;
+import com.groo.controller.ComentEditController;
 import com.groo.controller.ComentInsertController;
 import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
@@ -78,6 +80,8 @@ public class FrontControllerPath {
         //댓글
         controllerMap.put("/comentinsert.do", new ComentInsertController());
         controllerMap.put("/comentselect.do", new ComentSelectController());
+        controllerMap.put("/comentdelete.do", new ComentDeleteController());
+        controllerMap.put("/comentedit.do", new ComentEditController());
 
         //팀관련 API
         controllerMap.put("/teamselects.do", new TeamSelectController());

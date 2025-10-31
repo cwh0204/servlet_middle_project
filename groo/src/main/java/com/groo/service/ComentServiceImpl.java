@@ -70,5 +70,52 @@ public class ComentServiceImpl implements ComentService {
 		}
 		return comentList;
 	}
+	
+	/**
+	 * 댓글 삭제 서비스 메서드입니다.
+	 *
+	 * @param 댓글을 삭제하기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void comentDelete(ComentDTO coment) {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.comentDelete(coment, session);
+			session.commit();
+		}catch(InternalDataAccessException ie) {
+			throw new InternalDataAccessException(ie);
+		}catch(InternalServiceException rne) {
+			throw new InternalServiceException("로그인 중 데이터베이스 오류 발생", rne);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("comentInsert에서 예외 발생",e);
+		}
+		finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void comentEdit(ComentDTO coment) {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.comentEdit(coment, session);
+			session.commit();
+		}catch(InternalDataAccessException ie) {
+			throw new InternalDataAccessException(ie);
+		}catch(InternalServiceException rne) {
+			throw new InternalServiceException("로그인 중 데이터베이스 오류 발생", rne);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("comentInsert에서 예외 발생",e);
+		}
+		finally {
+			session.close();
+		}
+	}
 
 }

@@ -43,8 +43,38 @@ public class ComentDAOImpl implements ComentDAO {
 			comentList = session.selectList("comentSelect",coment);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new InternalDataAccessException("DAO:adminSelectAll 예외발생", e);
+			throw new InternalDataAccessException("DAO:comentSelect 예외발생", e);
 		}
 		return comentList;
+	}
+	
+	/**
+	 * 댓글 삭제 메서드
+	 * @param coment 삭제 정보를 가져오기 위한 Date Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void comentDelete(ComentDTO coment, SqlSession session) {
+		try {
+			session.update("comentDelete",coment);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:comentDelete 예외발생", e);
+		}
+	}
+	
+	/**
+	 * 댓글 수정 메서드
+	 * @param coment 수정 정보를 가져오기 위한 Date Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void comentEdit(ComentDTO coment, SqlSession session) {
+		try {
+			session.update("comentEdit",coment);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:comentEdit 예외발생", e);
+		}
 	}
 }
