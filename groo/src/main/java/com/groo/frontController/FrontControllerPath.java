@@ -14,6 +14,7 @@ import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateUserController;
+import com.groo.controller.BoardDeleteController;
 import com.groo.controller.BoardDetailSelectController;
 import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardLikeInsertController;
@@ -72,6 +73,7 @@ public class FrontControllerPath {
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
         controllerMap.put("/boardupdate.do", new BoardUpdateController());
+        controllerMap.put("/boarddelete.do", new BoardDeleteController());
 
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
