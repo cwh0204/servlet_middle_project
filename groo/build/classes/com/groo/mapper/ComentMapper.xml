@@ -36,4 +36,18 @@
 		</where>
 		ORDER BY A.COMENT_DATE
 	</select>
+	
+	<update id="comentDelete" parameterType="com.groo.model.ComentDTO">
+		UPDATE COMENT
+		SET
+			COMENT_END = SYSDATE
+		WHERE COMENT_ID = #{comentId}
+	</update>
+	<update id="comentEdit" parameterType="com.groo.model.ComentDTO">
+		UPDATE COMENT
+		SET
+			COMENT_DATE = SYSDATE,
+			COMENT_CONTENT = #{comentContent}
+		WHERE COMENT_ID = #{comentId}
+	</update>
 </mapper>

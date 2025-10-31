@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/board/free/free.js"></script>
 <link href="css/board/boardtable.css" rel="stylesheet">
+<script src="js/board/free/free.js"></script>
 </head>
 <body>
 	<%@ include file="freesearch.jsp"%>
@@ -29,4 +29,9 @@
 	<c:set var="boardType" value="free" scope="request" />
 	<jsp:include page="../writebtn.jsp" />
 </body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		boardselect();
+	});
+</script>
 </html>
