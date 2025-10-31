@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		MemberDTO member = new MemberDTO();
 
 		try {
-			member = dao.selectEmail(memEmail, session);
+			member = dao.selectEmail(memberDto, session);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}finally {
 			session.close();
 		}
-		return resultEmail;
+		return member;
 	}
 
 
