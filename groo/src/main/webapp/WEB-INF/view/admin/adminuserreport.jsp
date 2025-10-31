@@ -345,8 +345,7 @@
 
 					<div class="mb-4">
 						<div class="section-title">신고 사유</div>
-						<div id="reportContent" class="report-content">
-						</div>
+						<div id="reportContent" class="report-content"></div>
 					</div>
 
 					<div class="target-section mb-4">
@@ -354,8 +353,8 @@
 							class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
 							<span class="target-badge">Target User</span>
 							<div>
-								<small class="text-muted">신고 대상:</small> <strong
-									id="memSuspect" class="ms-2 fs-5">테스트</strong>
+								<small class="text-muted">신고 대상:</small> <strong id="memSuspect"
+									class="ms-2 fs-5">테스트</strong>
 							</div>
 						</div>
 
@@ -389,11 +388,11 @@
 								</div>
 								<div class="col-3">
 									<button type="button" class="ban-period-btn w-100"
-										onclick="selectBanPeriod(this, '360')">360일</button>
+										onclick="selectBanPeriod(this, '365')">360일</button>
 								</div>
 								<div class="col-3">
 									<button type="button" class="ban-period-btn w-100"
-										onclick="selectBanPeriod(this, 'permanent')">영구</button>
+										onclick="selectBanPeriod(this, '0')">미처리</button>
 								</div>
 							</div>
 						</div>
@@ -427,6 +426,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-modal-cancel"
 						data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-modal-cancel" id="boardIdBtn">게시글 확인</button>
 					<button type="button" class="btn btn-modal-confirm" id="confirmBtn"
 						disabled onclick="submitReport()" value="">처리 완료</button>
 				</div>
@@ -435,13 +435,40 @@
 	</div>
 </body>
 <script type="text/javascript">
-	var selectedBanPeriod = '1';
+	var endActionDate = '1';
 
 	function selectBanPeriod(btn, period) {
 		$('.ban-period-btn').removeClass('active');
 		$(btn).addClass('active');
-		selectedBanPeriod = period;
+		endActionDate = period;
 	}
+	
+	submitReport = () => {
+		const reportId = $('#confirmBtn').val();
+		const reportContent = $('#actionNote').val();
+		
+		$.ajax({
+			// 데이터를 전송할 서버 URL
+			url: 'adminupdatereport.do',
+			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+			type: 'POST',
+			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+			data: {
+				reportId: reportId,
+				reportContent : reportContent,
+				endActionDate : endActionDate
+				
+			},
+			// 데이터 전송 성공 시 실행
+			success: function(response) {
+				window.location.href = 'admin.do';
+			},
+			// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+			error: function(xhr, status, error) {
+			}
+		});
+	}
+	
 	$(document).ready(function() {
 
 		initializeDisableUserGrid();
@@ -453,7 +480,11 @@
 		$('#actionNote').on('input', function() {
 			$('#charCount').text($(this).val().length);
 		});
-
+		
+		$('#boardIdBtn').on('click', function() {
+			window.open('postdetail.do?id='+$('#boardIdBtn').val());
+		});
+		
 		// 체크박스 상태에 따라 버튼 활성화/비활성화
 		$('#confirmCheck').on('change', function() {
 			$('#confirmBtn').prop('disabled', !$(this).is(':checked'));
@@ -465,7 +496,7 @@
 			$('#charCount').text('0');
 			$('#confirmCheck').prop('checked', false);
 			$('#confirmBtn').prop('disabled', true);
-			selectedBanPeriod = '7';
+			endActionDate = '1';
 			$('.ban-period-btn').removeClass('active');
 			$('.ban-period-btn').eq(2).addClass('active');
 		});

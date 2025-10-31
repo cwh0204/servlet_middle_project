@@ -93,6 +93,7 @@ class CustomReportProcessBtnRenderer {
         	$('#reportContent').text(rowData.reportContent);
         	$('#memSuspect').text(rowData.memSuspect);
         	$('#confirmBtn').val(rowData.reportId);
+        	$('#boardIdBtn').val(rowData.boardId);
             $("#reportCheckBtn").trigger("click");
         }
         event.stopPropagation();
@@ -144,7 +145,6 @@ class CustomTeamBtnRenderer {
         
         if (actionType === 'delete') {
         	
-        	console.log("삭제");
         	$.ajax({
         		// 데이터를 전송할 서버 URL
         		url: 'teamdelete.do',
@@ -280,7 +280,6 @@ class CustomTeamMemberBtnRenderer {
         const actionType = targetBtn.dataset.type;
         
         if (actionType === 'delete') {
-        	console.log(rowData);
         	$.ajax({
         		// 데이터를 전송할 서버 URL
         		url: 'adminstudymemberdelete.do',
