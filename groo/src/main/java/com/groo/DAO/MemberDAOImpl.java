@@ -10,7 +10,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void signUp(MemberDTO memberDto, SqlSession session) {
-
+		
 		try {
 			session.insert("insertMember", memberDto);
 
@@ -21,22 +21,24 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public String selectLoginId(String memLoginId, SqlSession session) {
-
+	public MemberDTO selectLoginId(MemberDTO MemberDTO, SqlSession session) {
+		
+		MemberDTO member = new MemberDTO();
+		
 		try {
-			return session.selectOne("selectLoginId", memLoginId);
+			member = session.selectOne("selectLoginId", member);
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
 		}
+		return member;
 	}
 
 	@Override
-	public String selectEmail(String memEmail, SqlSession session) {
+	public MemberDTO selectEmail(MemberDTO MemberDTO, SqlSession session) {
 
 		try {
-			return session.selectOne("selectEmail", memEmail);
+			return session.selectOne("selectEmail", MemberDTO);
 
 		}catch(Exception e) {
 			e.printStackTrace();

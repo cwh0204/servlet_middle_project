@@ -30,7 +30,7 @@
 	  					    )
 	</insert>
 	
-	<select id="selectEmail" parameterType="String" resultType="String">
+	<select id="selectEmail" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	  select MEM_EMAIL from member where MEM_EMAIL=#{memEmail}
 	</select>
 	
