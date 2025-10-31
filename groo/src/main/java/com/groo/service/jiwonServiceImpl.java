@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.groo.DAO.jiwonDAO;
 import com.groo.DAO.jiwonDAOImpl;
 import com.groo.config.SessionFactory;
+import com.groo.error.InternalDataAccessException;
+import com.groo.error.InternalServiceException;
 import com.groo.model.MemberDTO;
 
 public class jiwonServiceImpl implements jiwonService {
@@ -12,16 +14,18 @@ public class jiwonServiceImpl implements jiwonService {
 	jiwonDAO dao = new jiwonDAOImpl();
 	
 	@Override
-	public void insertUserService(MemberDTO memberDTO) {
+	public void insertMember(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
 
 		try {
-			dao.signUp(memberDTO, session);
+			dao.insertMember(member, session);
 			session.commit();
-		}catch(Exception e) {
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
 			e.printStackTrace();
-			session.rollback();
-			throw new IllegalStateException("회원가입 실패", e);
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
 		}finally {
 			session.close();
 		}
@@ -29,38 +33,43 @@ public class jiwonServiceImpl implements jiwonService {
 
 
 	@Override
-	public MemberDTO selectLoginIdService(MemberDTO memLoginId) {
+	public MemberDTO selectLoginId(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
-		MemberDTO memberDTO = new MemberDTO();
+		MemberDTO memberLoginId = new MemberDTO();
 
 		try {
-			memberDTO = dao.selectLoginId(memLoginId, session);
+			memberLoginId = dao.selectLoginId(member, session);
 
-		}catch(Exception e) {
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
 			e.printStackTrace();
-
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
 		}finally {
 			session.close();
 		}
-		return memberDTO;
+		return memberLoginId;
 	}
 
 
 	@Override
-	public MemberDTO selectEmailService(MemberDTO memEmail) {
+	public MemberDTO selectEmail(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
-		
-		MemberDTO memberDTO = new MemberDTO();
+		MemberDTO memberEmail = new MemberDTO();
 
 		try {
-			memberDTO = dao.selectEmail(memEmail, session);
+			memberEmail = dao.selectEmail(member, session);
 
-		}catch(Exception e) {
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
 			e.printStackTrace();
-
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
 		}finally {
 			session.close();
 		}
-		return memberDTO;
+		return memberEmail;
 	}
 }

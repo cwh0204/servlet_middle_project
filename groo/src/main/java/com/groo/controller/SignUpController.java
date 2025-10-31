@@ -31,19 +31,19 @@ public class SignUpController extends HttpServlet implements Controller {
 		String memBirth = request.getParameter("userBirth");
 		String memGender = request.getParameter("userGender");
 
-		MemberDTO memberDto = new MemberDTO();
+		MemberDTO member = new MemberDTO();
 
-		memberDto.setMemLoginId(memLoginId);
-		memberDto.setMemPass(memPass);
-		memberDto.setMemName(memName);
-		memberDto.setMemEmail(memEmail);
-		memberDto.setMemBirth(memBirth);
-		memberDto.setMemGender(memGender);
+		member.setMemLoginId(memLoginId);
+		member.setMemPass(memPass);
+		member.setMemName(memName);
+		member.setMemEmail(memEmail);
+		member.setMemBirth(memBirth);
+		member.setMemGender(memGender);
 
 		try {
-			jiwonService serviceImpl = new jiwonServiceImpl();
-			serviceImpl.insertUserService(memberDto);
-			response.getWriter().println("회원가입 완료: "+ memberDto.getMemLoginId());
+			jiwonService service = new jiwonServiceImpl();
+			service.insertMember(member);
+			response.getWriter().println("회원가입 완료: "+ member.getMemLoginId());
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.getWriter().println("회원가입 실패: "+ e.getMessage());

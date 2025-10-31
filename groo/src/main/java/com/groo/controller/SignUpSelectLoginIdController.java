@@ -20,20 +20,20 @@ public class SignUpSelectLoginIdController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String memLoginId = request.getParameter("userLoginId");
+		String memLoginId = request.getParameter("memLoginId");
 		
-		MemberDTO memberDto = new MemberDTO();
+		MemberDTO member = new MemberDTO();
 		
-		memberDto.setMemLoginId(memLoginId);
+		member.setMemLoginId(memLoginId);
 		
-		jiwonService serviceImpl = new jiwonServiceImpl();
+		jiwonService service = new jiwonServiceImpl();
 		HttpSession session = request.getSession();
 		
 		try {
 
-			MemberDTO member = serviceImpl.selectLoginIdService(memberDto);
+			MemberDTO checkLoginId = service.selectLoginId(member);
 			Gson gson = new Gson();
-			String json = gson.toJson(member);
+			String json = gson.toJson(checkLoginId);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
