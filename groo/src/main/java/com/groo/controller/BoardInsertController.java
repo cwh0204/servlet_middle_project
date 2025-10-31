@@ -38,7 +38,7 @@ public class BoardInsertController implements Controller {
 
 		BoardDTO board = new BoardDTO();
 
-		board.setMemId(memLoginId);
+		board.setMemLoginId(memLoginId);
 		board.setBoardTypeId(boardType);
 		board.setPostTitle(postTitle);
 		board.setPostContent(postContent);

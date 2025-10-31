@@ -50,18 +50,18 @@ class CustomReportProcessBtnRenderer {
       const container = document.createElement('div');
       container.className = 'btn-renderer-container';
       
-      const deleteBtn = document.createElement('button');
+      const reportCheckBtn = document.createElement('button');
      
       
-      deleteBtn.className = 'user-randarer-button';
-      deleteBtn.textContent = '내용 확인';
-      deleteBtn.dataset.type = 'delete';
+      reportCheckBtn.className = 'user-randarer-button';
+      reportCheckBtn.textContent = '내용 확인';
+      reportCheckBtn.dataset.type = 'reportCheck';
       
-      deleteBtn.addEventListener('click', (event) => {
+      reportCheckBtn.addEventListener('click', (event) => {
           this.onClick(props, event);
       });
       
-      container.appendChild(deleteBtn);
+      container.appendChild(reportCheckBtn);
       
       this.container = container;
       
@@ -85,8 +85,8 @@ class CustomReportProcessBtnRenderer {
         
         const actionType = targetBtn.dataset.type;
         
-        if (actionType === 'delete') {
-            console.log("안녕");
+        if (actionType === 'reportCheck') {
+            $("#reportCheckBtn").trigger("click");
         }
         event.stopPropagation();
     }
