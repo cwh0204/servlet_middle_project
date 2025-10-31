@@ -31,12 +31,12 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 
 
 	@Override
-	public MemberDTO selectLoginIdService(MemberDTO memberDTO) {
+	public String selectLoginIdService(String memLoginId) {
 		SqlSession session = SessionFactory.getSqlSession();
-		MemberDTO member = new MemberDTO();
+		String resultLoginId = null;
 
 		try {
-			member = dao.selectLoginId(memberDTO, session);
+			resultLoginId = dao.selectLoginId(memLoginId, session);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -44,17 +44,17 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}finally {
 			session.close();
 		}
-		return member;
+		return resultLoginId;
 	}
 
 
 	@Override
-	public MemberDTO selectEmailService(MemberDTO memberDto) {
+	public String selectEmailService(String memEmail) {
 		SqlSession session = SessionFactory.getSqlSession();
-		MemberDTO member = new MemberDTO();
+		String resultEmail = null;
 
 		try {
-			member = dao.selectEmail(memberDto, session);
+			resultEmail = dao.selectEmail(memEmail, session);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}finally {
 			session.close();
 		}
-		return member;
+		return resultEmail;
 	}
 
 
@@ -199,20 +199,24 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * 예외
 	 */
 	@Override
-	public String selectUserNicknameCheck(MemberDTO member) {
+	public MemberDTO selectUserNicknameCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
-		String resultNickname = null;
+	    MemberDTO memberNickname = new MemberDTO();
 
-		try {
-			resultNickname = dao.selectUserNicknameCheck(memNick, session);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
+	    try {
+	    	memberNickname = dao.selectUserNicknameCheck(member, session);
+	    } catch (Exception e) {
+	        e.printStackTrace(); 
+	    } finally {
+	        session.close();
+	    }
 
-
-		}
-
-		return null;
+	    return memberNickname;
 	}
 
 }
+
+
+	
+	
+		
