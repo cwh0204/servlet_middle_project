@@ -28,7 +28,7 @@
 					<div class="user_attribute">
 						<div class="input-group">
 							<label>아이디</label> <input type="text" name="userID"
-								value="" disabled=>
+								value="" disabled>
 						</div>
 						<div class="input-group">
 							<label>이름</label> <input type="text" name="irum" value=""
