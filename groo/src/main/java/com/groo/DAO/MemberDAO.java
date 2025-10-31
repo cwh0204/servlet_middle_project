@@ -15,10 +15,12 @@ public interface MemberDAO {
 	public void userUpdate(MemberDTO member, SqlSession session);
 <<<<<<< HEAD
 
-=======
 	public String selectUserNicknameCheck(MemberDTO member, SqlSession session);
+=======
+	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session);
 
->>>>>>> ecdae6bb7ec53ce6473d2f953a7a29cda4e33d44
+>>>>>>> 0390814727718b37476b1b19fafc9692365950a0
+
 	//소셜로그인
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);
 	public void insertSociallMember(MemberDTO member, SqlSession session);

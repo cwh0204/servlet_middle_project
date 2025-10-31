@@ -11,10 +11,10 @@ var nicknameCheck = (userNickname) => {
 
 	$.ajax({
 		//데이터를 전송할 서버 URL
-		url: '',
+		url: 'selectUserNicknameCheck.do',
 		type: 'POST',
 		data: {
-			memNick: userNickname
+			userNickname: userNickname
 		},
 
 		success: function(response) {

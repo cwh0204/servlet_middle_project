@@ -1,3 +1,113 @@
+/*
+
+
+
+//댓글 수정
+comentedit = (boardId, writer) => {
+	$.ajax({
+		url: '',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+
+
+
+
+
+
+
+
+		},
+		success: function(response) {
+
+
+
+
+
+
+
+
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
+
+
+
+//댓글 삭제
+comentdelete = (boardId, writer) => {
+	$.ajax({
+		url: '',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+
+
+
+
+
+
+
+
+		},
+		success: function(response) {
+
+
+
+
+
+
+
+
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
+*/
+
+//게시물 수정
+boardedit = (boardId, writer) => {
+	$.ajax({
+		url: 'boarddetailselect.do',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			boardId: boardId,
+			memLoginId: writer
+		},
+		success: function(response) {
+			console.log(response);
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+//게시물 삭제
+boardelete = (boardId) => {
+	$.ajax({
+		url: 'boarddelete.do',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			boardId: boardId
+		},
+		success: function(response) {
+			window.location.href = "main.do";
+		},
+		error: function() {
+			alert("서버 통신 오류가 발생했습니다.");
+		}
+	});
+}
+
+//내 댓글
 mycoment = (boardId, writer) => {
 	$.ajax({
 		url: 'comentselect.do',
@@ -20,6 +130,7 @@ mycoment = (boardId, writer) => {
 	});
 }
 
+//모든 유저가 쓴 댓글
 allcoment = (boardId, userNickName) => {
 	$.ajax({
 		url: 'comentselect.do',
@@ -97,6 +208,7 @@ allcoment = (boardId, userNickName) => {
 	});
 }
 
+//게시물 댓글 등록
 boardComentinsert = (boardId, writer) => {
 	const commentContent = $('#commentContent').val();
 
@@ -123,6 +235,7 @@ boardComentinsert = (boardId, writer) => {
 	});
 }
 
+//게시물 좋아요 css
 boardLikeUserCheck = (boardId, writer) => {
 	$.ajax({
 		url: 'boardlikesearch.do',
@@ -149,6 +262,7 @@ boardLikeUserCheck = (boardId, writer) => {
 	});
 }
 
+//게시물 좋아요 개수
 boardLikeTotalCount = (boardId) => {
 	$.ajax({
 		url: 'boardlikesearch.do',
@@ -166,6 +280,7 @@ boardLikeTotalCount = (boardId) => {
 	});
 }
 
+//게시물 좋아요
 boardlikeinsert = (boardId, writer) => {
 	$.ajax({
 		url: 'boardlikeinsert.do',
@@ -184,6 +299,7 @@ boardlikeinsert = (boardId, writer) => {
 	});
 }
 
+//게시물 상세
 boarddetailselect = (boardId, writer) => {
 	$.ajax({
 		url: 'boarddetailselect.do',
@@ -219,25 +335,51 @@ $(document).ready(function() {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const boardId = urlParams.get('id');
-	
+
+	//로그인이 되어 있는 상태
 	if (writer) {
 		boarddetailselect(boardId, writer);
 		boardLikeUserCheck(boardId, writer);
 
+		//좋아요 클릭시
 		$('#likeBtn').on('click', function() {
 			boardlikeinsert(boardId, writer);
 		});
 
+		//목록으로 클릭시
+		$('.btn-secondary').on('click', function() {
+			window.location.href = "main.do";
+		});
+
+		//수정버튼 클릭시
+		$('.btn-primary').on('click', function() {
+			boardedit(boardId);
+		});
+
+		/*//댓글등록 클릭시
 		$('#commentSubmit').on('click', function() {
 			boardComentinsert(boardId, writer);
 		});
-
-		$('.btn-secondary').on('click', function() {
-			window.history.back();
+		
+		//댓글삭제버튼 클릭시
+		$('.comment-delete').on('click', function() {
+			comentdelete(boardId, writer);
 		});
+
+		//댓글수정버튼 클릭시
+		$('.comment-delete').on('click', function() {
+			comentedit(boardId, writer);
+		});*/
+
+		//삭제버튼 클릭시
+		$('.btn-danger').on('click', function() {
+			boardelete(boardId);
+		});
+
 
 		allcoment(boardId, writer);
 		mycoment(boardId, writer);
+
 	} else {
 		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
 		history.go(-1);

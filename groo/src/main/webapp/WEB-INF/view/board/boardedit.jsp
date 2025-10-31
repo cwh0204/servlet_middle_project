@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Summernote JSP</title>
+<title>게시물 수정페이지</title>
 
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">

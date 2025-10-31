@@ -131,20 +131,30 @@ public class MemberDAOImpl implements MemberDAO{
 		return memberLogin;
 	}
 
-
 	/**
 	 * 닉네임을 중복 여부를 확인하는 메서드
 	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 닉네임 정보를 리턴
 	 */
+	
 	@Override
-	public String selectUserNicknameCheck(MemberDTO member, SqlSession session) {
+	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
+		MemberDTO memberNickname = new MemberDTO();
 		try {
 			return session.selectOne("selectUserNicknameCheck", member);
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			return memberNickname;
 		}
-	}
 }
+}
+
+
+	
+	
+
+	
+
+
+

@@ -51,7 +51,6 @@
         where MEM_LOGIN_ID = #{memLoginId}
 	</update>
 	
-<!-- 닉네임 중복 확인 -->
 	<select id="selectUserNicknameCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	  	SELECT MEM_NICK 
         FROM MEMBER 
