@@ -279,7 +279,7 @@
 		UPDATE REPORT
 		SET
 			ACTION_CONTENT = #{reportContent},
-			CANCLEACTION_DATE = SYSDATE,
+			ACTION_DATE = SYSDATE,
 			ENDACTION_DATE = SYSDATE + #{endActionDate}
 		WHERE REPORT_ID = #{reportId}
 	</update>

@@ -13,6 +13,7 @@ import com.groo.controller.AdminSelectUserAllController;
 import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
+import com.groo.controller.AdminUpdateReportController;
 import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.BoardDeleteController;
 import com.groo.controller.BoardDetailSelectController;
@@ -31,11 +32,9 @@ import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
-//import com.groo.controller.MemberLoginController;
-import com.groo.controller.MemberSelectController;
 import com.groo.controller.MemberUpdateController;
-import com.groo.controller.MyPageController;
 import com.groo.controller.NaverLoginController;
+import com.groo.controller.ReportInsertController;
 import com.groo.controller.SignUpController;
 import com.groo.controller.SignUpSelectEmailController;
 import com.groo.controller.SignUpSelectLoginIdController;
@@ -46,7 +45,6 @@ import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
 import com.groo.controller.UserdetailSelectEmailController;
 import com.groo.controller.UserdetailSelectNicknameController;
-import com.groo.controller.boardController_EX;
 
 public class FrontControllerPath {
 
@@ -94,10 +92,6 @@ public class FrontControllerPath {
         controllerMap.put("/teamdelete.do", new TeamDeleteController());
         controllerMap.put("/teamactivate.do", new TeamActivateController());
 
-        controllerMap.put("/mypages.do", new MyPageController());
-
-        controllerMap.put("/mypages.do", new MyPageController());
-
         controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/selectemail.do", new SignUpSelectEmailController());
 
@@ -108,8 +102,9 @@ public class FrontControllerPath {
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
 
-        controllerMap.put("/MemberSelectImplAPI.do", new MemberSelectController());
-
+        //신고 관련 API
+        controllerMap.put("/reportinsert.do", new ReportInsertController());
+        
         //관리자 관련 API
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
@@ -121,8 +116,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminavgreport.do", new AdminAvgReportController());
         controllerMap.put("/adminreportprocessuserserch.do", new AdminReportProcessUserSerchController());
         controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
-
-        controllerMap.put("/noticedetail.do", new boardController_EX());
+        controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
     }
