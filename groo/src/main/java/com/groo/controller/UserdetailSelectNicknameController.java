@@ -24,7 +24,6 @@ public class UserdetailSelectNicknameController implements Controller {
 		 
 		String memNick = request.getParameter("memNick");
 		
-
 		MemberDTO member = new MemberDTO();
 
 		member.setMemNick(memNick);
@@ -34,6 +33,7 @@ public class UserdetailSelectNicknameController implements Controller {
 		try {
 			MemberDTO memberNickname = service.selectUserNicknameCheck(member);
 
+			
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			

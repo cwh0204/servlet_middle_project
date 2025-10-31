@@ -143,12 +143,14 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @return 닉네임 정보를 리턴
 	 */
 	@Override
-	public String selectUserNicknameCheck(MemberDTO member, SqlSession session) {
+	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
+		MemberDTO memberDTO = new MemberDTO();
 		try {
-			return session.selectOne("selectUserNicknameCheck", member);
+			memberDTO = session.selectOne("selectUserNicknameCheck", member);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;
 		}
+		return memberDTO;
 	}
 }
