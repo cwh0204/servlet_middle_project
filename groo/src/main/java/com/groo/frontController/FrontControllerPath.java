@@ -14,7 +14,6 @@ import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateUserController;
-import com.groo.controller.BoardDeleteController;
 import com.groo.controller.BoardDetailSelectController;
 import com.groo.controller.BoardInsertController;
 import com.groo.controller.BoardLikeInsertController;
@@ -42,6 +41,7 @@ import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
+import com.groo.controller.UserdetailSelectNicknameController;
 import com.groo.controller.boardController_EX;
 
 public class FrontControllerPath {
@@ -63,13 +63,13 @@ public class FrontControllerPath {
         //이수민
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
+        controllerMap.put("/selectUserNicknameCheck.do", new UserdetailSelectNicknameController());
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
         controllerMap.put("/boardselect.do", new BoardSelectController());
         controllerMap.put("/boarddetailselect.do", new BoardDetailSelectController());
         controllerMap.put("/boardupdate.do", new BoardUpdateController());
-        controllerMap.put("/boarddelete.do", new BoardDeleteController());
 
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());

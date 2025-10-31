@@ -13,8 +13,13 @@ public interface MemberDAO {
 	//이수민
 	public void userDelete(MemberDTO member, SqlSession session);
 	public void userUpdate(MemberDTO member, SqlSession session);
+<<<<<<< HEAD
 
 	public String selectUserNicknameCheck(MemberDTO member, SqlSession session);
+=======
+	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session);
+
+>>>>>>> 0390814727718b37476b1b19fafc9692365950a0
 
 	//소셜로그인
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);
