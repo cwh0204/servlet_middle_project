@@ -31,14 +31,14 @@ public class BoardInsertController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String memId = request.getParameter("memId");
+		String memLoginId = request.getParameter("memLoginId");
 		String boardType = request.getParameter("boardType");
 		String postTitle = request.getParameter("postTitle");
 		String postContent = request.getParameter("postContent");
 
 		BoardDTO board = new BoardDTO();
 
-		board.setMemId(memId);
+		board.setMemId(memLoginId);
 		board.setBoardTypeId(boardType);
 		board.setPostTitle(postTitle);
 		board.setPostContent(postContent);

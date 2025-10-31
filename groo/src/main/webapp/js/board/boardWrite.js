@@ -12,8 +12,8 @@ function boardInsert(writer) {
 	type: 'POST',
 	
 	data: {
-		memId : writer,
-		boardType : typeValue,
+		memLoginId : writer,
+		boardType : typeValue,                              
 		postContent : postContent,
 		postTitle : postTitle
 	},

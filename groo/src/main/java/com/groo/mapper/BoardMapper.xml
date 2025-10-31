@@ -15,7 +15,7 @@
 		VALUES
 			(
 				'B'||BOARD_SEQ.NEXTVAL,
-				#{memId},
+				(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{memLoginId}),
 				#{boardTypeId},
 				#{postTitle},
 				#{postContent}
