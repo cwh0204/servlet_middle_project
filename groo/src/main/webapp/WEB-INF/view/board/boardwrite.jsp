@@ -37,11 +37,18 @@
 			<label>내용</label>
 			<textarea class="summernote" id="postContent" name="content"></textarea>
 		</div>
-		
+
 		<div class="action-buttons">
 			<button class="btn btn-primary" id="submitBtn">등록</button>
 			<div class="btn btn-secondary">취소</div>
 		</div>
+	</div>
+	<%@ include file="../frontComponents/chatbot.jsp"%>
+	<div class="chatbot-fixed-container-alt">
+		<button type="button" class="chatbot-button"
+			id="openChatBtn">
+			<i class="bi bi-chat-dots-fill me-2"></i>채팅 열기
+		</button>
 	</div>
 </body>
 </html>
