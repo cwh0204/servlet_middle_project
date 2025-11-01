@@ -10,7 +10,7 @@
 			STUDY_ID,
 			STUDY_ROLL
 		)VALUES(
-			(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = 'cwh0204'),
+			(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memId}),
 			#{studyId},
 			#{studyRoll}
 		)

@@ -26,7 +26,12 @@ function boardInsert(writer) {
 			},
 
 			success: function(response) {
-				window.location.href = "main.do";
+				console.log(writer);
+				if(writer == "cwh0204"){
+					window.location.href = "admin.do";
+				}else{
+					window.location.href = "main.do";
+				}
 			},
 
 			error: function(xhr, status, error) {

@@ -23,7 +23,7 @@ public class FrontPath {
         jspMap.put("/mypagedashboard.do", "/WEB-INF/view/mypage/mypagedashboard/mypagedashboard.jsp");
         jspMap.put("/mypagedashboardhome.do", "/WEB-INF/view/mypage/mypagedashboard/mypagedashboardhome.jsp");
 
-
+        //관리자 경로
         jspMap.put("/admin.do", "/WEB-INF/view/admin/admin.jsp");
         jspMap.put("/admindashboard.do", "/WEB-INF/view/admin/admindashboard.jsp");
         jspMap.put("/adminuser.do", "/WEB-INF/view/admin/adminuser.jsp");
@@ -33,6 +33,7 @@ public class FrontPath {
         jspMap.put("/adminuserreportprocess.do", "/WEB-INF/view/admin/adminuserreportprocess.jsp");
         jspMap.put("/admindisableteam.do", "/WEB-INF/view/admin/admindisableteam.jsp");
         jspMap.put("/adminteammember.do", "/WEB-INF/view/admin/adminteammember.jsp");
+        jspMap.put("/adminnotice.do", "/WEB-INF/view/admin/adminnotice.jsp");
 
         //board 경로
         jspMap.put("/intro.do", "/WEB-INF/view/board/intro.jsp");

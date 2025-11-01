@@ -55,11 +55,12 @@
 			</div>
 		</div>
 		<div class="menu-item">
-			<div class="menu-item-content">
+			<div class="menu-item-content" data-page="admindashboard.do">
 				<span>게시판 관리</span>
 			</div>
+
 		</div>
-		<div class="menu-item">
+		<div class="menu-item" data-page="adminnotice.do">
 			<div class="menu-item-content">
 				<span>공지사항 관리</span>
 			</div>
