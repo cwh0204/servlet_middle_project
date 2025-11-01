@@ -19,7 +19,7 @@
 	  						MEM_NICK
 	  						)
 	  			  values (
-	  			 			'M' || MEMBER_SEQ.NEXTVAL
+	  			 			'M' || MEMBER_SEQ.NEXTVAL,
 	  			 			#{memName}, 
 	  			 			#{memLoginId}, 
 	  			 			#{memPass}, 
@@ -58,9 +58,9 @@
 	</select>
 	
 	<select id="selectUserEmailCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
-	    SELECT MEM_EMAIL
+	SELECT MEM_EMAIL
         FROM MEMBER
-        WHERE MEM_EMAIL= #{memEmail}
+        WHERE MEM_EMAIL='sum@naver.com';
     </select>
 	
 	<select id="selectLoginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">

@@ -3,46 +3,51 @@ package com.groo.DAO;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 
+import com.groo.error.InternalDataAccessException;
 import com.groo.model.MemberDTO;
 
 public class jiwonDAOImpl implements jiwonDAO {
 
 	@Override
-	public void signUp(MemberDTO memberDto, SqlSession session) {
+	public void insertMember(MemberDTO member, SqlSession session) {
 		
 		try {
-			session.insert("insertMember", memberDto);
+			session.insert("insertMember", member);
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			throw new PersistenceException("회원가입 중 DB 오류 발생", e);		//이메일이나 ID 중복 등일 때 발생
+			throw new InternalDataAccessException("DAO:insertMember 예외발생", e);
 		}
 	}
 
 	@Override
-	public MemberDTO selectLoginId(MemberDTO MemberDTO, SqlSession session) {
+	public MemberDTO selectLoginId(MemberDTO member, SqlSession session) {
 		
-		MemberDTO member = new MemberDTO();
+		MemberDTO memberLoginId = new MemberDTO();
 		
 		try {
-			member = session.selectOne("selectLoginId", member);
+			memberLoginId = session.selectOne("selectLoginId", member);
 
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:selectLoginId 예외발생", e);
 		}
-		return member;
+		return memberLoginId;
 	}
 
 	@Override
-	public MemberDTO selectEmail(MemberDTO MemberDTO, SqlSession session) {
-
+	public MemberDTO selectEmail(MemberDTO member, SqlSession session) {
+		
+		MemberDTO memberEmail = new MemberDTO();
+		
 		try {
-			return session.selectOne("selectEmail", MemberDTO);
+			memberEmail = session.selectOne("selectEmail", member);
 
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			throw new InternalDataAccessException("DAO:selectEmail 예외발생", e);
 		}
+		return memberEmail;
 	}
 
 }
