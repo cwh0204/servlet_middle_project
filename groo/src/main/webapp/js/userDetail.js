@@ -88,6 +88,33 @@ var testAjax = () => {
 	});
 }
 
+//var testAjax = () => {
+//    $.ajax({
+//        url: 'useremailcheck.do',
+//        type: 'POST',
+//        data: {
+//            memEmail: "sum@naver.com"
+//        },
+//        success: function(response) {
+//            console.log("서버 응답:", response);
+//            console.log("응답 길이:", response.length);
+//            
+//            // 배열이고 길이가 1 이상이면 DB에 존재 (사용불가)
+//            if(Array.isArray(response) && response.length >= 1) {
+//                console.log("사용불가능한 이메일입니다");
+//                EmailCheck = false;
+//            } else {
+//                // 빈 배열이거나 길이가 0이면 사용 가능
+//                console.log("사용가능한 이메일입니다");
+//                EmailCheck = true;
+//            }
+//        },
+//        error: function(xhr, status, error) {
+//            console.error("이메일 중복 확인 통신 실패:", status, error);
+//            EmailCheck = false;
+//        }
+//    });
+//}
 
 /*카카오 우편번호api*/
 function openPostcode() {
