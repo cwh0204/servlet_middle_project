@@ -99,4 +99,26 @@
 			SET STUDY_DELETEDATE = NULL
 		WHERE STUDY_ID = #{studyId}
 	</update>
+	
+	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
+		<selectKey keyProperty="studyId" resultType="String" order="BEFORE">
+	        SELECT 'S' || STUDY_SEQ.NEXTVAL FROM DUAL
+	    </selectKey>
+		INSERT INTO STUDY
+		(
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_PASS,
+			STUDY_INTRO
+		)VALUES(
+			#{studyId},
+			#{studyTitle},
+			#{studyCategory},
+			#{studyMax},
+			#{studyPass},
+			#{studyIntro}
+		)
+	</insert>
 </mapper>

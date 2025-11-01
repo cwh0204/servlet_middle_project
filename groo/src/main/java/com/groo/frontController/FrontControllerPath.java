@@ -41,6 +41,7 @@ import com.groo.controller.SignUpSelectLoginIdController;
 import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
+import com.groo.controller.TeamInsertController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamStatsController;
 import com.groo.controller.UserdetailSelectEmailController;
@@ -86,6 +87,7 @@ public class FrontControllerPath {
         controllerMap.put("/comentedit.do", new ComentEditController());
 
         //팀관련 API
+        controllerMap.put("/teaminsert.do", new TeamInsertController());
         controllerMap.put("/teamselects.do", new TeamSelectController());
         controllerMap.put("/teamdisableselects.do", new TeamDisableSelectController());
         controllerMap.put("/teamstats.do", new TeamStatsController());

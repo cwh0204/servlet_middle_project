@@ -13,13 +13,16 @@ import com.groo.model.TeamDTO;
 
 public class TeamDAOImpl implements TeamDAO{
 
-	SessionFactory sessionFactory = new SessionFactory();
-
+	/**
+	 * 팀 생성을 위한 메서드
+	 * @param team 팀을 생성 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
 	@Override
-	public void insertTeam(TeamDTO teamDTO, SqlSession session) {
+	public void insertTeam(TeamDTO team, SqlSession session) {
 		// TODO Auto-generated method stub
 		try {
-			session.insert("insertTeam", teamDTO);
+			session.insert("insertTeam", team);
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalServiceException("팀 생성 중 데이터베이스 오류 발생",e);

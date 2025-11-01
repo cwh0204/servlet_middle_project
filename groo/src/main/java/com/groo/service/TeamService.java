@@ -6,6 +6,7 @@ import com.groo.model.TeamAvgDTO;
 import com.groo.model.TeamDTO;
 
 public interface TeamService {
+	public void insertTeam(TeamDTO team);
 	public List<TeamDTO> selectTeam(TeamDTO team);
 	public List<TeamDTO> selectDisableTeam(TeamDTO team);
 	public TeamAvgDTO teamStats();

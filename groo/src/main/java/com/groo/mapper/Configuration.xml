@@ -39,6 +39,7 @@
 		<mapper resource="com/groo/mapper/BoardMapper.xml" />
 		<mapper resource="com/groo/mapper/ComentMapper.xml" />
 		<mapper resource="com/groo/mapper/ReportMapper.xml" />
+		<mapper resource="com/groo/mapper/TeamMemberMapper.xml"/>
 	</mappers>
 
 </configuration>
