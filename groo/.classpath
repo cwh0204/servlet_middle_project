@@ -27,5 +27,19 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc17.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/reload4j-1.2.25.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/slf4j-api-2.0.9.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/api-common-2.54.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/google-auth-library-oauth2-http-1.40.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/google-genai-1.25.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/guava-33.5.0-jre.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/httpclient-4.5.13.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-annotations-2.20.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-databind-2.20.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-datatype-jdk8-2.20.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-datatype-jsr310-2.20.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/Java-WebSocket-1.6.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jspecify-1.0.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/kotlin-stdlib-jdk8-2.2.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/protobuf-java-4.33.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -28,6 +28,7 @@ import com.groo.controller.ComentInsertController;
 import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
+import com.groo.controller.GoogleGenaiController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
@@ -121,6 +122,9 @@ public class FrontControllerPath {
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
+        
+        //재미나이 챗봇
+        controllerMap.put("/googlegenai.do", new GoogleGenaiController());
     }
 
     public Controller getControllers(String command) {
