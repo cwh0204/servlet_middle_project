@@ -1,4 +1,4 @@
-const boardselect = () => {
+var boardselect = () => {
 	console.log("board");
 	$.ajax({
 		// 데이터를 전송할 서버 URL
