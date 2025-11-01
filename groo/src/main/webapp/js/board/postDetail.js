@@ -1,3 +1,4 @@
+
 //댓글 수정
 comentedit = (boardId, comentId, comentContent) => {
 	$.ajax({
@@ -5,8 +6,8 @@ comentedit = (boardId, comentId, comentContent) => {
 		type: 'POST',
 		dataType: 'json',
 		data: {
-				comentId : comentId,
-				comentContent : comentContent
+			comentId: comentId,
+			comentContent: comentContent
 		},
 		success: function(response) {
 			window.location.href = "postdetail.do?id=" + boardId;
@@ -108,7 +109,9 @@ allcoment = (boardId, userNickName) => {
 					const $commentContent = $('<p>').text(item.comentContent);
 
 					// 3. 버튼 추가
-					const $reportButton = $('<button>').addClass('comment-report').text('신고')
+					const $reportButton = $('<button>').addClass('comment-report').text('신고').attr('data-comment-id', item.comentId).on('click', function() {
+						reportCommentId = $(this).data('commentId');
+					});;
 					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId).css('display', 'block').on('click', function() {
 
 						// 1. 클릭된 버튼을 기준으로 해당 댓글 항목(부모 요소)을 찾습니다.
@@ -123,7 +126,7 @@ allcoment = (boardId, userNickName) => {
 						const $editTextarea = $('<textarea>')
 							.addClass('form-comment-item comment-meta')
 							.val(currentContent);
-							
+
 						const $saveButton = $('<button>')
 							.addClass('comment-edit save-edit-btn me-1')
 							.text('완료')
@@ -134,7 +137,7 @@ allcoment = (boardId, userNickName) => {
 								const commentId = $(this).data('commentId');
 								comentedit(boardId, commentId, $editTextarea[0].value);
 							});
-								
+
 						const $cancelButton = $('<button>')
 							.addClass('comment-delete save-edit-btn me-1')
 							.text('취소')
@@ -157,7 +160,7 @@ allcoment = (boardId, userNickName) => {
 							$commentItem.find('.comment-delete').show(); // 삭제 버튼 다시 표시
 						});
 					});
-					
+
 					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId).css('display', 'block').on('click', function() {
 						const commentId = $(this).data('commentId');
 						comentdelete(boardId, commentId);
@@ -186,7 +189,9 @@ allcoment = (boardId, userNickName) => {
 					const $commentContent = $('<p>').text(item.comentContent);
 
 					// 3. 버튼 추가
-					const $reportButton = $('<button>').addClass('comment-report').text('신고')
+					const $reportButton = $('<button>').addClass('comment-report').text('신고').attr('data-comment-id', item.comentId).attr('data-bs-toggle', 'modal').attr('data-bs-target', '#reportModal').on('click', function() {
+						reportCommentId = $(this).data('commentId');
+					});;
 					const $editButton = $('<button>').addClass('comment-edit').text('수정').attr('data-comment-id', item.comentId);
 					const $deleteButton = $('<button>').addClass('comment-delete').text('삭제').attr('data-comment-id', item.comentId);
 
@@ -335,21 +340,21 @@ $(document).ready(function() {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const boardId = urlParams.get('id');
-	
+
 	//로그인이 되어 있는 상태
 	if (writer) {
 		boarddetailselect(boardId, writer);
 		boardLikeUserCheck(boardId, writer);
 		allcoment(boardId, writer);
 		mycoment(boardId, writer);
-		
+
 		//좋아요 클릭시
 		$('#likeBtn').on('click', function() {
 			boardlikeinsert(boardId, writer);
 		});
 
 		//목록으로 클릭시
-		$('.btn-secondary').on('click', function() {
+		$('#toBoardList').on('click', function() {
 			window.location.href = "main.do";
 		});
 
@@ -370,14 +375,14 @@ $(document).ready(function() {
 		});
 
 		//삭제버튼 클릭시
-		$('.btn-danger').on('click', function() {
+		$('#deleteButton').on('click', function() {
 			boardelete(boardId);
 		});
 		//신고버튼 클릭시
-		$('#reportPostBtn').on('click',function(){
+		$('#reportPostBtn').on('click', function() {
 			console.log("신고버튼 클릭");
 		});
-		
+
 	} else {
 		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
 		history.go(-1);
