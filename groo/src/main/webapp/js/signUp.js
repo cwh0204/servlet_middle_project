@@ -426,12 +426,14 @@ $(document).ready(() => {
 			success: function(response) {
 				console.log(memEmail, response);
 				if (response && response.memEmail) {
-					alert('이미 사용중인 이메일입니다.❌');
+					alert('이미 존재하는 이메일입니다.❌');
 					isEmailVerified = false; 	// 인증 상태 초기화
 				} else {
-
-					// 중복이 아니면 인증메일 요청
+					alert('사용 가능한 이메일입니다.✔');
+					
+/*					// 중복이 아니면 인증메일 요청
 					sendVerificationEmail(memEmail);
+*/					
 				}
 			},
 
