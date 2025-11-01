@@ -38,8 +38,7 @@
                  
 		<div class="reaction-section">
 			<button id="likeBtn"></button>
-			<button id="reportPostBtn"
-				onclick="location.href='boardreport.do?id=A1'">🚨 게시글 신고</button>
+			<button id="reportPostBtn">🚨 게시글 신고</button>
 		</div>
 
 		<div class="comment-section">

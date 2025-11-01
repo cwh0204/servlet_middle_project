@@ -335,14 +335,14 @@ $(document).ready(function() {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const boardId = urlParams.get('id');
-
+	
 	//로그인이 되어 있는 상태
 	if (writer) {
 		boarddetailselect(boardId, writer);
 		boardLikeUserCheck(boardId, writer);
 		allcoment(boardId, writer);
 		mycoment(boardId, writer);
-
+		
 		//좋아요 클릭시
 		$('#likeBtn').on('click', function() {
 			boardlikeinsert(boardId, writer);
@@ -373,7 +373,11 @@ $(document).ready(function() {
 		$('.btn-danger').on('click', function() {
 			boardelete(boardId);
 		});
-
+		//신고버튼 클릭시
+		$('#reportPostBtn').on('click',function(){
+			console.log("신고버튼 클릭");
+		});
+		
 	} else {
 		alert("로그인을 해야 이용할 수 있는 서비스입니다.");
 		history.go(-1);
