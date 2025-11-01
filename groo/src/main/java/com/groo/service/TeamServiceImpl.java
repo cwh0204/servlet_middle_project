@@ -7,11 +7,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.groo.DAO.TeamDAO;
 import com.groo.DAO.TeamDAOImpl;
+import com.groo.DAO.TeamMemberDAO;
+import com.groo.DAO.TeamMemberDAOImpl;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
 import com.groo.model.TeamAvgDTO;
 import com.groo.model.TeamDTO;
+import com.groo.model.TeamMemberDTO;
 
 public class TeamServiceImpl implements TeamService{
 
@@ -26,11 +29,13 @@ public class TeamServiceImpl implements TeamService{
 	 * 예외
 	 */
 	@Override
-	public void insertTeam(TeamDTO team) {
+	public void insertTeam(TeamDTO team ,TeamMemberDTO teamMember) {
 		SqlSession session = SessionFactory.getSqlSession();
+		TeamMemberDAO teamMemberDao = new TeamMemberDAOImpl();
 		try {
 			dao.insertTeam(team, session);
-			System.out.println("생성된 서비스 STUDY_ID 값: " + team.getStudyId());
+			teamMember.setStudyId(team.getStudyId());
+			teamMemberDao.insertTeamMember(teamMember, session);
 			session.commit();
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();

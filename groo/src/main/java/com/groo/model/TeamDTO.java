@@ -7,7 +7,7 @@ public class TeamDTO {
 	private String studyId;
 	private String studyTitle;
 	private String studyCategory;
-	private String studyMax;
+	private int studyMax;
 	private int studyPick;
 	private String studyReview;
 	private String studyPass;

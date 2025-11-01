@@ -25,7 +25,7 @@ public class TeamDAOImpl implements TeamDAO{
 			session.insert("insertTeam", team);
 		}catch (Exception e) {
 			e.printStackTrace();
-			throw new InternalServiceException("팀 생성 중 데이터베이스 오류 발생",e);
+			throw new InternalDataAccessException("DAO:insertTeam 예외발생",e);
 		}
 	}
 

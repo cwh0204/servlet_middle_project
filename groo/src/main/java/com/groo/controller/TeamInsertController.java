@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import com.google.gson.Gson;
 import com.groo.error.InternalServiceException;
 import com.groo.model.TeamDTO;
+import com.groo.model.TeamMemberDTO;
 import com.groo.service.TeamService;
 import com.groo.service.TeamServiceImpl;
 
@@ -36,18 +37,28 @@ public class TeamInsertController implements Controller {
 		String studyPass = request.getParameter("studyPass");
 		String studyIntro = request.getParameter("studyIntro");
 		
+		String memId = request.getParameter("memId");
+		
 		TeamDTO team = new TeamDTO();
 		team.setStudyTitle(studyTitle);
 		team.setStudyCategory(studyCategory);
-		team.setStudyMax(studyMax);
+		
+		if(studyMax != null && !studyMax.isEmpty()) {
+			int serchMax = Integer.parseInt(studyMax);
+			team.setStudyMax(serchMax);
+		}
 		team.setStudyPass(studyPass);
 		team.setStudyIntro(studyIntro);
+		
+		TeamMemberDTO teamMember = new TeamMemberDTO();
+		teamMember.setMemId(memId);
+		teamMember.setStudyRoll("L");
 		
 		TeamService service = new TeamServiceImpl();
 		
 		try {
 			
-			service.insertTeam(team);
+			service.insertTeam(team,teamMember);
 			
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");

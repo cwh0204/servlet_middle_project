@@ -4,9 +4,10 @@ import java.util.List;
 
 import com.groo.model.TeamAvgDTO;
 import com.groo.model.TeamDTO;
+import com.groo.model.TeamMemberDTO;
 
 public interface TeamService {
-	public void insertTeam(TeamDTO team);
+	public void insertTeam(TeamDTO team, TeamMemberDTO teamMember);
 	public List<TeamDTO> selectTeam(TeamDTO team);
 	public List<TeamDTO> selectDisableTeam(TeamDTO team);
 	public TeamAvgDTO teamStats();

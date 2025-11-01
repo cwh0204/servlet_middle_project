@@ -4,6 +4,15 @@
 <mapper namespace="TeamMemberMapper">
 	
 	<insert id="insertTeamMember" parameterType="com.groo.model.TeamMemberDTO">
-	
+		INSERT INTO STUDYMEMBER
+		(
+			MEM_ID,
+			STUDY_ID,
+			STUDY_ROLL
+		)VALUES(
+			(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = 'cwh0204'),
+			#{studyId},
+			#{studyRoll}
+		)
 	</insert>
 </mapper>
