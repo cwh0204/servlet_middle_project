@@ -60,7 +60,7 @@
 	<select id="selectUserEmailCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	SELECT MEM_EMAIL
         FROM MEMBER
-        WHERE MEM_EMAIL='sum@naver.com';
+        WHERE MEM_EMAIL=#{memEmail}
     </select>
 	
 	<select id="selectLoginUser" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
