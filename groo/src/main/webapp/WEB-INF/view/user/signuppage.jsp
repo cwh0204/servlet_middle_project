@@ -76,11 +76,15 @@
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
-      	  
+ 
+/*      	  
       	  <div class="emailAuthBtn">
       	    <input type="button" value="인증 요청" id="emailAuthBtn">
       	  </div>
+*/
       	    <span id="emailMessage" style="font-size: 0.9em;"></span>
+
+/*
       	  <div id="emailVerify">
       	  	<label for="emailCode">인증번호</label>
       	  	<div class="verifyCode">
@@ -88,6 +92,7 @@
       	  	  <input type="button" value="확인" onclick="verifyEmailCode()">
       	  	</div>
       	  </div>
+*/      	  
       	</div>
       	
         <div class="g-recaptcha" data-sitekey="6LdJB-orAAAAAJkFTCtPCgXVGhgSTPN-NQGWtgAj"></div>
