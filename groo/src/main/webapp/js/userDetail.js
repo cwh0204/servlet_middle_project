@@ -1,7 +1,7 @@
 //닉네임 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
-let NicknameCheck = false;
+//let NicknameCheck = false;
 //닉네임 형식 유효성 통과 상태 (정규식 통과)
-let NickValid = false;
+//let NickValid = false;
 
 /**
  * 닉네임 중복 확인 요청
@@ -9,49 +9,49 @@ let NickValid = false;
  */
 
 
-var testAjax = () => {
-	$.ajax({
-		//데이터를 전송할 서버 URL
-		url: 'usernicknamecheck.do',
-		type: 'POST',
-		data: {
-			memNick: "수민"
-		},
-
-		success: function(response) {
-			console.log(response);
-		},
-		error: function(xhr, status, error) {
-			console.error("닉네임 중복 확인 통신 실패:", status, error);
-		}
-	});
-}
-
-var nicknameCheck = (userNickname) => {
-
-	$.ajax({
-		//데이터를 전송할 서버 URL
-		url: 'selectUserNicknameCheck.do',
-		type: 'POST',
-		data: {
-			userNickname: userNickname
-		},
-
-		success: function(response) {
-			if (response == "yes") {
-				alert('사용할 수 있는 닉네임입니다.✅');
-				NicknameCheck = true; //중복확인 완료
-			} else {
-				alert('이미 사용 중인 닉네임입니다.❌');
-				NicknameCheck = false; //사용 불가
-			}
-		},
-		error: function(xhr, status, error) {
-			console.error("닉네임 중복 확인 통신 실패:", status, error);
-			alert('닉네임 확인 중 오류가 발생했습니다.');
-		}
-	});
-}
+//var testAjax = () => {
+//	$.ajax({
+//		//데이터를 전송할 서버 URL
+//		url: 'usernicknamecheck.do',
+//		type: 'POST',
+//		data: {
+//			memNick: "수민"
+//		},
+//
+//		success: function(response) {
+//			console.log(response);
+//		},
+//		error: function(xhr, status, error) {
+//			console.error("닉네임 중복 확인 통신 실패:", status, error);
+//		}
+//	});
+//}
+//
+//var nicknameCheck = (memNick) => {
+//
+//	$.ajax({
+//		//데이터를 전송할 서버 URL
+//		url: 'selectUserNicknameCheck.do',
+//		type: 'POST',
+//		data: {
+//			memNick: memNick
+//		},
+//
+//		success: function(response) {
+//			if (response == "yes") {
+//				alert('사용할 수 있는 닉네임입니다.✅');
+//				NicknameCheck = true; //중복확인 완료
+//			} else {
+//				alert('이미 사용 중인 닉네임입니다.❌');
+//				NicknameCheck = false; //사용 불가
+//			}
+//		},
+//		error: function(xhr, status, error) {
+//			console.error("닉네임 중복 확인 통신 실패:", status, error);
+//			alert('닉네임 확인 중 오류가 발생했습니다.');
+//		}
+//	});
+//}
 
 //이메일 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
 let EmailCheck = false;
@@ -63,31 +63,6 @@ let EmailValid = false;
  * @param {string} userEmail - 확인할 사용자 이메일
  */
 
-var testAjax = () => {
-	$.ajax({
-		//데이터를 전송할 서버 URL
-		url: 'useremailcheck.do',
-		type: 'POST',
-		data: {
-			memEmail: "sum@naver.com"
-		},
-
-		success: function(response) {
-			console.log(response);
-			console.log(response.length);
-			if(response.length == 1){
-				console.log("이미 존재하는 이메일입니다");
-			}else{
-				console.log("사용가능한 이메일입니다");
-			}
-		},
-		error: function(xhr, status, error) {
-			console.error("이메일 중복 확인 통신 실패:", status, error);
-		}
-		
-	});
-}
-
 //var testAjax = () => {
 //    $.ajax({
 //        url: 'useremailcheck.do',
@@ -95,26 +70,46 @@ var testAjax = () => {
 //        data: {
 //            memEmail: "sum@naver.com"
 //        },
+//        dataType: 'json', // 응답이 객체(JSON)이므로 text가 아니라 json으로 지정
 //        success: function(response) {
 //            console.log("서버 응답:", response);
-//            console.log("응답 길이:", response.length);
-//            
-//            // 배열이고 길이가 1 이상이면 DB에 존재 (사용불가)
-//            if(Array.isArray(response) && response.length >= 1) {
-//                console.log("사용불가능한 이메일입니다");
-//                EmailCheck = false;
+//
+//            // 서버가 반환한 값이 객체일 경우
+//            if (response.memSignupSysdate !== 0 || response.memOutDate !== 0) {
+//                console.log("이미 존재하는 이메일입니다.❌");
 //            } else {
-//                // 빈 배열이거나 길이가 0이면 사용 가능
-//                console.log("사용가능한 이메일입니다");
-//                EmailCheck = true;
+//                console.log("사용가능한 이메일입니다.✅");
 //            }
 //        },
 //        error: function(xhr, status, error) {
 //            console.error("이메일 중복 확인 통신 실패:", status, error);
-//            EmailCheck = false;
 //        }
 //    });
-//}
+//};
+
+
+var emailCheck = (memEmail) => {
+    $.ajax({
+        url: '/useremailcheck.do',   // 컨트롤러 매핑 주소
+        type: 'POST',
+        data: { memEmail: memEmail }, // 요청 파라미터
+        dataType: 'json',
+        success: function(response) {
+            console.log("서버 응답:", response);
+
+            // 서버에서 오는 데이터 예시: { memSignupSysdate: 1, memOutDate: 0 }
+            if (response.memSignupSysdate > 0) {
+                console.log("이미 존재하는 이메일입니다.❌");
+            } else {
+                console.log("사용가능한 이메일입니다.✅");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("통신 실패:", status, error);
+        }
+    });
+};
+
 
 /*카카오 우편번호api*/
 function openPostcode() {
