@@ -100,11 +100,15 @@
 				<div class="input-group">
 					<label>이메일</label>
 					<div style="display: flex; align-items: center; gap: 5px;">
-						<input type="text" name="emailid"
+						<input type="text" id="emailid" name="emailid" 
 							style="width: 120px; text-align: center;"> <span>@</span>
-						<input type="text" name="emailadd"
+						<input type="text" id="emailDomain" name="emailadd" 
 							style="width: 150px; text-align: center;">
 					</div>
+					
+					<!-- 이메일 메시지 표시 영역 추가 -->
+					<div id="emailMsg" style="margin-top: 5px; font-size: 14px;"></div>
+					
 					<select name="email_select"
 						style="margin-top: 5px; width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #ccc;">
 						<option value="">- 이메일 선택 -</option>
