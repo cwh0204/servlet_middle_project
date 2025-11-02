@@ -8,6 +8,7 @@ header {
 	top: 0;
 	font-family: 'normal';
 	z-index: 1000;
+	min-width: 1900px;
 }
 
 .flex_container.heder_container {
@@ -86,6 +87,7 @@ a#dropdownMenuLink {
 	color: white;
 	background-color: white;
 	border: none;
+	width: 200px;
 }
 
 .dropdown-toggle {

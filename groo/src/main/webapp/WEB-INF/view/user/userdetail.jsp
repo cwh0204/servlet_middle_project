@@ -28,12 +28,17 @@
 					<div class="user_attribute">
 						<div class="input-group">
 							<label>아이디</label> <input type="text" name="userID"
-								value="userID" disabled="">
+								value="" disabled>
 						</div>
 						<div class="input-group">
-							<label>이름</label> <input type="text" name="irum" value="user222"
-								disabled="">
+							<label>이름</label> <input type="text" name="irum" value=""
+								disabled>
 						</div>
+						
+						<div class="input-group">
+							<label>닉네임</label> <input type="text" id="userNick" name="name" value="">
+						</div>
+						
 						<div class="input-group">
 							<label>전화번호<span style="font-size: 12px; color: #666;">(선택)</span>
 							</label>
@@ -52,7 +57,8 @@
 					</div>
 				</div>
 				<div class="button-group">
-					<button type="submit" class="okbutton">회원정보수정</button>
+					<button type="button" class="okbutton"
+					    onclick="showSubmitALert()">회원정보수정</button>
 					<button type="reset" class="cancelbutton"
 						onclick="showCancelAlert(); resetFields();">취소</button>
 					<button type="button" id="deletebutton">회원탈퇴</button>
@@ -66,16 +72,14 @@
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호</label> <input type="password" name="password"
 						id="password" placeholder="8~20자리, 특수문자 1개 이상, 공백 제외"
-						style="width: 100%; padding-right: 30px;"> <img
-						id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
+						style="width: 100%; padding-right: 30px;"> <img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 36px; cursor: pointer; width: 20px; height: 20px;">
 				</div>
 
 				<div class="input-group" style="position: relative;">
 					<label>비밀번호 재확인</label> <input type="password" name="passtry"
-						id="passtry" style="width: 100%; padding-right: 30px;"> <img
-						id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
-						style="position: absolute; right: 10px; top: 34px; cursor: pointer; width: 20px; height: 20px;">
+						id="passtry" style="width: 100%; padding-right: 30px;"> <img id="togglePasstry" src="https://i.postimg.cc/TYkDN86M/hide.png"
+						style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;">
 					<!-- 문구 표시 -->
 					<span id="checkpw"
 						style="font-size: 12px; display: block; margin-top: 5px;"></span>
@@ -141,7 +145,7 @@
 				</div>
 			</div>
 		</div>
+		<%@ include file="./userdetailpw.jsp"%>
 	</div>
-<%@ include file="./userdetailpw.jsp"%>
 </body>
 </html>

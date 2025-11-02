@@ -4,29 +4,121 @@
 
 <mapper namespace="TeamMapper">
 
-	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
-		INSERT INTO team
-		(TEAM_NAME, USER_ID, TEAM_INFO)
-		VALUES (#{teamName}, #{userId},
-		#{teamInfo})
-	</insert>
-
 	<select id="selectTeam" parameterType="com.groo.model.TeamDTO"
 		resultType="com.groo.model.TeamDTO">
-		SELECT
-			TEAM_NAME AS teamName,
-			USER_ID AS userId,
-			TEAM_INFO AS teamInfo
-		FROM TEAM
-		WHERE USER_ID = #{userId}
+		SELECT 
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_INTRO,
+			STUDY_INTROCONTENT,
+			STUDY_CREATEDATE
+		FROM STUDY
+		<where>
+			AND STUDY_DELETEDATE IS NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="studyId != null and studyId != ''">
+					OR STUDY_ID LIKE '%' || #{studyId} || '%'
+				</if>
+				<if test="studyTitle != null and studyTitle != ''">
+					OR STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+				</if>
+				<if test="studyCategory != null and studyCategory != ''">
+					OR STUDY_CATEGORY LIKE '%' || #{studyCategory} || '%'
+				</if>
+				<if test="studyMax != null and studyMax != ''">
+					OR STUDY_MAX LIKE '%' || #{studyMax} || '%'
+				</if>
+				<if test="studyIntro != null and studyIntro != ''">
+					OR STUDY_INTRO LIKE '%' || #{studyIntro} || '%'
+				</if>
+				<if test="studyIntroContent != null and studyIntroContent != ''">
+					OR STUDY_INTROCONTENT LIKE '%' || #{studyIntroContent} || '%'
+				</if>
+				<if test="studyCreateDate != null and studyCreateDate != ''">
+					OR STUDY_CREATEDATE LIKE '%' || #{studyCreateDate} || '%'
+				</if>
+			</trim>
+		</where>
+	</select>
+	<select id="selectDisableTeam" parameterType="com.groo.model.TeamDTO"
+		resultType="com.groo.model.TeamDTO">
+		SELECT 
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_INTRO,
+			STUDY_INTROCONTENT,
+			STUDY_DELETEDATE
+		FROM STUDY
+		<where>
+			AND STUDY_DELETEDATE IS NOT NULL
+			<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+				<if test="studyId != null and studyId != ''">
+					OR STUDY_ID LIKE '%' || #{studyId} || '%'
+				</if>
+				<if test="studyTitle != null and studyTitle != ''">
+					OR STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+				</if>
+				<if test="studyCategory != null and studyCategory != ''">
+					OR STUDY_CATEGORY LIKE '%' || #{studyCategory} || '%'
+				</if>
+				<if test="studyMax != null and studyMax != ''">
+					OR STUDY_MAX LIKE '%' || #{studyMax} || '%'
+				</if>
+				<if test="studyIntro != null and studyIntro != ''">
+					OR STUDY_INTRO LIKE '%' || #{studyIntro} || '%'
+				</if>
+				<if test="studyIntroContent != null and studyIntroContent != ''">
+					OR STUDY_INTROCONTENT LIKE '%' || #{studyIntroContent} || '%'
+				</if>
+				<if test="studyCreateDate != null and studyCreateDate != ''">
+					OR STUDY_DELETEDATE LIKE '%' || #{studyCreateDate} || '%'
+				</if>
+			</trim>
+		</where>
+	</select>
+	<select id="selectStateTeam" resultType="com.groo.model.TeamAvgDTO">
+			SELECT
+				COUNT(*) AS total_teams,
+				COUNT(CASE WHEN STUDY_DELETEDATE IS null THEN 1 END) AS active_teams,
+				COUNT(CASE WHEN STUDY_DELETEDATE IS NOT null THEN 1 END) AS inactive_teams,
+				COUNT(CASE WHEN TRUNC(STUDY_CREATEDATE ,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_teams
+			FROM STUDY
 	</select>
 	
-	<select id="selectTeamAll" parameterType="com.groo.model.TeamDTO"
-		resultType="com.groo.model.TeamDTO">
-		SELECT
-			TEAM_NAME AS teamName,
-			USER_ID AS userId,
-			TEAM_INFO AS teamInfo
-		FROM TEAM
-	</select>
+	<update id="deleteTeam" parameterType="com.groo.model.TeamDTO">
+		UPDATE STUDY
+			SET STUDY_DELETEDATE = SYSDATE
+		WHERE STUDY_ID = #{studyId}
+	</update>
+	<update id="activateTeam" parameterType="com.groo.model.TeamDTO">
+		UPDATE STUDY
+			SET STUDY_DELETEDATE = NULL
+		WHERE STUDY_ID = #{studyId}
+	</update>
+	
+	<insert id="insertTeam" parameterType="com.groo.model.TeamDTO">
+		<selectKey keyProperty="studyId" resultType="String" order="BEFORE">
+	        SELECT 'S' || STUDY_SEQ.NEXTVAL FROM DUAL
+	    </selectKey>
+		INSERT INTO STUDY
+		(
+			STUDY_ID,
+			STUDY_TITLE,
+			STUDY_CATEGORY,
+			STUDY_MAX,
+			STUDY_PASS,
+			STUDY_INTRO
+		)VALUES(
+			#{studyId},
+			#{studyTitle},
+			#{studyCategory},
+			#{studyMax},
+			#{studyPass},
+			#{studyIntro}
+		)
+	</insert>
 </mapper>

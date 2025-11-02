@@ -33,9 +33,9 @@ public class AdminSelectSearchUserController implements Controller {
 		// TODO Auto-generated method stub
 		String serchName = request.getParameter("serchName");
 		String memStatus = request.getParameter("memStatus");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(serchName);
 		member.setMemName(serchName);
 		member.setMemPass(serchName);
@@ -46,14 +46,14 @@ public class AdminSelectSearchUserController implements Controller {
 		member.setMemStatus(memStatus);
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
-			
+
 			List<MemberDTO> list = service.adminSelectSearchUser(member);
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

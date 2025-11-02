@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+.view-container {
+    width: 1600px; 
+    /* 상단 마진만 유지하고, 하단 마진은 0 또는 삭제 */
+    margin: 40px auto 40px auto; 
+    
+    /* 💡 하단 패딩을 30px 기본 + 50px 추가하여 80px로 변경 */
+    padding: 30px; 
+    padding-bottom: 80px; 
+    
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+/* 1. 게시글 헤더 (제목 및 메타 정보) */
+.board-header {
+	padding-bottom: 15px;
+	margin-bottom: 25px;
+	border-bottom: 3px solid #4CAF50;
+}
+
+.post-title {
+	font-size: 28px;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.post-meta {
+	font-size: 14px;
+	color: #888;
+	display: flex;
+	align-items: center;
+}
+
+.post-meta strong {
+	color: #555;
+	font-weight: 600;
+}
+
+.meta-item {
+	padding: 0 10px 0 0;
+}
+
+.meta-separator {
+	color: #ccc;
+	margin-right: 10px;
+}
+
+/* 2. 게시글 본문 및 첨부파일 */
+.board-content {
+	min-height: 250px;
+	padding: 20px 0;
+	line-height: 1.8;
+	color: #444;
+	font-size: 16px;
+}
+
+.board-content p {
+	margin-bottom: 15px;
+	white-space: pre-wrap;
+}
+
+.comment-meta strong {
+    /* 닉네임 오른쪽에 작은 간격을 유지합니다. */
+    margin-right: 5px; 
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-meta span {
+    /* ⭐ 생성일자 왼쪽 마진을 10px에서 5px로 줄여 닉네임과 거리를 좁힙니다. ⭐ */
+    margin-left: 5px; 
+    color: #888;
+    font-size: 0.9em;
+}
+
+.attachments a {
+	display: inline-block;
+	margin-top: 15px;
+	padding: 5px 10px;
+	background-color: #f0f8ff;
+	border: 1px solid #b3d9ff;
+	color: #007bff;
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+/* =================================================== */
+/* 3 & 4. 좋아요/신고 통합 및 버튼 영역 */
+/* =================================================== */
+
+/* 💡 좋아요/신고 통합 영역 스타일 */
+.reaction-section {
+	display: flex;
+	justify-content: center; /* 버튼들을 가운데 정렬 */
+	padding: 20px 0;
+	margin: 20px 0;
+}
+
+.reaction-section button {
+	border-radius: 50px;
+	padding: 10px 30px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.2s, transform 0.1s;
+	margin: 0 15px; /* 버튼 간 간격 넓힘 */
+	min-width: 160px; /* 버튼의 최소 너비 통일 */
+}
+
+/* 좋아요 버튼 (#likeBtn) 스타일 */
+#likeBtn {
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #ffc107;
+}
+
+#likeBtn:hover {
+	background-color: #fff3cd;
+	transform: scale(1.02);
+}
+
+/* 💡 신고 버튼 (#reportPostBtn) 스타일 - 좋아요와 동일 모양/크기 */
+#reportPostBtn {
+	background-color: #fff;
+	color: #dc3545; /* 빨간색 텍스트 */
+	border: 1px solid #dc3545; /* 빨간색 테두리 */
+}
+
+#reportPostBtn:hover {
+	background-color: #f8d7da; /* 연한 빨간색 배경 */
+	transform: scale(1.02);
+}
+
+/* 일반 액션 버튼 영역 */
+.board-actions {
+	text-align: right;
+	padding: 15px 0;
+}
+
+.board-actions button {
+	padding: 10px 18px;
+	margin-left: 8px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background-color 0.2s;
+}
+
+.btn-primary {
+	background-color: #007bff;
+	color: white;
+}
+
+.btn-danger {
+	background-color: #dc3545;
+	color: white;
+}
+
+.btn-secondary {
+	background-color: #6c757d;
+	color: white;
+}
+
+/* =================================================== */
+/* 5. 댓글 영역 */
+/* =================================================== */
+.comment-section h3 {
+	font-size: 20px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.comment-form {
+	/* 💡 너비 제한 제거 및 중앙 정렬 해제 */
+	/* width: 90%; max-width: 700px; margin: 20px auto... 제거 */
+	display: flex;
+	align-items: center;
+	margin-bottom: 25px;
+	border: 1px solid #ddd;
+	padding: 10px;
+	border-radius: 6px;
+}
+
+.comment-form textarea {
+	flex-grow: 1;
+	padding: 8px;
+	border: none;
+	resize: vertical;
+	outline: none;
+}
+
+.comment-form button {
+	/* (버튼 크기 복구 상태 유지) */
+	padding: 8px 15px;
+	margin: 0 0 0 10px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.comment-item {
+	position: relative;
+	border-bottom: 1px solid #eee;
+	/* 💡 좌우 패딩을 조정하여 꽉 찬 느낌을 줍니다. */
+	padding: 15px 10px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	background-color: #fcfcfc;
+}
+
+.comment-meta {
+	display: flex;
+	/* justify-content: space-between; 이 코드는 그대로 유지 */
+	margin-bottom: 8px;
+	padding-bottom: 5px;
+	
+	/* ⭐⭐ 겹침 방지를 위해 패딩 값을 200px 이상으로 대폭 확대합니다. ⭐⭐ */
+	padding-right: 220px; 
+}
+
+.comment-item p {
+	margin: 5px 0;
+	padding-right: 140px; /* 버튼과의 충돌 방지 공간 유지 */
+	line-height: 1.5;
+}
+
+.comment-report {
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    background: none;
+    border: none;
+    color: #ffc107; 
+    font-size: 12px;
+    font-weight: bold; 
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* 삭제 버튼 위치 확정 */
+.comment-delete {
+	position: absolute;
+	top: 15px;
+	right: 70px;
+	background: none;
+	border: none;
+	color: #dc3545;
+	font-size: 12px;
+	cursor: pointer;
+	padding: 5px;
+	font-weight: bold;
+	display: none;
+}
+
+.comment-edit {
+	position: absolute;
+    /* 신고 버튼 (right: 70px)의 왼쪽에 배치하기 위해 125px로 설정 */
+	top: 15px; 
+	right: 125px;
+	background: none;
+	border: none;
+	color: #007bff; /* 수정(Edit) 버튼 색상 */
+	font-size: 12px;
+	cursor: pointer;
+	padding: 5px;
+	font-weight: bold;
+    /* JavaScript에서 필요한 경우에만 보이도록 기본 숨김 처리 권장 */
+	display: none; 
+}
+
+.comment-edit:hover {
+    text-decoration: underline; /* 마우스를 올리면 밑줄 표시 */
+    color: #0056b3;
+}
+
+.comment-delete:hover {
+    text-decoration: underline; 
+    color: #a00000; /* 더 진한 빨간색 */
+}
+
+.comment-report:hover {
+    text-decoration: underline; 
+    color: #cc9900; /* 더 진한 노란/갈색 */
+}

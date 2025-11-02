@@ -9,8 +9,15 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.groo.error.ErrorDTO;
+import com.groo.error.InternalServiceException;
+import com.groo.model.MemberDTO;
+import com.groo.service.MemberService;
+import com.groo.service.MemberServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,15 +36,39 @@ public class KakaoLoginController implements Controller, SocialLogin {
 
         try {
         	String token = getAccessToken(code,state);
-        	System.out.println(token);
         	String userDate = getUserProfile(token);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("kakaoServiceResponse", userDate);
+            JsonObject responseObject = extractIdFromJson(userDate);
+            JsonObject responseNicknameObject = responseObject.getAsJsonObject("properties");
 
-            response.sendRedirect(request.getContextPath() + "/main.do");
-        }catch (Exception e) {
-			// TODO: handle exception
+            String memLoginId = responseObject.get("id").getAsString();
+            String memName = responseNicknameObject.get("nickname").getAsString();
+
+            MemberDTO member = new MemberDTO();
+            member.setMemLoginId(memLoginId);
+            member.setMemName(memName);
+
+            MemberService service = new MemberServiceImpl();
+			MemberDTO socialMember = service.selectSocialLoginCheck(member);
+
+            HttpSession session = request.getSession();
+			if(socialMember == null) {
+				service.insertSociallMember(member);
+	            session.setAttribute("loginServiceResponse", memLoginId);
+				response.sendRedirect(request.getContextPath() + "/main.do");
+			}else {
+	            session.setAttribute("loginServiceResponse", memLoginId);
+				response.sendRedirect(request.getContextPath() + "/main.do");
+			}
+        }catch (InternalServiceException ise) {
+			ise.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			ErrorDTO error = new ErrorDTO();
+			error.setStatus(500);
 		}
 	}
 
@@ -142,4 +173,20 @@ public class KakaoLoginController implements Controller, SocialLogin {
         }
         return responseJson.toString();
 	}
+
+	public static JsonObject extractIdFromJson(String jsonString) {
+        try {
+            // 1. 문자열을 JsonElement로 파싱합니다.
+            JsonElement jsonElement = JsonParser.parseString(jsonString);
+            JsonObject responseObject = jsonElement.getAsJsonObject();
+            return responseObject;
+
+        } catch (JsonSyntaxException e) {
+            System.err.println("JSON 파싱 오류: 유효하지 않은 JSON 형식입니다.");
+            return null;
+        } catch (Exception e) {
+            System.err.println("JSON 키 접근 오류: 'response'나 'id' 키가 존재하지 않거나 형식이 다릅니다.");
+            return null;
+        }
+    }
 }

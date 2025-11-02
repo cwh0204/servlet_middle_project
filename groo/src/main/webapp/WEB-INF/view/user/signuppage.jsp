@@ -34,8 +34,8 @@
       	<div class="idRow">
       	  <input type="text" id="userId" name="userId" required> 
       	  <input type="button" value="중복확인" onclick="checkDuplicateId()">
-      	  <span id="idMessage" style="font-size: 0.9em;"></span>
       	</div>
+      	  <span id="idMessage" style="font-size: 0.9em;"></span>
       	
       	<div>
       	  <label for="pass1">비밀번호</label><br>
@@ -52,6 +52,7 @@
         <div>
           <label for="name">이 름</label><br>
           <input type="text" id="name" name="name" required>
+          <span id="nameMessage" style="font-size: 0.9em;"></span> 
         </div>
         
         <label for="jumin1">주민등록번호</label>
@@ -75,9 +76,11 @@
       	    <option value="daum.net">daum.net</option>
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
+      	  
       	  <div class="emailAuthBtn">
       	    <input type="button" value="인증 요청" id="emailAuthBtn">
       	  </div>
+      	    <span id="emailMessage" style="font-size: 0.9em;"></span>
       	  <div id="emailVerify">
       	  	<label for="emailCode">인증번호</label>
       	  	<div class="verifyCode">

@@ -35,8 +35,11 @@
 	<mappers>  <!-- mappers 태그에는 SQL 코드 담고 있는 mybatis XML 매퍼 태그 파일이 있는 경로를 지정 -->
 		<mapper resource="com/groo/mapper/TeamMapper.xml" />
 		<mapper resource="com/groo/mapper/UserMapper.xml" />
-		<mapper resource="com/groo/mapper/MypageMapper.xml" />
 		<mapper resource="com/groo/mapper/AdminMapper.xml" />
+		<mapper resource="com/groo/mapper/BoardMapper.xml" />
+		<mapper resource="com/groo/mapper/ComentMapper.xml" />
+		<mapper resource="com/groo/mapper/ReportMapper.xml" />
+		<mapper resource="com/groo/mapper/TeamMemberMapper.xml"/>
 	</mappers>
 
 </configuration>

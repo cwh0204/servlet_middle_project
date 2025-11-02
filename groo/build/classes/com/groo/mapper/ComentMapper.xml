@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ComentMapper">
+
+	<insert id="comentInsert" parameterType="com.groo.model.ComentDTO">
+		INSERT INTO COMENT
+			(
+				COMENT_ID,
+				MEM_ID,
+				BOARD_ID,
+				COMENT_CONTENT,
+				COMENT_DATE
+			)VALUES(
+				'C'||COMENT_SEQ.NEXTVAL,
+				(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId}),
+				#{boardId},
+				#{comentContent},
+				SYSDATE
+			)
+	</insert>
+	<select id="comentSelect" parameterType="com.groo.model.ComentDTO" resultType="com.groo.model.ComentDTO">
+		SELECT
+			A.COMENT_ID,
+			B.MEM_NICK,
+			A.COMENT_CONTENT,
+			A.COMENT_DATE
+		FROM COMENT A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		<where>
+			A.COMENT_END IS NULL AND
+			A.BOARD_ID = #{boardId} 
+			<if test="memLoginId != null and memLoginId != ''">
+				AND A.MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId})
+			</if>
+		</where>
+		ORDER BY A.COMENT_DATE
+	</select>
+	
+	<update id="comentDelete" parameterType="com.groo.model.ComentDTO">
+		UPDATE COMENT
+		SET
+			COMENT_END = SYSDATE
+		WHERE COMENT_ID = #{comentId}
+	</update>
+	<update id="comentEdit" parameterType="com.groo.model.ComentDTO">
+		UPDATE COMENT
+		SET
+			COMENT_DATE = SYSDATE,
+			COMENT_CONTENT = #{comentContent}
+		WHERE COMENT_ID = #{comentId}
+	</update>
+</mapper>

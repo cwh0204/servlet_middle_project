@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+ /*	background: linear-gradient(135deg, #b7f8db 0%, #50a7c2 100%); */
+  /*  background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%); */
+    background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
+ 	min-height: 100vh;
+ 	padding: 3rem 1.5rem;
+ 	overflow-x: hidden;
+}
+
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 4rem;
+/*	animation: fadeInDown 0.8s ease;  */
+}
+
+.title {
+	font-size: 3.5rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #ffffff 0%, #d4f7c5 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 1rem;
+}
+
+.subtitle {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+	gap: 2.5rem;
+	animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+.study-card {
+	position: relative;
+	border-radius: 24px;
+	padding: 2rem;
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	cursor: pointer;
+	overflow: hidden;
+}
+
+
+.glass-card {
+	background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card::before {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-card .card-gradient {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+
+.glass-card:hover .card-gradient {
+	opacity: 1;
+	animation: rotate 8s linear infinite;
+}

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.note-btn-group .dropdown-toggle::after {
+	display: none !important;
+}
+
+/* 폼 컨테이너 중앙 정렬 및 기본 스타일 */
+.board-form-container {
+	width: 1200px;
+	max-width: 100%;
+	margin: 50px auto;
+	padding: 20px;
+	border: 1px solid #eee;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-group label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #4CAF50;
+	border-color: #4CAF50;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #4CAF50 !important;
+	border-color: #4CAF50 !important;
+	box-shadow: none !important;
+	opacity: 1; /* 투명도 변화도 방지 */
+}
+
+.action-buttons {
+	display: flex; /* Flexbox 활성화 */
+	justify-content: flex-end; /* 자식 요소(버튼) 가운데 정렬 */
+	gap: 10px; /* 버튼 사이의 간격 (원하는 값으로 수정 가능) */
+	margin-top: 20px; /* 에디터 내용과의 상단 간격 */
+}
+
+.board-title-heading {
+    font-size: 28px; /* 글꼴 크기 키우기 */
+    font-weight: 700; /* 굵게 */
+    color: #333; /* 글꼴 색상 */
+    padding-bottom: 10px; /* 아래쪽 여백 */
+    margin-bottom: 25px !important; /* 아래쪽 마진 (Bootstrap mb-4 덮어쓰기) */
+    
+    /* 굵은 밑줄 추가 */
+    border-bottom: 3px solid #5cb85c; /* 등록 버튼과 유사한 색상 사용 */
+  }
+  
+  .board-title-heading::before {
+    margin-right: 10px;
+    color: #5cb85c; /* 아이콘 색상 */
+  }
+  
+  .board-form-container h2 {
+    text-align: center;
+    margin-bottom: 25px; /* 아래 요소와 간격 조정 */
+  }

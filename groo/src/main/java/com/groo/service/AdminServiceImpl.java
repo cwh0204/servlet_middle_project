@@ -13,6 +13,7 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
+import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.MemberDTO;
 
 public class AdminServiceImpl implements AdminService {
@@ -182,7 +183,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		List<AdminReportDTO> reportList = new ArrayList<>();
 		try {
@@ -208,10 +209,10 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public AdminAvgReportDTO adminStatsReport() {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		AdminAvgReportDTO report = new AdminAvgReportDTO();
-		
+
 		try {
 			report = dao.adminStatsReport(session);
 		} catch (InternalDataAccessException ide) {
@@ -237,7 +238,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report) {
 		SqlSession session = SessionFactory.getSqlSession();
 		List<AdminReportDTO> reportList = new ArrayList<>();
-		
+
 		try {
 			reportList = dao.adminReportProcessUserSerch(report,session);
 		} catch (InternalDataAccessException ide) {
@@ -250,5 +251,75 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 		return reportList;
+	}
+	/**
+	 * 팀원을 조회하는 서비스 메서드입니다.
+	 * @param 팀원의 조회 목록을 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @return 팀원 조회를 목록 처리 결과
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
+
+		try {
+			memberList = dao.adminSelectStudyMember(member,session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return memberList;
+	}
+	/**
+	 * 팀원을 비활성화하는 서비스 메서드입니다.
+	 * @param 팀원의 비활성화를 하기위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminStudyMemberDelete(AdminTeamMemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminStudyMemberDelete(member,session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
+
+	/**
+	 * 신고내역에 대한 조치를 하는 서비스 메서드입니다.
+	 * @param 신고내역에 대한 조치를 하기위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminUpdateReport(AdminReportDTO report) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminUpdateReport(report, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
 	}
 }

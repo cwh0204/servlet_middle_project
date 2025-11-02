@@ -5,256 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.main-content {
-	flex: 1;
-	padding: 32px 40px;
-	overflow-y: auto;
-}
+<link href="css/adminCss/adminUser/adminUser.css" rel="stylesheet">
 
-.content-header {
-	margin-bottom: 24px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.content-header-left h1 {
-	font-size: 28px;
-	color: #1f2937;
-	font-weight: 700;
-	margin-bottom: 8px;
-}
-
-.content-header-left p {
-	color: #6b7280;
-	font-size: 14px;
-}
-
-.content-header-right {
-	display: flex;
-	gap: 12px;
-}
-
-/* 버튼 */
-.btn {
-	padding: 10px 20px;
-	border: none;
-	border-radius: 8px;
-	font-size: 14px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.btn-primary {
-	background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
-	color: white;
-}
-
-.btn-primary:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
-}
-
-.btn-secondary {
-	background: white;
-	color: #2d6a4f;
-	border: 2px solid #2d6a4f;
-}
-
-.btn-secondary:hover {
-	background: #f0fdf4;
-}
-
-/* 카드 */
-.card {
-	background: white;
-	border-radius: 12px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	border: 1px solid #e5e7eb;
-	overflow: hidden;
-}
-
-/* 필터 및 검색 영역 */
-.filter-section {
-	padding: 20px 24px;
-	background: #f9fafb;
-	border-bottom: 1px solid #e5e7eb;
-	display: flex;
-	gap: 12px;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.search-box {
-	flex: 1;
-	min-width: 250px;
-	position: relative;
-}
-
-.search-box input {
-	width: 100%;
-	padding: 10px 16px 10px 40px;
-	border: 2px solid #e5e7eb;
-	border-radius: 8px;
-	font-size: 14px;
-	transition: all 0.2s ease;
-}
-
-.search-box input:focus {
-	outline: none;
-	border-color: #2d6a4f;
-	box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
-}
-
-.search-icon {
-	position: absolute;
-	left: 12px;
-	top: 50%;
-	transform: translateY(-50%);
-	color: #6b7280;
-}
-
-.filter-group {
-	display: flex;
-	gap: 8px;
-	align-items: center;
-}
-
-.filter-select {
-	padding: 10px 16px;
-	border: 2px solid #e5e7eb;
-	border-radius: 8px;
-	font-size: 14px;
-	background: white;
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-.filter-select:focus {
-	outline: none;
-	border-color: #2d6a4f;
-}
-
-/* 통계 카드 */
-.stats-row {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
-	margin-bottom: 24px;
-}
-
-.stat-card {
-	background: white;
-	padding: 20px;
-	border-radius: 12px;
-	border: 1px solid #e5e7eb;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.stat-card-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 12px;
-}
-
-.stat-label {
-	color: #6b7280;
-	font-size: 13px;
-	font-weight: 600;
-}
-
-.stat-icon {
-	width: 36px;
-	height: 36px;
-	border-radius: 8px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 18px;
-}
-
-.stat-icon.green {
-	background: #d1fae5;
-	color: #2d6a4f;
-}
-
-.stat-icon.blue {
-	background: #dbeafe;
-	color: #1e40af;
-}
-
-.stat-icon.yellow {
-	background: #fef3c7;
-	color: #92400e;
-}
-
-.stat-icon.red {
-	background: #fee2e2;
-	color: #991b1b;
-}
-
-.stat-value {
-	font-size: 28px;
-	font-weight: 700;
-	color: #1f2937;
-}
-
-.stat-change {
-	font-size: 12px;
-	margin-top: 8px;
-}
-
-.stat-change.up {
-	color: #059669;
-}
-
-.stat-change.down {
-	color: #dc2626;
-}
-
-/*그리드 설정*/
-.modified-row {
-	background-color: #fffacd !important; /* 밝은 노란색 */
-}
-
-.modified-cell {
-	/* 기존 행의 배경색보다 진한 노란색/주황색 계열 적용 */
-	background-color: #fce899 !important;
-	font-weight: bold; /* 선택적으로 폰트도 강조 */
-}
-/* 반응형 */
-@media ( max-width : 1200px) {
-	.stats-row {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media ( max-width : 768px) {
-	.main-layout {
-		flex-direction: column;
-	}
-	.stats-row {
-		grid-template-columns: 1fr;
-	}
-	.content-header {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 16px;
-	}
-	.filter-section {
-		flex-direction: column;
-	}
-	.search-box {
-		width: 100%;
-	}
-}
-</style>
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 </head>
 <body>
 	<div class="content-header">
@@ -266,12 +21,6 @@
 			<button class="btn btn-secondary" onclick="exportData()">
 				<span>📥</span> 내보내기
 			</button>
-			<button class="btn btn-primary" onclick="addUser()">
-				<span>➕</span> 사용자 추가
-			</button>
-			<button class="btn btn-primary" onclick="rollbackRowData()">
-				<span>➕</span> 수정 롤백
-			</button>
 		</div>
 	</div>
 	<div class="stats-row">
@@ -280,7 +29,7 @@
 				<span class="stat-label">전체 팀</span>
 				<div class="stat-icon green"></div>
 			</div>
-			<div class="stat-value">1,284</div>
+			<div class="stat-value total-teams">0</div>
 			<div class="stat-change up">↑ 전월 대비 +12%</div>
 		</div>
 		<div class="stat-card">
@@ -288,7 +37,7 @@
 				<span class="stat-label">활성 팀</span>
 				<div class="stat-icon blue"></div>
 			</div>
-			<div class="stat-value">1,156</div>
+			<div class="stat-value active-teams">0</div>
 			<div class="stat-change up">↑ 전월 대비 +8%</div>
 		</div>
 		<div class="stat-card">
@@ -296,7 +45,7 @@
 				<span class="stat-label">신규 팀</span>
 				<div class="stat-icon yellow"></div>
 			</div>
-			<div class="stat-value">48</div>
+			<div class="stat-value inactive-teams">0</div>
 			<div class="stat-change up">↑ 이번 주</div>
 		</div>
 		<div class="stat-card">
@@ -304,7 +53,7 @@
 				<span class="stat-label">비활성</span>
 				<div class="stat-icon red"></div>
 			</div>
-			<div class="stat-value">128</div>
+			<div class="stat-value weekly-teams">0</div>
 			<div class="stat-change down">↓ 전월 대비 -5%</div>
 		</div>
 	</div>
@@ -315,17 +64,8 @@
 					id="searchInput" placeholder="이름, 이메일로 검색...">
 			</div>
 			<div class="filter-group">
-				<select class="filter-select" id="statusFilter">
-					<option value="">전체 상태</option>
-					<option value="활성">활성</option>
-					<option value="비활성">비활성</option>
-					<option value="대기중">대기중</option>
-				</select> <select class="filter-select" id="roleFilter">
-					<option value="">전체 권한</option>
-					<option value="관리자">관리자</option>
-					<option value="매니저">매니저</option>
-					<option value="일반">일반 사용자</option>
-				</select>
+				<button class="btn btn-secondary" onclick="searchTeam()">
+					검색</button>
 			</div>
 		</div>
 	</div>
@@ -335,15 +75,63 @@
 </body>
 <script>
 
+var teamStats = () => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teamstats.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			// 예: 성공 메시지 표시 또는 페이지 이동
+			$('.total-teams').text(response.totalTeams);
+			$('.inactive-teams').text(response.inactiveTeams);
+			$('.weekly-teams').text(response.weeklyTeams);
+			$('.active-teams').text(response.activeTeams);
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+
+		}
+	}); // $.ajax 끝
+}
+
+searchTeam = () => {
+	const search = $('#searchInput').val();
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teamselects.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			search : search
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			// response는 서버에서 돌려준 데이터입니다.
+			gridTeam.resetData(response);
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
 $(document).ready(function() {
-	
+	teamStats();
     gridTeam = new tui.Grid({
 		el : document.getElementById('gridTeam'),
 		data : {
 			api : {
 				readData : {
-					url : 'https://koreanjson.com/users',
-					method : 'GET',
+					url : 'teamselects.do',
+					method : 'POST',
 				}
 			},
 		},
@@ -351,26 +139,37 @@ $(document).ready(function() {
 		scrollX : true,
 		scrollY : true,
 		columns : [ {
-			header : 'ID',
-			name : 'id'
+			header : '스터디ID',
+			name : 'studyId'
 		}, {
-			header : '이름',
-			name : 'name',
-			editor : 'text'
+			header : '스터디이름',
+			name : 'studyTitle'
 		}, {
-			header : '유저',
-			name : 'username',
-			editor : 'text'
+			header : '카테고리',
+			name : 'studyCategory'
 		}, {
-			header : '이메일',
-			name : 'email',
-			editor : 'text'
+			header : '최대인원',
+			name : 'studyMax'
 		}, {
-			header : '전화번호',
-			name : 'phone',
-			editor : 'text'
-		}]
+			header : '스터디타이틀',
+			name : 'studyIntro'
+		},{
+			header : '스터디내용',
+			name : 'studyIntroContent'
+		},{
+			header : '스터디 생성일',
+			name : 'studyCreateDate'
+		},{
+			header: '비활성화',
+			name: 'grade',
+			width: 150,
+			renderer: {
+				type: CustomTeamBtnRenderer,
+			}
+		}
+		]
 	});
+    CustomTeamBtnRenderer
     gridTeam.on('response', function(ev) {
         let response = ev.xhr.responseText;
         let data = JSON.parse(response);

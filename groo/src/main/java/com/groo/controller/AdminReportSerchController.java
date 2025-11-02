@@ -32,26 +32,26 @@ public class AdminReportSerchController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String serchName = request.getParameter("serchName");
-		
+
 		AdminReportDTO report = new AdminReportDTO();
-		
+
 		report.setReportId(serchName);
 		report.setMemReporter(serchName);
 		report.setMemSuspect(serchName);
 		report.setReportContent(serchName);
 		report.setReportBoard(serchName);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
-		
+
 		try {
 			List<AdminReportDTO> reportList = new ArrayList<>();
 			reportList = service.adminReportSerch(report);
 			Gson gson = new Gson();
 			String json = gson.toJson(reportList);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

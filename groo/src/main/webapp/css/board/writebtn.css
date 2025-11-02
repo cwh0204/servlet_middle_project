@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.write-post-btn {
+	background-color: #4CAF50 !important;
+	border: none !important;
+	box-shadow: none !important;
+	margin-right: 20px;
+}

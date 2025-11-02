@@ -25,7 +25,7 @@
 						<span>유저 관리</span>
 					</div>
 					<div class="submenu-item " data-page="admindisableuser.do">
-						<span>비활성 유저 관리</span>
+						<span>비활성 사용자 관리</span>
 					</div>
 					<div class="submenu-item" data-page="adminuserreport.do">
 						<span>신고 유저 관리</span>
@@ -36,17 +36,31 @@
 				</div>
 			</div>
 		</div>
-		<div class="menu-item" data-page="adminteam.do">
+		<div class="menu-item has-submenu" data-page="adminteam.do">
 			<div class="menu-item-content">
-				<span>팀 관리</span>
+				<span>팀 관리</span> <span class="menu-icon arrow">▶</span>
+			</div>
+			<div>
+				<div class="submenu">
+					<div class="submenu-item " data-page="adminteam.do">
+						<span>팀 관리</span>
+					</div>
+					<div class="submenu-item " data-page="admindisableteam.do">
+						<span>비활성 팀 관리</span>
+					</div>
+					<div class="submenu-item " data-page="adminteammember.do">
+						<span>팀원 관리</span>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="menu-item">
-			<div class="menu-item-content">
+			<div class="menu-item-content" data-page="admindashboard.do">
 				<span>게시판 관리</span>
 			</div>
+
 		</div>
-		<div class="menu-item">
+		<div class="menu-item" data-page="adminnotice.do">
 			<div class="menu-item-content">
 				<span>공지사항 관리</span>
 			</div>

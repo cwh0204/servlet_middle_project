@@ -100,7 +100,7 @@ button:hover {
 </body>
 
 <script>
-<!-- 비밀번호 눈모양 아이콘 -->
+// 비밀번호 눈모양 아이콘 
 const togglePasswordPw = document.getElementById('togglePassword');
 const passwordPw = document.getElementById('pw');
 
@@ -115,11 +115,12 @@ togglePasswordPw.addEventListener('click', () => {
     } else {
         passwordPw.type = 'password';
         togglePasswordPw.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; //안보일때 
+
     }
 });
 
 
-<!-- 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) -->
+// 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) 
  function checkPassword() { 
     const pw = document.getElementById("pw").value;
     
@@ -128,14 +129,13 @@ togglePasswordPw.addEventListener('click', () => {
     const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pw); 
 
     if (!lengthValid || !noSpace || !hasSpecial) {
-/*         alert("비밀번호가 맞지 않습니다."); */
         document.querySelector('input[name="password"]').focus();
         return false; 
     }
 
     
     
- <!-- 비밀번호 팝업창 -->    
+// 비밀번호 팝업창 
 const correctPassword = "123456789!"; 
 
 if (pw === correctPassword) {

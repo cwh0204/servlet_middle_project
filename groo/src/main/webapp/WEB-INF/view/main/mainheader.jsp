@@ -17,12 +17,9 @@
 			<img class="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
-				<div class="menu-item-content" data-page="boardnotice.do">공지사항</div>
-				<div class="menu-item-content" data-page="createteam.do">팀</div>
-				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
-				<div class="menu-item-content" data-page="boardfreehome.do">자유게시판</div>
-				<div class="menu-item-content" data-page="boardintro.do">Groo
-					소개글</div>
+				<div class="menu-item-content" data-page="boardnotice.do">게시판</div>
+				<div class="menu-item-content" data-page="teamcreate.do">팀</div>
+				<div class="menu-item-content" data-page="intro.do">Groo 소개글</div>
 			</div>
 
 			<div class="dropdown">
@@ -31,9 +28,7 @@
 					aria-expanded="false"><i class="bi bi-person-circle fs-3"></i></a>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
-					<li><a class="dropdown-item" data-page="mypage.do">마이 페이지</a></li>
-					<li><a class="dropdown-item" href="#">알림</a></li>
-					<li><a class="dropdown-item" href="#">좋아요</a></li>
+					<li><a class="dropdown-item" data-page="mypagedashboard.do">마이 페이지</a></li>
 				</ul>
 			</div>
 		</div>

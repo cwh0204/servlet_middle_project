@@ -1,0 +1,669 @@
+@charset "UTF-8";
+
+/* 메인 폼 중앙 정렬 */
+main {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 50%, #f0f9ff 100%);
+	padding: 60px 20px;
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 폼 헤더 */
+.form-header {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.form-title {
+	font-size: 36px;
+	font-weight: 800;
+	background: linear-gradient(135deg, #2d3436 0%, #4CAF50 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 12px;
+	letter-spacing: -1px;
+}
+
+/* 섹션 카드 */
+.section-card {
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(10px);
+	border-radius: 24px;
+	padding: 32px;
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-card:hover {
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+	transform: translateY(-2px);
+}
+
+/* 라벨 래퍼 */
+.label-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 16px;
+}
+
+
+.label-wrapper label {
+	font-weight: 700;
+	font-size: 17px;
+	color: #2d3436;
+	margin: 0;
+	letter-spacing: -0.3px;
+}
+
+/* 스터디명 */
+.studyTitle_box {
+	margin-bottom: 32px;
+}
+
+.studyTitle_box input {
+	width: 100%;
+	height: 58px;
+	padding: 0 24px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	border-radius: 16px;
+	outline: none;
+	font-size: 16px;
+	font-weight: 500;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	background: rgba(255, 255, 255, 0.9);
+	color: #2d3436;
+}
+
+.studyTitle_box input:focus {
+	border-color: #4CAF50;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
+	transform: translateY(-1px);
+}
+
+.studyTitle_box input::placeholder {
+	color: #b2bec3;
+	font-weight: 400;
+}
+
+/* 개설 스터디 분야 */
+.teamCategory_box {
+	margin-bottom: 32px;
+}
+
+.category-section {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+/* 큰 카테고리 박스 */
+.category-box {
+	background: rgba(255, 255, 255, 0.6);
+	backdrop-filter: blur(8px);
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	border-radius: 20px;
+	padding: 24px;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+}
+
+.category-box::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, rgba(76, 175, 80, 0.03) 0%, transparent 100%);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.category-box:hover {
+	border-color: rgba(76, 175, 80, 0.3);
+	box-shadow: 0 12px 32px rgba(76, 175, 80, 0.12);
+	transform: translateY(-4px);
+}
+
+.category-box:hover::before {
+	opacity: 1;
+}
+
+/* 큰 카테고리 제목 */
+.category-title {
+	font-weight: 800;
+	color: #2d3436;
+	font-size: 16px;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 2px solid rgba(76, 175, 80, 0.15);
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+/* 세부 항목 그룹 */
+.subcategory-group {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: relative;
+	z-index: 1;
+}
+
+/* 실제 라디오 버튼 숨기기 */
+.subcategory-group input[type="radio"] {
+	display: none;
+}
+
+/* 라벨 기본 모양 */
+.subcategory-group label {
+	padding: 12px 18px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	border-radius: 12px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 14px;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	background: rgba(255, 255, 255, 0.8);
+	color: #636e72;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.subcategory-group label::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: rgba(76, 175, 80, 0.08);
+	transition: width 0.5s ease, height 0.5s ease;
+	transform: translate(-50%, -50%);
+}
+
+/* hover 효과 */
+.subcategory-group label:hover {
+	background: #fff;
+	border-color: rgba(76, 175, 80, 0.3);
+	color: #4CAF50;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);
+}
+
+.subcategory-group label:hover::before {
+	width: 300%;
+	height: 300%;
+}
+
+/* 선택된 상태 */
+.subcategory-group input[type="radio"]:checked + label {
+	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+	color: white;
+	border-color: transparent;
+	font-weight: 700;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(76, 175, 80, 0.25);
+}
+
+/* 하단 섹션 */
+.bottom-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 32px;
+	margin-bottom: 40px;
+}
+
+/* 왼쪽 컬럼 */
+.left-column {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+/* 달력 스타일 */
+.input-daterange {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.date-separator {
+	font-size: 20px;
+	color: #4CAF50;
+	font-weight: 600;
+}
+
+.input-daterange .datepicker-input {
+	flex: 1;
+	padding: 16px 20px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 16px !important;
+	color: #2d3436;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	height: 58px;
+	outline: none;
+}
+
+.input-daterange .datepicker-input:focus {
+	border-color: #4CAF50;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
+	transform: translateY(-1px);
+}
+
+.input-daterange .datepicker-input::placeholder {
+	color: #b2bec3;
+	opacity: 1;
+	font-weight: 500;
+}
+
+/* 모집인원 */
+.membercount_box select {
+	width: 100%;
+	height: 58px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	border-radius: 16px;
+	padding: 0 20px;
+	font-size: 15px;
+	outline: none;
+	background: rgba(255, 255, 255, 0.9);
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	font-weight: 600;
+	color: #2d3436;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 16px center;
+	background-size: 20px;
+	padding-right: 48px;
+}
+
+.membercount_box select:focus {
+	border-color: #4CAF50;
+	background-color: #fff;
+	box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
+	transform: translateY(-1px);
+}
+
+/* 비밀번호 */
+.pw_box .pw_label_wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.pw_checkbox {
+	display: none;
+}
+
+.checkbox_label {
+	position: relative;
+	width: 48px;
+	height: 26px;
+	cursor: pointer;
+	user-select: none;
+	margin: 0;
+	background: rgba(0, 0, 0, 0.08);
+	border-radius: 13px;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox_label::before {
+	content: '';
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #fff;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pw_checkbox:checked + .checkbox_label {
+	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+.pw_checkbox:checked + .checkbox_label::before {
+	left: 25px;
+}
+
+.checkbox_label:hover {
+	background: rgba(0, 0, 0, 0.12);
+}
+
+.pw_checkbox:checked + .checkbox_label:hover {
+	background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+}
+
+.pw_box input[type="text"] {
+	width: 50%;
+	height: 58px;
+	padding: 0 24px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	border-radius: 16px;
+	outline: none;
+	font-size: 15px;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	background: rgba(255, 255, 255, 0.9);
+	font-weight: 600;
+	color: #2d3436;
+}
+
+.pw_box input[type="text"]:disabled {
+	background: rgba(0, 0, 0, 0.02);
+	color: #b2bec3;
+	cursor: not-allowed;
+	border-color: rgba(0, 0, 0, 0.04);
+}
+
+.pw_box input[type="text"]:not(:disabled):focus {
+	border-color: #4CAF50;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
+	transform: translateY(-1px);
+}
+
+.pw_box input[type="text"]::placeholder {
+	color: #b2bec3;
+	font-weight: 400;
+}
+
+/* 오른쪽 컬럼 */
+.right-column {
+	display: flex;
+	flex-direction: column;
+}
+
+/* 스터디 소개 */
+.studycontent_box {
+	height: 100%;
+}
+
+.studycontent_box textarea {
+	width: 100%;
+	height: calc(100% - 60px);
+	min-height: 320px;
+	padding: 24px;
+	border: 2px solid rgba(0, 0, 0, 0.06);
+	border-radius: 16px;
+	outline: none;
+	font-size: 15px;
+	resize: vertical;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	font-family: inherit;
+	background: rgba(255, 255, 255, 0.9);
+	line-height: 1.8;
+	font-weight: 500;
+	color: #2d3436;
+}
+
+.studycontent_box textarea:focus {
+	border-color: #4CAF50;
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
+}
+
+.studycontent_box textarea::placeholder {
+	color: #b2bec3;
+	line-height: 1.8;
+	font-weight: 400;
+}
+
+/* 버튼 그룹 */
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	margin-top: 48px;
+}
+
+.submit-btn,
+.reset-btn {
+	height: 60px;
+	padding: 0 48px;
+	border-radius: 16px;
+	border: none;
+	cursor: pointer;
+	font-size: 17px;
+	font-weight: 700;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	letter-spacing: -0.3px;
+}
+
+.btn-text {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-arrow {
+	font-size: 20px;
+	font-weight: 700;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	z-index: 1;
+}
+
+.submit-btn {
+	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+	color: white;
+	box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.submit-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 12px 32px rgba(76, 175, 80, 0.4);
+}
+
+.submit-btn:hover::before {
+	opacity: 1;
+}
+
+.submit-btn:hover .btn-arrow {
+	transform: translateX(4px);
+}
+
+.submit-btn:active {
+	transform: translateY(-1px);
+}
+
+.reset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* 텍스트와 화살표 간격 */
+    height: 60px;
+    padding: 0 48px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #b0b0b0; /* 밝은 회색 */
+    color: #ffffff; /* 글씨 하얀색 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.reset-btn .btn-arrow {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-image: url('https://i.postimg.cc/905XXpvy/refresh-24dp-1F1F1F.png'); /* 화살표 이미지 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1); /* 화살표 하얀색 */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reset-btn:hover {
+    background-color: #999999; /* 마우스 올리면 살짝 진한 회색 */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.reset-btn:hover .btn-arrow {
+    transform: rotate(90deg);
+}
+
+.reset-btn:active {
+    transform: translateY(-1px);
+}
+
+
+
+
+/* Datepicker 팝업 */
+.datepicker {
+	background: rgba(255, 255, 255, 0.98);
+	backdrop-filter: blur(20px);
+	border-radius: 24px;
+	padding: 24px 28px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.datepicker table tr td.today,
+.datepicker span.focused {
+	border-radius: 50%;
+	background: rgba(76, 175, 80, 0.1);
+	color: #4CAF50;
+	font-weight: 700;
+}
+
+.datepicker table tr td.today.range {
+	background: rgba(76, 175, 80, 0.08);
+	border-radius: 0;
+}
+
+.datepicker thead tr:nth-child(3) th {
+	font-weight: 700;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	color: #4CAF50;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.datepicker .old,
+.datepicker .day,
+.datepicker .new {
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	border: none;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.datepicker .day.old,
+.datepicker .day.new {
+	background: transparent;
+	color: #b2bec3;
+}
+
+.datepicker .old-day:hover,
+.datepicker .day:hover,
+.datepicker .new-day:hover {
+	border-radius: 12px;
+	background: rgba(76, 175, 80, 0.08);
+	transform: scale(1.05);
+	color: #4CAF50;
+}
+
+.datepicker .active {
+	border-radius: 12px;
+	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+	color: #fff;
+	transform: scale(1.05);
+	box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+	font-weight: 700;
+}
+
+.datepicker .range-start,
+.datepicker .range-end {
+	border-radius: 12px;
+	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+	color: #fff;
+	transform: scale(1.05);
+	box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.datepicker .range {
+	background: rgba(76, 175, 80, 0.08);
+	color: #4CAF50;
+}
+
+.datepicker .prev,
+.datepicker .next,
+.datepicker .datepicker-switch {
+	border-radius: 12px;
+	padding: 12px;
+	font-size: 16px;
+	color: #4CAF50;
+	font-weight: 700;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.datepicker .prev:hover,
+.datepicker .next:hover,
+.datepicker .datepicker-switch:hover {
+	background: rgba(76, 175, 80, 0.08);
+	transform: scale(1.05);
+}
+
+
+.input-icon {
+    width: 25px;  /* 라벨 글씨 크기와 맞춤 */
+    height: 25px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+
+

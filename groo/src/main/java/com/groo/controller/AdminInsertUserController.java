@@ -36,9 +36,9 @@ public class AdminInsertUserController implements Controller {
 		String memEmail = request.getParameter("memEmail");
 		String memPhone = request.getParameter("memPhone");
 		String memAddr = request.getParameter("memAddr");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(memLoginId);
 		member.setMemName(memName);
 		member.setMemPass(memPass);
@@ -46,17 +46,17 @@ public class AdminInsertUserController implements Controller {
 		member.setMemEmail(memEmail);
 		member.setMemPhone(memPhone);
 		member.setMemAddr(memAddr);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
 			service.adminInsertUser(member);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
