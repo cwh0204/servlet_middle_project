@@ -54,7 +54,13 @@
 	<select id="selectUserDetail" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	SELECT MEM_LOGIN_ID
            ,MEM_NAME
+           ,MEM_NICK
+           ,MEM_PHONE
+           ,MEM_PASS
            ,MEM_BIRTH
+           ,MEM_EMAIL
+           ,MEM_ADDR
+           ,MEM_INTEREST
       FROM MEMBER
      WHERE MEM_LOGIN_ID=#{memLoginId}
     </select>

@@ -17,15 +17,16 @@
                 <span>❤️ 2,134</span> <span>🗓️ 2024년 03월 15일 생성</span> <span># IT/개발</span> </div>
         </div>
         
-        <div class="team-leader">
-            <p>팀 반장</p>
-            <img src="images/leader_profile.png" alt="반장 프로필" class="member-profile-img">
-            <strong>김철수</strong> 
-            <span>(팀장/Chief)</span>
+        <div class="team-leader-card">
+            <img src="images/leader_profile.png" alt=" 팀장 프로필" class="leader-photo">
+            <div class="leader-info">
+            	<h3 class="leader-name">김철수</h3> 
+            	<p class="leader-role">팀장 / Chief</p>
+            </div>
         </div>
     </section>
 
-    
+  <div class="team-info">  
     <section class="team-introduction">
         <h2>팀 소개</h2>
         <p class="summary">
@@ -75,6 +76,6 @@
     			</div>
     		</li>
     	</ul>
-   </section>
-
+    </section>
+  </div>
 </html>
