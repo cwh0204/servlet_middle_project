@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
-import com.groo.error.InternalServiceException;
 import com.groo.model.TeamAvgDTO;
 import com.groo.model.TeamDTO;
 

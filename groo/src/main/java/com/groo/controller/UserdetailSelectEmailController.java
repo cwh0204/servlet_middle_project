@@ -20,28 +20,28 @@ public class UserdetailSelectEmailController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String memEmail = request.getParameter("memEmail");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemEmail(memEmail);
-		
+
 		MemberService service = new MemberServiceImpl();
-		
+
 		 try {
 			 MemberDTO memberEmail = service.selectUserEmailCheck(member);
-			 
+
 			 response.setContentType("application/json");
 			 response.setCharacterEncoding("UTF-8");
-			 
+
 			 Gson gson = new Gson();
 			 String json = gson.toJson(memberEmail);
-			 
+
 			 PrintWriter out = response.getWriter();
 				out.print(json);
 				out.flush();
-				
+
 		 } catch (InternalServiceException ise) {
 			 ise.printStackTrace();
 			 ErrorDTO error = new ErrorDTO();

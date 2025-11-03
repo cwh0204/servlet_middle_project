@@ -49,5 +49,32 @@
             <a href="https://github.com/dummy-frontend-team" target="_blank">🔗 GitHub (코드 저장소)</a>
         </div>
     </section>
+    
+   	<section class="team-schedule">
+    	<h2>스터디 일정표</h2>
+    	<ul class="schedule-list">
+    		<li>
+    			<div class="schedule-date">2025-11-8 (토)</div>
+    			<div class="schedule-content">
+    				<strong>프로젝트 구조 설계 회의</strong>
+    				<span>참여자 전원</span>
+    			</div>
+    		</li>
+    		<li>
+    			<div class="schedule-date">2025-11-15 (토)</div>
+    			<div class="schedule-content">
+    				<strong>리액트 Hook 정리 발표</strong>
+    				<span>발표자: 김리액트</span>
+    			</div>
+    		</li>
+    		<li>
+    			<div class="schedule-date">2025-11-22 (토)</div>
+    			<div class="schedule-content">
+    				<strong>Recoil 코딩</strong>
+    				<span>참여자 전원</span>
+    			</div>
+    		</li>
+    	</ul>
+   </section>
 
 </html>

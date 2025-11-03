@@ -8,7 +8,7 @@ import com.groo.model.ReportDTO;
  *	신고에 대한 요청의 데이터 처리를 수행하기위한 클래스 구현체로 신고의 조회,추가,수정,삭제 관련 서비스를 처리함
  */
 public class ReportDAOImpl implements ReportDAO {
-	
+
 	/**
 	 * 유저의 신고를 저장하는 메서드
 	 * @param 신고에 대한 정보를 가져오기 위한 Data Transfer Object 데이터 클래스

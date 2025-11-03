@@ -47,7 +47,7 @@ public class TeamServiceImpl implements TeamService{
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 팀 목록을 조회하는 서비스 메서드입니다.
 	 *

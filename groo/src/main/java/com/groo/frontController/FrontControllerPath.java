@@ -48,6 +48,7 @@ import com.groo.controller.TeamSelectMyTeamController;
 import com.groo.controller.TeamStatsController;
 import com.groo.controller.UserdetailSelectEmailController;
 import com.groo.controller.UserdetailSelectNicknameController;
+import com.groo.controller.UserdetailSelectUserListController;
 
 public class FrontControllerPath {
 
@@ -65,11 +66,12 @@ public class FrontControllerPath {
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
 
-        //이수민
+        //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
         controllerMap.put("/usernicknamecheck.do", new UserdetailSelectNicknameController());
         controllerMap.put("/useremailcheck.do", new UserdetailSelectEmailController());
+        controllerMap.put("/userdetailselect.do", new UserdetailSelectUserListController());
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
@@ -109,7 +111,7 @@ public class FrontControllerPath {
 
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
-        
+
         //관리자 관련 API
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
@@ -124,7 +126,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
-        
+
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());
     }

@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class ReportInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 신고 요청을 저장하고 JSON 응답을 생성합니다.
 	 *
@@ -35,13 +35,13 @@ public class ReportInsertController implements Controller {
 		String boardId = request.getParameter("boardId");
 		String comentId = request.getParameter("comentId");
 		String reportContent = request.getParameter("reportContent");
-		
+
 		ReportDTO report = new ReportDTO();
 		report.setMemReporter(memReporter);
 		report.setBoardId(boardId);
 		report.setComentId(comentId);
 		report.setReportContent(reportContent);
-		
+
 		ReportService service = new ReportServiceImpl();
 		try {
 

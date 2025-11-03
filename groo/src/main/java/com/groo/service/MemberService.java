@@ -10,6 +10,7 @@ public interface MemberService {
 
 	public MemberDTO selectUserNicknameCheck(MemberDTO member);
 	public MemberDTO selectUserEmailCheck(MemberDTO member);
+	public MemberDTO selectUserDetail(MemberDTO member);
 
 	//일반 로그인
 	public MemberDTO selectLoginMember(MemberDTO member);

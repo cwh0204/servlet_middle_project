@@ -28,11 +28,11 @@
 					<div class="user_attribute">
 						<div class="input-group">
 							<label>아이디</label> <input type="text" name="userID"
-								value="" disabled>
+								value="" readonly>
 						</div>
 						<div class="input-group">
 							<label>이름</label> <input type="text" name="irum" value=""
-								disabled>
+								readonly>
 						</div>
 						
 						<div class="input-group">
@@ -90,10 +90,10 @@
 					<label>주민등록번호</label>
 					<div style="display: flex; align-items: center; gap: 5px;">
 						<input type="text" name="jumin_front" maxlength="6"
-							placeholder="123456" disabled
+							placeholder="123456" readonly
 							style="width: 120px; text-align: center;"> <span>-</span>
 						<input type="password" name="jumin_back" maxlength="1"
-							placeholder="●" disabled style="width: 50px; text-align: center;">
+							placeholder="●" readonly style="width: 50px; text-align: center;">
 						<span>******</span>
 					</div>
 				</div>

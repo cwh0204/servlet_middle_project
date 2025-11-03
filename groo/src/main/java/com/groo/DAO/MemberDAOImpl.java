@@ -99,7 +99,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 닉네임 정보를 리턴
 	 */
-	
+
 	@Override
 	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
 		MemberDTO memberNickname = new MemberDTO();
@@ -127,10 +127,29 @@ public class MemberDAOImpl implements MemberDAO{
 			return memberEmail;
 		}
 	}
+
+	/**
+	 * 아이디, 이름, 주민등록번호를 가져오는 메서드
+	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 아이디 정보를 리턴
+	 */
+	@Override
+	public MemberDTO selectUserDetail(MemberDTO member, SqlSession session) {
+		MemberDTO userselect = new MemberDTO();
+		try {
+			userselect = session.selectOne("selectUserDetail", member);
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:selectUserDetail 예외발생", e);
+		}
+
+		return userselect;
+	}
 }
 
 
-	 
+
 
 
 

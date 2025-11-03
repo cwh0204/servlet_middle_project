@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class TeamInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀을 생성하고 JSON 응답을 생성합니다.
 	 *
@@ -36,36 +36,36 @@ public class TeamInsertController implements Controller {
 		String studyMax = request.getParameter("studyMax");
 		String studyPass = request.getParameter("studyPass");
 		String studyIntro = request.getParameter("studyIntro");
-		
+
 		String memId = request.getParameter("memId");
-		
+
 		TeamDTO team = new TeamDTO();
 		team.setStudyTitle(studyTitle);
 		team.setStudyCategory(studyCategory);
-		
+
 		if(studyMax != null && !studyMax.isEmpty()) {
 			int serchMax = Integer.parseInt(studyMax);
 			team.setStudyMax(serchMax);
 		}
 		team.setStudyPass(studyPass);
 		team.setStudyIntro(studyIntro);
-		
+
 		TeamMemberDTO teamMember = new TeamMemberDTO();
 		teamMember.setMemId(memId);
 		teamMember.setStudyRoll("L");
-		
+
 		TeamService service = new TeamServiceImpl();
-		
+
 		try {
-			
+
 			service.insertTeam(team,teamMember);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

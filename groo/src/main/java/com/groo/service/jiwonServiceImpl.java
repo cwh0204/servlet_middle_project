@@ -10,9 +10,9 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.MemberDTO;
 
 public class jiwonServiceImpl implements jiwonService {
-	
+
 	jiwonDAO dao = new jiwonDAOImpl();
-	
+
 	@Override
 	public void insertMember(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();

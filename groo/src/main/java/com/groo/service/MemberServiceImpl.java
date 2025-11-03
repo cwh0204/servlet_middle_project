@@ -172,7 +172,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	public MemberDTO selectUserEmailCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO memberEmail = new MemberDTO();
-		
+
 		try {
 			memberEmail = dao.selectUserEmailCheck(member, session);
 		}catch (Exception e) {
@@ -180,8 +180,35 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		} finally {
 			session.close();
 		}
-		
+
 		return memberEmail;
+	}
+
+	/**
+	 * 아이디, 이름, 주민등록번호를 확인하기 위한 서비스 메서드
+	 * @param member는 유저를 조회 하기 위한 Data Transfer Object 데이터 클래스
+	 * @return 아이디정보를 리턴
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public MemberDTO selectUserDetail(MemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		MemberDTO userselect = new MemberDTO();
+
+		try {
+			userselect = dao.selectUserDetail(member, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return userselect;
 	}
 
 }
