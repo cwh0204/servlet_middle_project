@@ -18,13 +18,13 @@
 			</div>
 		</div>
 		
-		<div class="menu-item" data-page="teamdetailmemlist"> <!-- 선택한 팀의 아이디를 받아와야함 -->
+		<div class="menu-item" data-page="teamdetailmemlist.do"> <!-- 선택한 팀의 아이디를 받아와야함 -->
 			<div class="menu-item-content">
 				<span>팀 인원</span>
 			</div>
 		</div>
 
-		<div class="menu-item" data-page="teamboard"> <!-- 선택한 팀의 아이디를 받아와야함 -->
+		<div class="menu-item" data-page="teamboard.do"> <!-- 선택한 팀의 아이디를 받아와야함 -->
 			<div class="menu-item-content">
 				<span>팀 게시판</span>
 			</div>
