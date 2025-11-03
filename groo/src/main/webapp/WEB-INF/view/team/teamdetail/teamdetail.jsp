@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="css/team/team.css" rel="stylesheet">
 </head>
 <body>
-
-<%@ include file="teamdetailnav.jsp"%>
-
+	<div class="teamcontainer">
+		<%@ include file="teamdetailnav.jsp"%>
+		<div class="teamcontent">
+			<%@ include file="teamdetailhome.jsp"%>
+		</div>
+	</div>
 </body>
 </html>
