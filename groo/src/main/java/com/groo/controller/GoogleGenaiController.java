@@ -2,13 +2,9 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import com.google.genai.Client;
-import com.google.genai.types.Candidate;
-import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentResponse;
-import com.google.genai.types.Part;
 import com.google.gson.Gson;
 
 import jakarta.servlet.ServletException;
@@ -20,18 +16,18 @@ public class GoogleGenaiController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			
+
 			String userQuestion = request.getParameter("userQuestion");
 			// 1. Client 생성: 환경 변수 GOOGLE_API_KEY를 자동으로 사용합니다.
-			
+
 			/*
 			 * String apiKey = System.getenv("GOOGLE_API_KEY");
 			 * System.out.println("환경변수 확인"+apiKey);
 			 */
-			
+
 			Client client = new Client();
 			// 2. API 호출
-			
+
 			GenerateContentResponse geminiResponse = client.models.generateContent("gemini-2.5-flash",
 					userQuestion, null);
 			// 3. 응답 파싱 (Optional 객체를 안전하게 해제)
@@ -44,7 +40,7 @@ public class GoogleGenaiController implements Controller {
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(generatedText);
 			PrintWriter out = response.getWriter();

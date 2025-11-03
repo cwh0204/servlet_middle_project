@@ -47,7 +47,7 @@ public class ComentDAOImpl implements ComentDAO {
 		}
 		return comentList;
 	}
-	
+
 	/**
 	 * 댓글 삭제 메서드
 	 * @param coment 삭제 정보를 가져오기 위한 Date Transfer Object 데이터 클래스
@@ -62,7 +62,7 @@ public class ComentDAOImpl implements ComentDAO {
 			throw new InternalDataAccessException("DAO:comentDelete 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 댓글 수정 메서드
 	 * @param coment 수정 정보를 가져오기 위한 Date Transfer Object 데이터 클래스

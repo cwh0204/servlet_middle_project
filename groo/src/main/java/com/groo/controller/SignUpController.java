@@ -3,7 +3,6 @@ package com.groo.controller;
 import java.io.IOException;
 
 import com.groo.model.MemberDTO;
-import com.groo.service.MemberServiceImpl;
 import com.groo.service.jiwonService;
 import com.groo.service.jiwonServiceImpl;
 

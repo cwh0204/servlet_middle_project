@@ -1,6 +1,5 @@
 package com.groo.DAO;
 
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
@@ -10,7 +9,7 @@ public class jiwonDAOImpl implements jiwonDAO {
 
 	@Override
 	public void insertMember(MemberDTO member, SqlSession session) {
-		
+
 		try {
 			session.insert("insertMember", member);
 
@@ -22,9 +21,9 @@ public class jiwonDAOImpl implements jiwonDAO {
 
 	@Override
 	public MemberDTO selectLoginId(MemberDTO member, SqlSession session) {
-		
+
 		MemberDTO memberLoginId = new MemberDTO();
-		
+
 		try {
 			memberLoginId = session.selectOne("selectLoginId", member);
 
@@ -37,9 +36,9 @@ public class jiwonDAOImpl implements jiwonDAO {
 
 	@Override
 	public MemberDTO selectEmail(MemberDTO member, SqlSession session) {
-		
+
 		MemberDTO memberEmail = new MemberDTO();
-		
+
 		try {
 			memberEmail = session.selectOne("selectEmail", member);
 

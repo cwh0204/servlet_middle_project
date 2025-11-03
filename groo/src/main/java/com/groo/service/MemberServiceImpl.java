@@ -172,7 +172,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	public MemberDTO selectUserEmailCheck(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO memberEmail = new MemberDTO();
-		
+
 		try {
 			memberEmail = dao.selectUserEmailCheck(member, session);
 		}catch (Exception e) {
@@ -180,7 +180,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		} finally {
 			session.close();
 		}
-		
+
 		return memberEmail;
 	}
 
@@ -195,7 +195,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	public MemberDTO selectUserDetail(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
 		MemberDTO userselect = new MemberDTO();
-		
+
 		try {
 			userselect = dao.selectUserDetail(member, session);
 			session.commit();

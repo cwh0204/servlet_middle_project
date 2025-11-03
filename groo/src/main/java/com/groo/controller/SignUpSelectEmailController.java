@@ -24,10 +24,10 @@ public class SignUpSelectEmailController implements Controller {
 
 		MemberDTO member = new MemberDTO();
 		member.setMemEmail(memEmail);
-		
+
 		jiwonService service = new jiwonServiceImpl();
 		HttpSession session = request.getSession();
-		
+
 		try {
 
 			MemberDTO checkEmail = service.selectEmail(member);

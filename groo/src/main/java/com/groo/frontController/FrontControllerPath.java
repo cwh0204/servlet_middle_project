@@ -109,7 +109,7 @@ public class FrontControllerPath {
 
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
-        
+
         //관리자 관련 API
         controllerMap.put("/adminuserselectall.do", new AdminSelectUserAllController());
         controllerMap.put("/adminuserselectcheck.do", new AdminSelectUserInsertCheckController());
@@ -124,7 +124,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
 
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
-        
+
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());
     }

@@ -70,7 +70,7 @@ public class ComentServiceImpl implements ComentService {
 		}
 		return comentList;
 	}
-	
+
 	/**
 	 * 댓글 삭제 서비스 메서드입니다.
 	 *

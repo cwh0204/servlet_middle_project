@@ -21,14 +21,14 @@ public class SignUpSelectLoginIdController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String memLoginId = request.getParameter("memLoginId");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(memLoginId);
-		
+
 		jiwonService service = new jiwonServiceImpl();
 		HttpSession session = request.getSession();
-		
+
 		try {
 
 			MemberDTO checkLoginId = service.selectLoginId(member);

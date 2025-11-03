@@ -3,10 +3,6 @@ package com.groo.controller;
 import java.io.IOException;
 import java.util.Random;
 
-import com.groo.service.MemberServiceImpl;
-import com.groo.service.jiwonService;
-import com.groo.service.jiwonServiceImpl;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,7 +27,7 @@ public class SendEmailAuthController implements Controller {	// 인증번호 발
 		/*
 		 * jiwonService service = new jiwonServiceImpl(); boolean result =
 		 * service.selectEmailService(email, authCode);
-		 * 
+		 *
 		 * response.setContentType("text/plain; charset=utf-8"); if(result) {
 		 * response.getWriter().write("success"); }else {
 		 * response.getWriter().write("fail"); }

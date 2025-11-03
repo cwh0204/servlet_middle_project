@@ -10,9 +10,9 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.ReportDTO;
 
 public class ReportServiceImpl implements ReportService {
-	
+
 	ReportDAO dao = new ReportDAOImpl();
-	
+
 	/**
 	 * 신고 등록 서비스 메서드입니다.
 	 *

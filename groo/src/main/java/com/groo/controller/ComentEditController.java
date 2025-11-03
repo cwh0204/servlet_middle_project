@@ -25,13 +25,13 @@ public class ComentEditController implements Controller {
 		// TODO Auto-generated method stub
 		String comentId = request.getParameter("comentId");
 		String comentContent = request.getParameter("comentContent");
-		
+
 		ComentDTO coment = new ComentDTO();
 		coment.setComentId(comentId);
 		coment.setComentContent(comentContent);
-		
+
 		ComentService service = new ComentServiceImpl();
-		
+
 		try {
 			service.comentEdit(coment);
 			Gson gson = new Gson();

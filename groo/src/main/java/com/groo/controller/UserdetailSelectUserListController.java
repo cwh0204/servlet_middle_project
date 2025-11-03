@@ -23,22 +23,22 @@ public class UserdetailSelectUserListController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memLoginId = request.getParameter("memLoginId");
-		
+
 		MemberDTO member = new MemberDTO();
-		
+
 		member.setMemLoginId(memLoginId);
-		
+
 		MemberService service = new MemberServiceImpl();
-		
+
 		try {
 			MemberDTO userselect = service.selectUserDetail(member);
-			
+
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(userselect);
-			
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();

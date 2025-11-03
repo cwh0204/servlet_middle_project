@@ -99,7 +99,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 닉네임 정보를 리턴
 	 */
-	
+
 	@Override
 	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session) {
 		MemberDTO memberNickname = new MemberDTO();
@@ -149,7 +149,7 @@ public class MemberDAOImpl implements MemberDAO{
 }
 
 
-	 
+
 
 
 

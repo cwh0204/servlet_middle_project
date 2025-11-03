@@ -24,12 +24,12 @@ public class ComentDeleteController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String comentId = request.getParameter("comentId");
-		
+
 		ComentDTO coment = new ComentDTO();
 		coment.setComentId(comentId);
-		
+
 		ComentService service = new ComentServiceImpl();
-		
+
 		try {
 			service.comentDelete(coment);
 			Gson gson = new Gson();
