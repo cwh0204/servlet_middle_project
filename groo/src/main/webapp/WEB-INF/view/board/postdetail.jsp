@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/board/postdetail.css">
 </head>
 <body>
-
+<% %>
 	<div class="view-container">
 
 		<div class="board-header">

@@ -14,42 +14,6 @@
 				<span>전체보기</span>
 			</div>
 		</div>
-		<div class="menu-item has-submenu" data-page="mypageprofile.do">
-			<div class="menu-item-content">
-				<span>프로필</span>
-			</div>
-			<div>
-				<div class="submenu">
-					<div class="submenu-item " data-page="mypageprofile.do">
-						<span>내 프로필</span>
-					</div>
-					<div class="submenu-item" data-page="userdetail.do">
-						<span>회원상세페이지</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="menu-item has-submenu" data-page="">
-			<div class="menu-item-content">
-				<span>나의 스터디</span>
-			</div>
-			<div>
-				<div class="submenu">
-					<div class="submenu-item " data-page="">
-						<span>스터디 일정표</span>
-					</div>
-					<div class="submenu-item" data-page="">
-						<span>참여중인 스터디</span>
-					</div>
-					<div class="submenu-item" data-page="">
-						<span>나의 관심스터디</span>
-					</div>
-					<div class="submenu-item" data-page="">
-						<span>스터디 탈퇴</span>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="menu-item has-submenu">
 			<div class="menu-item">
 				<div class="menu-item-content">

@@ -141,6 +141,10 @@ input[type="submit"]:hover {
    border: 0;
 }
 
+#emailMessage {
+    white-space: nowrap;
+}
+
 #emailVerify {
 	display: none;
 	overflow: hidden;

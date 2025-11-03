@@ -121,7 +121,7 @@ function validateJumin() {
  * 회원가입 요청
  * (인증 완료 및 유효성 검사가 끝난 후 호출됨)
  */
-var signUpUser = (userIdValue, userPwValue, userNameValue, userEmail, userjumin1Value, userGender) => {
+var signUpUser = (userIdValue, userPw1Value, userNameValue, userEmail, userjumin1Value, userGender) => {
 	
 	$.ajax({
 		// 데이터를 전송할 서버 URL
@@ -131,7 +131,7 @@ var signUpUser = (userIdValue, userPwValue, userNameValue, userEmail, userjumin1
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
 			userLoginId: userIdValue,
-			userPass: userPwValue,
+			userPass: userPw1Value,
 			userName: userNameValue,
 			userEmail: userEmail,
 			userBirth: userjumin1Value, 
@@ -157,7 +157,8 @@ var signUpUser = (userIdValue, userPwValue, userNameValue, userEmail, userjumin1
  */
 var signUpUserValidation = () => {
 	const userIdValue = $('#userId').val();
-	const userPwValue = $('#pass2').val();
+	const userPw1Value = $('#pass1').val();
+	const userPw2Value = $('#pass2').val();
 	const userNameValue = $('#name').val();
 	const userjumin1Value = $('#jumin1').val(); 
 	const jumin2Value = $('#jumin2').val();
@@ -221,7 +222,7 @@ var signUpUserValidation = () => {
 
 	}
 	
-	signUpUser(userIdValue, userPwValue, userNameValue, userEmail, userjumin1Value, userGender);
+	signUpUser(userIdValue, userPw1Value, userNameValue, userEmail, userjumin1Value, userGender);
 }
 
 
@@ -385,7 +386,7 @@ $(document).ready(() => {
 	}
 
 	// 이메일 중복확인 함수 
-	$('#emailId, #emailDomain').on('blur', function() {
+	$('#emailId, #emailDomain, #emailDomainSelect').on('blur change', function() {
 		const emailId = $('#emailId').val().trim();
 		const emailDomain = $('#emailDomain').val().trim();
 		const memEmail = emailId + '@' + emailDomain;
