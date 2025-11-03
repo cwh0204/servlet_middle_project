@@ -19,19 +19,13 @@
 
 		<div class="menu-item" data-page="boardfreehome.do">
 			<div class="menu-item-content">
-				<span>자유게시판</span>
-			</div>
-		</div>
-
-		<div class="menu-item" data-page="boardteamhome.do">
-			<div class="menu-item-content">
-				<span>팀 게시판</span>
+				<span>자유 게시판</span>
 			</div>
 		</div>
 
 		<div class="menu-item" data-page="boardgoalhome.do">
 			<div class="menu-item-content">
-				<span>성과게시판</span>
+				<span>베스트 게시판</span>
 			</div>
 		</div>
 	</aside>
