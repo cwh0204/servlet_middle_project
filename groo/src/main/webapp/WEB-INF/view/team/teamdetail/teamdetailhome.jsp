@@ -4,16 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팀 디테일 - 프론트엔드 개발 스터디</title>
-<link href="css/TeamDetail.css" rel="stylesheet"> 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="css/team/myteam/teamdetail.css" rel="stylesheet">
-</head>
-<body>
-
-<div class="team-detail-page">
-    
-    <section class="team-header">
+<title>team create</title>
+</body>
+<section class="team-header">
         <img src="images/team_frontend_logo.png" alt="팀 프로필" class="team-profile-img">
         
         <div class="header-content">
@@ -56,23 +50,4 @@
         </div>
     </section>
 
-</div>
-
-
-<script>
-$(document).ready(function() {
-    $('.tab-button').on('click', function() {
-        // 탭 버튼 활성화/비활성화
-        $('.tab-button').removeClass('active');
-        $(this).addClass('active');
-
-        // 해당 탭 내용 표시/숨김
-        const tabId = $(this).data('tab');
-        $('.tab-content > div').removeClass('active');
-        $('#' + tabId).addClass('active');
-    });
-});
-</script>
-
-</body>
 </html>
