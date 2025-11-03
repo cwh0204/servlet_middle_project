@@ -37,6 +37,7 @@
 						
 						<div class="input-group">
 							<label>닉네임</label> <input type="text" id="userNick" name="name" value="">
+							<span id="nickMsg" style="font-size: 12px; display: block; margin-top: 5px;"></span>
 						</div>
 						
 						<div class="input-group">

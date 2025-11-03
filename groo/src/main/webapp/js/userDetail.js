@@ -1,7 +1,7 @@
 //닉네임 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
-//let NicknameCheck = false;
+let NicknameCheck = false;
 //닉네임 형식 유효성 통과 상태 (정규식 통과)
-//let NickValid = false;
+let NickValid = false;
 
 /**
  * 닉네임 중복 확인 요청
@@ -9,49 +9,49 @@
  */
 
 
-//var testAjax = () => {
-//	$.ajax({
-//		//데이터를 전송할 서버 URL
-//		url: 'usernicknamecheck.do',
-//		type: 'POST',
-//		data: {
-//			memNick: "수민"
-//		},
-//
-//		success: function(response) {
-//			console.log(response);
-//		},
-//		error: function(xhr, status, error) {
-//			console.error("닉네임 중복 확인 통신 실패:", status, error);
-//		}
-//	});
-//}
-//
-//var nicknameCheck = (memNick) => {
-//
-//	$.ajax({
-//		//데이터를 전송할 서버 URL
-//		url: 'selectUserNicknameCheck.do',
-//		type: 'POST',
-//		data: {
-//			memNick: memNick
-//		},
-//
-//		success: function(response) {
-//			if (response == "yes") {
-//				alert('사용할 수 있는 닉네임입니다.✅');
-//				NicknameCheck = true; //중복확인 완료
-//			} else {
-//				alert('이미 사용 중인 닉네임입니다.❌');
-//				NicknameCheck = false; //사용 불가
-//			}
-//		},
-//		error: function(xhr, status, error) {
-//			console.error("닉네임 중복 확인 통신 실패:", status, error);
-//			alert('닉네임 확인 중 오류가 발생했습니다.');
-//		}
-//	});
-//}
+var testAjax = () => {
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: 'usernicknamecheck.do',
+		type: 'POST',
+		data: {
+			memNick: "수민"
+		},
+
+		success: function(response) {
+			console.log(response);
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+		}
+	});
+}
+
+var nicknameCheck = (memNick) => {
+
+	$.ajax({
+		//데이터를 전송할 서버 URL
+		url: 'selectUserNicknameCheck.do',
+		type: 'POST',
+		data: {
+			memNick: memNick
+		},
+
+		success: function(response) {
+			if (response == "yes") {
+				alert('사용할 수 있는 닉네임입니다.✅');
+				NicknameCheck = true; //중복확인 완료
+			} else {
+				alert('이미 사용 중인 닉네임입니다.❌');
+				NicknameCheck = false; //사용 불가
+			}
+		},
+		error: function(xhr, status, error) {
+			console.error("닉네임 중복 확인 통신 실패:", status, error);
+			alert('닉네임 확인 중 오류가 발생했습니다.');
+		}
+	});
+}
 
 //이메일 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
 let EmailCheck = false;
@@ -90,88 +90,88 @@ let EmailValid = false;
 //};
 //-------------------------------------------------------------------------
 
-var emailCheck = (memEmail) => {
-    $.ajax({
-        url: 'useremailcheck.do',
-        type: 'POST',
-        data: { memEmail: memEmail },
-        dataType: 'json',
-        success: function(response) {
-            console.log("서버 응답:", response);
-            
-            // DB에 존재하는 경우 (회원가입일 또는 탈퇴일이 있으면)
-            if (response.memSignupSysdate !== 0 || response.memOutDate !== 0) {
-                $("#emailMsg").text("이미 존재하는 이메일입니다.❌").css("color", "#dc3545");
-                EmailCheck = false;
-            } else {
-                $("#emailMsg").text("사용가능한 이메일입니다.✅").css("color", "#28a745");
-                EmailCheck = true;
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("이메일 중복 확인 실패:", status, error);
-            alert("이메일 확인 중 오류가 발생했습니다.");
-            EmailCheck = false;
-        }
-    });
-};
+//var emailCheck = (memEmail) => {
+//    $.ajax({
+//        url: 'useremailcheck.do',
+//        type: 'POST',
+//        data: { memEmail: memEmail },
+//        dataType: 'json',
+//        success: function(response) {
+//            console.log("서버 응답:", response);
+//            
+//            // DB에 존재하는 경우 (회원가입일 또는 탈퇴일이 있으면)
+//            if (response.memSignupSysdate !== 0 || response.memOutDate !== 0) {
+//                $("#emailMsg").text("이미 존재하는 이메일입니다.❌").css("color", "#dc3545");
+//                EmailCheck = false;
+//            } else {
+//                $("#emailMsg").text("사용가능한 이메일입니다.✅").css("color", "#28a745");
+//                EmailCheck = true;
+//            }
+//        },
+//        error: function(xhr, status, error) {
+//            console.error("이메일 중복 확인 실패:", status, error);
+//            alert("이메일 확인 중 오류가 발생했습니다.");
+//            EmailCheck = false;
+//        }
+//    });
+//};
 
-// 이메일 중복 확인 테스트용 AJAX 함수
-var testAjax = () => {
-    $.ajax({
-        url: 'useremailcheck.do',
-        type: 'POST',
-        data: {
-            memEmail: 'sum@naver.com'
-        },
-        success: function(response) {
-            console.log(response);
-
-            if(response.exists) {
-                console.log("이미 존재하는 이메일입니다.");
-            } else {
-                console.log("사용 가능한 이메일입니다.");
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("이메일 중복 확인 통신 실패:", status, error);
-        }
-    });
-};
-
-// DOM 로드 완료 후 이벤트 바인딩
-$(function() {
-    // 이메일 도메인 입력창에서 포커스 아웃될 때 자동 중복 확인
-    $("#emailDomain").on("blur", function() {
-        const emailId = $("#emailId").val().trim();
-        const emailDomain = $("#emailDomain").val().trim();
-        const memEmail = `${emailId}@${emailDomain}`;
-
-        // 입력값 검증
-        if (!emailId || !emailDomain) {
-            $("#emailMsg").text("이메일을 모두 입력해주세요.⚠️").css("color", "#ffc107");
-            return;
-        }
-
-        // 이메일 형식 검증
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(memEmail)) {
-            $("#emailMsg").text("올바른 이메일 형식이 아닙니다.⚠️").css("color", "#ffc107");
-            EmailValid = false;
-            return;
-        }
-        
-        EmailValid = true;
-        emailCheck(memEmail);
-    });
-    
-    // 이메일 입력 필드 변경 시 중복확인 상태 초기화
-    $("#emailId, #emailDomain").on("input change", function() {
-        EmailCheck = false;
-        EmailValid = false;
-        $("#emailMsg").text("").css("color", "");
-    });
-});
+//// 이메일 중복 확인 테스트용 AJAX 함수
+//var testAjax = () => {
+//    $.ajax({
+//        url: 'useremailcheck.do',
+//        type: 'POST',
+//        data: {
+//            memEmail: 'sum@naver.com'
+//        },
+//        success: function(response) {
+//            console.log(response);
+//
+//            if(response.exists) {
+//                console.log("이미 존재하는 이메일입니다.");
+//            } else {
+//                console.log("사용 가능한 이메일입니다.");
+//            }
+//        },
+//        error: function(xhr, status, error) {
+//            console.error("이메일 중복 확인 통신 실패:", status, error);
+//        }
+//    });
+//};
+//
+//// DOM 로드 완료 후 이벤트 바인딩
+//$(function() {
+//    // 이메일 도메인 입력창에서 포커스 아웃될 때 자동 중복 확인
+//    $("#emailDomain").on("blur", function() {
+//        const emailId = $("#emailId").val().trim();
+//        const emailDomain = $("#emailDomain").val().trim();
+//        const memEmail = `${emailId}@${emailDomain}`;
+//
+//        // 입력값 검증
+//        if (!emailId || !emailDomain) {
+//            $("#emailMsg").text("이메일을 모두 입력해주세요.⚠️").css("color", "#ffc107");
+//            return;
+//        }
+//
+//        // 이메일 형식 검증
+//        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//        if (!emailRegex.test(memEmail)) {
+//            $("#emailMsg").text("올바른 이메일 형식이 아닙니다.⚠️").css("color", "#ffc107");
+//            EmailValid = false;
+//            return;
+//        }
+//        
+//        EmailValid = true;
+//        emailCheck(memEmail);
+//    });
+//    
+//    // 이메일 입력 필드 변경 시 중복확인 상태 초기화
+//    $("#emailId, #emailDomain").on("input change", function() {
+//        EmailCheck = false;
+//        EmailValid = false;
+//        $("#emailMsg").text("").css("color", "");
+//    });
+//});
 
 
 //$(function() {
@@ -320,6 +320,40 @@ $(function() { //document.ready(() => { })
 
 	testAjax(); // 테스트 야작스
 
+	const nickInput = $('#userNick');
+	const nickMsg = $('#nickMsg');
+
+	nickInput.on('input', function() {
+	    const memNick = nickInput.val().trim();
+
+	    // 입력값이 없으면 메시지 제거
+	    if(memNick.length === 0) { 
+			nickMsg.text(''); 
+			return; 
+		}
+
+	    $.ajax({
+	        url: 'selectUserNicknameCheck.do', // 서버 컨트롤러 URL
+	        type: 'POST',
+	        data: { memNick: memNick },
+	        success: function(response) {
+	           if(response.length > 0) {
+	                nickMsg.text('이미 사용 중인 닉네임입니다.❌').css('color', '#dc3545');
+	                NicknameCheck = false;
+	            } else {
+	                nickMsg.text('사용 가능한 닉네임입니다.✅').css('color', '#28a745');
+	                NicknameCheck = true;
+	            }
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("닉네임 확인 실패:", status, error);
+	            nickMsg.text('닉네임 확인 중 오류가 발생했습니다.⚠️').css('color', '#ff9900');
+	            NicknameCheck = false;
+	        }
+	    });
+	});
+
+	
 	$("#deletebutton").on("click", function() {
 		$(".pw-container").addClass("active");
 	});
