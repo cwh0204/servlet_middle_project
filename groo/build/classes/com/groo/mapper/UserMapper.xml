@@ -51,6 +51,14 @@
         where MEM_LOGIN_ID = #{memLoginId}
 	</update>
 	
+	<select id="selectUserDetail" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+	SELECT MEM_LOGIN_ID
+           ,MEM_NAME
+           ,MEM_BIRTH
+      FROM MEMBER
+     WHERE MEM_LOGIN_ID=#{memLoginId}
+    </select>
+	
 	<select id="selectUserNicknameCheck" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 	  	SELECT MEM_NICK 
         FROM MEMBER 

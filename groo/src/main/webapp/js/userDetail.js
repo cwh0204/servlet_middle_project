@@ -367,7 +367,7 @@ $(function() { //document.ready(() => { })
 	// 1. 비밀번호 필드에 대한 실시간 유효성 검사 (선택 사항이지만 권장)
 	pw.on("input", function() {
 		const pwVal = pw.val();
-		if (pwVal.length === 0) {
+		if (pwVal.length === 0) {/*-+,
 			pw.css("border", "1px solid #ccc");
 		} else if (!validpwRegex.test(pwVal)) {
 			pw.css("border", "2px solid #dc3545");
