@@ -10,16 +10,16 @@
 </head>
 <body>
 	<aside class="sidebar">
-		<div class="sidebar-header">팀 상세보기 목록</div>
-		<div class="menu-item active" data-page="">
+		<div class="sidebar-header">팀 관련 목록</div>
+		<div class="menu-item active" data-page="teamcreatehome.do">
 			<div class="menu-item-content">
-				<span>팀 인원</span>
+				<span>팀 생성</span>
 			</div>
 		</div>
 
-		<div class="menu-item" data-page="">
+		<div class="menu-item" data-page="myteamhome.do">
 			<div class="menu-item-content">
-				<span>팀 게시판</span>
+				<span>팀 보기</span>
 			</div>
 		</div>
 		
