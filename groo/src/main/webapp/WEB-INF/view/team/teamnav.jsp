@@ -22,12 +22,7 @@
 				<span>팀 보기</span>
 			</div>
 		</div>
-
-		<div class="menu-item" data-page="">
-			<div class="menu-item-content">
-				<span>팀 관리</span>
-			</div>
-		</div>
+		
 	</aside>
 </body>
 </html>
