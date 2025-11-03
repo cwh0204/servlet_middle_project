@@ -29,7 +29,6 @@
 <div class="section">
    <section>
    	 <h2>회원가입</h2>
-<!--       <form action="/signup.do" method="post" onsubmit="return validateForm()"> -->
       	<label for="userId">아이디</label>
       	<div class="idRow">
       	  <input type="text" id="userId" name="userId" required> 
@@ -77,22 +76,7 @@
       	    <option value="gmail.com">gmail.com</option>
       	  </select>
  
-/*      	  
-      	  <div class="emailAuthBtn">
-      	    <input type="button" value="인증 요청" id="emailAuthBtn">
-      	  </div>
-*/
       	    <span id="emailMessage" style="font-size: 0.9em;"></span>
-
-/*
-      	  <div id="emailVerify">
-      	  	<label for="emailCode">인증번호</label>
-      	  	<div class="verifyCode">
-      	  	  <input type="text" id="emailCode" name="emailCode" placeholder="인증번호">
-      	  	  <input type="button" value="확인" onclick="verifyEmailCode()">
-      	  	</div>
-      	  </div>
-*/      	  
       	</div>
       	
         <div class="g-recaptcha" data-sitekey="6LdJB-orAAAAAJkFTCtPCgXVGhgSTPN-NQGWtgAj"></div>
@@ -100,7 +84,6 @@
         <div class="signup">
       	  <input type="button" id="userSignUp" value="가입하기">
         </div>
-<!--       </form> -->
    </section>
 </div>
 

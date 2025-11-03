@@ -23,11 +23,15 @@ public class GoogleGenaiController implements Controller {
 			
 			String userQuestion = request.getParameter("userQuestion");
 			// 1. Client 생성: 환경 변수 GOOGLE_API_KEY를 자동으로 사용합니다.
-			String apiKey = "AIzaSyA-ctwk8GrHjSnVie51W6lOik4dISd7-zw";
-			Client client = Client.builder()
-                    .apiKey(apiKey)
-                    .build();
+			
+			/*
+			 * String apiKey = System.getenv("GOOGLE_API_KEY");
+			 * System.out.println("환경변수 확인"+apiKey);
+			 */
+			
+			Client client = new Client();
 			// 2. API 호출
+			
 			GenerateContentResponse geminiResponse = client.models.generateContent("gemini-2.5-flash",
 					userQuestion, null);
 			// 3. 응답 파싱 (Optional 객체를 안전하게 해제)
