@@ -65,7 +65,7 @@ public class FrontControllerPath {
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
 
-        //이수민
+        //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
         controllerMap.put("/usernicknamecheck.do", new UserdetailSelectNicknameController());
