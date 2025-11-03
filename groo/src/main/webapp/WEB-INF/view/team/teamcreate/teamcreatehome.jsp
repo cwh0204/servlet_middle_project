@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>team create</title>
-
-<script src="js/teamCreate.js"></script>
 	
 <!-- Bootstrap & jQuery -->
 <link rel="stylesheet"
@@ -21,6 +19,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+
+<script src="js/teamCreate.js"></script>
 
 <!-- Custom CSS -->
 <link href="css/base.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 									스터디명
 								</label>
 							</div>
-							<input type="text" name="teamName" class="teamName"
+							<input type="text" id="studyTitle" name="teamName" class="teamName"
 								placeholder="스터디명을 입력해주세요">
 						</div>
 
@@ -155,12 +155,12 @@
 									</div>
 									<select name="teamMember" id="teamMember" class="form-select">
 										<option value="" disabled selected>모집인원을 선택하세요</option>
-										<option value="2명">2명</option>
-										<option value="3명">3명</option>
-										<option value="4명">4명</option>
-										<option value="5명">5명</option>
-										<option value="6명">6명</option>
-										<option value="7명 이상">7명 이상</option>
+										<option value="2">2명</option>
+										<option value="3">3명</option>
+										<option value="4">4명</option>
+										<option value="5">5명</option>
+										<option value="6">6명</option>
+										<option value="7">7명 이상</option>
 									</select>
 								</div>
 
@@ -190,14 +190,14 @@
 											class="input-icon"> 스터디 소개
 										</label>
 									</div>
-									<textarea name="teamInfo" class="teamInfo"
+									<textarea name="teamInfo" id="studyIntro" class="teamInfo"
 										placeholder="스터디를 소개해주세요!&#10;&#10;예시)&#10;• 목표&#10;• 방식&#10;"></textarea>
 								</div>
 							</div>
 						</div>
 
 						<div class="button-group">
-							<button type="submit" class="btn btn-primary submit-btn">
+							<button type="button" id="studySubmit" class="btn btn-primary submit-btn">
 								<span class="btn-text">팀 생성하기</span> <span class="btn-arrow">→</span>
 							</button>
 							<button type="reset" class="btn btn-secondary reset-btn">
