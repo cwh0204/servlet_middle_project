@@ -15,4 +15,5 @@ public interface TeamDAO {
 	public TeamAvgDTO teamStats(SqlSession session);
 	public void deleteTeam(TeamDTO team, SqlSession session);
 	public void activateTeam(TeamDTO team, SqlSession session);
+	public List<TeamDTO> selectMyTeam(TeamDTO team, SqlSession session);
 }

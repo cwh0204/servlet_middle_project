@@ -44,6 +44,7 @@ import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
 import com.groo.controller.TeamSelectController;
+import com.groo.controller.TeamSelectMyTeamController;
 import com.groo.controller.TeamStatsController;
 import com.groo.controller.UserdetailSelectEmailController;
 import com.groo.controller.UserdetailSelectNicknameController;
@@ -94,6 +95,7 @@ public class FrontControllerPath {
         controllerMap.put("/teamstats.do", new TeamStatsController());
         controllerMap.put("/teamdelete.do", new TeamDeleteController());
         controllerMap.put("/teamactivate.do", new TeamActivateController());
+        controllerMap.put("/teamselectmyteam.do", new TeamSelectMyTeamController());
 
         controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/selectemail.do", new SignUpSelectEmailController());

@@ -109,4 +109,22 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
 		}
 	}
+	
+	/**
+	 * 현재 소속 팀을 조회 하기 위한 메서드
+	 * @param team 팀을 활성 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 회원의 팀 목록을 반환
+	 */
+	@Override
+	public List<TeamDTO> selectMyTeam(TeamDTO team, SqlSession session) {
+		List<TeamDTO> teamList = new ArrayList<>();
+		try {
+			teamList = session.selectList("selectMyTeam",team);
+		}catch (Exception e) {
+			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
+		}
+		
+		return teamList;
+	}
 }

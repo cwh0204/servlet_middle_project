@@ -13,4 +13,5 @@ public interface TeamService {
 	public TeamAvgDTO teamStats();
 	public void deleteTeam(TeamDTO team);
 	public void activateTeam(TeamDTO team);
+	public List<TeamDTO> selectMyTeam(TeamDTO team);
 }
