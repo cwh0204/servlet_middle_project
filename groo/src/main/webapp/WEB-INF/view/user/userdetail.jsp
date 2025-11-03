@@ -27,11 +27,11 @@
 					</div>
 					<div class="user_attribute">
 						<div class="input-group">
-							<label>아이디</label> <input type="text" name="userID"
+							<label>아이디</label> <input type="text" name="userID" id="memLoginId"
 								value="" readonly>
 						</div>
 						<div class="input-group">
-							<label>이름</label> <input type="text" name="irum" value=""
+							<label>이름</label> <input type="text" id="memName" name="irum" value=""
 								readonly>
 						</div>
 						
@@ -49,9 +49,9 @@
 									<option value="010">010</option>
 									<option value="042">042</option>
 									<option value="02">02</option>
-								</select> <span>-</span> <input type="text" name="phonemiddle"
+								</select> <span>-</span> <input type="text" name="phonemiddle" id="memPhone"
 									maxlength="4" style="width: 65px; text-align: center;">
-								<span>-</span> <input type="text" name="phoneback" maxlength="4"
+								<span>-</span> <input type="text" name="phoneback" id="memPhone" maxlength="4"
 									style="width: 65px; text-align: center;">
 							</div>
 						</div>
@@ -89,10 +89,10 @@
 				<div class="input-group">
 					<label>주민등록번호</label>
 					<div style="display: flex; align-items: center; gap: 5px;">
-						<input type="text" name="jumin_front" maxlength="6"
+						<input type="text" name="jumin_front" id="memBirth" maxlength="6"
 							placeholder="123456" readonly
 							style="width: 120px; text-align: center;"> <span>-</span>
-						<input type="password" name="jumin_back" maxlength="1"
+						<input type="password" name="jumin_back" id="memBirth" maxlength="1"
 							placeholder="●" readonly style="width: 50px; text-align: center;">
 						<span>******</span>
 					</div>
@@ -139,12 +139,12 @@
 				<div class="input-group">
 					<label>관심분야</label>
 					<div class="checkbox-group">
-						<label><input type="checkbox" name="ff" value="IT/개발">
+						<label><input type="checkbox" name="ff" id="memInterest" value="IT/개발">
 							IT/개발</label> <label><input type="checkbox" name="ff"
 							value="자격증/취업"> 자격증/취업</label> <label><input
-							type="checkbox" name="ff" value="건강/의학"> 건강/의학</label> <label><input
-							type="checkbox" name="ff" value="취미"> 취미</label> <label><input
-							type="checkbox" name="ff" value="기타"> 기타</label>
+							type="checkbox" name="ff" id="memInterest" value="건강/의학"> 건강/의학</label> <label><input
+							type="checkbox" name="ff" id="memInterest" value="취미"> 취미</label> <label><input
+							type="checkbox" name="ff" id="memInterest" value="기타"> 기타</label>
 					</div>
 					<textarea name="ff" placeholder="관심분야를 입력하세요"></textarea>
 				</div>

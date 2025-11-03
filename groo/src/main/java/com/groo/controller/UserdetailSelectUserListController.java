@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 회원가입 상세페이지에서 아이디, 이름, 주민등록번호를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 회원가입 상세페이지에서 유저정보를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
 public class UserdetailSelectUserListController implements Controller {

@@ -316,44 +316,75 @@ const showSubmitALert = () => {
 }
 
 $(function() { //document.ready(() => { })
-	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 
-	testAjax(); // 테스트 야작스
+	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'userdetailselect.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		dataType: 'json',
+		data: {
+			memLoginId: userId
+			
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			console.log(response.memName);
+			$('#memName').val(response.memName);
+			$('#memLoginId').val(response.memLoginId);
+		    $('#password').val(response.password);
+		    $('#userNick').val(response.userNick);
+			$('#memBirth').val(response.memBirth);
+			$('#memEmail').val(response.memEmail);
+			$('#memPhone').val(response.memPhone);
+			$('#zipcode').val(response.zipcode);
+			$('#memInterest').val(response.memInterest);
+			
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+
+	testAjax(); // 테스트 야작스 
 
 	const nickInput = $('#userNick');
 	const nickMsg = $('#nickMsg');
 
 	nickInput.on('input', function() {
-	    const memNick = nickInput.val().trim();
+		const memNick = nickInput.val().trim();
 
-	    // 입력값이 없으면 메시지 제거
-	    if(memNick.length === 0) { 
-			nickMsg.text(''); 
-			return; 
+		// 입력값이 없으면 메시지 제거
+		if (memNick.length === 0) {
+			nickMsg.text('');
+			return;
 		}
 
-	    $.ajax({
-	        url: 'selectUserNicknameCheck.do', // 서버 컨트롤러 URL
-	        type: 'POST',
-	        data: { memNick: memNick },
-	        success: function(response) {
-	           if(response.length > 0) {
-	                nickMsg.text('이미 사용 중인 닉네임입니다.❌').css('color', '#dc3545');
-	                NicknameCheck = false;
-	            } else {
-	                nickMsg.text('사용 가능한 닉네임입니다.✅').css('color', '#28a745');
-	                NicknameCheck = true;
-	            }
-	        },
-	        error: function(xhr, status, error) {
-	            console.error("닉네임 확인 실패:", status, error);
-	            nickMsg.text('닉네임 확인 중 오류가 발생했습니다.⚠️').css('color', '#ff9900');
-	            NicknameCheck = false;
-	        }
-	    });
+		$.ajax({
+			url: 'selectUserNicknameCheck.do', // 서버 컨트롤러 URL
+			type: 'POST',
+			data: { memNick: memNick },
+			success: function(response) {
+				if (response.length > 0) {
+					nickMsg.text('이미 사용 중인 닉네임입니다.❌').css('color', '#dc3545');
+					NicknameCheck = false;
+				} else {
+					nickMsg.text('사용 가능한 닉네임입니다.✅').css('color', '#28a745');
+					NicknameCheck = true;
+				}
+			},
+			error: function(xhr, status, error) {
+				console.error("닉네임 확인 실패:", status, error);
+				nickMsg.text('닉네임 확인 중 오류가 발생했습니다.⚠️').css('color', '#ff9900');
+				NicknameCheck = false;
+			}
+		});
 	});
 
-	
+
 	$("#deletebutton").on("click", function() {
 		$(".pw-container").addClass("active");
 	});
@@ -367,7 +398,7 @@ $(function() { //document.ready(() => { })
 	// 1. 비밀번호 필드에 대한 실시간 유효성 검사 (선택 사항이지만 권장)
 	pw.on("input", function() {
 		const pwVal = pw.val();
-		if (pwVal.length === 0) {/*-+,
+		if (pwVal.length === 0) {
 			pw.css("border", "1px solid #ccc");
 		} else if (!validpwRegex.test(pwVal)) {
 			pw.css("border", "2px solid #dc3545");
@@ -432,18 +463,19 @@ $(function() { //document.ready(() => { })
 			password.type = 'password';
 			togglePassword.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; // 비밀번호 안보일때
 		}
-		const togglePasstry = document.getElementById('togglePasstry');
-		const passtry = document.getElementById('passtry');
 
-		togglePasstry.addEventListener('click', () => {
-			if (passtry.type === 'password') {
-				passtry.type = 'text';
-				togglePasstry.src = 'https://i.postimg.cc/8z2sxNX4/view.png';
-			} else {
-				passtry.type = 'password';
-				togglePasstry.src = 'https://i.postimg.cc/TYkDN86M/hide.png';
-			}
-		});
+	});
+	const togglePasstry = document.getElementById('togglePasstry');
+	const passtry = document.getElementById('passtry');
+
+	togglePasstry.addEventListener('click', () => {
+		if (passtry.type === 'password') {
+			passtry.type = 'text';
+			togglePasstry.src = 'https://i.postimg.cc/8z2sxNX4/view.png';
+		} else {
+			passtry.type = 'password';
+			togglePasstry.src = 'https://i.postimg.cc/TYkDN86M/hide.png';
+		}
 	});
 
 	const fileInput = document.getElementById('fileInput');
