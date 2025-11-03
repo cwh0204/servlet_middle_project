@@ -23,7 +23,7 @@ var userIdCheck = (memLoginId) => {
 		      },
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			if (response.length === 1) {
+			if (response && response.memLoginId) {
 				alert('사용할 수 없는 아이디입니다.❌');
 				isIdChecked = false;	// 사용 불가
 			} else {
@@ -63,12 +63,65 @@ function checkDuplicateId() {
 }
 
 /**
- * 최종 회원가입 데이터 전송 요청
+ * 주민등록번호 (앞6+뒤1) 유효성 검사 함수
+ * @returns {boolean} 유효하면 true, 아니면 false
+ */
+function validateJumin() {
+	const jumin1 = $('#jumin1').val();
+	const jumin2 = $('#jumin2').val();
+
+	// 길이 및 필수 입력 검사
+	if (jumin1.length !== 6) {
+		alert('주민등록번호 앞 6자리를 모두 입력해주세요.');
+		$('#jumin1').focus();
+		return false;
+	}
+	if (jumin2.length !== 1) {
+		alert('주민등록번호 뒷 1자리를 입력해주세요.');
+		$('#jumin2').focus();
+		return false;
+	}
+
+	// 숫자 형식 검사
+	if (!/^\d{6}$/.test(jumin1) || !/^\d{1}$/.test(jumin2)) {
+		alert('주민등록번호는 숫자로만 입력가능합니다.');
+		return false;
+	}
+
+	// 뒷자리 성별/세기 코드 유효성 검사
+	const genderCode = jumin2.charAt(0);
+	const validGenderCodes = ['1', '2', '3', '4', '5', '6', '7', '8'];
+	if (!validGenderCodes.includes(genderCode)) {
+		alert('주민등록번호 뒷자리가 올바르지 않습니다.');
+		return false;
+	}
+
+	// 생년월일 논리적 유효성 검사 (윤달 등 체크)
+	const yearPrefix =
+		(genderCode === '1' || genderCode === '2' || genderCode === '5' || genderCode === '6')
+			? 1900 : 2000;
+	const fullYear = yearPrefix + parseInt(jumin1.substring(0, 2), 10);
+	const month = parseInt(jumin1.substring(2, 4), 10);
+	const day = parseInt(jumin1.substring(4, 6), 10);
+	const birthDate = new Date(fullYear, month - 1, day);	// 월은 0부터 시작
+
+	// Date 객체의 년, 월, 일이 입력값과 일치하는지 확인 (잘못된 날짜 필터링하는 경우도 발생하기 때문)
+	if (birthDate.getFullYear() !== fullYear ||
+		birthDate.getMonth() !== month - 1 ||
+		birthDate.getDate() !== day) {
+		alert('유효하지 않은 생년월일입니다. 주민등록번호를 확인해 주세요.');
+		return false;
+	}
+
+	// 모든 검사 통과
+	return true;
+};
+
+/**
+ * 회원가입 요청
  * (인증 완료 및 유효성 검사가 끝난 후 호출됨)
  */
 var signUpUser = (userIdValue, userPwValue, userNameValue, userEmail, userjumin1Value, userGender) => {
-	
-	console.log(userIdValue+"1"+userPwValue+"2"+userNameValue+userEmail+"3"+userjumin1Value+"3"+userGender);
 	
 	$.ajax({
 		// 데이터를 전송할 서버 URL
@@ -107,11 +160,12 @@ var signUpUserValidation = () => {
 	const userPwValue = $('#pass2').val();
 	const userNameValue = $('#name').val();
 	const userjumin1Value = $('#jumin1').val(); 
+	const jumin2Value = $('#jumin2').val();
+	const userGender = (['1', '3', '5', '7'].includes(jumin2Value)) ? "M" : "W";
 	const emailId = $("#emailId").val();
 	const emailDomain = $("#emailDomain").val();
 	const userEmail = emailId + "@" + emailDomain;
-	const jumin2Value = $('#jumin2').val();
-	const userGender = (['1', '3', '5', '7'].includes(jumin2Value)) ? "M" : "W";
+	
 
 	// 정규식 (ready 함수 안에 있지만, 여기서도 사용하기 위해 정의하거나 전역 변수로 관리)
 	const idRegExp = /^[a-z0-9_-]{4,20}$/;
@@ -159,12 +213,6 @@ var signUpUserValidation = () => {
 		return;
 	}
 
-	// 이메일  확인 
-/*	if (!isEmailVerified) {
-		alert("이메일 인증을 완료해주세요. ⚠️");
-		return;
-	}*/
-
 	// reCAPTCHA 응답 확인
 	const recaptchaResponse = grecaptcha.getResponse();
 	if (recaptchaResponse.length === 0) {
@@ -174,12 +222,6 @@ var signUpUserValidation = () => {
 	}
 	
 	signUpUser(userIdValue, userPwValue, userNameValue, userEmail, userjumin1Value, userGender);
-/*	if (userIdValue != "" && userPwValue != "" && userNameValue != "") {
-		//유효성 검사가 끝나면 회원가입 요청을 보냄
-		signUpUser(userIdValue, userPwValue, userNameValue, userEmail, userjumin1Value, userGender);
-	} else {
-		alert('입력 항목을 모두 채워주세요.');
-	}*/
 }
 
 
@@ -316,12 +358,8 @@ $(document).ready(() => {
 
 	/* 이메일 */
 
-	const $emailId = $('#emailId').val();
-	const $emailDomain = $('#emailDomain').val();
-	const $memEmail = emailId + '@' + emailDomain;
-	const $emailMessage = $('#emailMessage');
-	// 이메일 정규식
-	const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+	
+	
 	
 	// 이메일 도메인 선택
 	const emailDomain = document.getElementById('emailDomain');
@@ -348,14 +386,20 @@ $(document).ready(() => {
 
 	// 이메일 중복확인 함수 
 	$('#emailId, #emailDomain').on('blur', function() {
-
+		const emailId = $('#emailId').val().trim();
+		const emailDomain = $('#emailDomain').val().trim();
+		const memEmail = emailId + '@' + emailDomain;
+		
+		const $emailMessage = $('#emailMessage');
+		
 		if (emailId === '' || emailDomain === '') {
-			alert('이메일 주소를 모두 입력해주세요.');
+			$emailMessage.text('이메일 주소를 모두 입력해주세요.').css('color', 'red');
 			return;
 		}
 		
+		// 이메일 정규식
+		const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 		// 이메일 형식 검사
-		
 		if(!emailPattern.test(memEmail)){
 			$emailMessage.text('올바른 이메일 형식이 아닙니다.').css('color', 'red');
 			return;
@@ -369,12 +413,12 @@ $(document).ready(() => {
 				memEmail: memEmail
 			      },
 			success: function(response) {
-				console.log(memEmail, response);
 				if (response && response.memEmail) {
 					$emailMessage.text('이미 존재하는 이메일입니다.❌').css('color', 'red');
 					isEmailVerified = false; 	// 인증 상태 초기화
 				} else {
 					$emailMessage.text('사용 가능한 이메일입니다.✔').css('color', 'green');
+					isEmailVerified = true;
 				}
 			},
 
@@ -401,60 +445,6 @@ $(document).ready(() => {
 });
 
 
-/**
- * 주민등록번호 (앞6+뒤1) 유효성 검사 함수
- * @returns {boolean} 유효하면 true, 아니면 false
- */
-function validateJumin() {
-	const jumin1 = $('#jumin1').val();
-	const jumin2 = $('#jumin2').val();
 
-	// 길이 및 필수 입력 검사
-	if (jumin1.length !== 6) {
-		alert('주민등록번호 앞 6자리를 모두 입력해주세요.');
-		$('#jumin1').focus();
-		return false;
-	}
-	if (jumin2.length !== 1) {
-		alert('주민등록번호 뒷 1자리를 입력해주세요.');
-		$('#jumin2').focus();
-		return false;
-	}
-
-	// 숫자 형식 검사
-	if (!/^\d{6}$/.test(jumin1) || !/^\d{1}$/.test(jumin2)) {
-		alert('주민등록번호는 숫자로만 입력가능합니다.');
-		return false;
-	}
-
-	// 뒷자리 성별/세기 코드 유효성 검사
-	const genderCode = jumin2.charAt(0);
-	const validGenderCodes = ['1', '2', '3', '4', '5', '6', '7', '8'];
-	if (!validGenderCodes.includes(genderCode)) {
-		alert('주민등록번호 뒷자리가 올바르지 않습니다.');
-		return false;
-	}
-
-	// 생년월일 논리적 유효성 검사 (윤달 등 체크)
-	const yearPrefix =
-		(genderCode === '1' || genderCode === '2' || genderCode === '5' || genderCode === '6')
-			? 1900 : 2000;
-	const fullYear = yearPrefix + parseInt(jumin1.substring(0, 2), 10);
-	const month = parseInt(jumin1.substring(2, 4), 10);
-	const day = parseInt(jumin1.substring(4, 6), 10);
-
-	const birthDate = new Date(fullYear, month - 1, day);	// 월은 0부터 시작
-
-	// Date 객체의 년, 월, 일이 입력값과 일치하는지 확인 (잘못된 날짜 필터링하는 경우도 발생하기 때문)
-	if (birthDate.getFullYear() !== fullYear ||
-		birthDate.getMonth() !== month - 1 ||
-		birthDate.getDate() !== day) {
-		alert('유효하지 않은 생년월일입니다. 주민등록번호를 확인해 주세요.');
-		return false;
-	}
-
-	// 모든 검사 통과
-	return true;
-};
 
 
