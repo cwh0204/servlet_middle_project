@@ -126,7 +126,7 @@
 
 
 					</div>
-					<input type="text" id="address1" name="address1" placeholder="주소"
+					<input type="text" id="address1" name="address1" placeholder="기본주소"
 						style="margin-top: 5px;" readonly> <input type="text"
 						id="address2" name="address2" placeholder="상세주소"
 						style="margin-top: 5px;">
@@ -134,15 +134,7 @@
 
 				<div class="input-group">
 					<label>관심분야</label>
-					<div class="checkbox-group">
-						<label><input type="checkbox" name="ff" id="memInterest" value="IT/개발">
-							IT/개발</label> <label><input type="checkbox" name="ff"
-							value="자격증/취업"> 자격증/취업</label> <label><input
-							type="checkbox" name="ff" value="건강/의학"> 건강/의학</label> <label><input
-							type="checkbox" name="ff" value="취미"> 취미</label> <label><input
-							type="checkbox" name="ff" value="기타"> 기타</label>
-					</div>
-					<textarea name="ff" placeholder="관심분야를 입력하세요"></textarea>
+					<textarea name="ff" id = "memInterest" placeholder="관심분야를 입력하세요"></textarea>
 				</div>
 			</div>
 		</div>

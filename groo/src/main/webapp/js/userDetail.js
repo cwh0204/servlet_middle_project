@@ -273,7 +273,7 @@ function resetFields() {
 }
 
 const showSubmitALert = () => {
-	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+	const userId = sessionStorage.getItem('memLoginId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 	console.log(userId);
 	const memPass = $('#passtry').val();
 	console.log(memPass);
@@ -281,7 +281,7 @@ const showSubmitALert = () => {
 	console.log(memEmail);
 	const memAddr = $('#zipcode').val() + $('#address1 ').val() + $('#address2').val();
 	console.log(memAddr);
-	const memNick = $('#userNick').val();
+	const memNick = $('#memNick').val();
 	console.log(memNick);
 	const memInterest = [
 		...$('input[name="ff"]:checked').map((_, el) => el.value).get(), //...를 붙여 각 요소를 배열에 넣고 값을 가져옴
@@ -338,11 +338,11 @@ $(function() { //document.ready(() => { })
 			$('#memPhone').val(response.memPhone);
 			$('#memBirth').val(response.memBirth);
 			$('#memEmail').val(response.memEmail);
-            
 			$('#zipcode').val(response.zipcode);
 			$('#memInterest').val(response.memInterest);
 			
-			// 전화번호 데이터가 "01012345678" 형식으로 들어온다고 가정
+			
+			//1. 전화번호 데이터가 "01012345678" 형식으로 들어온다고 가정
 			if (response.memPhone) {
 			    const phone = response.memPhone.replace(/[^0-9]/g, ''); // 숫자만 남기기
 			    const first = phone.substring(0, 3);
@@ -354,7 +354,7 @@ $(function() { //document.ready(() => { })
 			    $('#memPhone3').val(last);   // <input type="text">에 값 설정
 			}
 
-			// 1. 주민등록번호 (memBirth)
+			// 2. 주민등록번호 (memBirth)
 			if (response.memBirth) {
 			    const jumin = response.memBirth.replace(/[^0-9]/g, ''); 
 			    if (jumin.length >= 8) {
@@ -363,34 +363,46 @@ $(function() { //document.ready(() => { })
 			    }
 			}
 						
-			// 2. 이메일 (memEmail)
+			// 3. 이메일 (memEmail)
 		    if (response.memEmail && response.memEmail.includes('@')) {
 			const [emailId, emailDomain] = response.memEmail.split('@');
 			$('#emailid').val(emailId);
 			$('#emailDomain').val(emailDomain);
 			}
 					
-			// 3. 주소 (address1, address2)
-			            // 서버 응답에 'address1'과 'address2' 필드가 포함되어 있다고 가정
-			            if (response.address1) {
-			                $('#address1').val(response.address1); // 기본 주소 설정
-			            }
-			            if (response.address2) {
-			                $('#address2').val(response.address2); // 상세 주소 설정
-			            }	
-						// 4. 관심분야 (memInterest) - 체크박스와 텍스트 영역
-						if (response.memInterest) {
-						    const interests = response.memInterest.split(','); 
-						    
-						    // name="ff"를 사용하여 모든 체크박스를 순회함
-						    $('input[name="ff"][type="checkbox"]').each(function() { 
-						        if (interests.includes($(this).val())) {
-						            $(this).prop('checked', true);
-						        } else {
-						            $(this).prop('checked', false);
-						        }
-						    });
-						}
+			// ✨ 4. 주소 처리 (최종 수정: 건물 번호 기준 분리) ✨
+			    if (response.memAddr) {
+			        const fullAddress = response.memAddr.trim();
+			        const zipCode = fullAddress.substring(0, 5);
+			        const addressWithoutZip = fullAddress.substring(5).trim();
+
+			        let defaultAddress = addressWithoutZip;
+			        let detailAddress = "";
+			        
+			        // 정규식: 주소 끝에서 '도로명 건물번호상세주소' 패턴을 찾아 분리
+			        const splitterPattern = /^(.+)\s(\d+)(.*)$/; 
+			        const match = addressWithoutZip.match(splitterPattern);
+			        
+			        if (match && match.length === 4) {
+			            // match[1]: 건물 번호 앞 주소 (예: 경기 성남시 분당구 고기로)
+			            // match[2]: 건물 번호 (예: 25)
+			            // match[3]: 건물 번호 뒤에 붙은 상세 주소 (예: 101동1111호)
+			            
+			            defaultAddress = (match[1] + " " + match[2]).trim(); // 경기 성남시 분당구 고기로 25
+			            detailAddress = match[3].trim(); // 101동1111호
+			        } 
+			        
+			        $('#zipcode').val(zipCode);
+			        $('#address1').val(defaultAddress); 
+			        $('#address2').val(detailAddress);  
+			        
+			    } else {
+			        // memAddr이 없을 때 (서버에서 분리된 필드를 받을 경우 대비)
+			        if (response.zipcode) { $('#zipcode').val(response.zipcode); }
+			        if (response.address1) { $('#address1').val(response.address1); }
+			        if (response.address2) { $('#address2').val(response.address2); }
+			    }
+			    
 			        },
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -400,7 +412,7 @@ $(function() { //document.ready(() => { })
 
 	testAjax(); // 테스트 야작스 
 
-	const nickInput = $('#userNick');
+	const nickInput = $('#memNick');
 	const nickMsg = $('#nickMsg');
 
 	nickInput.on('input', function() {
