@@ -273,13 +273,13 @@ function resetFields() {
 }
 
 const showSubmitALert = () => {
-	const userId = sessionStorage.getItem('memLoginId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 	console.log(userId);
 	const memPass = $('#passtry').val();
 	console.log(memPass);
 	const memEmail = $('#emailid').val() + '@' + $('#emailDomain').val();
 	console.log(memEmail);
-	const memAddr = $('#zipcode').val() + $('#address1 ').val() + $('#address2').val();
+    const memAddr = $('#zipcode').val().trim() + $('#address1').val().trim() + " " + $('#address2').val().trim();
 	console.log(memAddr);
 	const memNick = $('#memNick').val();
 	console.log(memNick);
@@ -370,38 +370,50 @@ $(function() { //document.ready(() => { })
 			$('#emailDomain').val(emailDomain);
 			}
 					
-			// ✨ 4. 주소 처리 (최종 수정: 건물 번호 기준 분리) ✨
-			    if (response.memAddr) {
-			        const fullAddress = response.memAddr.trim();
-			        const zipCode = fullAddress.substring(0, 5);
-			        const addressWithoutZip = fullAddress.substring(5).trim();
+			// 4. 주소 (zipcode, address1, address2) - ✨수정된 로직: 붙어있는 도로명/건물번호 분리✨
+			if (response.memAddr) {
+			    const fullAddress = response.memAddr.trim();
+			    
+			    // 1. 우편번호 분리 (항상 앞 5자리)
+			    const zipCode = fullAddress.substring(0, 5); // 결과: 13543
+			    let addressWithoutZip = fullAddress.substring(5).trim(); // 결과: 경기 성남시 분당구 대왕판교로 366111동 1111호
 
-			        let defaultAddress = addressWithoutZip;
-			        let detailAddress = "";
+			    let defaultAddress = ""; 
+			    let detailAddress = ""; 
+			    
+			    // 2. 상세 주소 분리 (주소 끝에서 숫자 + '동/호/층' 패턴을 포함하여 그 앞까지 분리)
+			    // 예: '111동 1111호' 부분을 찾습니다.
+			    // 정규식: 주소 끝에서 '숫자'로 시작하고 '동/호/층'을 포함하는 패턴을 찾습니다.
+			    const detailPattern = /(\s*\d+[\s]*[층호동가나다].*)$/; 
+			    const matchDetail = addressWithoutZip.match(detailPattern);
+			    
+			    if (matchDetail) {
+			        // 상세 주소: 매칭된 전체 패턴
+			        detailAddress = matchDetail[0].trim(); // 결과: 111동 1111호
 			        
-			        // 정규식: 주소 끝에서 '도로명 건물번호상세주소' 패턴을 찾아 분리
-			        const splitterPattern = /^(.+)\s(\d+)(.*)$/; 
-			        const match = addressWithoutZip.match(splitterPattern);
+			        // 상세 주소를 제외한 나머지 주소
+			        const matchIndex = addressWithoutZip.lastIndexOf(matchDetail[0]);
+			        const addressBeforeDetail = addressWithoutZip.substring(0, matchIndex).trim(); // 결과: 경기 성남시 분당구 대왕판교로 366
 			        
-			        if (match && match.length === 4) {
-			            // match[1]: 건물 번호 앞 주소 (예: 경기 성남시 분당구 고기로)
-			            // match[2]: 건물 번호 (예: 25)
-			            // match[3]: 건물 번호 뒤에 붙은 상세 주소 (예: 101동1111호)
-			            
-			            defaultAddress = (match[1] + " " + match[2]).trim(); // 경기 성남시 분당구 고기로 25
-			            detailAddress = match[3].trim(); // 101동1111호
-			        } 
-			        
-			        $('#zipcode').val(zipCode);
-			        $('#address1').val(defaultAddress); 
-			        $('#address2').val(detailAddress);  
+			        // 3. 기본 주소 확정 (건물 번호까지 포함)
+			        defaultAddress = addressBeforeDetail; // 결과: 경기 성남시 분당구 대왕판교로 366
 			        
 			    } else {
-			        // memAddr이 없을 때 (서버에서 분리된 필드를 받을 경우 대비)
-			        if (response.zipcode) { $('#zipcode').val(response.zipcode); }
-			        if (response.address1) { $('#address1').val(response.address1); }
-			        if (response.address2) { $('#address2').val(response.address2); }
+			        // 상세 주소가 없는 경우 전체를 기본 주소로 설정
+			        defaultAddress = addressWithoutZip;
 			    }
+
+			    // 4. 최종 값 설정
+			    $('#zipcode').val(zipCode);
+			    $('#address1').val(defaultAddress); 
+			    $('#address2').val(detailAddress);  
+
+			} else {
+			    // memAddr이 없을 때 (기존 분리 필드 사용)
+			    if (response.zipcode) { $('#zipcode').val(response.zipcode); }
+			    if (response.address1) { $('#address1').val(response.address1); }
+			    if (response.address2) { $('#address2').val(response.address2); }
+			}
 			    
 			        },
 
