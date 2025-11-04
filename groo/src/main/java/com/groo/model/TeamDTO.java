@@ -25,4 +25,5 @@ public class TeamDTO {
 	//로그인 세션 아이디
 	private String memLoginId;
 	private String memNick;
+
 }

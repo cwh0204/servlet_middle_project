@@ -36,13 +36,14 @@ public class TeamSelectController extends HttpServlet implements Controller{
 		response.setCharacterEncoding("UTF-8");
 
 		String search = request.getParameter("search");
-
+		
 		TeamDTO team = new TeamDTO();
 
-		if(search != null && !search.isEmpty()) {
-			int serchMax = Integer.parseInt(request.getParameter("search"));
-			team.setStudyMax(serchMax);
-		}
+		/*
+		 * if(search != null && !search.isEmpty()) { String intStr =
+		 * search.replaceAll("[^0-9]", ""); int serchMax = Integer.parseInt(intStr);
+		 * team.setStudyMax(serchMax); }
+		 */
 		TeamServiceImpl service = new TeamServiceImpl();
 
 		team.setStudyId(search);
