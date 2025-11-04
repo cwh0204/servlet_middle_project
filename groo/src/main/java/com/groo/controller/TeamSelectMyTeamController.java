@@ -19,11 +19,11 @@ public class TeamSelectMyTeamController implements Controller {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memLoginId = request.getParameter("memLoginId");
-		
+
 		TeamDTO team = new TeamDTO();
-		
+
 		team.setMemLoginId(memLoginId);
-		
+
 		try {
 			TeamService service = new TeamServiceImpl();
 			List<TeamDTO> list = service.selectMyTeam(team);
