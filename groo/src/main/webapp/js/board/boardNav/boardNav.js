@@ -32,7 +32,7 @@ $(document).ready(function() {
 		$('.menu-item').removeClass('active');
 		$menuItem.addClass('active');
 		const pageToLoad = $menuItem.data('page');
-		console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
+/*		console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);*/
 		
 		if (pageToLoad) {
 			sessionStorage.setItem('board_last_view', pageToLoad);

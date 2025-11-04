@@ -120,30 +120,32 @@ var myTeamList = () => {
 		}
 	}); // $.ajax 끝
 }
+
+var pageLoad = (studyId) => {
+	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
+    sessionStorage.removeItem('team_last_view');
+    console.log("마지막 페이지"+pageToLoad);
+    
+    // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
+    $('#contentArea').load(pageToLoad, function(response, status, xhr) {
+        if (status === "success") {
+            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
+            
+        } else {
+            // 사용자에게 실패 메시지를 표시할 수 있습니다.
+            $('#contentArea').html('<p>상세 정보를 불러오는 데 실패했습니다. 다시 시도해 주세요.</p>');
+        }
+    });
+}
+
 $(document).ready(function() {
 	myTeamList();
-	$('#cardGrid').on('click', '.btn-detail', function() {
+ 	$('#cardGrid').on('click', '.btn-detail', function() {
         // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
         const studyId = $(this).data('studyId');
-        
+        console.log(studyId);
         if (studyId) {
-            // 2. 서버로 요청을 보낼 URL을 구성합니다.
-            // URL에 studyId를 쿼리 파라미터로 포함하여 서버에 전달합니다.
-            const pageToLoad = 'teamdetail.do?studyId=' + studyId;
-            sessionStorage.removeItem('team_last_view');
-            console.log("마지막 페이지"+pageToLoad);
-            
-            // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
-            $('#contentArea').load(pageToLoad, function(response, status, xhr) {
-                if (status === "success") {
-                    console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
-                    
-                } else {
-                    // 사용자에게 실패 메시지를 표시할 수 있습니다.
-                    $('#contentArea').html('<p>상세 정보를 불러오는 데 실패했습니다. 다시 시도해 주세요.</p>');
-                }
-            });
-
+			pageLoad(studyId);
         } else {
             console.error("❌ 오류: studyId를 가져올 수 없습니다.");
         }
