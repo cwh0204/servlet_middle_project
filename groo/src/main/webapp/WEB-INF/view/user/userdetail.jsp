@@ -133,9 +133,9 @@
 				</div>
 
 				<div class="input-group">
-					<label>관심분야</label>
+                <label>관심분야</label>
 					<textarea name="ff" id = "memInterest" placeholder="관심분야를 입력하세요"></textarea>
-				</div>
+                </div>
 			</div>
 		</div>
 		<%@ include file="./userdetailpw.jsp"%>
