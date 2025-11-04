@@ -7,7 +7,7 @@ var boardselect = () => {
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-
+			boardTypeId: 'free'
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
