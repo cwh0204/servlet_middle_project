@@ -24,3 +24,8 @@
 .bi.bi-search {
 	color: black;
 }
+
+.flex_container {
+    display: flex;
+    justify-content: center;
+}

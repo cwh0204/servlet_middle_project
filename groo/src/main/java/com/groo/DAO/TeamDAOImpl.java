@@ -107,7 +107,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectTeam 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 현재 소속 팀을 조회 하기 위한 메서드
 	 * @param team 팀을 활성 하기위한 Data Transfer Object 데이터 클래스
@@ -122,7 +122,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}catch (Exception e) {
 			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
 		}
-		
+
 		return teamList;
 	}
 }

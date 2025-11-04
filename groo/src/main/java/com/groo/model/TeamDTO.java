@@ -16,12 +16,12 @@ public class TeamDTO {
 	private String studyCreateDate;
 	private String studyUpdateDate;
 	private String studyDeleteDate;
-	
+
 	private String studyGold;
 	private String studySilver;
 	private String studyBlonze;
 	private String studyLike;
-	
+
 	//로그인 세션 아이디
 	private String memLoginId;
 	private String memNick;

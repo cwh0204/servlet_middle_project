@@ -29,7 +29,7 @@
 </body>
 <script type="text/javascript">
 
-var boardselect = () => {
+var noticeBoardselect = () => {
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'boardselect.do',
@@ -89,7 +89,7 @@ var boardselect = () => {
 	});
 }
 $(document).ready(function() {
-	boardselect();
+	noticeBoardselect();
 });
 </script>
 </html>

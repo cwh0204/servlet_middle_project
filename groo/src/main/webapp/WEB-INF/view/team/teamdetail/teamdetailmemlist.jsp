@@ -1,66 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- team_member_view.jsp --%>
+<script src="js/team/teamdetail/teamdetailmemlist.js">
+
+</script>
 <style>
-/* team_member_view.css - 필요하다면 별도 파일로 분리하세요 */
-.member-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+h3 {
+    text-align: center;
+    margin-top: 20px; /* 상단 여백 추가 (필요하다면) */
+    margin-bottom: 20px; /* 하단 여백 추가 (필요하다면) */
+    font-size: 30px;
 }
-.member-list-table th, .member-list-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+
+.member-cards-container {
+    display: flex; /* 카드를 가로로 배치 */
+    flex-wrap: wrap; /* 공간이 부족하면 다음 줄로 넘김 */
+    gap: 20px; /* 카드 사이의 간격 */
+    padding: 20px 0;
 }
-.member-list-table th {
-    background-color: #f2f2f2;
+
+/* 개별 팀원 카드 스타일 */
+.member-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* 은은한 그림자 */
+    padding: 20px;
+    width: calc(33.333% - 20px); /* 한 줄에 3개씩 배치 (33.333% - gap) */
+    min-width: 250px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+.member-card:hover {
+    transform: translateY(-3px); /* 마우스 오버 시 살짝 떠오르는 효과 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.card-group {
     font-weight: bold;
+    color: #007bff; /* 스터디 그룹 색상 강조 */
+    font-size: 0.9em;
 }
-.member-list-table tr:hover {
-    background-color: #f9f9f9;
+
+.card-detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.card-detail-list li {
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-detail-list strong {
+    color: #222;
+}
+
 </style>
 
-<h3>👥 팀 인원 목록</h3>
+<h3>👥 Java 웹 개발 스터디 인원 목록</h3>
 
 <div class="member-list-container">
-    <table class="member-list-table">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>이름</th>
-                <th>부서/팀</th>
-                <th>직급</th>
-                <th>이메일</th>
-                <th>입사일</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                // TODO: 실제로는 서버(Controller/Service/DAO)에서 팀원 목록 데이터를 가져와서 반복문으로 출력해야 합니다.
-                // 임시 데이터 예시
-                String[][] members = {
-                    {"1", "김철수", "개발팀", "팀장", "chulsoo@corp.com", "2018-03-01"},
-                    {"2", "이영희", "디자인팀", "대리", "younghee@corp.com", "2020-07-15"},
-                    {"3", "박민준", "개발팀", "사원", "minjun@corp.com", "2023-11-20"}
-                };
-                
-                for (int i = 0; i < members.length; i++) {
-            %>
-            <tr>
-                <td><%= members[i][0] %></td>
-                <td><%= members[i][1] %></td>
-                <td><%= members[i][2] %></td>
-                <td><%= members[i][3] %></td>
-                <td><%= members[i][4] %></td>
-                <td><%= members[i][5] %></td>
-            </tr>
-            <%
-                }
-            %>
-        </tbody>
-    </table>
+    <div id="memberCardsBody" class="member-cards-container">
+        </div>
     
-    <%-- TODO: 페이지네이션(Pagination)이 필요하다면 여기에 추가합니다. --%>
+    <%-- TODO: 페이지네이션이 필요하다면 여기에 추가합니다. --%>
 </div>
