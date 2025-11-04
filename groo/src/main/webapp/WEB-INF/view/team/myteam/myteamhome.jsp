@@ -80,7 +80,10 @@ function generateStudyCard(team) {
                 '<span class="leader-name">' + team.memNick + '</span>' +
             '</div>' +
             '<div class="card-actions">' +
-                '<button class="btn-detail">' +
+            '<button class="btn-detail" ' + 
+            'data-study-id="' + team.studyId + '">' + 
+            '<span>상세보기</span>' +
+            '</button>';
                     '<span>상세보기</span>' +
                 '</button>' +
                 '<button class="btn-leave">' +
@@ -105,6 +108,7 @@ var myTeamList = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
+			console.log(response);
 			response.forEach((team) => {
 				generateStudyCard(team);
 			});
@@ -116,8 +120,39 @@ var myTeamList = () => {
 		}
 	}); // $.ajax 끝
 }
+
+var pageLoad = (studyId) => {
+	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
+    sessionStorage.removeItem('team_last_view');
+    console.log("마지막 페이지"+pageToLoad);
+    
+    // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
+    $('#contentArea').load(pageToLoad, function(response, status, xhr) {
+        if (status === "success") {
+        	
+        	sessionStorage.setItem('teamId', studyId);
+        	
+            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
+            
+        } else {
+            // 사용자에게 실패 메시지를 표시할 수 있습니다.
+            $('#contentArea').html('<p>상세 정보를 불러오는 데 실패했습니다. 다시 시도해 주세요.</p>');
+        }
+    });
+}
+
 $(document).ready(function() {
 	myTeamList();
+ 	$('#cardGrid').on('click', '.btn-detail', function() {
+        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
+        const studyId = $(this).data('studyId');
+        console.log(studyId);
+        if (studyId) {
+			pageLoad(studyId);
+        } else {
+            console.error("❌ 오류: studyId를 가져올 수 없습니다.");
+        }
+    });
 });
 </script>
 </html>

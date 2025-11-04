@@ -18,4 +18,8 @@ public interface MemberService {
 	//소셜로그인
 	public MemberDTO selectSocialLoginCheck(MemberDTO member);
 	public void insertSociallMember(MemberDTO member);
+	
+	//아이디 비밀번호 찾기
+	public MemberDTO selectFindMemberId(MemberDTO member);
+	public void updateFindMemberPass(MemberDTO member);
 }

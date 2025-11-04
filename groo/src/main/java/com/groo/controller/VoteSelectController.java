@@ -8,62 +8,53 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.TeamDTO;
-import com.groo.service.TeamServiceImpl;
+import com.groo.model.VoteDTO;
+import com.groo.service.VoteService;
+import com.groo.service.VoteServiceImpl;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 팀목록 조회를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 투표를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class TeamSelectController extends HttpServlet implements Controller{
+public class VoteSelectController implements Controller {
+	
 	/**
-	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
+	 * HTTP 요청을 받아 투표를 조회하고 JSON 응답을 생성합니다.
 	 *
 	 * @param request  HTTP 요청 객체
 	 * @param response HTTP 응답 객체
 	 * @throws ServletException 서블릿 관련 오류 발생 시
 	 * @throws IOException      입출력 오류 발생 시
 	 */
-    @Override
+	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-
-		String search = request.getParameter("search");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/plain; charset=UTF-8");
 		
-		TeamDTO team = new TeamDTO();
-
-		/*
-		 * if(search != null && !search.isEmpty()) { String intStr =
-		 * search.replaceAll("[^0-9]", ""); int serchMax = Integer.parseInt(intStr);
-		 * team.setStudyMax(serchMax); }
-		 */
-		TeamServiceImpl service = new TeamServiceImpl();
-
-		team.setStudyId(search);
-		team.setStudyTitle(search);
-		team.setStudyCategory(search);
-		team.setStudyIntro(search);
-		team.setStudyIntroContent(search);
-
-
-		List<TeamDTO> teamList = new ArrayList<>();
-
+		String studyId = request.getParameter("studyId");
+		
+		VoteDTO vote = new VoteDTO();
+		vote.setStudyId(studyId);
+		
+		VoteService service = new VoteServiceImpl();
+		List<VoteDTO> voteList = new ArrayList<>();
+		
 		try {
+			voteList = service.selectVote(vote);
 
-			teamList = service.selectTeam(team);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+
 			Gson gson = new Gson();
-			String json = gson.toJson(teamList);
+			String json = gson.toJson(voteList);
+
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
@@ -75,4 +66,5 @@ public class TeamSelectController extends HttpServlet implements Controller{
 			error.setStatus(500);
 		}
 	}
+
 }
