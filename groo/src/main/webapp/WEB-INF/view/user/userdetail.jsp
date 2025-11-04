@@ -120,14 +120,14 @@
 					<label>주소</label>
 					<div style="display: flex; gap: 5px; align-items: center;">
 						<input type="text" id="zipcode" name="zipcode" placeholder="우편번호"
-							style="width: 120px; text-align: center;" readonly> <input
+							style="width: 120px; text-align: center;"> <input
 							type="button" value="우편번호" class="address_btn"
 							onclick="openPostcode()">
 
 
 					</div>
 					<input type="text" id="address1" name="address1" placeholder="기본주소"
-						style="margin-top: 5px;" readonly> <input type="text"
+						style="margin-top: 5px;" > <input type="text"
 						id="address2" name="address2" placeholder="상세주소"
 						style="margin-top: 5px;">
 				</div>

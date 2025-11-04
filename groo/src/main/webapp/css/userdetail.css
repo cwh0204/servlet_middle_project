@@ -136,7 +136,7 @@ button {
    font-size: 12px;
 }
 
-.input-group input[disabled] {
+.input-group input[readonly] {
    background-color: #f0f0f0;
    color: #777;
 }
