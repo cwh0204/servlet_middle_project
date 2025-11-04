@@ -174,7 +174,7 @@ public class TeamServiceImpl implements TeamService{
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 내 소속팀을 조회하는 서비스 메서드입니다.
 	 *
