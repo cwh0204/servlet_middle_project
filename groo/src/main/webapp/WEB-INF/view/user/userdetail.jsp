@@ -36,7 +36,7 @@
 						</div>
 						
 						<div class="input-group">
-							<label>닉네임</label> <input type="text" id="userNick" name="name" value="">
+							<label>닉네임</label> <input type="text" id="memNick" name="name" value="">
 							<span id="nickMsg" style="font-size: 12px; display: block; margin-top: 5px;"></span>
 						</div>
 						
@@ -44,15 +44,14 @@
 							<label>전화번호<span style="font-size: 12px; color: #666;">(선택)</span>
 							</label>
 							<div style="display: flex; gap: 10px; align-items: center;">
-								<select name="phonenumber"
-									style="width: 65px; text-align: center;">
+								<select id="memPhone1" name="phonenumber" style="width: 65px; text-align: center;">
 									<option value="010">010</option>
 									<option value="042">042</option>
 									<option value="02">02</option>
-								</select> <span>-</span> <input type="text" name="phonemiddle" id="memPhone"
-									maxlength="4" style="width: 65px; text-align: center;">
-								<span>-</span> <input type="text" name="phoneback" id="memPhone" maxlength="4"
-									style="width: 65px; text-align: center;">
+								</select> <span>-</span> 
+								<input type="text" name="phonemiddle" id="memPhone2" maxlength="4" style="width: 65px; text-align: center;">
+								<span>-</span> 
+								<input type="text" name="phoneback" id="memPhone3" maxlength="4" style="width: 65px; text-align: center;">
 							</div>
 						</div>
 					</div>
@@ -89,11 +88,8 @@
 				<div class="input-group">
 					<label>주민등록번호</label>
 					<div style="display: flex; align-items: center; gap: 5px;">
-						<input type="text" name="jumin_front" id="memBirth" maxlength="6"
-							placeholder="123456" readonly
-							style="width: 120px; text-align: center;"> <span>-</span>
-						<input type="password" name="jumin_back" id="memBirth" maxlength="1"
-							placeholder="●" readonly style="width: 50px; text-align: center;">
+						<input type="text" name="jumin_front" id="memBirthFront" maxlength="6" readonly style="width: 120px; text-align: center;"> <span>-</span>
+						<input type="password" name="jumin_back" id="memBirthBackFirst" maxlength="1" readonly style="width: 50px; text-align: center;">
 						<span>******</span>
 					</div>
 				</div>
@@ -142,9 +138,9 @@
 						<label><input type="checkbox" name="ff" id="memInterest" value="IT/개발">
 							IT/개발</label> <label><input type="checkbox" name="ff"
 							value="자격증/취업"> 자격증/취업</label> <label><input
-							type="checkbox" name="ff" id="memInterest" value="건강/의학"> 건강/의학</label> <label><input
-							type="checkbox" name="ff" id="memInterest" value="취미"> 취미</label> <label><input
-							type="checkbox" name="ff" id="memInterest" value="기타"> 기타</label>
+							type="checkbox" name="ff" value="건강/의학"> 건강/의학</label> <label><input
+							type="checkbox" name="ff" value="취미"> 취미</label> <label><input
+							type="checkbox" name="ff" value="기타"> 기타</label>
 					</div>
 					<textarea name="ff" placeholder="관심분야를 입력하세요"></textarea>
 				</div>

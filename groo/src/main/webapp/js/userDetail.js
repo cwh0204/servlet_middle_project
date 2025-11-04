@@ -334,15 +334,64 @@ $(function() { //document.ready(() => { })
 			console.log(response.memName);
 			$('#memName').val(response.memName);
 			$('#memLoginId').val(response.memLoginId);
-		    $('#password').val(response.password);
-		    $('#userNick').val(response.userNick);
+			$('#memNick').val(response.memNick);
+			$('#memPhone').val(response.memPhone);
 			$('#memBirth').val(response.memBirth);
 			$('#memEmail').val(response.memEmail);
-			$('#memPhone').val(response.memPhone);
+            
 			$('#zipcode').val(response.zipcode);
 			$('#memInterest').val(response.memInterest);
 			
-		},
+			// 전화번호 데이터가 "01012345678" 형식으로 들어온다고 가정
+			if (response.memPhone) {
+			    const phone = response.memPhone.replace(/[^0-9]/g, ''); // 숫자만 남기기
+			    const first = phone.substring(0, 3);
+			    const middle = phone.substring(3, 7);
+			    const last = phone.substring(7, 11);
+
+			    $('#memPhone1').val(first); // <select>의 option을 선택
+			    $('#memPhone2').val(middle); // <input type="text">에 값 설정
+			    $('#memPhone3').val(last);   // <input type="text">에 값 설정
+			}
+
+			// 1. 주민등록번호 (memBirth)
+			if (response.memBirth) {
+			    const jumin = response.memBirth.replace(/[^0-9]/g, ''); 
+			    if (jumin.length >= 8) {
+			        $('#memBirthFront').val(jumin.substring(2, 8)); 	 
+			        $('#memBirthBackFirst').val(jumin.substring(8, 9)); 
+			    }
+			}
+						
+			// 2. 이메일 (memEmail)
+		    if (response.memEmail && response.memEmail.includes('@')) {
+			const [emailId, emailDomain] = response.memEmail.split('@');
+			$('#emailid').val(emailId);
+			$('#emailDomain').val(emailDomain);
+			}
+					
+			// 3. 주소 (address1, address2)
+			            // 서버 응답에 'address1'과 'address2' 필드가 포함되어 있다고 가정
+			            if (response.address1) {
+			                $('#address1').val(response.address1); // 기본 주소 설정
+			            }
+			            if (response.address2) {
+			                $('#address2').val(response.address2); // 상세 주소 설정
+			            }	
+						// 4. 관심분야 (memInterest) - 체크박스와 텍스트 영역
+						if (response.memInterest) {
+						    const interests = response.memInterest.split(','); 
+						    
+						    // name="ff"를 사용하여 모든 체크박스를 순회함
+						    $('input[name="ff"][type="checkbox"]').each(function() { 
+						        if (interests.includes($(this).val())) {
+						            $(this).prop('checked', true);
+						        } else {
+						            $(this).prop('checked', false);
+						        }
+						    });
+						}
+			        },
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
