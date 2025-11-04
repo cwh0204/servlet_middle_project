@@ -129,6 +129,9 @@ var pageLoad = (studyId) => {
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
         if (status === "success") {
+        	
+        	sessionStorage.setItem('teamId', studyId);
+        	
             console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
             
         } else {
