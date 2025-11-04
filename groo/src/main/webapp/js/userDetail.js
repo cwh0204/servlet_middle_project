@@ -273,7 +273,7 @@ function resetFields() {
 }
 
 const showSubmitALert = () => {
-	const userId = sessionStorage.getItem('memLoginId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
+	const userId = sessionStorage.getItem('userId'); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 	console.log(userId);
 	const memPass = $('#passtry').val();
 	console.log(memPass);
