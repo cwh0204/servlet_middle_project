@@ -33,6 +33,8 @@ import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
+import com.groo.controller.MemberSelectFindLoginIdController;
+import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberUpdateController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.ReportInsertController;
@@ -65,7 +67,11 @@ public class FrontControllerPath {
 
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
-
+        
+        //아이디 찾기
+        controllerMap.put("/memberfindloginid.do", new MemberSelectFindLoginIdController());
+        //비밀번호 찾기
+        controllerMap.put("/memberfindpass.do", new MemberSelectFindPassController());
         //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());

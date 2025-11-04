@@ -209,6 +209,57 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}
 		return userselect;
 	}
+	
+	/**
+	 * 유저아이디를 확인하기 위한 서비스 메서드
+	 * @param member는 유저 아이디를 조회 하기 위한 Data Transfer Object 데이터 클래스
+	 * @return 아이디정보를 리턴
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public MemberDTO selectFindMemberId(MemberDTO member) {
+		
+		SqlSession session = SessionFactory.getSqlSession();
+		MemberDTO userselect = new MemberDTO();
+		try {
+			userselect = dao.selectFindMemberId(member, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return userselect;
+	}
+	
+	/**
+	 * 유저 비밀번호 초기화를 하기 위한 서비스 메서드
+	 * @param member는 유저를 조회 하기 위한 Data Transfer Object 데이터 클래스
+	 * @return 아이디정보를 리턴
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void updateFindMemberPass(MemberDTO member) {
+		
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.updateFindMemberPass(member, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
 
 }
 

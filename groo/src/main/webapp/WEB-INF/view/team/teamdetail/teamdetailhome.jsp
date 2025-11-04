@@ -14,9 +14,12 @@
             <h1 class="team-title">프론트엔드 개발 스터디: 리액트 마스터</h1>
             
             <div class="team-meta">
-                <span>❤️ 2,134</span> <span>🗓️ 2024년 03월 15일 생성</span> <span># IT/개발</span> </div>
+                <span><img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"> 2,134</span> 
+                <span><img src="https://i.postimg.cc/qMkNbqfw/free-icon-chick-15549519.png" class="egg-img">2024년 03월 15일 생성</span> 
+                <span><img src="https://i.postimg.cc/jd5NFSZf/education-1.png" class="edu-img"> IT/개발</span> </div>
         </div>
-        
+      <div class="team-leader-wrapper"> 
+        <span class="leader-badge">Team Leader</span>
         <div class="team-leader-card">
             <img src="images/leader_profile.png" alt=" 팀장 프로필" class="leader-photo">
             <div class="leader-info">
@@ -24,6 +27,7 @@
             	<p class="leader-role">팀장 / Chief</p>
             </div>
         </div>
+      </div> 
     </section>
 
   <div class="team-info">  
@@ -52,7 +56,8 @@
     </section>
     
    	<section class="team-schedule">
-    	<h2>스터디 일정표</h2>
+    	<h2><img src="https://i.postimg.cc/3R00YvL6/free-icon-schedule-5807616.png" class="schedule-img">
+    	스터디 일정표</h2>
     	<ul class="schedule-list">
     		<li>
     			<div class="schedule-date">2025-11-8 (토)</div>

@@ -17,4 +17,8 @@ public interface MemberDAO {
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);
 	public void insertSociallMember(MemberDTO member, SqlSession session);
 	public MemberDTO selectLoginMember(MemberDTO member, SqlSession session);
+	
+	//아아디 비밀번호 찾기
+	public MemberDTO selectFindMemberId(MemberDTO member, SqlSession session);
+	public void updateFindMemberPass(MemberDTO member, SqlSession session);
 }
