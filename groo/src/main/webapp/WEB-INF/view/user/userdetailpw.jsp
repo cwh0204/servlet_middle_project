@@ -91,8 +91,8 @@ button:hover {
 
 		<div class="input-group" style="position: relative;">
 			<label>비밀번호</label> <input type="password" name="pw" id="pw" required>
-			<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png"
-				style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;">
+<!-- 			<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png" -->
+<!-- 				style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;"> -->
 		</div>
 
 		<button id="userPwCk" type="submit">확인</button>
@@ -111,13 +111,14 @@ $("#userPwCk").on("click",function () {
 togglePasswordPw.addEventListener('click', () => {
     if (passwordPw.type === 'password') {
     	passwordPw.type = 'text';
-        togglePasswordPw.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; //보일때
+//         togglePasswordPw.src = 'https://i.postimg.cc/8z2sxNX4/view.png'; //보일때
     } else {
         passwordPw.type = 'password';
-        togglePasswordPw.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; //안보일때 
+//         togglePasswordPw.src = 'https://i.postimg.cc/TYkDN86M/hide.png'; //안보일때 
 
     }
-});
+}
+);
 
 
 // 비밀번호 자리수 제한(공백제외, 특수문자 최소1개이상, 8~20자리까지) 
