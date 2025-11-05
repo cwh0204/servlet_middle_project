@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="GrooBotMapper">
+
+<insert id="insertGrooBot" parameterType="com.groo.model.GrooBotDTO">
+	INSERT INTO GROOBOT
+	(
+		BOT_ID,
+		BOARD_ID,
+		BOT_COMMENT,
+		BOT_START
+	)VALUES(
+		'GB' || GROOBOT_SEQ.NEXTVAL,
+		#{boardId},
+		#{botComment},
+		SYSDATE
+	)
+</insert>
+<select id="selectGrooBot" parameterType="com.groo.model.GrooBotDTO" resultType="com.groo.model.GrooBotDTO">
+	SELECT BOT_COMMENT
+	FROM GROOBOT
+	WHERE BOARD_ID = #{boardId}
+</select>
+
+</mapper>
