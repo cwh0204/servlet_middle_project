@@ -125,4 +125,15 @@ public class TeamDAOImpl implements TeamDAO{
 
 		return teamList;
 	}
+
+	@Override
+	public List<TeamDTO> teamselectAll(TeamDTO team, SqlSession session) {
+		List<TeamDTO> teamList = new ArrayList<>();
+		try {
+			teamList = session.selectList("teamselectAll",team);
+		}catch (Exception e) {
+			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
+		}
+		return teamList;
+	}
 }

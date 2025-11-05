@@ -13,7 +13,7 @@
 		
 		<div class="menu-item active" data-page="mypagedashboardhome.do">
 			<div class="menu-item-content">
-				<span>전체보기</span>
+				<span>일정 달력표</span>
 			</div>
 		</div>
 		

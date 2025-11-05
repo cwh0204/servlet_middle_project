@@ -1,12 +1,12 @@
 #fullCalendar {
-	max-width: 900px;
-	margin: 40px auto;
+	max-width: 1400px;
+	margin: 25px auto;
 	padding: 20px;
 	border: 1px solid #e0e0e0;
 	border-radius: 8px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	height: 700px;
+	height: 800px;
 }
 
 .fc-toolbar-chunk .fc-button {

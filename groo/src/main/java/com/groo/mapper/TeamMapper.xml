@@ -138,4 +138,10 @@
 		WHERE B.MEM_LOGIN_ID = #{memLoginId}
 		ORDER BY C.STUDY_TITLE
 	</select>
+	
+	<select id="teamselectAll" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
+		SELECT * FROM STUDY
+	</select>
+	
+	
 </mapper>
