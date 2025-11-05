@@ -53,6 +53,7 @@ import com.groo.controller.UserdetailSelectNicknameController;
 import com.groo.controller.UserdetailSelectUserListController;
 import com.groo.controller.VoteInsertController;
 import com.groo.controller.VoteSelectController;
+import com.groo.controller.VoteUpdateOkController;
 
 public class FrontControllerPath {
 
@@ -106,16 +107,12 @@ public class FrontControllerPath {
         controllerMap.put("/teamdelete.do", new TeamDeleteController());
         controllerMap.put("/teamactivate.do", new TeamActivateController());
         controllerMap.put("/teamselectmyteam.do", new TeamSelectMyTeamController());
-
         controllerMap.put("/selectloginid.do", new SignUpSelectLoginIdController());
         controllerMap.put("/selectemail.do", new SignUpSelectEmailController());
-
         controllerMap.put("/naverlogin.do", new NaverLoginController());
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
-        controllerMap.put("/naverlogin.do", new NaverLoginController());
-        controllerMap.put("/githublogin.do", new GitHubLoginController());
-        controllerMap.put("/kakaologin.do", new KakaoLoginController());
+        controllerMap.put("/voteok.do", new VoteUpdateOkController());
 
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
