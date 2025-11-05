@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title></title>
 <link href="css/team/team.css" rel="stylesheet">
+
 </head>
 <body>
 	<div class="teamcontainer">
