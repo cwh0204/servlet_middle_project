@@ -1,67 +1,56 @@
-@charset "UTF-8";
-
+/* 1. 리뷰 목록 전체 컨테이너 및 흰색 배경 */
 /* 리뷰 목록 전체 컨테이너 */
 .review-list-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
-    gap: 20px; /* 카드 간격 */
+    display: flex;
+    flex-direction: column; 
+    
+    /* 1. 컨테이너의 최대 너비를 설정합니다 (예시: 800px) */
+    max-width: 800px; 
+    width: 100%; /* 너비가 max-width를 넘지 않을 때 100%를 사용하도록 보장 */
+    
+    /* 2. 좌우 마진을 auto로 설정하여 중앙 정렬합니다. */
+    margin: 0 auto; 
+    
+    /* 3. (기존 스타일 유지) */
+    gap: 0; 
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #ffffff; 
 }
 
-/* 개별 리뷰 카드 스타일 */
+/* 나머지 .review-card 스타일은 그대로 유지합니다. */
+
+/* 2. 개별 리뷰 카드 스타일 (한 줄 레이아웃) */
 .review-card {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative; /* ⭐️ 버튼 절대 위치 지정을 위한 기준점 (필수) ⭐️ */
+    
+    /* ⭐️ 하단에 버튼 공간을 확보하여 텍스트와 겹치지 않게 함 (필수) ⭐️ */
+    padding-bottom: 55px; 
+    
+    /* ⭐️ 카드 간 흰색 간격 확보 (gap 대신 margin 사용) ⭐️ */
+    margin-bottom: 25px; 
 }
 
-.review-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+.review-card:last-child {
+    margin-bottom: 0; /* 마지막 카드의 불필요한 마진 제거 */
 }
 
-/* 카드 헤더 (사용자 ID, 날짜) */
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    border-bottom: 1px dashed #e9ecef;
-    padding-bottom: 8px;
-}
 
-.user-id {
-    font-weight: bold;
-    color: #333;
-}
-
-.date {
-    font-size: 0.85em;
-    color: #888;
-}
-
-/* 별점 컨테이너 */
+/* 3. 별점 표시 스타일 */
 .card-rating {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.rating-score {
-    margin-left: 10px;
-    font-weight: 500;
-    color: #495057;
-}
-
-/* ⭐️⭐️⭐️ 별점 표시 핵심 CSS ⭐️⭐️⭐️ */
 .stars {
     position: relative;
     display: inline-block;
-    font-size: 1.5em; /* 별 크기 */
+    font-size: 1.3em;
     line-height: 1;
 }
 
@@ -69,31 +58,43 @@
     color: #ccc;
 }
 
+/* ⭐️ 노란색 별점 및 채워지는 영역 설정 ⭐️ */
 .star-filled {
     position: absolute;
     top: 0;
     left: 0;
-    overflow: hidden;
-    color: #ffc107; /* 채워진 별 색상 (노란색) */
-    width: 0; /* JS 또는 CSS에서 동적으로 설정 */
+    overflow: hidden; 
+    color: #ffc107; /* 노란색 */
+    white-space: nowrap;
+    width: 0; /* JavaScript로 이 값이 변경되어야 별이 채워집니다. */
 }
 
-/* data-rating을 사용하여 별 너비 동적 계산 (핵심!) */
-.stars[data-rating] .star-filled {
-    /* 5점 만점이므로, (평점 / 5) * 100% 로 너비 설정 */
-    width: calc(var(--rating) / 5 * 100%); 
-    /* --rating 변수는 JS로 설정하거나, 각 HTML 요소에 직접 설정해야 합니다. */
+/* 4. ⭐️ 수정/삭제 버튼 영역 (오른쪽 아래 절대 위치) ⭐️ */
+.card-actions {
+    position: absolute; 
+    bottom: 15px;      /* 카드 하단에서 띄움 */
+    right: 20px;       /* 카드 오른쪽에서 띄움 */
+    display: flex;
+    gap: 8px;
+    z-index: 10;
 }
 
-/* data-rating 값에 따른 CSS 변수 설정 (브라우저 지원을 위해 권장) */
-.stars[data-rating="4.5"] { --rating: 4.5; }
-.stars[data-rating="3.0"] { --rating: 3.0; }
-/* ... 필요한 모든 평점 값에 대해 추가 ... */
+/* 5. 버튼 스타일 */
+.action-btn {
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    opacity: 0.9;
+}
 
-/* 리뷰 본문 */
-.review-text {
-    color: #495057;
-    font-size: 0.95em;
-    line-height: 1.5;
-    word-break: break-word;
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
 }

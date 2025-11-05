@@ -9,21 +9,21 @@ function loadPageContent(pageToLoad) {
         // '.mypagecontent' 영역에 페이지 로드
         $('.mypagecontent').load(pageToLoad, function(response, status, xhr) {
             
-            // 차트/캘린더 초기화 함수 호출
-            if (typeof window.chartColl === 'function') {
-                window.chartColl();
-            }
-            if (typeof initFullCalendar === 'function') { 
-                initFullCalendar(); 
-            }
+			if (typeof initFullCalendar === 'function' && $('#fullCalendar').length) { 
+			            initFullCalendar(); 
+			 }
             
+            // 리뷰 페이지일 때만 별점 렌더링 함수를 호출하는 로직도 여기에 추가해야 합니다.
+            if (typeof renderStarRatings === 'function' && pageToLoad.includes("review")) { 
+                renderStarRatings(); 
+            }
+                        
             if (status == "error") {
                 console.error("페이지 로드 실패: " + xhr.status + " " + xhr.statusText);
             }
         });
     }
 }
-
 // 모든 메뉴의 active/open 클래스를 초기화하는 함수
 function resetMenuClasses() {
     $('.menu-item').removeClass('active open');
