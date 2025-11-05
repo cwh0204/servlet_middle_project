@@ -55,7 +55,7 @@
 				+
 				// studyData.likes 변수 결합
 				'<span class="stat-value">'
-				+ team.studyLike
+				+ team.studyPick
 				+ '</span>'
 				+ '</div>'
 				+ '</div>'
