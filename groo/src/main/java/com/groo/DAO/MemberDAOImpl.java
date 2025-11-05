@@ -156,7 +156,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public MemberDTO selectFindMemberId(MemberDTO member, SqlSession session) {
 		MemberDTO memberid = new MemberDTO();
-		
+
 		try {
 			memberid = session.selectOne("selectFindMemberId", member);
 		}catch (Exception e) {
@@ -173,7 +173,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 */
 	@Override
 	public void updateFindMemberPass(MemberDTO member, SqlSession session) {
-		
+
 		try {
 			session.update("updateFindMemberPass", member);
 		}catch (Exception e) {
