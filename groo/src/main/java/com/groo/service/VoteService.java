@@ -8,4 +8,5 @@ public interface VoteService {
 	public void insertVote(VoteDTO vote);
 	public List<VoteDTO> selectVote(VoteDTO vote);
 	public void updateVoteOk(VoteDTO vote);
+	public List<VoteDTO> selectVoteRank(VoteDTO vote);
 }

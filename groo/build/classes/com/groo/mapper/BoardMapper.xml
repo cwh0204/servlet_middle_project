@@ -4,6 +4,11 @@
 
 <mapper namespace="BoardMapper">
 	<insert id="insertBoard" parameterType="com.groo.model.BoardDTO">
+	
+		<selectKey keyProperty="boardId" resultType="String" order="BEFORE">
+		    SELECT 'B' || TO_CHAR(BOARD_SEQ.NEXTVAL) FROM DUAL
+		</selectKey>
+	    
 		INSERT INTO BOARD
 			(
 				BOARD_ID,
@@ -14,7 +19,7 @@
 			)
 		VALUES
 			(
-				'B'||BOARD_SEQ.NEXTVAL,
+				#{boardId},
 				(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID  = #{memLoginId}),
 				#{boardTypeId},
 				#{postTitle},

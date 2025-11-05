@@ -4,13 +4,13 @@ function boardInsert(writer) {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const typeValue = urlParams.get('type');
-	
+
 	//postContent 유효성 검사
 	const pureText = $('<div>').html(postContent).text();
 	const trimmedText = pureText.replace(/\s/g, '');
-	
+
 	console.log("trimmedText.length : ", trimmedText.length);
-	
+
 	if (postTitle && trimmedText.length !== 0) {
 		$.ajax({
 
@@ -23,13 +23,26 @@ function boardInsert(writer) {
 				boardType: typeValue,
 				postContent: postContent,
 				postTitle: postTitle
-			},
+			}, beforeSend: function() {
+				// 1. 로딩 화면 표시
+				$('#loading').show();
 
+				// 2. 첫 번째 멘트 설정
+				$('#loading-message').text('groo bot이 글을 읽는 중...');
+
+				// 3. 1.5초 후 두 번째 멘트로 전환
+				setTimeout(function() {
+					// 요청이 아직 완료되지 않았을 경우에만 멘트 변경
+					if ($('#loading').is(':visible')) {
+						$('#loading-message').text('groo bot이 글을 쓰는 중...');
+					}
+				}, 1500); // 1.5초
+			},
 			success: function(response) {
 				console.log(writer);
-				if(writer == "cwh0204"){
+				if (writer == "cwh0204") {
 					window.location.href = "admin.do";
-				}else{
+				} else {
 					window.location.href = "main.do";
 				}
 			},
@@ -73,7 +86,6 @@ $(document).ready(function() {
 	$('#submitBtn').click(function() {
 		boardInsert(writer);
 	});
-	
 	$('.btn-secondary').click(function() {
 		history.back();
 	});

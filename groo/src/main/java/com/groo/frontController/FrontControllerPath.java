@@ -29,6 +29,7 @@ import com.groo.controller.ComentSelectController;
 import com.groo.controller.Controller;
 import com.groo.controller.GitHubLoginController;
 import com.groo.controller.GoogleGenaiController;
+import com.groo.controller.GrooBotSelectController;
 import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
@@ -53,6 +54,7 @@ import com.groo.controller.UserdetailSelectNicknameController;
 import com.groo.controller.UserdetailSelectUserListController;
 import com.groo.controller.VoteInsertController;
 import com.groo.controller.VoteSelectController;
+import com.groo.controller.VoteSelectRankController;
 import com.groo.controller.VoteUpdateOkController;
 
 
@@ -136,8 +138,11 @@ public class FrontControllerPath {
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());
+        controllerMap.put("/voteselectrank.do", new VoteSelectRankController());
+
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());
+        controllerMap.put("/groobotselect.do", new GrooBotSelectController());
     }
 
     public Controller getControllers(String command) {

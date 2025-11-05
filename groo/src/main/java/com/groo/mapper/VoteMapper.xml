@@ -54,5 +54,49 @@
 			VOTE_OK = VOTE_OK + 1
 		WHERE VOTE_ID = #{voteId}
 	</update>
+	
+	<select id="selectVoteRank" resultType="com.groo.model.VoteDTO">
+		SELECT
+		    T.VOTE_ID,
+		    T.STUDY_ROLL,
+		    T.MEM_NICK,
+		    T.VOTE_TITLE,
+		    T.VOTE_CONTENT,
+		    T.VOTE_SUBJECT,
+		    T.VOTE_START,
+		    T.VOTE_END,
+		    T.VOTE_OK
+		FROM (
+		    SELECT 
+		        A.VOTE_ID,
+		        CASE C.STUDY_ROLL
+		            WHEN 'L' THEN '팀장'
+		            WHEN 'M' THEN '팀원'
+		            ELSE '미확인'
+		        END AS STUDY_ROLL,
+		        B.MEM_NICK,
+		        A.VOTE_TITLE,
+		        A.VOTE_CONTENT,
+		        A.VOTE_SUBJECT,
+		        A.VOTE_START,
+		        A.VOTE_END,
+		        A.VOTE_OK,
+		        ROW_NUMBER() OVER (
+		            PARTITION BY 
+		                A.STUDY_ID, 
+		                TO_CHAR(A.VOTE_START, 'YYYYIW')
+		            ORDER BY 
+		                A.VOTE_OK DESC, 
+		                A.VOTE_ID
+		        ) AS RN 
+		    FROM VOTE A
+		    INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		    INNER JOIN STUDYMEMBER C ON (A.MEM_ID = C.MEM_ID AND A.STUDY_ID = C.STUDY_ID)
+		    WHERE A.VOTE_START <![CDATA[<=]]> TRUNC(SYSDATE, 'IW') - 1 AND
+		    	  A.STUDY_ID = #{studyId}
+		) T
+		WHERE T.rn = 1
+		ORDER BY T.VOTE_START DESC
+	</select>
 
 </mapper>

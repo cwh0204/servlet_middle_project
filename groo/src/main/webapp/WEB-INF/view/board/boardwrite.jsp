@@ -14,10 +14,11 @@
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
 	rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
-<link href="css/board/boardWrite.css" rel="stylesheet">
-<script src="js/board/boardWrite.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+<link href="css/board/boardWrite.css" rel="stylesheet">
+<script src="js/board/boardWrite.js"></script>
 <body>
 	<div class="board-form-container">
 		<h2 class="mb-4 board-title-heading">✏️ 새 게시글 작성</h2>
@@ -45,10 +46,40 @@
 	</div>
 	<%@ include file="../frontComponents/chatbot.jsp"%>
 	<div class="chatbot-fixed-container-alt">
-		<button type="button" class="chatbot-button"
-			id="openChatBtn">
+		<button type="button" class="chatbot-button" id="openChatBtn">
 			<i class="bi bi-chat-dots-fill me-2"></i>채팅 열기
 		</button>
+	</div>
+	<div id="loading" style="
+	    display: none; 
+	    position: fixed; 
+	    top: 0; 
+	    left: 0; 
+	    width: 100%; 
+	    height: 100%; 
+	    background: rgba(255, 255, 255, 0.8); 
+	    z-index: 9999; 
+	    text-align: center;
+	">
+	    <div id="loading-container" style="
+	        position: absolute; 
+	        top: 50%; 
+	        left: 50%; 
+	        transform: translate(-50%, -50%); 
+	        padding: 30px; 
+	        background: #343a40; /* Dark background for visibility */
+	        color: #fff;
+	        border-radius: 8px;
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+	    ">
+	        <div class="spinner-border m-3 text-light" role="status">
+	            <span class="visually-hidden">Loading...</span>
+	        </div>
+	        
+	        <span id="loading-message" class="mt-2" style="font-size: 1.1em;"></span> 
+	    </div>
 	</div>
 </body>
 </html>
