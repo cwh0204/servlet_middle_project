@@ -1,13 +1,15 @@
 teamselectall = () => {
 	$.ajax({
-		url: "teamselects.do",
+		url: "teamselectall.do",
 		type: "GET",
 		dataType: "json",
 
 		success: function(response) {
+			console.log(response);
 			const studyList = response;
 			const container = $('.new-study-list');
 
+			// 기존 내용을 비워 중복 출력을 방지합니다.
 			container.empty();
 
 			if (!studyList || studyList.length === 0) {
@@ -23,6 +25,7 @@ teamselectall = () => {
 				const studyTitle = study.studyTitle;
 				const studyCategory = study.studyCategory;
 				const studyMax = study.studyMax;
+				const studyLike = study.studyLike; // ✨ 좋아요 수 추출
 
 				// 1. 최상위 카드 요소 (.hot-study-card) 생성
 				const $card = $('<div>')
@@ -32,7 +35,7 @@ teamselectall = () => {
 
 				// 2. 이미지 요소 (<img>) 생성
 				const $img = $('<img>')
-					.attr('src', `images/hotstudy${(index % 3) + 1}.png`) // 이미지 순환 예시
+					.attr('src', `images/hotstudy${(index % 3) + 1}.png`)
 					.attr('alt', `${studyTitle} 스터디 이미지`)
 					.addClass('hot-study-image');
 
@@ -48,13 +51,20 @@ teamselectall = () => {
 				// 4. 제목 요소 (<h3>) 생성
 				const $title = $('<h3>').addClass('hot-study-title').text(studyTitle);
 
-				// 5. 인원 정보 요소 (<p>) 생성 (이전에 논의된 추가 정보)
+				// 5-1. 좋아요 정보 요소 생성 (⭐ 새롭게 추가)
+				const $likeContainer = $('<div>').addClass('study-like-info');
+				const $likeIcon = $('<span>').addClass('like-icon').html('❤️');
+				const $likeCount = $('<span>').addClass('like-count').text(studyLike);
+				$likeContainer.append($likeIcon).append($likeCount);
+
+				// 5-2. 인원 정보 요소 (<p>) 생성
 				const $info = $('<p>').addClass('study-info').text(`최대 인원: ${studyMax}명`);
 
 				// 6. 모든 요소를 카드에 조립 후 컨테이너에 삽입
 				$card.append($img)
 					.append($tags)
 					.append($title)
+					.append($likeContainer) // ✨ 좋아요 컨테이너 추가
 					.append($info);
 
 				container.append($card);
@@ -69,9 +79,9 @@ teamselectall = () => {
 }
 
 $(document).ready(function() {
-	
+
 	teamselectall();
-	
+
 	// --- 2. 슬라이드 기능 (기존 코드 유지) ---
 
 	const slideContainer = $('.slide-container');

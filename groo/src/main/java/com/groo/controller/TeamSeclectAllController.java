@@ -29,6 +29,7 @@ public class TeamSeclectAllController implements Controller {
 		try {
 			TeamService teamService = new TeamServiceImpl();
 			List<TeamDTO> list = teamService.teamselectAll(team);
+			
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
 
