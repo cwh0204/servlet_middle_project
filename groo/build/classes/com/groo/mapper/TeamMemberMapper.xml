@@ -15,4 +15,8 @@
 			#{studyRoll}
 		)
 	</insert>
-</mapper>
+	
+	<select id="selectAllTeamMember" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+		SELECT * FROM STUDYMEMBER
+	</select>
+</mapper> 

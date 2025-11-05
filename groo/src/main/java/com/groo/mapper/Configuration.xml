@@ -41,6 +41,7 @@
 		<mapper resource="com/groo/mapper/ReportMapper.xml" />
 		<mapper resource="com/groo/mapper/TeamMemberMapper.xml" />
 		<mapper resource="com/groo/mapper/VoteMapper.xml" />
+		<mapper resource="com/groo/mapper/GrooBotMapper.xml" />
 	</mappers>
 
 </configuration>

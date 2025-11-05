@@ -10,4 +10,5 @@ public interface VoteDAO {
 	public void insertVote(VoteDTO vote, SqlSession session);
 	public List<VoteDTO> selectVote(VoteDTO vote, SqlSession session);
 	public void updateVoteOk(VoteDTO vote, SqlSession session);
+	public List<VoteDTO> selectVoteRank(VoteDTO vote, SqlSession session);
 }

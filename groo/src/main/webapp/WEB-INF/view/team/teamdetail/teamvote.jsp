@@ -17,12 +17,6 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-body {
-	background-color: #f8f9fa;
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
 .header {
 	background-color: white;
 	border-bottom: 1px solid #e0e0e0;
@@ -36,29 +30,6 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 20px;
-}
-
-.logo img {
-	height: 50px;
-}
-
-.nav-menu {
-	display: flex;
-	gap: 50px;
-	list-style: none;
-}
-
-.nav-menu a {
-	text-decoration: none;
-	color: #333;
-	font-weight: 500;
-	font-size: 16px;
-}
-
-.nav-menu a.active {
-	color: #5a9a5a;
-	border-bottom: 3px solid #5a9a5a;
-	padding-bottom: 22px;
 }
 
 .container-main {
