@@ -46,6 +46,7 @@ import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
+import com.groo.controller.TeamMemberAllSelectController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -135,7 +136,9 @@ public class FrontControllerPath {
         controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
-
+        
+        //팀멤버
+        controllerMap.put("/selectAllTeamMember.do", new TeamMemberAllSelectController());
 
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
