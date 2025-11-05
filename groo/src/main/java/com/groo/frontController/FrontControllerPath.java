@@ -136,6 +136,8 @@ public class FrontControllerPath {
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());
+
+
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());
     }
