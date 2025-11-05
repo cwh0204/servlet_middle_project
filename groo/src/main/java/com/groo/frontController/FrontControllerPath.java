@@ -55,6 +55,7 @@ import com.groo.controller.VoteInsertController;
 import com.groo.controller.VoteSelectController;
 import com.groo.controller.VoteUpdateOkController;
 
+
 public class FrontControllerPath {
 
     private Map<String, Controller> controllerMap = new HashMap<>();
@@ -70,7 +71,7 @@ public class FrontControllerPath {
 
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
-        
+
         //아이디 찾기
         controllerMap.put("/memberfindloginid.do", new MemberSelectFindLoginIdController());
         //비밀번호 찾기
@@ -131,7 +132,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
 
-        
+
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());

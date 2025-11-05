@@ -36,7 +36,7 @@ public class TeamSelectController extends HttpServlet implements Controller{
 		response.setCharacterEncoding("UTF-8");
 
 		String search = request.getParameter("search");
-		
+
 		TeamDTO team = new TeamDTO();
 
 		/*

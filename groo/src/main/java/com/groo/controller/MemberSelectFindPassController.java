@@ -13,7 +13,6 @@ import com.groo.service.MemberServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 public class MemberSelectFindPassController implements Controller {
 
@@ -23,8 +22,8 @@ public class MemberSelectFindPassController implements Controller {
 		String memLoginId = request.getParameter("memLoginId");
 		String memPass = request.getParameter("memPass");
 		String memEmail = request.getParameter("memEmail");
-		
-		
+
+
 		MemberDTO member = new MemberDTO();
 
 		member.setMemLoginId(memLoginId);

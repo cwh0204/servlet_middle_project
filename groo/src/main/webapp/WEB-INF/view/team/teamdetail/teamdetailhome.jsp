@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link href="css/team/myteam/teamdetail.css" rel="stylesheet">
 <title>team create</title>
-</body>
+<body>
 <section class="team-header">
         <img src="images/team_frontend_logo.png" alt="팀 프로필" class="team-profile-img">
         
@@ -83,4 +83,5 @@
     	</ul>
     </section>
   </div>
+</body> 
 </html>

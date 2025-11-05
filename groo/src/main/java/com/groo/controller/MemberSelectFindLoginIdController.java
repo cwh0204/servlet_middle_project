@@ -13,7 +13,6 @@ import com.groo.service.MemberServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * 회원의 아이디 찾기를 처리하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로 클라이언트에 응답

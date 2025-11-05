@@ -61,7 +61,7 @@ public class FrontPath {
         jspMap.put("/teamdetailhome.do", "/WEB-INF/view/team/teamdetail/teamdetailhome.jsp");
         jspMap.put("/teamdetailmemlist.do", "/WEB-INF/view/team/teamdetail/teamdetailmemlist.jsp");
         jspMap.put("/teamboard.do", "/WEB-INF/view/team/teamdetail/teamboard.jsp");
-        
+
         jspMap.put("/teamvote.do", "/WEB-INF/view/team/teamdetail/teamvote.jsp");
         jspMap.put("/teamschedule.do", "/WEB-INF/view/team/teamdetail/teamschedule.jsp");
 
