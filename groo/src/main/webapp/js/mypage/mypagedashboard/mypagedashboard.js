@@ -2,12 +2,12 @@
 function initFullCalendar() {
 	var calendarEl = document.getElementById('fullCalendar');
 
-	if (!calendarEl || $(calendarEl).hasClass('fc')) {
+	/*if (!calendarEl || $(calendarEl).hasClass('fc')) {
 		if (!calendarEl) {
 			console.error("Error: 'fullCalendar' ID를 가진 요소를 찾을 수 없습니다.");
 		}
 		return;
-	}
+	}*/
 
 	const today = new Date();
 	const year = today.getFullYear();
@@ -19,8 +19,7 @@ function initFullCalendar() {
 		initialView: 'dayGridMonth',
 		initialDate: dynamicInitialDate,
 		locale: 'ko',
-		initialView: 'dayGridMonth', // 월 보기로 초기 화면 고정
-
+		initialView: 'dayGridMonth',
 		editable: true,
 		selectable: true,
 

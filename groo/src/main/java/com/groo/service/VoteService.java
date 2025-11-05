@@ -7,4 +7,5 @@ import com.groo.model.VoteDTO;
 public interface VoteService {
 	public void insertVote(VoteDTO vote);
 	public List<VoteDTO> selectVote(VoteDTO vote);
+	public void updateVoteOk(VoteDTO vote);
 }

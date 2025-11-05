@@ -65,8 +65,9 @@ body {
 	max-width: 1400px;
 	margin: 0 auto;
 	display: flex;
-	padding: 20px;
 	gap: 20px;
+	height: 100%;
+    width: 100%;
 }
 
 .main-content {
@@ -324,6 +325,22 @@ body {
 	        const statusText = '진행중'; 
 
 	        // 3. 템플릿 리터럴 (Template Literal)을 사용하여 HTML 문자열 생성
+	        
+	        console.log(vote);
+	        
+	        const TOTAL_VOTERS = 15; 
+
+			// 현재 옵션의 득표 수
+			const optionVotes = vote.voteOk; 
+			
+			// 게이지 폭 (퍼센트) 계산
+			// (현재 득표 수 / 총 인원 5명) * 100
+			let percentage = 0;
+			if (TOTAL_VOTERS > 0) {
+			    // 득표율을 계산하고 반올림합니다.
+			    percentage = Math.round((optionVotes / TOTAL_VOTERS) * 100); 
+			}
+	        
 	        const cardHtml = 
 			    '<div class="vote-card" data-vote-id="' + vote.voteId + '">' +
 			        '<div class="vote-header">' +
@@ -340,17 +357,12 @@ body {
 			        '<div class="vote-options">' +
 			            '<div class="vote-option">' +
 			                '<div class="vote-option-header">' +
-			                    '<span>옵션 예시</span> <span>0표 (0%)</span>' +
+			                    '<span>투표 진행 상황</span> <span>'+ vote.voteOk + ' 표 </span>' +
 			                '</div>' +
 			                '<div class="progress">' +
-			                    '<div class="progress-bar" role="progressbar" style="width: 0%"></div>' +
+			                    '<div class="progress-bar" role="progressbar" style="width: ' + percentage + '%"></div>' +
 			                '</div>' +
 			            '</div>' +
-			        '</div>' +
-			
-			        '<div class="vote-footer">' +
-			            '<span>총 0표</span>' +
-			            '<button class="btn btn-vote" data-vote-id="' + vote.voteId + '">투표하기</button>' +
 			        '</div>' +
 			    '</div>';
 	        
@@ -358,23 +370,28 @@ body {
 	        $container.append(cardHtml);
 	    });
 	}
+	
+	var voteSelect = (studyId) => {
+        $.ajax({
+            url: 'voteselect.do',
+            method: 'POST',
+            data: {
+            	studyId: studyId
+            },
+            success: function(response) {
+            	renderVoteCards(response);
+            },
+            error: function() {
+            	console.log(response);
+            }
+        });
+	}
+	
         $(document).ready(function() {
 
-        	const studyId = sessionStorage.getItem('teamId');
-        	console.log(studyId);
-            $.ajax({
-                url: 'voteselect.do',
-                method: 'POST',
-                data: {
-                	studyId: studyId
-                },
-                success: function(response) {
-                	renderVoteCards(response);
-                },
-                error: function() {
-                	console.log(response);
-                }
-            });
+        	var studyId = sessionStorage.getItem('teamId');
+			
+        	voteSelect(studyId);
         	
 
             // 투표 만들기 버튼 클릭
@@ -411,6 +428,7 @@ body {
                     },
                     success: function(response) {
                         alert('투표가 생성되었습니다!');
+                        voteSelect(studyId);
                         bootstrap.Modal.getInstance(document.getElementById('createVoteModal')).hide();
                     },
                     error: function() {
@@ -428,6 +446,8 @@ body {
             // 진행률 바 클릭 시 투표
             $('#voteListContainer').on('click', '.progress', function() {
                 const $progress = $(this);
+                const $voteCard = $progress.closest('.vote-card');
+                const voteId = $voteCard.data('vote-id');
                 // 1. 투표가 '진행중' 상태인지 확인
                 if($progress.closest('.vote-card').find('.status-ongoing').length > 0) {
                     // 2. 정확한 투표 옵션 텍스트를 찾기 위한 DOM 탐색 로직 수정
@@ -436,23 +456,22 @@ body {
                     var optionText = $voteOption.find('.vote-option-header span:first').text();
                     // 3. 투표 확인 및 완료 로직
                     if(confirm(optionText + '에 투표하시겠습니까?')) {
-                    	
+                        console.log(voteId);
                         $.ajax({
-                            url: '',
+                            url: 'voteok.do',
                             method: 'POST',
                             data: {
                             	voteId: voteId
                             },
                             success: function(response) {
-                                alert('투표가 생성되었습니다!');
+                                alert('투표가 완료되었습니다!');
+                                voteSelect(studyId);
                                 bootstrap.Modal.getInstance(document.getElementById('createVoteModal')).hide();
                             },
                             error: function() {
                                 alert('투표 생성에 실패했습니다.');
                             }
                         });
-                        
-                        alert('투표가 완료되었습니다!');
                     }
                 }
             });
