@@ -1,100 +1,140 @@
 /* 1. 리뷰 목록 전체 컨테이너 및 흰색 배경 */
-/* 리뷰 목록 전체 컨테이너 */
-.review-list-container {
-    display: flex;
-    flex-direction: column; 
-    
-    /* 1. 컨테이너의 최대 너비를 설정합니다 (예시: 800px) */
+.page-header {
     max-width: 800px; 
-    width: 100%; /* 너비가 max-width를 넘지 않을 때 100%를 사용하도록 보장 */
+    width: 100%;
     
-    /* 2. 좌우 마진을 auto로 설정하여 중앙 정렬합니다. */
-    margin: 0 auto; 
+    margin: 10px auto 5px auto; 
     
-    /* 3. (기존 스타일 유지) */
-    gap: 0; 
-    padding: 20px;
-    background-color: #ffffff; 
+    padding: 0 10px;
+    text-align: center; 
 }
 
-/* 나머지 .review-card 스타일은 그대로 유지합니다. */
-
-/* 2. 개별 리뷰 카드 스타일 (한 줄 레이아웃) */
-.review-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    position: relative; /* ⭐️ 버튼 절대 위치 지정을 위한 기준점 (필수) ⭐️ */
-    
-    /* ⭐️ 하단에 버튼 공간을 확보하여 텍스트와 겹치지 않게 함 (필수) ⭐️ */
-    padding-bottom: 55px; 
-    
-    /* ⭐️ 카드 간 흰색 간격 확보 (gap 대신 margin 사용) ⭐️ */
-    margin-bottom: 25px; 
+.page-header h2 {
+	font-size: 1.8em;
+	font-weight: bold;
+	color: #333;
+	margin : 30px 0px 50px;
+	border-bottom: 2px solid #ddd;
+	/* h2 자체의 너비가 좁다면 margin: 0 auto;를 사용할 수도 있습니다. */
 }
 
 .review-card:last-child {
-    margin-bottom: 0; /* 마지막 카드의 불필요한 마진 제거 */
+	margin-bottom: 0;
 }
 
+.review-card:hover {
+	transform: translateY(-3px); /* 위로 뜨는 높이를 자연스럽게 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자를 은은하게 변경 */
+}
 
-/* 3. 별점 표시 스타일 */
+.review-list-container {
+	display: flex;
+	flex-direction: column;
+	/* 가운데 정렬 및 최대 너비 설정 */
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto; /* ⭐️ 중앙 정렬 핵심 ⭐️ */
+	gap: 0; /* 개별 카드에 마진을 주므로 gap은 0 */
+	background-color: #ffffff; /* 흰색 배경 */
+}
+
+/* 2. 개별 리뷰 카드 스타일 (한 줄 레이아웃) */
+.review-card {
+	background-color: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 15px 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	position: relative;
+	padding-bottom: 55px;
+	margin-bottom: 25px;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s
+		ease;
+}
+
+.review-card:last-child {
+	margin-bottom: 0;
+}
+
+/* 3. 요소별 간격 및 스타일 */
+
+/* 카드 헤더 (ID, 날짜) */
+.card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px; /* ⭐️ 별점과 간격 ⭐️ */
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+/* 별점 영역 컨테이너 */
 .card-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px; /* ⭐️ 리뷰 텍스트와 간격 ⭐️ */
 }
 
+/* 별점 아이콘 */
 .stars {
-    position: relative;
-    display: inline-block;
-    font-size: 1.3em;
-    line-height: 1;
+	position: relative;
+	display: inline-block;
+	font-size: 1.3em;
+	line-height: 1;
+	margin-right: 15px; /* ⭐️⭐️ 점수 텍스트와 간격 ⭐️⭐️ */
 }
 
 .star-empty {
-    color: #ccc;
+	color: #ccc;
 }
 
-/* ⭐️ 노란색 별점 및 채워지는 영역 설정 ⭐️ */
+/* 채워진 별 */
 .star-filled {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden; 
-    color: #ffc107; /* 노란색 */
-    white-space: nowrap;
-    width: 0; /* JavaScript로 이 값이 변경되어야 별이 채워집니다. */
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	color: #ffc107; /* 노란색 */
+	white-space: nowrap;
+	width: 0; /* JavaScript로 채워짐 */
 }
 
-/* 4. ⭐️ 수정/삭제 버튼 영역 (오른쪽 아래 절대 위치) ⭐️ */
+/* 리뷰 본문 컨테이너 */
+.card-content {
+	margin-bottom: 10px;
+}
+
+/* 리뷰 텍스트 */
+.review-text {
+	line-height: 1.6; /* 줄 간격 */
+}
+
+/* 4. 수정/삭제 버튼 영역 (오른쪽 아래 절대 위치) */
 .card-actions {
-    position: absolute; 
-    bottom: 15px;      /* 카드 하단에서 띄움 */
-    right: 20px;       /* 카드 오른쪽에서 띄움 */
-    display: flex;
-    gap: 8px;
-    z-index: 10;
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
+	display: flex;
+	gap: 8px;
+	z-index: 10;
 }
 
 /* 5. 버튼 스타일 */
 .action-btn {
-    border: none;
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 0.8em;
-    cursor: pointer;
-    opacity: 0.9;
+	border: none;
+	border-radius: 4px;
+	padding: 4px 10px;
+	font-size: 0.8em;
+	cursor: pointer;
+	opacity: 0.9;
 }
 
 .edit-btn {
-    background-color: #007bff;
-    color: white;
+	background-color: #28a745; /* ⭐️ 초록색 ⭐️ */
+	color: white;
 }
 
 .delete-btn {
-    background-color: #dc3545;
-    color: white;
+	background-color: #dc3545;
+	color: white;
 }
