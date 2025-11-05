@@ -13,7 +13,7 @@ public class VoteDTO {
 	private String voteOk;
 	private String voteContent;
 	private String voteSubject;
-	
+	private String studyMax;
 	private String memLoginId;
 	private String studyRoll;
 	private String memNick;

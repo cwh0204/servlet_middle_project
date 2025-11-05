@@ -44,4 +44,19 @@ public class VoteDAOImpl implements VoteDAO {
 		
 		return voteList;
 	}
+	/**
+	 * 투표 누적을 위한 메서드
+	 * @param vote 투표수를 누적 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void updateVoteOk(VoteDTO vote, SqlSession session) {
+		
+		try {
+			session.update("updateVoteOk",vote);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO : updateVoteOk 예외발생",e);
+		}
+	}
 }

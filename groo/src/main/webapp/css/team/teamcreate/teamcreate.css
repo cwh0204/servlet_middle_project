@@ -21,14 +21,20 @@ main {
 }
 
 .form-title {
-	font-size: 36px;
+	font-size: 45px;
 	font-weight: 800;
-	background: linear-gradient(135deg, #2d3436 0%, #4CAF50 100%);
+	background: linear-gradient(135deg, #9be15d 0%, #00e3ae 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	margin-bottom: 12px;
 	letter-spacing: -1px;
+}
+
+.subtitle {
+	font-size: 20px;
+	font-weight: 800;
+	color: #4b5563;
 }
 
 /* 섹션 카드 */

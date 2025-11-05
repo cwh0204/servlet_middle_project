@@ -35,6 +35,7 @@
 				<div class="form-box">
 					<div class="form-header">
 						<h2 class="form-title">스터디 팀 생성</h2>
+						<p class="subtitle">새로운 스터디를 시작해보세요!</p>
 					</div>
 
 					<div class="category_container">

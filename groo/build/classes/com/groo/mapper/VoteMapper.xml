@@ -48,5 +48,11 @@
 		  AND A.VOTE_START <![CDATA[<]]> TRUNC(SYSDATE, 'IW') + 7
 		  AND A.STUDY_ID = #{studyId}
 	</select>
+	
+	<update id="updateVoteOk" parameterType="com.groo.model.VoteDTO">
+		UPDATE VOTE SET
+			VOTE_OK = VOTE_OK + 1
+		WHERE VOTE_ID = #{voteId}
+	</update>
 
 </mapper>
