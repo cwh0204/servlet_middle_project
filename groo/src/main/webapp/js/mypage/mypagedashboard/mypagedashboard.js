@@ -19,8 +19,7 @@ function initFullCalendar() {
 		initialView: 'dayGridMonth',
 		initialDate: dynamicInitialDate,
 		locale: 'ko',
-		initialView: 'dayGridMonth', // 월 보기로 초기 화면 고정
-
+		initialView: 'dayGridMonth',
 		editable: true,
 		selectable: true,
 

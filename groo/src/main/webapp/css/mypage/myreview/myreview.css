@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* 리뷰 목록 전체 컨테이너 */
+.review-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 카드 간격 */
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* 개별 리뷰 카드 스타일 */
+.review-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 카드 헤더 (사용자 ID, 날짜) */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e9ecef;
+    padding-bottom: 8px;
+}
+
+.user-id {
+    font-weight: bold;
+    color: #333;
+}
+
+.date {
+    font-size: 0.85em;
+    color: #888;
+}
+
+/* 별점 컨테이너 */
+.card-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rating-score {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #495057;
+}
+
+/* ⭐️⭐️⭐️ 별점 표시 핵심 CSS ⭐️⭐️⭐️ */
+.stars {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5em; /* 별 크기 */
+    line-height: 1;
+}
+
+.star-empty {
+    color: #ccc;
+}
+
+.star-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffc107; /* 채워진 별 색상 (노란색) */
+    width: 0; /* JS 또는 CSS에서 동적으로 설정 */
+}
+
+/* data-rating을 사용하여 별 너비 동적 계산 (핵심!) */
+.stars[data-rating] .star-filled {
+    /* 5점 만점이므로, (평점 / 5) * 100% 로 너비 설정 */
+    width: calc(var(--rating) / 5 * 100%); 
+    /* --rating 변수는 JS로 설정하거나, 각 HTML 요소에 직접 설정해야 합니다. */
+}
+
+/* data-rating 값에 따른 CSS 변수 설정 (브라우저 지원을 위해 권장) */
+.stars[data-rating="4.5"] { --rating: 4.5; }
+.stars[data-rating="3.0"] { --rating: 3.0; }
+/* ... 필요한 모든 평점 값에 대해 추가 ... */
+
+/* 리뷰 본문 */
+.review-text {
+    color: #495057;
+    font-size: 0.95em;
+    line-height: 1.5;
+    word-break: break-word;
+}
