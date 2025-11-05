@@ -9,7 +9,7 @@ import com.groo.error.InternalDataAccessException;
 import com.groo.model.VoteDTO;
 
 public class VoteDAOImpl implements VoteDAO {
-	
+
 	/**
 	 * 투표 추가를 위한 메서드
 	 * @param vote 투표 생성 하기위한 Data Transfer Object 데이터 클래스
@@ -24,7 +24,7 @@ public class VoteDAOImpl implements VoteDAO {
 			throw new InternalDataAccessException("DAO : insertVote 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 투표 조회를 위한 메서드
 	 * @param vote 투표 생성 하기위한 Data Transfer Object 데이터 클래스
@@ -34,14 +34,14 @@ public class VoteDAOImpl implements VoteDAO {
 	@Override
 	public List<VoteDTO> selectVote(VoteDTO vote, SqlSession session) {
 		List<VoteDTO> voteList = new ArrayList<>();
-		
+
 		try {
 			voteList = session.selectList("selectVote",vote);
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO : selectVote 예외발생",e);
 		}
-		
+
 		return voteList;
 	}
 	/**
@@ -51,7 +51,7 @@ public class VoteDAOImpl implements VoteDAO {
 	 */
 	@Override
 	public void updateVoteOk(VoteDTO vote, SqlSession session) {
-		
+
 		try {
 			session.update("updateVoteOk",vote);
 		}catch (Exception e) {

@@ -140,6 +140,7 @@ public class FrontControllerPath {
         controllerMap.put("/voteselect.do", new VoteSelectController());
         controllerMap.put("/voteselectrank.do", new VoteSelectRankController());
 
+
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());
         controllerMap.put("/groobotselect.do", new GrooBotSelectController());

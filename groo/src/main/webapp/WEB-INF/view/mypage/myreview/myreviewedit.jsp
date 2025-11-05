@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery/jquery-3.7.1.min.js"></script>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/board/boardWrite.css" rel="stylesheet">
+<link href="css/mypage/myreview/myreviewedit.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script src="js/mypage/myreview/myreviewedit.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+</head>
+<body>
+	<div class="board-form-container">
+		<h2 class="mb-4 board-title-heading">✏️ 리뷰 수정</h2>
+
+		<div class="form-group">
+			<label for="postTitle">제목</label> <input type="text"
+				class="form-control" id="postTitle" name="title"
+				placeholder="제목을 입력해 주세요." required>
+		</div>
+		
+		<div class="form-group">
+			<label for="postWriter">스터디명</label> <input type="text"
+				class="form-control" id="postWriter" name="writer" readonly>
+		</div>
+
+
+		<div class="form-group">
+			<label for="postWriter">작성자</label> <input type="text"
+				class="form-control" id="postWriter" name="writer" readonly>
+		</div>
+
+		<div class="form-group">
+			<label>별점</label>
+			<div class="rating" id="starRating">
+				<span class="star" data-value="5">★</span> <span class="star"
+					data-value="4">★</span> <span class="star" data-value="3">★</span>
+				<span class="star" data-value="2">★</span> <span class="star"
+					data-value="1">★</span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label>내용</label>
+			<textarea class="summernote" id="postContent" name="content"></textarea>
+		</div>
+
+		<div class="action-buttons">
+			<button class="btn btn-primary" id="submitBtn">수정</button>
+			<div class="btn btn-secondary">취소</div>
+		</div>
+	</div>
+</body>
+</html>

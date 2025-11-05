@@ -1,0 +1,83 @@
+/* 페이지 제목 영역 스타일 (리뷰 페이지와 비슷하게 중앙 정렬 가정) */
+.page-header {
+    max-width: 800px;
+    margin: 30px auto 20px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* 각 게시판 섹션 컨테이너 */
+.my-board-section {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* 게시판 구분 제목 */
+.board-title {
+    font-size: 1.4em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* 게시물 목록 컨테이너 */
+.board-list-container {
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+/* 개별 게시물 아이템 */
+.board-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f5f5f5;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.board-item:hover {
+    background-color: #f9f9f9; /* 호버 효과 */
+}
+
+.board-item:last-child {
+    border-bottom: none;
+}
+
+.post-title {
+    flex-grow: 1;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-date, .post-views {
+    color: #999;
+    font-size: 0.9em;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+/* 구분선 */
+.section-divider {
+    border: 0;
+    border-top: 1px dashed #ccc;
+    max-width: 760px; /* 섹션 컨테이너보다 살짝 좁게 */
+    margin: 40px auto;
+}
+
+/* 더보기 링크 */
+.more-link-area {
+    text-align: right;
+    padding-top: 10px;
+}
+.more-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+}

@@ -2,8 +2,6 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
@@ -22,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class VoteUpdateOkController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 투표를 누적하고 JSON 응답을 생성합니다.
 	 *
@@ -35,14 +33,14 @@ public class VoteUpdateOkController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String voteId = request.getParameter("voteId");
-		
+
 		VoteDTO vote = new VoteDTO();
 		vote.setVoteId(voteId);
-		
+
 		VoteService service = new VoteServiceImpl();
-		
+
 		try {
 			service.updateVoteOk(vote);
 

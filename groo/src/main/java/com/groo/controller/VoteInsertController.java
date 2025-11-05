@@ -6,10 +6,7 @@ import java.io.PrintWriter;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.MemberDTO;
 import com.groo.model.VoteDTO;
-import com.groo.service.MemberService;
-import com.groo.service.MemberServiceImpl;
 import com.groo.service.VoteService;
 import com.groo.service.VoteServiceImpl;
 
@@ -23,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class VoteInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 투표를 생성하고 JSON 응답을 생성합니다.
 	 *
@@ -45,7 +42,7 @@ public class VoteInsertController implements Controller {
 		String voteEnd = request.getParameter("voteEnd");
 
 		VoteDTO vote = new VoteDTO();
-		
+
 		vote.setMemLoginId(memLoginId);
 		vote.setStudyId(studyId);
 		vote.setVoteTitle(voteTitle);
@@ -56,7 +53,7 @@ public class VoteInsertController implements Controller {
 		VoteService service = new VoteServiceImpl();
 
 		try {
-			
+
 			service.insertVote(vote);
 
 			response.setContentType("application/json");

@@ -17,6 +17,7 @@ h3 {
     flex-wrap: wrap; /* 공간이 부족하면 다음 줄로 넘김 */
     gap: 20px; /* 카드 사이의 간격 */
     padding: 20px 0;
+    margin-left: 20px;
 }
 
 /* 개별 팀원 카드 스타일 */
