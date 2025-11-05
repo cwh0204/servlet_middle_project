@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="header">
 			<h1 class="title">스터디</h1>
-			<p class="subtitle">참여 중인 스터디를 확인해보세요</p>
+			<p class="subtitle">Groo 스터디를 확인해보세요</p>
 		</div>
 
 		<div class="card-grid" id="cardGrid">
@@ -113,9 +113,10 @@ $(document).ready(function() {
 		success: function(response) {
 			console.log("서버로부터 받은 응답:", response);
 
+        	$('#cardGrid').empty();
             // 1. 응답(response)이 배열인지 확인합니다.
             if (Array.isArray(response)) {
-                
+
                 // 2. 배열을 순회하며 각 스터디 객체(team)에 대해 함수를 호출합니다.
                 response.forEach(function(team) {
                     // 이전에 정의한 generateStudyCard 함수를 호출하여 
