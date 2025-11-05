@@ -2,6 +2,10 @@
 let NicknameCheck = false;
 //닉네임 형식 유효성 통과 상태 (정규식 통과)
 let NickValid = false;
+//이메일 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
+let EMailCheck = false;
+//이메일 형식 유효성 통과 상태 (정규식 통과)
+let EmailValid = false;
 
 /**
  * 닉네임 중복 확인 요청
@@ -52,181 +56,6 @@ var nicknameCheck = (memNick) => {
 		}
 	});
 }
-
-//이메일 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
-let EmailCheck = false;
-//이메일 형식 유효성 통과 상태 (정규식 통과)
-let EmailValid = false;
-
-/**
- * 이메일 중복 확인 요청
- * @param {string} userEmail - 확인할 사용자 이메일
- */
-
-
-// 이메일 중복 확인 테스트용 AJAX 함수
-//const testAjax = () => {
-//    $.ajax({
-//        url: 'useremailcheck.do', // 서버에서 이메일 중복 확인 처리하는 URL
-//        type: 'POST',
-//        data: {
-//            memEmail: 'sum@naver.com' // 테스트용 이메일
-//        },
-//        success: function(response) {
-//            // 서버에서 중복 여부에 따라 true/false 또는 메시지 반환 가정
-//            // 예: { exists: true } 혹은 { exists: false }
-//            console.log(response);
-//
-//            if(response.exists) {
-//                console.log("이미 존재하는 이메일입니다.");
-//            } else {
-//                console.log("사용 가능한 이메일입니다.");
-//            }
-//        },
-//        error: function(xhr, status, error) {
-//            console.error("이메일 중복 확인 통신 실패:", status, error);
-//        }
-//    });
-//};
-//-------------------------------------------------------------------------
-
-//var emailCheck = (memEmail) => {
-//    $.ajax({
-//        url: 'useremailcheck.do',
-//        type: 'POST',
-//        data: { memEmail: memEmail },
-//        dataType: 'json',
-//        success: function(response) {
-//            console.log("서버 응답:", response);
-//            
-//            // DB에 존재하는 경우 (회원가입일 또는 탈퇴일이 있으면)
-//            if (response.memSignupSysdate !== 0 || response.memOutDate !== 0) {
-//                $("#emailMsg").text("이미 존재하는 이메일입니다.❌").css("color", "#dc3545");
-//                EmailCheck = false;
-//            } else {
-//                $("#emailMsg").text("사용가능한 이메일입니다.✅").css("color", "#28a745");
-//                EmailCheck = true;
-//            }
-//        },
-//        error: function(xhr, status, error) {
-//            console.error("이메일 중복 확인 실패:", status, error);
-//            alert("이메일 확인 중 오류가 발생했습니다.");
-//            EmailCheck = false;
-//        }
-//    });
-//};
-
-//// 이메일 중복 확인 테스트용 AJAX 함수
-//var testAjax = () => {
-//    $.ajax({
-//        url: 'useremailcheck.do',
-//        type: 'POST',
-//        data: {
-//            memEmail: 'sum@naver.com'
-//        },
-//        success: function(response) {
-//            console.log(response);
-//
-//            if(response.exists) {
-//                console.log("이미 존재하는 이메일입니다.");
-//            } else {
-//                console.log("사용 가능한 이메일입니다.");
-//            }
-//        },
-//        error: function(xhr, status, error) {
-//            console.error("이메일 중복 확인 통신 실패:", status, error);
-//        }
-//    });
-//};
-//
-//// DOM 로드 완료 후 이벤트 바인딩
-//$(function() {
-//    // 이메일 도메인 입력창에서 포커스 아웃될 때 자동 중복 확인
-//    $("#emailDomain").on("blur", function() {
-//        const emailId = $("#emailId").val().trim();
-//        const emailDomain = $("#emailDomain").val().trim();
-//        const memEmail = `${emailId}@${emailDomain}`;
-//
-//        // 입력값 검증
-//        if (!emailId || !emailDomain) {
-//            $("#emailMsg").text("이메일을 모두 입력해주세요.⚠️").css("color", "#ffc107");
-//            return;
-//        }
-//
-//        // 이메일 형식 검증
-//        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//        if (!emailRegex.test(memEmail)) {
-//            $("#emailMsg").text("올바른 이메일 형식이 아닙니다.⚠️").css("color", "#ffc107");
-//            EmailValid = false;
-//            return;
-//        }
-//        
-//        EmailValid = true;
-//        emailCheck(memEmail);
-//    });
-//    
-//    // 이메일 입력 필드 변경 시 중복확인 상태 초기화
-//    $("#emailId, #emailDomain").on("input change", function() {
-//        EmailCheck = false;
-//        EmailValid = false;
-//        $("#emailMsg").text("").css("color", "");
-//    });
-//});
-
-
-//$(function() {
-//    $("#emailCheckBtn").on("click", () => {
-//        const emailId = $("#emailId").val().trim();
-//        const emailDomain = $("#emailDomain").val().trim();
-//        const memEmail = `${emailId}@${emailDomain}`;
-//
-//        if (!emailId || !emailDomain) {
-//            alert("이메일을 모두 입력해주세요.");
-//            return;
-//        }
-//
-//        $.ajax({
-//            url: 'useremailcheck.do',  // 서버 매핑 URL
-//            type: 'POST',
-//            data: { memEmail: memEmail },
-//            dataType: 'json',
-//            success: (response) => {
-//                // DB에서 반환 예시: { memSignupSysdate: 1, memOutDate: 0 }
-//                if (response.memSignupSysdate !== 0 || response.memOutDate !== 0) {
-//                    $("#emailMsg").text("이미 존재하는 이메일입니다.❌").css("color", "#dc3545");
-//                } else {
-//                    $("#emailMsg").text("사용가능한 이메일입니다.✅").css("color", "#28a745");
-//                }
-//            },
-//            error: (xhr, status, error) => {
-//                console.error("이메일 중복 확인 실패:", status, error);
-//                alert("이메일 확인 중 오류가 발생했습니다.");
-//            }
-//        });
-//    });
-//});
-
-//var emailCheck = (memEmail) => {
-//    $.ajax({
-//        url: '/useremailcheck.do',   // 컨트롤러 매핑 주소
-//        type: 'POST',
-//        data: { memEmail: memEmail }, // 요청 파라미터
-//        dataType: 'json',
-//        success: function(response) {
-//            console.log("서버 응답:", response);
-//
-//            // 서버에서 오는 데이터 예시: { memSignupSysdate: 1, memOutDate: 0 }
-//            if (response.memSignupSysdate > 0) {
-//                console.log("이미 존재하는 이메일입니다.❌");
-//            } else {
-//                console.log("사용가능한 이메일입니다.✅");
-//            }
-//        },
-//        error: function(xhr, status, error) {
-//            console.error("통신 실패:", status, error);
-//        }
-//    });
-//};
 
 
 /*카카오 우편번호api*/
@@ -422,7 +251,7 @@ $(function() { //document.ready(() => { })
 		}
 	});
 
-	testAjax(); // 테스트 야작스 
+	testAjax(); // 테스트 아작스 
 
 	const nickInput = $('#memNick');
 	const nickMsg = $('#nickMsg');
@@ -481,8 +310,80 @@ $(function() { //document.ready(() => { })
 		// 비밀번호가 바뀌면 재확인 로직도 다시 실행
 		pwCheck.trigger("input");
 	}).trigger("input");
+	
+	// 이메일 도메인 선택
+		const emailDomain = document.getElementById('emailDomain');
+		const emailDomainSelect = document.getElementById('emailDomainSelect');
+
+		// 요소가 존재하는지 안전하게 확인하는 것이 좋습니다.
+		if (emailDomain && emailDomainSelect) {
+			emailDomainSelect.addEventListener('change', function() {
+				const selected = this.value;
+
+				if (selected === 'direct') {
+					emailDomain.value = '';
+					emailDomain.readOnly = false;
+					emailDomain.focus();
+				} else {
+					emailDomain.value = selected;
+					emailDomain.readOnly = true;
+				}
+
+				// 도메인 변경 시, 혹시 모를 기존 인증 상태 초기화
+				isEmailVerified = false;
+			});
+		}
+
+		// 이메일 중복확인 함수 
+		$('#emailid, #emailDomain, #email_select').on('blur change', function() {
+			const emailId = $('#emailid').val().trim();
+			const emailDomain = $('#emailDomain').val().trim();
+			const memEmail = emailId + '@' + emailDomain;
+			
+			const $emailMsg = $('#emailMsg');
+			
+			if (emailId === '' || emailDomain === '') {
+				$emailMsg.text('이메일 주소를 모두 입력해주세요.').css('color', 'red');
+				return;
+			}
+			
+			// 이메일 정규식
+			const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+			// 이메일 형식 검사
+			if(!emailPattern.test(memEmail)){
+				$emailMsg.text('올바른 이메일 형식이 아닙니다.').css('color', 'red');
+				return;
+			}
+
+			// 이메일 중복확인 AJAX
+			$.ajax({
+				url: 'useremailcheck.do',
+				type: 'POST',
+				data: {
+					memEmail: memEmail
+				      },
+				success: function(response) {
+					if (response && response.memEmail) {
+						$emailMsg.text('이미 존재하는 이메일입니다.❌').css('color', 'red');
+						EmailValid = false; 	// 인증 상태 초기화
+					} else {
+						$emailMsg.text('사용 가능한 이메일입니다.✔').css('color', 'green');
+						EmailValid = true;
+					}
+				},
+
+				error: function(xhr, status, error) {
+					console.error("이메일 중복 확인 실패:", status, error);
+					alert('이메일 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.');
+				}
+			})
+	    });
 
 
+		
+		
+		
+		
 	// 2. 비밀번호 재확인 필드에 대한 실시간 일치 검사
 	pwCheck.on("input", function() {
 		const pwVal = pw.val();

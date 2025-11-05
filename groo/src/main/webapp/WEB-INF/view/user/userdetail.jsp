@@ -103,10 +103,9 @@
 							style="width: 150px; text-align: center;">
 					</div>
 					
-					<!-- 이메일 메시지 표시 영역 추가 -->
-					<div id="emailMsg" style="margin-top: 5px; font-size: 14px;"></div>
 					
-					<select name="email_select"
+					
+					<select name="email_select" id="email_select"
 						style="margin-top: 5px; width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #ccc;">
 						<option value="">- 이메일 선택 -</option>
 						<option value="direct">직접입력</option>
@@ -114,6 +113,9 @@
 						<option value="gmail.com">gmail.com</option>
 						<option value="daum.net">daum.net</option>
 					</select>
+					
+					<!-- 이메일 메시지 표시 영역 추가 -->
+					<span id="emailMsg" style="font-size: 0.9em;"></span>
 				</div>
 
 				<div class="input-group">
