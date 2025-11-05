@@ -55,7 +55,7 @@ function generateStudyCard(team) {
                         '<div class="stat-info">' +
                             '<span class="stat-label">좋아요</span>' +
                             // studyData.likes 변수 결합
-                            '<span class="stat-value">' + team.studyPick + '</span>' +
+                            '<span class="stat-value">' + team.studyLike + '</span>' +
                         '</div>' +
                 '</div>' +
             '</div>' +
