@@ -1,4 +1,18 @@
 $(document).ready(function() {
+
+	$.ajax({
+		url: "teamselectall.do",
+		type: "GET",
+		dataType: "json",
+
+		success: function(response) {
+			console.log(response);
+		},
+		error: function(xhr, status, error) {
+			console.log("오류", status, error);
+		}
+	});
+
 	const slideContainer = $('.slide-container');
 	const slideItems = $('.slide-item');
 

@@ -200,4 +200,22 @@ public class TeamServiceImpl implements TeamService{
 		}
 		return teamList;
 	}
+
+	@Override
+	public List<TeamDTO> teamselectAll(TeamDTO team) {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<TeamDTO> teamList = new ArrayList<>();
+		try {
+			teamList = dao.teamselectAll(team, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return teamList;
+	}
 }

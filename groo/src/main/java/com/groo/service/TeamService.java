@@ -14,4 +14,5 @@ public interface TeamService {
 	public void deleteTeam(TeamDTO team);
 	public void activateTeam(TeamDTO team);
 	public List<TeamDTO> selectMyTeam(TeamDTO team);
+	public List<TeamDTO> teamselectAll(TeamDTO team);
 }
