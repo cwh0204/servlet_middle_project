@@ -311,6 +311,7 @@ $(function() { //document.ready(() => { })
 		pwCheck.trigger("input");
 	}).trigger("input");
 	
+	
 	// 이메일 도메인 선택
 		const emailDomain = document.getElementById('emailDomain');
 		const emailDomainSelect = document.getElementById('emailDomainSelect');
@@ -330,7 +331,7 @@ $(function() { //document.ready(() => { })
 				}
 
 				// 도메인 변경 시, 혹시 모를 기존 인증 상태 초기화
-				isEmailVerified = false;
+				EmailValid = false;
 			});
 		}
 
@@ -379,10 +380,6 @@ $(function() { //document.ready(() => { })
 			})
 	    });
 
-
-		
-		
-		
 		
 	// 2. 비밀번호 재확인 필드에 대한 실시간 일치 검사
 	pwCheck.on("input", function() {

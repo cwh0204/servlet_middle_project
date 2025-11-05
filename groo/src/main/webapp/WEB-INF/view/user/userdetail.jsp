@@ -37,7 +37,8 @@
 						
 						<div class="input-group">
 							<label>닉네임</label> <input type="text" id="memNick" name="name" value="">
-							<span id="nickMsg" style="font-size: 12px; display: block; margin-top: 5px;"></span>
+							<!-- 이메일 메시지 표시 영역 추가 -->
+					<span id="nickMsg" style="font-size: 0.9em;"></span>
 						</div>
 						
 						<div class="input-group">
