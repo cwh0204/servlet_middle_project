@@ -1,184 +1,143 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="css/team/myteam/myteamhome.css" rel="stylesheet">
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/main/main.css">
-<script src="js/main/main.js"></script>
+<title></title>
 </head>
 <body>
-	<%@ include file="search.jsp"%>
-
-	<div class="hot-study-slider-area">
-		<a href="study_list.jsp" class="view-more-link">더 많은 스터디 보러가기 ></a>
-		<h1>🔥 핫스터디</h1>
-		<div class="hot-study-slider-area">
-			<div class="hot-study-list">
-				<div class="slide-container">
-
-					<div class="slide-item">
-						<div class="hot-study-card" data-hot-study-id="1"
-							data-link-url="detail.jsp?id=1">
-							<img src="images/hotstudy1.png" alt="핫스터디 리액트 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#프론트엔드</span> <span
-									class="hot-study-tag">#온라인</span> <span class="hot-study-tag">#주2회</span>
-							</div>
-							<h3>리액트(React) 완벽 가이드</h3>
-							<p class="hot-study-description">Hooks, Redux를 활용한 실전 프로젝트
-								중심.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 온라인 (Zoom)
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 4/6명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status">✅ 모집 중!</span> <span
-									class="hot-study-likes-count">♥ 24</span>
-							</div>
-						</div>
-
-						<div class="hot-study-card" data-hot-study-id="2"
-							data-link-url="detail.jsp?id=2">
-							<img src="images/hotstudy2.png" alt="핫스터디 스프링 부트 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#백엔드</span> <span
-									class="hot-study-tag">#오프라인</span> <span class="hot-study-tag">#평일저녁</span>
-							</div>
-							<h3>Spring Boot로 API 서버 구축</h3>
-							<p class="hot-study-description">REST API 설계 및 구현을 위한 백엔드
-								스터디.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 서울 강남
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 5/5명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status" style="color: #F44336;">❌
-									마감 완료!</span> <span class="hot-study-likes-count">♥ 15</span>
-							</div>
-						</div>
-
-						<div class="hot-study-card" data-hot-study-id="3"
-							data-link-url="detail.jsp?id=3">
-							<img src="images/hotstudy3.png" alt="핫스터디 영어 회화 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#외국어</span> <span
-									class="hot-study-tag">#영어회화</span> <span class="hot-study-tag">#주말</span>
-							</div>
-							<h3>원어민과 함께하는 자유 회화</h3>
-							<p class="hot-study-description">다양한 주제로 자유롭게 토론하며 실전 영어 감각
-								키우기.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 온라인
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 2/8명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status">✅ 모집 중!</span> <span
-									class="hot-study-likes-count">♥ 31</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="slide-item">
-						<div class="hot-study-card" data-hot-study-id="4"
-							data-link-url="detail.jsp?id=4">
-							<img src="images/hotstudy4.png" alt="핫스터디 데이터 분석 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#자격증</span> <span
-									class="hot-study-tag">#데이터분석</span> <span class="hot-study-tag">#파이썬</span>
-							</div>
-							<h3>ADP 실기 대비 문제풀이</h3>
-							<p class="hot-study-description">데이터 분석 전문가(ADP) 실기 기출문제 풀이
-								스터디.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 오프라인 (부산)
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 3/5명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status">✅ 모집 중!</span> <span
-									class="hot-study-likes-count">♥ 18</span>
-							</div>
-						</div>
-
-						<div class="hot-study-card" data-hot-study-id="5"
-							data-link-url="detail.jsp?id=5">
-							<img src="images/hotstudy5.png" alt="핫스터디 UX/UI 디자인 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#디자인</span> <span
-									class="hot-study-tag">#UX/UI</span> <span class="hot-study-tag">#포트폴리오</span>
-							</div>
-							<h3>Figma 활용 UX/UI 포트폴리오 제작</h3>
-							<p class="hot-study-description">실제 프로젝트를 가상으로 진행하며 포트폴리오 완성.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 온라인
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 1/4명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status">✅ 자리 여유 있음!</span> <span
-									class="hot-study-likes-count">♥ 5</span>
-							</div>
-						</div>
-
-						<div class="hot-study-card" data-hot-study-id="6"
-							data-link-url="detail.jsp?id=6">
-							<img src="images/hotstudy1.png" alt="핫스터디 알고리즘 이미지"
-								class="hot-study-image">
-							<div class="hot-study-tags">
-								<span class="hot-study-tag">#코딩테스트</span> <span
-									class="hot-study-tag">#알고리즘</span> <span class="hot-study-tag">#평일저녁</span>
-							</div>
-							<h3>백준 문제 풀이 (Java/Python)</h3>
-							<p class="hot-study-description">주요 기업 코딩 테스트 대비를 위한 주 3회
-								알고리즘 스터디입니다.</p>
-							<div class="hot-study-info">
-								<p>
-									<strong>지역:</strong> 온라인 (Gather Town)
-								</p>
-								<p>
-									<strong>모집 인원:</strong> 6/8명
-								</p>
-							</div>
-							<div class="hot-study-progress">
-								<span class="hot-study-status">✅ 모집 중! 2자리 남음</span> <span
-									class="hot-study-likes-count">♥ 42</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	<div class="container">
+		<div class="header">
+			<h1 class="title">스터디</h1>
+			<p class="subtitle">참여 중인 스터디를 확인해보세요</p>
 		</div>
-	</div>
-	<div class="new-study-area">
-		<h1>✨ 신규 스터디</h1>
-		<div class="new-study-list">
-	
+
+		<div class="card-grid" id="cardGrid">
+
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+
+
+
+function generateStudyCard(team) {
+    // 템플릿 리터럴(Template Literal)을 사용하여 HTML 문자열을 생성합니다.
+    const cardHtml =
+        '<article class="study-card glass-card">' +
+            '<div class="card-gradient"></div>' +
+            '<div class="badge-corner badge-gold"></div>' +
+            '<div class="card-header">' +
+                '<div class="study-name">' +
+                    // studyData.name 변수 결합
+                    '<span class="name-text">' + team.studyTitle + '</span>' +
+                '</div>' +
+                '' +
+            '</div>' +
+            '<div class="study-stats">' +
+                '<div class="stat-item">' +
+                    '<div class="stat-icon">👥</div>' +
+                    '<div class="stat-info">' +
+                        '<span class="stat-label">팀원</span>' +
+                        // studyData.userCount 변수 결합
+                        '<span class="stat-value">' + team.studyMax + '명</span>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="stat-divider"></div>' +
+                '<div class="stat-item">' +
+                    '<div class="stat-icon">' +
+                        '<img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>' +
+                        '<div class="stat-info">' +
+                            '<span class="stat-label">좋아요</span>' +
+                            // studyData.likes 변수 결합
+                            '<span class="stat-value">' + team.studyPick + '</span>' +
+                        '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="badge-info">' +
+                '<div class="badge-stat-gold">' +
+                    // studyData.badgeGold 변수 결합
+                    '<div class="badge-stat-count">' + team.studyGold + '</div>' +
+                    '<div class="badge-stat-icon"></div>' +
+                '</div>' +
+                '<div class="badge-divider"></div>' +
+                '<div class="badge-stat-silver">' +
+                    // studyData.badgeSilver 변수 결합
+                    '<div class="badge-stat-count">' + team.studySilver + '</div>' +
+                    '<div class="badge-stat-icon"></div>' +
+                '</div>' +
+                '<div class="badge-divider"></div>' +
+                '<div class="badge-stat-bronze">' +
+                    // studyData.badgeBronze 변수 결합
+                    '<div class="badge-stat-count">' + team.studyBlonze + '</div>' +
+                    '<div class="badge-stat-icon"></div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="leader-info">' +
+                '<span>팀장</span>' +
+                // studyData.leaderName 변수 결합
+                '<span class="leader-name">' + team.memNick + '</span>' +
+            '</div>' +
+            '<div class="card-actions">' +
+            '<button class="btn-detail" ' + 
+            'data-study-id="' + team.studyId + '">' + 
+            '<span>상세보기</span>' +
+            '</button>';
+                    '<span>상세보기</span>' +
+                '</button>' +
+                '<button class="btn-leave">' +
+                    '<span>탈퇴</span>' +
+                '</button>' +
+            '</div>' +
+        '</article>';
+
+    // 2. 생성된 HTML을 #cardGrid에 추가합니다.
+    $('#cardGrid').append(cardHtml);
+}
+
+
+$(document).ready(function() {
+    // #cardGrid의 내용을 비워서 새로운 카드들을 추가할 준비를 합니다. (선택 사항)
+    // $('#cardGrid').empty(); 
+    
+	$.ajax({
+		url: "teamselectall.do",
+		type: "GET",
+		dataType: "json",
+
+		success: function(response) {
+			console.log("서버로부터 받은 응답:", response);
+
+            // 1. 응답(response)이 배열인지 확인합니다.
+            if (Array.isArray(response)) {
+                
+                // 2. 배열을 순회하며 각 스터디 객체(team)에 대해 함수를 호출합니다.
+                response.forEach(function(team) {
+                    // 이전에 정의한 generateStudyCard 함수를 호출하여 
+                    // #cardGrid에 HTML 카드를 추가합니다.
+                    generateStudyCard(team);
+                });
+
+                console.log("스터디 카드 생성이 완료되었습니다.");
+
+            } else {
+                console.error("서버 응답 형식이 배열이 아닙니다.");
+            }
+		},
+        error: function(xhr, status, error) {
+            console.error("AJAX 요청 실패:", status, error);
+            // 사용자에게 오류 메시지를 표시하는 코드를 추가할 수 있습니다.
+        }
+	});
+});
+
+</script>
+
+
 </html>
+
