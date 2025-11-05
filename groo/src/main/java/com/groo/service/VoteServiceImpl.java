@@ -13,10 +13,10 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.VoteDTO;
 
 public class VoteServiceImpl implements VoteService{
-	
+
 	VoteDAO dao = new VoteDAOImpl();
-	
-	
+
+
 	/**
 	 * 투표를 생성하는 서비스 메서드입니다.
 	 *
@@ -26,7 +26,7 @@ public class VoteServiceImpl implements VoteService{
 	 */
 	@Override
 	public void insertVote(VoteDTO vote) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
 			dao.insertVote(vote, session);
@@ -67,7 +67,7 @@ public class VoteServiceImpl implements VoteService{
 		}
 		return voteList;
 	}
-	
+
 	/**
 	 * 투표를 누적하는 서비스 메서드입니다.
 	 *

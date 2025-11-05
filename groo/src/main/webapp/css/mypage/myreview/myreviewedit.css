@@ -1,0 +1,26 @@
+.rating {
+	display: inline-block;
+	font-size: 40px;
+	color: #ccc;
+	/* 중요: 호버/클릭 시 오른쪽 별까지 채우기 위해 방향을 RTL로 설정 */
+	direction: rtl;
+	unicode-bidi: bidi-override;
+}
+
+.rating .star {
+	cursor: pointer;
+	display: inline-block;
+	transition: color 0.1s;
+}
+
+/* 2. 호버 효과 (마우스를 올렸을 때 임시로 색상 변경) */
+.rating .star:hover, .rating .star:hover ~ .star {
+	color: #ffc107; /* 골드 */
+}
+
+/* 3. ⭐️ 클릭 시 색상 고정 (rated 클래스를 JavaScript가 추가함) ⭐️ */
+/* rated 클래스가 부여된 별과, 그 별의 왼쪽에 있는 별들(~)의 색상을 고정 */
+.rating .star.rated,
+.rating .star.rated ~ .star {
+  color: #ffc107; /* 골드 */
+}
