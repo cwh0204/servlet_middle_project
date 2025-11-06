@@ -44,11 +44,6 @@ public class TeamMemberLeaderSelectController implements Controller {
 			TeamMemberService teamMemberService  = new TeamMemberServiceImpl();
 			List<TeamMemberDTO> list = teamMemberService.TeamMemberLeaderSelect(teamMember);
 
-
-			for (TeamMemberDTO element : list) {
-				System.out.println(element);
-			}
-
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
 
