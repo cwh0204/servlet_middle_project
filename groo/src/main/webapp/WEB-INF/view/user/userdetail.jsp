@@ -62,7 +62,7 @@
 					    onclick="showSubmitALert()">회원정보수정</button>
 					<button type="reset" class="cancelbutton"
 						onclick="showCancelAlert(); resetFields();">취소</button>
-					<button type="button" id="deletebutton">회원탈퇴</button>
+					<button type="button" id="deletebutton" onclick="requestMemberDeletion()">회원탈퇴</button>
 				</div>
 			</div>
 

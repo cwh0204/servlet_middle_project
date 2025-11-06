@@ -56,6 +56,7 @@ function resetFields() {
    msg.textContent = '';
 }
 
+
 const showSubmitALert = () => {
    const userId = $('#memLoginId').val(); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
    console.log(userId);
@@ -100,6 +101,32 @@ const showSubmitALert = () => {
       }
    });
 }
+
+//$(function() { 
+//		
+//		const userId = sessionStorage.getItem('userId');
+//	$.ajax({
+//		// 데이터를 전송할 서버 URL
+//	      url: 'memberdelete.do',
+//	      // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+//	      type: 'POST',
+//	      // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+//	      dataType: 'json',
+//	      data: {
+//	         memLoginId: userId
+//	      },
+//	    //데이터 전송 성공 시 실행
+//	    success: function(response) {
+//	    console.log(response.memLoginId);
+//	    $('#memLoginId').val(response.memLoginId);
+//	    }
+//	      
+//	    // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+//	      error: function(xhr, status, error) {
+//	      }
+//		});
+//	});
+
 
 $(function() { //document.ready(() => { })
 

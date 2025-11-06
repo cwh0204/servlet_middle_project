@@ -85,8 +85,7 @@ button:hover {
 	<div class="pw-container"></div>
 	<div class="login-box">
 		<div class="input-group">
-			<label>아이디</label> <input type="text" name="userID" value="userID"
-				disabled>
+			<label>아이디</label> <input type="text" name="userID" readonly>
 		</div>
 
 		<div class="input-group" style="position: relative;">
@@ -96,6 +95,7 @@ button:hover {
 		</div>
 
 		<button id="userPwCk" type="submit">확인</button>
+		
 	</div>
 </body>
 
