@@ -464,6 +464,18 @@ main {
 	letter-spacing: -0.3px;
 }
 
+.btn-text {
+	position: relative;
+	z-index: 1;
+}
+
+.btn-arrow {
+	font-size: 20px;
+	font-weight: 700;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	z-index: 1;
+}
 
 .submit-btn {
 	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);

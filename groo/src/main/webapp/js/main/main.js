@@ -45,8 +45,8 @@ function processAndRenderCards(allStudies, leaderList) {
 
 var pageLoad = (studyId) => {
 	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
-    sessionStorage.removeItem('team_last_view');
-    console.log("마지막 페이지"+pageToLoad);
+    sessionStorage.removeItem('team_last_view', '/main.do');
+    console.log("마지막 페이지: /main.do");
     
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
