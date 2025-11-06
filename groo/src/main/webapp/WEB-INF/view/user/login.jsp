@@ -287,7 +287,7 @@ $(document).ready(function() {
         $('.custom-btn-success[value="signup"]').click(function() {
             window.location.href = 'signup.do'; 
         });
-        		
+        
 		$('.naver-login').click(function() {
 			window.location.href = naverUrl;
 		});

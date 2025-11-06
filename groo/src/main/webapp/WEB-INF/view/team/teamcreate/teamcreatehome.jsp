@@ -202,10 +202,6 @@
 							<button type="button" id="studySubmit" class="btn btn-primary submit-btn">
 								<span class="btn-text">팀 생성하기</span> <span class="btn-arrow">→</span>
 							</button>
-							<button type="reset" class="btn btn-secondary reset-btn">
-								<span class="btn-text">돌아가기</span> <span class="btn-arrow"></span>
-								<!-- 이렇게 변경! -->
-							</button>
 						</div>
 					</div>
 				</div>

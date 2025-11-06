@@ -25,9 +25,11 @@ $(document).ready(function(){
 			},
 			// 데이터 전송 성공 시 실행
 			success: function(response) {
-				// response는 서버에서 돌려준 데이터입니다.
-				console.log(response);
-			},
+			        // response는 서버에서 돌려준 데이터입니다.
+			        console.log(response);
+			        // 팀 생성 완료 알림 팝업 추가
+			        alert('팀 생성이 완료되었습니다! 팀 보기를 확인해주세요.'); 
+			    },
 			// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 			error: function(xhr, status, error) {
 			}
