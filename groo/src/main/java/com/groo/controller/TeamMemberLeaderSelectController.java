@@ -21,7 +21,7 @@ public class TeamMemberLeaderSelectController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		TeamMemberService service = new TeamMemberServiceImpl();
 
 		List<TeamMemberDTO> teamMemberList = new ArrayList<>();

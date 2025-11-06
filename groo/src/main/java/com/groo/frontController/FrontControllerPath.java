@@ -54,7 +54,7 @@ import com.groo.controller.TeamMemberLeaderChangeController;
 import com.groo.controller.TeamMemberLeaderSelectController;
 import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
-import com.groo.controller.TeamMemberSelectPageLeaderController;
+import com.groo.controller.TeamMemberSelectPageController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -130,10 +130,10 @@ public class FrontControllerPath {
         controllerMap.put("/voteok.do", new VoteUpdateOkController());
         controllerMap.put("/teammember.do", new TeamMemberSelectController());
         controllerMap.put("/teamleaderteampage.do", new TeamMemberLeaderTeamPageSelectController());
-        
+
         controllerMap.put("/teammemberkick.do", new TeamMemberKickController());
         controllerMap.put("/teammemberleaderchange.do", new TeamMemberLeaderChangeController());
-        
+
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
 
@@ -153,13 +153,14 @@ public class FrontControllerPath {
 
         //팀멤버
         controllerMap.put("/teammerberleaders.do", new TeamMemberLeaderSelectController());
-        
+        controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());
+
+
         //마이페이지
         controllerMap.put("/myboardlist.do", new MyBoardListController());
         controllerMap.put("/mycommentList.do", new MyCommentListController());
 
-        controllerMap.put("/teammemberselectpageleader.do", new TeamMemberSelectPageLeaderController());
-        
+
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());

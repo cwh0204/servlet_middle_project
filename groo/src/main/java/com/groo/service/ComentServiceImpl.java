@@ -118,8 +118,8 @@ public class ComentServiceImpl implements ComentService {
 			session.close();
 		}
 	}
-	
-	
+
+
 	/**
 	 * 내가 쓴 댓글 조회 서비스 메서드입니다.
 	 *
@@ -127,7 +127,7 @@ public class ComentServiceImpl implements ComentService {
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
-	
+
 	@Override
 	public List<ComentDTO> selectMyCommentList(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();

@@ -15,8 +15,7 @@
         
         <div class="header-content">
             <h1 class="team-title">
-            	<label for="study_title">프론트엔드 개발 스터디:</label>
-            	<input type="text" name="study_title" id="study_title" value="리액트 마스터" readonly>
+            	<input type="text" name="study_title" id="study_title" value="프론트엔드 개발 스터디: 리액트 마스터" readonly>
             </h1>
             
             <div class="team-meta">
@@ -37,10 +36,6 @@
             </div>
         </div>
       </div> 
-      
-      <div class="team-header-btn">
-        	<input type="button" value="가입하기" class="join" id="joinBtn">
-      </div>
     </section>
 
   <div class="team-info">  
@@ -60,11 +55,12 @@
               주요 목표: 6개월 내에 포트폴리오용 웹 서비스 2가지 완성
               운영 방식: 매주 1명씩 발표/질문 담당, 코드 리뷰 필수
               필수 참여 조건: 기초적인 HTML/CSS/JS 지식 보유자
-            
             </textarea>
         </div>
         
         <div class="btn-area">
+        	<input type="button" value="가입하기" class="join" id="joinBtn">
+        	<input type="button" value="탈퇴하기" class="leave" id="leaveBtn">
         	<input type="button" value="수정하기" class="edit" id="editBtn"> 
     		<input type="submit" value="저장하기" class="save" id="saveBtn">
     	</div>	
@@ -173,7 +169,7 @@ $(document).ready(function() {
 	
 	$.ajax({
 		// 데이터를 전송할 서버 URL
-		url: 'teammemberselectpageleader.do',
+		url: 'teammemberselectpage.do',
 		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
@@ -182,7 +178,12 @@ $(document).ready(function() {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
+			console.log(response);
+			$('#study_title').val(response.studyTitle);
 			$('.leader-name').text(response.memNick);
+			$('#study_category').val(response.studyCategory);
+			$('#study_intro').val(response.studyIntro);
+			$('#study_introcontent').val(response.studyIntrocontent);
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -204,7 +205,8 @@ $(document).ready(function() {
 		
 	// 수정하기 버튼 클릭 시
 	$('#editBtn').click(function() {
-		$('#study_title, #study_category, #team-summary, #team-details').prop('readonly', false).addClass('edit-mode');
+		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', false)
+																						  .addClass('edit-mode');
 		
 		$('#editBtn').hide();
 		$('#saveBtn').show();
@@ -213,7 +215,8 @@ $(document).ready(function() {
 	// 저장하기 버튼 클릭 시
 	$('#saveBtn').click(function() {
 		alert('변경사항이 저장되었습니다.');
-		$('#study_title, #study_category, #team-summary, #team-details').prop('readonly', true).removeClass('edit-mode');
+		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
+																						  .removeClass('edit-mode');
 		
 		$('#saveBtn').hide();
 		$('#editBtn').show();

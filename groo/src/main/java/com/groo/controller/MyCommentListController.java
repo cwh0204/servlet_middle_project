@@ -21,7 +21,7 @@ public class MyCommentListController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
@@ -55,5 +55,5 @@ public class MyCommentListController implements Controller {
 			error.setStatus(500);
 		}
 	}
-		
+
 	}

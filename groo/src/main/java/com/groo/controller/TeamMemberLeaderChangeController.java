@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class TeamMemberLeaderChangeController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀장을 넘기고 JSON 응답을 생성합니다.
 	 *
@@ -30,26 +30,26 @@ public class TeamMemberLeaderChangeController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
 		String memId = request.getParameter("memId");
 		String memLoginId = request.getParameter("memLoginId");
 		String studyId = request.getParameter("studyId");
-		
+
 		TeamMemberDTO teamMember = new TeamMemberDTO();
-		
+
 		teamMember.setMemId(memId);
 		teamMember.setStudyRoll("L");
 		teamMember.setStudyId(studyId);
-		
+
 		TeamMemberDTO teamLeader = new TeamMemberDTO();
-		
+
 		teamLeader.setMemLoginId(memLoginId);
 		teamLeader.setStudyRoll("M");
 		teamLeader.setStudyId(studyId);
-		
+
 		TeamMemberService service = new TeamMemberServiceImpl();
 
 		try {

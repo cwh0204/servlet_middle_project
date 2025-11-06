@@ -225,7 +225,7 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 내가쓴 게시글 조회 서비스 메서드입니다.
 	 *
@@ -238,7 +238,7 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		SqlSession session = SessionFactory.getSqlSession();
 		List<BoardDTO> list = new ArrayList<>();
-		
+
 		try {
 			list = dao.selectMyBoardList(member, session);
 		} catch (InternalDataAccessException ide) {
@@ -250,11 +250,11 @@ public class BoardServiceImpl implements BoardService {
 		} finally {
 			session.close();
 		}
-		
+
 		return list;
 	}
-	
-	
-	
-	
+
+
+
+
 }
