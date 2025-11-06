@@ -91,17 +91,17 @@ public class VoteServiceImpl implements VoteService{
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 투표 주별 최다 득표리스트를 가져오기 위한 메서드
-	 * 
+	 *
 	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
 	@Override
 	public List<VoteDTO> selectVoteRank(VoteDTO vote) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		List<VoteDTO> voteList = new ArrayList<>();
 		try {

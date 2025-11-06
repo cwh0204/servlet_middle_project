@@ -141,7 +141,7 @@
 		});
 
 		$.ajax({
-			url : "selectAllTeamMember.do",
+			url : "teammerberleaders.do",
 			type : "GET",
 			dataType : "json",
 

@@ -13,7 +13,7 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.TeamMemberDTO;
 
 public class TeamMemberServiceImpl implements TeamMemberService {
-	
+
 	TeamMemberDAO dao = new TeamMemberDAOImpl(); //업캐스팅
 	List<TeamMemberDTO> teamMemberList = new ArrayList<>();
 
@@ -23,10 +23,11 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
 	}
 
-	public List<TeamMemberDTO> TeamMemberAllSelect(TeamMemberDTO teamMember) {
+	@Override
+	public List<TeamMemberDTO> TeamMemberLeaderSelect(TeamMemberDTO teamMember) {
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
-			teamMemberList = dao.teamselectAll(teamMember, session);
+			teamMemberList = dao.TeamMemberLeaderSelect(teamMember, session);
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);

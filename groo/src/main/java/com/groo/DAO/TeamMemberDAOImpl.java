@@ -24,21 +24,20 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 			throw new InternalServiceException("DAO:insertTeam 예외발생",e);
 		}
 	}
-	
+
 	/**
-	 * 팀원을 모두 가져오기 위한 메서드
+	 * 팀의 리더를 모두 가져오기 위한 메서드
 	 * @param teamMember 팀원을 생성 하기위한 Data Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 */
 	@Override
-	public List<TeamMemberDTO> teamselectAll(TeamMemberDTO teamMember, SqlSession session) {
+	public List<TeamMemberDTO> TeamMemberLeaderSelect(TeamMemberDTO teamMember, SqlSession session) {
 		List<TeamMemberDTO> list = new ArrayList<>();
 		try {
-			list = session.selectList("selectAllTeamMember",teamMember);
+			list = session.selectList("TeamMemberLeaderSelect",teamMember);
 		}catch (Exception e) {
 			throw new InternalServiceException("DAO:selectAllTeamMember 예외발생",e);
 		}
 		return list;
 	}
-
 }

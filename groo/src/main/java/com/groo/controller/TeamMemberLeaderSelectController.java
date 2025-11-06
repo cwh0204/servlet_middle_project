@@ -16,11 +16,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 그루에 있는 모든 팀목록 멤버를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
+ * 그루에 있는 모든 팀의 리더목록 멤버를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
 
-public class TeamMemberAllSelectController implements Controller {
+public class TeamMemberLeaderSelectController implements Controller {
 
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
@@ -33,22 +33,22 @@ public class TeamMemberAllSelectController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		TeamMemberDTO teamMember = new TeamMemberDTO();
 		ErrorDTO Error = new ErrorDTO();
 
 		try {
 			TeamMemberService teamMemberService  = new TeamMemberServiceImpl();
-			List<TeamMemberDTO> list = teamMemberService.TeamMemberAllSelect(teamMember);
-			
+			List<TeamMemberDTO> list = teamMemberService.TeamMemberLeaderSelect(teamMember);
 
-			for(int i=0; i<list.size(); i++) {
-				System.out.println(list.get(i));
+
+			for (TeamMemberDTO element : list) {
+				System.out.println(element);
 			}
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
 

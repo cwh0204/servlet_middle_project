@@ -8,5 +8,5 @@ import com.groo.model.TeamMemberDTO;
 
 public interface TeamMemberDAO {
 	public void insertTeamMember(TeamMemberDTO teamMember, SqlSession session);
-	public List<TeamMemberDTO> teamselectAll(TeamMemberDTO teamMember, SqlSession session);
+	public List<TeamMemberDTO> TeamMemberLeaderSelect(TeamMemberDTO teamMember, SqlSession session);
 }

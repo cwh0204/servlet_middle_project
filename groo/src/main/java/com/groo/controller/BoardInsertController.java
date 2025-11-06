@@ -51,7 +51,7 @@ public class BoardInsertController implements Controller {
 		try {
 
 			service.insertBoard(board);
-			
+
 			if (boardType != null && !boardType.isEmpty()) {
 				char firstChar = boardType.charAt(0);
 
@@ -66,12 +66,12 @@ public class BoardInsertController implements Controller {
 							userQuestion, null);
 					// 3.응답 파싱 (Optional 객체를 안전하게 해제)
 					// Optional<List<Candidate>>에서 List<Candidate>를꺼내고, 첫 번째 Candidate를 선택합니다.
-					
+
 					String generatedText = geminiResponse.candidates().orElseThrow(() -> new RuntimeException("응답에 후보 목록이 없습니다.")).get(0)
 							.content().orElseThrow(() -> new RuntimeException("후보에 내용 객체가 없습니다.")).parts()
 							.orElseThrow(() -> new RuntimeException("내용 객체에 Parts 목록이 없습니다.")).get(0).text()
 							.orElseThrow(() -> new RuntimeException("Part에 텍스트 내용이 없습니다."));
-					
+
 					GrooBotDTO bot = new GrooBotDTO();
 					bot.setBoardId(board.getBoardId());
 					bot.setBotComment(generatedText);

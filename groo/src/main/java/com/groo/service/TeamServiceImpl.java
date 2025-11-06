@@ -200,7 +200,7 @@ public class TeamServiceImpl implements TeamService{
 		}
 		return teamList;
 	}
-	
+
 	/**
 	 * 그루의 모든팀을 조회하는 서비스 메서드입니다.
 	 *

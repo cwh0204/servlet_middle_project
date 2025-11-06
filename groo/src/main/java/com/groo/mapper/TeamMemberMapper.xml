@@ -16,7 +16,17 @@
 		)
 	</insert>
 	
-	<select id="selectAllTeamMember" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
-		SELECT * FROM STUDYMEMBER
+	<select id="TeamMemberLeaderSelect" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+	SELECT
+	s.MEM_ID,
+	s.STUDY_ID,
+	s.STUDY_ROLL,
+	m.MEM_NICK
+FROM
+	STUDYMEMBER s
+INNER JOIN
+       "MEMBER" m
+   ON
+	s.MEM_ID = m.MEM_ID
 	</select>
 </mapper> 
