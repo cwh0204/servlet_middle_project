@@ -24,7 +24,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 			throw new InternalServiceException("DAO:insertTeam 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 팀원 조회를 위한 메서드
 	 * @param teamMember 팀원을 조회 하기위한 Data Transfer Object 데이터 클래스
@@ -33,9 +33,9 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 	 */
 	@Override
 	public List<TeamMemberDTO> selectTeamMember(TeamMemberDTO teamMember, SqlSession session) {
-		
+
 		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
-		
+
 		try {
 			teamMemberList = session.selectList("selectTeamMember",teamMember);
 		}catch (Exception e) {
@@ -43,7 +43,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 		}
 		return teamMemberList;
 	}
-	
+
 	/**
 	 * 팀장 여부 확인을 위한 메서드
 	 * @param teamMember 팀원을 조회 하기위한 Data Transfer Object 데이터 클래스
@@ -52,7 +52,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 	 */
 	@Override
 	public TeamMemberDTO selectTeamLeader(TeamMemberDTO teamMember, SqlSession session) {
-		
+
 		TeamMemberDTO teamMemberList = new TeamMemberDTO();
 		try {
 			teamMemberList = session.selectOne("selectTeamLeader",teamMember);
@@ -77,7 +77,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 팀의 유저를 강퇴하기 위한 메서드
 	 * @param teamMember 팀원을 강퇴 하기위한 Data Transfer Object 데이터 클래스
@@ -92,7 +92,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 			throw new InternalServiceException("DAO:updateTeamMemberKick 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 팀의 리더를 바꾸기 위한 위한 메서드
 	 * @param teamMember 팀원의 권한을 넘겨 주기위한 Data Transfer Object 데이터 클래스
@@ -107,7 +107,7 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 			throw new InternalServiceException("DAO:updateTeamLeaderChange 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 팀의 리더를 팀원으로 바꾸기 위한 메서드
 	 * @param teamMember 팀원의 권한을 넘겨 주기위한 Data Transfer Object 데이터 클래스
@@ -120,9 +120,9 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 		}catch (Exception e) {
 			throw new InternalServiceException("DAO:updateTeamMemberChange 예외발생",e);
 		}
-		
+
 	}
-	
+
 	/**
 	 * 팀의 리더의 정보를 가져오기 위한 메서드
 	 * @param teamMember 팀장의 정보를 가져오기 위한 Data Transfer Object 데이터 클래스

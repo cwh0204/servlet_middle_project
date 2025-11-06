@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.InternalServiceException;
-import com.groo.model.TeamDTO;
 import com.groo.model.TeamMemberDTO;
 import com.groo.service.TeamMemberService;
 import com.groo.service.TeamMemberServiceImpl;
@@ -22,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class TeamMemberSelectPageController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀장의 정보를 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -33,10 +32,10 @@ public class TeamMemberSelectPageController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String studyId = request.getParameter("studyId");
 		/*
 		 * String studyTitle = request.getParameter("studyTitle"); String studyCategory
@@ -44,19 +43,19 @@ public class TeamMemberSelectPageController implements Controller {
 		 * request.getParameter("studyIntro"); String studyIntrocontent =
 		 * request.getParameter("studyIntrocontent");
 		 */
-		
+
 		TeamMemberDTO teamMember = new TeamMemberDTO();
-		
+
 		teamMember.setStudyId(studyId);
-		
+
 		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
-		
+
 		TeamMemberService service = new TeamMemberServiceImpl();
-		
+
 		try {
-			
+
 			teamMemberList = service.selectTeamPage(teamMember);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(teamMemberList);
 

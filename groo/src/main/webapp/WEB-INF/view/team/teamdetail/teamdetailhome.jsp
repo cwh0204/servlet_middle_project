@@ -205,7 +205,8 @@ $(document).ready(function() {
 		
 	// 수정하기 버튼 클릭 시
 	$('#editBtn').click(function() {
-		$('#study_title, #study_category, #team-summary, #team-details').prop('readonly', false).addClass('edit-mode');
+		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', false)
+																						  .addClass('edit-mode');
 		
 		$('#editBtn').hide();
 		$('#saveBtn').show();
@@ -214,7 +215,8 @@ $(document).ready(function() {
 	// 저장하기 버튼 클릭 시
 	$('#saveBtn').click(function() {
 		alert('변경사항이 저장되었습니다.');
-		$('#study_title, #study_category, #team-summary, #team-details').prop('readonly', true).removeClass('edit-mode');
+		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
+																						  .removeClass('edit-mode');
 		
 		$('#saveBtn').hide();
 		$('#editBtn').show();

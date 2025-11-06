@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class TeamMemberKickController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀원을 강퇴하고 JSON 응답을 생성합니다.
 	 *
@@ -29,7 +29,7 @@ public class TeamMemberKickController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
@@ -37,7 +37,7 @@ public class TeamMemberKickController implements Controller {
 		String studyId = request.getParameter("studyId");
 
 		TeamMemberDTO teamMember = new TeamMemberDTO();
-		
+
 		teamMember.setMemId(memId);
 		teamMember.setStudyId(studyId);
 

@@ -78,13 +78,13 @@ public class ComentDAOImpl implements ComentDAO {
 			throw new InternalDataAccessException("DAO:comentEdit 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 내가 쓴 댓글 조회 메서드
 	 * @param coment 수정 정보를 가져오기 위한 Date Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 */
-	
+
 	@Override
 	public List<ComentDTO> selectMyCommentList(MemberDTO member, SqlSession session) {
 		List<ComentDTO> commentList = new ArrayList<>();

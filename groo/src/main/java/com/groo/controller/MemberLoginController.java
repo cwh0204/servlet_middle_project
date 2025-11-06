@@ -47,7 +47,7 @@ public class MemberLoginController implements Controller {
 
 			MemberDTO memberLogin = service.selectLoginMember(member);
 
-			
+
 			if(memberLogin != null) { session.setAttribute("loginServiceResponse",memLoginId); }
 
 			Gson gson = new Gson();

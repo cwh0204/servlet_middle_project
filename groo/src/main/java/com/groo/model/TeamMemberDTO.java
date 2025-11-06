@@ -10,7 +10,7 @@ public class TeamMemberDTO {
 	private String studyMstate;
 	private String studyJoinedDate;
 	private String studyOutDate;
-	
+
 	private String studyCategory;
 	private String studyIntro;
 	private String studyIntrocontent;
