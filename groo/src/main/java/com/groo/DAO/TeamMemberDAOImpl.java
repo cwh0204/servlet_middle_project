@@ -87,14 +87,14 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 	public void updateTeamMemberKick(TeamMemberDTO teamMember, SqlSession session) {
 
 		try {
-			session.selectList("updateTeamMemberKick",teamMember);
+			session.update("updateTeamMemberKick",teamMember);
 		}catch (Exception e) {
 			throw new InternalServiceException("DAO:updateTeamMemberKick 예외발생",e);
 		}
 	}
 	
 	/**
-	 * 팀의 리더를 모두 가져오기 위한 메서드
+	 * 팀의 리더를 바꾸기 위한 위한 메서드
 	 * @param teamMember 팀원의 권한을 넘겨 주기위한 Data Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 */
@@ -102,9 +102,24 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 	public void updateTeamLeaderChange(TeamMemberDTO teamMember, SqlSession session) {
 
 		try {
-			session.selectList("updateTeamLeaderChange",teamMember);
+			session.update("updateTeamLeaderChange",teamMember);
 		}catch (Exception e) {
 			throw new InternalServiceException("DAO:updateTeamLeaderChange 예외발생",e);
 		}
+	}
+	
+	/**
+	 * 팀의 리더를 팀원으로 바꾸기 위한 메서드
+	 * @param teamMember 팀원의 권한을 넘겨 주기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void updateTeamMemberChange(TeamMemberDTO teamMember, SqlSession session) {
+		try {
+			session.update("updateTeamMemberChange",teamMember);
+		}catch (Exception e) {
+			throw new InternalServiceException("DAO:updateTeamMemberChange 예외발생",e);
+		}
+		
 	}
 }

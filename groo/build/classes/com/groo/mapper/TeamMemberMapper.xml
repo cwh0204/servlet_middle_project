@@ -60,11 +60,17 @@
 	<update id="updateTeamMemberKick" parameterType="com.groo.model.TeamMemberDTO">
 		UPDATE STUDYMEMBER SET
 			STUDY_OUTDATE = SYSDATE
-		WHERE MEM_ID = #{memId}
+		WHERE MEM_ID = #{memId} AND STUDY_ID = #{studyId}
 	</update>
 	<update id="updateTeamLeaderChange" parameterType="com.groo.model.TeamMemberDTO">
 		UPDATE STUDYMEMBER SET
 			STUDY_ROLL = #{studyRoll}
-		WHERE MEM_ID = #{memId}
+		WHERE MEM_ID = #{memId} AND STUDY_ID = #{studyId}
+	</update>
+	
+	<update id="updateTeamMemberChange" parameterType="com.groo.model.TeamMemberDTO">
+		UPDATE STUDYMEMBER SET
+			STUDY_ROLL = #{studyRoll}
+		WHERE MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId}) AND STUDY_ID = #{studyId}
 	</update>
 </mapper>

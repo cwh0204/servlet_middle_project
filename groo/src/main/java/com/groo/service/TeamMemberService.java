@@ -13,6 +13,6 @@ public interface TeamMemberService {
 	public List<TeamMemberDTO> TeamMemberLeaderSelect();
 	
 	public void updateTeamMemberKick(TeamMemberDTO teamMember);
-	public void updateTeamLeaderChange(TeamMemberDTO teamMember);
+	public void updateTeamLeaderChange(TeamMemberDTO teamMember, TeamMemberDTO teamLeader);
 
 }
