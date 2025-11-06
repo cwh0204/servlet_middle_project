@@ -130,12 +130,13 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	 *                                  예외
 	 */
 	@Override
-	public void updateTeamLeaderChange(TeamMemberDTO teamMember) {
+	public void updateTeamLeaderChange(TeamMemberDTO teamMember, TeamMemberDTO teamLeader) {
 		
 		SqlSession session = SessionFactory.getSqlSession();
 		
 		try {
 			dao.updateTeamLeaderChange(teamMember, session);
+			dao.updateTeamMemberChange(teamLeader, session);
 			session.commit();
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();

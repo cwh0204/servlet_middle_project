@@ -14,6 +14,5 @@ public interface TeamMemberDAO {
 	
 	public void updateTeamMemberKick(TeamMemberDTO teamMember, SqlSession session);
 	public void updateTeamLeaderChange(TeamMemberDTO teamMember, SqlSession session);
-	
-
+	public void updateTeamMemberChange(TeamMemberDTO teamMember, SqlSession session);
 }
