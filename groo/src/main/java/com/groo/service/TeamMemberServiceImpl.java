@@ -25,7 +25,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	/**
 	 * 팀원 목록을 조회하는 서비스 메서드입니다.
 	 *
-	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param TeamMember 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 *                                  예외
 	 * @return 팀원목록 조회
@@ -53,7 +53,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	/**
 	 * 팀장 여부를 확인하는 서비스 메서드입니다.
 	 *
-	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param TeamMember 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 *                                  예외
 	 * @return 팀장여부 확인
@@ -94,6 +94,58 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 			session.close();
 		}
 		return teamMemberList1;
+	}
+	
+	/**
+	 * 팀원을 강퇴하는 서비스 메서드입니다.
+	 *
+	 * @param TeamMember 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 *                                  예외
+	 */
+	@Override
+	public void updateTeamMemberKick(TeamMemberDTO teamMember) {
+		
+		SqlSession session = SessionFactory.getSqlSession();
+		
+		try {
+			dao.updateTeamMemberKick(teamMember, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
+	
+	/**
+	 * 팀장 권한을 넘기는 서비스 메서드입니다.
+	 *
+	 * @param TeamMember 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 *                                  예외
+	 */
+	@Override
+	public void updateTeamLeaderChange(TeamMemberDTO teamMember) {
+		
+		SqlSession session = SessionFactory.getSqlSession();
+		
+		try {
+			dao.updateTeamLeaderChange(teamMember, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
 	}
 
 }

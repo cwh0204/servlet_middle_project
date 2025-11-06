@@ -25,9 +25,6 @@
 				<div class="submenu-item" data-page="myboard.do">
 					<span>나의 게시글</span>
 				</div>
-				<div class="submenu-item" data-page="myreview.do">
-					<span>나의 리뷰</span>
-				</div>
 			</div>
 		</div>
 	</aside>

@@ -24,14 +24,14 @@
 				WHEN 'M' THEN '팀원'
 				WHEN 'L' THEN '팀장'
 				ELSE '알수없음'
-			END AS STUDY_ROLE,
+			END AS STUDY_ROLL,
 			B.MEM_NICK,
 			B.MEM_EMAIL,
 			A.STUDY_JOINEDDATE
 		FROM STUDYMEMBER A
 		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		INNER JOIN STUDY C ON (A.STUDY_ID = C.STUDY_ID)
-		WHERE A.STUDY_ID = #{studyId}
+		WHERE A.STUDY_ID = #{studyId} AND A.STUDY_OUTDATE IS NULL
 	</select>
 	
 	<select id="selectTeamLeader" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
@@ -56,4 +56,15 @@
 		s.MEM_ID = m.MEM_ID
 	WHERE s.STUDY_ROLL = 'L'
 	</select>
+	
+	<update id="updateTeamMemberKick" parameterType="com.groo.model.TeamMemberDTO">
+		UPDATE STUDYMEMBER SET
+			STUDY_OUTDATE = SYSDATE
+		WHERE MEM_ID = #{memId}
+	</update>
+	<update id="updateTeamLeaderChange" parameterType="com.groo.model.TeamMemberDTO">
+		UPDATE STUDYMEMBER SET
+			STUDY_ROLL = #{studyRoll}
+		WHERE MEM_ID = #{memId}
+	</update>
 </mapper>
