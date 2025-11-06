@@ -41,4 +41,19 @@
 		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		WHERE A.STUDY_ID = #{studyId} AND B.MEM_LOGIN_ID = #{memLoginId}
 	</select>
+	
+	<select id="TeamMemberLeaderSelect" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+		SELECT
+		s.MEM_ID,
+		s.STUDY_ID,
+		s.STUDY_ROLL,
+		m.MEM_NICK AS memNick
+	FROM
+		STUDYMEMBER s
+	INNER JOIN
+	       MEMBER m
+	   ON
+		s.MEM_ID = m.MEM_ID
+	WHERE s.STUDY_ROLL = 'L'
+	</select>
 </mapper>

@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class VoteSelectRankController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 주별 최다 득표 리스트를 불러오고 JSON 응답을 생성합니다.
 	 *
@@ -33,17 +33,17 @@ public class VoteSelectRankController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain; charset=UTF-8");
-		
+
 		String studyId = request.getParameter("studyId");
-		
+
 		VoteDTO vote = new VoteDTO();
 		vote.setStudyId(studyId);
-		
+
 		VoteService service = new VoteServiceImpl();
-		
+
 		List<VoteDTO> voteList = new ArrayList<>();
 		try {
 			voteList = service.selectVoteRank(vote);

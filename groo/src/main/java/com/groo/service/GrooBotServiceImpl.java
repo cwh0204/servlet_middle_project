@@ -10,9 +10,9 @@ import com.groo.error.InternalServiceException;
 import com.groo.model.GrooBotDTO;
 
 public class GrooBotServiceImpl implements GrooBotService {
-	
+
 	GrooBotDAO dao = new GrooBotDAOImpl();
-	
+
 	/**
 	 * 그루봇 리뷰 생성 서비스 메서드입니다.
 	 *
@@ -38,7 +38,7 @@ public class GrooBotServiceImpl implements GrooBotService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 그루봇 리뷰 조회 서비스 메서드입니다.
 	 *
@@ -63,8 +63,8 @@ public class GrooBotServiceImpl implements GrooBotService {
 		finally {
 			session.close();
 		}
-		
+
 		return grooBotDTO;
 	}
-	
+
 }

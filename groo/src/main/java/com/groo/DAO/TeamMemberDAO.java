@@ -10,4 +10,6 @@ public interface TeamMemberDAO {
 	public void insertTeamMember(TeamMemberDTO teamMember, SqlSession session);
 	public List<TeamMemberDTO> selectTeamMember(TeamMemberDTO teamMember, SqlSession session);
 	public TeamMemberDTO selectTeamLeader(TeamMemberDTO teamMember, SqlSession session);
+	public List<TeamMemberDTO> TeamMemberLeaderSelect(TeamMemberDTO teamMember, SqlSession session);
+
 }

@@ -16,5 +16,6 @@ public interface TeamDAO {
 	public void deleteTeam(TeamDTO team, SqlSession session);
 	public void activateTeam(TeamDTO team, SqlSession session);
 	public List<TeamDTO> selectMyTeam(TeamDTO team, SqlSession session);
-	public List<TeamDTO> teamselectAll(TeamDTO team, SqlSession session);
+
+	public List<TeamDTO> teamselectAll(TeamDTO teamMember, SqlSession session);
 }

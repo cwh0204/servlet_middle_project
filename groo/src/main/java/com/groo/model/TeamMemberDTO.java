@@ -15,4 +15,5 @@ public class TeamMemberDTO {
 	private String memNick;
 	private String memEmail;
 	private String memLoginId;
+
 }

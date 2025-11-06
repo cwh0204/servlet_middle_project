@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.google.gson.Gson;
-import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.GrooBotDTO;
-import com.groo.model.MemberDTO;
 import com.groo.service.GrooBotService;
 import com.groo.service.GrooBotServiceImpl;
 
@@ -20,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class GrooBotSelectController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 그루 코멘트를 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -31,10 +29,10 @@ public class GrooBotSelectController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String boardId = request.getParameter("boardId");
 		GrooBotDTO bot = new GrooBotDTO();
 

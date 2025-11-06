@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 팀 페이지에서 팀장 여부를 조회하는 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class TeamMemberLeaderSelectController implements Controller {
+public class TeamMemberTeamPageLeaderSelectController implements Controller {
 	
 	/**
 	 * HTTP 요청을 받아 팀장 여부를 조회하고 JSON 응답을 생성합니다.

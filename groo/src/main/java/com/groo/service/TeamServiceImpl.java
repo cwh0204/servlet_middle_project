@@ -201,6 +201,14 @@ public class TeamServiceImpl implements TeamService{
 		return teamList;
 	}
 
+	/**
+	 * 그루의 모든팀을 조회하는 서비스 메서드입니다.
+	 *
+	 * @param  활성 team을 하기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 소속 팀 조회목록 리턴
+	 */
 	@Override
 	public List<TeamDTO> teamselectAll(TeamDTO team) {
 		SqlSession session = SessionFactory.getSqlSession();

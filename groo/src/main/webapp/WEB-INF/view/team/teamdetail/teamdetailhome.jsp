@@ -12,15 +12,17 @@
         
         <div class="header-content">
         <form></form>
-            <h1 class="team-title"><label for="study_title">프론트엔드 개발 스터디:</label><input type="text" name="study_title" id="study_title" value="리액트 마스터"></h1>
+            <h1 class="team-title">
+            	<label for="study_title">프론트엔드 개발 스터디:</label>
+            	<input type="text" name="study_title" id="study_title" value="리액트 마스터">
+            </h1>
+            
             <div class="team-meta">
                 <span><img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"> 2,134</span> 
                 <span><img src="https://i.postimg.cc/qMkNbqfw/free-icon-chick-15549519.png" class="egg-img">2024년 03월 15일 생성</span> 
                 <span><img src="https://i.postimg.cc/jd5NFSZf/education-1.png" class="edu-img">
                 <input type="text" name="study_category" id="study_category" value="개발 & IT"> </span> </div>
-        </div>
-      
-      <input type="button" value="수정하기" class="edit">  
+        </div> 
         
       <div class="team-leader-wrapper"> 
         <div class="team-leader-card">
@@ -36,10 +38,12 @@
 
   <div class="team-info">  
     <section class="team-introduction">
-        <h2>팀 소개</h2>	
+    
+        <h2><label for="study_intro">팀 소개</label></h2>	
         	<p class="summary" id="team-summary">
-            	<label for="study_intro">팀 소개</label> 
-            	<textarea rows="5" cols="140" name="study_intro" id="study_intro">실무에 바로 적용 가능한 리액트(React) 심화 학습 및 프로젝트 진행 스터디입니다. 주니어 개발자의 성장을 목표로 합니다."</textarea>
+            	<textarea rows="5" cols="140" name="study_intro" id="study_intro">
+            	실무에 바로 적용 가능한 리액트(React) 심화 학습 및 프로젝트 진행 스터디입니다. 주니어 개발자의 성장을 목표로 합니다."
+            	</textarea>
         	</p>
         
         <h2><label for="study_introcontent">상세 활동 내용</label></h2>
@@ -61,6 +65,9 @@
             <a href="https://github.com/dummy-frontend-team" target="_blank">🔗 GitHub (코드 저장소)</a>
         </div>
     </section>
+    
+    <input type="button" value="수정하기" class="edit"> 
+    <input type="submit" value="저장하기" class="save">
     
    	<section class="team-schedule">
     	<h2><img src="https://i.postimg.cc/3R00YvL6/free-icon-schedule-5807616.png" class="schedule-img">
