@@ -16,6 +16,32 @@
 		)
 	</insert>
 	
+	<select id="selectTeamMember" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+		SELECT 
+			C.STUDY_TITLE,
+			A.MEM_ID,
+			CASE A.STUDY_ROLL
+				WHEN 'M' THEN '팀원'
+				WHEN 'L' THEN '팀장'
+				ELSE '알수없음'
+			END AS STUDY_ROLE,
+			B.MEM_NICK,
+			B.MEM_EMAIL,
+			A.STUDY_JOINEDDATE
+		FROM STUDYMEMBER A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		INNER JOIN STUDY C ON (A.STUDY_ID = C.STUDY_ID)
+		WHERE A.STUDY_ID = #{studyId}
+	</select>
+	
+	<select id="selectTeamLeader" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+		SELECT
+			A.STUDY_ROLL
+		FROM STUDYMEMBER A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		WHERE A.STUDY_ID = #{studyId} AND B.MEM_LOGIN_ID = #{memLoginId}
+	</select>
+	
 	<select id="TeamMemberLeaderSelect" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
 		SELECT
 		s.MEM_ID,
@@ -30,4 +56,4 @@
 		s.MEM_ID = m.MEM_ID
 	WHERE s.STUDY_ROLL = 'L'
 	</select>
-</mapper> 
+</mapper>
