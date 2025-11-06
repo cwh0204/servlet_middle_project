@@ -43,17 +43,19 @@ function processAndRenderCards(allStudies, leaderList) {
 	}
 }
 
+// 기존 pageLoad 함수 수정
+
 var pageLoad = (studyId) => {
-	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
+   const pageToLoad = 'teamdetail.do?studyId=' + studyId;
     sessionStorage.removeItem('team_last_view');
     console.log("마지막 페이지"+pageToLoad);
     
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
         if (status === "success") {
-        	
-        	sessionStorage.setItem('teamId', studyId);
-        	
+           
+           sessionStorage.setItem('teamId', studyId);
+           
             console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
             
         } else {

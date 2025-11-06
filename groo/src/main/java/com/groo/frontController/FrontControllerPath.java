@@ -46,6 +46,8 @@ import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
+import com.groo.controller.TeamMemberKickController;
+import com.groo.controller.TeamMemberLeaderChangeController;
 import com.groo.controller.TeamMemberLeaderSelectController;
 import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
@@ -124,7 +126,10 @@ public class FrontControllerPath {
         controllerMap.put("/voteok.do", new VoteUpdateOkController());
         controllerMap.put("/teammember.do", new TeamMemberSelectController());
         controllerMap.put("/teamleaderteampage.do", new TeamMemberLeaderTeamPageSelectController());
-
+        
+        controllerMap.put("/teammemberkick.do", new TeamMemberKickController());
+        controllerMap.put("/teammemberleaderchange.do", new TeamMemberLeaderChangeController());
+        
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
 

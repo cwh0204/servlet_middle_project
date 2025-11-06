@@ -22,7 +22,6 @@
 				<span>팀 보기</span>
 			</div>
 		</div>
-		
 	</aside>
 </body>
 </html>
