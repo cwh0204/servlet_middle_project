@@ -283,7 +283,11 @@ $(document).ready(function() {
             $('#findPwForm')[0].reset();
             $('#findPwResult').hide();
         });
-		
+        
+        $('.custom-btn-success[value="signup"]').click(function() {
+            window.location.href = 'signup.do'; 
+        });
+        		
 		$('.naver-login').click(function() {
 			window.location.href = naverUrl;
 		});
