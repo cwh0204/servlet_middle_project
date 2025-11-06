@@ -26,6 +26,11 @@
 					<span>나의 게시글</span>
 				</div>
 			</div>
+            <div class="submenu">
+				<div class="submenu-item" data-page="mycomment.do">
+					<span>나의 댓글</span>
+				</div>
+			</div>
 		</div>
 	</aside>
     </body>
