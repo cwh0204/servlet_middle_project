@@ -31,6 +31,11 @@
 					<span>나의 댓글</span>
 				</div>
 			</div>
+			<div class="submenu">
+				<div class="submenu-item" data-page="mylike.do">
+					<span>나의 좋아요</span>
+				</div>
+			</div>
 		</div>
 	</aside>
     </body>
