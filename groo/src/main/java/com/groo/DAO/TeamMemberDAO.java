@@ -11,5 +11,9 @@ public interface TeamMemberDAO {
 	public List<TeamMemberDTO> selectTeamMember(TeamMemberDTO teamMember, SqlSession session);
 	public TeamMemberDTO selectTeamLeader(TeamMemberDTO teamMember, SqlSession session);
 	public List<TeamMemberDTO> TeamMemberLeaderSelect(SqlSession session);
+	
+	public void updateTeamMemberKick(TeamMemberDTO teamMember, SqlSession session);
+	public void updateTeamLeaderChange(TeamMemberDTO teamMember, SqlSession session);
+	
 
 }
