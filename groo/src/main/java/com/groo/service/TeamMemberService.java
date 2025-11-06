@@ -10,6 +10,6 @@ public interface TeamMemberService {
 	public List<TeamMemberDTO> selectTeamMember(TeamMemberDTO teamMember);
 	public TeamMemberDTO selectTeamLeader(TeamMemberDTO teamMember);
 
-	public List<TeamMemberDTO> TeamMemberLeaderSelect(TeamMemberDTO teamMember);
+	public List<TeamMemberDTO> TeamMemberLeaderSelect();
 
 }

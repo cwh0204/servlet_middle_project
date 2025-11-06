@@ -11,28 +11,28 @@ import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
 import com.groo.model.TeamMemberDTO;
-import com.groo.model.VoteDTO;
 
 public class TeamMemberServiceImpl implements TeamMemberService {
-	
+
 	TeamMemberDAO dao = new TeamMemberDAOImpl();
+
 	@Override
 	public void insertTeamMember(TeamMemberDTO teamMember) {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	/**
 	 * 팀원 목록을 조회하는 서비스 메서드입니다.
 	 *
 	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
-	 * 예외
+	 *                                  예외
 	 * @return 팀원목록 조회
 	 */
 	@Override
 	public List<TeamMemberDTO> selectTeamMember(TeamMemberDTO teamMember) {
-		
+
 		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
@@ -49,18 +49,18 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 		}
 		return teamMemberList;
 	}
-	
+
 	/**
 	 * 팀장 여부를 확인하는 서비스 메서드입니다.
 	 *
 	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
-	 * 예외
+	 *                                  예외
 	 * @return 팀장여부 확인
 	 */
 	@Override
 	public TeamMemberDTO selectTeamLeader(TeamMemberDTO teamMember) {
-		
+
 		TeamMemberDTO teamMemberList = new TeamMemberDTO();
 		SqlSession session = SessionFactory.getSqlSession();
 		try {
@@ -77,5 +77,23 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 		}
 		return teamMemberList;
 	}
-	
+
+	@Override
+	public List<TeamMemberDTO> TeamMemberLeaderSelect() {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<TeamMemberDTO> teamMemberList1 = new ArrayList<>();
+		try {
+			teamMemberList1 = dao.TeamMemberLeaderSelect(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return teamMemberList1;
+	}
+
 }

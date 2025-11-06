@@ -46,6 +46,8 @@ import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
+import com.groo.controller.TeamMemberLeaderSelectController;
+import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
@@ -120,6 +122,7 @@ public class FrontControllerPath {
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
         controllerMap.put("/voteok.do", new VoteUpdateOkController());
         controllerMap.put("/teammember.do", new TeamMemberSelectController());
+        controllerMap.put("/teamleaderteampage.do", new TeamMemberLeaderTeamPageSelectController());
 
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
