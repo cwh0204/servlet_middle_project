@@ -10,4 +10,7 @@ public class TeamMemberDTO {
 	private String studyMstate;
 	private String studyJoinedDate;
 	private String studyOutDate;
+	
+	//멤버닉네임
+	private String memNick;
 }
