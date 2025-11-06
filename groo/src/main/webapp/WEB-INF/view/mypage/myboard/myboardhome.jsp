@@ -10,9 +10,9 @@
 	<div class="page-header">
 		<h2>나의 게시물</h2>
 	</div>
-
 	<div class="my-board-section">
-		<h3 class="board-title">📚 공부 게시물</h3>
+		<h3 class="board-title">
+		<img src="https://i.postimg.cc/4d45ntfd/bookshelf.png" class="input-icon">공부 게시물</h3>
 		<div class="board-list-container">
 			<div class="board-item" data-post-id="101">
 				<span class="post-title">CSS Flexbox 복습 자료</span>
@@ -38,7 +38,8 @@
 	<hr class="section-divider">
 
 	<div class="my-board-section">
-		<h3 class="board-title">🗣️ 자유 게시물</h3>
+		<h3 class="board-title">
+		<img src="https://i.postimg.cc/DyMgC820/talking.png" class="input-icon"> 자유 게시물</h3>
 		<div class="board-list-container">
 			<div class="board-item" data-post-id="201">
 				<span class="post-title">주말에 다녀온 맛집 추천!</span>
