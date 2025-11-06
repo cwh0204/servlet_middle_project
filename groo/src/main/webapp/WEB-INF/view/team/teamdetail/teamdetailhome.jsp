@@ -126,7 +126,7 @@ var loadScheduleList = (response) => {
 	       // <div class="schedule-date"> 요소 생성 및 추가
 	       const $dateDiv = $('<div>')
 	           .addClass('schedule-date')
-	           .text(fullDate);
+	           .text(schedule.voteStart);
 	       
 	       // <div class="schedule-content"> 요소 생성
 	       const $contentDiv = $('<div>')
@@ -134,7 +134,7 @@ var loadScheduleList = (response) => {
 
 	       // <strong> 요소 (일정 제목) 추가
 	       $contentDiv.append(
-	           $('<strong>').text(schedule.title + ' ')
+	           $('<strong>').text(schedule.voteTitle + ' ')
 	       );
 
 	       // <span> 요소 (참여자) 추가
@@ -153,12 +153,13 @@ var loadScheduleList = (response) => {
 	   const studyId = sessionStorage.getItem('teamId');
 	    // 2. AJAX 통신 시작
 	    $.ajax({
-	        url: 'voteselect.do', // 일정 데이터를 제공하는 서버 엔드포인트
+	        url: 'voteselectrank.do', // 일정 데이터를 제공하는 서버 엔드포인트
 	        type: 'POST',        // 데이터 조회는 보통 GET 방식 사용
 	        data: {
 	           studyId: studyId
 	        },
 	        success: function(response) {
+	        	console.log(response);
 	           loadScheduleList(response);
 	        },
 
