@@ -24,6 +24,7 @@ public class FrontPath {
         jspMap.put("/mypagedashboardhome.do", "/WEB-INF/view/mypage/mypagedashboard/mypagedashboardhome.jsp");
         jspMap.put("/myboard.do", "/WEB-INF/view/mypage/myboard/myboardhome.jsp");
         jspMap.put("/mycomment.do", "/WEB-INF/view/mypage/myboard/mycomment.jsp");
+        jspMap.put("/mylike.do", "/WEB-INF/view/mypage/myboard/mylike.jsp");
         
 
         //관리자 경로

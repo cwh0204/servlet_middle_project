@@ -11,6 +11,7 @@ import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
 import com.groo.model.BoardDTO;
+import com.groo.model.MemberDTO;
 
 public class BoardServiceImpl implements BoardService {
 
@@ -224,5 +225,36 @@ public class BoardServiceImpl implements BoardService {
 			session.close();
 		}
 	}
-
+	
+	/**
+	 * 내가쓴 게시글 조회 서비스 메서드입니다.
+	 *
+	 * @param board 페이지 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public List<BoardDTO> selectMyBoardList(MemberDTO member) {
+		// TODO Auto-generated method stub
+		SqlSession session = SessionFactory.getSqlSession();
+		List<BoardDTO> list = new ArrayList<>();
+		
+		try {
+			list = dao.selectMyBoardList(member, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		
+		return list;
+	}
+	
+	
+	
+	
 }

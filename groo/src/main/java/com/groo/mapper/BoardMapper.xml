@@ -146,4 +146,15 @@
 			POSTINGDEL_CHECK = 'Y'
 		WHERE BOARD_ID = #{boardId}
 	</update>
+	
+	<select id="selectMyBoardList" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.BoardDTO">
+	SELECT b.BOARD_ID, b.POST_TITLE, b.BOARD_TYPE_ID, b.POSTING_DATE
+    FROM BOARD b
+    INNER JOIN MEMBER m ON m.MEM_ID = b.MEM_ID
+    WHERE m.MEM_NICK IN (
+        SELECT MEM_NICK
+        FROM MEMBER
+        WHERE MEM_LOGIN_ID = #{memLoginId}
+    )
+	</select>
 </mapper>

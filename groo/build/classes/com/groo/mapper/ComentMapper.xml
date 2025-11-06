@@ -50,4 +50,11 @@
 			COMENT_CONTENT = #{comentContent}
 		WHERE COMENT_ID = #{comentId}
 	</update>
+	
+	<select id="selectMyCommentList" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.ComentDTO">
+		SELECT *
+		FROM COMENT c 
+		INNER JOIN  MEMBER m ON c.mem_ID = m.mem_ID
+		WHERE M.MEM_NICK IN (SELECT MEM_NICK FROM MEMBER WHERE MEM_login_id=#{memLoginId})
+	</select>
 </mapper>
