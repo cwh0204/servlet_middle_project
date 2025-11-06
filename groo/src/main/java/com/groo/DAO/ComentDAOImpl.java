@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
 import com.groo.model.ComentDTO;
+import com.groo.model.MemberDTO;
 
 /**
  * 댓글에 사용하는 요청의 데이터를 처리하는 클래스 구현체로 댓글의 추가,수정,삭제,조회 관련 서비스를 처리함
@@ -76,5 +77,23 @@ public class ComentDAOImpl implements ComentDAO {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:comentEdit 예외발생", e);
 		}
+	}
+	
+	/**
+	 * 내가 쓴 댓글 조회 메서드
+	 * @param coment 수정 정보를 가져오기 위한 Date Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	
+	@Override
+	public List<ComentDTO> selectMyCommentList(MemberDTO member, SqlSession session) {
+		List<ComentDTO> commentList = new ArrayList<>();
+		try {
+			commentList = session.selectList("selectMyCommentList",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:comentEdit 예외발생", e);
+		}
+		return commentList;
 	}
 }
