@@ -129,10 +129,10 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 */
 	@Override
-	public TeamMemberDTO selectTeamPageLeader(TeamMemberDTO teamMember, SqlSession session) {
-		TeamMemberDTO teamMemberList = new TeamMemberDTO();
+	public List<TeamMemberDTO> selectTeamPage(TeamMemberDTO teamMember, SqlSession session) {
+		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
 		try {
-			teamMemberList = session.selectOne("selectTeamPageLeader",teamMember);
+			teamMemberList = session.selectList("selectTeamPage",teamMember);
 		}catch (Exception e) {
 			throw new InternalServiceException("DAO:updateTeamMemberChange 예외발생",e);
 		}

@@ -74,17 +74,20 @@
 		WHERE MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId}) AND STUDY_ID = #{studyId}
 	</update>
 	
-	<select id="selectTeamPageLeader" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
+	<select id="selectTeamPage" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
 		SELECT 
         C.MEM_NICK,
 		        CASE 
 		            WHEN B.STUDY_ROLL  =  'L'    THEN '팀장'
-		        END AS STUDY_ROLL
+		        END AS STUDY_ROLL,
+            A.STUDY_TITLE,
+            A.STUDY_CATEGORY,
+            A.STUDY_INTRO,
+            A.STUDY_INTROCONTENT
 		FROM STUDY A
 		INNER JOIN STUDYMEMBER B ON (A.STUDY_ID = B.STUDY_ID)
 		INNER JOIN MEMBER C ON(B.MEM_ID = C.MEM_ID)
 		WHERE B.STUDY_ROLL = 'L'
-		  AND A.STUDY_ID = #{studyId}
+		AND A.STUDY_ID = #{studyId}                    
 	</select>
-	
 </mapper>

@@ -38,11 +38,14 @@ h1, h2 {
 /* 2. 팀 개요 및 핵심 정보 섹션 (.team-header) */
 .team-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
     background-color: #d7f0df;
     border: none;
-    padding: 30px;
+    padding: 30px 40px;
+    height: 180px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* 팀 프로필 이미지 */
@@ -82,47 +85,56 @@ h1, h2 {
 }
 
 
-/* 반장 정보 스타일링 */
+/* 팀장 정보 스타일링 */
 .team-leader-wrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	align-items:flex-end;
-/*	margin-left: auto;*/
+	gap: 5px;
+	align-items: center;
+	justify-content: flex-end;
+	height: 115%;
 }
 
 .leader-badge {
 	position: absolute;
-	top: 3px;
-	left: 5px;
-	font-size: 0.8rem;
-	font-weight: 600;
+	top: 5px;
+	left: 30%;
+	margin-bottom: 8px;
+	font-size: 0.75rem;
+	font-weight: 800;
 	background-color: #ffe066; 
 	color: #5c3d00;
-	padding: 4px 10px;
+	padding: 2px 8px;
 	border-radius: 10px;
+	white-space: nowrap;
 }
 
 .team-leader-card {
-	position: relative;		/* 절대위치 기준 */
+	position: relative;		
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
     background-color: #fffce6;
     border: 1px solid #fff6b3;
-    border-radius: 16px;
-    padding: 20px 24px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 14px;
+    padding: 9px;
+	width: 140px;
+	height: 160px;
+ /*   box-shadow: 0 4px 10px rgba(0,0,0,0.05);*/
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* 프로필 이미지 */
 .leader-photo {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffe066; 
+    border: 2px solid #ffe066; 
+    margin-top: 20px;
 }
 
 /* 이름 / 역할 */
@@ -146,46 +158,8 @@ h1, h2 {
 
 
 /*  세로로 나옴
-.team-leader-card {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #d6e9dc;
-    border-radius: 12px;
-    padding: 15px 20px;
-    width: fit-content;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
 
-.team-leader-card:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.leader-photo {
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	border: 2px solid #FFF29E;	
-	object-fit: cover;
-}
-
-.leader-info .leader-name {
-	color: #0f1724;
-	font-weight: 600;
-	margin: 0;
-	font-size: 1.2rem;
-}
-
-.leader-info .leader-role {
-	color: #3ca86b;
-	margin-top: 4px;
-	margin-bottom: 5px;
-	font-size: 0.9rem;
-}
-
+*/
 /* 3. 팀 소개 및 상세 내용 섹션 (.team-introduction) */
 /* 소개글 요약 */
 .team-introduction {
@@ -200,6 +174,7 @@ h1, h2 {
 	display: flex;
 	gap: 30px;
 	align-items: flex-start;
+	justify-content: center;
 	margin-top: 30px;
 	flex-wrap: wrap;	
 }
@@ -267,6 +242,7 @@ h1, h2 {
 
 
 /* 버튼 영역 */
+
 .team-header {
 	position: relative;
 	display: flex;
@@ -274,15 +250,35 @@ h1, h2 {
 	justify-content: space-between;
 }
 
+.team-header-btn {
+	display: flex;
+	justify-content: center;
+/*	margin-top: 2px;*/
+}
+
 .team-header-btn .join {
-	position: absolute;
-	top: 30px;
-	right: 40px;
+	background-color: #ffffff;
+	color: #2b7a4b;
+	border: 1px solid #d8e8de;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.team-header-btn .join:hover {
+/*	background-color: #f0fdf6;*/
+	background-color: #FFD966;
+	color: #2B2B2B;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .btn-area {
 	display: flex;
-	gap: 12px;	
+	gap: 10px;	
 }
 
 .btn-area input[type="button"],
@@ -306,6 +302,13 @@ h1, h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+input[readonly]:focus,
+textarea[readonly]:focus {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+	
 /* 수정모드 스타일 */
 .edit-mode {
 	border: 1px solid #999; 

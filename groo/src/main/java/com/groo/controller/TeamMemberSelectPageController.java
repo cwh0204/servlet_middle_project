@@ -2,6 +2,7 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 팀상세 페이지에서 팀장의 정보를 가져오기 위한 Controller 구현 클래스 Service 계층을 호출하고 처리 결과를 json 형태로
  * 클라이언트에 응답
  */
-public class TeamMemberSelectPageLeaderController implements Controller {
+public class TeamMemberSelectPageController implements Controller {
 	
 	/**
 	 * HTTP 요청을 받아 팀장의 정보를 조회하고 JSON 응답을 생성합니다.
@@ -37,20 +38,27 @@ public class TeamMemberSelectPageLeaderController implements Controller {
 		response.setCharacterEncoding("UTF-8");
 		
 		String studyId = request.getParameter("studyId");
+		/*
+		 * String studyTitle = request.getParameter("studyTitle"); String studyCategory
+		 * = request.getParameter("studyCategory"); String studyIntro =
+		 * request.getParameter("studyIntro"); String studyIntrocontent =
+		 * request.getParameter("studyIntrocontent");
+		 */
 		
 		TeamMemberDTO teamMember = new TeamMemberDTO();
 		
 		teamMember.setStudyId(studyId);
 		
-		TeamMemberDTO list = new TeamMemberDTO();
+		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
+		
+		TeamMemberService service = new TeamMemberServiceImpl();
 		
 		try {
-			TeamMemberService service = new TeamMemberServiceImpl();
 			
-			list = service.selectTeamPageLeader(teamMember);
+			teamMemberList = service.selectTeamPage(teamMember);
 			
 			Gson gson = new Gson();
-			String json = gson.toJson(list);
+			String json = gson.toJson(teamMemberList);
 
 			PrintWriter out = response.getWriter();
 			out.print(json);

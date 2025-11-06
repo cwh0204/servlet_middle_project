@@ -16,5 +16,5 @@ public interface TeamMemberDAO {
 	public void updateTeamLeaderChange(TeamMemberDTO teamMember, SqlSession session);
 	public void updateTeamMemberChange(TeamMemberDTO teamMember, SqlSession session);
 	
-	public TeamMemberDTO selectTeamPageLeader(TeamMemberDTO teamMember, SqlSession session);
+	public List<TeamMemberDTO> selectTeamPage(TeamMemberDTO teamMember, SqlSession session);
 }

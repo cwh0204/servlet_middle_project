@@ -158,11 +158,11 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	 * @return 팀장의 정보를 리턴
 	 */
 	@Override
-	public TeamMemberDTO selectTeamPageLeader(TeamMemberDTO teamMember) {
+	public List<TeamMemberDTO> selectTeamPage(TeamMemberDTO teamMember) {
 		SqlSession session = SessionFactory.getSqlSession();
-		TeamMemberDTO teamMemberList = new TeamMemberDTO();
+		List<TeamMemberDTO> teamMemberList = new ArrayList<>();
 		try {
-			teamMemberList = dao.selectTeamPageLeader(teamMember, session);
+			teamMemberList = dao.selectTeamPage(teamMember, session);
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
