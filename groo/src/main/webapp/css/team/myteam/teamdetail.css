@@ -126,7 +126,6 @@ h1, h2 {
 }
 
 /* 이름 / 역할 */
-
 .leader-info {
     display: flex;
     flex-direction: column;
@@ -267,12 +266,10 @@ h1, h2 {
 }
 
 
-/* 원격 사이트 링크 목록 */
-.remote-links {
-    margin-top: 25px;
-}
+/* 버튼 영역 */
 
-.remote-links a {
+.btn-area input[type="button"],
+.btn-area input[type="submit"] {
     display: inline-block;
     margin-right: 10px;
     padding: 8px 15px;
@@ -285,12 +282,29 @@ h1, h2 {
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.remote-links a:hover {
+.btn-area input[type="button"]:hover,
+.btn-area input[type="submit"]:hover {
     background-color: #FFA000;
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* 수정모드 스타일 */
+.edit-mode {
+	border: 1px solid #999; 
+	background-color: #fff;
+  	color: #000;
+}
+
+/* 읽기모드 스타일 */
+#study_title[readonly],
+#study_category[readonly],
+#study_intro[readonly],
+#study_introcontent[readonly] {
+	border: none;
+	background-color: transparent;
+    color: #333;
+}
 
 /* 4. 팀원 목록 섹션 (.team-members) */
 .team-members ul {
