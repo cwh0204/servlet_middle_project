@@ -4,6 +4,7 @@ var studyId = sessionStorage.getItem('teamId');
 var memLoginId = sessionStorage.getItem('userId');
 var LeaderCheck;
 teamMemberList = () => {
+	console.log("시작");
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'teammember.do',
@@ -35,7 +36,7 @@ teamLeaderCheck = () => {
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
 			studyId: studyId,
-			memLoginId : memLoginId
+			memLoginId: memLoginId
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
@@ -49,11 +50,60 @@ teamLeaderCheck = () => {
 	});
 }
 
+teamLeaderChange = (memId) => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teammemberleaderchange.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			studyId: studyId,
+			memId: memId,
+			memLoginId: memLoginId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+
+			teamLeaderCheck();
+			teamMemberList();
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
+
+teamMemberKick = (memId) => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teammemberkick.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			studyId: studyId,
+			memId: memId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+
+			teamLeaderCheck();
+			teamMemberList();
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
+
 teamMemberListCard = (dummyMembers) => {
-	
+
 	const $container = $('#memberCardsBody');
 	$container.empty();
-	
+
 	if (dummyMembers.length > 0) {
 		dummyMembers.forEach(function(member) {
 
@@ -61,7 +111,6 @@ teamMemberListCard = (dummyMembers) => {
 			const $card = $('<div>')
 				.addClass('member-card')
 				.data('member-id', member.memId);
-/*			console.log($card.data('member-id'));*/
 			// 🔹 2. card-header 및 card-detail-list 생성 (이전과 동일)
 			const $header = $('<div>').addClass('card-header');
 			const $name = $('<h4>').text(member.memNick);
@@ -90,59 +139,68 @@ teamMemberListCard = (dummyMembers) => {
 				'margin-top': '15px'
 			});
 
-/*			// 4-1. 직책 부여 버튼
-			const $assignRollButton = $('<button>')
-				.addClass('btn assign-roll-btn')
-				.css({
-					'flex-grow': 1,
-					'padding': '8px',
-					'background-color': '#007bff',
-					'color': '#fff',
-					'border': 'none',
-					'border-radius': '4px',
-					'cursor': 'pointer',
-					'font-size': '1em'
-				})
-				.text('직책 부여');*/
+			/*			// 4-1. 직책 부여 버튼
+						const $assignRollButton = $('<button>')
+							.addClass('btn assign-roll-btn')
+							.css({
+								'flex-grow': 1,
+								'padding': '8px',
+								'background-color': '#007bff',
+								'color': '#fff',
+								'border': 'none',
+								'border-radius': '4px',
+								'cursor': 'pointer',
+								'font-size': '1em'
+							})
+							.text('직책 부여');*/
+			let $kickButton = $('<div>');
+			if (member.studyRoll != '팀장') {
 
-			// 4-2. 반장 넘기기 버튼
-			const $transferRollButton = $('<button>')
-				.addClass('btn transfer-roll-btn')
-				.css({
-					'flex-grow': 1,
-					'padding': '8px',
-					'background-color': '#28a745',
-					'color': '#fff',
-					'border': 'none',
-					'border-radius': '4px',
-					'cursor': 'pointer',
-					'font-size': '1em'
-				})
-				.text('팀장 넘기기');
+				// 4-2. 반장 넘기기 버튼
+				let $transferRollButton = $('<button>')
+					.addClass('btn transfer-roll-btn')
+					.css({
+						'flex-grow': 1,
+						'padding': '8px',
+						'background-color': '#28a745',
+						'color': '#fff',
+						'border': 'none',
+						'border-radius': '4px',
+						'cursor': 'pointer',
+						'font-size': '1em'
+					})
+					.text('팀장 넘기기');
 
-			$buttonGroup.append($transferRollButton);
+				$buttonGroup.append($transferRollButton);
 
-			// 🔹 5. 강퇴 버튼 생성 (새로운 행) 🆕
-			const $kickButton = $('<button>')
-				.addClass('btn kick-member-btn')
-				.css({
-					'display': 'block',
-					'width': '100%',
-					'padding': '8px',
-					'margin-top': '10px', // 버튼 그룹과의 간격
-					'background-color': '#dc3545', // 빨간색
-					'color': '#fff',
-					'border': 'none',
-					'border-radius': '4px',
-					'cursor': 'pointer',
-					'font-size': '1em'
-				})
-				.text('강퇴');
+				// 🔹 5. 강퇴 버튼 생성 (새로운 행) 🆕
+				$kickButton = $('<button>')
+					.addClass('btn kick-member-btn')
+					.css({
+						'display': 'block',
+						'width': '100%',
+						'padding': '8px',
+						'margin-top': '10px', // 버튼 그룹과의 간격
+						'background-color': '#dc3545', // 빨간색
+						'color': '#fff',
+						'border': 'none',
+						'border-radius': '4px',
+						'cursor': 'pointer',
+						'font-size': '1em'
+					})
+					.text('강퇴');
+			} else {
+				let $transferRollButton = $('<div>');
 
+				$buttonGroup.append($transferRollButton);
+
+				// 🔹 5. 강퇴 버튼 생성 (새로운 행) 🆕
+				$kickButton = $('<div>');
+			}
 			// 🔹 6. 카드에 모든 요소 추가 후 컨테이너에 삽입
-			if(LeaderCheck == 'L'){
+			if (LeaderCheck == 'L') {
 				$card.append($header, $details, $buttonGroup, $kickButton);
-			}else{
+			} else {
 				$card.append($header, $details);
 			}
 			$container.append($card);
@@ -150,16 +208,16 @@ teamMemberListCard = (dummyMembers) => {
 
 		// 4. 이벤트 핸들러 추가
 
-/*		// 4-1. 직책 부여 버튼 클릭 이벤트
-		$container.on('click', '.assign-roll-btn', function() {
-			const $cardElement = $(this).closest('.member-card');
-			const memberId = $cardElement.data('member-id');
-			const memberName = $cardElement.find('.card-header h4').text();
-
-			console.log(`[직책 부여 요청] ID: ${memberId}, 이름: ${memberName}`);
-			// 모달 표시 로직으로 대체하거나 현재는 alert 유지
-			alert(`${memberName}님(ID: ${memberId})의 직책을 부여/변경하는 기능을 실행합니다. (모달 필요)`);
-		});*/
+		/*		// 4-1. 직책 부여 버튼 클릭 이벤트
+				$container.on('click', '.assign-roll-btn', function() {
+					const $cardElement = $(this).closest('.member-card');
+					const memberId = $cardElement.data('member-id');
+					const memberName = $cardElement.find('.card-header h4').text();
+		
+					console.log(`[직책 부여 요청] ID: ${memberId}, 이름: ${memberName}`);
+					// 모달 표시 로직으로 대체하거나 현재는 alert 유지
+					alert(`${memberName}님(ID: ${memberId})의 직책을 부여/변경하는 기능을 실행합니다. (모달 필요)`);
+				});*/
 
 		// 4-2. 팀장 넘기기 버튼 클릭 이벤트
 		$container.on('click', '.transfer-roll-btn', function() {
@@ -169,6 +227,8 @@ teamMemberListCard = (dummyMembers) => {
 
 			console.log(`[반장 넘기기 요청] ID: ${memberId}, 이름: ${memberName}`);
 			alert(`${memberName}님(ID: ${memberId})에게 스터디 반장 권한을 넘기는 기능을 실행합니다. (주의: 스터디 장만 실행 가능)`);
+			teamLeaderChange(memberId);
+			teamMemberList();
 		});
 
 		// 4-3. 강퇴 버튼 클릭 이벤트 🆕
@@ -177,11 +237,11 @@ teamMemberListCard = (dummyMembers) => {
 			const memberId = $cardElement.data('member-id');
 			const memberName = $cardElement.find('.card-header h4').text();
 
+
 			if (confirm(`경고: ${memberName}님(ID: ${memberId})을 스터디에서 강퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.`)) {
-				console.log(`[강퇴 요청] ID: ${memberId}, 이름: ${memberName}`);
-				// TODO: 여기에 AJAX를 사용하여 백엔드에 강퇴 요청을 하는 코드를 구현합니다.
+
 				alert(`${memberName}님(ID: ${memberId}) 강퇴 요청을 서버에 전송했습니다.`);
-				// 성공 시, $cardElement.remove(); 를 실행하여 카드를 제거할 수 있습니다.
+				teamMemberKick(memberId);
 			}
 		});
 

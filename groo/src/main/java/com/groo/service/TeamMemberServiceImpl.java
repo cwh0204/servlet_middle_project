@@ -135,8 +135,8 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 		SqlSession session = SessionFactory.getSqlSession();
 		
 		try {
-			dao.updateTeamLeaderChange(teamMember, session);
 			dao.updateTeamMemberChange(teamLeader, session);
+			dao.updateTeamLeaderChange(teamMember, session);
 			session.commit();
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
