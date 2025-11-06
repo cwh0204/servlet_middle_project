@@ -6,79 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<style>
-.container {
-	width: 85%;
-	max-width: 1200px;
-	margin: 40px auto;
-	padding: 20px;
-	background-color: #ffffff;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
-}
+<link href='css/mypage/mycomment/mycomment.css' rel='stylesheet' />
 
-h2 {
-	font-size: 1.8em;
-	color: #333;
-	border-bottom: 3px solid #4CAF50;
-	padding-bottom: 10px;
-	margin-bottom: 25px;
-}
-
-/* 테이블 스타일 */
-.reply-table {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: 0.95em;
-}
-
-.reply-table th, .reply-table td {
-	border: 1px solid #dee2e6;
-	padding: 15px;
-	text-align: left;
-}
-
-.reply-table th {
-	background-color: #e9ecef;
-	color: #495057;
-	font-weight: 600;
-}
-
-.reply-table tr:hover {
-	background-color: #f0f8ff;
-}
-
-/* 링크 스타일 */
-.reply-table a {
-	color: #007bff;
-	text-decoration: none;
-	transition: color 0.2s;
-}
-
-.reply-table a:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-/* 컬럼 너비 조정 (번호 부분 10% 유지) */
-.reply-table th:nth-child(1), .reply-table td:nth-child(1) {
-	width: 10%; /* 번호 너비 */
-	text-align: center;
-}
-
-.reply-table th:nth-child(4), .reply-table td:nth-child(4) {
-	width: 15%; /* 작성일 너비 */
-}
-
-.reply-table td:nth-child(2) {
-	max-width: 350px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-} /* 댓글 내용 너비 */
-</style>
-<body>
 </head>
 <body>
 	<div class="container">

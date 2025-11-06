@@ -37,6 +37,7 @@ import com.groo.controller.MemberLoginController;
 import com.groo.controller.MemberSelectFindLoginIdController;
 import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberUpdateController;
+import com.groo.controller.MyBoardListController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.ReportInsertController;
 import com.groo.controller.SignUpController;
@@ -148,6 +149,9 @@ public class FrontControllerPath {
 
         //팀멤버
         controllerMap.put("/teammerberleaders.do", new TeamMemberLeaderSelectController());
+        
+        //마이페이지
+        controllerMap.put("/myboardlist.do", new MyBoardListController());
 
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());

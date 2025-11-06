@@ -6,86 +6,8 @@
 <meta charset="UTF-8">
 <title>나의 게시물 목록</title>
 <link href='css/mypage/myboard/myboard.css' rel='stylesheet' />
-<style>
-/* =======================================================
-   CSS 스타일: .board-table 사용
-   ======================================================= */
-.container {
-	width: 85%;
-	max-width: 1200px;
-	margin: 40px auto;
-	padding: 20px;
-	background-color: #ffffff;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
-}
-
-h2 {
-	font-size: 1.8em;
-	color: #333;
-	border-bottom: 3px solid #4CAF50;
-	padding-bottom: 10px;
-	margin-bottom: 25px;
-}
-
-/* 테이블 스타일: .board-table */
-.board-table {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: 0.95em;
-}
-
-.board-table th, .board-table td {
-	border: 1px solid #dee2e6;
-	padding: 15px;
-	text-align: left;
-}
-
-.board-table th {
-	background-color: #e9ecef;
-	color: #495057;
-	font-weight: 600;
-}
-
-.board-table tr:hover {
-	background-color: #f0f8ff;
-}
-
-/* 링크 스타일 */
-.board-table a {
-	color: #007bff;
-	text-decoration: none;
-	transition: color 0.2s;
-}
-
-.board-table a:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-/* 컬럼 너비 조정 */
-.board-table th:nth-child(1), .board-table td:nth-child(1) {
-	width: 10%; /* 번호 너비 */
-	text-align: center;
-}
-
-.board-table td:nth-child(2) {
-	max-width: 450px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.board-table th:nth-child(3), .board-table td:nth-child(3) {
-	width: 15%; /* 작성일 */
-}
-
-/* 현재 HTML에는 조회수가 없으므로, 4번째 컬럼은 CSS에서 임시로 제거하거나 조정합니다.
-   테이블 헤더(<th>)와 바디(<td>)의 개수를 3개로 맞춥니다. */
-</style>
 </head>
 <body>
-
 	<div class="container">
 		<h2>나의 게시물 목록</h2>
 
@@ -128,4 +50,36 @@ h2 {
 		</table>
 	</div>
 </body>
+<script type="text/javascript">
+$.ajax({
+    // 데이터를 요청할 서버 URL (여러분이 만든 서블릿의 매핑 주소)
+    url: '', 
+    type: 'GET', 
+    data: {
+        memNick: memNick 
+    },
+    dataType: 'json', 
+    
+    success: function(response) {
+        console.log("✅ 게시글 조회 성공:", response);
+        
+        if (response.length > 0) {
+            console.log(`첫 번째 게시글 제목: ${response[0].POST_TITLE}`); 
+        } else {
+            console.log("해당 닉네임으로 작성된 게시글이 없습니다.");
+        }
+    },
+    
+    error: function(xhr, status, error) {
+        console.error("❌ Ajax 통신 실패:", status, error);
+        alert("게시글을 불러오는 중 오류가 발생했습니다.");
+    },
+    
+    complete: function() {
+        console.log("Ajax 요청 완료.");
+    }
+});
+}
+
+</script>
 </html>
