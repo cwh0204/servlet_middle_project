@@ -189,11 +189,11 @@
 									<div class="label-wrapper">
 										<label> <img
 											src="https://i.postimg.cc/wMkCykSd/pencil.png"
-											class="input-icon"> 스터디 소개
+											class="input-icon"> 팀 소개
 										</label>
 									</div>
 									<textarea name="teamInfo" id="studyIntro" class="teamInfo"
-										placeholder="스터디를 소개해주세요!&#10;&#10;예시)&#10;• 목표&#10;• 방식&#10;"></textarea>
+										placeholder="Ex)&#10“프론트엔드 입문자들이 모여 한 달 안에 간단한 웹페이지를 만드는 것을 목표로 하는 팀입니다.”"></textarea>
 								</div>
 							</div>
 						</div>
