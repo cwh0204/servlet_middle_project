@@ -34,9 +34,12 @@ import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
+import com.groo.controller.MemberLogoutController;
 import com.groo.controller.MemberSelectFindLoginIdController;
 import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberUpdateController;
+import com.groo.controller.MyBoardListController;
+import com.groo.controller.MyCommentListController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.ReportInsertController;
 import com.groo.controller.SignUpController;
@@ -80,7 +83,8 @@ public class FrontControllerPath {
 
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
-
+        //로그아웃
+        controllerMap.put("/memberlogout.do", new MemberLogoutController());
         //아이디 찾기
         controllerMap.put("/memberfindloginid.do", new MemberSelectFindLoginIdController());
         //비밀번호 찾기
@@ -150,6 +154,12 @@ public class FrontControllerPath {
         //팀멤버
         controllerMap.put("/teammerberleaders.do", new TeamMemberLeaderSelectController());
         controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());
+
+        
+        //마이페이지
+        controllerMap.put("/myboardlist.do", new MyBoardListController());
+        controllerMap.put("/mycommentList.do", new MyCommentListController());
+
         
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());

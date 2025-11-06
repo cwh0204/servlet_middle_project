@@ -32,6 +32,7 @@ public class MemberUpdateController implements Controller {
 		String memNick = request.getParameter("memNick");
 		String memPass = request.getParameter("memPass");
 		String memEmail = request.getParameter("memEmail");
+		String memPhone = request.getParameter("memPhone");
 		String memAddr = request.getParameter("memAddr");
 		String memInterest = request.getParameter("memInterest");
 
@@ -43,6 +44,7 @@ public class MemberUpdateController implements Controller {
 		member.setMemEmail(memEmail);
 		member.setMemAddr(memAddr);
 		member.setMemInterest(memInterest);
+		member.setMemPhone(memPhone);
 
 		MemberServiceImpl service = new MemberServiceImpl();
 		try {

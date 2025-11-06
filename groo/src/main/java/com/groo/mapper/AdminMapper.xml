@@ -81,7 +81,7 @@
 		parameterType="com.groo.model.MemberDTO">
 		<selectKey keyProperty="memId" resultType="String"
 			order="BEFORE">
-			SELECT 'mem_no_' || MEMBER_SEQ.NEXTVAL FROM DUAL
+			SELECT 'M' || MEMBER_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO MEMBER
 		(

@@ -29,6 +29,7 @@
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<li><a class="dropdown-item" data-page="userdetail.do">계정 설정</a></li>
 					<li><a class="dropdown-item" data-page="mypagedashboard.do">마이 페이지</a></li>
+					<li><a class="dropdown-item" href="login.do">로그아웃</a></li>
 				</ul>
 			</div>
 		</div>

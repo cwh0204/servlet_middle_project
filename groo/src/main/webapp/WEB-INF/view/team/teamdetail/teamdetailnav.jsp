@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="jquery/jquery-3.7.1.min.js"></script>
-<script src="js/team/teamNav/teamNav.js"></script>
+<script src="js/team/teamNav/teamdetailNav.js"></script>
 <link href="css/team/teamnav.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
 <title>게시판</title>

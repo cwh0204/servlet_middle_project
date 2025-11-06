@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.model.BoardDTO;
+import com.groo.model.MemberDTO;
 
 public interface BoardDAO {
 	public void insertBoard(BoardDTO board, SqlSession session);
@@ -18,4 +19,5 @@ public interface BoardDAO {
 
 	public void updateBoard(BoardDTO board, SqlSession session);
 	public void deleteBoard(BoardDTO board, SqlSession session);
+	public List<BoardDTO> selectMyBoardList(MemberDTO member, SqlSession session);
 }

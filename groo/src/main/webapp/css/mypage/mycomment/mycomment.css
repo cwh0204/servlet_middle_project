@@ -1,4 +1,3 @@
-
 .container {
 	width: 85%;
 	max-width: 1200px;
@@ -17,54 +16,54 @@ h2 {
 	margin-bottom: 25px;
 }
 
-/* 테이블 스타일: .board-table */
-.board-table {
+/* 테이블 스타일 */
+.reply-table {
 	width: 100%;
 	border-collapse: collapse;
 	font-size: 0.95em;
 }
 
-.board-table th, .board-table td {
+.reply-table th, .reply-table td {
 	border: 1px solid #dee2e6;
 	padding: 15px;
 	text-align: left;
 }
 
-.board-table th {
+.reply-table th {
 	background-color: #e9ecef;
 	color: #495057;
 	font-weight: 600;
 }
 
-.board-table tr:hover {
+.reply-table tr:hover {
 	background-color: #f0f8ff;
 }
 
 /* 링크 스타일 */
-.board-table a {
+.reply-table a {
 	color: #007bff;
 	text-decoration: none;
 	transition: color 0.2s;
 }
 
-.board-table a:hover {
+.reply-table a:hover {
 	color: #0056b3;
 	text-decoration: underline;
 }
 
-/* 컬럼 너비 조정 */
-.board-table th:nth-child(1), .board-table td:nth-child(1) {
+/* 컬럼 너비 조정 (번호 부분 10% 유지) */
+.reply-table th:nth-child(1), .reply-table td:nth-child(1) {
 	width: 10%; /* 번호 너비 */
 	text-align: center;
 }
 
-.board-table td:nth-child(2) {
-	max-width: 450px;
+.reply-table th:nth-child(4), .reply-table td:nth-child(4) {
+	width: 15%; /* 작성일 너비 */
+}
+
+.reply-table td:nth-child(2) {
+	max-width: 350px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-}
-
-.board-table th:nth-child(3), .board-table td:nth-child(3) {
-	width: 15%; /* 작성일 */
-}
+} /* 댓글 내용 너비 */

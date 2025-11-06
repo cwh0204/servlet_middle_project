@@ -10,7 +10,7 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 	$menuItem.addClass('active');
 
 	const pageToLoad = $menuItem.data('page');
-	console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
+	console.log("메뉴 클릭, 로드할 페이지:", DEFAULT_PAGE);
 
 	if (pageToLoad) {
 		// ⭐ 3. 페이지 클릭 시 sessionStorage에 현재 페이지 저장 ⭐
@@ -26,8 +26,8 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 
 $(document).ready(function() {
 
-	const SESSION_KEY = 'team_last_view';
-	const DEFAULT_PAGE = 'teamcreatehome.do';
+	const SESSION_KEY = 'team_detail_last_view';
+	const DEFAULT_PAGE = 'teamdetail.do';
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
@@ -37,6 +37,7 @@ $(document).ready(function() {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
 		if (key === SESSION_KEY) {
 			sessionStorage.setItem(key, pageToLoad);
+			
 		}
 
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
@@ -94,7 +95,7 @@ $(document).ready(function() {
 
 		if (pageToLoad) {
 			console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
-
+			sessionStorage.setItem('main_last_view', 'teamdetail.do');
 			// UI 변경 로직 (active 상태)
 			$('.menu-item').removeClass('active');
 			$menuItem.addClass('active');
