@@ -46,7 +46,7 @@ import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
-import com.groo.controller.TeamMemberAllSelectController;
+import com.groo.controller.TeamMemberSelectController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -119,6 +119,7 @@ public class FrontControllerPath {
         controllerMap.put("/githublogin.do", new GitHubLoginController());
         controllerMap.put("/kakaologin.do", new KakaoLoginController());
         controllerMap.put("/voteok.do", new VoteUpdateOkController());
+        controllerMap.put("/teammember.do", new TeamMemberSelectController());
 
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
@@ -136,15 +137,14 @@ public class FrontControllerPath {
         controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
-        
+
         //팀멤버
-        controllerMap.put("/selectAllTeamMember.do", new TeamMemberAllSelectController());
+        controllerMap.put("/teammerberleaders.do", new TeamMemberLeaderSelectController());
 
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());
         controllerMap.put("/voteselectrank.do", new VoteSelectRankController());
-
 
         //재미나이 챗봇
         controllerMap.put("/googlegenai.do", new GoogleGenaiController());

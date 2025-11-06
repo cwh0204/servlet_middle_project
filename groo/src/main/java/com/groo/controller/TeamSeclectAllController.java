@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 
 public class TeamSeclectAllController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -30,7 +30,7 @@ public class TeamSeclectAllController implements Controller {
 	 * @throws ServletException 서블릿 관련 오류 발생 시
 	 * @throws IOException      입출력 오류 발생 시
 	 */
-	
+
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,7 +43,7 @@ public class TeamSeclectAllController implements Controller {
 		try {
 			TeamService teamService = new TeamServiceImpl();
 			List<TeamDTO> list = teamService.teamselectAll(team);
-			
+
 			Gson gson = new Gson();
 			String json = gson.toJson(list);
 
