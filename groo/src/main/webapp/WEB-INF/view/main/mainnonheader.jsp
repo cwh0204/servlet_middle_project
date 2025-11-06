@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/mainnonHeader.js"></script>
+<script src="js/main/mainHeader/mainHeader.js"></script>
 <style type="text/css">
 header {
 	background-color: white;
@@ -79,11 +80,9 @@ header {
 			<img class="logo" id="logo" src="./images/로고.png">
 			<div class="flex_container main_kategorie_box">
 				<div class="menu-item-content active" data-page="mainhome.do">HOME</div>
-				<div class="menu-item-content" data-page="boardlisthome.do">공지사항</div>
-				<div class="menu-item-content" data-page="login.do">팀</div>
-				<div class="menu-item-content" data-page="boardlisthome.do">게시판</div>
-				<div class="menu-item-content" data-page="boardlisthome.do">자유게시판</div>
-				<div class="menu-item-content" data-page="boardlisthome.do">Groo 소개글</div>
+				<div class="menu-item-content" data-page="boardnotice.do">게시판</div>
+				<div class="menu-item-content" data-page="teamcreate.do">팀</div>
+				<div class="menu-item-content" data-page="intro.do">Groo 소개글</div>
 			</div>
 			<div class="flex_container main_user_box">
 				<div id="login">Login</div>
