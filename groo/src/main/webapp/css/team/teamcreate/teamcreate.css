@@ -447,8 +447,7 @@ main {
 	margin-top: 48px;
 }
 
-.submit-btn,
-.reset-btn {
+.submit-btn {
 	height: 60px;
 	padding: 0 48px;
 	border-radius: 16px;
@@ -465,18 +464,6 @@ main {
 	letter-spacing: -0.3px;
 }
 
-.btn-text {
-	position: relative;
-	z-index: 1;
-}
-
-.btn-arrow {
-	font-size: 20px;
-	font-weight: 700;
-	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	position: relative;
-	z-index: 1;
-}
 
 .submit-btn {
 	background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
@@ -512,53 +499,6 @@ main {
 .submit-btn:active {
 	transform: translateY(-1px);
 }
-
-.reset-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px; /* 텍스트와 화살표 간격 */
-    height: 60px;
-    padding: 0 48px;
-    border-radius: 16px;
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 700;
-    position: relative;
-    overflow: hidden;
-
-    background-color: #b0b0b0; /* 밝은 회색 */
-    color: #ffffff; /* 글씨 하얀색 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s ease;
-}
-
-.reset-btn .btn-arrow {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    background-image: url('https://i.postimg.cc/905XXpvy/refresh-24dp-1F1F1F.png'); /* 화살표 이미지 */
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: brightness(0) invert(1); /* 화살표 하얀색 */
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reset-btn:hover {
-    background-color: #999999; /* 마우스 올리면 살짝 진한 회색 */
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.reset-btn:hover .btn-arrow {
-    transform: rotate(90deg);
-}
-
-.reset-btn:active {
-    transform: translateY(-1px);
-}
-
 
 
 
