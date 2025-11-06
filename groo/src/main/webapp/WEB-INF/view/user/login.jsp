@@ -65,9 +65,6 @@ session.setAttribute("naver_state", state);
 			<button class="kakao-login flex_container">
 				<i class="bi bi-line bi-kakao socialIcon"></i><span>카카오로 시작하기</span>
 			</button>
-			<button class="gogle-login flex_container">
-				<i class="bi bi-google socialIcon"></i><span>구글로 시작하기</span>
-			</button>
 		</div>
 	</div>
 	<div class="modal fade" id="findIdModal" tabindex="-1" aria-labelledby="findIdModalLabel" aria-hidden="true">
