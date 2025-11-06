@@ -9,31 +9,36 @@ $(document).ready(function(){
 		const studyPass = $('#teampw').val();
 		const studyIntro = $('#studyIntro').val();
 		
-		$.ajax({
-			// 데이터를 전송할 서버 URL
-			url: 'teaminsert.do',
-			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
-			type: 'POST',
-			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-			data: {
-				memId : memId,
-				studyTitle : studyTitle,
-				studyCategory : studyCategory,
-				studyMax : studyMax,
-				studyPass : studyPass,
-				studyIntro : studyIntro
-			},
-			// 데이터 전송 성공 시 실행
-			success: function(response) {
-			        // response는 서버에서 돌려준 데이터입니다.
-			        console.log(response);
-			        // 팀 생성 완료 알림 팝업 추가
-			        alert('팀 생성이 완료되었습니다! 팀 보기를 확인해주세요.'); 
-			    },
-			// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
-			error: function(xhr, status, error) {
-			}
-		});
+		console.log(memId);
+		if(memId){
+			$.ajax({
+				// 데이터를 전송할 서버 URL
+				url: 'teaminsert.do',
+				// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+				type: 'POST',
+				// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+				data: {
+					memId : memId,
+					studyTitle : studyTitle,
+					studyCategory : studyCategory,
+					studyMax : studyMax,
+					studyPass : studyPass,
+					studyIntro : studyIntro
+				},
+				// 데이터 전송 성공 시 실행
+				success: function(response) {
+				        // response는 서버에서 돌려준 데이터입니다.
+				        console.log(response);
+				        // 팀 생성 완료 알림 팝업 추가
+				        alert('팀 생성이 완료되었습니다! 팀 보기를 확인해주세요.'); 
+				    },
+				// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+				error: function(xhr, status, error) {
+				}
+			});
+		}else{
+			alert('로그인을 해야 팀생성이 가능합니다!!!'); 
+		}
 	});
 	
     // 달력 초기화

@@ -15,6 +15,7 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 	if (pageToLoad) {
 		// ⭐ 3. 페이지 클릭 시 sessionStorage에 현재 페이지 저장 ⭐
 		sessionStorage.setItem(SESSION_KEY, pageToLoad);
+		sessionStorage.setItem('main_last_view', pageToLoad);
 		
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
 			if (status === "error") {
@@ -26,8 +27,8 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 
 $(document).ready(function() {
 
-	const SESSION_KEY = 'team_last_view';
-	const DEFAULT_PAGE = 'teamcreatehome.do';
+	const SESSION_KEY = 'team_detail_last_view';
+	const DEFAULT_PAGE = 'teamdetailhome.do';
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
@@ -37,6 +38,7 @@ $(document).ready(function() {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
 		if (key === SESSION_KEY) {
 			sessionStorage.setItem(key, pageToLoad);
+			sessionStorage.setItem('main_last_view', pageToLoad);
 		}
 
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {

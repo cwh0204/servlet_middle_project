@@ -5,9 +5,7 @@ $(document).ready(() => {
 		console.log("lastPage", lastPage);
 		if (lastPage) {
 			// 2. 해당 페이지를 로드합니다.
-			$('#contentArea').load(
-				lastPage,
-				function(response, status, xhr) {
+			$('#contentArea').load(lastPage,function(response, status, xhr) {
 					if (status === "success") {
 						// 기존 active 클래스 제거 (필수)
 						$('.menu-item-content').removeClass('active');

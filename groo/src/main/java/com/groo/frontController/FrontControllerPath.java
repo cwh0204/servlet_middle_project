@@ -34,6 +34,7 @@ import com.groo.controller.KakaoLoginController;
 import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
+import com.groo.controller.MemberLogoutController;
 import com.groo.controller.MemberSelectFindLoginIdController;
 import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberUpdateController;
@@ -80,7 +81,8 @@ public class FrontControllerPath {
 
         //로그인
         controllerMap.put("/memberlogin.do", new MemberLoginController());
-
+        //로그아웃
+        controllerMap.put("/memberlogout.do", new MemberLogoutController());
         //아이디 찾기
         controllerMap.put("/memberfindloginid.do", new MemberSelectFindLoginIdController());
         //비밀번호 찾기
