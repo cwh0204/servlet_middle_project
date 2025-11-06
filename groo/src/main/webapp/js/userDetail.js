@@ -72,7 +72,8 @@ const showSubmitALert = () => {
       $('textarea[name="ff"]').val().trim()
    ].filter(Boolean).join(','); //빈 값이면 제거하고 ,로 합침
    console.log(memInterest);
-
+   const memPhone = $('#memPhone1').val() + $('#memPhone2').val() + $('#memPhone3').val();
+   console.log(memPhone);
    $.ajax({
       // 데이터를 전송할 서버 URL
       url: 'memberupdate.do',
@@ -85,6 +86,7 @@ const showSubmitALert = () => {
          memPass: memPass,
          memEmail: memEmail,
          memAddr: memAddr,
+		 memPhone : memPhone,
          memInterest: memInterest,
          memNick: memNick
       },

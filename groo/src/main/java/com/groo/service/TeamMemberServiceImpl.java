@@ -148,5 +148,31 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 			session.close();
 		}
 	}
+	
+	/**
+	 * 팀장의 정보를 가져오는 서비스 메서드입니다.
+	 *
+	 * @param TeamMember 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 팀장의 정보를 리턴
+	 */
+	@Override
+	public TeamMemberDTO selectTeamPageLeader(TeamMemberDTO teamMember) {
+		SqlSession session = SessionFactory.getSqlSession();
+		TeamMemberDTO teamMemberList = new TeamMemberDTO();
+		try {
+			teamMemberList = dao.selectTeamPageLeader(teamMember, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return teamMemberList;
+	}
 
 }

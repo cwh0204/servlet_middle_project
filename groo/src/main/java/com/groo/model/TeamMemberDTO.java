@@ -11,7 +11,7 @@ public class TeamMemberDTO {
 	private String studyJoinedDate;
 	private String studyOutDate;
 	
-	private String stdyTitle;
+	private String studyTitle;
 	private String memNick;
 	private String memEmail;
 	private String memLoginId;

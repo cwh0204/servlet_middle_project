@@ -52,6 +52,7 @@ import com.groo.controller.TeamMemberLeaderChangeController;
 import com.groo.controller.TeamMemberLeaderSelectController;
 import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
+import com.groo.controller.TeamMemberSelectPageLeaderController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -153,6 +154,8 @@ public class FrontControllerPath {
         //마이페이지
         controllerMap.put("/myboardlist.do", new MyBoardListController());
 
+        controllerMap.put("/teammemberselectpageleader.do", new TeamMemberSelectPageLeaderController());
+        
         //투표 관련 API
         controllerMap.put("/voteinsert.do", new VoteInsertController());
         controllerMap.put("/voteselect.do", new VoteSelectController());

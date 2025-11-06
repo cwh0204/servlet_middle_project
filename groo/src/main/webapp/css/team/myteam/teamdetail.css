@@ -86,9 +86,9 @@ h1, h2 {
 .team-leader-wrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: 10px;
 	align-items:flex-end;
-	margin-left: auto;
+/*	margin-left: auto;*/
 }
 
 .leader-badge {
@@ -267,6 +267,23 @@ h1, h2 {
 
 
 /* 버튼 영역 */
+.team-header {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.team-header-btn .join {
+	position: absolute;
+	top: 30px;
+	right: 40px;
+}
+
+.btn-area {
+	display: flex;
+	gap: 12px;	
+}
 
 .btn-area input[type="button"],
 .btn-area input[type="submit"] {

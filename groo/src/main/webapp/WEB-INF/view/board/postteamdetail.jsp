@@ -10,6 +10,7 @@
 <script src="js/bootstrap.min.js"></script>
 <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="css/board/postdetail.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <style>
 /* 관리자 리뷰 폼 섹션 스타일 (작성 폼) */
@@ -173,8 +174,9 @@ var grooComent = () => {
 			boardId: boardId
 		},
 		success: function(response) {
-			
-			$('.review-meta').text(response.botComment)
+			const botComment = marked.parse(response.botComment);
+			console.log(botComment);
+			$('.review-meta').html(botComment);
 			console.log(response);
 		},
 		error: function() {

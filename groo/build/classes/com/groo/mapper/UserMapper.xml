@@ -47,6 +47,7 @@
             MEM_PASS = #{memPass},
             MEM_EMAIL = #{memEmail},
             MEM_ADDR = #{memAddr},
+            MEM_PHONE = #{memPhone},
             MEM_INTEREST = #{memInterest}
         where MEM_LOGIN_ID = #{memLoginId}
 	</update>

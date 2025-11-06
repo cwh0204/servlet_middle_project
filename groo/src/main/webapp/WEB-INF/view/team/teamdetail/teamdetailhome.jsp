@@ -37,6 +37,10 @@
             </div>
         </div>
       </div> 
+      
+      <div class="team-header-btn">
+        	<input type="button" value="가입하기" class="join" id="joinBtn">
+      </div>
     </section>
 
   <div class="team-info">  
@@ -61,7 +65,6 @@
         </div>
         
         <div class="btn-area">
-        	<input type="button" value="가입하기" class="join" id="joinBtn">
         	<input type="button" value="수정하기" class="edit" id="editBtn"> 
     		<input type="submit" value="저장하기" class="save" id="saveBtn">
     	</div>	
@@ -98,9 +101,96 @@
 </form>  
 
 <script>
+var studyId = sessionStorage.getItem('teamId');
 
+var loadScheduleList = (response) => {
+	   
+	   var $scheduleList = $('.schedule-list');
+	   
+	   if (!response || response.length === 0) {
+	       $scheduleList.html('<li>일정 정보가 없습니다.</li>');
+	       return;
+	   }
+
+	   // 기존 목록을 비우고 새로 채웁니다.
+	   $scheduleList.empty(); 
+
+	   // 3. 배열을 순회하며 HTML 요소 생성
+	   response.forEach(schedule => {
+	       // 날짜와 요일을 조합 (예: 2025-11-8 (토))
+	       const fullDate = `${schedule.scheduleDate} (${schedule.dayOfWeek})`;
+	       
+	       // 새로운 <li> 요소 생성
+	       const $listItem = $('<li>');
+
+	       // <div class="schedule-date"> 요소 생성 및 추가
+	       const $dateDiv = $('<div>')
+	           .addClass('schedule-date')
+	           .text(schedule.voteStart);
+	       
+	       // <div class="schedule-content"> 요소 생성
+	       const $contentDiv = $('<div>')
+	           .addClass('schedule-content');
+
+	       // <strong> 요소 (일정 제목) 추가
+	       $contentDiv.append(
+	           $('<strong>').text(schedule.voteTitle + ' ')
+	       );
+
+	       // <span> 요소 (참여자) 추가
+	       $contentDiv.append(
+	           $('<span>').text(schedule.participants)
+	       );
+	       
+	       // 최종적으로 <li>에 날짜와 내용을 모두 추가
+	       $listItem.append($dateDiv, $contentDiv);
+	       
+	       // 4. 완성된 <li>를 부모 <ul>에 삽입
+	       $scheduleList.append($listItem);
+	   });
+	}
+	loadScheduleListAjax = () => {
+	   const studyId = sessionStorage.getItem('teamId');
+	    // 2. AJAX 통신 시작
+	    $.ajax({
+	        url: 'voteselectrank.do', // 일정 데이터를 제공하는 서버 엔드포인트
+	        type: 'POST',        // 데이터 조회는 보통 GET 방식 사용
+	        data: {
+	           studyId: studyId
+	        },
+	        success: function(response) {
+	        	console.log(response);
+	           loadScheduleList(response);
+	        },
+
+	        error: function(xhr, status, error) {
+	            console.error("일정 목록을 가져오는 데 실패했습니다.", status, error);
+	            $scheduleList.html('<li>일정 정보를 불러오는 중 오류가 발생했습니다.</li>');
+	        }
+	    });
+	}
 $(document).ready(function() {
 	
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teammemberselectpageleader.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			studyId: studyId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			$('.leader-name').text(response.memNick);
+		},
+
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+	
+	loadScheduleListAjax();
 	// 처음 화면에서는 저장하기 버튼 숨기기
 	$('#saveBtn').hide();
 	
