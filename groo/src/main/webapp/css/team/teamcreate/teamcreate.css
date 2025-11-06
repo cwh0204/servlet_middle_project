@@ -665,8 +665,8 @@ main {
 
 
 .input-icon {
-    width: 25px;  /* 라벨 글씨 크기와 맞춤 */
-    height: 25px;
+    width: 30px;  /* 라벨 글씨 크기와 맞춤 */
+    height: 30px;
     margin-right: 6px;
     vertical-align: middle;
 }

@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.page-header h2 {
+	font-weight: bold;
+}
+
+
 /* 각 게시판 섹션 컨테이너 */
 .my-board-section {
     max-width: 800px;
@@ -21,6 +26,13 @@
     padding-bottom: 8px;
     margin-bottom: 15px;
     color: #444;
+}
+
+.input-icon {
+    width: 32px;  /* 라벨 글씨 크기와 맞춤 */
+    height: 32px;
+    margin-right: 6px;
+    vertical-align: middle;
 }
 
 /* 게시물 목록 컨테이너 */
