@@ -12,7 +12,6 @@ function grooteam() {
 				success: function(leaderResponse) {
 
 					processAndRenderCards(allStudiesResponse, leaderResponse);
-
 				},
 				error: function(xhr, status, error) {
 					console.error("리더 AJAX 요청 실패:", status, error);
@@ -33,17 +32,17 @@ function processAndRenderCards(allStudies, leaderList) {
 	$('#cardGrid').empty();
 
 	if (Array.isArray(allStudies)) {
-		allStudies.forEach(function(study) { // 👈 'team' 대신 'study' (또는 'cardData') 사용
+		allStudies.forEach(function(study) { 
 			const leaderNick = leaderMap.get(study.studyId);
 			study.memNick = leaderNick || '팀장 정보 없음';
-			generateStudyCard(study); // 👈 변경된 이름으로 호출
+			generateStudyCard(study); 
 		});
 	} else {
 		console.error("스터디 응답 형식이 배열이 아닙니다.");
 	}
 }
 
-function generateStudyCard(card) { // 👈 매개변수 이름을 'card'로 변경
+function generateStudyCard(card) { 
 	const cardHtml = `
             <article class="study-card glass-card">
                 <div class="card-gradient"></div>

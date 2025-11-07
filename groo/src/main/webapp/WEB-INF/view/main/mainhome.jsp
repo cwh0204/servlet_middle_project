@@ -25,9 +25,7 @@
 		console.log(memLoginId);
 		grooteam();
 		$('#cardGrid').on('click', '.btn-detail', function() {
-
 			const studyId = $(this).data('studyId');
-
 			if (studyId) {
 				window.location.href = 'teamdetail.do?studyId=' + studyId;
 			} else {
