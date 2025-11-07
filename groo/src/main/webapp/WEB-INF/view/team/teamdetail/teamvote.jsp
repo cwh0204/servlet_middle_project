@@ -264,14 +264,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 	<script>
 	function renderVoteCards(voteList) {
 	    const $container = $('#voteListContainer'); // ✅ 투표 카드가 추가될 컨테이너의 ID를 지정하세요.

@@ -6,8 +6,6 @@
 
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
-<script src="js/bootstrap.min.js"></script>
-
 <meta charset="UTF-8">
 <title></title>
 </head>
