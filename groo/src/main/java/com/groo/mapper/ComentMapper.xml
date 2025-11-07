@@ -56,5 +56,6 @@
 		FROM COMENT c 
 		INNER JOIN  MEMBER m ON c.mem_ID = m.mem_ID
 		WHERE M.MEM_NICK IN (SELECT MEM_NICK FROM MEMBER WHERE MEM_login_id=#{memLoginId})
+		AND	c.COMENT_END IS NULL
 	</select>
 </mapper>

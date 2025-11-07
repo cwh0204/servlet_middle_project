@@ -50,7 +50,6 @@ $(document).ready(function() {
         },
         
         success: function(response) {
-            console.log("통신 성공. 서버 응답:", response);
             $tbody.empty(); // 기존 '로딩 중' 메시지 제거
 
             if (response && response.length > 0) {
