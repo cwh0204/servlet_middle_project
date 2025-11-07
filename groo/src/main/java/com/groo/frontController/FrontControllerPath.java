@@ -51,6 +51,7 @@ import com.groo.controller.TeamActivateController;
 import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
+import com.groo.controller.TeamLikeUpdateController;
 import com.groo.controller.TeamMemberKickController;
 import com.groo.controller.TeamMemberLeaderChangeController;
 import com.groo.controller.TeamMemberLeaderSelectController;
@@ -111,7 +112,7 @@ public class FrontControllerPath {
         //좋아요
         controllerMap.put("/boardlikeinsert.do", new BoardLikeInsertController());
         controllerMap.put("/boardlikesearch.do", new BoardLikeSearchController());
-
+        controllerMap.put("/teamlikeupdate.do", new TeamLikeUpdateController());
         //댓글
         controllerMap.put("/comentinsert.do", new ComentInsertController());
         controllerMap.put("/comentselect.do", new ComentSelectController());

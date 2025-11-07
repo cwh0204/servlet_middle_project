@@ -45,13 +45,13 @@ function generateStudyCard(team) {
                     '</div>' +
                 '</div>' +
                 '<div class="stat-divider"></div>' +
-                '<div class="stat-item">' +
+                '<div class="stat-item study-like">' +
                     '<div class="stat-icon">' +
                         '<img src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png" class="heart"></div>' +
                         '<div class="stat-info">' +
                             '<span class="stat-label">좋아요</span>' +
                             // studyData.likes 변수 결합
-                            '<span class="stat-value">' + team.studyPick + '</span>' +
+                            '<span class="stat-value">' + team.studyLike + '</span>' +
                         '</div>' +
                 '</div>' +
             '</div>' +
@@ -140,7 +140,26 @@ var pageLoad = (studyId) => {
         }
     });
 }
+var studyLike = (studyId) => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teamlikeupdate.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			studyId : studyId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+		    $('#cardGrid').empty();
+			myTeamList();
+		},
+		error: function(xhr, status, error) {
 
+		}
+	});
+} 
 $(document).ready(function() {
 	myTeamList();
  	$('#cardGrid').on('click', '.btn-detail', function() {
@@ -153,6 +172,14 @@ $(document).ready(function() {
             console.error("❌ 오류: studyId를 가져올 수 없습니다.");
         }
     });
+ 	$('#cardGrid').on('click', '.study-like', function(){ 
+ 		const $currentElement = $(this);
+ 	    const $studyCard = $currentElement.closest('.study-card');
+ 	    const $detailButton = $studyCard.find('.btn-detail');
+ 	    const studyId = $detailButton.data('studyId');
+ 	    
+ 		studyLike(studyId);
+ 	});
 });
 </script>
 </html>
