@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class BoardRankInsertController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀 게시글을 조회하고 랭크 게시글로 등록하고 JSON 응답을 생성합니다.
 	 *
@@ -30,17 +30,17 @@ public class BoardRankInsertController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String boardId = request.getParameter("boardId");
 
 		BoardDTO board = new BoardDTO();
 		board.setBoardId(boardId);
 
 		BoardServiceImpl service = new BoardServiceImpl();
-		
+
 		try {
 			service.insertRankBoard(board);
 			Gson gson = new Gson();
@@ -49,7 +49,7 @@ public class BoardRankInsertController implements Controller {
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-			
+
 		}catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
@@ -60,7 +60,7 @@ public class BoardRankInsertController implements Controller {
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
 		}
-		
+
 	}
 
 }

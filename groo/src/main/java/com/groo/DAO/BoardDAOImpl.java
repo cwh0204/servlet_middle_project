@@ -193,7 +193,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * 팀 게시글 랭킹 게시판으로 복제 메서드
 	 *
@@ -202,7 +202,7 @@ public class BoardDAOImpl implements BoardDAO {
 	 */
 	@Override
 	public void insertRankBoard(BoardDTO board, SqlSession session) {
-		
+
 		try {
 			session.insert("insertRankBoard", board);
 		} catch (Exception e) {

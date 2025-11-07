@@ -253,7 +253,7 @@ public class BoardServiceImpl implements BoardService {
 
 		return list;
 	}
-	
+
 	/**
 	 * 팀 게시글 랭킹 게시글로 복제 서비스 메서드입니다.
 	 *
@@ -263,7 +263,7 @@ public class BoardServiceImpl implements BoardService {
 	 */
 	@Override
 	public void insertRankBoard(BoardDTO board) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 
 		try {

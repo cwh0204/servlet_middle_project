@@ -138,4 +138,18 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 		}
 		return teamMemberList;
 	}
+
+	/**
+	 * 팀의 리더가 수정한 내용을 가져오기 위한 메서드
+	 * @param teamMember 팀 상세페이지 수정한 내용을 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void updateTeamPage(TeamMemberDTO teamMember, SqlSession session) {
+		try {
+			session.update("updateTeamPage",teamMember);
+		}catch (Exception e) {
+			throw new InternalServiceException("DAO:updateTeamMemberChange 예외발생",e);
+		}
+	}
 }
