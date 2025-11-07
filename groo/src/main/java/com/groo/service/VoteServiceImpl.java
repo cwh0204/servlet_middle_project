@@ -118,7 +118,7 @@ public class VoteServiceImpl implements VoteService{
 		}
 		return voteList;
 	}
-	
+
 	/**
 	 * 나의 투표를 가져오기 위한 메서드
 	 *
@@ -126,7 +126,7 @@ public class VoteServiceImpl implements VoteService{
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
-	
+
 	@Override
 	public List<VoteDTO> selectMyVoteList(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
