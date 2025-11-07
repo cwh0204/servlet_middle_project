@@ -55,7 +55,8 @@ var boardselect = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-
+			
+			console.log(response);
 			$('#boardDataBody').empty();
 
 			// response는 서버에서 돌려준 데이터입니다.
@@ -81,7 +82,7 @@ var boardselect = () => {
 				const $tdViews = $('<td>').addClass('post-views-' + item.boardId).text(item.postViews);
 				$newRow.append($tdViews);
 				$newRow.append($('<td>').text(item.comentCount));
-				$newRow.append($('<td>').text('12'));
+				$newRow.append($('<td>').text(item.boardLikeCount));
 				$newRow.append(
 					    $('<td>').addClass('teamLeaderdiv').append(
 					        $('<button>').text('게시하기').attr('data-boardId', item.boardId).addClass('btn btn-sm btn-primary team-board-post')
