@@ -260,7 +260,19 @@ public class TeamServiceImpl implements TeamService{
 	 */
 	@Override
 	public TeamDTO selectTeamPass(TeamDTO team) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = SessionFactory.getSqlSession();
+		TeamDTO teamList = new TeamDTO();
+		try {
+			teamList = dao.selectTeamPass(team, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return teamList;
 	}
 }

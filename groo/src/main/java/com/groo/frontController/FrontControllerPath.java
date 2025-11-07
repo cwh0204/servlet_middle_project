@@ -60,6 +60,7 @@ import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
 import com.groo.controller.TeamMemberSelectPageController;
 import com.groo.controller.TeamMemberUpdatePageController;
+import com.groo.controller.TeamPassSelectController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -141,7 +142,8 @@ public class FrontControllerPath {
 
         controllerMap.put("/teammemberkick.do", new TeamMemberKickController());
         controllerMap.put("/teammemberleaderchange.do", new TeamMemberLeaderChangeController());
-
+        
+        controllerMap.put("/teampassselect.do", new TeamPassSelectController());
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
 
