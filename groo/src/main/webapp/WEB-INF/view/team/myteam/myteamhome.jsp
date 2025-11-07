@@ -231,7 +231,7 @@ $(document).ready(function() {
             console.error("❌ 오류: studyId를 가져올 수 없습니다.");
         }
     });
- 	$('#cardGrid').on('click', '.study-like', function(){ 
+ 	$('#cardGrid').on('click', '.study-like', function(){
  		const $currentElement = $(this);
  	    const $studyCard = $currentElement.closest('.study-card');
  	    const $detailButton = $studyCard.find('.btn-detail');
@@ -247,7 +247,9 @@ $(document).ready(function() {
  			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
  		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
  		    passwordCheckModal.hide();
- 		  	$('.modal-backdrop').remove();
+ 		    $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').removeAttr('style');
  			pageLoad(studyId);
  		}else{
  			alert("비밀번호가 일치하지 않습니다.");
