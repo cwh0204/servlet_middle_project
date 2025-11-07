@@ -121,7 +121,7 @@
 			#{studyIntro}
 		)
 	</insert>
-	
+
 	<select id="selectMyTeam" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
 		SELECT 
 			C.STUDY_ID,
