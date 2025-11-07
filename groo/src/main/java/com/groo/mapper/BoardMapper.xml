@@ -177,6 +177,6 @@
 		FROM
 		    BOARD
 		WHERE 
-		    BOARD_ID = #{boardId};
+		    BOARD_ID = #{boardId}
 	</insert>
 </mapper>

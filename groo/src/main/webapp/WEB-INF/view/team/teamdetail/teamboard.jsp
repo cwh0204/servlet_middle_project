@@ -154,6 +154,7 @@ teamRankPost = (boardId) => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
+			console.log(response);
 			alert("베스트 게시판 등록 성공!");
 		},
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)

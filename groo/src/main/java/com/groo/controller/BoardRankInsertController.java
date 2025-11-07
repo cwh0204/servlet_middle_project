@@ -42,7 +42,7 @@ public class BoardRankInsertController implements Controller {
 		BoardServiceImpl service = new BoardServiceImpl();
 		
 		try {
-			service.selectBoardLikeSearch(board);
+			service.insertRankBoard(board);
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");
 
