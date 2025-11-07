@@ -28,6 +28,9 @@ $(document).ready(() => {
 			if (pageToLoad) {
 				// 페이지 정보를 Session Storage에 저장함
 				sessionStorage.setItem('main_last_view', pageToLoad);
+				sessionStorage.removeItem('team_last_view');
+				sessionStorage.removeItem('mypage_last_view');
+				sessionStorage.removeItem('board_last_view');
 				$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 					} else {
