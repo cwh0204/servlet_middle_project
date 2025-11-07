@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<script src="jquery/jquery-3.7.1.min.js"></script>
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title></title>
@@ -24,10 +22,10 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="passwordCheckModalLabel">🔐 스터디 비밀번호
-						확인</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="닫기"></button>
+					<h5 class="modal-title" id="passwordCheckModalLabel">🔐 스터디
+						비밀번호 확인</h5>
+					<button type="button" id="modalCloseIcon" class="btn-close"
+						data-bs-dismiss="modal" aria-label="닫기"></button>
 				</div>
 
 				<div class="modal-body">
@@ -42,7 +40,7 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
+					<button type="button" id="modalClose" class="btn btn-secondary"
 						data-bs-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-primary"
 						id="confirmPasswordBtn">확인</button>
@@ -221,6 +219,7 @@ var teamPassAjax = (studyId) => {
 	});
 }
 $(document).ready(function() {
+	
 	myTeamList();
  	$('#cardGrid').on('click', '.btn-detail', function() {
         // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
@@ -245,13 +244,15 @@ $(document).ready(function() {
 
  		const passCheck = $('#inputPassword').val();
  		if(teamPass == passCheck){
- 			$('#passwordCheckModal').modal('hide');
+ 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
+ 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
+ 		    passwordCheckModal.hide();
+ 		  	$('.modal-backdrop').remove();
  			pageLoad(studyId);
  		}else{
  			alert("비밀번호가 일치하지 않습니다.");
  		}
  	});
- 	
 });
 </script>
 </html>
