@@ -4,6 +4,7 @@
 <html>
 <head>
 
+<script src="jquery/jquery-3.7.1.min.js"></script>
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="js/bootstrap.min.js"></script>
@@ -244,11 +245,10 @@ $(document).ready(function() {
  	});
  	
  	$('#confirmPasswordBtn').on('click',function(){
- 		const modalElement = document.getElementById('passwordCheckModal');
-	 	const modalInstance = bootstrap.Modal.getInstance(modalElement);
+
  		const passCheck = $('#inputPassword').val();
  		if(teamPass == passCheck){
- 			modalInstance.hide();
+ 			$('#passwordCheckModal').modal('hide');
  			pageLoad(studyId);
  		}else{
  			alert("비밀번호가 일치하지 않습니다.");
