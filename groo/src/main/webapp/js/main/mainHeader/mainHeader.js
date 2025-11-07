@@ -2,7 +2,6 @@ $(document).ready(() => {
 	const refreshPage = () => {
 		// 2. 파라미터가 있다면 해당 페이지를 로드합니다.
 		const lastPage = sessionStorage.getItem('main_last_view');
-		console.log("lastPage", lastPage);
 		if (lastPage) {
 			// 2. 해당 페이지를 로드합니다.
 			$('#contentArea').load(lastPage,function(response, status, xhr) {
@@ -29,7 +28,6 @@ $(document).ready(() => {
 			if (pageToLoad) {
 				// 페이지 정보를 Session Storage에 저장함
 				sessionStorage.setItem('main_last_view', pageToLoad);
-				console.log(pageToLoad);
 				$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 					} else {
@@ -46,7 +44,6 @@ $(document).ready(() => {
 			if (pageToLoad) {
 				// 페이지 정보를 Session Storage에 저장함
 				sessionStorage.setItem('main_last_view', pageToLoad);
-				console.log(pageToLoad);
 				$('#contentArea').load(pageToLoad, function(response, status, xhr) {
 					if (status == "success") { // ⭐ 성공 시에만 호출해야 합니다!
 					} else {

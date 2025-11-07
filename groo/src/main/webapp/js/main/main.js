@@ -56,7 +56,6 @@ var pageLoad = (studyId) => {
            
            sessionStorage.setItem('teamId', studyId);
            
-            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
             
         } else {
             // 사용자에게 실패 메시지를 표시할 수 있습니다.
