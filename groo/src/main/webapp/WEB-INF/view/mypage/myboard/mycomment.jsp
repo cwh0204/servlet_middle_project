@@ -55,8 +55,6 @@ $(document).ready(function() {
         },
         
         success: function(response) {
-            console.log("✅ 댓글 데이터 수신 성공:", response);
-
             // 1. tbody 요소를 ID로 선택합니다. (HTML에 id="replyData"가 있다고 가정)
             const $tbody = $("#replyData");
             $tbody.empty(); // 기존 내용을 지웁니다.
