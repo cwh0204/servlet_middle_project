@@ -23,6 +23,8 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 	}
 }
 
+
+
 $(document).ready(function() {
 
 	const SESSION_KEY = 'team_detail_last_view';

@@ -16,4 +16,5 @@ public interface TeamService {
 	public List<TeamDTO> selectMyTeam(TeamDTO team);
 	public List<TeamDTO> teamselectAll(TeamDTO team);
 	public void updateTeamLike(TeamDTO team);
+	public TeamDTO selectTeamPass(TeamDTO team);
 }

@@ -148,4 +148,11 @@
 			STUDY_LIKE = STUDY_LIKE + 1
 		WHERE STUDY_ID = #{studyId}
 	</update>
+	
+	<select id="selectTeamPass" parameterType="com.groo.model.TeamDTO">
+		SELECT STUDY_PASS 
+		FROM STUDY
+		WHERE STUDY_ID = #{studyId}
+	</select>
+	
 </mapper>

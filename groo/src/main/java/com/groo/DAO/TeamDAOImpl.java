@@ -150,4 +150,21 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
 		}
 	}
+	
+	/**
+	 * 팀의 비밀번호를 조회 하기 위한 메서드
+	 * @param team 비밀번호 조회 하기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 비밀번호 값 리턴
+	 */
+	@Override
+	public TeamDTO selectTeamPass(TeamDTO team, SqlSession session) {
+		TeamDTO teamList = new TeamDTO();
+		try {
+			teamList = session.selectOne("selectTeamPass",team);
+		}catch (Exception e) {
+			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
+		}
+		return teamList;
+	}
 }

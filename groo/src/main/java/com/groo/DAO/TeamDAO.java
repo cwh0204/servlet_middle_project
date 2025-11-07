@@ -20,4 +20,5 @@ public interface TeamDAO {
 	public List<TeamDTO> teamselectAll(TeamDTO teamMember, SqlSession session);
 	
 	public void updateTeamLike(TeamDTO team, SqlSession session);
+	public TeamDTO selectTeamPass(TeamDTO team, SqlSession session);
 }
