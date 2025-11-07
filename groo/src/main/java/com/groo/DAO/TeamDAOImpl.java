@@ -136,7 +136,7 @@ public class TeamDAOImpl implements TeamDAO{
 		}
 		return teamList;
 	}
-	
+
 	/**
 	 * 팀의 좋아요를 추가 하기 위한 메서드
 	 * @param team 팀을 좋아요 하기위한 Data Transfer Object 데이터 클래스
@@ -150,7 +150,7 @@ public class TeamDAOImpl implements TeamDAO{
 			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
 		}
 	}
-	
+
 	/**
 	 * 팀의 비밀번호를 조회 하기 위한 메서드
 	 * @param team 비밀번호 조회 하기위한 Data Transfer Object 데이터 클래스

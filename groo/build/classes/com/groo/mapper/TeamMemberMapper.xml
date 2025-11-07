@@ -76,7 +76,7 @@
 	
 	<select id="selectTeamPage" parameterType="com.groo.model.TeamMemberDTO" resultType="com.groo.model.TeamMemberDTO">
 		SELECT 
-        C.MEM_NICK,
+        	C.MEM_NICK,
 		        CASE 
 		            WHEN B.STUDY_ROLL  =  'L'    THEN '팀장'
 		        END AS STUDY_ROLL,

@@ -142,7 +142,7 @@ public class FrontControllerPath {
 
         controllerMap.put("/teammemberkick.do", new TeamMemberKickController());
         controllerMap.put("/teammemberleaderchange.do", new TeamMemberLeaderChangeController());
-        
+
         controllerMap.put("/teampassselect.do", new TeamPassSelectController());
         //신고 관련 API
         controllerMap.put("/reportinsert.do", new ReportInsertController());
