@@ -64,7 +64,7 @@ $(document).ready(function() {
 		            // 메뉴 활성화 로직
 		            $('.menu-item').removeClass('active');
 		            $('.menu-item[data-page="' + pageToLoad + '"]').addClass('active');
-		        }
+		        } 
 		});
 	}
 
