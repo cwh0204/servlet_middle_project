@@ -330,6 +330,7 @@ $(document).ready(function() {
 				success : function(response) {
 					console.log(response);
 					if (response != null) {
+						sessionStorage.setItem('userId', response.memLoginId);
 						window.location.href = "main.do";
 					} else {
 						window.location.href = "login.do";

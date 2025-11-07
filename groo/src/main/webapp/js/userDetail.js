@@ -94,10 +94,15 @@ const showSubmitALert = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			console.log(response);
+			alert("회원정보가 수정되었습니다.");
+			sessionStorage.removeItem('main_last_view');
+			location.href = 'main.do';
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
+			console.error("회원정보 수정 실패:", status, error);
+			alert("회원정보 수정에 실패했습니다. 다시 시도해 주세요.");
 		}
 	});
 }
@@ -132,14 +137,7 @@ const requestMemberDeletion = () => {
 			alert('회원 정보를 불러오는 데 실패했습니다.');
 		}
 	});
-
-
-
-
 }
-
-
-
 
 
 
