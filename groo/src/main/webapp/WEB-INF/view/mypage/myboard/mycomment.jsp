@@ -5,30 +5,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href='css/mypage/mycomment/mycomment.css' rel='stylesheet' />
+<title>나의 좋아요 목록</title>
+<link href='css/mypage/mylike/mylike.css' rel='stylesheet' /> 
 
 </head>
 <body>
 	<div class="container">
-		<h2>나의 댓글 목록</h2>
+		<h2>나의 좋아요 목록</h2>
 
-		<table class="reply-table">
-    <thead>
-        <tr>
-            <th>번호</th>
-            <th>댓글 내용</th>
-            <th>원문 링크</th>
-            <th>작성일</th>
-        </tr>
-    </thead>
-    <tbody id="replyData"> 
-        <tr>
-            <td colspan="4">댓글 목록을 불러오는 중입니다...</td>
-        </tr>
-    </tbody>
-</table>
-
+		<table class="like-list-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>좋아요한 게시글 내용</th>
+                    <th>원문 링크</th>
+                    <th>좋아요 누른 날짜</th>
+                </tr>
+            </thead>
+            <tbody id="likeData"> 
+                <tr>
+                    <td colspan="4">좋아요 목록을 불러오는 중입니다...</td>
+                </tr>
+            </tbody>
+        </table>
 	</div>
 
 </body>
@@ -39,14 +38,14 @@ $(document).ready(function() {
 	
     // 1. memLoginId 유효성 체크 및 Ajax 실행 중지
     if (!memLoginId || memLoginId.trim() === "" || memLoginId === "null") {
-        $("#boardData").html('<tr><td colspan="4">로그인 정보(userId)를 찾을 수 없습니다.</td></tr>');
+        $("#likeData").html('<tr><td colspan="4">로그인 정보(userId)를 찾을 수 없습니다.</td></tr>');
         console.error("❌ sessionStorage에 userId가 없습니다.");
         return; 
     }
     
 	$.ajax({
-        // 🚨 URL은 Context Root 동적 설정이 안전하지만, 문법 오류는 아님.
-        url: '/groo/mycommentList.do', 
+        // URL은 '/groo/myLikeList.do'로 유지
+        url: '/groo/myLikeList.do', 
         dataType: 'json',
         type: 'POST', 
 
@@ -55,48 +54,43 @@ $(document).ready(function() {
         },
         
         success: function(response) {
-            console.log("✅ 댓글 데이터 수신 성공:", response);
-
-            // 1. tbody 요소를 ID로 선택합니다. (HTML에 id="replyData"가 있다고 가정)
-            const $tbody = $("#replyData");
-            $tbody.empty(); // 기존 내용을 지웁니다.
+            const $tbody = $("#likeData");
+            $tbody.empty(); 
 
             if (response && response.length > 0) {
                 
-                // 2. 서버에서 받은 댓글 데이터(response)를 반복하며 행을 생성합니다.
                 $.each(response, function(index, item) {
                     
-                    // 🚨 주의: JSON 키와 DTO 필드명이 'comentId', 'comentContent' 등 소문자로 일치해야 합니다.
-                    
-                    // 1. 새로운 <tr> 요소를 생성합니다.
                     const $tr = $("<tr>");
-
-                    // 2. 순번 (<td>)을 추가합니다.
                     $tr.append($("<td>").text(index + 1));
 
-                    // 3. 댓글 내용 (<td>)을 추가합니다.
-                    $tr.append($("<td>").text(item.comentContent));
+                    // 게시글 내용
+                    // 내용이 길 경우를 대비해 텍스트 오버플로우 처리가 필요할 수 있습니다 (CSS에서 처리)
+                    $tr.append($("<td>").text(item.postContent)); 
 
-                    // 4. 원문 링크 (<a>)를 포함하는 <td>를 생성하고 추가합니다.
-                    // 링크는 해당 댓글이 달린 게시글(boardId)로 이동해야 합니다.
+                    // 원문 링크
                     const $link = $("<a>")
                                     .attr("href", "postdetail.do?id=" + item.boardId) 
-                                    .text("원문 보기"); // '원문 보기' 등의 텍스트 사용
+                                    .text("원문 보기"); 
 
                     $tr.append($("<td>").append($link));
 
-                    // 5. 작성일 (<td>)을 추가합니다.
-                    // item.comentDate를 사용합니다.
-                    $tr.append($("<td>").text(item.comentDate));
+                    // 💡 좋아요 누른 날짜 필드 적용 (LikedDTO에 likeDate 필드가 있어야 함)
+                    // item.likeDate가 있다면 그 값을 사용하고, 없다면 '날짜 정보 없음'을 표시
+                    const likeDate = item.likeDate ? item.likeDate : "날짜 정보 없음";
+                    $tr.append($("<td>").text(likeDate)); 
 
-                    // 6. 완성된 <tr>을 <tbody>에 추가합니다.
                     $tbody.append($tr);
                 });
 
             } else {
-                // 댓글이 없는 경우
-                $tbody.append('<tr><td colspan="4">작성된 댓글이 없습니다.</td></tr>');
+                // 데이터가 없는 경우
+                $tbody.append('<tr><td colspan="4">좋아요한 게시글이 없습니다.</td></tr>');
             }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX Error: ", status, error);
+            $("#likeData").html('<tr><td colspan="4">좋아요 목록을 불러오는 중 오류가 발생했습니다.</td></tr>');
         }
 	});
 });

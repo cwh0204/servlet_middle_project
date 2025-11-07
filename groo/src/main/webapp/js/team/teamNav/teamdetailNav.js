@@ -27,7 +27,7 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 $(document).ready(function() {
 
 	const SESSION_KEY = 'team_detail_last_view';
-	const DEFAULT_PAGE = 'teamdetail.do';
+	const DEFAULT_PAGE = 'teamdetailhome.do';
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	

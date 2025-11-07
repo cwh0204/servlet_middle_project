@@ -52,8 +52,6 @@ $(document).ready(function() {
         },
         
         success: function(response) {
-            console.log("✅ 통신 성공, 받은 데이터:", response);
-
             const $tbody = $("#boardData");
             $tbody.empty(); // 기존 로딩 메시지/데이터를 지웁니다.
 

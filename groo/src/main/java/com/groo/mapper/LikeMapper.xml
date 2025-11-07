@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Likemapper">
+	<select id="selectMyLikeList" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.BoardDTO">
+	SELECT 
+    b.BOARD_ID, 
+    b.POST_CONTENT, 
+    b.POST_TITLE
+	FROM 
+	    BOARD_LIKE bl
+	INNER JOIN 
+	    MEMBER m ON bl.MEM_ID = m.MEM_ID
+	INNER JOIN 
+	    BOARD b ON bl.BOARD_ID = b.BOARD_ID
+	WHERE 
+	    m.MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_login_id=#{memLoginId})
+	</select>
+</mapper>

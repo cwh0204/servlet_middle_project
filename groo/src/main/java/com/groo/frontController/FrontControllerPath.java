@@ -40,6 +40,7 @@ import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberUpdateController;
 import com.groo.controller.MyBoardListController;
 import com.groo.controller.MyCommentListController;
+import com.groo.controller.MyLikeListController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.ReportInsertController;
 import com.groo.controller.SignUpController;
@@ -161,6 +162,8 @@ public class FrontControllerPath {
         //마이페이지
         controllerMap.put("/myboardlist.do", new MyBoardListController());
         controllerMap.put("/mycommentList.do", new MyCommentListController());
+        controllerMap.put("/mylikecontroller.do", new MyLikeListController());
+
 
 
         //투표 관련 API
