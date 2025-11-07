@@ -37,12 +37,6 @@ public class TeamMemberSelectPageController implements Controller {
 		response.setCharacterEncoding("UTF-8");
 
 		String studyId = request.getParameter("studyId");
-		/*
-		 * String studyTitle = request.getParameter("studyTitle"); String studyCategory
-		 * = request.getParameter("studyCategory"); String studyIntro =
-		 * request.getParameter("studyIntro"); String studyIntrocontent =
-		 * request.getParameter("studyIntrocontent");
-		 */
 
 		TeamMemberDTO teamMember = new TeamMemberDTO();
 

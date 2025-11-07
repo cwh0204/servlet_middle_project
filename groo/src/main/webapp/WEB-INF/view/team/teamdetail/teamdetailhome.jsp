@@ -60,9 +60,9 @@
         
         <div class="btn-area">
         	<input type="button" value="가입하기" class="join" id="joinBtn">
-        	<input type="button" value="탈퇴하기" class="leave" id="leaveBtn">
         	<input type="button" value="수정하기" class="edit" id="editBtn"> 
     		<input type="submit" value="저장하기" class="save" id="saveBtn">
+        	<input type="button" value="탈퇴하기" class="leave" id="leaveBtn">
     	</div>	
     </section>
     
@@ -166,7 +166,8 @@ var loadScheduleList = (response) => {
 	    });
 	}
 $(document).ready(function() {
-	
+	var userId = sessionStorage.getItem('userId');
+	console.log(userId);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'teammemberselectpage.do',
