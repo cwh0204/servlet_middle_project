@@ -149,7 +149,7 @@
 		WHERE STUDY_ID = #{studyId}
 	</update>
 	
-	<select id="selectTeamPass" parameterType="com.groo.model.TeamDTO">
+	<select id="selectTeamPass" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
 		SELECT STUDY_PASS 
 		FROM STUDY
 		WHERE STUDY_ID = #{studyId}
