@@ -116,6 +116,16 @@ $(document).ready(function() {
 	let password;
 	
 	
+	
+	$('#cancelBtn').on('click', function(){
+		$('.login-box').hide();
+		$('.pw-container').hide();
+	});
+	
+	$('#deletebutton').on('click', function(){
+		$('.login-box').show();
+		$('.pw-container').show();
+	});
 	// 3. AJAX 요청 시작
 	$.ajax({
 		// 서버에서 비밀번호 검증 및 탈퇴 처리를 담당할 컨트롤러 URL

@@ -27,9 +27,11 @@ function openPostcode() {
 /*취소버튼 눌렀을때*/
 function showCancelAlert() {
 	alert("취소되었습니다.");
+	sessionStorage.removeItem('main_last_view');
+	location.href = 'main.do';
 }
 
-function resetFields() {
+/*function resetFields() {
 	document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
 	document.querySelectorAll('textarea').forEach(el => el.value = '');
 	document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -54,7 +56,7 @@ function resetFields() {
 	pw.style.border = '1px solid #ccc';
 	pwCheck.style.border = '1px solid #ccc';
 	msg.textContent = '';
-}
+}*/
 
 
 const showSubmitALert = () => {
