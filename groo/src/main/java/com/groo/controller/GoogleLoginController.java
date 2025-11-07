@@ -13,8 +13,5 @@ public class GoogleLoginController implements Controller {
 		// TODO Auto-generated method stub
 		String code = request.getParameter("code"); // 인가 코드
         String state = request.getParameter("state"); // 상태값
-
-        System.out.println(code);
-        System.out.println(state);
 	}
 }
