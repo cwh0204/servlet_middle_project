@@ -22,8 +22,6 @@ public class SessionFactory {
 		InputStream inputStream = null;//InputStream은 바이트 입력스트림의 최상위 추상클래스
 		try {
 			inputStream = Resources.getResourceAsStream(resource); //설정파일 읽어오기
-			//System.out.println("Configuration.xml 로딩 성공");
-			//System.out.println("==============================\n");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

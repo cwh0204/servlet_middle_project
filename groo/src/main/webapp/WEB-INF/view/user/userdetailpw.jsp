@@ -116,6 +116,16 @@ $(document).ready(function() {
 	let password;
 	
 	
+	
+	$('#cancelBtn').on('click', function(){
+		$('.login-box').hide();
+		$('.pw-container').hide();
+	});
+	
+	$('#deletebutton').on('click', function(){
+		$('.login-box').show();
+		$('.pw-container').show();
+	});
 	// 3. AJAX 요청 시작
 	$.ajax({
 		// 서버에서 비밀번호 검증 및 탈퇴 처리를 담당할 컨트롤러 URL
@@ -127,14 +137,11 @@ $(document).ready(function() {
 		},
 		dataType: 'json',  
 		success: function(response) {
-			console.log(response.memPass);
 			password= response.memPass;
 			
 
 		},
 		error: function(xhr, status, error) {
-			// 통신 오류나 서버 내부 오류(500) 발생 시
-			console.error("탈퇴 처리 중 오류 발생:", status, error);
 			alert("처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
 		}
 	});
@@ -150,15 +157,12 @@ $(document).ready(function() {
         const enteredPassword = $('#pw').val();
         const userId = $('#userID').val();
         
-        console.log("userId", userId);
-        
         // 3. (선택 사항) 값이 비어있는지 확인하는 메시지
         if (enteredPassword.length === 0) {
             alert("경고: 비밀번호가 입력되지 않았습니다.");
             return;
         }
         // 2. 가져온 비밀번호 값을 콘솔에 출력합니다.
-        console.log("사용자가 입력한 비밀번호:", enteredPassword);
         
        // if(password === enteredPassword ) {
     		
@@ -176,7 +180,6 @@ $(document).ready(function() {
     			// 데이터 전송 성공 시 실행
     			success: function(response) {
     				
-    				console.log("탈퇴하자",response);
     				if(response=="success"){
 	    				alert("탈퇴가 완료되었습니다.");
 	    				sessionStorage.removeItem('main_last_view');

@@ -27,9 +27,11 @@ function openPostcode() {
 /*취소버튼 눌렀을때*/
 function showCancelAlert() {
 	alert("취소되었습니다.");
+	sessionStorage.removeItem('main_last_view');
+	location.href = 'main.do';
 }
 
-function resetFields() {
+/*function resetFields() {
 	document.querySelectorAll('input[type="text"], input[type="password"]').forEach(el => el.value = '');
 	document.querySelectorAll('textarea').forEach(el => el.value = '');
 	document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -54,27 +56,20 @@ function resetFields() {
 	pw.style.border = '1px solid #ccc';
 	pwCheck.style.border = '1px solid #ccc';
 	msg.textContent = '';
-}
+}*/
 
 
 const showSubmitALert = () => {
 	const userId = $('#memLoginId').val(); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
-	console.log(userId);
 	const memPass = $('#passtry').val();
-	console.log(memPass);
 	const memEmail = $('#emailid').val() + '@' + $('#emailDomain').val();
-	console.log(memEmail);
 	const memAddr = $('#zipcode').val().trim() + $('#address1').val().trim() + " " + $('#address2').val().trim();
-	console.log(memAddr);
 	const memNick = $('#memNick').val();
-	console.log(memNick);
 	const memInterest = [
 		...$('input[name="ff"]:checked').map((_, el) => el.value).get(), //...를 붙여 각 요소를 배열에 넣고 값을 가져옴
 		$('textarea[name="ff"]').val().trim()
 	].filter(Boolean).join(','); //빈 값이면 제거하고 ,로 합침
-	console.log(memInterest);
 	const memPhone = $('#memPhone1').val() + $('#memPhone2').val() + $('#memPhone3').val();
-	console.log(memPhone);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'memberupdate.do',
@@ -93,7 +88,6 @@ const showSubmitALert = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			alert("회원정보가 수정되었습니다.");
 			sessionStorage.removeItem('main_last_view');
 			location.href = 'main.do';
@@ -101,7 +95,6 @@ const showSubmitALert = () => {
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
-			console.error("회원정보 수정 실패:", status, error);
 			alert("회원정보 수정에 실패했습니다. 다시 시도해 주세요.");
 		}
 	});
@@ -111,7 +104,6 @@ const showSubmitALert = () => {
 const requestMemberDeletion = () => {
 
 	const userId = $('#memLoginId').val(); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
-	console.log(userId);
 
 	// AJAX 요청
 	$.ajax({
@@ -123,7 +115,6 @@ const requestMemberDeletion = () => {
 		dataType: 'json',                            // 4. 서버로부터 받을 데이터 형식 (JSON)
 		success: function(response) {
 			// 5. 요청 성공 시 실행될 함수
-			console.log('DB 조회 성공:', response);
 
 			// 응답으로 받은 아이디를 화면에 표시
 			// response 객체는 { "memLoginId": "사용자아이디" } 형태일 것입니다.
@@ -133,7 +124,6 @@ const requestMemberDeletion = () => {
 		},
 		error: function(xhr, status, error) {
 			// 6. 요청 실패 시 실행될 함수
-			console.error('AJAX 오류 발생:', status, error);
 			alert('회원 정보를 불러오는 데 실패했습니다.');
 		}
 	});
@@ -158,7 +148,6 @@ $(function() { //document.ready(() => { })
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response.memName);
 			$('#memName').val(response.memName);
 			$('#memLoginId').val(response.memLoginId);
 			$('#memNick').val(response.memNick);
@@ -282,7 +271,6 @@ $(function() { //document.ready(() => { })
 				}
 			},
 			error: function(xhr, status, error) {
-				console.error("닉네임 확인 실패:", status, error);
 				nickMsg.text('닉네임 확인 중 오류가 발생했습니다.⚠️').css('color', '#ff9900');
 				//               NicknameCheck = false;
 			}
@@ -379,7 +367,6 @@ $(function() { //document.ready(() => { })
 			},
 
 			error: function(xhr, status, error) {
-				console.error("이메일 중복 확인 실패:", status, error);
 				alert('이메일 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.');
 			}
 		})
