@@ -35,36 +35,20 @@ $(document).ready(function() {
 	function loadContentAndActivateMenu(pageToLoad, key) {
 		const DEFAULT_PAGE = 'teamcreatehome.do';
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
-		
-		const BLOCKED_PAGES = ['myteamhome.do', DEFAULT_PAGE, 'main.do'];
-		
-		if (key === SESSION_KEY && !BLOCKED_PAGES.includes(pageToLoad)) {
-		        sessionStorage.setItem(key, pageToLoad);
-		}
-		
-		if (BLOCKED_PAGES.includes(pageToLoad)) {
-		        // 'main.do'와 같은 전체 페이지는 .teamcontent에 로드하지 않고 로그만 남깁니다.
-		        console.warn(`🛑 경고: 전체 페이지(${pageToLoad})는 콘텐츠 영역에 로드할 수 없습니다.`);
-		        
-		        // 하지만 메뉴 활성화는 진행해야 합니다.
-		        $('.menu-item').removeClass('active');
-		        $('.menu-item[data-page="' + pageToLoad + '"]').addClass('active');
-		        return; // 🚨 콘텐츠 로드 (.load) 실행을 막습니다.
-		}
 
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
-		        if (status === "error") {
-		            console.error("페이지 로드 실패:", pageToLoad);
+			if (status === "error") {
+				console.error("페이지 로드 실패:", pageToLoad);
 
-		            // 로드 실패 시, 차단된 페이지가 아니면 세션 제거
-		            if (key === SESSION_KEY && !BLOCKED_PAGES.includes(pageToLoad)) {
-		                sessionStorage.removeItem(key);
-		            }
-		        } else {
-		            // 메뉴 활성화 로직
-		            $('.menu-item').removeClass('active');
-		            $('.menu-item[data-page="' + pageToLoad + '"]').addClass('active');
-		        } 
+				// 로드 실패 시, 차단된 페이지가 아니면 세션 제거
+				if (key === SESSION_KEY && !BLOCKED_PAGES.includes(pageToLoad)) {
+					sessionStorage.removeItem(key);
+				}
+			} else {
+				// 메뉴 활성화 로직
+				$('.menu-item').removeClass('active');
+				$('.menu-item[data-page="' + pageToLoad + '"]').addClass('active');
+			}
 		});
 	}
 

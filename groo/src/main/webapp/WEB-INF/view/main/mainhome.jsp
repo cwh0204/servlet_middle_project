@@ -24,15 +24,17 @@
 		var memLoginId = sessionStorage.getItem('userId');
 		console.log(memLoginId);
 		grooteam();
-		$('#cardGrid').on('click', '.btn-detail', function() {
-			const studyId = $(this).data('studyId');
-			if (studyId) {
-				window.location.href = 'teamdetail.do?studyId=' + studyId;
-			} else {
-				console.error("❌ 오류: studyId를 가져올 수 없습니다.");
-			}
-		});
-	});
+		 $('#cardGrid').on('click', '.btn-detail', function() {
+	      
+	        const studyId = $(this).data('studyId');
+	       
+	        if (studyId) {
+	        	window.location.href = 'teamdetail.do?studyId=' + studyId;
+	        } else {
+	            console.error("❌ 오류: studyId를 가져올 수 없습니다.");
+	        }
+	    });
+	}); 
 </script>
 </html>
 
