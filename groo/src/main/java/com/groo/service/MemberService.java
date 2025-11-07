@@ -5,12 +5,13 @@ import com.groo.model.MemberDTO;
 public interface MemberService {
 
 	//이수민
-	public void userDelete(MemberDTO member);
+	public int userDelete(MemberDTO member);
 	public void userUpdate(MemberDTO member);
 
 	public MemberDTO selectUserNicknameCheck(MemberDTO member);
 	public MemberDTO selectUserEmailCheck(MemberDTO member);
 	public MemberDTO selectUserDetail(MemberDTO member);
+	public MemberDTO selectuserDelete(MemberDTO member);
 
 	//일반 로그인
 	public MemberDTO selectLoginMember(MemberDTO member);

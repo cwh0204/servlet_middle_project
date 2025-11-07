@@ -46,6 +46,13 @@ input[disabled] {
 	cursor: not-allowed;
 }
 
+.button-group {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+
 button {
 	width: 100%;
 	padding: 10px;
@@ -85,7 +92,7 @@ button:hover {
 	<div class="pw-container"></div>
 	<div class="login-box">
 		<div class="input-group">
-			<label>아이디</label> <input type="text" name="userID" readonly>
+			<label>아이디</label> <input type="text" name="userID" id="userID" readonly>
 		</div>
 
 		<div class="input-group" style="position: relative;">
@@ -93,13 +100,126 @@ button:hover {
 <!-- 			<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png" -->
 <!-- 				style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;"> -->
 		</div>
-
-		<button id="userPwCk" type="submit">확인</button>
-		
+     <div class="button-group">
+        <button id="cancelBtn" type="button">취소</button>
+		<button id="userPwCk" type="button">확인</button>
+	 </div>	
 	</div>
 </body>
 
 <script>
+
+
+
+//문서가 완전히 로드된 후 실행됩니다.
+$(document).ready(function() {
+	let password;
+	
+	
+	// 3. AJAX 요청 시작
+	$.ajax({
+		// 서버에서 비밀번호 검증 및 탈퇴 처리를 담당할 컨트롤러 URL
+		url: 'userdetaildelete.do',
+		type: 'POST', // 비밀번호를 포함한 중요한 처리는 POST 방식 사용
+		data: {
+			memLoginId: memLoginId,
+			
+		},
+		dataType: 'json',  
+		success: function(response) {
+			console.log("통신성공");
+			console.log(response.memPass);
+			password= response.memPass;
+			
+
+		},
+		error: function(xhr, status, error) {
+			// 통신 오류나 서버 내부 오류(500) 발생 시
+			console.error("탈퇴 처리 중 오류 발생:", status, error);
+			alert("처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+		}
+	});
+	
+	
+    
+    // ID가 'checkButton'인 버튼에 클릭 이벤트 리스너를 추가합니다.
+    $('#userPwCk').on('click', function() {
+    	
+    	
+        
+        // 1. ID가 'pw'인 입력 필드의 현재 값(value)을 가져옵니다.
+        const enteredPassword = $('#pw').val();
+        const userId = $('#userID').val();
+        
+        console.log("userId", userId);
+        
+        // 3. (선택 사항) 값이 비어있는지 확인하는 메시지
+        if (enteredPassword.length === 0) {
+            alert("경고: 비밀번호가 입력되지 않았습니다.");
+            return;
+        }
+        // 2. 가져온 비밀번호 값을 콘솔에 출력합니다.
+        console.log("사용자가 입력한 비밀번호:", enteredPassword);
+        
+       // if(password === enteredPassword ) {
+    		
+    		$.ajax({
+    			// 데이터를 전송할 서버 URL
+    			url: 'memberdelete.do',
+    			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+    			type: 'POST',
+    			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+    			dataType: 'json',
+    			data: {
+    				memLoginId: userId,
+    				memPass: enteredPassword
+    			},
+    			// 데이터 전송 성공 시 실행
+    			success: function(response) {
+    				
+    				console.log("탈퇴하자",response);
+    				if(response=="success"){
+	    				alert("탈퇴가 완료되었습니다.");
+	    				sessionStorage.removeItem('main_last_view');
+	    				location.href = 'login.do';
+    				}else{
+    					alert("탈퇴 처리가 실패했습니다.");
+    				}
+    			},
+
+    			// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+    			error: function(xhr, status, error) {
+    			}
+    		});	
+    		
+    		
+    		
+    		
+//     	}else{
+//     		alert("비밀번호가 틀렸습니다.")
+//     	}
+        
+       
+    });
+});
+
+
+
+
+
+
+//1. sessionStorage에서 'userId' 값을 가져옵니다.
+var memLoginId = sessionStorage.getItem('userId');
+
+// 2. jQuery를 사용하여 name이 'userID'인 input 요소의 값을 설정합니다.
+$('input[name="userID"]').val(memLoginId);
+
+// 또는 HTML ID가 있다면 더 빠르게 접근 가능합니다. (예: <input id="userIdInput" ...>)
+// $('#userIdInput').val(memLoginId);
+
+
+
+
 // 비밀번호 눈모양 아이콘 
 const togglePasswordPw = document.getElementById('togglePassword');
 const passwordPw = document.getElementById('pw');

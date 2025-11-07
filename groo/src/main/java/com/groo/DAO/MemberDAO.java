@@ -7,11 +7,12 @@ import com.groo.model.MemberDTO;
 public interface MemberDAO {
 
 	//이수민
-	public void userDelete(MemberDTO member, SqlSession session);
+	public int userDelete(MemberDTO member, SqlSession session);
 	public void userUpdate(MemberDTO member, SqlSession session);
 	public MemberDTO selectUserNicknameCheck(MemberDTO member, SqlSession session);
 	public MemberDTO selectUserEmailCheck(MemberDTO member, SqlSession session);
 	public MemberDTO selectUserDetail(MemberDTO member, SqlSession session);
+	public MemberDTO selectuserDelete(MemberDTO member, SqlSession session);
 
 	//소셜로그인
 	public MemberDTO selectSocialLoginCheck(MemberDTO member, SqlSession session);

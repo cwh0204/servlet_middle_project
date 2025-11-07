@@ -39,7 +39,15 @@
         SET MEM_STATUS = 'Y',
         	MEM_OUT_DATE = SYSDATE
         WHERE MEM_LOGIN_ID = #{memLoginId}
+          AND MEM_PASS = #{memPass}
 	</update>
+	
+	<select id="selectuserDelete" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+	    SELECT MEM_LOGIN_ID
+              ,MEM_PASS
+          FROM MEMBER
+         WHERE MEM_LOGIN_ID=#{memLoginId}
+	</select>
 	
 	<update id="userUpdate" parameterType="com.groo.model.MemberDTO">
 		UPDATE member

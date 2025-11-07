@@ -13,14 +13,16 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 */
 	@Override
-	public void userDelete(MemberDTO member, SqlSession session) {
+	public int userDelete(MemberDTO member, SqlSession session) {
 		// TODO Auto-generated method stub
+		int deleteid = 0;
 		try {
-			session.update("userDelete", member);
+			deleteid= session.update("userDelete", member);
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:userdetailpw 예외발생", e);
 		}
+		return deleteid;
 	}
 
 
@@ -180,6 +182,26 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 			throw new InternalDataAccessException("DAO:updateFindMemberPass 예외발생", e);
 		}
+	}
+
+
+	/**
+	 * 탈퇴 아이디 정보를 가져오는 메서드
+	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 아이디 정보를 리턴
+	 */
+	@Override
+	public MemberDTO selectuserDelete(MemberDTO member, SqlSession session) {
+		MemberDTO deleteid = new MemberDTO();
+		try {
+			deleteid = session.selectOne("selectuserDelete", member);
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("selectuserDelete 예외발생", e);
+		}
+
+		return deleteid;
 	}
 }
 
