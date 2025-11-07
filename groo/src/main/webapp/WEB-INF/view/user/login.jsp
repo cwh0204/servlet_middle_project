@@ -41,7 +41,7 @@ session.setAttribute("naver_state", state);
 					<div class="login flex_container">
 						<button type="button" id="login_type" value="member"
 							class="btn btn-success">로그인</button>
-						<button type="button" id="" value="nonmember"
+						<button type="button" id="loginNull" value="nonmember"
 							class="btn nonmem-btn-success">비회원 로그인</button>
 					</div>
 					<button type="button" id="" value="signup"
@@ -203,6 +203,11 @@ const gitHubUrl = "https://github.com/login/oauth/authorize?client_id=Ov23liAv6B
 const kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=27b3c6cc330385465c1b7c244ef648c6&redirect_uri=http://localhost:8080/groo/kakaologin.do&state=<%=state%>";
 
 $(document).ready(function() {
+		
+		sessionStorage.removeItem('main_last_view');
+		$('#loginNull').on('click',function(){
+			location.href = 'main.do';
+		});
 		
 		$.ajax({
 			// 데이터를 전송할 서버 URL
