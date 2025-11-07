@@ -52,17 +52,17 @@
 		    </if>
 		    
 		    <trim prefix="AND (" suffix=")" prefixOverrides="OR">
-		        <if test="findField == 'title'">
+		        <if test="findName != null and findName != ''">
 		            OR A.POST_TITLE LIKE '%' || #{findName} || '%'
 		        </if>
-		        <if test="findField == 'contents'">
+		        <if test="findName != null and findName != ''">
 		            OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
 		        </if>
-		        <if test="findField == 'titleAndContent'">
+		        <if test="findName != null and findName != ''">
 		            OR A.POST_TITLE LIKE '%' || #{findName} || '%'
 		            OR A.POST_CONTENT LIKE '%' || #{findName} || '%'
 		        </if>
-		        <if test="findField == 'author'">
+		        <if test="findName != null and findName != ''">
 		            OR B.MEM_NICK LIKE '%' || #{findName} || '%'
 		        </if>
 		    </trim>

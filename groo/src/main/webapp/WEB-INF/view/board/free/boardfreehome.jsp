@@ -32,6 +32,15 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		boardselect();
+
+		$('#freeBoardFind').keypress(function(event) {
+			// 2. 눌러진 키의 코드(event.keyCode)가 13 (엔터 키)인지 확인합니다.
+			if (event.keyCode === 13) {
+				console.log("안녕");
+				boardFindSelect();
+			}
+		});
+		
 	});
 </script>
 </html>
