@@ -21,11 +21,14 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * 예외
 	 */
 	@Override
-	public void userDelete(MemberDTO member) {
+	public int userDelete(MemberDTO member) {
 		SqlSession session = SessionFactory.getSqlSession();
+		int deletedd= 0;
 		try {
-			dao.userDelete(member, session);
-			session.commit();
+			deletedd = dao.userDelete(member, session);
+			if(deletedd>0) {
+				session.commit();
+			}
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
@@ -35,6 +38,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		} finally {
 			session.close();
 		}
+		return deletedd;
 	}
 
 	/**
@@ -259,6 +263,33 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		} finally {
 			session.close();
 		}
+	}
+
+	
+	/**
+	 * 탈퇴 아이디 정보를 확인하기 위한 서비스 메서드
+	 * @param member는 유저를 조회 하기 위한 Data Transfer Object 데이터 클래스
+	 * @return 아이디정보를 리턴
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public MemberDTO selectuserDelete(MemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		MemberDTO deleteid = new MemberDTO();
+
+		try {
+			deleteid = dao.selectuserDelete(member, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return deleteid;
 	}
 
 }

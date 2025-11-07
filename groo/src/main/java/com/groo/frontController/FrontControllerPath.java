@@ -62,6 +62,7 @@ import com.groo.controller.TeamSelectMyTeamController;
 import com.groo.controller.TeamStatsController;
 import com.groo.controller.UserdetailSelectEmailController;
 import com.groo.controller.UserdetailSelectNicknameController;
+import com.groo.controller.UserdetailSelectUserDeleteController;
 import com.groo.controller.UserdetailSelectUserListController;
 import com.groo.controller.VoteInsertController;
 import com.groo.controller.VoteSelectController;
@@ -96,6 +97,7 @@ public class FrontControllerPath {
         controllerMap.put("/usernicknamecheck.do", new UserdetailSelectNicknameController());
         controllerMap.put("/useremailcheck.do", new UserdetailSelectEmailController());
         controllerMap.put("/userdetailselect.do", new UserdetailSelectUserListController());
+        controllerMap.put("/userdetaildelete.do", new UserdetailSelectUserDeleteController());
 
         //게시판
         controllerMap.put("/boardinsert.do", new BoardInsertController());
