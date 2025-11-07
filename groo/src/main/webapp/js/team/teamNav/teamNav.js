@@ -32,14 +32,15 @@ $(document).ready(function() {
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
 	console.log("테스트"+test);
-	
 	function loadContentAndActivateMenu(pageToLoad, key) {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
 		
+		sessionStorage.setItem(key, pageToLoad);
 		// 🚨 핵심 수정: 'myteamhome.do' 또는 'teamcreatehome.do'일 경우 세션 저장을 건너뜁니다.
-		if (key === SESSION_KEY && pageToLoad !== 'myteamhome.do' && pageToLoad !== DEFAULT_PAGE) {
+/*		if (key === SESSION_KEY && pageToLoad !== 'myteamhome.do' && pageToLoad !== DEFAULT_PAGE) {
 			sessionStorage.setItem(key, pageToLoad);
-		}
+			console.log("확인중!!!!!!!!!!!!!!!!!");
+		}*/
 
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
 			if (status === "error") {
