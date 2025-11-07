@@ -193,5 +193,22 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return list;
 	}
+	
+	/**
+	 * 팀 게시글 랭킹 게시판으로 복제 메서드
+	 *
+	 * @param board   게시판 삭제 정보를 가져오기위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void insertRankBoard(BoardDTO board, SqlSession session) {
+		
+		try {
+			session.insert("insertRankBoard", board);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:insertRankBoard 예외발생", e);
+		}
+	}
 
 }

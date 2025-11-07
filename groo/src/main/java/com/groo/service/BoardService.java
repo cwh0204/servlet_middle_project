@@ -15,4 +15,5 @@ public interface BoardService {
 	public void updateBoard(BoardDTO board);
 	public void deleteBoard(BoardDTO board);
 	public List<BoardDTO> selectMyBoardList(MemberDTO member);
+	public void insertRankBoard(BoardDTO board);
 }
