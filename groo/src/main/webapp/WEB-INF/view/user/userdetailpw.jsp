@@ -46,6 +46,13 @@ input[disabled] {
 	cursor: not-allowed;
 }
 
+.button-group {
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+
 button {
 	width: 100%;
 	padding: 10px;
@@ -93,9 +100,10 @@ button:hover {
 <!-- 			<img id="togglePassword" src="https://i.postimg.cc/TYkDN86M/hide.png" -->
 <!-- 				style="position: absolute; right: 10px; top: 35px; cursor: pointer; width: 20px; height: 20px;"> -->
 		</div>
-
+     <div class="button-group">
+        <button id="cancelBtn" type="button">취소</button>
 		<button id="userPwCk" type="button">확인</button>
-		
+	 </div>	
 	</div>
 </body>
 
@@ -172,6 +180,8 @@ $(document).ready(function() {
     				console.log("탈퇴하자",response);
     				if(response=="success"){
 	    				alert("탈퇴가 완료되었습니다.");
+	    				sessionStorage.removeItem('main_last_view');
+	    				location.href = 'login.do';
     				}else{
     					alert("탈퇴 처리가 실패했습니다.");
     				}
