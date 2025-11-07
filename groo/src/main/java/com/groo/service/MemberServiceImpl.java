@@ -265,7 +265,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		}
 	}
 
-	
+
 	/**
 	 * 탈퇴 아이디 정보를 확인하기 위한 서비스 메서드
 	 * @param member는 유저를 조회 하기 위한 Data Transfer Object 데이터 클래스

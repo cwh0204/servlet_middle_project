@@ -191,6 +191,7 @@ public class MemberDAOImpl implements MemberDAO{
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
 	 * @return 아이디 정보를 리턴
 	 */
+	@Override
 	public MemberDTO selectuserDelete(MemberDTO member, SqlSession session) {
 		MemberDTO deleteid = new MemberDTO();
 		try {

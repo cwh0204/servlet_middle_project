@@ -11,25 +11,47 @@
 <link rel="stylesheet" href="css/base.css">
 </head>
 <body>
-
-	<c:if test="${not empty sessionScope}">
-		<%@ include file="mainheader.jsp"%>
-	</c:if>
-
-	<c:if test="${empty sessionScope}">
-		<%@ include file="mainnonheader.jsp"%>
-	</c:if>
-
+<div id="header-area">
+</div>
 	<div class="full_w_h" id="contentArea">
 		<%@ include file="mainhome.jsp"%>
 	</div>
 </body>
 <script type="text/javascript">
-$(document).ready(function() {
-	const loginServiceResponse = '${sessionScope.loginServiceResponse}';
+$(document).ready( function() {
+	var memLoginId = sessionStorage.getItem('userId');
+    console.log("sessionStorage userId:", memLoginId);
+	var headerUrl = '';
+    
+    if (memLoginId && memLoginId.trim() !== "" && memLoginId !== "null") {
+        headerUrl = 'mainheader.do'; 
+        console.log("🔍 상태: 로그인됨. 로드 URL:", headerUrl);
+    } else {
+        headerUrl = 'mainnonheader.do'; 
+        console.log("🔍 상태: 비로그인. 로드 URL:", headerUrl);
+    }
+    
+    $.ajax({
+        url: headerUrl,
+        type: 'GET',
+        cache: false,
+        dataType: 'html',
+
+        success: function(htmlContent) {
+            $("#header-area").html(htmlContent); 
+            console.log("✅ 헤더 파일 (" + headerUrl + ") 로드 성공");
+        },
+        error: function(xhr, status, error) {
+            console.error("❌ AJAX 헤더 로드 실패");
+            console.log("HTTP 상태 코드:", xhr.status);
+            
+            $("#header-area").html("<span>헤더 로드 오류 (코드: " + xhr.status + ")</span>");
+        }
+    });
+    
+    const loginServiceResponse = '${sessionScope.loginServiceResponse}';
 	if (loginServiceResponse !== '' && loginServiceResponse !== 'null') {
-		const serviceResponseJsonString = '${sessionScope.loginServiceResponse}'; //소셜로그인 테스트용
-		sessionStorage.setItem('userId', serviceResponseJsonString);
+		sessionStorage.setItem('userId', loginServiceResponse);
 	}
 });
 </script>
