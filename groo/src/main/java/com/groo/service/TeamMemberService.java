@@ -16,5 +16,5 @@ public interface TeamMemberService {
 	public void updateTeamLeaderChange(TeamMemberDTO teamMember, TeamMemberDTO teamLeader);
 
 	public List<TeamMemberDTO> selectTeamPage(TeamMemberDTO teamMember);
-
+	public void updateTeamPage(TeamMemberDTO teamMember);
 }

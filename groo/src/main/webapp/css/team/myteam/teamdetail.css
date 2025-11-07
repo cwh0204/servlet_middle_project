@@ -303,6 +303,15 @@ h1, h2 {
   background-color: #FFC107;
 }
 
+#saveBtn {
+  background-color: #FFD84D;
+  border: 1px solid #f0c63e;
+}
+
+#saveBtn:hover {
+  background-color: #FFC107;
+}
+
 #leaveBtn {
   background-color: #E74C3C;
   border: 1px solid #C0392B;

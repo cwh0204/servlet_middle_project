@@ -20,6 +20,6 @@ public interface BoardDAO {
 	public void updateBoard(BoardDTO board, SqlSession session);
 	public void deleteBoard(BoardDTO board, SqlSession session);
 	public List<BoardDTO> selectMyBoardList(MemberDTO member, SqlSession session);
-	
+
 	public void insertRankBoard(BoardDTO board, SqlSession session);
 }
