@@ -19,6 +19,13 @@
 </body>
 <script type="text/javascript">
 $(document).ready( function() {
+	
+	const loginServiceResponse = '${sessionScope.loginServiceResponse}';
+	
+	if (loginServiceResponse !== '' && loginServiceResponse !== 'null') {
+		sessionStorage.setItem('userId', loginServiceResponse);
+	}
+		
 	var memLoginId = sessionStorage.getItem('userId');
 	var headerUrl = '';
     
@@ -41,11 +48,6 @@ $(document).ready( function() {
             $("#header-area").html("<span>헤더 로드 오류 (코드: " + xhr.status + ")</span>");
         }
     });
-    
-    const loginServiceResponse = '${sessionScope.loginServiceResponse}';
-	if (loginServiceResponse !== '' && loginServiceResponse !== 'null') {
-		sessionStorage.setItem('userId', loginServiceResponse);
-	}
 });
 </script>
 </html>

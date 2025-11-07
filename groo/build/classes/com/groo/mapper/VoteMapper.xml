@@ -97,5 +97,12 @@
 		WHERE T.rn = 1
 		ORDER BY T.VOTE_START DESC
 	</select>
+	
+	<select id="selectMyVoteList" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.VoteDTO">
+		SELECT v.VOTE_TITLE, v.VOTE_START, v.VOTE_END, v.VOTE_OK, v.MEM_ID 
+		FROM VOTE v
+		INNER JOIN MEMBER m ON (m.MEM_ID = v.MEM_ID)
+		WHERE MEM_login_id=#{memLoginId}
+	</select>
 
 </mapper>

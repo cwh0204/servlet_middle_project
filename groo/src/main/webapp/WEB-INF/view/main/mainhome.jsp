@@ -21,6 +21,8 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {
+		var memLoginId = sessionStorage.getItem('userId');
+		console.log(memLoginId);
 		teamlist();
 		$('#cardGrid').on('click', '.btn-detail', function() {
 	        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
