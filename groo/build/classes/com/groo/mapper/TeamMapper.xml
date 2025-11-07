@@ -143,5 +143,9 @@
 		SELECT * FROM STUDY
 	</select>
 	
-	
+	<update id="updateTeamLike" parameterType="com.groo.model.TeamDTO">
+		UPDATE STUDY SET
+			STUDY_LIKE = STUDY_LIKE + 1
+		WHERE STUDY_ID = #{studyId}
+	</update>
 </mapper>

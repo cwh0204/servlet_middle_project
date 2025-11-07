@@ -18,4 +18,6 @@ public interface TeamDAO {
 	public List<TeamDTO> selectMyTeam(TeamDTO team, SqlSession session);
 
 	public List<TeamDTO> teamselectAll(TeamDTO teamMember, SqlSession session);
+	
+	public void updateTeamLike(TeamDTO team, SqlSession session);
 }

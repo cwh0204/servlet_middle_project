@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.groo.model.MemberDTO;
 import com.groo.model.VoteDTO;
 
 public interface VoteDAO {
@@ -11,4 +12,5 @@ public interface VoteDAO {
 	public List<VoteDTO> selectVote(VoteDTO vote, SqlSession session);
 	public void updateVoteOk(VoteDTO vote, SqlSession session);
 	public List<VoteDTO> selectVoteRank(VoteDTO vote, SqlSession session);
+	public List<VoteDTO> selectMyVoteList(MemberDTO member, SqlSession session);
 }

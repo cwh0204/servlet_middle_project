@@ -10,6 +10,7 @@ import com.groo.DAO.VoteDAOImpl;
 import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
+import com.groo.model.MemberDTO;
 import com.groo.model.VoteDTO;
 
 public class VoteServiceImpl implements VoteService{
@@ -106,6 +107,32 @@ public class VoteServiceImpl implements VoteService{
 		List<VoteDTO> voteList = new ArrayList<>();
 		try {
 			voteList = dao.selectVoteRank(vote, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return voteList;
+	}
+	
+	/**
+	 * 나의 투표를 가져오기 위한 메서드
+	 *
+	 * @param vote 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	
+	@Override
+	public List<VoteDTO> selectMyVoteList(MemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<VoteDTO> voteList = new ArrayList<>();
+		try {
+			voteList = dao.selectMyVoteList(member, session);
 		} catch (InternalDataAccessException ide) {
 			ide.printStackTrace();
 			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);

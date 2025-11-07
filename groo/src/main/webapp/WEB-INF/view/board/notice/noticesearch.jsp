@@ -10,7 +10,7 @@
 <body>
 	<div class="flex_container">
 		<div class="search-container">
-			<input type="text" class="search-input" placeholder="공지사항을 검색하세요..."> <a href="http://www.naver.com"> <i class="bi bi-search"></i></a>
+			<input type="text" id="noticBoardFind" class="search-input" placeholder="공지사항을 검색하세요..."> <a> <i class="bi bi-search"></i></a>
 		</div>
 	</div>
 </body>
