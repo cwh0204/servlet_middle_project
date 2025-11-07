@@ -269,8 +269,27 @@ $(document).ready(function() {
 	// 가입하기 버튼 클릭 시
 	$('#joinBtn').click(function() {
 		if(confirm('이 스터디에 가입하시겠습니까?')) {
-			alert('가입 요청이 완료되었습니다.');
-			$('#joinBtn').prop('disabled', true).val('가입 완료');
+			$.ajax({
+				url: '',	// 가입 요청 서버 URL
+				type: 'POST',
+				data: {
+					studyId: studyId,
+					memLoginId: memLoginId
+				},
+				success: function(response){
+					if(response.status == "success"){
+						alert('가입이 완료되었습니다.');
+						
+						$('#joinBtn').hide();
+						$('#leaveBtn').show();
+					}else {
+						alert('가입 실패: '+response.message);
+					}
+				},
+				error: function(xhr, status, error){
+					console.error('가입 중 오류 발생:', status, error);
+				}
+			});
 		}
 	});	
 		
