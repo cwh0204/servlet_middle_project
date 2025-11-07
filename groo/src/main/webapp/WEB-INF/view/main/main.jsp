@@ -20,15 +20,12 @@
 <script type="text/javascript">
 $(document).ready( function() {
 	var memLoginId = sessionStorage.getItem('userId');
-    console.log("sessionStorage userId:", memLoginId);
 	var headerUrl = '';
     
     if (memLoginId && memLoginId.trim() !== "" && memLoginId !== "null") {
         headerUrl = 'mainheader.do'; 
-        console.log("🔍 상태: 로그인됨. 로드 URL:", headerUrl);
     } else {
         headerUrl = 'mainnonheader.do'; 
-        console.log("🔍 상태: 비로그인. 로드 URL:", headerUrl);
     }
     
     $.ajax({
@@ -39,12 +36,8 @@ $(document).ready( function() {
 
         success: function(htmlContent) {
             $("#header-area").html(htmlContent); 
-            console.log("✅ 헤더 파일 (" + headerUrl + ") 로드 성공");
         },
         error: function(xhr, status, error) {
-            console.error("❌ AJAX 헤더 로드 실패");
-            console.log("HTTP 상태 코드:", xhr.status);
-            
             $("#header-area").html("<span>헤더 로드 오류 (코드: " + xhr.status + ")</span>");
         }
     });

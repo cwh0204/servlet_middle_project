@@ -34,7 +34,7 @@ var boardselect = () => {
 				const $tdViews = $('<td>').addClass('post-views-' + item.boardId).text(item.postViews);
 				$newRow.append($tdViews);
 				$newRow.append($('<td>').text(item.comentCount));
-				$newRow.append($('<td>').text('12'));
+				$newRow.append($('<td>').text(item.boardLikeCount));
 
 				// 5. 완성된 <tr>을 <tbody>에 추가합니다.
 				$('#boardDataBody').append($newRow);

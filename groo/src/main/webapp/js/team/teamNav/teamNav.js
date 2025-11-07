@@ -10,7 +10,6 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 	$menuItem.addClass('active');
 
 	const pageToLoad = $menuItem.data('page');
-	console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
 
 	if (pageToLoad) {
 		// ⭐ 3. 페이지 클릭 시 sessionStorage에 현재 페이지 저장 ⭐
@@ -46,7 +45,6 @@ $(document).ready(function() {
 					sessionStorage.removeItem(key); // 초기 로드 실패 시 세션 제거
 				}
 			} else {
-				console.log("페이지 로드 성공:", pageToLoad);
 
 				// 메뉴 활성화 로직
 				$('.menu-item').removeClass('active');

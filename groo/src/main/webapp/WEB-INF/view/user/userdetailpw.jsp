@@ -137,7 +137,6 @@ $(document).ready(function() {
 		},
 		dataType: 'json',  
 		success: function(response) {
-			console.log("통신성공");
 			console.log(response.memPass);
 			password= response.memPass;
 			

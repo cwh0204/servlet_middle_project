@@ -10,7 +10,6 @@ var menuItemContent = (lastPage, SESSION_KEY) => {
 	$menuItem.addClass('active');
 
 	const pageToLoad = $menuItem.data('page');
-	console.log("메뉴 클릭, 로드할 페이지:", DEFAULT_PAGE);
 
 	if (pageToLoad) {
 		// ⭐ 3. 페이지 클릭 시 sessionStorage에 현재 페이지 저장 ⭐
@@ -47,7 +46,6 @@ $(document).ready(function() {
 					sessionStorage.removeItem(key); // 초기 로드 실패 시 세션 제거
 				}
 			} else {
-				console.log("페이지 로드 성공:", pageToLoad);
 
 				// 메뉴 활성화 로직
 				$('.menu-item').removeClass('active');
@@ -65,7 +63,6 @@ $(document).ready(function() {
 	        const currentPageName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 	        
 	        if (currentPageName === 'myteamhome.do' || currentPageName === 'teamcreatehome.do') {
-	            console.log(`현재 페이지(${currentPageName})는 기본 페이지이므로 콘텐츠 로드를 건너뜁니다.`);
 	            // 만약 현재 URL이 메뉴 아이템에 등록된 페이지라면 활성화 상태만 설정합니다.
 	            if ($('.menu-item[data-page="' + currentPageName + '"]').length) {
 	                $('.menu-item').removeClass('active');
@@ -80,7 +77,6 @@ $(document).ready(function() {
 	            loadContentAndActivateMenu(lastPage, SESSION_KEY);
 	        } else {
 	            // 세션에 저장된 값이 없으면 myteamhome.do를 로드합니다.
-	            console.log("세션 값이 없어 기본 페이지 로드:", DEFAULT_PAGE);
 	            loadContentAndActivateMenu(DEFAULT_PAGE, null); // 세션 저장 안함
 	        }
 	    }
