@@ -59,6 +59,7 @@ import com.groo.controller.TeamMemberLeaderSelectController;
 import com.groo.controller.TeamMemberLeaderTeamPageSelectController;
 import com.groo.controller.TeamMemberSelectController;
 import com.groo.controller.TeamMemberSelectPageController;
+import com.groo.controller.TeamMemberUpdatePageController;
 import com.groo.controller.TeamSeclectAllController;
 import com.groo.controller.TeamSelectController;
 import com.groo.controller.TeamSelectMyTeamController;
@@ -159,16 +160,15 @@ public class FrontControllerPath {
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
 
         //팀멤버
-        controllerMap.put("/teammerberleaders.do", new TeamMemberLeaderSelectController());
+        controllerMap.put("/teammemberleaders.do", new TeamMemberLeaderSelectController());
         controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());
-
+        controllerMap.put("/teammemberupdatepage.do", new TeamMemberUpdatePageController());
 
         //마이페이지
         controllerMap.put("/myboardlist.do", new MyBoardListController());
         controllerMap.put("/mycommentList.do", new MyCommentListController());
         controllerMap.put("/mylikecontroller.do", new MyLikeListController());
         controllerMap.put("/myvote.do", new MyVoteListController());
-
 
 
         //투표 관련 API
