@@ -1,4 +1,4 @@
-const teamlist = () => {
+function teamlist() {
 	$.ajax({
 		url: "teamselectall.do",
 		type: "GET",
@@ -6,7 +6,7 @@ const teamlist = () => {
 		success: function(allStudiesResponse) {
 
 			$.ajax({
-				url: "teammerberleaders.do",
+				url: "teammemberleaders.do",
 				type: "GET",
 				dataType: "json",
 				success: function(leaderResponse) {
