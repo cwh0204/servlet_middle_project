@@ -90,4 +90,13 @@
 		WHERE B.STUDY_ROLL = 'L'
 		AND A.STUDY_ID = #{studyId}                    
 	</select>
+	
+	<update id="updateTeamPage" parameterType="com.groo.model.TeamMemberDTO">
+		UPDATE STUDY
+		   SET STUDY_TITLE = #{studyTitle},
+		   	   STUDY_CATEGORY = #{studyCategory},
+		   	   STUDY_INTRO = #{studyIntro},
+		   	   STUDY_INTROCONTENT = #{studyIntrocontent}
+		 WHERE STUDY_ID = #{studyId}
+	</update>
 </mapper>
