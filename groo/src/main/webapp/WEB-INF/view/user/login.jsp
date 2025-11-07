@@ -156,9 +156,7 @@ function sendCustomEmail(memEmail, memPass) {
     // 2. emailjs.send(서비스 ID, 템플릿 ID, 데이터 객체) 호출
     emailjs.send('service_gotykea', 'template_c4g3arg', templateParams)
         .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
         }, function(error) {
-            console.log('FAILED...', error);
         });
 }
 //임시 비밀번호 생성
@@ -333,7 +331,6 @@ $(document).ready(function() {
 				},
 				// 데이터 전송 성공 시 실행
 				success : function(response) {
-					console.log(response);
 					if (response != null) {
 						sessionStorage.setItem('userId', response.memLoginId);
 						window.location.href = "main.do";
