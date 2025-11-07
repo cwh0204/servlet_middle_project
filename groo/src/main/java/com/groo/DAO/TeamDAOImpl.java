@@ -163,7 +163,7 @@ public class TeamDAOImpl implements TeamDAO{
 		try {
 			teamList = session.selectOne("selectTeamPass",team);
 		}catch (Exception e) {
-			throw new InternalDataAccessException("DAO:selectMyTeam 예외발생", e);
+			throw new InternalDataAccessException("DAO:selectTeamPass 예외발생", e);
 		}
 		return teamList;
 	}
