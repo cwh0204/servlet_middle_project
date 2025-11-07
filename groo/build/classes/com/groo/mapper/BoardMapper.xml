@@ -155,6 +155,7 @@
         SELECT MEM_NICK
         FROM MEMBER
         WHERE MEM_LOGIN_ID = #{memLoginId}
-    )
+        AND	b.POSTING_DEL IS NULL
+    ) 
 	</select>
 </mapper>

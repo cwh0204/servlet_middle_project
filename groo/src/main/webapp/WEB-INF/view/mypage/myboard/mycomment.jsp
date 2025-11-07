@@ -55,7 +55,6 @@ $(document).ready(function() {
         },
         
         success: function(response) {
-        	console.log(response);
             const $tbody = $("#replyData");
             $tbody.empty(); 
 
