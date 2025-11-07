@@ -121,7 +121,7 @@
 			#{studyIntro}
 		)
 	</insert>
-	
+
 	<select id="selectMyTeam" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
 		SELECT 
 			C.STUDY_ID,
@@ -135,12 +135,12 @@
 		FROM STUDYMEMBER A
 		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		INNER JOIN STUDY C ON (A.STUDY_ID = C.STUDY_ID)
-		WHERE B.MEM_LOGIN_ID = #{memLoginId}
+		WHERE B.MEM_LOGIN_ID = #{memLoginId} AND C.STUDY_DELETEDATE IS NULL
 		ORDER BY C.STUDY_TITLE
 	</select>
 	
 	<select id="teamselectAll" parameterType="com.groo.model.TeamDTO" resultType="com.groo.model.TeamDTO">
-		SELECT * FROM STUDY
+		SELECT * FROM STUDY WHERE STUDY_DELETEDATE IS NULL
 	</select>
 	
 	<update id="updateTeamLike" parameterType="com.groo.model.TeamDTO">

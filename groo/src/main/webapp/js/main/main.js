@@ -42,7 +42,7 @@ function processAndRenderCards(allStudies, leaderList) {
 	}
 }
 
-function generateStudyCard(card) { 
+function generateStudyCard(card) { // 👈 매개변수 이름을 'card'로 변경
 	const cardHtml = `
             <article class="study-card glass-card">
                 <div class="card-gradient"></div>
