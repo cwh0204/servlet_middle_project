@@ -42,6 +42,7 @@ import com.groo.controller.MemberUpdateController;
 import com.groo.controller.MyBoardListController;
 import com.groo.controller.MyCommentListController;
 import com.groo.controller.MyLikeListController;
+import com.groo.controller.MyVoteListController;
 import com.groo.controller.NaverLoginController;
 import com.groo.controller.ReportInsertController;
 import com.groo.controller.SignUpController;
@@ -165,6 +166,7 @@ public class FrontControllerPath {
         controllerMap.put("/myboardlist.do", new MyBoardListController());
         controllerMap.put("/mycommentList.do", new MyCommentListController());
         controllerMap.put("/mylikecontroller.do", new MyLikeListController());
+        controllerMap.put("/myvote.do", new MyVoteListController());
 
 
 
