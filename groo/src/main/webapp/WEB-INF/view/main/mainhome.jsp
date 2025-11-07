@@ -23,17 +23,15 @@
 	$(document).ready(function() {
 		var memLoginId = sessionStorage.getItem('userId');
 		console.log(memLoginId);
-		teamlist();
+		grooteam();
 		$('#cardGrid').on('click', '.btn-detail', function() {
-	        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
-	        const studyId = $(this).data('studyId');
-	        console.log(studyId);
-	        if (studyId) {
-				pageLoad(studyId);
-	        } else {
-	            console.error("❌ 오류: studyId를 가져올 수 없습니다.");
-	        }
-	    });
+			const studyId = $(this).data('studyId');
+			if (studyId) {
+				window.location.href = 'teamdetail.do?studyId=' + studyId;
+			} else {
+				console.error("❌ 오류: studyId를 가져올 수 없습니다.");
+			}
+		});
 	});
 </script>
 </html>

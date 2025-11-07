@@ -5,6 +5,8 @@
 <head>
 
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
 
 <meta charset="UTF-8">
 <title></title>
@@ -16,12 +18,45 @@
 			<p class="subtitle">참여 중인 스터디를 확인해보세요</p>
 		</div>
 
-		<div class="card-grid" id="cardGrid">
+		<div class="card-grid" id="cardGrid"></div>
+	</div>
 
+	<div class="modal fade" id="passwordCheckModal" tabindex="-1"
+		aria-labelledby="passwordCheckModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="passwordCheckModalLabel">🔐 스터디 비밀번호
+						확인</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="닫기"></button>
+				</div>
+
+				<div class="modal-body">
+					<form id="passwordCheckForm">
+						<div class="mb-3">
+							<label for="inputPassword" class="form-label">스터디의 비밀번호를
+								입력해주세요:</label> <input type="password" class="form-control"
+								id="inputPassword" required>
+							<div class="invalid-feedback" id="feedbackMessage"></div>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary"
+						id="confirmPasswordBtn">확인</button>
+				</div>
+			</div>
 		</div>
 	</div>
+
 </body>
 <script type="text/javascript">
+var teamPass;
+var studyId;
 function generateStudyCard(team) {
     // 템플릿 리터럴(Template Literal)을 사용하여 HTML 문자열을 생성합니다.
     const cardHtml =
@@ -159,7 +194,34 @@ var studyLike = (studyId) => {
 
 		}
 	});
-} 
+}
+
+var teamPassAjax = (studyId) => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'teampassselect.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			studyId: studyId
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+
+			if(response == null){
+				pageLoad(studyId);
+			}else{
+				teamPass = response.studyPass;
+				const myModal = new bootstrap.Modal(document.getElementById('passwordCheckModal'));
+                myModal.show();
+			}
+		},
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
 $(document).ready(function() {
 	myTeamList();
  	$('#cardGrid').on('click', '.btn-detail', function() {
@@ -167,7 +229,7 @@ $(document).ready(function() {
         const studyId = $(this).data('studyId');
         console.log(studyId);
         if (studyId) {
-			pageLoad(studyId);
+        	teamPassAjax(studyId);
         } else {
             console.error("❌ 오류: studyId를 가져올 수 없습니다.");
         }
@@ -176,10 +238,23 @@ $(document).ready(function() {
  		const $currentElement = $(this);
  	    const $studyCard = $currentElement.closest('.study-card');
  	    const $detailButton = $studyCard.find('.btn-detail');
- 	    const studyId = $detailButton.data('studyId');
+ 	    studyId = $detailButton.data('studyId');
  	    
  		studyLike(studyId);
  	});
+ 	
+ 	$('#confirmPasswordBtn').on('click',function(){
+ 		const modalElement = document.getElementById('passwordCheckModal');
+	 	const modalInstance = bootstrap.Modal.getInstance(modalElement);
+ 		const passCheck = $('#inputPassword').val();
+ 		if(teamPass == passCheck){
+ 			modalInstance.hide();
+ 			pageLoad(studyId);
+ 		}else{
+ 			alert("비밀번호가 일치하지 않습니다.");
+ 		}
+ 	});
+ 	
 });
 </script>
 </html>
