@@ -226,7 +226,7 @@ public class TeamServiceImpl implements TeamService{
 		}
 		return teamList;
 	}
-	
+
 	/**
 	 * 팀의 좋아요를 추가하는 서비스 메서드입니다.
 	 *
@@ -250,7 +250,7 @@ public class TeamServiceImpl implements TeamService{
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 팀의 비밀번호를 조회하는 서비스 메서드입니다.
 	 * @param  팀의 정보를 가져오기 위한 Data Transfer Object 데이터 클래스

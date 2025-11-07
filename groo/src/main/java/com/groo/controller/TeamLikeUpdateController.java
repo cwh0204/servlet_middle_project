@@ -2,13 +2,10 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.ComentDTO;
 import com.groo.model.TeamDTO;
 import com.groo.service.TeamService;
 import com.groo.service.TeamServiceImpl;
@@ -24,7 +21,7 @@ public class TeamLikeUpdateController implements Controller {
 		String studyId = request.getParameter("studyId");
 
 		TeamDTO team = new TeamDTO();
-		
+
 		team.setStudyId(studyId);
 
 		TeamService service = new TeamServiceImpl();
