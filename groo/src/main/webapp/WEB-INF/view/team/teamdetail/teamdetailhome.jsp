@@ -166,8 +166,8 @@ var loadScheduleList = (response) => {
 	    });
 	}
 $(document).ready(function() {
-	var userId = sessionStorage.getItem('userId');
-	console.log(userId);
+//	var userId = sessionStorage.getItem('userId');
+//	console.log(userId);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'teammemberselectpage.do',
@@ -180,15 +180,24 @@ $(document).ready(function() {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			console.log(response);
-			$('#study_title').val(response.studyTitle);
-			$('.leader-name').text(response.memNick);
-			$('#study_category').val(response.studyCategory);
-			$('#study_intro').val(response.studyIntro);
-			$('#study_introcontent').val(response.studyIntrocontent);
+			
+			// 배열인 경우 첫번째 데이터 꺼내기
+			const data = response[0];
+			
+			if(data) {
+				$('#study_title').val(data.studyTitle);
+				$('.leader-name').text(data.memNick);
+				$('#study_category').val(data.studyCategory);
+				$('#study_intro').val(data.studyIntro);
+				$('#study_introcontent').val(data.studyIntrocontent);
+			}else {
+				console.warn("데이터가 비어있습니다.");
+			}
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
+			console.log("데이터를 불러오는 AJAX 오류: ", status, error);
 		}
 	});
 	
@@ -215,12 +224,42 @@ $(document).ready(function() {
 	
 	// 저장하기 버튼 클릭 시
 	$('#saveBtn').click(function() {
-		alert('변경사항이 저장되었습니다.');
-		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
-																						  .removeClass('edit-mode');
+		// 입력값 
+		const studyTitle = $('#study_title').val();
+		const studyCategory = $('#study_category').val();
+		const studyIntro = $('#study_intro').val();
+		const studyIntrocontent = $('#study_introcontent').val();
 		
-		$('#saveBtn').hide();
-		$('#editBtn').show();
+		$.ajax({
+			// 데이터를 전송할 서버 URL
+			url: 'teampageupdate.do',
+			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+			type: 'POST',
+			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+			data: {
+				studyId: studyId,		// 위에서 선언된 전역 변수 사용
+				studyTitle: studyTitle,
+				studyCategory: studyCategory,
+				studyIntro: studyIntro,
+				studyIntrocontent: studyIntrocontent
+			},
+			dataType: 'json',		// 서버에서 JSON으로 응답하니까 이렇게 작성
+			success: function(response){
+				if(response.result === 'success'){
+				   alert('변경사항이 저장되었습니다.');
+				   $('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
+																									  .removeClass('edit-mode');
+
+				   $('#saveBtn').hide();
+				   $('#editBtn').show();
+				}else {
+					alert('저장 실패:' +response.message);
+				}
+			},
+			error: function(xhr, status, error){
+				console.log('저장하는 중에 서버 통신 오류:', status, error);
+			}
+		});
 	});
 	
 	// 폼 제출

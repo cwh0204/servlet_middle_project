@@ -8,7 +8,7 @@
 <link href="css/board/boardtable.css" rel="stylesheet">
 </head>
 <body>
-<%@ include file="goalsearch.jsp"%>
+	<%@ include file="goalsearch.jsp"%>
 	<table class="table table-hover">
 		<thead class="table-light">
 			<tr>
@@ -21,107 +21,73 @@
 				<th scope="col">좋아요</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr class="table-success">
-				<th scope="row">필독</th>
-				<td><a href="noticedetail.do?id=NOTICE_0"><strong>[긴급]</strong> 개인정보 보호를 위한 비밀번호 변경 권고</a></td>
-				<td>관리자</td>
-				<td>2025.10.22</td>
-				<td>2,500</td>
-				<td>15</td>
-				<td>32</td>
-			</tr>
-			<tr>
-				<th scope="row">10</th>
-				<td><a href="noticedetail.do?id=10">101010</a></td>
-				<td>김00</td>
-				<td>2025.10.15</td>
-				<td>870</td>
-				<td>5</td>
-				<td>18</td>
-			</tr>
-			<tr>
-				<th scope="row">9</th>
-				<td><a href="noticedetail.do?id=9">999</a></td>
-				<td>이00</td>
-				<td>2025.10.10</td>
-				<td>1,120</td>
-				<td>12</td>
-				<td>55</td>
-			</tr>
-			<tr>
-				<th scope="row">8</th>
-				<td><a href="noticedetail.do?id=8">888</a></td>
-				<td>박00</td>
-				<td>2025.10.05</td>
-				<td>450</td>
-				<td>3</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<th scope="row">7</th>
-				<td><a href="noticedetail.do?id=7">777</a></td>
-				<td>최00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>8</td>
-				<td>22</td>
-			</tr>
-			<tr>
-				<th scope="row">6</th>
-				<td><a href="noticedetail.do?id=6">666</a></td>
-				<td>정00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>0</td>
-				<td>1</td>
-			</tr>
-			<tr>
-				<th scope="row">5</th>
-				<td><a href="noticedetail.do?id=5">555</a></td>
-				<td>윤00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>1</td>
-				<td>3</td>
-			</tr>
-			<tr>
-				<th scope="row">4</th>
-				<td><a href="noticedetail.do?id=4">444</a></td>
-				<td>장00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>4</td>
-				<td>14</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td><a href="noticedetail.do?id=3">333</a></td>
-				<td>신00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>7</td>
-				<td>25</td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td><a href="noticedetail.do?id=2">222</a></td>
-				<td>임00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>2</td>
-				<td>8</td>
-			</tr>
-			<tr>
-				<th scope="row">1</th>
-				<td><a href="noticedetail.do?id=1">111</a></td>
-				<td>고00</td>
-				<td>2025.09.28</td>
-				<td>620</td>
-				<td>1</td>
-				<td>4</td>
-			</tr>
+		<tbody id="boardDataBody">
 		</tbody>
 	</table>
 </body>
+<script type="text/javascript">
+var boardselect = () => {
+	console.log("board");
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'boardselect.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+			boardTypeId : 'RANK'
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+
+			$('#boardDataBody').empty();
+
+			// response는 서버에서 돌려준 데이터입니다.
+			response.forEach(item => {
+				const writeDateOnly = item.postingDate ? item.postingDate.split(' ')[0] : '-';
+				const $newRow = $('<tr>').addClass('table-hover'); // table-success 대신 table-hover 사용
+
+				// 2. <th> 요소 (번호)를 생성하고 <tr>에 추가합니다.
+				const $th = $('<th>').attr('scope', 'row').text(item.boardId);
+				$newRow.append($th);
+
+				// 3. <td> 요소 (제목)를 생성하고 <tr>에 추가합니다.
+				const $a = $('<a>').attr('href', 'postdetail.do?id=' + item.boardId).text(item.postTitle);
+				const $tdTitle = $('<td>').append($a);
+				$newRow.append($tdTitle);
+
+				// 4. 나머지 <td> 요소들을 생성하고 <tr>에 추가합니다.
+				$newRow.append($('<td>').text(item.memNick));
+				$newRow.append($('<td>').text(writeDateOnly));
+				const $tdViews = $('<td>').addClass('post-views-' + item.boardId).text(item.postViews);
+				$newRow.append($tdViews);
+				$newRow.append($('<td>').text(item.comentCount));
+				$newRow.append($('<td>').text('12'));
+
+				// 5. 완성된 <tr>을 <tbody>에 추가합니다.
+				$('#boardDataBody').append($newRow);
+
+				$a.on('click', function(e) {
+					// e.preventDefault(); // 페이지 이동을 막으려면 이 줄을 사용
+
+					// 현재 DB에 저장된 조회수 값 (문자열)을 가져옵니다.
+					let currentViews = parseInt($tdViews.text());
+
+					// 1을 더하고 (DB에 반영된 것으로 가정)
+					currentViews += 1;
+
+					// 화면의 텍스트를 즉시 업데이트합니다.
+					$tdViews.text(currentViews);
+
+					// 참고: e.preventDefault()를 사용하지 않으면, 이 작업 후 바로 페이지 이동이 일어납니다.
+				});
+			});
+		},
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+		}
+	});
+}
+$(document).ready(function() { boardselect(); });
+</script>
 </html>

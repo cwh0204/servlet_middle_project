@@ -158,4 +158,25 @@
         AND	b.POSTING_DEL IS NULL
     ) 
 	</select>
+	<insert id="insertRankBoard" parameterType="com.groo.model.BoardDTO">
+		INSERT INTO BOARD (
+		    BOARD_ID,
+			MEM_ID,
+		    BOARD_TYPE_ID,
+		    POST_TITLE,
+		    POST_CONTENT,
+		    POSTING_DATE
+		)
+		SELECT
+		    'B'||BOARD_SEQ.NEXTVAL,
+		    MEM_ID,
+		    'RANK',
+		    POST_TITLE,
+		    POST_CONTENT,
+		    SYSDATE
+		FROM
+		    BOARD
+		WHERE 
+		    BOARD_ID = #{boardId}
+	</insert>
 </mapper>
