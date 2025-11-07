@@ -33,11 +33,13 @@ public class AdminStudyMemberDeleteController implements Controller {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		String memName = request.getParameter("memName");
-
+		String memId = request.getParameter("memId");
+		String studyId = request.getParameter("studyId");
+		
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
 
-		member.setMemName(memName);
+		member.setMemId(memId);
+		member.setStudyId(studyId);
 
 		AdminServiceImpl service = new AdminServiceImpl();
 

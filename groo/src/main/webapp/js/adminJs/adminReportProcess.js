@@ -46,13 +46,6 @@ function initializeDisableUserGrid() {
 			header: '벤종료일',
 			name: 'endActionDate',
 			width: 100
-		}, {
-			header: 'Grade',
-			name: 'grade',
-			width: 150,
-			renderer: {
-				type: CustomReportProcessBtnRenderer,
-			}
 		}
 		]
 	});

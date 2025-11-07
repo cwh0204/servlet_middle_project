@@ -86,8 +86,6 @@ var teamStats = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			// response는 서버에서 돌려준 데이터입니다.
-			// 예: 성공 메시지 표시 또는 페이지 이동
 			$('.total-teams').text(response.totalTeams);
 			$('.inactive-teams').text(response.inactiveTeams);
 			$('.weekly-teams').text(response.weeklyTeams);
@@ -114,6 +112,7 @@ searchTeam = () => {
 		},
 	// 데이터 전송 성공 시 실행
 		success: function(response) {
+			console.log(response);
 	// response는 서버에서 돌려준 데이터입니다.
 			gridTeamMember.resetData(response);
 		},

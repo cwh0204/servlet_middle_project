@@ -287,7 +287,8 @@ class CustomTeamMemberBtnRenderer {
         		type: 'POST',
         		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
         		data: {
-        			memName: rowData.memName
+        			memId: rowData.memId,
+        			studyId: rowData.studyId
         		},
         		// 데이터 전송 성공 시 실행
         		success: function(response) {

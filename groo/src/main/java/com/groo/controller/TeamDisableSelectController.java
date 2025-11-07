@@ -37,8 +37,12 @@ public class TeamDisableSelectController implements Controller {
 		TeamServiceImpl service = new TeamServiceImpl();
 		TeamDTO team = new TeamDTO();
 		if(search != null && !search.isEmpty()) {
-			int serchMax = Integer.parseInt(request.getParameter("search"));
-			team.setStudyMax(serchMax);
+			try {
+		        int serchMax = Integer.parseInt(search);
+		        team.setStudyMax(serchMax);
+		    } catch (NumberFormatException e) {
+		        System.err.println("경고: search 파라미터에 숫자가 아닌 값(" + search + ")이 입력되었습니다.");
+		    }
 		}
 
 		team.setStudyId(search);

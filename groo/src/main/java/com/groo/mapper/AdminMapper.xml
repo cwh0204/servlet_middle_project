@@ -235,6 +235,8 @@
 	</select>
 	<select id="adminSelectStudyMember" parameterType="com.groo.model.AdminTeamMemberDTO" resultType="com.groo.model.AdminTeamMemberDTO">
 			SELECT
+				A.STUDY_ID,
+				A.MEM_ID,
 				B.MEM_NAME AS MEM_NAME,
 				C.STUDY_TITLE AS STUDY_TITLE,
 				CASE A.STUDY_ROLL
@@ -271,7 +273,7 @@
 		WHERE MEM_ID = (SELECT B.MEM_ID
 						FROM MEMBER A
 						INNER JOIN STUDYMEMBER B  ON (B.MEM_ID = A.MEM_ID)
-						WHERE A.MEM_NAME = #{memName}
+						WHERE A.MEM_ID = #{memId} AND B.STUDY_ID = #{studyId}
 						)
 	</update>
 	
