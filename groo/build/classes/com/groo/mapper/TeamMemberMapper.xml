@@ -99,4 +99,19 @@
 		   	   STUDY_INTROCONTENT = #{studyIntrocontent}
 		 WHERE STUDY_ID = #{studyId}
 	</update>
+	
+	<insert id="insertTeamPage" parameterType="com.groo.model.TeamMemberDTO">
+		INSERT INTO STUDYMEMBER 
+		( 
+		  MEM_ID,
+		  STUDY_ID,
+		  STUDY_ROLL,
+		  STUDY_JOINEDDATE
+		 ) VALUES (
+		 		(SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId}),
+		 		  #{studyId},
+		 		  'M',
+		 		  SYSDATE
+		 		)
+	</insert>
 </mapper>
