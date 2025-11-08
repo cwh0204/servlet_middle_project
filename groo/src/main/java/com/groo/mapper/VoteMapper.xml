@@ -99,10 +99,46 @@
 	</select>
 	
 	<select id="selectMyVoteList" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.VoteDTO">
-		SELECT v.VOTE_TITLE, v.VOTE_START, v.VOTE_END, v.VOTE_OK, v.MEM_ID 
-		FROM VOTE v
-		INNER JOIN MEMBER m ON (m.MEM_ID = v.MEM_ID)
-		WHERE MEM_login_id=#{memLoginId}
+		SELECT
+		    T.VOTE_ID,
+		    T.STUDY_ROLL,
+		    T.MEM_NICK,
+		    T.VOTE_TITLE,
+		    T.VOTE_CONTENT,
+		    T.VOTE_SUBJECT,
+		    T.VOTE_START,
+		    T.VOTE_END,
+		    T.VOTE_OK
+		FROM (
+		    SELECT 
+		        A.VOTE_ID,
+		        CASE C.STUDY_ROLL
+		            WHEN 'L' THEN '팀장'
+		            WHEN 'M' THEN '팀원'
+		            ELSE '미확인'
+		        END AS STUDY_ROLL,
+		        B.MEM_NICK,
+		        A.VOTE_TITLE,
+		        A.VOTE_CONTENT,
+		        A.VOTE_SUBJECT,
+		        A.VOTE_START,
+		        A.VOTE_END,
+		        A.VOTE_OK,
+		        ROW_NUMBER() OVER (
+		            PARTITION BY 
+		                A.STUDY_ID, 
+		                TO_CHAR(A.VOTE_START, 'YYYYIW')
+		            ORDER BY 
+		                A.VOTE_OK DESC, 
+		                A.VOTE_ID
+		        ) AS RN 
+		    FROM VOTE A
+		    INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		    INNER JOIN STUDYMEMBER C ON (A.MEM_ID = C.MEM_ID AND A.STUDY_ID = C.STUDY_ID)
+		    WHERE A.VOTE_END <![CDATA[<]]>  SYSDATE
+		) T
+		WHERE T.rn = 1 AND T.MEM_NICK = (SELECT MEM_NICK FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId})
+		ORDER BY T.VOTE_START DESC
 	</select>
 
 </mapper>

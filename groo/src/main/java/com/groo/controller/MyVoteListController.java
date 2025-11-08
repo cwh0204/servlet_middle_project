@@ -25,11 +25,11 @@ public class MyVoteListController implements Controller {
 		response.setCharacterEncoding("UTF-8");
 
 		String memLoginId = request.getParameter("memLoginId");
-
+		
 		MemberDTO member = new MemberDTO();
 
 		member.setMemLoginId(memLoginId);
-
+		
 		VoteService service = new VoteServiceImpl();
 
 		List<VoteDTO> myVote = new ArrayList<>();
