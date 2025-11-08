@@ -14,7 +14,7 @@ function initFullCalendar() {
 	const month = String(today.getMonth() + 1).padStart(2, '0');
 	const day = String(today.getDate()).padStart(2, '0');
 	const dynamicInitialDate = `${year}-${month}-${day}`;
-
+    
 	window.calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView: 'dayGridMonth',
 		initialDate: dynamicInitialDate,
@@ -39,13 +39,18 @@ function initFullCalendar() {
 				alert(`[팀 일정] ${info.event.title}\n시작 날짜: ${info.event.startStr}`);
 			}
 		},
-
+		
 		events: [
 			{
 				title: '주간 스터디 회의',
 				start: dynamicInitialDate,
-				color: '#d1ecf1',
-				textColor: '#4CAF50',
+				
+                // 🌟 임시로 초록색을 적용합니다. 
+                // 🚨 실제 색상 순환 로직은 AJAX 함수에 있어야 합니다.
+                backgroundColor: '#66BB6A', 
+                borderColor: '#388E3C',
+                textColor: '#FFFFFF',
+                
 				extendedProps: { isTeamEvent: true }
 			}
 		]

@@ -9,7 +9,6 @@
 <!-- Bootstrap & jQuery -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-<link href="css/base.css" rel="stylesheet">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
@@ -20,6 +19,7 @@
 
 <!-- Custom CSS -->
 <!-- <link href="css/base.css" rel="stylesheet"> -->
+<link href="css/base.css" rel="stylesheet">
 <link href="css/team/teamcreate/teamcreate.css" rel="stylesheet">
 <link href="css/datepicker-custom.css" rel="stylesheet">
 </head>
