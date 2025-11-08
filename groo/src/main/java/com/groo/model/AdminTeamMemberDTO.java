@@ -10,5 +10,5 @@ public class AdminTeamMemberDTO {
 	private String studyJoinedDate;
 	private String memId;
 	private String studyId;
-	
+
 }
