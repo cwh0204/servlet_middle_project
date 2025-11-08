@@ -193,7 +193,7 @@ $(document).ready(function() {
 	    				sessionStorage.removeItem('main_last_view');
 	    				location.href = 'login.do';
     				}else{
-    					alert("탈퇴 처리가 실패했습니다.");
+    					alert("비밀번호가 틀립니다.");
     				}
     			},
 
