@@ -60,6 +60,29 @@ function showCancelAlert() {
 
 
 const showSubmitALert = () => {
+	const pw = $('#password').val();
+		const pwCheck = $('#passtry').val();
+		
+		// 8~20자리, 특수문자 1개 이상, 공백 제외 정규식 (기존 코드에서 가져옴)
+		const validpwRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=\S+$).{8,20}$/; 
+
+		// 1. 비밀번호 필수 입력 체크
+		if (pw.length === 0 || pwCheck.length === 0) {
+			alert("비밀번호를 입력해주세요.");
+			return; // 비밀번호가 없으면 함수 실행을 중단하고 AJAX를 막습니다.
+		}
+
+		// 2. (선택적이지만 권장되는) 형식 및 일치 여부 최종 검증
+		if (!validpwRegex.test(pw)) {
+	        alert("비밀번호는 8~20자리, 특수문자 1개 이상, 공백 제외 조건을 만족해야 합니다.");
+	        return;
+	    }
+	    
+	    if (pw !== pwCheck) {
+	        alert("비밀번호와 비밀번호 재확인이 일치하지 않습니다.");
+	        return;
+	    }
+		
 	const userId = $('#memLoginId').val(); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 	const memPass = $('#passtry').val();
 	const memEmail = $('#emailid').val() + '@' + $('#emailDomain').val();
