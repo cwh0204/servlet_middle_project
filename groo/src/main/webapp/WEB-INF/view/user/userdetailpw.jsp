@@ -65,7 +65,15 @@ button {
 }
 
 button:hover {
-	background-color: #7fb824;;
+	background-color: #7fb824;
+}
+
+#cancelBtn {
+    background-color: #c0c0c0;
+}
+
+#cancelBtn:hover {
+    background-color: #a9a9a9;
 }
 
 .pw-container {
