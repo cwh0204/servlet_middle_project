@@ -19,7 +19,7 @@
 <script src="js/teamCreate.js"></script>
 
 <!-- Custom CSS -->
-<link href="css/base.css" rel="stylesheet">
+<!-- <link href="css/base.css" rel="stylesheet"> -->
 <link href="css/team/teamcreate/teamcreate.css" rel="stylesheet">
 <link href="css/datepicker-custom.css" rel="stylesheet">
 </head>
