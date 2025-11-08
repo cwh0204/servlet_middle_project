@@ -5,13 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>FullCalendar JSP 통합</title>
-
-<script src="jquery/jquery-3.7.1.min.js"></script>
-<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
-<link href='css/mypage/mypagedashboard/mypagedashboard.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
-<script src="js/mypage/mypagedashboard/mypagedashboard.js"></script>
 </head>
 <body>
 	<div id='fullCalendar'></div>
@@ -19,9 +12,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		const memLoginId = sessionStorage.getItem('userId');
-
-		// 1. 달력 초기화
-		initFullCalendar();
 
 		$.ajax({
 			url : 'myvote.do',
@@ -74,5 +64,7 @@
 			}
 		});
 	});
+	
+	initFullCalendar();
 </script>
 </html>
