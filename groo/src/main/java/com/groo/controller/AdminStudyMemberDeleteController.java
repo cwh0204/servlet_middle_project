@@ -35,7 +35,7 @@ public class AdminStudyMemberDeleteController implements Controller {
 
 		String memId = request.getParameter("memId");
 		String studyId = request.getParameter("studyId");
-		
+
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
 
 		member.setMemId(memId);
