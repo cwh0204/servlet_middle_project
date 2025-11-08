@@ -144,5 +144,4 @@
 		<%@ include file="./userdetailpw.jsp"%>
 	</div>
 </body>
-
 </html>

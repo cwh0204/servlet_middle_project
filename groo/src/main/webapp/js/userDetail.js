@@ -1,11 +1,11 @@
 //닉네임 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
-let NicknameCheck = false;
+var NicknameCheck = false;
 //닉네임 형식 유효성 통과 상태 (정규식 통과)
-let NickValid = false;
+var NickValid = false;
 //이메일 중복확인 완료 상태 (false: 미확인, true: 확인 완료)
-let EMailCheck = false;
+var EMailCheck = false;
 //이메일 형식 유효성 통과 상태 (정규식 통과)
-let EmailValid = false;
+var EmailValid = false;
 
 /**
  * 닉네임 중복 확인 요청
@@ -59,7 +59,7 @@ function showCancelAlert() {
 }*/
 
 
-const showSubmitALert = () => {
+showSubmitALert = () => {
 	const pw = $('#password').val();
 		const pwCheck = $('#passtry').val();
 		
@@ -124,7 +124,7 @@ const showSubmitALert = () => {
 }
 
 
-const requestMemberDeletion = () => {
+requestMemberDeletion = () => {
 
 	const userId = $('#memLoginId').val(); // 세션에 저장된 로그인 정보를 가져옴 자세한코드는 main.jsp
 

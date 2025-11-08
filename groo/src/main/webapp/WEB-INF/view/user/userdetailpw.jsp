@@ -231,8 +231,8 @@ $('input[name="userID"]').val(memLoginId);
 
 
 // 비밀번호 눈모양 아이콘 
-const togglePasswordPw = document.getElementById('togglePassword');
-const passwordPw = document.getElementById('pw');
+var togglePasswordPw = document.getElementById('togglePassword');
+var passwordPw = document.getElementById('pw');
 
 $("#userPwCk").on("click",function () {
 	   $(".pw-container").removeClass("active");
