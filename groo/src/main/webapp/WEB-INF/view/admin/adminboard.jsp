@@ -144,7 +144,11 @@ $(document).ready(function() {
 			name : 'boardId'
 		}, {
 			header : '게시글Type',
-			name : 'boardTypeId'
+			name : 'boardTypeId',
+			filter: {
+		        type: 'select',
+		        operator: 'OR'
+		    }
 		}, {
 			header : '작성자',
 			name : 'memNick'

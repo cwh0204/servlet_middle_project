@@ -391,4 +391,26 @@
 			COUNT(CASE WHEN TRUNC(POSTING_DATE,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_signups
 		FROM BOARD
 	</select>
+	
+	<select id="adminSelectComment">
+		SELECT 
+			A.COMENT_ID,
+			B.MEM_NICK,
+			A.BOARD_ID,
+			A.COMENT_CONTENT,
+			A.COMENT_DATE
+		FROM COMENT A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		<where>
+	        <if test="findName != null and findName != ''">
+	            <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+	                OR A.COMENT_ID LIKE '%' || #{findName} || '%'
+	                OR B.MEM_NICK LIKE '%' || #{findName} || '%'
+	                OR A.BOARD_ID LIKE '%' || #{findName} || '%'
+	                OR A.COMENT_CONTENT LIKE '%' || #{findName} || '%'
+	                OR A.COMENT_DATE LIKE '%' || #{findName} || '%'
+	            </trim>
+	        </if>
+        </where>
+	</select>
 </mapper>
