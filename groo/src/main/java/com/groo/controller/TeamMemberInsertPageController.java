@@ -38,16 +38,21 @@ public class TeamMemberInsertPageController implements Controller {
 
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
+		
+		// JSON으로 보낼 결과 객체
 		Map<String, Object> result = new HashMap<>();
 		
 		try {
 			
 			// 세션에서 로그인한 사용자 아이디 가져오기
-			HttpSession session = request.getSession();
-			String memLoginId = (String) session.getAttribute("userId");
+			/*
+			 * HttpSession session = request.getSession(); String memLoginId = (String)
+			 * session.getAttribute("userId");
+			 */
 			
 			// 파라미터로 전달된 studyId 가져오기
 			String studyId = request.getParameter("studyId");
+			String memLoginId = request.getParameter("memLoginId");
 			
 			TeamMemberDTO teamMember = new TeamMemberDTO();
 			teamMember.setMemLoginId(memLoginId);
@@ -56,21 +61,17 @@ public class TeamMemberInsertPageController implements Controller {
 			TeamMemberService service = new TeamMemberServiceImpl();
 			service.insertTeamPage(teamMember);
 
-			result.put("success", true);
+			result.put("status", "success");
 			result.put("message", "스터디 가입이 완료되었습니다.");
-			/*
-			 * 
-			 * 
-			 * PrintWriter out = response.getWriter(); out.print(json); out.flush();
-			 */
+			
 		} catch (InternalServiceException ise) {
 			ise.printStackTrace();
-			result.put("success", false);
-			result.put("message", "DB 처리 중 오류가 발생했습니다.");
+			result.put("status", "error");
+			result.put("message", "내부 서비스 오류 발생");
 		} catch (Exception e) {
 			e.printStackTrace();
-			result.put("success", false);
-			result.put("message", "예상치 못한 오류가 발생했습니다.");
+			result.put("status", "error");
+			result.put("message", "가입 처리 중 오류가 발생했습니다.");
 		}
 		
 		String json = gson.toJson(result);

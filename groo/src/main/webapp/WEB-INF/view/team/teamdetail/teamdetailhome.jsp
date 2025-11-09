@@ -270,13 +270,16 @@ $(document).ready(function() {
 	$('#joinBtn').click(function() {
 		if(confirm('이 스터디에 가입하시겠습니까?')) {
 			$.ajax({
-				url: '',	// 가입 요청 서버 URL
+				url: 'teammemberinsertpage.do',	// 가입 요청 서버 URL
 				type: 'POST',
+				dataType: 'json',
 				data: {
 					studyId: studyId,
 					memLoginId: memLoginId
 				},
 				success: function(response){
+					console.log('가입 응답:', response);
+					
 					if(response.status == "success"){
 						alert('가입이 완료되었습니다.');
 						
