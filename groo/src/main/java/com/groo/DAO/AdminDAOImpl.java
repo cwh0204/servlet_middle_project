@@ -316,4 +316,37 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return boardList;
 	}
+	
+	/**
+	 * 게시글을 삭제 or 활성화 하는 메서드
+	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminDeleteBoard(BoardDTO board, SqlSession session) {
+		try {
+			session.update("adminDeleteBoard",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminDeleteBoard 예외발생",e);
+		}
+	}
+	
+	/**
+	 * 게시글 통계를 조회 하는 메서드
+	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 게시글 통계 조회
+	 */
+	@Override
+	public AdminStatsDTO adminAvgBoard(SqlSession session) {
+		AdminStatsDTO statsBoard = new AdminStatsDTO();
+		try {
+			statsBoard = session.selectOne("adminAvgBoard");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminAvgBoard 예외발생",e);
+		}
+		return statsBoard;
+	}
 }

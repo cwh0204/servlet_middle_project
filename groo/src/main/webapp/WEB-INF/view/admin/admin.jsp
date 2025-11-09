@@ -388,6 +388,8 @@ class CustomBoardBtnRenderer {
       deleteBtn.textContent = '삭제';
       deleteBtn.dataset.type = 'delete';
       
+      this.deleteBtn = deleteBtn;
+      
       boardBtn.addEventListener('click', (event) => {
           this.onClick(props, event);
       });
@@ -407,9 +409,19 @@ class CustomBoardBtnRenderer {
     getElement() {
       return this.container;
     }
-
     render(props) {
-       this.container.value = String(props.value);
+        const { grid, rowKey } = props;
+        const rowData = grid.getRow(rowKey);
+        const delCheck = rowData.postingDelCheck;
+
+        if (delCheck === 'Y') {
+            this.deleteBtn.textContent = '활성';
+            this.deleteBtn.dataset.type = 'activate'; 
+        } 
+        else { 
+            this.deleteBtn.textContent = '삭제';
+            this.deleteBtn.dataset.type = 'delete';
+        } 
     }
     
     onClick(props, event) {
@@ -425,17 +437,18 @@ class CustomBoardBtnRenderer {
         if (actionType === 'delete') {
         	$.ajax({
         		// 데이터를 전송할 서버 URL
-        		url: '',
+        		url: 'admindeleteboard.do',
         		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
         		type: 'POST',
         		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
         		data: {
-        			boardId: rowData.boardId
+        			boardId: rowData.boardId,
+        			findName : 'Y'
         		},
         		// 데이터 전송 성공 시 실행
         		success: function(response) {
         			// response는 서버에서 돌려준 데이터입니다.
-        			searchTeam();
+        			searchBoard();
         		},
 
         		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -445,6 +458,26 @@ class CustomBoardBtnRenderer {
         }
         if (actionType === 'board') {
         	window.open('postdetail.do?id='+rowData.boardId);
+        }
+        if (actionType === 'activate') {
+        	$.ajax({
+        		// 데이터를 전송할 서버 URL
+        		url: 'admindeleteboard.do',
+        		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        		type: 'POST',
+        		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        		data: {
+        			boardId: rowData.boardId
+        		},
+        		// 데이터 전송 성공 시 실행
+        		success: function(response) {
+        			// response는 서버에서 돌려준 데이터입니다.
+        			searchBoard();
+        		},
+        		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        		error: function(xhr, status, error) {
+        		}
+        	});
         }
         event.stopPropagation();
     }

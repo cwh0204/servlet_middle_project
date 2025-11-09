@@ -48,7 +48,7 @@
 				<span class="stat-label">신규 팀</span>
 				<div class="stat-icon yellow"></div>
 			</div>
-			<div class="stat-value inactive-teams">0</div>
+			<div class="stat-value weekly-teams">0</div>
 			<div class="stat-change up">↑ 이번 주</div>
 		</div>
 		<div class="stat-card">
@@ -56,7 +56,7 @@
 				<span class="stat-label">비활성</span>
 				<div class="stat-icon red"></div>
 			</div>
-			<div class="stat-value weekly-teams">0</div>
+			<div class="stat-value inactive-teams">0</div>
 			<div class="stat-change down">↓ 전월 대비 -5%</div>
 		</div>
 	</div>

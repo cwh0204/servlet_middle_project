@@ -368,4 +368,27 @@
 	        </if>
         </where>
 	</select>
+	
+	<update id="adminDeleteBoard" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD SET
+			<choose>
+	            <when test='findName == "Y"'>
+	                POSTINGDEL_CHECK = 'Y',
+	                POSTING_DEL = SYSDATE
+	            </when>
+	            <otherwise>
+	                POSTINGDEL_CHECK = '',
+	                POSTING_DEL = NULL  
+	            </otherwise>
+	        </choose>
+		WHERE BOARD_ID = #{boardId}
+	</update>
+	<select id="adminAvgBoard" parameterType="com.groo.model.AdminStatsDTO" resultType="com.groo.model.AdminStatsDTO">
+		SELECT
+			COUNT(*) AS total_members,
+			COUNT(CASE WHEN POSTINGDEL_CHECK = 'Y' THEN 1 END) AS inactive_members,
+			COUNT(CASE WHEN POSTINGDEL_CHECK IS NULL THEN 1 END) AS active_members,
+			COUNT(CASE WHEN TRUNC(POSTING_DATE,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_signups
+		FROM BOARD
+	</select>
 </mapper>
