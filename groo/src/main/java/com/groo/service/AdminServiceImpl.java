@@ -14,6 +14,7 @@ import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
+import com.groo.model.BoardDTO;
 import com.groo.model.MemberDTO;
 
 public class AdminServiceImpl implements AdminService {
@@ -347,10 +348,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	/**
-	 * 스터디의 팀원의 역활을 변경하는 서비스 메서드입니다.
+	 * 비활성화 스터디 목록을 조회하는 서비스 메서드입니다.
 	 * @param 스터디의 팀원의 역활을 변경 하기위한 Data Transfer Object 데이터 클래스
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
+	 * @return 비활성화 스터디 목록을 리턴
 	 */
 	@Override
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member) {
@@ -391,5 +393,31 @@ public class AdminServiceImpl implements AdminService {
 		} finally {
 			session.close();
 		}
+	}
+	
+	/**
+	 * 게시글을 조회하는 서비스 메서드입니다.
+	 * @param 게시글을 조회하기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 게시글 정보를 리턴
+	 */
+	@Override
+	public List<BoardDTO> adminSelectBoard(BoardDTO board) {
+		
+		SqlSession session = SessionFactory.getSqlSession();
+		List<BoardDTO> boardList = new ArrayList<>();
+		try {
+			boardList = dao.adminSelectBoard(board, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return boardList;
 	}
 }

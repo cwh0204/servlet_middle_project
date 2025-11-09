@@ -7,6 +7,7 @@ import com.groo.controller.AdminAvgReportController;
 import com.groo.controller.AdminInsertUserController;
 import com.groo.controller.AdminReportProcessUserSerchController;
 import com.groo.controller.AdminReportSerchController;
+import com.groo.controller.AdminSelectBoardController;
 import com.groo.controller.AdminSelectDisableStudyMemberController;
 import com.groo.controller.AdminSelectSearchUserController;
 import com.groo.controller.AdminSelectStudyMemberController;
@@ -168,6 +169,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminupdatestudyroll.do", new AdminUpdateStudyRollController());
         controllerMap.put("/adminselectdisablestudymember.do", new AdminSelectDisableStudyMemberController());
         controllerMap.put("/adminupdatestudymemberactivate.do", new AdminUpdateStudyMemberActivateController());
+        controllerMap.put("/adminselectboard.do", new AdminSelectBoardController());
         
         
         //팀멤버

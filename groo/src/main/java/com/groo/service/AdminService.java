@@ -6,6 +6,7 @@ import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
+import com.groo.model.BoardDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminService {
@@ -24,4 +25,5 @@ public interface AdminService {
 	public void adminUpdateStudyRoll(AdminTeamMemberDTO member);
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member);
 	public void adminUpdateStudyMemberActivate(AdminTeamMemberDTO member);
+	public List<BoardDTO> adminSelectBoard(BoardDTO board);
 }

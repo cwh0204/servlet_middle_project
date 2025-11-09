@@ -63,7 +63,7 @@
 					id="searchInput" placeholder="이름, 이메일로 검색...">
 			</div>
 			<div class="filter-group">
-				<button class="btn btn-secondary" onclick="searchTeam()">
+				<button class="btn btn-secondary" onclick="searchBoard()">
 					검색</button>
 			</div>
 		</div>
@@ -74,16 +74,16 @@
 </body>
 <script type="text/javascript">
 
-searchTeam = () => {
+searchBoard = () => {
 	const search = $('#searchInput').val();
 	$.ajax({
 	// 데이터를 전송할 서버 URL
-		url: 'adminselectdisablestudymember.do',
+		url: 'adminselectboard.do',
 	// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 	// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-			search : search
+			findName : search
 		},
 	// 데이터 전송 성공 시 실행
 		success: function(response) {
@@ -104,7 +104,7 @@ $(document).ready(function() {
 		data : {
 			api : {
 				readData : {
-					url : 'teamselects.do',
+					url : 'adminselectboard.do',
 					method : 'POST',
 				}
 			},
@@ -112,39 +112,54 @@ $(document).ready(function() {
 		rowKey: 'id',
 		scrollX : true,
 		scrollY : true,
+		columnOptions: {
+	        sortable: true 
+	    },
 		columns : [ {
-			header : '스터디ID',
-			name : 'studyId'
+			header : '게시글ID',
+			name : 'boardId'
 		}, {
-			header : '스터디이름',
-			name : 'studyTitle'
+			header : '게시글Type',
+			name : 'boardTypeId'
 		}, {
-			header : '카테고리',
-			name : 'studyCategory'
+			header : '작성자',
+			name : 'memNick'
 		}, {
-			header : '최대인원',
-			name : 'studyMax'
+			header : '글 제목',
+			name : 'postTitle'
 		}, {
-			header : '스터디타이틀',
-			name : 'studyIntro'
+			header : '작성일',
+			name : 'postingDate',
+			sortable: true
 		},{
-			header : '스터디내용',
-			name : 'studyIntroContent'
+			header : '좋아요',
+			name : 'boardLikeCount',
+			sortable: true
 		},{
-			header : '스터디 삭제일',
-			name : 'studyDeleteDate'
+			header : '삭제여부',
+			name : 'postingDelCheck',
+			filter: {
+	            type: 'select', 
+	            options: {
+	                // listItems: 사용자에게 보여줄 항목과 실제 필터링에 사용할 값(value) 정의
+	                listItems: [
+	                    { text: '활성화됨', value: '' }, // 값이 비어있을 때 ('')
+	                    { text: '비활성화됨', value: 'Y' }  // 값이 'Y'일 때
+	                ]
+	            }
+	        }
 		},{
-			header: '활성화',
+			header: '기타',
 			name: 'grade',
 			width: 150,
 			renderer: {
-				type: CustomTeamActivateBtnRenderer,
+				type: CustomBoardBtnRenderer,
 			}
 		}
 		]
 	});
 	gridBoard.setBodyHeight(450);
-    searchTeam();
+    searchBoard();
 });
 </script>
 </html>
