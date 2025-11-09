@@ -51,6 +51,9 @@
 					<div class="submenu-item " data-page="adminteammember.do">
 						<span>팀원 관리</span>
 					</div>
+					<div class="submenu-item " data-page="admindisableteammember.do">
+						<span>비활성 팀원 관리</span>
+					</div>
 				</div>
 			</div>
 		</div>

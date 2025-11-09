@@ -41,6 +41,7 @@ public class FrontPath {
         jspMap.put("/admindisableteam.do", "/WEB-INF/view/admin/admindisableteam.jsp");
         jspMap.put("/adminteammember.do", "/WEB-INF/view/admin/adminteammember.jsp");
         jspMap.put("/adminnotice.do", "/WEB-INF/view/admin/adminnotice.jsp");
+        jspMap.put("/admindisableteammember.do", "/WEB-INF/view/admin/admindisableteammember.jsp");
 
         //board 경로
         jspMap.put("/intro.do", "/WEB-INF/view/board/intro.jsp");
