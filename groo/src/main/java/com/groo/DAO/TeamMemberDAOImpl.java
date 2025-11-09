@@ -166,4 +166,18 @@ public class TeamMemberDAOImpl implements TeamMemberDAO{
 			throw new InternalServiceException("DAO:insertTeamPage 예외발생",e);
 		}
 	}
+
+	/**
+	 * 스터디 탈퇴를 위한 메서드
+	 * @param teamMember 스터디 탈퇴를 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void deleteTeamPage(TeamMemberDTO teamMember, SqlSession session) {
+		try {
+			session.delete("deleteTeamPage", teamMember);
+		}catch (Exception e) {
+			throw new InternalServiceException("DAO:insertTeamPage 예외발생",e);
+		}
+	}
 }

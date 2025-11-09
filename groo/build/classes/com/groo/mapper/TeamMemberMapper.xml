@@ -114,4 +114,14 @@
 		 		  SYSDATE
 		 		)
 	</insert>
+	
+	<delete id="deleteTeamPage" parameterType="com.groo.model.TeamMemberDTO">
+		DELETE FROM STUDYMEMBER
+		 WHERE STUDY_ID = #{studyId}
+		   AND MEM_ID = (
+		   	   SELECT MEM_ID
+		   	     FROM MEMBER
+		   	    WHERE MEM_LOGIN_ID = #{memLoginId}
+		   )
+	</delete>
 </mapper>
