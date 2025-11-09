@@ -2,6 +2,8 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.groo.error.InternalServiceException;
@@ -36,6 +38,7 @@ public class TeamMemberInsertPageController implements Controller {
 
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
+		Map<String, Object> result = new HashMap<>();
 		
 		try {
 			
@@ -53,15 +56,25 @@ public class TeamMemberInsertPageController implements Controller {
 			TeamMemberService service = new TeamMemberServiceImpl();
 			service.insertTeamPage(teamMember);
 
+			result.put("success", true);
+			result.put("message", "스터디 가입이 완료되었습니다.");
 			/*
-			 * String json = gson.toJson(result);
+			 * 
 			 * 
 			 * PrintWriter out = response.getWriter(); out.print(json); out.flush();
 			 */
 		} catch (InternalServiceException ise) {
 			ise.printStackTrace();
+			result.put("success", false);
+			result.put("message", "DB 처리 중 오류가 발생했습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
+			result.put("success", false);
+			result.put("message", "예상치 못한 오류가 발생했습니다.");
 		}
+		
+		String json = gson.toJson(result);
+		out.print(json);
+		out.flush();
 	}
 }
