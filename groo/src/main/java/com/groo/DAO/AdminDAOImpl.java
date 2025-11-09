@@ -260,4 +260,23 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminUpdateStudyRoll 예외발생",e);
 		}
 	}
+	
+	/**
+	 * 스터디의 비활성화 팀원의 정보를 조회하는 메서드
+	 * @param member 팀원의 정보를 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member, SqlSession session) {
+		
+		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
+		
+		try {
+			memberList = session.selectList("adminSelectDisableStudyMember",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectDisableStudyMember 예외발생",e);
+		}
+		return memberList;
+	}
 }
