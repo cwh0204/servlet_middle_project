@@ -2,6 +2,8 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map; // Map 추가
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
@@ -21,14 +23,6 @@ import jakarta.servlet.http.HttpSession;
  */
 public class MemberLoginController implements Controller {
 
-	/**
-	 * HTTP 요청을 받아 로그인정보를 가져오고 JSON 응답을 생성합니다.
-	 *
-	 * @param request  HTTP 요청 객체
-	 * @param response HTTP 응답 객체
-	 * @throws ServletException 서블릿 관련 오류 발생 시
-	 * @throws IOException      입출력 오류 발생 시
-	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -43,15 +37,38 @@ public class MemberLoginController implements Controller {
 
 		MemberService service = new MemberServiceImpl();
 		HttpSession session = request.getSession();
-		try {
 
+		
+		Object jsonResponseData = null;
+
+		try {
+			
 			MemberDTO memberLogin = service.selectLoginMember(member);
 
-
-			if(memberLogin != null) { session.setAttribute("loginServiceResponse",memLoginId); }
+			if (memberLogin != null) {
+				
+				if ("Y".equals(memberLogin.getMemStatus())) {
+					
+					Map<String, String> withdrawnResponse = new HashMap<>();
+					withdrawnResponse.put("status", "WITHDRAWN");
+					jsonResponseData = withdrawnResponse;
+				}
+				
+				else if ("N".equals(memberLogin.getMemStatus())) {
+					
+					session.setAttribute("loginServiceResponse", memLoginId);
+					jsonResponseData = memberLogin; 
+				} else {
+              
+                    jsonResponseData = null;
+                }
+			} else {
+				
+				jsonResponseData = null; 
+			}
 
 			Gson gson = new Gson();
-			String json = gson.toJson(memberLogin);
+			String json = gson.toJson(jsonResponseData); 
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -60,16 +77,16 @@ public class MemberLoginController implements Controller {
 			out.print(json);
 			out.flush();
 
-		}catch (InternalServiceException ise) {
+		} catch (InternalServiceException ise) {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
-		}
-		catch (Exception e) {
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
+			
 		}
 	}
-
 }

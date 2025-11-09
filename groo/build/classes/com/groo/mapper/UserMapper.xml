@@ -127,7 +127,7 @@
 		WHERE
 			MEM_LOGIN_ID = #{memLoginId} AND
 			MEM_PASS = #{memPass}
-		  AND MEM_STATUS = 'N'
+<!-- 		  AND MEM_STATUS = 'N' -->
 	</select>
 	
 	<select id="selectFindMemberId" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
