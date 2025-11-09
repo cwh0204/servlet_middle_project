@@ -331,4 +331,41 @@
 		        </trim>
         	</where>
 	</select>
+	
+	<update id="adminUpdateStudyMemberActivate" parameterType="com.groo.model.AdminTeamMemberDTO">
+		UPDATE STUDYMEMBER
+			SET STUDY_OUTDATE = NULL
+		WHERE MEM_ID = (SELECT B.MEM_ID
+						FROM MEMBER A
+						INNER JOIN STUDYMEMBER B  ON (B.MEM_ID = A.MEM_ID)
+						WHERE A.MEM_ID = #{memId} AND B.STUDY_ID = #{studyId}
+						) AND STUDY_ID = #{studyId}
+	</update>
+	
+	<select id="adminSelectBoard" parameterType="com.groo.model.BoardDTO" resultType="com.groo.model.BoardDTO">
+		SELECT
+		    A.BOARD_ID,
+		    C.MEM_NICK,
+		    A.BOARD_TYPE_ID,
+		    A.POST_TITLE,
+		    A.POSTING_DATE,
+		    A.POSTINGDEL_CHECK,
+		    COALESCE(B.LIKE_COUNT, 0) AS LIKE_COUNT
+		FROM BOARD A
+		LEFT JOIN 
+		    ( SELECT BOARD_ID, COUNT(BOARD_ID) AS LIKE_COUNT FROM BOARD_LIKE GROUP BY BOARD_ID) B ON (B.BOARD_ID = A.BOARD_ID)
+		INNER JOIN MEMBER C ON (A.MEM_ID = C.MEM_ID)
+		<where>
+	        <if test="findName != null and findName != ''">
+	            <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+	                OR A.BOARD_ID LIKE '%' || #{findName} || '%'
+	                OR C.MEM_NICK LIKE '%' || #{findName} || '%'
+	                OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+	                OR A.BOARD_TYPE_ID LIKE '%' || #{findName} || '%'
+	                OR A.POSTING_DATE LIKE '%' || #{findName} || '%'
+	                OR A.POSTINGDEL_CHECK LIKE '%' || #{findName} || '%'
+	            </trim>
+	        </if>
+        </where>
+	</select>
 </mapper>

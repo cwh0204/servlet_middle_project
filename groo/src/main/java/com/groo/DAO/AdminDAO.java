@@ -8,6 +8,7 @@ import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
+import com.groo.model.BoardDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminDAO {
@@ -17,18 +18,14 @@ public interface AdminDAO {
 	public void adminUpdateUser(MemberDTO member, SqlSession session);
 	public List<MemberDTO> adminSelectSearchUser(MemberDTO member, SqlSession session);
 	public AdminStatsDTO adminStatsUser(SqlSession session);
-
 	public AdminAvgReportDTO adminStatsReport(SqlSession session);
-
 	public List<AdminReportDTO> adminReportSerch(AdminReportDTO report, SqlSession session);
 	public List<AdminReportDTO> adminReportProcessUserSerch(AdminReportDTO report, SqlSession session);
 	public void adminUpdateReport(AdminReportDTO report, SqlSession session);
-
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session);
-
 	public void adminStudyMemberDelete(AdminTeamMemberDTO member, SqlSession session);
-	
 	public void adminUpdateStudyRoll(AdminTeamMemberDTO member, SqlSession session);
-	
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member, SqlSession session);
+	public void adminUpdateStudyMemberActivate(AdminTeamMemberDTO member, SqlSession session);
+	public List<BoardDTO> adminSelectBoard(BoardDTO board, SqlSession session);
 }

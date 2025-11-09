@@ -369,4 +369,27 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return memberList;
 	}
+	
+	/**
+	 * 스터디 비활성화된 팀원을 활성화 시키는 서비스 메서드입니다.
+	 * @param 스터디의 팀원을 활성화 하기위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminUpdateStudyMemberActivate(AdminTeamMemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminUpdateStudyMemberActivate(member, session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
 }

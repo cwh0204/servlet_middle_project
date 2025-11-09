@@ -57,11 +57,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="menu-item">
-			<div class="menu-item-content" data-page="admindashboard.do">
-				<span>게시판 관리</span>
+		<div class="menu-item has-submenu" data-page="admindashboard.do">
+			<div class="menu-item-content">
+				<span>게시판 관리</span> <span class="menu-icon arrow">▶</span>
 			</div>
-
+			<div>
+				<div class="submenu">
+					<div class="submenu-item " data-page="adminboard.do">
+						<span>게시글 관리</span>
+					</div>
+					<div class="submenu-item " data-page="admincomment.do">
+						<span>댓글 관리</span>
+					</div>
+					<div class="submenu-item " data-page="adminbestboard.do">
+						<span>베스트 랭킹 관리</span>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="menu-item" data-page="adminnotice.do">
 			<div class="menu-item-content">

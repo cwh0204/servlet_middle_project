@@ -10,7 +10,9 @@ import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
+import com.groo.model.BoardDTO;
 import com.groo.model.MemberDTO;
+import com.groo.model.TeamMemberDTO;
 
 /**
  * 관리자가 사용하는 요청의 데이터 처리를 수행하기위한 클래스 구현체로 맴버의 조회,추가,수정,삭제 관련 서비스를 처리함
@@ -265,6 +267,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 * 스터디의 비활성화 팀원의 정보를 조회하는 메서드
 	 * @param member 팀원의 정보를 조회하는 Data Transfer Object 데이터 클래스
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 비활성화 유저정보를 리턴
 	 */
 	@Override
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member, SqlSession session) {
@@ -278,5 +281,39 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminSelectDisableStudyMember 예외발생",e);
 		}
 		return memberList;
+	}
+	
+	/**
+	 * 스터디의 비활성화 팀원을 활성화 하는 메서드
+	 * @param member 팀원의 정보를 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminUpdateStudyMemberActivate(AdminTeamMemberDTO member, SqlSession session) {
+		try {
+			session.update("adminUpdateStudyMemberActivate",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminStudyMemberActivate 예외발생",e);
+		}
+	}
+	
+	/**
+	 * 게시글을 조회 하는 메서드
+	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 게시글 정보를 리턴
+	 */
+	@Override
+	public List<BoardDTO> adminSelectBoard(BoardDTO board, SqlSession session) {
+		
+		List<BoardDTO> boardList = new ArrayList<>();
+		try {
+			boardList = session.selectList("adminSelectBoard",board);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectBoard 예외발생",e);
+		}
+		return boardList;
 	}
 }

@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/adminCss/adminUser/adminUser.css" rel="stylesheet">
-
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
@@ -20,9 +19,6 @@
 		<div class="content-header-right">
 			<button class="btn btn-secondary" onclick="exportData()">
 				<span>📥</span> 내보내기
-			</button>
-			<button class="btn btn-primary" onclick="teamMemberUpdate()">
-				<span>*</span> 저장
 			</button>
 		</div>
 	</div>
@@ -73,34 +69,10 @@
 		</div>
 	</div>
 	<div>
-		<div id="gridDisableTeamMember"></div>
+		<div id="gridBoard"></div>
 	</div>
 </body>
 <script type="text/javascript">
-
-var teamStats = () => {
-	$.ajax({
-		// 데이터를 전송할 서버 URL
-		url: 'teamstats.do',
-		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
-		type: 'POST',
-		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-		data: {
-		},
-		// 데이터 전송 성공 시 실행
-		success: function(response) {
-			$('.total-teams').text(response.totalTeams);
-			$('.inactive-teams').text(response.inactiveTeams);
-			$('.weekly-teams').text(response.weeklyTeams);
-			$('.active-teams').text(response.activeTeams);
-		},
-
-		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
-		error: function(xhr, status, error) {
-
-		}
-	}); // $.ajax 끝
-}
 
 searchTeam = () => {
 	const search = $('#searchInput').val();
@@ -117,7 +89,7 @@ searchTeam = () => {
 		success: function(response) {
 			console.log(response);
 	// response는 서버에서 돌려준 데이터입니다.
-			gridDisableTeamMember.resetData(response);
+			gridBoard.resetData(response);
 		},
 	
 	// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -127,15 +99,12 @@ searchTeam = () => {
 	}
 
 $(document).ready(function() {
-	
-	teamStats();
-	
-	gridDisableTeamMember = new tui.Grid({
-		el : document.getElementById('gridDisableTeamMember'),
+	gridBoard = new tui.Grid({
+		el : document.getElementById('gridBoard'),
 		data : {
 			api : {
 				readData : {
-					url : 'adminselectdisablestudymember.do',
+					url : 'teamselects.do',
 					method : 'POST',
 				}
 			},
@@ -144,45 +113,38 @@ $(document).ready(function() {
 		scrollX : true,
 		scrollY : true,
 		columns : [ {
-			header : '회원명',
-			name : 'memName'
+			header : '스터디ID',
+			name : 'studyId'
 		}, {
-			header : '스터디명',
+			header : '스터디이름',
 			name : 'studyTitle'
 		}, {
-			header : '역활',
-			name : 'studyRoll'
+			header : '카테고리',
+			name : 'studyCategory'
 		}, {
-			header : '스터디참여일',
-			name : 'studyJoinedDate'
+			header : '최대인원',
+			name : 'studyMax'
+		}, {
+			header : '스터디타이틀',
+			name : 'studyIntro'
 		},{
-			header: '팀 탈퇴',
+			header : '스터디내용',
+			name : 'studyIntroContent'
+		},{
+			header : '스터디 삭제일',
+			name : 'studyDeleteDate'
+		},{
+			header: '활성화',
 			name: 'grade',
 			width: 150,
 			renderer: {
-				type: CustomDisableTeamMemberBtnRenderer,
+				type: CustomTeamActivateBtnRenderer,
 			}
 		}
 		]
 	});
-	
-	// 데이터 변경 후 이벤트 설정
-	gridDisableTeamMember.on('afterChange', ev => {
-	    const changeUser = gridDisableTeamMember.getModifiedRows();
-	});
-	
-	// 데이터 변경 전 이벤트 설정 (수정 셀/행 강조)
-	gridDisableTeamMember.on('beforeChange', ev => {
-	    const { rowKey } = ev.changes[0];
-	    const columnName = ev.changes[0].columnName;
-	    
-	    // 수정이 발생한 행/셀에 클래스 추가
-	    gridDisableTeamMember.addRowClassName(rowKey, 'modified-row');
-	    gridDisableTeamMember.addCellClassName(rowKey, columnName, 'modified-cell');
-	});
-	
-	gridDisableTeamMember.setBodyHeight(450);
-	searchTeam();
+	gridBoard.setBodyHeight(450);
+    searchTeam();
 });
 </script>
 </html>
