@@ -28,4 +28,6 @@ public interface AdminDAO {
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member, SqlSession session);
 	public void adminUpdateStudyMemberActivate(AdminTeamMemberDTO member, SqlSession session);
 	public List<BoardDTO> adminSelectBoard(BoardDTO board, SqlSession session);
+	public void adminDeleteBoard(BoardDTO board, SqlSession session);
+	public AdminStatsDTO adminAvgBoard(SqlSession session);
 }

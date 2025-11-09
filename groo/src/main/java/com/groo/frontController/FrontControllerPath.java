@@ -3,7 +3,9 @@ package com.groo.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.groo.controller.AdminAvgBoardController;
 import com.groo.controller.AdminAvgReportController;
+import com.groo.controller.AdminDeleteBoardController;
 import com.groo.controller.AdminInsertUserController;
 import com.groo.controller.AdminReportProcessUserSerchController;
 import com.groo.controller.AdminReportSerchController;
@@ -170,7 +172,8 @@ public class FrontControllerPath {
         controllerMap.put("/adminselectdisablestudymember.do", new AdminSelectDisableStudyMemberController());
         controllerMap.put("/adminupdatestudymemberactivate.do", new AdminUpdateStudyMemberActivateController());
         controllerMap.put("/adminselectboard.do", new AdminSelectBoardController());
-        
+        controllerMap.put("/admindeleteboard.do", new AdminDeleteBoardController());
+        controllerMap.put("/adminavgboard.do", new AdminAvgBoardController());
         
         //팀멤버
         controllerMap.put("/teammemberleaders.do", new TeamMemberLeaderSelectController());

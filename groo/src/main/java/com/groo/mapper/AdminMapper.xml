@@ -368,4 +368,49 @@
 	        </if>
         </where>
 	</select>
+	
+	<update id="adminDeleteBoard" parameterType="com.groo.model.BoardDTO">
+		UPDATE BOARD SET
+			<choose>
+	            <when test='findName == "Y"'>
+	                POSTINGDEL_CHECK = 'Y',
+	                POSTING_DEL = SYSDATE
+	            </when>
+	            <otherwise>
+	                POSTINGDEL_CHECK = '',
+	                POSTING_DEL = NULL  
+	            </otherwise>
+	        </choose>
+		WHERE BOARD_ID = #{boardId}
+	</update>
+	<select id="adminAvgBoard" parameterType="com.groo.model.AdminStatsDTO" resultType="com.groo.model.AdminStatsDTO">
+		SELECT
+			COUNT(*) AS total_members,
+			COUNT(CASE WHEN POSTINGDEL_CHECK = 'Y' THEN 1 END) AS inactive_members,
+			COUNT(CASE WHEN POSTINGDEL_CHECK IS NULL THEN 1 END) AS active_members,
+			COUNT(CASE WHEN TRUNC(POSTING_DATE,'IW') = TRUNC(SYSDATE, 'IW') THEN 1 ELSE NULL END) AS weekly_signups
+		FROM BOARD
+	</select>
+	
+	<select id="adminSelectComment">
+		SELECT 
+			A.COMENT_ID,
+			B.MEM_NICK,
+			A.BOARD_ID,
+			A.COMENT_CONTENT,
+			A.COMENT_DATE
+		FROM COMENT A
+		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
+		<where>
+	        <if test="findName != null and findName != ''">
+	            <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+	                OR A.COMENT_ID LIKE '%' || #{findName} || '%'
+	                OR B.MEM_NICK LIKE '%' || #{findName} || '%'
+	                OR A.BOARD_ID LIKE '%' || #{findName} || '%'
+	                OR A.COMENT_CONTENT LIKE '%' || #{findName} || '%'
+	                OR A.COMENT_DATE LIKE '%' || #{findName} || '%'
+	            </trim>
+	        </if>
+        </where>
+	</select>
 </mapper>

@@ -57,7 +57,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="menu-item has-submenu" data-page="admindashboard.do">
+		<div class="menu-item has-submenu" data-page="adminboard.do">
 			<div class="menu-item-content">
 				<span>게시판 관리</span> <span class="menu-icon arrow">▶</span>
 			</div>

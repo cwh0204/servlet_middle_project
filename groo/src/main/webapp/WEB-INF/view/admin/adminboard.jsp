@@ -25,7 +25,7 @@
 	<div class="stats-row">
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">전체 팀</span>
+				<span class="stat-label">전체 글</span>
 				<div class="stat-icon green"></div>
 			</div>
 			<div class="stat-value total-teams">0</div>
@@ -33,7 +33,7 @@
 		</div>
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">활성 팀</span>
+				<span class="stat-label">활성 글</span>
 				<div class="stat-icon blue"></div>
 			</div>
 			<div class="stat-value active-teams">0</div>
@@ -41,18 +41,18 @@
 		</div>
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">신규 팀</span>
+				<span class="stat-label">신규 글</span>
 				<div class="stat-icon yellow"></div>
 			</div>
-			<div class="stat-value inactive-teams">0</div>
+			<div class="stat-value weekly-teams">0</div>
 			<div class="stat-change up">↑ 이번 주</div>
 		</div>
 		<div class="stat-card">
 			<div class="stat-card-header">
-				<span class="stat-label">비활성</span>
+				<span class="stat-label">삭제 글</span>
 				<div class="stat-icon red"></div>
 			</div>
-			<div class="stat-value weekly-teams">0</div>
+			<div class="stat-value inactive-teams">0</div>
 			<div class="stat-change down">↓ 전월 대비 -5%</div>
 		</div>
 	</div>
@@ -73,7 +73,30 @@
 	</div>
 </body>
 <script type="text/javascript">
+var boardStats = () => {
+	$.ajax({
+		// 데이터를 전송할 서버 URL
+		url: 'adminavgboard.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+		type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		data: {
+		},
+		// 데이터 전송 성공 시 실행
+		success: function(response) {
+			console.log(response);
+			$('.total-teams').text(response.totalMembers);
+			$('.inactive-teams').text(response.inactiveMembers);
+			$('.weekly-teams').text(response.weeklySignups);
+			$('.active-teams').text(response.activeMembers);
+		},
 
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+		error: function(xhr, status, error) {
+
+		}
+	}); // $.ajax 끝
+}
 searchBoard = () => {
 	const search = $('#searchInput').val();
 	$.ajax({
@@ -90,6 +113,7 @@ searchBoard = () => {
 			console.log(response);
 	// response는 서버에서 돌려준 데이터입니다.
 			gridBoard.resetData(response);
+		    boardStats();
 		},
 	
 	// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -120,7 +144,11 @@ $(document).ready(function() {
 			name : 'boardId'
 		}, {
 			header : '게시글Type',
-			name : 'boardTypeId'
+			name : 'boardTypeId',
+			filter: {
+		        type: 'select',
+		        operator: 'OR'
+		    }
 		}, {
 			header : '작성자',
 			name : 'memNick'
