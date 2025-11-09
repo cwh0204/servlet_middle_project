@@ -27,4 +27,6 @@ public interface AdminDAO {
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member, SqlSession session);
 
 	public void adminStudyMemberDelete(AdminTeamMemberDTO member, SqlSession session);
+	
+	public void adminUpdateStudyRoll(AdminTeamMemberDTO member, SqlSession session);
 }

@@ -245,4 +245,19 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminUpdateReport 예외발생",e);
 		}
 	}
+	
+	/**
+	 * 스터디의 팀원의 역활을 변경하는 메서드
+	 * @param member 팀원의 역활을 변경 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminUpdateStudyRoll(AdminTeamMemberDTO member, SqlSession session) {
+		try {
+			session.update("adminUpdateStudyRoll",member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminUpdateStudyRoll 예외발생",e);
+		}
+	}
 }

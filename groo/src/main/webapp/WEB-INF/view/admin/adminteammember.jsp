@@ -11,7 +11,7 @@
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 </head>
 <body>
-	<body>
+<body>
 	<div class="content-header">
 		<div class="content-header-left">
 			<h1>팀 관리</h1>
@@ -20,6 +20,9 @@
 		<div class="content-header-right">
 			<button class="btn btn-secondary" onclick="exportData()">
 				<span>📥</span> 내보내기
+			</button>
+			<button class="btn btn-primary" onclick="teamMemberUpdate()">
+				<span>*</span> 저장
 			</button>
 		</div>
 	</div>
@@ -75,6 +78,19 @@
 </body>
 <script type="text/javascript">
 
+
+var teamMemberUpdate = () => {
+
+	const updatedRows = gridTeamMember.getModifiedRows().updatedRows;
+
+	updatedRows.forEach(function(row) {
+
+		if (row.memLoginId !== null) {
+			console.log(row);
+		}
+	});
+}
+
 var teamStats = () => {
 	$.ajax({
 		// 데이터를 전송할 서버 URL
@@ -124,6 +140,7 @@ searchTeam = () => {
 	}
 $(document).ready(function() {
 	teamStats();
+	
 	gridTeamMember = new tui.Grid({
 		el : document.getElementById('gridTeamMember'),
 		data : {
@@ -145,7 +162,17 @@ $(document).ready(function() {
 			name : 'studyTitle'
 		}, {
 			header : '역활',
-			name : 'studyRoll'
+			name : 'studyRoll',
+			editor: {
+		        type: 'select', // 에디터 타입을 'select'로 지정
+		        options: {
+		            // listItems: 선택 가능한 항목들의 배열
+		            listItems: [
+		                { text: '팀원', value: '팀원' }, // 'text'는 사용자에게 보여지는 값, 'value'는 실제 데이터로 저장될 값
+		                { text: '팀장', value: '팀장' }
+		            ]
+		        }
+		    }
 		}, {
 			header : '스터디참여일',
 			name : 'studyJoinedDate'
@@ -159,6 +186,22 @@ $(document).ready(function() {
 		}
 		]
 	});
+	
+    // 데이터 변경 후 이벤트 설정
+    gridTeamMember.on('afterChange', ev => {
+        const changeUser = gridTeamMember.getModifiedRows();
+    });
+    
+    // 데이터 변경 전 이벤트 설정 (수정 셀/행 강조)
+    gridTeamMember.on('beforeChange', ev => {
+        const { rowKey } = ev.changes[0];
+        const columnName = ev.changes[0].columnName;
+        
+        // 수정이 발생한 행/셀에 클래스 추가
+        gridTeamMember.addRowClassName(rowKey, 'modified-row');
+        gridTeamMember.addCellClassName(rowKey, columnName, 'modified-cell');
+    });
+	
 	gridTeamMember.setBodyHeight(450);
 	searchTeam();
 });

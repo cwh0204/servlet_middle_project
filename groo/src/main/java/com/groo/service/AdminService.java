@@ -23,4 +23,6 @@ public interface AdminService {
 
 	public List<AdminTeamMemberDTO> adminSelectStudyMember(AdminTeamMemberDTO member);
 	public void adminStudyMemberDelete(AdminTeamMemberDTO member);
+	
+	public void adminUpdateStudyRoll(AdminTeamMemberDTO member);
 }

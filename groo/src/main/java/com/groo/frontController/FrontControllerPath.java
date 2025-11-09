@@ -14,6 +14,7 @@ import com.groo.controller.AdminSelectUserInsertCheckController;
 import com.groo.controller.AdminStatsUserController;
 import com.groo.controller.AdminStudyMemberDeleteController;
 import com.groo.controller.AdminUpdateReportController;
+import com.groo.controller.AdminUpdateStudyRollController;
 import com.groo.controller.AdminUpdateUserController;
 import com.groo.controller.BoardDeleteController;
 import com.groo.controller.BoardDetailSelectController;
@@ -161,6 +162,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminstudymemberdelete.do", new AdminStudyMemberDeleteController());
         controllerMap.put("/adminupdatereport.do", new AdminUpdateReportController());
         controllerMap.put("/adminselectstudymember.do", new AdminSelectStudyMemberController());
+        controllerMap.put("/adminupdatestudyroll.do", new AdminUpdateStudyRollController());
 
         //팀멤버
         controllerMap.put("/teammemberleaders.do", new TeamMemberLeaderSelectController());

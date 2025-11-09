@@ -285,4 +285,15 @@
 			ENDACTION_DATE = SYSDATE + #{endActionDate}
 		WHERE REPORT_ID = #{reportId}
 	</update>
+	
+	<update id="adminUpdateStudyRoll" parameterType="com.groo.model.AdminTeamMemberDTO">
+		UPDATE STUDYMEMBER SET
+			STUDY_ROLL = (
+			            CASE #{studyRoll}
+			                WHEN '팀장' THEN 'L'
+			                WHEN '팀원' THEN 'M'
+			            END
+			        )
+		WHERE MEM_ID = #{memId} AND STUDY_ID = #{studyId}
+	</update>
 </mapper>
