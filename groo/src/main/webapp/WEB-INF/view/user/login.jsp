@@ -341,7 +341,7 @@ $(document).ready(function() {
 
  success : function(response) {
                 if (response && response.status === 'WITHDRAWN') {
-                alert('이미 탈퇴한 회원입니다.'); 
+                alert('탈퇴한 회원입니다.'); 
                 } 
                 else if (response && response.memLoginId) {
                 sessionStorage.setItem('userId', response.memLoginId);

@@ -7,6 +7,9 @@
 <title>team create</title>
 	
 <!-- Bootstrap & jQuery -->
+<link rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
 <script
@@ -27,8 +30,8 @@
 
 	<main>
 		<form action="teamcreate" method="post">
-			<div class="form-container">
-				<div class="form-box">
+<!-- 			<div class="form-container"> -->
+<!-- 				<div class="form-box"> -->
 					<div class="form-header">
 						<h2 class="form-title">스터디 팀 생성</h2>
 						<p class="subtitle">새로운 스터디를 시작해보세요!</p>
@@ -199,8 +202,8 @@
 							</button>
 						</div>
 					</div>
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</form>
 	</main>
 </body>
