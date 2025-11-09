@@ -274,7 +274,7 @@
 						FROM MEMBER A
 						INNER JOIN STUDYMEMBER B  ON (B.MEM_ID = A.MEM_ID)
 						WHERE A.MEM_ID = #{memId} AND B.STUDY_ID = #{studyId}
-						)
+						) AND STUDY_ID = #{studyId}
 	</update>
 	
 	<update id="adminUpdateReport" parameterType="com.groo.model.AdminReportDTO">
@@ -296,4 +296,39 @@
 			        )
 		WHERE MEM_ID = #{memId} AND STUDY_ID = #{studyId}
 	</update>
+	
+	<select id="adminSelectDisableStudyMember" parameterType="com.groo.model.AdminTeamMemberDTO" resultType="com.groo.model.AdminTeamMemberDTO">
+			SELECT
+				A.STUDY_ID,
+				A.MEM_ID,
+				B.MEM_NAME AS MEM_NAME,
+				C.STUDY_TITLE AS STUDY_TITLE,
+				CASE A.STUDY_ROLL
+			        WHEN 'L' THEN '팀장'
+			        WHEN 'M' THEN '팀원'
+			        ELSE '기타'
+			    END AS STUDY_ROLL,
+				A.STUDY_JOINEDDATE AS STUDY_JOINEDDATE
+			FROM STUDYMEMBER A
+			INNER JOIN MEMBER B ON A.MEM_ID = B.MEM_ID
+			INNER JOIN STUDY C ON A.STUDY_ID = C.STUDY_ID
+			
+			<where>
+				AND A.STUDY_OUTDATE IS NOT NULL
+				<trim prefix="AND (" suffix=")" prefixOverrides="OR">
+					<if test="memName != null and memName != ''">
+					    OR B.MEM_NAME LIKE '%' || #{memName} || '%'
+					</if>
+  			        <if test="studyTitle != null and studyTitle != ''">
+			            OR C.STUDY_TITLE LIKE '%' || #{studyTitle} || '%'
+			        </if>
+ 			        <if test="studyRoll != null and studyRoll != ''">
+			            OR A.STUDY_ROLL = CASE #{studyRoll} WHEN '팀장' THEN 'L' WHEN '팀원' THEN 'M' END
+			        </if>
+ 	 		        <if test="studyJoinedDate != null and studyJoinedDate != ''">
+	 		        	OR TO_CHAR(A.STUDY_JOINEDDATE, 'YYYY-MM-DD') LIKE '%' || #{studyJoinedDate} || '%'
+			        </if>
+		        </trim>
+        	</where>
+	</select>
 </mapper>

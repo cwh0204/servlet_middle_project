@@ -82,7 +82,7 @@ searchTeam = () => {
 	const search = $('#searchInput').val();
 	$.ajax({
 	// 데이터를 전송할 서버 URL
-		url: 'adminselectstudymember.do',
+		url: 'adminselectdisablestudymember.do',
 	// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 	// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
@@ -108,7 +108,7 @@ $(document).ready(function() {
 		data : {
 			api : {
 				readData : {
-					url : 'adminselectstudymember.do',
+					url : 'adminselectdisablestudymember.do',
 					method : 'POST',
 				}
 			},
