@@ -280,7 +280,7 @@ $(document).ready(function() {
 				success: function(response){
 					console.log('가입 응답:', response);
 					
-					if(response.status == "success"){
+					if(response.status === "success"){
 						alert('가입이 완료되었습니다.');
 						
 						$('#joinBtn').hide();
@@ -295,7 +295,37 @@ $(document).ready(function() {
 			});
 		}
 	});	
-		
+	
+	// 탈퇴하기 버튼 클릭 시 
+	$('#leaveBtn').click(function() {
+		if(confirm('스터디를 탈퇴하시겠습니까?')) {
+			$.ajax({
+				url: 'teammemberdeletepage.do',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					studyId: studyId,
+					memLoginId: memLoginId
+				},
+				success: function(response){
+					console.log('탈퇴 응답:', response);
+					
+					if(response.status === 'success'){
+						alert('스터디에서 탈퇴되었습니다.');
+						
+						$('#leaveBtn').hide();
+						$('#joinBtn').show();
+					}else {
+						alert('탈퇴 실패: '+response.message);
+					}
+				},
+				error: function(xhr, status, error){
+					console.log('탈퇴 중 오류 발생:', status, error);
+				}
+			});
+		}
+	});
+	
 	// 수정하기 버튼 클릭 시
 	$('#editBtn').click(function() {
 		$('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', false)

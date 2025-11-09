@@ -53,6 +53,7 @@ import com.groo.controller.TeamDeleteController;
 import com.groo.controller.TeamDisableSelectController;
 import com.groo.controller.TeamInsertController;
 import com.groo.controller.TeamLikeUpdateController;
+import com.groo.controller.TeamMemberDeletePageController;
 import com.groo.controller.TeamMemberInsertPageController;
 import com.groo.controller.TeamMemberKickController;
 import com.groo.controller.TeamMemberLeaderChangeController;
@@ -167,6 +168,7 @@ public class FrontControllerPath {
         controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());
         controllerMap.put("/teammemberupdatepage.do", new TeamMemberUpdatePageController());
         controllerMap.put("/teammemberinsertpage.do", new TeamMemberInsertPageController());
+        controllerMap.put("/teammemberdeletepage.do", new TeamMemberDeletePageController());
 
         //마이페이지
         controllerMap.put("/myboardlist.do", new MyBoardListController());

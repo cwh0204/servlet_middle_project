@@ -199,7 +199,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 스터디에 가입하기 위한 서비스 메서드입니다.
 	 *
@@ -223,7 +223,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 		} finally {
 			session.close();
 		}
-		
+
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 		} finally {
 			session.close();
 		}
-		
+
 	}
 }
 
