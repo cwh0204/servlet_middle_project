@@ -36,7 +36,7 @@ public class MemberSelectFindPassController implements Controller {
 			service.updateFindMemberPass(member);
 
 			Gson gson = new Gson();
-			String json = gson.toJson("sucsses");
+			String json = gson.toJson("success");
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

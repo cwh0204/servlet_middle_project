@@ -187,6 +187,33 @@ session.setAttribute("naver_state", state);
 	</div>
 </body>
 <script type="text/javascript">
+
+var disableUserCheck = (memLoginId,memEmail) => {
+	$.ajax({
+        url: 'memberselectpass.do',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+        	memLoginId: memLoginId,
+        	memEmail: memEmail
+        },
+        success: function(response) {
+        	console.log(response.memStatus);
+        	if (response.memStatus == 'N') { 
+				
+            }else{
+                // 탈퇴 회원일 때만 알림창 표시
+                alert('이미 탈퇴된 계정입니다.'); 
+                $('#findPwResult').hide();
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("정지 정보 조회 중 오류 발생:", error);
+            // 오류 발생 시 사용자에게 적절한 메시지를 보여줍니다.
+        }
+    });
+}
+
 function checkUserSuspension(userId) {
     // 1. 서버로 AJAX 요청을 보냅니다. (로그인 ID 등을 매개변수로 전송)
     $.ajax({
@@ -394,8 +421,9 @@ $(document).ready(function() {
             var memLoginId = $('#findPwId').val();
             var memEmail = $('#findPwEmail').val();
             const memPass = generateTemporaryPassword();
+            console.log("패스워드 확인용"+memPass);
             sendCustomEmail(memEmail, memPass);
-
+            disableUserCheck(memLoginId,memEmail);
             $.ajax({
                 url: 'memberfindpass.do',
                 method: 'POST',
@@ -466,6 +494,7 @@ $(document).ready(function() {
 // 				},
 
  				success : function(response) {
+ 					
 	                if (response && response.status === 'WITHDRAWN') {
 	                	alert('탈퇴한 회원입니다.'); 
 	                } 
