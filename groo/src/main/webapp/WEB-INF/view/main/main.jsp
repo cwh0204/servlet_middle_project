@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="jquery/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 <script src="js/main/main.js"></script>
 <link rel="stylesheet" href="css/main/mainheader.css">
 <link rel="stylesheet" href="css/base.css">
