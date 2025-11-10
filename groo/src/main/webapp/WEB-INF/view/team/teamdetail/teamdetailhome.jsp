@@ -115,8 +115,6 @@
 var studyId = sessionStorage.getItem('teamId');
 var memLoginId = sessionStorage.getItem('userId');
 var loginNick = '<c:out value="${sessionScope.loginNick}" default="" />';
-console.log('로그인 닉:', sessionStorage.getItem('userNick'));
-
 
 $('#joinBtn').hide();
 $('#editBtn').hide();
@@ -135,7 +133,6 @@ $.ajax({
       // 데이터 전송 성공 시 실행
       success: function(response) {
 
-    	 console.log("비회원"+memLoginId);
     	 if(response == null){
     		 if(memLoginId != null){
     			 $('#joinBtn').show(); 
@@ -232,7 +229,6 @@ $(document).ready(function() {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			
 			// 배열인 경우 첫번째 데이터 꺼내기
 			const data = response[0];
@@ -248,26 +244,20 @@ $(document).ready(function() {
 				const $createDateSpan = $('#study_createdate');
 				const eggImgTag = $createDateSpan.find('.egg-img').prop('outerHTML');
 				
-				console.log("서버에서 받은 rawDate:", data.studyCreateDate);
-				
 				// null 또는 undefined 에 대비하여 먼저 빈 문자열로 설정 후, trim()을 사용
 				const rawDate = (data.studyCreateDate || '').trim();
 				let formattedDate = '생성일 정보 없음';
 				
 				if(rawDate.length > 0 && rawDate.includes('-')){
-					// split 하기 전 rawDate를 다시 한번 로그로 확인
-					console.log("처리 전 rawDate (trim 후):", rawDate);
 					
 					const parts = rawDate.split('-');
 					
 					// parts 배열의 길이가 3이고, 각 요소가 비어있지 않은지 확인
 					if(parts.length === 3 && parts[0] && parts[1] && parts[2]) {
-						console.log("parts [년, 월, 일]:", parts);
 						
 						formattedDate = parts[0]+'년 '+parts[1]+'월 '+parts[2]+'일 생성';
 					}else {
-						// parts 배열에 문제가 있을 경우 디버깅용 로그 추가
-						console.log("parts 배열 문제:", parts);
+
 						// 하이픈은 있으나 분리가 이상할 때, 원본 데이터라도 표시
 						formattedDate = `${rawDate} 생성`;
 					}
@@ -275,7 +265,6 @@ $(document).ready(function() {
 					formattedDate = '생성일 정보 없음';
 				}
 				
-				console.log("최종 formattedDate:", formattedDate);
 				$createDateSpan.html(eggImgTag+' '+formattedDate);
 				
 				// 좋아요 수 업데이트 로직 
@@ -292,7 +281,7 @@ $(document).ready(function() {
 				
 				// 팀장 이름 가져오기
 				const leaderNick = data.memNick;
-				console.log("ASdasas", leaderNick);
+
 /* 				if(loginNick !== leaderNick){
 					$('#editBtn').hide();
 					$('#saveBtn').hide();
