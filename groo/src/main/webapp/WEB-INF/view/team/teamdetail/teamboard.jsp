@@ -62,7 +62,9 @@ var boardselect = () => {
 			// response는 서버에서 돌려준 데이터입니다.
 			response.forEach(item => {
 				
-				console.log(item);
+			    if (item.boardTypeId && item.boardTypeId.startsWith('RANK')) {
+			        return;
+			    }
 				
 				const writeDateOnly = item.postingDate ? item.postingDate.split(' ')[0] : '-';
 				const $newRow = $('<tr>').addClass('table-hover'); // table-success 대신 table-hover 사용
@@ -136,6 +138,10 @@ var boardFindSelect = () => {
 			// response는 서버에서 돌려준 데이터입니다.
 			response.forEach(item => {
 				
+			    if (item.boardTypeId && item.boardTypeId.startsWith('RANK')) {
+			        return;
+			    }
+			    
 				const writeDateOnly = item.postingDate ? item.postingDate.split(' ')[0] : '-';
 				const $newRow = $('<tr>').addClass('table-hover'); // table-success 대신 table-hover 사용
 
@@ -247,8 +253,6 @@ $(document).ready(function() {
 	$('#boardDataBody').on('click', '.team-board-post', function(){
         var boardId = $(this).attr('data-boardId');
         var boardTypeId = $(this).attr('data-boardType'); 
-        console.log("확인용"+boardId);
-        console.log("확인용"+boardTypeId);
         teamRankPost(boardId,boardTypeId);
     });
 	
