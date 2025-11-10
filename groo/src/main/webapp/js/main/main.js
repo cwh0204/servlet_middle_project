@@ -36,7 +36,6 @@ function processAndRenderCards(allStudies, leaderList) {
 			const leaderNick = leaderMap.get(study.studyId);
 			study.memNick = leaderNick || '팀장 정보 없음';
 			generateStudyCard(study); 
-			console.log(study);
 		});
 	} else {
 		console.error("스터디 응답 형식이 배열이 아닙니다.");

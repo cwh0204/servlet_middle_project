@@ -122,7 +122,6 @@ var teamPassAjax = (studyId) => {
 		$('#cardGrid').on('click', '.btn-detail', function() {
 	        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
 	        const studyId = $(this).data('studyId');
-	        console.log(studyId);
 	        if (studyId) {
 	        	teamPassAjax(studyId);
 	        } else {

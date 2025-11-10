@@ -106,7 +106,7 @@ public class FrontControllerPath {
         //비밀번호 찾기
         controllerMap.put("/memberfindpass.do", new MemberSelectFindPassController());
         controllerMap.put("/memberselectpass.do", new MemberSelectPassController());
-        
+
         //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
@@ -177,7 +177,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminselectboard.do", new AdminSelectBoardController());
         controllerMap.put("/admindeleteboard.do", new AdminDeleteBoardController());
         controllerMap.put("/adminavgboard.do", new AdminAvgBoardController());
-        
+
         //팀멤버
         controllerMap.put("/teammemberleaders.do", new TeamMemberLeaderSelectController());
         controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());
