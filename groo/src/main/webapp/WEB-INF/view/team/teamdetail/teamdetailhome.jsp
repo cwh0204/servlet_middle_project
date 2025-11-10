@@ -24,9 +24,11 @@
 				<div class="team-meta">
 					<span><img
 						src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png"
-						class="heart">2,134</span> <span><img
+						class="heart">2,134</span> 
+					<span id="study_createdate"><img
 						src="https://i.postimg.cc/qMkNbqfw/free-icon-chick-15549519.png"
-						class="egg-img">2024년 03월 15일 생성</span> <span><img
+						class="egg-img">생성</span> 
+					<span><img
 						src="https://i.postimg.cc/jd5NFSZf/education-1.png"
 						class="edu-img"> <input type="text" name="study_category"
 						id="study_category" value="개발 & IT" readonly></span>
@@ -241,6 +243,34 @@ $(document).ready(function() {
 				$('#study_category').val(data.studyCategory);
 				$('#study_intro').val(data.studyIntro);
 				$('#study_introcontent').val(data.studyIntrocontent);
+				
+				const $createDateSpan = $('#study_createdate');
+				const eggImgTag = $createDateSpan.find('.egg-img').prop('outerHTML');
+				
+				console.log("서버에서 받은 rawDate:", data.studyCreateDate);
+				
+				const rawDate = (data.studyCreateDate || '').trim();
+				let formattedDate = '생성일 정보 없음';
+				
+				if(rawDate.length > 0 && rawDate.includes('-')){
+					console.log("처리 전 rawDate (trim 후):", rawDate);
+					
+					const parts = rawDate.split('-');
+					
+					if(parts.length === 3 && parts[0] && parts[1] && parts[2]) {
+						console.log("parts [년, 월, 일]:", parts);
+						
+						formattedDate = parts[0]+'년 '+parts[1]+'월 '+parts[2]+'일 생성';
+					}else {
+						console.log("parts 배열 문제:", parts);
+						formattedDate = `${rawDate} 생성`;
+					}
+				}else {
+					formattedDate = '생성일 정보 없음';
+				}
+				
+				console.log("최종 formattedDate:", formattedDate);
+				$createDateSpan.html(eggImgTag+' '+formattedDate);
 				
 				// 팀장 이름 가져오기
 				const leaderNick = data.memNick;
