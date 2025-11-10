@@ -248,17 +248,31 @@ $(document).ready(function() {
                 	memEmail: memEmail
                 },
                 success: function(response) {
-                    $('#foundId').text(response.memLoginId);
-                    $('#findIdResult').show();
+                    
+                    // 1. 응답이 유효하고, 서버에서 보낸 status가 'WITHDRAWN'일 경우 (탈퇴 계정)
+                    if (response && response.status === 'WITHDRAWN') { 
+                        alert('이미 탈퇴된 아이디입니다.');
+                        $('#findIdResult').hide(); // 아이디 결과창 숨김 (필수)
+                    } 
+                    
+                    // 2. 응답이 유효하고, memLoginId가 존재하면 (정상 계정)
+                    else if (response && response.memLoginId) {
+                        $('#foundId').text(response.memLoginId);
+                        $('#findIdResult').show(); // 아이디 결과창 표시
+                    }
+                    
+                    // 3. 그 외의 경우 (아이디를 찾지 못한 경우: response == null)
+                    else {
+                        alert('아이디를 찾을 수 없습니다. 입력 정보를 확인해주세요.');
+                        $('#findIdResult').hide(); // 아이디 결과창 숨김
+                    }
                 },
                 error: function() {
-                    alert('아이디를 찾을 수 없습니다. 입력 정보를 확인해주세요.');
+                    // 서버 통신 자체에 문제가 발생했을 경우
+                    alert('아이디 찾기 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+                    $('#findIdResult').hide(); // 아이디 결과창 숨김
                 }
             });
-            
-            // 테스트용 코드
-            $('#foundId').text('user***');
-            $('#findIdResult').show();
         });
         
         // 비밀번호 찾기 폼 제출

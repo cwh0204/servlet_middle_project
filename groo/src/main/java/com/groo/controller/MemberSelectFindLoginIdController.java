@@ -2,6 +2,8 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
@@ -39,12 +41,38 @@ public class MemberSelectFindLoginIdController implements Controller {
 		member.setMemEmail(memEmail);
 
 		MemberService service = new MemberServiceImpl();
+		
+		Object jsonResponseData = null; // 응답할 데이터를 담을 객체
+
 		try {
 
-			MemberDTO memberLoginId = service.selectFindMemberId(member);
+			MemberDTO memberFindId = service.selectFindMemberId(member); // 아이디와 상태 정보를 조회
+
+			if (memberFindId != null) {
+
+				// 1. 조회된 회원의 상태가 'Y' (탈퇴) 인 경우
+				if ("Y".equals(memberFindId.getMemStatus())) {
+
+					// 로그인 컨트롤러와 동일하게 "WITHDRAWN" 상태를 반환
+					Map<String, String> withdrawnResponse = new HashMap<>();
+					withdrawnResponse.put("status", "WITHDRAWN"); 
+					jsonResponseData = withdrawnResponse;
+				}
+
+				// 2. 조회된 회원의 상태가 'Y'가 아닌 경우 (정상)
+				else {
+					// 아이디와 상태 정보 (N 등)를 모두 클라이언트에게 전달
+					jsonResponseData = memberFindId; 
+				}
+			} 
+            // 3. 아이디를 찾지 못한 경우 (memberFindId == null)
+            else {
+				// 클라이언트에서 아이디를 찾을 수 없다는 메시지를 띄우도록 null을 유지
+				jsonResponseData = null;
+			}
 
 			Gson gson = new Gson();
-			String json = gson.toJson(memberLoginId);
+			String json = gson.toJson(jsonResponseData);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -55,13 +83,14 @@ public class MemberSelectFindLoginIdController implements Controller {
 
 		} catch (InternalServiceException ise) {
 			ise.printStackTrace();
+			// 에러 처리 로직
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
 		} catch (Exception e) {
 			e.printStackTrace();
+			// 에러 처리 로직
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
 		}
 	}
-
 }

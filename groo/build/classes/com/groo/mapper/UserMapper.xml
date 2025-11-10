@@ -132,7 +132,8 @@
 	
 	<select id="selectFindMemberId" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
 		SELECT
-			MEM_LOGIN_ID
+			MEM_LOGIN_ID,
+			MEM_STATUS
 		FROM MEMBER
 		WHERE
 			MEM_NAME = #{memName} AND
