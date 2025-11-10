@@ -12,6 +12,6 @@ public class AdminRankDTO {
 	private int likeCount;
 	private String studyCategory;
 	private String studyId;
-	
+
 	private String findName;
 }

@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminUpdateStudyRankCotroller implements Controller {
-	
+
 	/**
 	 * HTTP 관리자 페이지에서 스터디의 메달을 추가하는 JSON 응답을 생성합니다.
 	 *
@@ -30,10 +30,10 @@ public class AdminUpdateStudyRankCotroller implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String findName = request.getParameter("findName");
 		String studyId = request.getParameter("studyId");
 

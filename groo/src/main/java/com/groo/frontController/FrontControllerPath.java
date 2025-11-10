@@ -115,10 +115,10 @@ public class FrontControllerPath {
         //비밀번호 찾기
         controllerMap.put("/memberfindpass.do", new MemberSelectFindPassController());
         controllerMap.put("/memberselectpass.do", new MemberSelectPassController());
-        
+
         //벤정보 조회
         controllerMap.put("/memberselectbeencheck.do", new MemberSelectBeenCheckController());
-        
+
         //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());

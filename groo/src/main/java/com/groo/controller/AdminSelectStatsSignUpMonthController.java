@@ -19,7 +19,7 @@ public class AdminSelectStatsSignUpMonthController implements Controller {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		List<AdminDashBoardDTO> board = new ArrayList<>();
 		try {

@@ -36,7 +36,7 @@ public class ReportServiceImpl implements ReportService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 유저의 정지 현황 체크 서비스 메서드입니다.
 	 *
@@ -47,10 +47,10 @@ public class ReportServiceImpl implements ReportService {
 	 */
 	@Override
 	public ReportDTO memberSelectBeenCheck(ReportDTO report) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		ReportDTO reportList = new ReportDTO();
-		
+
 		try {
 			reportList = dao.memberSelectBeenCheck(report, session);
 		} catch (InternalDataAccessException ide) {

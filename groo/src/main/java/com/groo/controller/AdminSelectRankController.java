@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.AdminRankDTO;
-import com.groo.model.AdminTeamMemberDTO;
 import com.groo.service.AdminService;
 import com.groo.service.AdminServiceImpl;
 
@@ -22,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 업데이트 처리 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminSelectRankController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 베스트 글 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -35,17 +34,17 @@ public class AdminSelectRankController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String findName = request.getParameter("findName");
 
 		AdminRankDTO rank = new AdminRankDTO();
 
 		rank.setFindName(findName);
-		
+
 		AdminService service = new AdminServiceImpl();
-		
+
 		List<AdminRankDTO> rankList = new ArrayList<>();
-		
+
 		try {
 			rankList = service.adminSelectRank(rank);
 

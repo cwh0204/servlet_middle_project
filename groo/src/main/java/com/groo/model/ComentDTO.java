@@ -13,6 +13,6 @@ public class ComentDTO {
 
 	private String memLoginId;
 	private String memNick;
-	
+
 	private String findName;
 }

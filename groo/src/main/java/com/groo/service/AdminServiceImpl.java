@@ -498,7 +498,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return comentList;
 	}
-	
+
 	/**
 	 * 댓글 삭제 & 활성화 서비스 메서드입니다.
 	 *
@@ -522,7 +522,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 베스트 게시글 조회 서비스 메서드입니다.
 	 *
@@ -548,7 +548,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return rankList;
 	}
-	
+
 	/**
 	 * 스터디의 메달을 추가하는 서비스 메서드입니다.
 	 * @param rank 스터디 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
@@ -571,7 +571,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 대시보드 통계를 조회 하는 서비스 메서드입니다.
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
@@ -595,7 +595,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 일별 게시글 등록 통계를 조회 하는 서비스 메서드입니다.
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
@@ -619,7 +619,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 팀별 카테고리통계를 조회 하는 서비스 메서드입니다.
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
@@ -643,7 +643,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 월별 가입자수 통계를 조회 하는 서비스 메서드입니다.
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스

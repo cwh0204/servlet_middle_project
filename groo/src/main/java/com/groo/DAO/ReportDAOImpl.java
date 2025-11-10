@@ -23,7 +23,7 @@ public class ReportDAOImpl implements ReportDAO {
 			throw new InternalDataAccessException();
 		}
 	}
-	
+
 	/**
 	 * 로그인시에 유저의 정지현황을 확인하는 메서드
 	 * @param 신고에 대한 정보를 가져오기 위한 Data Transfer Object 데이터 클래스

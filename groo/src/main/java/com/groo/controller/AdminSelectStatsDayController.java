@@ -2,13 +2,11 @@ package com.groo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.AdminDashBoardDTO;
-import com.groo.model.MemberDTO;
 import com.groo.service.AdminServiceImpl;
 
 import jakarta.servlet.ServletException;

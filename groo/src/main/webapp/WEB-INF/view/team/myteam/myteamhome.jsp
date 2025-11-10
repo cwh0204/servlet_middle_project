@@ -141,14 +141,32 @@ var myTeamList = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			console.log(response);
-			response.forEach((team) => {
-				generateStudyCard(team);
-			});
+			
+			// 1. 기존 목록 초기화
+			$('#cardGrid').empty(); 
+
+			if (response && response.length > 0) {
+				// 2. 응답이 있으면 (스터디 목록이 있으면) 카드 생성 및 렌더링
+				response.forEach((team) => {
+					generateStudyCard(team);
+				});
+			} else {
+				// 3. 응답이 없거나 (response.length가 0이라면) 안내 JSP 파일을 로드
+				console.log("스터디 목록이 없습니다. 안내 페이지를 로드합니다.");
+				
+				// 안내 문구가 있는 JSP 파일을 #cardGrid 영역에 로드
+				$('#cardGrid').load('nonmyteam.do', function(loadResponse, status, xhr) {
+					if (status === "error") {
+						console.error("❌ 안내 JSP 로드 실패:", xhr.statusText);
+						$('#cardGrid').html('<p>스터디 목록이 없습니다. 안내 페이지 로드에 실패했습니다.</p>');
+					}
+				});
+			}
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
-
+			console.error("❌ 스터디 목록 조회 실패:", status, error);
 		}
 	}); // $.ajax 끝
 }

@@ -351,7 +351,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return statsBoard;
 	}
-	
+
 	/**
 	 * 댓글을 조회 하는 메서드
 	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
@@ -369,7 +369,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return comentList;
 	}
-	
+
 	/**
 	 * 댓글을 삭제 & 활성화 하는 메서드
 	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
@@ -384,7 +384,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminDeleteComment 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 베스트 글 조회 하는 메서드
 	 * @param rank 게시글을 조회하는 Data Transfer Object 데이터 클래스
@@ -393,7 +393,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public List<AdminRankDTO> adminSelectRank(AdminRankDTO rank, SqlSession session) {
-		
+
 		List<AdminRankDTO> rankList = new ArrayList<>();
 		try {
 			rankList = session.selectList("adminSelectRank", rank);
@@ -403,7 +403,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return rankList;
 	}
-	
+
 	/**
 	 * 스터디 메달을 추가 하는 메서드
 	 * @param rank 스터디Id를 조회하는 Data Transfer Object 데이터 클래스
@@ -418,7 +418,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminUpdateStudyRank 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 대시보드 통계를 조회 하는 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
@@ -435,7 +435,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 일별 게시글 등록 통계를 조회 하는 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
@@ -452,7 +452,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 팀별 카테고리 통계를 조회 하는 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
@@ -469,7 +469,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return board;
 	}
-	
+
 	/**
 	 * 대시보드 월별 가입자수 통계를 조회 하는 메서드
 	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체

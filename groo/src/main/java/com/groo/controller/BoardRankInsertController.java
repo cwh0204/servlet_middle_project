@@ -36,7 +36,7 @@ public class BoardRankInsertController implements Controller {
 
 		String boardId = request.getParameter("boardId");
 		String boardTypeId = request.getParameter("boardTypeId");
-		
+
 		BoardDTO board = new BoardDTO();
 		board.setBoardId(boardId);
 		board.setBoardTypeId(boardTypeId);

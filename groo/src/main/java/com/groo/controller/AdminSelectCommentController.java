@@ -8,7 +8,6 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.BoardDTO;
 import com.groo.model.ComentDTO;
 import com.groo.service.AdminService;
 import com.groo.service.AdminServiceImpl;
@@ -22,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class AdminSelectCommentController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 댓글 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -33,10 +32,10 @@ public class AdminSelectCommentController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String findName = request.getParameter("findName");
 		ComentDTO coment = new ComentDTO();
 		coment.setFindName(findName);

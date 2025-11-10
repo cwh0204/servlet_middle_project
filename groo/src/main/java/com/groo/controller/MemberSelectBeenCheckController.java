@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.ReportDTO;
-import com.groo.service.AdminService;
-import com.groo.service.AdminServiceImpl;
 import com.groo.service.ReportService;
 import com.groo.service.ReportServiceImpl;
 
@@ -21,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 조회 결과를 json 형태로 클라이언트에 응답
  */
 public class MemberSelectBeenCheckController implements Controller {
-	
+
 	/**
 	 * HTTP 유저의 제재 정보를 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -34,13 +32,13 @@ public class MemberSelectBeenCheckController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String memLoginId = request.getParameter("memLoginId");
 		ReportDTO report = new ReportDTO();
 		report.setMemLoginId(memLoginId);
 		ReportService service = new ReportServiceImpl();
 		ReportDTO reportList = new ReportDTO();
-		
+
 		try {
 			reportList = service.memberSelectBeenCheck(report);
 			Gson gson = new Gson();

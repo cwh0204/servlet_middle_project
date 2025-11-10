@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class AdminDeleteCommentController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 댓글상태를 변경하고 JSON 응답을 생성합니다.
 	 *
@@ -29,10 +29,10 @@ public class AdminDeleteCommentController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String findName = request.getParameter("findName");
 		String comentId = request.getParameter("comentId");
 
@@ -40,10 +40,10 @@ public class AdminDeleteCommentController implements Controller {
 
 		coment.setFindName(findName);
 		coment.setComentId(comentId);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
-			
+
 			service.adminDeleteComment(coment);
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");
