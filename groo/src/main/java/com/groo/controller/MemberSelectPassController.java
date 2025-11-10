@@ -25,6 +25,7 @@ public class MemberSelectPassController implements Controller {
 		String memEmail = request.getParameter("memEmail");
 
 		MemberDTO member = new MemberDTO();
+
 		member.setMemLoginId(memLoginId);
 		member.setMemPass(memPass);
 		member.setMemEmail(memEmail);
@@ -48,7 +49,7 @@ public class MemberSelectPassController implements Controller {
 					jsonResponseData = withdrawnResponse; // {"status": "WITHDRAWN"} 반환
 				}
 
-				// 3. 조회된 회원의 상태가 'N' (정상)인 경우
+				// 3. 조회된 회원의 상태가 'Y' (정상)인 경우
 				else {
 					// ✅ 정상 회원이므로 비밀번호 업데이트 실행 (Mapper는 MEM_STATUS='N' 조건으로 안전함)
 					service.updateFindMemberPass(member);
@@ -77,16 +78,14 @@ public class MemberSelectPassController implements Controller {
 
 		} catch (InternalServiceException ise) {
 			ise.printStackTrace();
-			// DB 접근 오류 등 서비스 내부 오류 발생 시 처리
+			// 에러 처리 로직
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
-            jsonResponseData = new HashMap<String, String>() {{ put("status", "error"); }};
 		} catch (Exception e) {
 			e.printStackTrace();
-			// 예상치 못한 오류 발생 시 처리
+			// 에러 처리 로직
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
-            jsonResponseData = new HashMap<String, String>() {{ put("status", "error"); }};
 		}
 	}
 }

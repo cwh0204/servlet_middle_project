@@ -4,7 +4,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.groo.DAO.MemberDAO;
 import com.groo.DAO.MemberDAOImpl;
-import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
 import com.groo.model.MemberDTO;
@@ -22,7 +21,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public int userDelete(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		int deletedd= 0;
 		try {
 			deletedd = dao.userDelete(member, session);
@@ -50,7 +49,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public void userUpdate(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		try {
 			dao.userUpdate(member, session);
 			session.commit();
@@ -77,7 +76,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	@Override
 	public MemberDTO selectSocialLoginCheck(MemberDTO member) {
 
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO socialMember = new MemberDTO();
 		try {
 			socialMember = dao.selectSocialLoginCheck(member, session);
@@ -102,7 +101,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	@Override
 	public void insertSociallMember(MemberDTO member) {
 		// TODO Auto-generated method stub
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		try {
 			dao.insertSociallMember(member, session);
 			session.commit();
@@ -126,7 +125,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectLoginMember(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO memberLogin = new MemberDTO();
 		try {
 			memberLogin = dao.selectLoginMember(member, session);
@@ -151,7 +150,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectUserNicknameCheck(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 	    MemberDTO memberDTO = new MemberDTO();
 
 	    try {
@@ -174,7 +173,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectUserEmailCheck(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO memberEmail = new MemberDTO();
 
 		try {
@@ -197,7 +196,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectUserDetail(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO userselect = new MemberDTO();
 
 		try {
@@ -224,7 +223,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	@Override
 	public MemberDTO selectFindMemberId(MemberDTO member) {
 
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO userselect = new MemberDTO();
 		try {
 			userselect = dao.selectFindMemberId(member, session);
@@ -247,23 +246,23 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
-	@Override
-	public void updateFindMemberPass(MemberDTO member) {
-
-		SqlSession session = SessionFactory.getSqlSession();
-		try {
-			dao.updateFindMemberPass(member, session);
-			session.commit();
-		} catch (InternalDataAccessException ide) {
-			ide.printStackTrace();
-			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
-		} finally {
-			session.close();
-		}
-	}
+//	@Override
+//	public void updateFindMemberPass(MemberDTO member) {
+//
+//		SqlSession session = SessionFactory.getSqlSession();
+//		try {
+//			dao.updateFindMemberPass(member, session);
+//			session.commit();
+//		} catch (InternalDataAccessException ide) {
+//			ide.printStackTrace();
+//			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+//		} finally {
+//			session.close();
+//		}
+//	}
 
 
 	/**
@@ -275,7 +274,7 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 */
 	@Override
 	public MemberDTO selectuserDelete(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
+		SqlSession session = com.groo.config.SessionFactory.getSqlSession();
 		MemberDTO deleteid = new MemberDTO();
 
 		try {
@@ -299,25 +298,72 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
 	 * 예외
 	 */
-	@Override
-	public MemberDTO selectFindMemberPass(MemberDTO member) {
-		SqlSession session = SessionFactory.getSqlSession();
-		MemberDTO memberpw = new MemberDTO();
-		try {
-			memberpw = dao.selectFindMemberPass(member, session);
-		} catch (InternalDataAccessException ide) {
-			ide.printStackTrace();
-			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
-		} finally {
-			session.close();
-		}
-		return memberpw;
-	}
+//	@Override
+//	public MemberDTO selectFindMemberPass(MemberDTO member) {
+//		SqlSession session = SessionFactory.getSqlSession();
+//		MemberDTO memberpw = new MemberDTO();
+//		try {
+//			memberpw = dao.selectFindMemberPass(member, session);
+//		} catch (InternalDataAccessException ide) {
+//			ide.printStackTrace();
+//			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+//		} finally {
+//			session.close();
+//		}
+//		return memberpw;
+//	}
+//
+//}
 
-}
+//	 합친거
+	// DAO 객체 선언 (주입 방식에 따라 달라짐. 여기서는 단순 선언으로 가정)
+
+	    // 1. 새 비밀번호 업데이트 메서드
+		@Override
+		public void updateFindMemberPass(MemberDTO member) {
+
+			SqlSession session = com.groo.config.SessionFactory.getSqlSession();
+			try {
+				// DAO를 통해 비밀번호 업데이트
+				dao.updateFindMemberPass(member, session);
+				session.commit();
+			} catch (InternalDataAccessException ide) {
+				ide.printStackTrace();
+				// 롤백이 필요하다면 여기에 session.rollback(); 추가
+				throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+			} catch (Exception e) {
+				e.printStackTrace();
+				// 롤백이 필요하다면 여기에 session.rollback(); 추가
+				throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+			} finally {
+				session.close();
+			}
+		}
+
+	    // 2. ID와 이메일 조회 메서드
+		@Override
+		public MemberDTO selectFindMemberPass(MemberDTO member) {
+			SqlSession session = com.groo.config.SessionFactory.getSqlSession();
+			MemberDTO memberpw = new MemberDTO();
+			try {
+				// DAO를 통해 회원 정보 조회
+				memberpw = dao.selectFindMemberPass(member, session);
+			} catch (InternalDataAccessException ide) {
+				ide.printStackTrace();
+				throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+			} finally {
+				session.close();
+			}
+			return memberpw;
+		}
+
+	}
 
 
 
