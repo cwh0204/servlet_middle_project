@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title></title>
