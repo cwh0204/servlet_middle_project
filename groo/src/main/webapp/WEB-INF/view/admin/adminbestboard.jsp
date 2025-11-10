@@ -114,11 +114,6 @@
 	<div>
 		<div id="gridRank"></div>
 	</div>
-	<div class="container mt-5 text-center">
-		<button type="button" class="btn btn-info btn-lg"
-			data-bs-toggle="modal" data-bs-target="#medalSelectModal">
-			메달</button>
-	</div>
 
 	<%-- 3. 메달 선택 모달 구조 --%>
 	<div class="modal fade" id="medalSelectModal" tabindex="-1"
