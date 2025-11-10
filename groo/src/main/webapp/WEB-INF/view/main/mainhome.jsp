@@ -56,16 +56,13 @@ var pageLoad = (studyId) => {
 	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
     sessionStorage.removeItem('team_last_view');
     sessionStorage.removeItem('team_detail_last_view');
-    console.log("마지막 페이지"+pageToLoad);
     
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
         if (status === "success") {
         	
         	sessionStorage.setItem('teamId', studyId);
-        	
-            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
-            
+        	            
         } else {
             // 사용자에게 실패 메시지를 표시할 수 있습니다.
             $('#contentArea').html('<p>상세 정보를 불러오는 데 실패했습니다. 다시 시도해 주세요.</p>');
@@ -117,7 +114,6 @@ var teamPassAjax = (studyId) => {
 }
 	$(document).ready(function() {
 		var memLoginId = sessionStorage.getItem('userId');
-		console.log(memLoginId);
 		grooteam();
 		$('#cardGrid').on('click', '.btn-detail', function() {
 	        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
