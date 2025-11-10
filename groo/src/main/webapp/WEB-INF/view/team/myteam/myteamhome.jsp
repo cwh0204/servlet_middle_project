@@ -140,7 +140,6 @@ var myTeamList = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			
 			// 1. 기존 목록 초기화
 			$('#cardGrid').empty(); 
@@ -152,7 +151,6 @@ var myTeamList = () => {
 				});
 			} else {
 				// 3. 응답이 없거나 (response.length가 0이라면) 안내 JSP 파일을 로드
-				console.log("스터디 목록이 없습니다. 안내 페이지를 로드합니다.");
 				
 				// 안내 문구가 있는 JSP 파일을 #cardGrid 영역에 로드
 				$('#cardGrid').load('nonmyteam.do', function(loadResponse, status, xhr) {
@@ -175,15 +173,12 @@ var pageLoad = (studyId) => {
 	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
     sessionStorage.removeItem('team_last_view');
     sessionStorage.removeItem('team_detail_last_view');
-    console.log("마지막 페이지"+pageToLoad);
     
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
         if (status === "success") {
         	
         	sessionStorage.setItem('teamId', studyId);
-        	
-            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
             
         } else {
             // 사용자에게 실패 메시지를 표시할 수 있습니다.
@@ -260,7 +255,6 @@ $(document).ready(function() {
  	$('#cardGrid').on('click', '.btn-detail', function() {
         // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
         const studyId = $(this).data('studyId');
-        console.log(studyId);
         if (studyId) {
         	teamPassAjax(studyId);
         } else {
