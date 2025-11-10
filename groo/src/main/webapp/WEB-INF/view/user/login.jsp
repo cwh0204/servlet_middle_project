@@ -198,7 +198,6 @@ var disableUserCheck = (memLoginId,memEmail) => {
         	memEmail: memEmail
         },
         success: function(response) {
-        	console.log(response.memStatus);
         	if (response.memStatus == 'N') { 
 				
             }else{
@@ -421,7 +420,6 @@ $(document).ready(function() {
             var memLoginId = $('#findPwId').val();
             var memEmail = $('#findPwEmail').val();
             const memPass = generateTemporaryPassword();
-            console.log("패스워드 확인용"+memPass);
             sendCustomEmail(memEmail, memPass);
             disableUserCheck(memLoginId,memEmail);
             $.ajax({
