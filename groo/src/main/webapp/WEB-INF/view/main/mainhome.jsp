@@ -94,6 +94,22 @@ var teamPassAjax = (studyId) => {
 				const myModal = new bootstrap.Modal(document.getElementById('passwordCheckModal'));
                 myModal.show();
 			}
+			
+			$('#confirmPasswordBtn').on('click',function(){
+
+		 		const passCheck = $('#inputPassword').val();
+		 		if(teamPass == passCheck){
+		 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
+		 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
+		 		    passwordCheckModal.hide();
+		 		    $('.modal-backdrop').remove();
+	                $('body').removeClass('modal-open');
+	                $('body').removeAttr('style');
+		 			pageLoad(studyId);
+		 		}else{
+		 			alert("비밀번호가 일치하지 않습니다.");
+		 		}
+		 	});
 		},
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
@@ -114,22 +130,6 @@ var teamPassAjax = (studyId) => {
 	            console.error("❌ 오류: studyId를 가져올 수 없습니다.");
 	        }
 	    });
-	 	
-	 	$('#confirmPasswordBtn').on('click',function(){
-
-	 		const passCheck = $('#inputPassword').val();
-	 		if(teamPass == passCheck){
-	 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
-	 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
-	 		    passwordCheckModal.hide();
-	 		    $('.modal-backdrop').remove();
-                $('body').removeClass('modal-open');
-                $('body').removeAttr('style');
-	 			pageLoad(studyId);
-	 		}else{
-	 			alert("비밀번호가 일치하지 않습니다.");
-	 		}
-	 	});
 	});
 </script>
 </html>
