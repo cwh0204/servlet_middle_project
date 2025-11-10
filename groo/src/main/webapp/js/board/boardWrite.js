@@ -37,7 +37,7 @@ function boardInsert(writer) {
 				}, 1500); // 1.5초
 			},
 			success: function(response) {
-				if (writer == "cwh0204") {
+				if (writer == "admin") {
 					window.location.href = "admin.do";
 				} else {
 					window.location.href = "main.do";

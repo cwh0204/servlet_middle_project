@@ -353,19 +353,21 @@ $(document).ready(function() {
 // 					}
 // 				},
 
- success : function(response) {
-                if (response && response.status === 'WITHDRAWN') {
-                alert('탈퇴한 회원입니다.'); 
-                } 
-                else if (response && response.memLoginId) {
-                sessionStorage.setItem('userId', response.memLoginId);
-                window.location.href = "main.do";
-                } 
-                else {
-                alert('아이디 또는 비밀번호를 확인해주세요.');
-                }
-             },
-				// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+ 				success : function(response) {
+	                if (response && response.status === 'WITHDRAWN') {
+	                	alert('탈퇴한 회원입니다.'); 
+	                } 
+                	else if (response && response.memLoginId) {
+                		sessionStorage.setItem('userId', response.memLoginId);
+                		if(response.memLoginId === 'admin'){
+                			window.location.href = "admin.do";
+                		}else{
+                     		window.location.href = "main.do";	
+                		}
+                	} else {
+                		alert('아이디 또는 비밀번호를 확인해주세요.');
+                	}
+             	},
 				error : function(xhr, status, error) {
 				}
 			});

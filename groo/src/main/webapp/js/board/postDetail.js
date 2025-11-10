@@ -354,7 +354,7 @@ $(document).ready(function() {
 
 		//목록으로 클릭시
 		$('#toBoardList').on('click', function() {
-			if (writer == "cwh0204") {
+			if (writer == "admin") {
 				window.location.href = "admin.do";
 			} else {
 				window.location.href = "main.do";
