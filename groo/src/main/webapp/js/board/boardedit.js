@@ -51,7 +51,6 @@ boardedit = (boardId) => {
 			postContent: postContent
 		},
 		success: function(response) {
-			console.log("성공");
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");

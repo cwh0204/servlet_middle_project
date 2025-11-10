@@ -381,7 +381,6 @@ $(document).ready(function() {
 		});
 		//신고버튼 클릭시
 		$('#reportPostBtn').on('click', function() {
-			console.log("신고버튼 클릭");
 		});
 
 	} else {

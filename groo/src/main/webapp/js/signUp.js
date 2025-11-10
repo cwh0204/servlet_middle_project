@@ -140,7 +140,6 @@ var signUpUser = (userIdValue, userPw1Value, userNameValue, userEmail, userjumin
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
-			console.log("서버 응답:", response);
 			window.location.href = "signupsuccess.do";
 		},
 
