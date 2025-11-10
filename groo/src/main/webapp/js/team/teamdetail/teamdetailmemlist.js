@@ -4,7 +4,6 @@ var studyId = sessionStorage.getItem('teamId');
 var memLoginId = sessionStorage.getItem('userId');
 var LeaderCheck;
 teamMemberList = () => {
-	console.log("시작");
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'teammember.do',
@@ -17,8 +16,8 @@ teamMemberList = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			// response는 서버에서 돌려준 데이터입니다.
-			console.log(response);
 			teamMemberListCard(response);
+			
 		},
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -208,16 +207,6 @@ teamMemberListCard = (dummyMembers) => {
 
 		// 4. 이벤트 핸들러 추가
 
-		/*		// 4-1. 직책 부여 버튼 클릭 이벤트
-				$container.on('click', '.assign-roll-btn', function() {
-					const $cardElement = $(this).closest('.member-card');
-					const memberId = $cardElement.data('member-id');
-					const memberName = $cardElement.find('.card-header h4').text();
-		
-					console.log(`[직책 부여 요청] ID: ${memberId}, 이름: ${memberName}`);
-					// 모달 표시 로직으로 대체하거나 현재는 alert 유지
-					alert(`${memberName}님(ID: ${memberId})의 직책을 부여/변경하는 기능을 실행합니다. (모달 필요)`);
-				});*/
 
 		// 4-2. 팀장 넘기기 버튼 클릭 이벤트
 		$container.on('click', '.transfer-roll-btn', function() {
@@ -225,7 +214,6 @@ teamMemberListCard = (dummyMembers) => {
 			const memberId = $cardElement.data('member-id');
 			const memberName = $cardElement.find('.card-header h4').text();
 
-			console.log(`[반장 넘기기 요청] ID: ${memberId}, 이름: ${memberName}`);
 			alert(`${memberName}님(ID: ${memberId})에게 스터디 반장 권한을 넘기는 기능을 실행합니다. (주의: 스터디 장만 실행 가능)`);
 			teamLeaderChange(memberId);
 			teamMemberList();
@@ -253,6 +241,5 @@ teamMemberListCard = (dummyMembers) => {
 
 (function() {
 	teamLeaderCheck();
-	console.log(LeaderCheck);
 	teamMemberList();
 })();
