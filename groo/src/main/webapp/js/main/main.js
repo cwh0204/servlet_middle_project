@@ -36,6 +36,7 @@ function processAndRenderCards(allStudies, leaderList) {
 			const leaderNick = leaderMap.get(study.studyId);
 			study.memNick = leaderNick || '팀장 정보 없음';
 			generateStudyCard(study); 
+			console.log(study);
 		});
 	} else {
 		console.error("스터디 응답 형식이 배열이 아닙니다.");
@@ -56,7 +57,7 @@ function generateStudyCard(card) { // 👈 매개변수 이름을 'card'로 변�
                     <div class="stat-item">
                         <div class="stat-icon">👥</div>
                         <div class="stat-info">
-                            <span class="stat-label">팀원</span>
+                            <span class="stat-label">총 팀원</span>
                             <span class="stat-value">${card.studyMax}명</span>
                         </div>
                     </div>
