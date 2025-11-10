@@ -218,6 +218,22 @@ var teamPassAjax = (studyId) => {
 		error: function(xhr, status, error) {
 		}
 	});
+	
+	$('#confirmPasswordBtn').on('click',function(){
+
+ 		const passCheck = $('#inputPassword').val();
+ 		if(teamPass == passCheck){
+ 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
+ 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
+ 		    passwordCheckModal.hide();
+ 		    $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').removeAttr('style');
+ 			pageLoad(studyId);
+ 		}else{
+ 			alert("비밀번호가 일치하지 않습니다.");
+ 		}
+ 	});
 }
 $(document).ready(function() {
 	
@@ -239,22 +255,6 @@ $(document).ready(function() {
  	    studyId = $detailButton.data('studyId');
  	    
  		studyLike(studyId);
- 	});
- 	
- 	$('#confirmPasswordBtn').on('click',function(){
-
- 		const passCheck = $('#inputPassword').val();
- 		if(teamPass == passCheck){
- 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
- 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
- 		    passwordCheckModal.hide();
- 		    $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open');
-            $('body').removeAttr('style');
- 			pageLoad(studyId);
- 		}else{
- 			alert("비밀번호가 일치하지 않습니다.");
- 		}
  	});
 });
 </script>
