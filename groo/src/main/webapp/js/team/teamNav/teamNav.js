@@ -31,7 +31,6 @@ $(document).ready(function() {
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
-	console.log("테스트"+test);
 	function loadContentAndActivateMenu(pageToLoad, key) {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
 		
@@ -39,7 +38,6 @@ $(document).ready(function() {
 		// 🚨 핵심 수정: 'myteamhome.do' 또는 'teamcreatehome.do'일 경우 세션 저장을 건너뜁니다.
 /*		if (key === SESSION_KEY && pageToLoad !== 'myteamhome.do' && pageToLoad !== DEFAULT_PAGE) {
 			sessionStorage.setItem(key, pageToLoad);
-			console.log("확인중!!!!!!!!!!!!!!!!!");
 		}*/
 
 		$('.teamcontent').load(pageToLoad, function(response, status, xhr) {
@@ -69,7 +67,6 @@ $(document).ready(function() {
 	        
 	        if (currentPageName === 'myteamhome.do' || currentPageName === 'teamcreatehome.do') {
 	            // 💡 현재 브라우저 URL이 기본 페이지일 때, 콘텐츠를 로드하지 않고 메뉴 활성화만 합니다.
-	            console.log(`현재 페이지(${currentPageName})는 기본 페이지이므로 콘텐츠 로드를 건너뜁니다.`);
 	            
 	            if ($('.menu-item[data-page="' + currentPageName + '"]').length) {
 	                $('.menu-item').removeClass('active');
@@ -79,12 +76,10 @@ $(document).ready(function() {
 	        } 
 
 	        if (lastPage) {
-	            console.log("세션에 저장된 마지막 팀 페이지 로드 시도:", lastPage);
 	            // 마지막 페이지를 로드합니다. (이 값은 이제 'myteamhome.do'가 아닐 것입니다.)
 	            loadContentAndActivateMenu(lastPage, SESSION_KEY);
 	        } else {
 	            // 세션에 저장된 값이 없으면 기본 페이지를 로드합니다.
-	            console.log("세션 값이 없어 기본 페이지 로드:", DEFAULT_PAGE);
 	            loadContentAndActivateMenu(DEFAULT_PAGE, null); // 세션 저장 안함
 	        }
 	    }
@@ -98,7 +93,6 @@ $(document).ready(function() {
 		const pageToLoad = $menuItem.data('page');
 
 		if (pageToLoad) {
-			console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
 
 			// UI 변경 로직 (active 상태)
 			$('.menu-item').removeClass('active');

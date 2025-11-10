@@ -289,7 +289,6 @@
 
 	        // 3. 템플릿 리터럴 (Template Literal)을 사용하여 HTML 문자열 생성
 	        
-	        console.log(vote);
 	        
 	        const TOTAL_VOTERS = 15; 
 
@@ -345,7 +344,6 @@
             	renderVoteCards(response);
             },
             error: function() {
-            	console.log(response);
             }
         });
 	}
@@ -419,7 +417,6 @@
                     var optionText = $voteOption.find('.vote-option-header span:first').text();
                     // 3. 투표 확인 및 완료 로직
                     if(confirm(optionText + '에 투표하시겠습니까?')) {
-                        console.log(voteId);
                         $.ajax({
                             url: 'voteok.do',
                             method: 'POST',

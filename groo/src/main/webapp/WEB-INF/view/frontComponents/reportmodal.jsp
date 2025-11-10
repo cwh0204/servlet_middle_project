@@ -183,7 +183,6 @@
 			$('#charCount').text($(this).val().length);			
 		});
 		$('.comment-report').on('click', function() {
-			console.log("안녕");
 		});
 		// 신고 사유 선택 시
 		$('input[name="reportReason"]').on('change', function() {

@@ -56,7 +56,6 @@ var boardselect = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			
-			console.log(response);
 			$('#boardDataBody').empty();
 
 			// response는 서버에서 돌려준 데이터입니다.
@@ -220,7 +219,6 @@ teamLeaderPost = () => {
 }
 
 teamRankPost = (boardId,boardTypeId) => {
-	console.log("보드타입"+boardTypeId);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'boardrankinsert.do',
@@ -233,7 +231,6 @@ teamRankPost = (boardId,boardTypeId) => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			alert("베스트 게시판 등록 성공!");
 		},
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
@@ -245,7 +242,6 @@ teamRankPost = (boardId,boardTypeId) => {
 
 $(document).ready(function() {
 	boardselect();
-	console.log(studyId);
 	$('#studyBoard').on('click',function(){
 		window.location.href = 'boardwrite.do?type=' + studyId;
 	});

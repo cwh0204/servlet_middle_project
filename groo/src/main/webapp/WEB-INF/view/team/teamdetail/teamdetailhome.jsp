@@ -261,7 +261,6 @@ var loadScheduleList = (response) => {
 	           studyId: studyId
 	        },
 	        success: function(response) {
-	        	console.log(response);
 	           loadScheduleList(response);
 	        },
 
@@ -350,7 +349,6 @@ $(document).ready(function() {
 
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
-			console.log("데이터를 불러오는 AJAX 오류: ", status, error);
 		}
 	});
 	
@@ -370,7 +368,6 @@ $(document).ready(function() {
 					memLoginId: memLoginId
 				},
 				success: function(response){
-					console.log('가입 응답:', response);
 					
 					if(response.status === "success"){
 						alert('가입이 완료되었습니다.');
@@ -400,7 +397,6 @@ $(document).ready(function() {
 					memLoginId: memLoginId
 				},
 				success: function(response){
-					console.log('탈퇴 응답:', response);
 					
 					if(response.status === 'success'){
 						alert('스터디에서 탈퇴되었습니다.');
@@ -412,7 +408,6 @@ $(document).ready(function() {
 					}
 				},
 				error: function(xhr, status, error){
-					console.log('탈퇴 중 오류 발생:', status, error);
 				}
 			});
 		}
@@ -450,7 +445,6 @@ $(document).ready(function() {
 			},
 			dataType: 'json',		// 서버에서 JSON으로 응답하니까 이렇게 작성
 			success: function(response){
-				console.log('서버응답: ',response);
 				
 				if(response.status === "success"){
 				   alert('변경사항이 저장되었습니다.');
@@ -464,9 +458,6 @@ $(document).ready(function() {
 				}
 			},
 			error: function(xhr, status, error){
-			/* console.log('저장하는 중에 서버 통신 오류:', status, error); */
-				console.log('오류 상태:', status, error);
-			    console.log('서버 응답 원문:', xhr.responseText);
 			}
 		});
 	});

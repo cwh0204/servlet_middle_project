@@ -32,7 +32,6 @@ $(document).ready(function() {
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
-	console.log("테스트"+test);
 	
 	function loadContentAndActivateMenu(pageToLoad, key) {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
@@ -75,7 +74,6 @@ $(document).ready(function() {
 	        } 
 
 	        if (lastPage) {
-	            console.log("세션에 저장된 마지막 팀 페이지 로드 시도:", lastPage);
 	            loadContentAndActivateMenu(lastPage, SESSION_KEY);
 	        } else {
 	            // 세션에 저장된 값이 없으면 myteamhome.do를 로드합니다.
@@ -102,7 +100,6 @@ $(document).ready(function() {
 		const pageToLoad = $menuItem.data('page');
 
 		if (pageToLoad) {
-			console.log("메뉴 클릭, 로드할 페이지:", pageToLoad);
 			sessionStorage.setItem('main_last_view', 'teamdetail.do');
 			// UI 변경 로직 (active 상태)
 			$('.menu-item').removeClass('active');

@@ -175,9 +175,7 @@ var grooComent = () => {
 		},
 		success: function(response) {
 			const botComment = marked.parse(response.botComment);
-			console.log(botComment);
 			$('.review-meta').html(botComment);
-			console.log(response);
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");

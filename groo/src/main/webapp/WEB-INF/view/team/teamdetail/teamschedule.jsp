@@ -237,7 +237,6 @@
                 success: function(response) {
             		// **성공 응답 처리: 임시 데이터 대신 실제 응답 사용**
             		const schedules = Array.isArray(response) ? response : [];
-            		console.log(schedules);
                     
                     $('#loadingState').hide();
                     $('#refreshIcon').removeClass('loading-spinner');
