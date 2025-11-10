@@ -323,7 +323,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 스터디의 팀원의 역활을 변경하는 서비스 메서드입니다.
 	 * @param 스터디의 팀원의 역활을 변경 하기위한 Data Transfer Object 데이터 클래스
@@ -346,7 +346,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 비활성화 스터디 목록을 조회하는 서비스 메서드입니다.
 	 * @param 스터디의 팀원의 역활을 변경 하기위한 Data Transfer Object 데이터 클래스
@@ -371,7 +371,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return memberList;
 	}
-	
+
 	/**
 	 * 스터디 비활성화된 팀원을 활성화 시키는 서비스 메서드입니다.
 	 * @param 스터디의 팀원을 활성화 하기위한 Data Transfer Object 데이터 클래스
@@ -394,7 +394,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 게시글을 조회하는 서비스 메서드입니다.
 	 * @param 게시글을 조회하기 위한 Data Transfer Object 데이터 클래스
@@ -404,7 +404,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public List<BoardDTO> adminSelectBoard(BoardDTO board) {
-		
+
 		SqlSession session = SessionFactory.getSqlSession();
 		List<BoardDTO> boardList = new ArrayList<>();
 		try {
@@ -420,7 +420,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return boardList;
 	}
-	
+
 	/**
 	 * 게시글 활성화 or 비활성화 서비스 메서드입니다.
 	 *
@@ -444,7 +444,7 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 	}
-	
+
 	/**
 	 * 게시글 통계 조회 서비스 메서드입니다.
 	 *

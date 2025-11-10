@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 업데이트 처리 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminSelectDisableStudyMemberController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 회원 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -33,7 +33,7 @@ public class AdminSelectDisableStudyMemberController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String search = request.getParameter("search");
 
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
@@ -42,11 +42,11 @@ public class AdminSelectDisableStudyMemberController implements Controller {
 		member.setStudyTitle(search);
 		member.setStudyRoll(search);
 		member.setStudyJoinedDate(search);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
-		
+
 		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
-		
+
 		try {
 			memberList = service.adminSelectDisableStudyMember(member);
 

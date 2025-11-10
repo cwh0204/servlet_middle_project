@@ -8,12 +8,9 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminReportDTO;
 import com.groo.model.BoardDTO;
 import com.groo.service.AdminService;
 import com.groo.service.AdminServiceImpl;
-import com.groo.service.BoardService;
-import com.groo.service.BoardServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class AdminSelectBoardController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 게시글 목록을 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -35,7 +32,7 @@ public class AdminSelectBoardController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String findName = request.getParameter("findName");
 
 		BoardDTO board = new BoardDTO();

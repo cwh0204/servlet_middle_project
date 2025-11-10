@@ -28,10 +28,10 @@ public class AdminDeleteBoardController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String findName = request.getParameter("findName");
 		String boardId = request.getParameter("boardId");
 
@@ -39,10 +39,10 @@ public class AdminDeleteBoardController implements Controller {
 
 		board.setFindName(findName);
 		board.setBoardId(boardId);
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		try {
-			
+
 			service.adminDeleteBoard(board);
 			Gson gson = new Gson();
 			String json = gson.toJson("sucsess");

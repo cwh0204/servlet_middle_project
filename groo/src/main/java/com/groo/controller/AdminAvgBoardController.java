@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
-import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.service.AdminServiceImpl;
 
@@ -19,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 클라이언트에 응답
  */
 public class AdminAvgBoardController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 게시글 통계를 조회하고 JSON 응답을 생성합니다.
 	 *
@@ -30,10 +29,10 @@ public class AdminAvgBoardController implements Controller {
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		AdminServiceImpl service = new AdminServiceImpl();
 		AdminStatsDTO statsBoard = new AdminStatsDTO();
 

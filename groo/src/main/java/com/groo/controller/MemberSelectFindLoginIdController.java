@@ -41,7 +41,7 @@ public class MemberSelectFindLoginIdController implements Controller {
 		member.setMemEmail(memEmail);
 
 		MemberService service = new MemberServiceImpl();
-		
+
 		Object jsonResponseData = null; // 응답할 데이터를 담을 객체
 
 		try {
@@ -55,16 +55,16 @@ public class MemberSelectFindLoginIdController implements Controller {
 
 					// 로그인 컨트롤러와 동일하게 "WITHDRAWN" 상태를 반환
 					Map<String, String> withdrawnResponse = new HashMap<>();
-					withdrawnResponse.put("status", "WITHDRAWN"); 
+					withdrawnResponse.put("status", "WITHDRAWN");
 					jsonResponseData = withdrawnResponse;
 				}
 
 				// 2. 조회된 회원의 상태가 'Y'가 아닌 경우 (정상)
 				else {
 					// 아이디와 상태 정보 (N 등)를 모두 클라이언트에게 전달
-					jsonResponseData = memberFindId; 
+					jsonResponseData = memberFindId;
 				}
-			} 
+			}
             // 3. 아이디를 찾지 못한 경우 (memberFindId == null)
             else {
 				// 클라이언트에서 아이디를 찾을 수 없다는 메시지를 띄우도록 null을 유지
