@@ -22,12 +22,12 @@
 				</h1>
 
 				<div class="team-meta">
-					<span><img
+					<span id="study_like"><img
 						src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png"
-						class="heart">2,134</span> 
+						class="heart"></span> 
 					<span id="study_createdate"><img
 						src="https://i.postimg.cc/qMkNbqfw/free-icon-chick-15549519.png"
-						class="egg-img">생성</span> 
+						class="egg-img"></span> 
 					<span><img
 						src="https://i.postimg.cc/jd5NFSZf/education-1.png"
 						class="edu-img"> <input type="text" name="study_category"
@@ -244,6 +244,7 @@ $(document).ready(function() {
 				$('#study_intro').val(data.studyIntro);
 				$('#study_introcontent').val(data.studyIntrocontent);
 				
+				// 스터디 생성일자 로직
 				const $createDateSpan = $('#study_createdate');
 				const eggImgTag = $createDateSpan.find('.egg-img').prop('outerHTML');
 				
@@ -276,6 +277,18 @@ $(document).ready(function() {
 				
 				console.log("최종 formattedDate:", formattedDate);
 				$createDateSpan.html(eggImgTag+' '+formattedDate);
+				
+				// 좋아요 수 업데이트 로직 
+				const $likeSpan = $('#study_like');
+				
+				// 하트 이미지 태그 추출
+				const heartImgTag = $likeSpan.find('.heart').prop('outerHTML');
+			
+				// 서버에서 받은 좋아요 수 (데이터가 없으면 0)
+				const likeCount = data.studyLike || '0';		
+				
+				// 이미지와 숫자를 합침
+				$likeSpan.html(heartImgTag+likeCount);
 				
 				// 팀장 이름 가져오기
 				const leaderNick = data.memNick;
