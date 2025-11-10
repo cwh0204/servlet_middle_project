@@ -41,14 +41,15 @@
 				C.COMENT_END IS NULL AND
 				C.BOARD_ID = A.BOARD_ID
 		    ) AS COMENT_COUNT,
-		    (SELECT COUNT(*) AS BOARD_LIKE_COUNT FROM BOARD_LIKE C WHERE C.BOARD_ID = A.BOARD_ID ) AS BOARD_LIKE_COUNT
+		    (SELECT COUNT(*) AS BOARD_LIKE_COUNT FROM BOARD_LIKE C WHERE C.BOARD_ID = A.BOARD_ID ) AS BOARD_LIKE_COUNT,
+		    A.BOARD_TYPE_ID
 		FROM BOARD A
 		LEFT JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		<where>
 		    POSTING_DEL IS NULL 
 		    
 		    <if test="boardTypeId != null and boardTypeId != ''">
-		        AND A.BOARD_TYPE_ID = #{boardTypeId}
+		        AND A.BOARD_TYPE_ID LIKE '%'||#{boardTypeId}||'%'
 		    </if>
 		    
 		    <trim prefix="AND (" suffix=")" prefixOverrides="OR">
@@ -170,7 +171,7 @@
 		SELECT
 		    'B'||BOARD_SEQ.NEXTVAL,
 		    MEM_ID,
-		    'RANK',
+		    'RANK'||#{boardTypeId},
 		    POST_TITLE,
 		    POST_CONTENT,
 		    SYSDATE

@@ -392,13 +392,17 @@
 		FROM BOARD
 	</select>
 	
-	<select id="adminSelectComment">
+	<select id="adminSelectComment" parameterType="com.groo.model.ComentDTO" resultType="com.groo.model.ComentDTO">
 		SELECT 
 			A.COMENT_ID,
 			B.MEM_NICK,
 			A.BOARD_ID,
 			A.COMENT_CONTENT,
-			A.COMENT_DATE
+			A.COMENT_DATE,
+			CASE
+		        WHEN A.COMENT_END IS NULL THEN 'N'
+		        ELSE 'Y'
+		    END AS COMENT_END
 		FROM COMENT A
 		INNER JOIN MEMBER B ON (A.MEM_ID = B.MEM_ID)
 		<where>
@@ -412,5 +416,133 @@
 	            </trim>
 	        </if>
         </where>
+	</select>
+	
+	<update id="adminDeleteComment" parameterType="com.groo.model.ComentDTO">
+		UPDATE COMENT SET
+			<choose>
+	            <when test='findName == "Y"'>
+	                COMENT_END = SYSDATE
+	            </when>
+	            <otherwise>
+	                COMENT_END = NULL
+	            </otherwise>
+	        </choose>
+		WHERE COMENT_ID = #{comentId}
+	</update>
+	<select id="adminSelectRank" parameterType="com.groo.model.AdminRankDTO" resultType="com.groo.model.AdminRankDTO">
+		SELECT 
+			A.BOARD_ID,
+			C.MEM_NICK,
+			A.POST_TITLE,
+			A.POST_VIEWS,
+			A.POSTING_DATE,
+			E.STUDY_CATEGORY,
+			COALESCE(D.LIKE_COUNT, 0) AS LIKE_COUNT,
+			SUBSTR(BOARD_TYPE_ID ,5) AS STUDY_ID
+		FROM BOARD A
+		INNER JOIN MEMBER C ON (A.MEM_ID = C.MEM_ID)
+		LEFT JOIN 
+		    (
+		        SELECT
+		            BOARD_ID,
+		            COUNT(*) AS LIKE_COUNT
+		        FROM 
+		            BOARD_LIKE
+		        GROUP BY 
+		            BOARD_ID
+		    ) D ON (A.BOARD_ID = D.BOARD_ID)
+		LEFT JOIN STUDY E ON (E.STUDY_ID = SUBSTR(BOARD_TYPE_ID ,5))
+			<where>
+				A.BOARD_TYPE_ID LIKE ('%RANK%')
+				AND A.POSTING_DATE <![CDATA[ >= ]]> TRUNC(SYSDATE, 'IW')
+				<if test="findName != null and findName != ''">
+		            <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+		                OR A.BOARD_ID LIKE '%' || #{findName} || '%'
+		                OR c.MEM_NICK LIKE '%' || #{findName} || '%'
+		                OR A.POST_TITLE LIKE '%' || #{findName} || '%'
+		                OR E.STUDY_CATEGORY LIKE '%' || #{findName} || '%'
+		            </trim>
+	        	</if>
+			</where>
+		ORDER BY LIKE_COUNT DESC
+	</select>
+	<update id="adminUpdateStudyRank" parameterType="com.groo.model.AdminRankDTO">
+		UPDATE STUDY SET
+			<choose>
+	            <when test='findName == "G"'>
+					STUDY_GOLD = STUDY_GOLD + 1
+	            </when>
+	            <when test='findName == "S"'>
+					STUDY_SILVER = STUDY_SILVER + 1
+	            </when>
+	           	<when test='findName == "B"'>
+					STUDY_BLONZE = STUDY_BLONZE + 1
+	            </when>
+	        </choose>
+		WHERE STUDY_ID = #{studyId}
+	</update>
+	
+	<select id="adminSelectStatsDay" parameterType="com.groo.model.AdminDashBoardDTO" resultType="com.groo.model.AdminDashBoardDTO">
+		SELECT 
+			(SELECT COUNT(*) FROM BOARD WHERE TRUNC(POSTING_DATE) = TRUNC(SYSDATE)) AS newBoard,
+			(SELECT COUNT(*) FROM MEMBER WHERE TRUNC(MEM_SIGNUP_DATE) = TRUNC(SYSDATE)) AS newMember,
+			(SELECT COUNT(*) FROM MEMBER WHERE TRUNC(MEM_OUT_DATE) = TRUNC(SYSDATE)) AS outMember
+		FROM DUAL
+	</select>
+	
+	<select id="adminSelectStatsPostDay" parameterType="com.groo.model.AdminDashBoardDTO" resultType="com.groo.model.AdminDashBoardDTO">
+		SELECT
+		    DECODE(T1.day_num, 
+		           1, '일', 2, '월', 3, '화', 4, '수', 5, '목', 6, '금', 7, '토') AS dayOfWeek,
+		    NVL(T2.postCount, 0) AS postCount
+		FROM
+		    (
+		        SELECT LEVEL AS day_num
+		        FROM DUAL
+		        CONNECT BY LEVEL <![CDATA[ <= ]]> 7
+		    ) T1
+		LEFT JOIN
+		    (
+		        SELECT
+		            TO_CHAR(POSTING_DATE, 'D') AS day_num,
+		            COUNT(*) AS postCount
+		        FROM BOARD
+		        GROUP BY
+		            TO_CHAR(POSTING_DATE, 'D')
+		    ) T2 ON T1.day_num = T2.day_num
+		 ORDER BY
+		    T1.day_num
+	</select>
+	
+	<select id="adminSelectStatsCategory" parameterType="com.groo.model.AdminDashBoardDTO" resultType="com.groo.model.AdminDashBoardDTO">
+		SELECT
+			STUDY_CATEGORY,
+			COUNT(*) AS categoryCount
+		FROM STUDY
+		GROUP BY STUDY_CATEGORY
+	</select>
+	
+	<select id="adminSelectStatsSignUpMonth" parameterType="com.groo.model.AdminDashBoardDTO" resultType="com.groo.model.AdminDashBoardDTO">
+		SELECT
+		    T1.month_num || '월' AS signupMonthName, 
+		    NVL(T2.monthlySignups, 0) AS monthlySignups
+		FROM
+		    (
+		        SELECT LEVEL AS month_num
+		        FROM DUAL
+		        CONNECT BY LEVEL <![CDATA[ <= ]]> 12
+		    ) T1
+		LEFT JOIN
+		    (
+		        SELECT
+		            TO_CHAR(MEM_SIGNUP_DATE, 'MM') AS signupMonth,
+		            COUNT(*) AS monthlySignups
+		        FROM MEMBER
+		        GROUP BY
+		            TO_CHAR(MEM_SIGNUP_DATE, 'MM')
+		    ) T2 ON T1.month_num = TO_NUMBER(T2.signupMonth)
+		ORDER BY
+		    T1.month_num
 	</select>
 </mapper>

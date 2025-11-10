@@ -5,10 +5,13 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.model.AdminAvgReportDTO;
+import com.groo.model.AdminDashBoardDTO;
+import com.groo.model.AdminRankDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.BoardDTO;
+import com.groo.model.ComentDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminDAO {
@@ -30,4 +33,12 @@ public interface AdminDAO {
 	public List<BoardDTO> adminSelectBoard(BoardDTO board, SqlSession session);
 	public void adminDeleteBoard(BoardDTO board, SqlSession session);
 	public AdminStatsDTO adminAvgBoard(SqlSession session);
+	public List<ComentDTO> adminSelectComment(ComentDTO comment,SqlSession session);
+	public void adminDeleteComment(ComentDTO coment, SqlSession session);
+	public List<AdminRankDTO> adminSelectRank(AdminRankDTO rank, SqlSession session);
+	public void adminUpdateStudyRank(AdminRankDTO rank, SqlSession session);
+	public AdminDashBoardDTO adminSelectStatsDay(SqlSession session);
+	public List<AdminDashBoardDTO> adminSelectStatsPostDay(SqlSession session);
+	public List<AdminDashBoardDTO> adminSelectStatsCategory(SqlSession session);
+	public List<AdminDashBoardDTO> adminSelectStatsSignUpMonth(SqlSession session);
 }

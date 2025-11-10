@@ -7,10 +7,13 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.groo.error.InternalDataAccessException;
 import com.groo.model.AdminAvgReportDTO;
+import com.groo.model.AdminDashBoardDTO;
+import com.groo.model.AdminRankDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.BoardDTO;
+import com.groo.model.ComentDTO;
 import com.groo.model.MemberDTO;
 import com.groo.model.TeamMemberDTO;
 
@@ -348,5 +351,140 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminAvgBoard 예외발생",e);
 		}
 		return statsBoard;
+	}
+	
+	/**
+	 * 댓글을 조회 하는 메서드
+	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 댓글 조회
+	 */
+	@Override
+	public List<ComentDTO> adminSelectComment(ComentDTO comment, SqlSession session) {
+		List<ComentDTO> comentList = new ArrayList<>();
+		try {
+			comentList = session.selectList("adminSelectComment", comment);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectComment 예외발생",e);
+		}
+		return comentList;
+	}
+	
+	/**
+	 * 댓글을 삭제 & 활성화 하는 메서드
+	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminDeleteComment(ComentDTO coment, SqlSession session) {
+		try {
+			session.update("adminDeleteComment", coment);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminDeleteComment 예외발생",e);
+		}
+	}
+	
+	/**
+	 * 베스트 글 조회 하는 메서드
+	 * @param rank 게시글을 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 베스트글 목록 리턴
+	 */
+	@Override
+	public List<AdminRankDTO> adminSelectRank(AdminRankDTO rank, SqlSession session) {
+		
+		List<AdminRankDTO> rankList = new ArrayList<>();
+		try {
+			rankList = session.selectList("adminSelectRank", rank);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectRank 예외발생",e);
+		}
+		return rankList;
+	}
+	
+	/**
+	 * 스터디 메달을 추가 하는 메서드
+	 * @param rank 스터디Id를 조회하는 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 */
+	@Override
+	public void adminUpdateStudyRank(AdminRankDTO rank, SqlSession session) {
+		try {
+			session.update("adminUpdateStudyRank", rank);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminUpdateStudyRank 예외발생",e);
+		}
+	}
+	
+	/**
+	 * 대시보드 통계를 조회 하는 메서드
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 대시보드 통계를 리턴
+	 */
+	@Override
+	public AdminDashBoardDTO adminSelectStatsDay(SqlSession session) {
+		AdminDashBoardDTO board = new AdminDashBoardDTO();
+		try {
+			board = session.selectOne("adminSelectStatsDay");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminUpdateStudyRank 예외발생",e);
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 일별 게시글 등록 통계를 조회 하는 메서드
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 대시보드 통계를 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsPostDay(SqlSession session) {
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = session.selectList("adminSelectStatsPostDay");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectStatsPostDay 예외발생",e);
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 팀별 카테고리 통계를 조회 하는 메서드
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 대시보드 통계를 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsCategory(SqlSession session) {
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = session.selectList("adminSelectStatsCategory");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectStatsCategory 예외발생",e);
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 월별 가입자수 통계를 조회 하는 메서드
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 대시보드 통계를 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsSignUpMonth(SqlSession session) {
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = session.selectList("adminSelectStatsSignUpMonth");
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:adminSelectStatsSignUpMonth 예외발생",e);
+		}
+		return board;
 	}
 }

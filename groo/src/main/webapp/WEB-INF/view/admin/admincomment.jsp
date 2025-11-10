@@ -63,13 +63,13 @@
 					id="searchInput" placeholder="이름, 이메일로 검색...">
 			</div>
 			<div class="filter-group">
-				<button class="btn btn-secondary" onclick="searchBoard()">
+				<button class="btn btn-secondary" onclick="searchComment()">
 					검색</button>
 			</div>
 		</div>
 	</div>
 	<div>
-		<div id="gridBoard"></div>
+		<div id="gridComment"></div>
 	</div>
 </body>
 <script type="text/javascript">
@@ -97,11 +97,11 @@ var boardStats = () => {
 		}
 	}); // $.ajax 끝
 }
-searchBoard = () => {
+searchComment = () => {
 	const search = $('#searchInput').val();
 	$.ajax({
 	// 데이터를 전송할 서버 URL
-		url: 'adminselectboard.do',
+		url: 'adminselectcomment.do',
 	// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 	// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
@@ -112,7 +112,7 @@ searchBoard = () => {
 		success: function(response) {
 			console.log(response);
 	// response는 서버에서 돌려준 데이터입니다.
-			gridBoard.resetData(response);
+			gridComment.resetData(response);
 		    boardStats();
 		},
 	
@@ -123,12 +123,12 @@ searchBoard = () => {
 	}
 
 $(document).ready(function() {
-	gridBoard = new tui.Grid({
-		el : document.getElementById('gridBoard'),
+	gridComment = new tui.Grid({
+		el : document.getElementById('gridComment'),
 		data : {
 			api : {
 				readData : {
-					url : 'adminselectboard.do',
+					url : 'adminselectcomment.do',
 					method : 'POST',
 				}
 			},
@@ -140,11 +140,11 @@ $(document).ready(function() {
 	        sortable: true 
 	    },
 		columns : [ {
-			header : '게시글ID',
-			name : 'boardId'
+			header : '댓글ID',
+			name : 'comentId'
 		}, {
-			header : '게시글Type',
-			name : 'boardTypeId',
+			header : '게시글ID',
+			name : 'boardId',
 			filter: {
 		        type: 'select',
 		        operator: 'OR'
@@ -154,18 +154,14 @@ $(document).ready(function() {
 			name : 'memNick'
 		}, {
 			header : '글 제목',
-			name : 'postTitle'
+			name : 'comentContent'
 		}, {
 			header : '작성일',
-			name : 'postingDate',
-			sortable: true
-		},{
-			header : '좋아요',
-			name : 'boardLikeCount',
+			name : 'comentDate',
 			sortable: true
 		},{
 			header : '삭제여부',
-			name : 'postingDelCheck',
+			name : 'comentEnd',
 			filter: {
 	            type: 'select', 
 	            options: {
@@ -181,13 +177,13 @@ $(document).ready(function() {
 			name: 'grade',
 			width: 150,
 			renderer: {
-				type: CustomBoardBtnRenderer,
+				type: CustomCommentBtnRenderer,
 			}
 		}
 		]
 	});
-	gridBoard.setBodyHeight(450);
-    searchBoard();
+	gridComment.setBodyHeight(450);
+    searchComment();
 });
 </script>
 </html>

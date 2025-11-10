@@ -11,10 +11,13 @@ import com.groo.config.SessionFactory;
 import com.groo.error.InternalDataAccessException;
 import com.groo.error.InternalServiceException;
 import com.groo.model.AdminAvgReportDTO;
+import com.groo.model.AdminDashBoardDTO;
+import com.groo.model.AdminRankDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.BoardDTO;
+import com.groo.model.ComentDTO;
 import com.groo.model.MemberDTO;
 
 public class AdminServiceImpl implements AdminService {
@@ -469,5 +472,199 @@ public class AdminServiceImpl implements AdminService {
 			session.close();
 		}
 		return statsBoard;
+	}
+	/**
+	 * 댓글 통계 조회 서비스 메서드입니다.
+	 *
+	 * @param board 페이지 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 댓글 조회 목록을 리턴
+	 */
+	@Override
+	public List<ComentDTO> adminSelectComment(ComentDTO comment) {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<ComentDTO> comentList = new ArrayList<>();
+		try {
+			comentList = dao.adminSelectComment(comment,session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return comentList;
+	}
+	
+	/**
+	 * 댓글 삭제 & 활성화 서비스 메서드입니다.
+	 *
+	 * @param coment 댓글 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminDeleteComment(ComentDTO coment) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminDeleteComment(coment,session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
+	
+	/**
+	 * 베스트 게시글 조회 서비스 메서드입니다.
+	 *
+	 * @param coment 댓글 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 베스트 게시글 목록 리턴
+	 */
+	@Override
+	public List<AdminRankDTO> adminSelectRank(AdminRankDTO rank) {
+		List<AdminRankDTO> rankList = new ArrayList<>();
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			rankList = dao.adminSelectRank(rank ,session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return rankList;
+	}
+	
+	/**
+	 * 스터디의 메달을 추가하는 서비스 메서드입니다.
+	 * @param rank 스터디 정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public void adminUpdateStudyRank(AdminRankDTO rank) {
+		SqlSession session = SessionFactory.getSqlSession();
+		try {
+			dao.adminUpdateStudyRank(rank ,session);
+			session.commit();
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+	}
+	
+	/**
+	 * 대시보드 통계를 조회 하는 서비스 메서드입니다.
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 대시보드 통계 리턴
+	 */
+	@Override
+	public AdminDashBoardDTO adminSelectStatsDay() {
+		SqlSession session = SessionFactory.getSqlSession();
+		AdminDashBoardDTO board = new AdminDashBoardDTO();
+		try {
+			board = dao.adminSelectStatsDay(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 일별 게시글 등록 통계를 조회 하는 서비스 메서드입니다.
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 대시보드 통계 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsPostDay() {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = dao.adminSelectStatsPostDay(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 팀별 카테고리통계를 조회 하는 서비스 메서드입니다.
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 대시보드 통계 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsCategory() {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = dao.adminSelectStatsCategory(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return board;
+	}
+	
+	/**
+	 * 대시보드 월별 가입자수 통계를 조회 하는 서비스 메서드입니다.
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 * @return 대시보드 통계 리턴
+	 */
+	@Override
+	public List<AdminDashBoardDTO> adminSelectStatsSignUpMonth() {
+		SqlSession session = SessionFactory.getSqlSession();
+		List<AdminDashBoardDTO> board = new ArrayList<>();
+		try {
+			board = dao.adminSelectStatsSignUpMonth(session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return board;
 	}
 }

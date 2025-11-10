@@ -9,6 +9,49 @@
 <link rel="stylesheet"
 	href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
 <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+<style type="text/css">
+.badge-stat-gold, .badge-stat-silver, .badge-stat-bronze {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	flex-direction: row; /* 숫자 → 아이콘 순서 */
+	text-align: center;
+}
+
+.badge-stat-icon::before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+}
+
+.badge-stat-gold .badge-stat-icon::before {
+	background-image:
+		url('https://i.postimg.cc/FHmN8Bg7/icons8-first-place-ribbon-50.png');
+}
+
+.badge-stat-silver .badge-stat-icon::before {
+	background-image:
+		url('https://i.postimg.cc/BnVNXXZj/icons8-second-place-ribbon-50.png');
+}
+
+.badge-stat-bronze .badge-stat-icon::before {
+	background-image:
+		url('https://i.postimg.cc/HnYbSgWN/icons8-third-place-ribbon-50.png');
+}
+
+.badge-state-container {
+	display: flex;
+	justify-content: center;
+	gap: 45px;
+	margin-bottom: 30px;
+}
+</style>
 </head>
 <body>
 	<div class="content-header">
@@ -69,10 +112,76 @@
 		</div>
 	</div>
 	<div>
-		<div id="gridBoard"></div>
+		<div id="gridRank"></div>
+	</div>
+	<div class="container mt-5 text-center">
+		<button type="button" class="btn btn-info btn-lg"
+			data-bs-toggle="modal" data-bs-target="#medalSelectModal">
+			메달</button>
+	</div>
+
+	<%-- 3. 메달 선택 모달 구조 --%>
+	<div class="modal fade" id="medalSelectModal" tabindex="-1"
+		aria-labelledby="medalSelectModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title" id="medalSelectModalLabel">🏅 메달 선택 및
+						할당</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body text-center">
+					<p class="fs-5 mb-4">할당할 메달 종류를 선택하세요.</p>
+					<div class="mb-4 text-start p-3 bg-light rounded">
+						<p>
+							<span>글 제목 : </span> <span id="modal_title"></span>
+						</p>
+						<p>
+							<span>글번호 : </span> <span id="modal_postId"></span>
+						</p>
+						<p>
+							<span>작성자 : </span> <span id="modal_writer"></span>
+						</p>
+					</div>
+					<div class="badge-state-container">
+						<%-- 메달 선택 버튼들 --%>
+						<button type="button" id="rankGold"
+							class="btn btn-warning btn-lg medal-btn" data-medal="gold">
+							<div class="badge-stat-gold">
+								<div class="badge-stat-icon"></div>
+							</div>
+						</button>
+						<button type="button" id="rankSilver"
+							class="btn btn-secondary btn-lg medal-btn" data-medal="silver">
+							<div class="badge-stat-silver">
+								<div class="badge-stat-icon"></div>
+							</div>
+						</button>
+						<button type="button" id="rankBronze"
+							class="btn btn-danger btn-lg medal-btn" data-medal="bronze">
+							<div class="badge-stat-bronze">
+								<div class="badge-stat-icon"></div>
+							</div>
+						</button>
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="button" id="goToPostBtn" class="btn btn-secondary">글
+							이동</button>
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">닫기</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript">
+
 var boardStats = () => {
 	$.ajax({
 		// 데이터를 전송할 서버 URL
@@ -97,38 +206,89 @@ var boardStats = () => {
 		}
 	}); // $.ajax 끝
 }
-searchBoard = () => {
-	const search = $('#searchInput').val();
+var searchBoard = () => {
+    const search = $('#searchInput').val();
+    $.ajax({
+        // 데이터를 전송할 서버 URL
+        url: 'adminselectrank.do',
+        // ... (생략)
+        data: {
+            findName : search
+        },
+        // 데이터 전송 성공 시 실행
+        success: function(response) {
+            console.log(response);
+            
+            // 1. response가 배열인지 확인하고, 아니면 빈 배열로 안전하게 설정
+            const dataForGrid = Array.isArray(response) ? response : [];
+            
+            // 2. 🚨 수정: 안전하게 검사된 'dataForGrid'를 사용하도록 변경
+            gridRank.resetData(dataForGrid);
+            
+            boardStats();
+        },
+        
+        // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        error: function(xhr, status, error) {
+            gridRank.resetData([]);
+        }
+    });
+}
+var studyRank = (findName, studyId) => {
 	$.ajax({
-	// 데이터를 전송할 서버 URL
-		url: 'adminselectboard.do',
-	// 전송 방식 (로그인/회원가입은 보통 POST 사용)
-		type: 'POST',
-	// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-		data: {
-			findName : search
-		},
-	// 데이터 전송 성공 시 실행
-		success: function(response) {
-			console.log(response);
-	// response는 서버에서 돌려준 데이터입니다.
-			gridBoard.resetData(response);
-		    boardStats();
-		},
-	
-	// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
-		error: function(xhr, status, error) {
-		}
+		// 데이터를 전송할 서버 URL
+			url: 'adminupdatestudyrank.do',
+		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+			type: 'POST',
+		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+			data: {
+				findName : findName,
+				studyId : studyId
+			},
+		// 데이터 전송 성공 시 실행
+			success: function(response) {
+				console.log(response);
+		// response는 서버에서 돌려준 데이터입니다.
+				gridRank.resetData(response);
+			    boardStats();
+			},
+		
+		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+			error: function(xhr, status, error) {
+			}
 		});
-	}
-
+}
 $(document).ready(function() {
-	gridBoard = new tui.Grid({
-		el : document.getElementById('gridBoard'),
+	
+	$('.medal-btn').on('click', function() {
+		const selectedMedal = $(this).attr('data-medal');
+        // 2. 선택된 메달에 따라 메시지 설정
+         if (selectedMedal === 'gold') {
+        	const studyId = $('#rankGold').val();
+        	const findName = "G";
+        	studyRank(findName,studyId);
+        } else if (selectedMedal === 'silver') {
+        	const studyId = $('#rankSilver').val();
+        	const findName = "S";
+        	studyRank(findName,studyId);
+        } else if (selectedMedal === 'bronze') {
+        	const studyId = $('#rankBronze').val();
+        	const findName = "B";
+        	studyRank(findName,studyId);
+        }
+        
+        // 3. 모달 닫기
+        $('#medalSelectModal').modal('hide');
+
+    });
+	
+	
+	gridRank = new tui.Grid({
+		el : document.getElementById('gridRank'),
 		data : {
 			api : {
 				readData : {
-					url : 'adminselectboard.do',
+					url : 'adminselectrank.do',
 					method : 'POST',
 				}
 			},
@@ -143,16 +303,15 @@ $(document).ready(function() {
 			header : '게시글ID',
 			name : 'boardId'
 		}, {
-			header : '게시글Type',
-			name : 'boardTypeId',
-			filter: {
-		        type: 'select',
-		        operator: 'OR'
-		    }
-		}, {
 			header : '작성자',
 			name : 'memNick'
-		}, {
+		},{
+			header : '카테고리',
+			name : 'studyCategory',
+			filter: {
+	            type: 'select'
+	        }
+		},{
 			header : '글 제목',
 			name : 'postTitle'
 		}, {
@@ -161,32 +320,23 @@ $(document).ready(function() {
 			sortable: true
 		},{
 			header : '좋아요',
-			name : 'boardLikeCount',
+			name : 'likeCount',
 			sortable: true
 		},{
-			header : '삭제여부',
-			name : 'postingDelCheck',
-			filter: {
-	            type: 'select', 
-	            options: {
-	                // listItems: 사용자에게 보여줄 항목과 실제 필터링에 사용할 값(value) 정의
-	                listItems: [
-	                    { text: '활성화됨', value: '' }, // 값이 비어있을 때 ('')
-	                    { text: '비활성화됨', value: 'Y' }  // 값이 'Y'일 때
-	                ]
-	            }
-	        }
+			header : '조회수',
+			name : 'postViews',
+			sortable: true
 		},{
 			header: '기타',
 			name: 'grade',
 			width: 150,
 			renderer: {
-				type: CustomBoardBtnRenderer,
+				type: CustomRankBtnRenderer,
 			}
 		}
 		]
 	});
-	gridBoard.setBodyHeight(450);
+	gridRank.setBodyHeight(450);
     searchBoard();
 });
 </script>

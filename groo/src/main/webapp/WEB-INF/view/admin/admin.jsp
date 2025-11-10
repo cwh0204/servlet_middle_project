@@ -482,5 +482,177 @@ class CustomBoardBtnRenderer {
         event.stopPropagation();
     }
 }
+
+class CustomCommentBtnRenderer {
+    constructor(props) {
+      const container = document.createElement('div');
+      container.className = 'btn-renderer-container';
+      
+      const deleteBtn = document.createElement('button');
+      const boardBtn = document.createElement('button');
+      
+      boardBtn.className = 'user-randarer-button';
+      boardBtn.textContent = '확인';
+      boardBtn.dataset.type = 'board';
+      
+      deleteBtn.className = 'user-randarer-button';
+      deleteBtn.textContent = '삭제';
+      deleteBtn.dataset.type = 'delete';
+      
+      this.deleteBtn = deleteBtn;
+      
+      boardBtn.addEventListener('click', (event) => {
+          this.onClick(props, event);
+      });
+      
+      deleteBtn.addEventListener('click', (event) => {
+          this.onClick(props, event);
+      });
+      
+      container.appendChild(deleteBtn);
+      container.appendChild(boardBtn);
+      
+      this.container = container;
+      
+      this.render(props);
+    }
+
+    getElement() {
+      return this.container;
+    }
+    render(props) {
+        const { grid, rowKey } = props;
+        const rowData = grid.getRow(rowKey);
+        const delCheck = rowData.comentEnd;
+
+        if (delCheck === 'Y') {
+            this.deleteBtn.textContent = '활성';
+            this.deleteBtn.dataset.type = 'activate'; 
+        } 
+        else { 
+            this.deleteBtn.textContent = '삭제';
+            this.deleteBtn.dataset.type = 'delete';
+        } 
+    }
+    
+    onClick(props, event) {
+    	
+        const { grid, rowKey } = props;
+        const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
+        const rowData = grid.getRow(rowKey);
+        
+        if (!targetBtn) return;
+        
+        const actionType = targetBtn.dataset.type;
+        
+        if (actionType === 'delete') {
+        	$.ajax({
+        		// 데이터를 전송할 서버 URL
+        		url: 'admindeletecomment.do',
+        		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        		type: 'POST',
+        		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        		data: {
+        			comentId: rowData.comentId,
+        			findName : 'Y'
+        		},
+        		// 데이터 전송 성공 시 실행
+        		success: function(response) {
+        			// response는 서버에서 돌려준 데이터입니다.
+        			searchComment();
+        		},
+
+        		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        		error: function(xhr, status, error) {
+        		}
+        	});
+        }
+        if (actionType === 'board') {
+        	window.open('postdetail.do?id='+rowData.boardId);
+        }
+        if (actionType === 'activate') {
+        	$.ajax({
+        		// 데이터를 전송할 서버 URL
+        		url: 'admindeletecomment.do',
+        		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+        		type: 'POST',
+        		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+        		data: {
+        			comentId: rowData.comentId
+        		},
+        		// 데이터 전송 성공 시 실행
+        		success: function(response) {
+        			// response는 서버에서 돌려준 데이터입니다.
+        			searchComment();
+        		},
+        		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+        		error: function(xhr, status, error) {
+        		}
+        	});
+        }
+        event.stopPropagation();
+    }
+}
+
+class CustomRankBtnRenderer {
+    constructor(props) {
+      const container = document.createElement('div');
+      container.className = 'btn-renderer-container';
+      
+      const rankCheckBtn = document.createElement('button');
+      
+	   rankCheckBtn.className = 'user-randarer-button btn btn-sm';
+	   rankCheckBtn.textContent = '메달';
+	
+	   rankCheckBtn.dataset.type = 'rankCheck';
+	
+	   rankCheckBtn.setAttribute('data-bs-toggle', 'modal');
+	   rankCheckBtn.setAttribute('data-bs-target', '#medalSelectModal');
+      
+      rankCheckBtn.addEventListener('click', (event) => {
+          this.onClick(props, event);
+      });
+      
+      container.appendChild(rankCheckBtn);
+      
+      this.container = container;
+      
+      this.render(props);
+    }
+
+    getElement() {
+      return this.container;
+    }
+
+    render(props) {
+       this.container.value = String(props.value);
+    }
+    
+    onClick(props, event) {
+    	
+        const { grid, rowKey } = props;
+        const targetBtn = event.target.closest('button'); //클릭된 버튼 식별
+        
+        const rowData = grid.getRow(rowKey);
+
+        if (!targetBtn) return;
+        
+        const actionType = targetBtn.dataset.type;
+        
+        console.log(rowData);
+        
+        if (actionType === 'rankCheck') {
+        	$('#modal_postId').text(rowData.boardId);
+        	$('#modal_writer').text(rowData.memNick);
+        	$('#modal_title').text(rowData.postTitle);
+        	$('#goToPostBtn').val(rowData.boardId);
+        	$('#rankGold').val(rowData.studyId);
+        	$('#rankSilver').val(rowData.studyId);
+        	$('#rankBronze').val(rowData.studyId);
+        }
+        event.stopPropagation();
+    }
+}
+
 </script>
 </html>

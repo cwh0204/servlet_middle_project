@@ -5,10 +5,13 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.groo.model.AdminAvgReportDTO;
+import com.groo.model.AdminDashBoardDTO;
+import com.groo.model.AdminRankDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.BoardDTO;
+import com.groo.model.ComentDTO;
 import com.groo.model.MemberDTO;
 
 public interface AdminService {
@@ -30,4 +33,12 @@ public interface AdminService {
 	public List<BoardDTO> adminSelectBoard(BoardDTO board);
 	public void adminDeleteBoard(BoardDTO board);
 	public AdminStatsDTO adminAvgBoard();
+	public List<ComentDTO> adminSelectComment(ComentDTO comment);
+	public void adminDeleteComment(ComentDTO coment);
+	public List<AdminRankDTO> adminSelectRank(AdminRankDTO rank);
+	public void adminUpdateStudyRank(AdminRankDTO rank);
+	public AdminDashBoardDTO adminSelectStatsDay();
+	public List<AdminDashBoardDTO> adminSelectStatsPostDay();
+	public List<AdminDashBoardDTO> adminSelectStatsCategory();
+	public List<AdminDashBoardDTO> adminSelectStatsSignUpMonth();
 }

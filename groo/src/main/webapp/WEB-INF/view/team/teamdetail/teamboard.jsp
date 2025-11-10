@@ -85,7 +85,7 @@ var boardselect = () => {
 				$newRow.append($('<td>').text(item.boardLikeCount));
 				$newRow.append(
 					    $('<td>').addClass('teamLeaderdiv').append(
-					        $('<button>').text('게시하기').attr('data-boardId', item.boardId).addClass('btn btn-sm btn-primary team-board-post')
+					        $('<button>').text('게시하기').attr('data-boardId', item.boardId).addClass('btn btn-sm btn-primary team-board-post').attr('data-boardType', item.boardTypeId)
 					    )
 					);
 				// 5. 완성된 <tr>을 <tbody>에 추가합니다.
@@ -131,13 +131,10 @@ var boardFindSelect = () => {
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
 			
-			console.log(response);
 			$('#boardDataBody').empty();
 
 			// response는 서버에서 돌려준 데이터입니다.
 			response.forEach(item => {
-				
-				console.log(item);
 				
 				const writeDateOnly = item.postingDate ? item.postingDate.split(' ')[0] : '-';
 				const $newRow = $('<tr>').addClass('table-hover'); // table-success 대신 table-hover 사용
@@ -160,7 +157,7 @@ var boardFindSelect = () => {
 				$newRow.append($('<td>').text(item.boardLikeCount));
 				$newRow.append(
 					    $('<td>').addClass('teamLeaderdiv').append(
-					        $('<button>').text('게시하기').attr('data-boardId', item.boardId).addClass('btn btn-sm btn-primary team-board-post')
+					        $('<button>').text('게시하기').attr('data-boardId', item.boardId).addClass('btn btn-sm btn-primary team-board-post').attr('data-boardType', item.boardTypeId)
 					    )
 					);
 				// 5. 완성된 <tr>을 <tbody>에 추가합니다.
@@ -205,7 +202,6 @@ teamLeaderPost = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			if(response.studyRoll == 'L'){
 				$('.teamLeaderdiv').show();
 			}
@@ -217,8 +213,8 @@ teamLeaderPost = () => {
 	 });
 }
 
-teamRankPost = (boardId) => {
-	
+teamRankPost = (boardId,boardTypeId) => {
+	console.log("보드타입"+boardTypeId);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'boardrankinsert.do',
@@ -226,7 +222,8 @@ teamRankPost = (boardId) => {
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
 		data: {
-			boardId : boardId
+			boardId : boardId,
+			boardTypeId : boardTypeId
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
@@ -248,8 +245,11 @@ $(document).ready(function() {
 	});
 	
 	$('#boardDataBody').on('click', '.team-board-post', function(){
-        var boardId = $(this).attr('data-boardId'); 
-        teamRankPost(boardId);
+        var boardId = $(this).attr('data-boardId');
+        var boardTypeId = $(this).attr('data-boardType'); 
+        console.log("확인용"+boardId);
+        console.log("확인용"+boardTypeId);
+        teamRankPost(boardId,boardTypeId);
     });
 	
 	$('#studyBoardFind').keypress(function(event) {
