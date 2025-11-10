@@ -251,7 +251,7 @@ $(document).ready(function() {
                     
                     // 1. 응답이 유효하고, 서버에서 보낸 status가 'WITHDRAWN'일 경우 (탈퇴 계정)
                     if (response && response.status === 'WITHDRAWN') { 
-                        alert('이미 탈퇴된 아이디입니다.');
+                        alert('이미 탈퇴된 계정입니다.');
                         $('#findIdResult').hide(); // 아이디 결과창 숨김 (필수)
                     } 
                     

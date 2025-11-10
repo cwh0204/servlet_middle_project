@@ -139,6 +139,17 @@
 			MEM_NAME = #{memName} AND
 			MEM_EMAIL = #{memEmail}
 	</select>
+	
+	<select id="selectFindMemberPass" parameterType="com.groo.model.MemberDTO" resultType="com.groo.model.MemberDTO">
+	   SELECT 
+	       MEM_PASS,
+	       MEM_STATUS
+	   FROM MEMBER
+	   WHERE 
+	       MEM_LOGIN_ID = #{memLoginId} AND
+	       MEM_EMAIL = #{memEmail}
+	</select>
+	
 	<update id="updateFindMemberPass" parameterType="com.groo.model.MemberDTO">
 		UPDATE MEMBER
 			SET
@@ -147,4 +158,6 @@
 			MEM_LOGIN_ID = #{memLoginId} AND
 			MEM_EMAIL = #{memEmail}
 	</update>
+	
+
 </mapper>
