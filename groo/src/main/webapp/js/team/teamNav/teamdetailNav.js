@@ -32,7 +32,6 @@ $(document).ready(function() {
 	
 	const test = sessionStorage.getItem(SESSION_KEY);
 	
-	
 	function loadContentAndActivateMenu(pageToLoad, key) {
 		// 로딩 시작 전에 콘솔에 기록하고 세션에 저장 (메뉴 클릭 시)
 		if (key === SESSION_KEY) {
