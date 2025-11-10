@@ -21,4 +21,18 @@
 			SYSDATE
 		)
 	</insert>
+	<select id="memberSelectBeenCheck" parameterType="com.groo.model.ReportDTO" resultType="com.groo.model.ReportDTO">
+		SELECT
+		    REPORT_CONTENT,
+		    ACTION_DATE,
+		    ENDACTION_DATE,
+		    CASE
+		        WHEN ENDACTION_DATE <![CDATA[ >= ]]> TRUNC(SYSDATE) THEN 'Y'
+		        ELSE 'N'
+		    END AS BEEN_COUNT
+		FROM
+		    REPORT
+		WHERE
+		    MEM_ID = (SELECT MEM_ID FROM MEMBER WHERE MEM_LOGIN_ID = #{memLoginId})
+	</select>
 </mapper>

@@ -18,4 +18,7 @@ public class ReportDTO {
 	private String comentId;
 	//검색
 	private String reportBoard;
+	//벤 검색
+	private String beenCount;
+	private String memLoginId;
 }

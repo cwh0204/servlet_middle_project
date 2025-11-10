@@ -6,4 +6,5 @@ import com.groo.model.ReportDTO;
 
 public interface ReportDAO {
 	public void insertReport(ReportDTO report, SqlSession session);
+	public ReportDTO memberSelectBeenCheck(ReportDTO report, SqlSession session);
 }

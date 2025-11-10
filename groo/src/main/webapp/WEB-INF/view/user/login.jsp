@@ -6,7 +6,8 @@
 <link href="css/base.css" rel="stylesheet">
 <script src="jquery/jquery-3.7.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script type="text/javascript">
    (function(){
@@ -17,7 +18,6 @@
 <meta charset="UTF-8">
 
 <style>
-
 </style>
 <title></title>
 </head>
@@ -67,80 +67,192 @@ session.setAttribute("naver_state", state);
 			</button>
 		</div>
 	</div>
-	<div class="modal fade" id="findIdModal" tabindex="-1" aria-labelledby="findIdModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="findIdModalLabel">아이디 찾기</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="findIdForm">
-                        <div class="mb-3">
-                            <label for="findIdName" class="form-label">이름</label>
-                            <input type="text" class="form-control" id="findIdName" placeholder="이름을 입력하세요" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="findIdEmail" class="form-label">이메일</label>
-                            <input type="email" class="form-control" id="findIdEmail" placeholder="이메일을 입력하세요" required>
-                        </div>
-                        <button type="submit" class="btn btn-login">아이디 찾기</button>
-                    </form>
-                    
-                    <!-- 아이디 찾기 결과 -->
-                    <div id="findIdResult" style="display: none; margin-top: 20px;">
-                        <div class="alert alert-success">
-                            <h6>회원님의 아이디는 다음과 같습니다.</h6>
-                            <p class="mb-0"><strong id="foundId"></strong></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="findIdModal" tabindex="-1"
+		aria-labelledby="findIdModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="findIdModalLabel">아이디 찾기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="findIdForm">
+						<div class="mb-3">
+							<label for="findIdName" class="form-label">이름</label> <input
+								type="text" class="form-control" id="findIdName"
+								placeholder="이름을 입력하세요" required>
+						</div>
+						<div class="mb-3">
+							<label for="findIdEmail" class="form-label">이메일</label> <input
+								type="email" class="form-control" id="findIdEmail"
+								placeholder="이메일을 입력하세요" required>
+						</div>
+						<button type="submit" class="btn btn-login">아이디 찾기</button>
+					</form>
 
-    <!-- 비밀번호 찾기 모달 -->
-    <div class="modal fade" id="findPwModal" tabindex="-1" aria-labelledby="findPwModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="findPwModalLabel">비밀번호 찾기</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="findPwForm">
-                        <div class="mb-3">
-                            <label for="findPwId" class="form-label">아이디</label>
-                            <input type="text" class="form-control" id="findPwId" placeholder="아이디를 입력하세요" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="findPwEmail" class="form-label">이메일</label>
-                            <input type="email" class="form-control" id="findPwEmail" placeholder="이메일을 입력하세요" required>
-                        </div>
-                        <button type="submit" class="btn btn-login">임시 비밀번호 발송</button>
-                    </form>
-                    
-                    <!-- 비밀번호 찾기 결과 -->
-                    <div id="findPwResult" style="display: none; margin-top: 20px;">
-                        <div class="alert alert-success">
-                            <h6>임시 비밀번호가 발송되었습니다.</h6>
-                            <p class="mb-0">등록된 이메일로 임시 비밀번호를 발송했습니다.<br>로그인 후 비밀번호를 변경해주세요.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+					<!-- 아이디 찾기 결과 -->
+					<div id="findIdResult" style="display: none; margin-top: 20px;">
+						<div class="alert alert-success">
+							<h6>회원님의 아이디는 다음과 같습니다.</h6>
+							<p class="mb-0">
+								<strong id="foundId"></strong>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 비밀번호 찾기 모달 -->
+	<div class="modal fade" id="findPwModal" tabindex="-1"
+		aria-labelledby="findPwModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="findPwModalLabel">비밀번호 찾기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="findPwForm">
+						<div class="mb-3">
+							<label for="findPwId" class="form-label">아이디</label> <input
+								type="text" class="form-control" id="findPwId"
+								placeholder="아이디를 입력하세요" required>
+						</div>
+						<div class="mb-3">
+							<label for="findPwEmail" class="form-label">이메일</label> <input
+								type="email" class="form-control" id="findPwEmail"
+								placeholder="이메일을 입력하세요" required>
+						</div>
+						<button type="submit" class="btn btn-login">임시 비밀번호 발송</button>
+					</form>
+
+					<!-- 비밀번호 찾기 결과 -->
+					<div id="findPwResult" style="display: none; margin-top: 20px;">
+						<div class="alert alert-success">
+							<h6>임시 비밀번호가 발송되었습니다.</h6>
+							<p class="mb-0">
+								등록된 이메일로 임시 비밀번호를 발송했습니다.<br>로그인 후 비밀번호를 변경해주세요.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="suspensionModal" tabindex="-1"
+		aria-labelledby="suspensionModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header bg-danger text-white">
+					<h5 class="modal-title" id="suspensionModalLabel"></h5>
+					<button type="button" class="btn-close btn-close-white"
+						data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<p id="suspension-status-text" class="fw-bold"></p>
+					<hr>
+
+					<dl class="row">
+						<dt class="col-sm-4">정지 사유</dt>
+						<dd class="col-sm-8 text-wrap" id="report-content"></dd>
+						<dt class="col-sm-4">정지 시작일</dt>
+						<dd class="col-sm-8" id="action-date"></dd>
+						<dt class="col-sm-4">정지 해제 예정일</dt>
+						<dd class="col-sm-8 text-danger fw-bold" id="end-action-date"></dd>
+					</dl>
+
+					<div class="alert alert-info mt-3" role="alert">자세한 문의는 고객센터를
+						이용해 주시기 바랍니다.</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script type="text/javascript">
+function checkUserSuspension(userId) {
+    // 1. 서버로 AJAX 요청을 보냅니다. (로그인 ID 등을 매개변수로 전송)
+    $.ajax({
+        url: 'memberselectbeencheck.do', // ⚠️ 실제 정지 정보를 조회하는 서버 API 경로로 변경하세요.
+        type: 'POST',
+        dataType: 'json',
+        data: { memLoginId: userId }, // 예: 로그인 시도한 ID 전송
+        
+        success: function(response) {
+            // 서버에서 받은 응답 데이터 (JSON)
+            // 예시 응답 구조: 
+            // { "reportContent": "허위 정보 유포", "actionDate": "2025-11-10 17:27:29", "endActionDate": "2026-11-10 17:27:29", "beenCount": "Y" }
 
+            const data = response;
 
+            // 2. 'beenCount' 값을 확인하여 정지 여부를 판단합니다.
+            if(!response){
+              	if(userId === 'admin'){
+        			window.location.href = "admin.do";
+        		}else{
+             		window.location.href = "main.do";
+        		}
+            }else if (data.beenCount === 'Y') {
+                // 3. 모달에 데이터를 채우는 함수를 호출합니다.
+                populateSuspensionModal(data);
+                
+                // 4. Bootstrap 모달을 띄웁니다.
+                const suspensionModal = new bootstrap.Modal(document.getElementById('suspensionModal'));
+                suspensionModal.show();
+            } else {
+              	if(userId === 'admin'){
+        			window.location.href = "admin.do";
+        		}else{
+             		window.location.href = "main.do";	
+        		}
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("정지 정보 조회 중 오류 발생:", error);
+            // 오류 발생 시 사용자에게 적절한 메시지를 보여줍니다.
+        }
+    });
+}
+function populateSuspensionModal(data) {
+    // 모달 제목 변경
+    const titleElement = document.getElementById('suspensionModalLabel');
+    const statusTextElement = document.getElementById('suspension-status-text');
+
+    if (data.beenCount === 'Y') {
+        titleElement.innerHTML = '🚨 사용자 계정 정지 안내';
+        statusTextElement.className = 'text-danger fw-bold';
+        statusTextElement.textContent = '회원님은 현재 서비스 이용이 정지된 상태입니다.';
+    } else {
+        titleElement.innerHTML = '✅ 계정 정지 기록';
+        statusTextElement.className = 'text-success fw-bold';
+        statusTextElement.textContent = '정지 기간이 만료되었습니다. (기록)';
+    }
+
+    // 데이터 바인딩 (수정된 모달 HTML 참조)
+    $('#report-content').text(data.reportContent);
+    $('#action-date').text(data.actionDate);
+    $('#end-action-date').text(data.endActionDate);
+
+    // Bootstrap의 닫기 버튼 텍스트 설정 (선택 사항)
+    $('.modal-footer .btn-secondary').text('확인');
+}
 function sendCustomEmail(memEmail, memPass) {
     // 1. 전송할 데이터 (템플릿 매개변수)를 직접 JavaScript 객체로 정의합니다.
     // 키(Key)는 EmailJS 템플릿에 정의된 변수 이름과 일치해야 합니다.
@@ -359,11 +471,9 @@ $(document).ready(function() {
 	                } 
                 	else if (response && response.memLoginId) {
                 		sessionStorage.setItem('userId', response.memLoginId);
-                		if(response.memLoginId === 'admin'){
-                			window.location.href = "admin.do";
-                		}else{
-                     		window.location.href = "main.do";	
-                		}
+                		
+                		checkUserSuspension(response.memLoginId);
+
                 	} else {
                 		alert('아이디 또는 비밀번호를 확인해주세요.');
                 	}

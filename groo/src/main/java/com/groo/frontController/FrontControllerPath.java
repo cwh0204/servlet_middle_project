@@ -50,6 +50,7 @@ import com.groo.controller.MainController;
 import com.groo.controller.MemberDeleteController;
 import com.groo.controller.MemberLoginController;
 import com.groo.controller.MemberLogoutController;
+import com.groo.controller.MemberSelectBeenCheckController;
 import com.groo.controller.MemberSelectFindLoginIdController;
 import com.groo.controller.MemberSelectFindPassController;
 import com.groo.controller.MemberSelectPassController;
@@ -114,7 +115,10 @@ public class FrontControllerPath {
         //비밀번호 찾기
         controllerMap.put("/memberfindpass.do", new MemberSelectFindPassController());
         controllerMap.put("/memberselectpass.do", new MemberSelectPassController());
-
+        
+        //벤정보 조회
+        controllerMap.put("/memberselectbeencheck.do", new MemberSelectBeenCheckController());
+        
         //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
