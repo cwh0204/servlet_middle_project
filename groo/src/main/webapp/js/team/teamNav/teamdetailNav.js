@@ -85,7 +85,17 @@ $(document).ready(function() {
 
 	// --- 함수 3: 메뉴 클릭 이벤트 핸들러 ---
 	function handleMenuClick(e) {
-
+		
+	 	const memLoginId = sessionStorage.getItem('userId');
+		
+		if(memLoginId === null){
+			alert('로그인 후 이용 가능한 메뉴입니다.');
+			sessionStorage.setItem('team_detail_last_view', 'teamdetailhome.do');
+			window.location.href = 'main.do';
+			
+			return;
+		}
+		
 		const $clickedItem = $(this);
 		const $menuItem = $clickedItem.closest('.menu-item[data-page]');
 
