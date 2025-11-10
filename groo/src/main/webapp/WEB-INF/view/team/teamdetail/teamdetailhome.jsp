@@ -116,6 +116,9 @@ var studyId = sessionStorage.getItem('teamId');
 var memLoginId = sessionStorage.getItem('userId');
 var loginNick = '<c:out value="${sessionScope.loginNick}" default="" />';
 
+// **사용자의 현재 팀 역할 정보 저장 (로그인하지 않은 경우를 위해 기본적으로 null로 설정)
+var userStudyRoll = null;
+
 $('#joinBtn').hide();
 $('#editBtn').hide();
 $('#leaveBtn').hide();
@@ -133,6 +136,12 @@ $.ajax({
       // 데이터 전송 성공 시 실행
       success: function(response) {
 
+    	 // **응답으로부터 studyRoll을 추출하여 전역 변수에 저장
+    	 if(response && response.studyRoll){
+    		 userStudyRoll = response.studyRoll;
+    	 }
+    	  
+    	 // 버튼 제어 로직
     	 if(response == null){
     		 if(memLoginId != null){
     			 $('#joinBtn').show(); 
@@ -142,12 +151,59 @@ $.ajax({
          }else if(response.studyRoll == 'M'){
         	 $('#leaveBtn').show();
          }
+    	 
+    	 // ** 멤버 정보가 확정된 후, 메뉴 접근 제어 로직을 실행
+    	 setupMenuAccessControl();
       },
       // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
       error: function(xhr, status, error) {
+    	  console.error("멤버 확인 중 오류 발생:", status, error);
+    	  // 오류 발생 시에도 접근 제어 로직 실행 (비회원, 미가입자처럼 처리)
+    	  setupMenuAccessControl();
       }
    
-    });
+});
+
+// **메뉴 접근 제어 함수 정의
+function setupMenuAccessControl() {
+	
+	const $menuItems = $('.menu-item');
+	const isLoggedIn = memLoginId != null && memLoginId.length > 0;
+	
+	// 기존에 등록된 클릭 이벤트를 제거하고 새 이벤트를 등록
+	$menuItems.off('click').on('click', function(e){
+		const targetPage = $(this).data('page');
+		
+		// 팀 상세보기는 항상 허용
+		if(targetPage === 'teamdetailhome.do'){
+			return;
+		}
+		
+		// 비회원 처리
+		if(!isLoggedIn){
+			e.preventDefault();
+			alert('로그인 후 이용 가능한 메뉴입니다.');
+			
+			// 현재 창의 location을 변경
+			window.location.href = 'teamdetailhome.do?studyId='+studyId;
+			return;
+		}
+		
+		// 멤버 확인 (userStudyRoll 전역변수 사용)
+		const isMember = (userStudyRoll === 'L' || userStudyRoll === 'M');
+		
+		if(!isMember){
+			e.preventDefault();
+			alert('해당 팀의 멤버만 접근 가능한 메뉴입니다.');
+			
+			// 현재 창의 location을 변경
+			window.location.href = 'teamdetailhome.do?studyId='+studyId;
+		}else {
+			// 멤버가 맞으면 페이지 정상 이동
+			window.location.href = targetPage+'?studyId='+studyId;
+		}
+	});
+}
 
 
 var loadScheduleList = (response) => {
@@ -369,50 +425,50 @@ $(document).ready(function() {
 																						  .addClass('edit-mode');
 		$('#editBtn').hide();
 		$('#saveBtn').show();
+	});
+	
+	// 저장하기 버튼 클릭 시
+	$('#saveBtn').click(function() {
 		
-		// 저장하기 버튼 클릭 시
-		$('#saveBtn').click(function() {
-			
-			// 입력값 
-			const studyTitle = $('#study_title').val();
-			const studyCategory = $('#study_category').val();
-			const studyIntro = $('#study_intro').val();
-			const studyIntrocontent = $('#study_introcontent').val();
-			
-			$.ajax({
-				// 데이터를 전송할 서버 URL
-				url: 'teammemberupdatepage.do',
-				// 전송 방식 (로그인/회원가입은 보통 POST 사용)
-				type: 'POST',
-				// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-				data: {
-					studyId: studyId,		// 위에서 선언된 전역 변수 사용
-					studyTitle: studyTitle,
-					studyCategory: studyCategory,
-					studyIntro: studyIntro,
-					studyIntrocontent: studyIntrocontent
-				},
-				dataType: 'json',		// 서버에서 JSON으로 응답하니까 이렇게 작성
-				success: function(response){
-					console.log('서버응답: ',response);
-					
-					if(response.status === "success"){
-					   alert('변경사항이 저장되었습니다.');
-					   location.reload();				// 페이지 새로고침으로 최신 상태 반영
-					   $('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
-																										  .removeClass('edit-mode');
-					   $('#saveBtn').hide();
-					   $('#editBtn').show();
-					}else {
-						alert('저장 실패:' +response.message);
-					}
-				},
-				error: function(xhr, status, error){
-				/* console.log('저장하는 중에 서버 통신 오류:', status, error); */
-					console.log('오류 상태:', status, error);
-				    console.log('서버 응답 원문:', xhr.responseText);
+		// 입력값 
+		const studyTitle = $('#study_title').val();
+		const studyCategory = $('#study_category').val();
+		const studyIntro = $('#study_intro').val();
+		const studyIntrocontent = $('#study_introcontent').val();
+		
+		$.ajax({
+			// 데이터를 전송할 서버 URL
+			url: 'teammemberupdatepage.do',
+			// 전송 방식 (로그인/회원가입은 보통 POST 사용)
+			type: 'POST',
+			// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+			data: {
+				studyId: studyId,		// 위에서 선언된 전역 변수 사용
+				studyTitle: studyTitle,
+				studyCategory: studyCategory,
+				studyIntro: studyIntro,
+				studyIntrocontent: studyIntrocontent
+			},
+			dataType: 'json',		// 서버에서 JSON으로 응답하니까 이렇게 작성
+			success: function(response){
+				console.log('서버응답: ',response);
+				
+				if(response.status === "success"){
+				   alert('변경사항이 저장되었습니다.');
+				   location.reload();				// 페이지 새로고침으로 최신 상태 반영
+				   $('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
+																									  .removeClass('edit-mode');
+				   $('#saveBtn').hide();
+				   $('#editBtn').show();
+				}else {
+					alert('저장 실패:' +response.message);
 				}
-			});
+			},
+			error: function(xhr, status, error){
+			/* console.log('저장하는 중에 서버 통신 오류:', status, error); */
+				console.log('오류 상태:', status, error);
+			    console.log('서버 응답 원문:', xhr.responseText);
+			}
 		});
 	});
 });
