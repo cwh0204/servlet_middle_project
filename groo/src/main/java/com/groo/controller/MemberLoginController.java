@@ -38,37 +38,37 @@ public class MemberLoginController implements Controller {
 		MemberService service = new MemberServiceImpl();
 		HttpSession session = request.getSession();
 
-		
+
 		Object jsonResponseData = null;
 
 		try {
-			
+
 			MemberDTO memberLogin = service.selectLoginMember(member);
 
 			if (memberLogin != null) {
-				
+
 				if ("Y".equals(memberLogin.getMemStatus())) {
-					
+
 					Map<String, String> withdrawnResponse = new HashMap<>();
 					withdrawnResponse.put("status", "WITHDRAWN");
 					jsonResponseData = withdrawnResponse;
 				}
-				
+
 				else if ("N".equals(memberLogin.getMemStatus())) {
-					
+
 					session.setAttribute("loginServiceResponse", memLoginId);
-					jsonResponseData = memberLogin; 
+					jsonResponseData = memberLogin;
 				} else {
-              
+
                     jsonResponseData = null;
                 }
 			} else {
-				
-				jsonResponseData = null; 
+
+				jsonResponseData = null;
 			}
 
 			Gson gson = new Gson();
-			String json = gson.toJson(jsonResponseData); 
+			String json = gson.toJson(jsonResponseData);
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -81,12 +81,12 @@ public class MemberLoginController implements Controller {
 			ise.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			ErrorDTO error = new ErrorDTO();
 			error.setStatus(500);
-			
+
 		}
 	}
 }

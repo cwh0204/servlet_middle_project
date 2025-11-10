@@ -42,7 +42,7 @@ public class FrontPath {
         jspMap.put("/adminteammember.do", "/WEB-INF/view/admin/adminteammember.jsp");
         jspMap.put("/adminnotice.do", "/WEB-INF/view/admin/adminnotice.jsp");
         jspMap.put("/admindisableteammember.do", "/WEB-INF/view/admin/admindisableteammember.jsp");
-        
+
         jspMap.put("/adminboard.do", "/WEB-INF/view/admin/adminboard.jsp");
         jspMap.put("/admincomment.do", "/WEB-INF/view/admin/admincomment.jsp");
         jspMap.put("/adminbestboard.do", "/WEB-INF/view/admin/adminbestboard.jsp");

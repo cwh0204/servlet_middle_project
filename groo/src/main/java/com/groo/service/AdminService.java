@@ -2,8 +2,6 @@ package com.groo.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.groo.model.AdminAvgReportDTO;
 import com.groo.model.AdminReportDTO;
 import com.groo.model.AdminStatsDTO;

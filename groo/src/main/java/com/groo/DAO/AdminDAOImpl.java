@@ -12,7 +12,6 @@ import com.groo.model.AdminStatsDTO;
 import com.groo.model.AdminTeamMemberDTO;
 import com.groo.model.BoardDTO;
 import com.groo.model.MemberDTO;
-import com.groo.model.TeamMemberDTO;
 
 /**
  * 관리자가 사용하는 요청의 데이터 처리를 수행하기위한 클래스 구현체로 맴버의 조회,추가,수정,삭제 관련 서비스를 처리함
@@ -247,7 +246,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminUpdateReport 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 스터디의 팀원의 역활을 변경하는 메서드
 	 * @param member 팀원의 역활을 변경 Data Transfer Object 데이터 클래스
@@ -262,7 +261,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminUpdateStudyRoll 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 스터디의 비활성화 팀원의 정보를 조회하는 메서드
 	 * @param member 팀원의 정보를 조회하는 Data Transfer Object 데이터 클래스
@@ -271,9 +270,9 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public List<AdminTeamMemberDTO> adminSelectDisableStudyMember(AdminTeamMemberDTO member, SqlSession session) {
-		
+
 		List<AdminTeamMemberDTO> memberList = new ArrayList<>();
-		
+
 		try {
 			memberList = session.selectList("adminSelectDisableStudyMember",member);
 		}catch (Exception e) {
@@ -282,7 +281,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return memberList;
 	}
-	
+
 	/**
 	 * 스터디의 비활성화 팀원을 활성화 하는 메서드
 	 * @param member 팀원의 정보를 조회하는 Data Transfer Object 데이터 클래스
@@ -297,7 +296,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminStudyMemberActivate 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 게시글을 조회 하는 메서드
 	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
@@ -306,7 +305,7 @@ public class AdminDAOImpl implements AdminDAO {
 	 */
 	@Override
 	public List<BoardDTO> adminSelectBoard(BoardDTO board, SqlSession session) {
-		
+
 		List<BoardDTO> boardList = new ArrayList<>();
 		try {
 			boardList = session.selectList("adminSelectBoard",board);
@@ -316,7 +315,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return boardList;
 	}
-	
+
 	/**
 	 * 게시글을 삭제 or 활성화 하는 메서드
 	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
@@ -331,7 +330,7 @@ public class AdminDAOImpl implements AdminDAO {
 			throw new InternalDataAccessException("DAO:adminDeleteBoard 예외발생",e);
 		}
 	}
-	
+
 	/**
 	 * 게시글 통계를 조회 하는 메서드
 	 * @param member 게시글을 조회하는 Data Transfer Object 데이터 클래스
