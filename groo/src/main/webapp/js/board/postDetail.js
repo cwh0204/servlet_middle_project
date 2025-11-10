@@ -115,10 +115,8 @@ allcoment = (boardId, userNickName) => {
 
 						// 1. 클릭된 버튼을 기준으로 해당 댓글 항목(부모 요소)을 찾습니다.
 						const $commentItem = $(this).closest('.comment-item'); // ⭐️ .comment-item 클래스를 부모 요소로 가정
-						console.log($commentItem);
 
 						const $contentP = $commentItem.find('p');
-						console.log($contentP);
 
 						const currentContent = $contentP.text().trim();
 

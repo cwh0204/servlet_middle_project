@@ -1,5 +1,4 @@
 var boardselect = () => {
-	console.log("board");
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'boardselect.do',
@@ -63,7 +62,6 @@ var boardselect = () => {
 
 var boardFindSelect = () => {
 	findName = $('#freeBoardFind').val();
-	console.log(findName);
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'boardselect.do',
