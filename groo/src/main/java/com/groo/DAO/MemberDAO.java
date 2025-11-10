@@ -22,4 +22,5 @@ public interface MemberDAO {
 	//아아디 비밀번호 찾기
 	public MemberDTO selectFindMemberId(MemberDTO member, SqlSession session);
 	public void updateFindMemberPass(MemberDTO member, SqlSession session);
+	public MemberDTO selectFindMemberPass(MemberDTO member, SqlSession session);
 }

@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <link href="css/team/myteam/myteamhome.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title></title>
@@ -57,16 +56,13 @@ var pageLoad = (studyId) => {
 	const pageToLoad = 'teamdetail.do?studyId=' + studyId;
     sessionStorage.removeItem('team_last_view');
     sessionStorage.removeItem('team_detail_last_view');
-    console.log("마지막 페이지"+pageToLoad);
     
     // 3. $('#contentArea')의 내용을 서버 응답으로 받은 HTML로 교체합니다.
     $('#contentArea').load(pageToLoad, function(response, status, xhr) {
         if (status === "success") {
         	
         	sessionStorage.setItem('teamId', studyId);
-        	
-            console.log("✅ '#contentArea'에 상세 정보 로드 완료.");
-            
+        	            
         } else {
             // 사용자에게 실패 메시지를 표시할 수 있습니다.
             $('#contentArea').html('<p>상세 정보를 불러오는 데 실패했습니다. 다시 시도해 주세요.</p>');
@@ -94,6 +90,22 @@ var teamPassAjax = (studyId) => {
 				const myModal = new bootstrap.Modal(document.getElementById('passwordCheckModal'));
                 myModal.show();
 			}
+			
+			$('#confirmPasswordBtn').on('click',function(){
+
+		 		const passCheck = $('#inputPassword').val();
+		 		if(teamPass == passCheck){
+		 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
+		 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
+		 		    passwordCheckModal.hide();
+		 		    $('.modal-backdrop').remove();
+	                $('body').removeClass('modal-open');
+	                $('body').removeAttr('style');
+		 			pageLoad(studyId);
+		 		}else{
+		 			alert("비밀번호가 일치하지 않습니다.");
+		 		}
+		 	});
 		},
 		// 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
 		error: function(xhr, status, error) {
@@ -102,34 +114,16 @@ var teamPassAjax = (studyId) => {
 }
 	$(document).ready(function() {
 		var memLoginId = sessionStorage.getItem('userId');
-		console.log(memLoginId);
 		grooteam();
 		$('#cardGrid').on('click', '.btn-detail', function() {
 	        // 이 'this'는 실제로 클릭된 '.btn-detail' 요소를 가리킵니다.
 	        const studyId = $(this).data('studyId');
-	        console.log(studyId);
 	        if (studyId) {
 	        	teamPassAjax(studyId);
 	        } else {
 	            console.error("❌ 오류: studyId를 가져올 수 없습니다.");
 	        }
 	    });
-	 	
-	 	$('#confirmPasswordBtn').on('click',function(){
-
-	 		const passCheck = $('#inputPassword').val();
-	 		if(teamPass == passCheck){
-	 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
-	 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
-	 		    passwordCheckModal.hide();
-	 		    $('.modal-backdrop').remove();
-                $('body').removeClass('modal-open');
-                $('body').removeAttr('style');
-	 			pageLoad(studyId);
-	 		}else{
-	 			alert("비밀번호가 일치하지 않습니다.");
-	 		}
-	 	});
 	});
 </script>
 </html>

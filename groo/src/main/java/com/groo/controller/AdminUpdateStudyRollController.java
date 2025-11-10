@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.groo.error.ErrorDTO;
 import com.groo.error.InternalServiceException;
 import com.groo.model.AdminTeamMemberDTO;
-import com.groo.model.TeamMemberDTO;
 import com.groo.service.AdminService;
 import com.groo.service.AdminServiceImpl;
 
@@ -21,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * Service 계층을 호출하고 업데이트 처리 결과를 json 형태로 클라이언트에 응답
  */
 public class AdminUpdateStudyRollController implements Controller {
-	
+
 	/**
 	 * HTTP 요청을 받아 팀원 권한 정보를 수정하고 JSON 응답을 생성합니다.
 	 *
@@ -34,20 +33,20 @@ public class AdminUpdateStudyRollController implements Controller {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String studyRoll = request.getParameter("studyRoll");
 		String memId = request.getParameter("memId");
 		String studyId = request.getParameter("studyId");
-		
+
 		AdminTeamMemberDTO member = new AdminTeamMemberDTO();
-		
+
 		member.setStudyRoll(studyRoll);
 		member.setMemId(memId);
 		member.setStudyId(studyId);
-		
+
 		AdminService service = new AdminServiceImpl();
 		try {
-			
+
 			service.adminUpdateStudyRoll(member);
 			Gson gson = new Gson();
 			String json = gson.toJson("success");

@@ -292,6 +292,31 @@ public class MemberServiceImpl implements MemberService { //ISP 적용
 		return deleteid;
 	}
 
+	/**
+	 * 유저비밀번호를 확인하기 위한 서비스 메서드
+	 * @param member는 유저 비밀번호를 조회 하기 위한 Data Transfer Object 데이터 클래스
+	 * @return 비밀번호정보를 리턴
+	 * @throws InternalServiceException DB 접근 오류나 예상치 못한 내부 오류 발생 시 상위 계층으로 던지는 서비스
+	 * 예외
+	 */
+	@Override
+	public MemberDTO selectFindMemberPass(MemberDTO member) {
+		SqlSession session = SessionFactory.getSqlSession();
+		MemberDTO memberpw = new MemberDTO();
+		try {
+			memberpw = dao.selectFindMemberPass(member, session);
+		} catch (InternalDataAccessException ide) {
+			ide.printStackTrace();
+			throw new InternalServiceException("DB 접근 오류로 인한 서비스 예외", ide);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalServiceException("예상치 못한 서비스 내부 오류", e);
+		} finally {
+			session.close();
+		}
+		return memberpw;
+	}
+
 }
 
 

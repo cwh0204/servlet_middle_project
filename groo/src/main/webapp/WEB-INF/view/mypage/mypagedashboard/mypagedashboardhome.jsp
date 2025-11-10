@@ -32,7 +32,6 @@
 			},
 
 			success : function(response) {
-				console.log("서버 응답:", response);
                 
                 // 🌟 초록, 노랑 색상 정의 🌟
                 const colors = [

@@ -9,8 +9,6 @@ function boardInsert(writer) {
 	const pureText = $('<div>').html(postContent).text();
 	const trimmedText = pureText.replace(/\s/g, '');
 
-	console.log("trimmedText.length : ", trimmedText.length);
-
 	if (postTitle && trimmedText.length !== 0) {
 		$.ajax({
 
@@ -39,7 +37,6 @@ function boardInsert(writer) {
 				}, 1500); // 1.5초
 			},
 			success: function(response) {
-				console.log(writer);
 				if (writer == "cwh0204") {
 					window.location.href = "admin.do";
 				} else {

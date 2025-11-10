@@ -203,6 +203,26 @@ public class MemberDAOImpl implements MemberDAO{
 
 		return deleteid;
 	}
+
+
+	/**
+	 * 유저비밀번호 정보를 가져오는 메서드
+	 * @param member 유저의 수정정보를 가져오기 위한 Data Transfer Object 데이터 클래스
+	 * @param session MyBatis 작업을 수행하는 데 사용되는 세션 객체
+	 * @return 비밀번호 정보를 리턴
+	 */
+	@Override
+	public MemberDTO selectFindMemberPass(MemberDTO member, SqlSession session) {
+		MemberDTO memberpw = new MemberDTO();
+
+		try {
+			memberpw = session.selectOne("selectFindMemberPass", member);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new InternalDataAccessException("DAO:selectFindMemberPass 예외발생", e);
+		}
+		return memberpw;
+	}
 }
 
 

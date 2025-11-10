@@ -52,6 +52,7 @@ import com.groo.controller.MemberLoginController;
 import com.groo.controller.MemberLogoutController;
 import com.groo.controller.MemberSelectFindLoginIdController;
 import com.groo.controller.MemberSelectFindPassController;
+import com.groo.controller.MemberSelectPassController;
 import com.groo.controller.MemberUpdateController;
 import com.groo.controller.MyBoardListController;
 import com.groo.controller.MyCommentListController;
@@ -112,6 +113,8 @@ public class FrontControllerPath {
         controllerMap.put("/memberfindloginid.do", new MemberSelectFindLoginIdController());
         //비밀번호 찾기
         controllerMap.put("/memberfindpass.do", new MemberSelectFindPassController());
+        controllerMap.put("/memberselectpass.do", new MemberSelectPassController());
+
         //이수민.
         controllerMap.put("/memberdelete.do", new MemberDeleteController());
         controllerMap.put("/memberupdate.do", new MemberUpdateController());
@@ -190,7 +193,7 @@ public class FrontControllerPath {
         controllerMap.put("/adminselectstatspostday.do", new AdminSelectStatsPostDayController());
         controllerMap.put("/adminselectstatscategory.do", new AdminSelectStatsCategoryController());
         controllerMap.put("/adminselectstatssignupmonth.do", new AdminSelectStatsSignUpMonthController());
-        
+
         //팀멤버
         controllerMap.put("/teammemberleaders.do", new TeamMemberLeaderSelectController());
         controllerMap.put("/teammemberselectpage.do", new TeamMemberSelectPageController());

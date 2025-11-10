@@ -134,6 +134,7 @@ var myTeamList = () => {
 		// 전송 방식 (로그인/회원가입은 보통 POST 사용)
 		type: 'POST',
 		// 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+		dataType: 'json',
 		data: {
 			memLoginId : memLoginId
 		},
@@ -218,6 +219,22 @@ var teamPassAjax = (studyId) => {
 		error: function(xhr, status, error) {
 		}
 	});
+	
+	$('#confirmPasswordBtn').on('click',function(){
+
+ 		const passCheck = $('#inputPassword').val();
+ 		if(teamPass == passCheck){
+ 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
+ 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
+ 		    passwordCheckModal.hide();
+ 		    $('.modal-backdrop').remove();
+            $('body').removeClass('modal-open');
+            $('body').removeAttr('style');
+ 			pageLoad(studyId);
+ 		}else{
+ 			alert("비밀번호가 일치하지 않습니다.");
+ 		}
+ 	});
 }
 $(document).ready(function() {
 	
@@ -239,22 +256,6 @@ $(document).ready(function() {
  	    studyId = $detailButton.data('studyId');
  	    
  		studyLike(studyId);
- 	});
- 	
- 	$('#confirmPasswordBtn').on('click',function(){
-
- 		const passCheck = $('#inputPassword').val();
- 		if(teamPass == passCheck){
- 			const passwordCheckModalElement = document.getElementById('passwordCheckModal');
- 		    const passwordCheckModal = new bootstrap.Modal(passwordCheckModalElement);
- 		    passwordCheckModal.hide();
- 		    $('.modal-backdrop').remove();
-            $('body').removeClass('modal-open');
-            $('body').removeAttr('style');
- 			pageLoad(studyId);
- 		}else{
- 			alert("비밀번호가 일치하지 않습니다.");
- 		}
  	});
 });
 </script>

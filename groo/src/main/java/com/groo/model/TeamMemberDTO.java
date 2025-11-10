@@ -11,6 +11,8 @@ public class TeamMemberDTO {
 	private String studyJoinedDate;
 	private String studyOutDate;
 
+	private String studyLike;
+	private String studyCreateDate;
 	private String studyCategory;
 	private String studyIntro;
 	private String studyIntrocontent;

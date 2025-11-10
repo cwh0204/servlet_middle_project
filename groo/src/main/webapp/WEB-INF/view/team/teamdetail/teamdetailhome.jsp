@@ -22,11 +22,13 @@
 				</h1>
 
 				<div class="team-meta">
-					<span><img
+					<span id="study_like"><img
 						src="https://i.postimg.cc/N0CsYrW9/free-icon-love-9812568.png"
-						class="heart">2,134</span> <span><img
+						class="heart"></span> 
+					<span id="study_createdate"><img
 						src="https://i.postimg.cc/qMkNbqfw/free-icon-chick-15549519.png"
-						class="egg-img">2024년 03월 15일 생성</span> <span><img
+						class="egg-img"></span> 
+					<span><img
 						src="https://i.postimg.cc/jd5NFSZf/education-1.png"
 						class="edu-img"> <input type="text" name="study_category"
 						id="study_category" value="개발 & IT" readonly></span>
@@ -241,6 +243,52 @@ $(document).ready(function() {
 				$('#study_category').val(data.studyCategory);
 				$('#study_intro').val(data.studyIntro);
 				$('#study_introcontent').val(data.studyIntrocontent);
+				
+				// 스터디 생성일자 로직
+				const $createDateSpan = $('#study_createdate');
+				const eggImgTag = $createDateSpan.find('.egg-img').prop('outerHTML');
+				
+				console.log("서버에서 받은 rawDate:", data.studyCreateDate);
+				
+				// null 또는 undefined 에 대비하여 먼저 빈 문자열로 설정 후, trim()을 사용
+				const rawDate = (data.studyCreateDate || '').trim();
+				let formattedDate = '생성일 정보 없음';
+				
+				if(rawDate.length > 0 && rawDate.includes('-')){
+					// split 하기 전 rawDate를 다시 한번 로그로 확인
+					console.log("처리 전 rawDate (trim 후):", rawDate);
+					
+					const parts = rawDate.split('-');
+					
+					// parts 배열의 길이가 3이고, 각 요소가 비어있지 않은지 확인
+					if(parts.length === 3 && parts[0] && parts[1] && parts[2]) {
+						console.log("parts [년, 월, 일]:", parts);
+						
+						formattedDate = parts[0]+'년 '+parts[1]+'월 '+parts[2]+'일 생성';
+					}else {
+						// parts 배열에 문제가 있을 경우 디버깅용 로그 추가
+						console.log("parts 배열 문제:", parts);
+						// 하이픈은 있으나 분리가 이상할 때, 원본 데이터라도 표시
+						formattedDate = `${rawDate} 생성`;
+					}
+				}else {
+					formattedDate = '생성일 정보 없음';
+				}
+				
+				console.log("최종 formattedDate:", formattedDate);
+				$createDateSpan.html(eggImgTag+' '+formattedDate);
+				
+				// 좋아요 수 업데이트 로직 
+				const $likeSpan = $('#study_like');
+				
+				// 하트 이미지 태그 추출
+				const heartImgTag = $likeSpan.find('.heart').prop('outerHTML');
+			
+				// 서버에서 받은 좋아요 수 (데이터가 없으면 0)
+				const likeCount = data.studyLike || '0';		
+				
+				// 이미지와 숫자를 합침
+				$likeSpan.html(heartImgTag+likeCount);
 				
 				// 팀장 이름 가져오기
 				const leaderNick = data.memNick;
