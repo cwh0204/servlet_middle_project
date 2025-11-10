@@ -9,7 +9,6 @@ $(document).ready(function(){
 		const studyPass = $('#teampw').val();
 		const studyIntro = $('#studyIntro').val();
 		
-		console.log(memId);
 		if(memId){
 			$.ajax({
 				// 데이터를 전송할 서버 URL
@@ -28,7 +27,6 @@ $(document).ready(function(){
 				// 데이터 전송 성공 시 실행
 				success: function(response) {
 				        // response는 서버에서 돌려준 데이터입니다.
-				        console.log(response);
 				        // 팀 생성 완료 알림 팝업 추가
 				        alert('팀 생성이 완료되었습니다! 팀 보기를 확인해주세요.'); 
 				    },
