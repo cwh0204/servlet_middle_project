@@ -193,7 +193,6 @@ var boardStats = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			$('.total-teams').text(response.totalMembers);
 			$('.inactive-teams').text(response.inactiveMembers);
 			$('.weekly-teams').text(response.weeklySignups);
@@ -217,7 +216,6 @@ var searchBoard = () => {
         },
         // 데이터 전송 성공 시 실행
         success: function(response) {
-            console.log(response);
             
             // 1. response가 배열인지 확인하고, 아니면 빈 배열로 안전하게 설정
             const dataForGrid = Array.isArray(response) ? response : [];
@@ -247,7 +245,6 @@ var studyRank = (findName, studyId) => {
 			},
 		// 데이터 전송 성공 시 실행
 			success: function(response) {
-				console.log(response);
 		// response는 서버에서 돌려준 데이터입니다.
 				gridRank.resetData(response);
 			    boardStats();

@@ -180,9 +180,7 @@ $(document).ready(function() {
     });
     
     gridTeam.on('afterChange', ev => {
-    	console.log('after change:', ev.changes[0].columnName);
-        console.log('after change:', ev.changes[0].value);
-        console.log(gridTeam.getModifiedRows());
+
     });
     
     gridTeam.setBodyHeight(450);

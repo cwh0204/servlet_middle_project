@@ -84,7 +84,6 @@ var boardStats = () => {
 		},
 		// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 			$('.total-teams').text(response.totalMembers);
 			$('.inactive-teams').text(response.inactiveMembers);
 			$('.weekly-teams').text(response.weeklySignups);
@@ -110,7 +109,6 @@ searchBoard = () => {
 		},
 	// 데이터 전송 성공 시 실행
 		success: function(response) {
-			console.log(response);
 	// response는 서버에서 돌려준 데이터입니다.
 			gridBoard.resetData(response);
 		    boardStats();

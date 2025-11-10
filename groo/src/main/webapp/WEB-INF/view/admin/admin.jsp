@@ -639,8 +639,6 @@ class CustomRankBtnRenderer {
         
         const actionType = targetBtn.dataset.type;
         
-        console.log(rowData);
-        
         if (actionType === 'rankCheck') {
         	$('#modal_postId').text(rowData.boardId);
         	$('#modal_writer').text(rowData.memNick);
