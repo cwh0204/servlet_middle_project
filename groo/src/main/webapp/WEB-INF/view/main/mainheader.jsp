@@ -34,4 +34,11 @@
 		</div>
 	</header>
 </body>
+<script type="text/javascript">
+
+$('.logo').click(()=> {
+	window.location.href = 'main.do'
+});
+
+</script>
 </html>
