@@ -79,7 +79,7 @@ h3 {
 
 </style>
 
-<h3>👥 Java 웹 개발 스터디 인원 목록</h3>
+<h3>스터디 인원 목록</h3>
 
 <div class="member-list-container">
     <div id="memberCardsBody" class="member-cards-container">
