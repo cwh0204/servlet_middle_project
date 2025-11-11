@@ -274,6 +274,9 @@ $(document).ready(function() {
 
     });
 	
+	$('#goToPostBtn').on('click', function(){
+		window.open('postdetail.do?id='+$('#goToPostBtn').val());
+	});
 	
 	gridRank = new tui.Grid({
 		el : document.getElementById('gridRank'),
