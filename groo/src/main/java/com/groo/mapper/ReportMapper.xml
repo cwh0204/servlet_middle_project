@@ -28,7 +28,7 @@
 		    A.ACTION_DATE,
 		    A.ENDACTION_DATE,
 		    CASE
-		        WHEN ENDACTION_DATE <![CDATA[ >= ]]> TRUNC(SYSDATE) THEN 'Y'
+		        WHEN ENDACTION_DATE <![CDATA[ >= ]]> SYSDATE THEN 'Y'
 		        ELSE 'N'
 		    END AS BEEN_COUNT
 		FROM
