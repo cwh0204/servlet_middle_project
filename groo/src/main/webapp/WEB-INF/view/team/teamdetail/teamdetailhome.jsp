@@ -123,47 +123,49 @@ $('#joinBtn').hide();
 $('#editBtn').hide();
 $('#leaveBtn').hide();
 
-$.ajax({
-      // 데이터를 전송할 서버 URL
-      url: 'teamleaderteampage.do',
-      // 전송 방식 (로그인/회원가입은 보통 POST 사용)
-      type: 'POST',
-      // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
-      dataType: 'json',
-      data: {
-         studyId : studyId,
-         memLoginId : memLoginId
-      },
-      // 데이터 전송 성공 시 실행
-      success: function(response) {
+var studyMemberRollCheck = () => {
+	$.ajax({
+	      // 데이터를 전송할 서버 URL
+	      url: 'teamleaderteampage.do',
+	      // 전송 방식 (로그인/회원가입은 보통 POST 사용)
+	      type: 'POST',
+	      // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+	      dataType: 'json',
+	      data: {
+	         studyId : studyId,
+	         memLoginId : memLoginId
+	      },
+	      // 데이터 전송 성공 시 실행
+	      success: function(response) {
 
-    	 // **응답으로부터 studyRoll을 추출하여 전역 변수에 저장
-    	 if(response && response.studyRoll){
-    		 userStudyRoll = response.studyRoll;
-    	 }
-    	  
-    	 // 버튼 제어 로직
-    	 if(response == null){
-    		 if(memLoginId != null){
-    			 $('#joinBtn').show(); 
-    		 }
-    	 }else if(response.studyRoll == 'L'){
-        	 $('#editBtn').show();
-         }else if(response.studyRoll == 'M'){
-        	 $('#leaveBtn').show();
-         }
-    	 
-    	 // ** 멤버 정보가 확정된 후, 메뉴 접근 제어 로직을 실행
-/*    	 setupMenuAccessControl();  */
-      },
-      // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
-      error: function(xhr, status, error) {
-    	  console.error("멤버 확인 중 오류 발생:", status, error);
-    	  // 오류 발생 시에도 접근 제어 로직 실행 (비회원, 미가입자처럼 처리)
-/*    	  setupMenuAccessControl(); */
-      }
-   
-});
+	    	 // **응답으로부터 studyRoll을 추출하여 전역 변수에 저장
+	    	 if(response && response.studyRoll){
+	    		 userStudyRoll = response.studyRoll;
+	    	 }
+	    	  
+	    	 // 버튼 제어 로직
+	    	 if(response == null){
+	    		 if(memLoginId != null){
+	    			 $('#joinBtn').show(); 
+	    		 }
+	    	 }else if(response.studyRoll == 'L'){
+	        	 $('#editBtn').show();
+	         }else if(response.studyRoll == 'M'){
+	        	 $('#leaveBtn').show();
+	         }
+	    	 
+	    	 // ** 멤버 정보가 확정된 후, 메뉴 접근 제어 로직을 실행
+	/*    	 setupMenuAccessControl();  */
+	      },
+	      // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
+	      error: function(xhr, status, error) {
+	    	  console.error("멤버 확인 중 오류 발생:", status, error);
+	    	  // 오류 발생 시에도 접근 제어 로직 실행 (비회원, 미가입자처럼 처리)
+	/*    	  setupMenuAccessControl(); */
+	      }
+	   
+	});	
+}
 
 // **메뉴 접근 제어 함수 정의
 /* function setupMenuAccessControl() {
@@ -273,6 +275,13 @@ var loadScheduleList = (response) => {
 	}
 $(document).ready(function() {
 	
+	$('#joinBtn').hide();
+	$('#editBtn').hide();
+	$('#saveBtn').hide();
+	$('#leaveBtn').hide();
+	
+	studyMemberRollCheck();
+	
 	$.ajax({
 		// 데이터를 전송할 서버 URL
 		url: 'teammemberselectpage.do',
@@ -374,7 +383,9 @@ $(document).ready(function() {
 					
 					if(response.status === "success"){
 						alert('가입이 완료되었습니다.');
-						
+						sessionStorage.setItem('team_detail_last_view', 'teamdetailhome.do');
+						sessionStorage.setItem('main_last_view', 'teamdetail.do');
+						window.location.href = 'main.do';
 						$('#joinBtn').hide();
 						$('#leaveBtn').show();
 					}else {
@@ -404,7 +415,9 @@ $(document).ready(function() {
 					
 					if(response.status === 'success'){
 						alert('스터디에서 탈퇴되었습니다.');
-						
+						sessionStorage.setItem('team_detail_last_view', 'teamdetailhome.do');
+						sessionStorage.setItem('main_last_view', 'teamdetail.do');
+						window.location.href = 'main.do';
 						$('#leaveBtn').hide();
 						$('#joinBtn').show();
 					}else {
