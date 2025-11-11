@@ -36,7 +36,7 @@ var memberCheck = () => {
 
 var menuItemContent = (lastPage, SESSION_KEY) => {
 
-	const $menuItem = $('.menu-item-content').closest('.menu-item[data-page]');
+	const $menuItem = $('.team-menu').closest('.menu-item[data-page]');
 
 	// 이전 active 상태 초기화
 	$('.menu-item').removeClass('active');
@@ -153,6 +153,6 @@ $(document).ready(function() {
 			loadContentAndActivateMenu(pageToLoad, SESSION_KEY);
 		}
 	}
-	$('.menu-item-content').on('click', handleMenuClick);
+	$('.team-menu').on('click', handleMenuClick);
 	initializeContent();
 });

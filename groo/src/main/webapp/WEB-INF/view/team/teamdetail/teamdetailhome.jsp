@@ -454,7 +454,6 @@ $(document).ready(function() {
 				
 				if(response.status === "success"){
 				   alert('변경사항이 저장되었습니다.');
-				   location.reload();				// 페이지 새로고침으로 최신 상태 반영
 				   $('#study_title, #study_category, #team-summary textarea, #team-details textarea').prop('readonly', true)
 																									  .removeClass('edit-mode');
 				   $('#saveBtn').hide();
