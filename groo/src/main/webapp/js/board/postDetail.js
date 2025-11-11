@@ -10,7 +10,7 @@ comentedit = (boardId, comentId, comentContent) => {
 			comentContent: comentContent
 		},
 		success: function(response) {
-			window.location.href = "main.do";
+			window.location.href = "postdetail.do?id="+boardId;
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
@@ -28,7 +28,7 @@ comentdelete = (boardId, commentIdToDelete) => {
 			comentId: commentIdToDelete
 		},
 		success: function(response) {
-			window.location.href = "main.do";
+			window.location.href = "postdetail.do?id="+boardId;
 		},
 		error: function() {
 			alert("서버 통신 오류가 발생했습니다.");
