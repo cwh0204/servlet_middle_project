@@ -22,19 +22,25 @@
 		)
 	</insert>
 	<select id="memberSelectBeenCheck" parameterType="com.groo.model.ReportDTO" resultType="com.groo.model.ReportDTO">		    
-		SELECT
-			C.MEM_LOGIN_ID,
-		    A.REPORT_CONTENT,
-		    A.ACTION_DATE,
-		    A.ENDACTION_DATE,
-		    CASE
-		        WHEN ENDACTION_DATE <![CDATA[ >= ]]> SYSDATE THEN 'Y'
-		        ELSE 'N'
-		    END AS BEEN_COUNT
-		FROM
-		    REPORT A
-		INNER JOIN BOARD B ON (A.BOARD_ID = B.BOARD_ID) 
-		INNER JOIN MEMBER C ON (B.MEM_ID = C.MEM_ID)
-		WHERE C.MEM_LOGIN_ID = #{memLoginId}
+		SELECT *
+		FROM (
+		    SELECT
+		        C.MEM_LOGIN_ID,
+		        A.REPORT_CONTENT,
+		        A.ACTION_DATE,
+		        A.ENDACTION_DATE,
+		        CASE
+		            WHEN A.ENDACTION_DATE >= SYSDATE THEN 'Y'
+		            ELSE 'N'
+		        END AS BEEN_COUNT
+		    FROM
+		        REPORT A
+		    INNER JOIN BOARD B ON (A.BOARD_ID = B.BOARD_ID) 
+		    INNER JOIN MEMBER C ON (B.MEM_ID = C.MEM_ID)
+		    WHERE C.MEM_LOGIN_ID = #{memLoginId}
+		
+		    ORDER BY A.ENDACTION_DATE DESC 
+		)
+		WHERE ROWNUM = 1;
 	</select>
 </mapper>
