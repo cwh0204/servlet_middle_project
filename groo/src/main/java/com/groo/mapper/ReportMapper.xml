@@ -41,6 +41,6 @@
 		
 		    ORDER BY A.ENDACTION_DATE DESC 
 		)
-		WHERE ROWNUM = 1;
+		WHERE ROWNUM = 1
 	</select>
 </mapper>
