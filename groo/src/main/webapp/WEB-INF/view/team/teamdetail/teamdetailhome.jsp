@@ -129,6 +129,7 @@ $.ajax({
       // 전송 방식 (로그인/회원가입은 보통 POST 사용)
       type: 'POST',
       // 서버로 보낼 데이터 (키-값 쌍의 객체 형태)
+      dataType: 'json',
       data: {
          studyId : studyId,
          memLoginId : memLoginId
@@ -153,19 +154,19 @@ $.ajax({
          }
     	 
     	 // ** 멤버 정보가 확정된 후, 메뉴 접근 제어 로직을 실행
-    	 setupMenuAccessControl();
+/*    	 setupMenuAccessControl();  */
       },
       // 통신 실패 시 실행 (네트워크 문제, 서버 에러 등)
       error: function(xhr, status, error) {
     	  console.error("멤버 확인 중 오류 발생:", status, error);
     	  // 오류 발생 시에도 접근 제어 로직 실행 (비회원, 미가입자처럼 처리)
-    	  setupMenuAccessControl();
+/*    	  setupMenuAccessControl(); */
       }
    
 });
 
 // **메뉴 접근 제어 함수 정의
-function setupMenuAccessControl() {
+/* function setupMenuAccessControl() {
 	
 	const $menuItems = $('.menu-item');
 	const isLoggedIn = memLoginId != null && memLoginId.length > 0;
@@ -184,8 +185,8 @@ function setupMenuAccessControl() {
 			e.preventDefault();
 			alert('로그인 후 이용 가능한 메뉴입니다.');
 			
-			// 현재 창의 location을 변경
-			window.location.href = 'teamdetailhome.do?studyId='+studyId;
+			sessionStorage.setItem('team_detail_last_view', 'teamdetailhome.do');
+			window.location.href = 'main.do';
 			return;
 		}
 		
@@ -196,14 +197,12 @@ function setupMenuAccessControl() {
 			e.preventDefault();
 			alert('해당 팀의 멤버만 접근 가능한 메뉴입니다.');
 			
+			sessionStorage.setItem('team_detail_last_view', 'teamdetailhome.do');
 			// 현재 창의 location을 변경
-			window.location.href = 'teamdetailhome.do?studyId='+studyId;
-		}else {
-			// 멤버가 맞으면 페이지 정상 이동
-			window.location.href = targetPage+'?studyId='+studyId;
+			window.location.href = 'main.do';
 		}
 	});
-}
+}  */
 
 
 var loadScheduleList = (response) => {
