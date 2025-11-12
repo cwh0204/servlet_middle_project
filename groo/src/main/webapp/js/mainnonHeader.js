@@ -6,8 +6,4 @@ $(() => {
 	$('#signUp').click(()=>{
 		window.location.href = 'signup.do';
 	});
-	
-	$('#logo').click(()=> {
-		window.location.href = 'main.do'
-	});
 });
