@@ -120,7 +120,7 @@ public class GitHubLoginController implements Controller, SocialLogin {
 
 		String params = "&client_id=" + "Ov23liAv6BKSjMxB6XaF" + "&client_secret="
 				+ "8070a851919ec42833ec7c0a00b48f4b88358d25" + "&code=" + code + "&redirect_uri="
-				+ "http://localhost:8080/groo/githublogin.do";
+				+ "http://192.168.142.31:8080/groo/githublogin.do";
 
 		URL url = new URL(tokenUrl);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();

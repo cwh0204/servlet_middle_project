@@ -226,7 +226,7 @@ function checkUserSuspension(userId) {
             // { "reportContent": "허위 정보 유포", "actionDate": "2025-11-10 17:27:29", "endActionDate": "2026-11-10 17:27:29", "beenCount": "Y" }
 
             const data = response;
-
+            
             // 2. 'beenCount' 값을 확인하여 정지 여부를 판단합니다.
             if(!response){
               	if(userId === 'admin'){
@@ -333,9 +333,9 @@ function generateTemporaryPassword(length = 10) {
     return password;
 }
 
-const naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TfAk2Y0BAm7L0CK2K9br&redirect_uri=http://localhost:8080/groo/naverlogin.do&state=<%=state%>";
-const gitHubUrl = "https://github.com/login/oauth/authorize?client_id=Ov23liAv6BKSjMxB6XaF&redirect_uri=http://localhost:8080/groo/githublogin.do&state=<%=state%>&scope=read:user";
-const kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=27b3c6cc330385465c1b7c244ef648c6&redirect_uri=http://localhost:8080/groo/kakaologin.do&state=<%=state%>";
+const naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=TfAk2Y0BAm7L0CK2K9br&redirect_uri=http://192.168.142.31:8080/groo/naverlogin.do&state=<%=state%>";
+const gitHubUrl = "https://github.com/login/oauth/authorize?client_id=Ov23liAv6BKSjMxB6XaF&redirect_uri=http://192.168.142.31:8080/groo/githublogin.do&state=<%=state%>&scope=read:user";
+const kakaoUrl = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=27b3c6cc330385465c1b7c244ef648c6&redirect_uri=http://192.168.142.31:8080/groo/kakaologin.do&state=<%=state%>";
 
 $(document).ready(function() {
 		

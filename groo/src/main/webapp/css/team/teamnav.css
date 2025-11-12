@@ -8,6 +8,7 @@
 	border-right: 1px solid #e5e7eb;
 	padding: 24px 0;
 	font-family: 'nomal';
+	min-width: 260px;
 }
 
 .sidebar-header {
